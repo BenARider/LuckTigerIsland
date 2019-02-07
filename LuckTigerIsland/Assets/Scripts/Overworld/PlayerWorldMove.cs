@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//manages player movement
 public class PlayerWorldMove : MonoBehaviour {
 
     public Vector2 playerInput;
@@ -54,16 +55,13 @@ public class PlayerWorldMove : MonoBehaviour {
     {
         if (doMove)
         {
+            m_rigidbody.simulated = true;
             m_lastPosition = transform.position;
 
             if (playerInput.magnitude > 0.1f)
             {
-                m_rigidbody.drag = 0f;
-                m_rigidbody.velocity = playerInput * moveSpeed;
-            }
-            else
-            {
-                m_rigidbody.drag = 10f;
+                m_rigidbody.AddForce(playerInput * moveSpeed * 10);
+                m_rigidbody.velocity = Vector2.ClampMagnitude(m_rigidbody.velocity, moveSpeed);
             }
         }
         else
