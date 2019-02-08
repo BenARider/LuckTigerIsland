@@ -22,23 +22,20 @@ public class BattleControl : MonoBehaviour {
     //public Enemy_AI[] m_enemies;
     public static int currentTurn;
 	public static string willDamage; //state n for no damage taken, state y for damage taken. Alternate state could indicate invulnerable or other in future.
-    public static bool isPaused = false;
 	public static int currentDamage;
 	public static int currentTarget;
 	public static string side;
 	public static int totalFighters = 8; //will be used to check when to reset the turn timer and stuff.
 
-    public static float speedCounter = 0;
+    private float Player1Speed;
+    private float Player2Speed;
+    private float Player3Speed;
+    private float Player4Speed;
 
-    private int Player1Speed;
-    private int Player2Speed;
-    private int Player3Speed;
-    private int Player4Speed;
-
-    private int Enemy1Speed;
-    private int Enemy2Speed;
-    private int Enemy3Speed;
-    private int Enemy4Speed;
+    private float Enemy1Speed;
+    private float Enemy2Speed;
+    private float Enemy3Speed;
+    private float Enemy4Speed;
 
     // Use this for initialization
     void Start () {
@@ -49,14 +46,13 @@ public class BattleControl : MonoBehaviour {
 		Debug.Log("Setup complete");
 		NewTurn();
 
-        //List<int> baseSpeedList = new List<int>(8) { Player1Speed, Player2Speed, Player3Speed, Player4Speed, Enemy1Speed, Enemy2Speed, Enemy3Speed, Enemy4Speed };
+        List<float> baseSpeedList = new List<float>(8) { Player1Speed, Player2Speed, Player3Speed, Player4Speed, Enemy1Speed, Enemy2Speed, Enemy3Speed, Enemy4Speed };
 
-        List<GameObject> baseSpeedList = new List<GameObject>(8) { Player1, Player2, Player3, Player4, Enemy1, Enemy2, Enemy3, Enemy4 };
 
         loadSpeed();
         sortSpeed(baseSpeedList);
 
-        List<GameObject> sortedSpeedList = baseSpeedList;
+        List<float> sortedSpeedList = baseSpeedList;
 	}
 	/// <summary>
 	/// Resets back to beginning of the turn order.
@@ -64,7 +60,6 @@ public class BattleControl : MonoBehaviour {
 	/// </summary>
 	void NewTurn()
 	{
-        BattleControl.speedCounter = 0;
         Debug.Log("New turn started");
 	}
 	// Update is called once per frame
@@ -75,29 +70,25 @@ public class BattleControl : MonoBehaviour {
 		{
             NewTurn();
 		}
-
-        while (!isPaused)
-            speedCounter++;
-
 	}
 
     bool loadSpeed() //add later a error handeler that wouls throw an error if this returned false
     {
      
-        //Player1Speed = Player1.GetComponent<BattlePlayer>().GetSpeed();
-        //Player2Speed = Player2.GetComponent<BattlePlayer>().GetSpeed();
-        //Player3Speed = Player3.GetComponent<BattlePlayer>().GetSpeed();
-        //Player4Speed = Player4.GetComponent<BattlePlayer>().GetSpeed();
+        Player1Speed = Player1.GetComponent<BattleEntity>().GetSpeed();
+        Player2Speed = Player2.GetComponent<BattleEntity>().GetSpeed();
+        Player3Speed = Player3.GetComponent<BattleEntity>().GetSpeed();
+        Player4Speed = Player4.GetComponent<BattleEntity>().GetSpeed();
 
-        //Enemy1Speed = Enemy1.GetComponent<Enemy_AI>().GetSpeed();
-        //Enemy2Speed = Enemy2.GetComponent<Enemy_AI>().GetSpeed();
-        //Enemy3Speed = Enemy3.GetComponent<Enemy_AI>().GetSpeed();
-        //Enemy4Speed = Enemy4.GetComponent<Enemy_AI>().GetSpeed();
+        Enemy1Speed = Enemy1.GetComponent<BattleEntity>().GetSpeed();
+        Enemy2Speed = Enemy2.GetComponent<BattleEntity>().GetSpeed();
+        Enemy3Speed = Enemy3.GetComponent<BattleEntity>().GetSpeed();
+        Enemy4Speed = Enemy4.GetComponent<BattleEntity>().GetSpeed();
 
         return true;
     }
 
-    bool sortSpeed(List<GameObject> baseSpeedList)
+    bool sortSpeed(List<float> baseSpeedList)
     {
 
         baseSpeedList.Sort();

@@ -59,3 +59,5 @@ MonoBehaviour:
   Enemy2: {fileID: 1329713860118572, guid: c414eb60b4bee6e4f8668fca40ae4fd8, type: 2}
   Enemy3: {fileID: 1329713860118572, guid: c414eb60b4bee6e4f8668fca40ae4fd8, type: 2}
   Enemy4: {fileID: 1329713860118572, guid: c414eb60b4bee6e4f8668fca40ae4fd8, type: 2}
+  loadSpeeds: 0
+  sortSpeeds: 0
