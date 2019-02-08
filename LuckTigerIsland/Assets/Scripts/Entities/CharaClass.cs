@@ -28,11 +28,13 @@ public class CharaClass : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
+    /*
 	void Update ()
     {
         yield return new WaitForSeconds(1.5f);
         health --;
 	}
+    */
     //-----------------------------------------------------------------------------------------------------
     //Setters and Getters
     public void Sethealth(int m_health)
