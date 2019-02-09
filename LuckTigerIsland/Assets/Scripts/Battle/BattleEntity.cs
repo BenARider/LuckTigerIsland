@@ -28,9 +28,6 @@ public class BattleEntity : MonoBehaviour {
     [SerializeField]
     protected bool myTurn = false;
 
-    public float m_speedCounter = 0.0f;
-    public bool isPaused;
-
     public float GetSpeed() { return m_Speed; }
 
     // Use this for initialization
@@ -40,11 +37,7 @@ public class BattleEntity : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (isPaused == false)
-        {
-            m_speedCounter+=0.1f;
-            Debug.Log(m_speedCounter);
-        }
+
 
         if (BattleControl.willDamage == "y" && BattleControl.currentTarget == entityNumber && BattleControl.side == "Enemy")
         {

@@ -14,15 +14,15 @@ public class BattlePlayer : BattleEntity {
         BattleControl.willDamage = "y";
         yield return new WaitForSeconds(1.5f);
         transform.position = new Vector2(this.transform.position.x - 1, this.transform.position.y);
-        isPaused = false;
+        SpeedTimer.isPaused = false;
         m_attackedAlready = false;
 
     }
     private void Update()
     {
-        if (m_speedCounter % requiredSpeedForTurn == 0)
+        if (SpeedTimer.m_speedCounter % requiredSpeedForTurn == 0)
         {
-            isPaused = true;
+            SpeedTimer.isPaused = true;
 
             Debug.Log("Players Turn");
 
