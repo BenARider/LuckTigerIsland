@@ -14,10 +14,16 @@ public class SpeedTimer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (isPaused == false)
-        {
-            m_speedCounter += 0.5f;
-            Debug.Log(m_speedCounter);
-        }
+        
     }
+
+	void FixedUpdate()
+	{
+		if (isPaused == false)
+		{
+			m_speedCounter += 0.5f;
+			
+		}
+		Debug.Log("Timer Paused");
+	}
 }

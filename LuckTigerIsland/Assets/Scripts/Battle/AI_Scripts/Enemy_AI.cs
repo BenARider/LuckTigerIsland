@@ -15,16 +15,20 @@ public class Enemy_AI : BattleEntity {
 
     IEnumerator returnEnemy()
     {
+		Debug.Log("Enemy attacking");
         BattleControl.side = "Enemy";
         BattleControl.willDamage = "y";
         yield return new WaitForSeconds(1.5f);
         transform.position = new Vector2(this.transform.position.x + 1, this.transform.position.y);
         SpeedTimer.isPaused = false;
-        m_attackedAlready = false;
+		Invoke("SetAttack", 1.0f);
     }
-
-    // Update is called once per frame
-    void Update()
+	void SetAttack()
+	{
+		m_attackedAlready = false;
+	}
+	// Update is called once per frame
+	void Update()
     {
         if (SpeedTimer.m_speedCounter % requiredSpeedForTurn == 0)
         {

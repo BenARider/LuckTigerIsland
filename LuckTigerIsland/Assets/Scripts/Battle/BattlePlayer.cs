@@ -10,21 +10,23 @@ public class BattlePlayer : BattleEntity {
     }
     IEnumerator returnPlayer()
     {
+		Debug.Log("Player returning");
         BattleControl.side = "Player";
         BattleControl.willDamage = "y";
         yield return new WaitForSeconds(1.5f);
         transform.position = new Vector2(this.transform.position.x - 1, this.transform.position.y);
         SpeedTimer.isPaused = false;
-        m_attackedAlready = false;
-
+		Invoke("SetAttack",1.0f);
     }
+	void SetAttack()
+	{
+		m_attackedAlready = false;
+	}
     private void Update()
     {
-        if (SpeedTimer.m_speedCounter % requiredSpeedForTurn == 0)
+		if (SpeedTimer.m_speedCounter % requiredSpeedForTurn == 0 || SpeedTimer.m_speedCounter % requiredSpeedForTurn == 0.5 && m_attackedAlready == false && SpeedTimer.m_speedCounter > 1.0f) 
         {
             SpeedTimer.isPaused = true;
-
-            Debug.Log("Players Turn");
 
             if (Input.GetKeyDown("1") && !m_attackedAlready)
             {

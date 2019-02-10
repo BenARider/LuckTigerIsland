@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Health_Bar_Test : MonoBehaviour {
 
+	[SerializeField]
     private Transform m_bar;
 	// Use this for initialization
 	private void Start () {

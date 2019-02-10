@@ -14,8 +14,6 @@ public class BattleEntity : MonoBehaviour {
     [SerializeField]
     protected bool m_attackedAlready = false;
     [SerializeField]
-    private int m_requiredTurn;
-    [SerializeField]
     private int entityNumber;
     [SerializeField]
     private int m_enemyNumber;
@@ -38,7 +36,6 @@ public class BattleEntity : MonoBehaviour {
     void Update()
     {
 
-
         if (BattleControl.willDamage == "y" && BattleControl.currentTarget == entityNumber && BattleControl.side == "Enemy")
         {
             m_Health -= BattleControl.currentDamage;
@@ -48,10 +45,6 @@ public class BattleEntity : MonoBehaviour {
 
         }
  
-    }
-    public void SetRequiredTurn(int turnNo)
-    {
-        m_requiredTurn = turnNo;
     }
     public void CheckForDamage()
     {

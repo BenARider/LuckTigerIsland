@@ -54,15 +54,12 @@ public class BattleControl : MonoBehaviour {
 
         List<float> sortedSpeedList = baseSpeedList;
 	}
-	/// <summary>
-	/// Resets back to beginning of the turn order.
-	/// Currently only resets turn order to begining. So the order is currently P/E/P/E/P/E/P/E with 8 things available.
-	/// </summary>
+
 	void NewTurn()
 	{
         Debug.Log("New turn started");
 	}
-	// Update is called once per frame
+
 	void Update ()
 	{
 		//Debug.Log(willDamage + " " + currentDamage + "On target: " + side + " " + currentTarget);
