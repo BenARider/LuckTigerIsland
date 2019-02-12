@@ -159,7 +159,6 @@ public class AudioManager : MonoBehaviour {
         while (m_currentTrackTimeRemaining > 0)
         {
             m_currentTrackTimeRemaining -= Time.deltaTime;
-            Debug.Log("Time Remaining: " +  m_currentTrackTimeRemaining);
             yield return new WaitForEndOfFrame();
         }        
         NextTrack();        
@@ -177,8 +176,6 @@ public class AudioManager : MonoBehaviour {
         //Play the first track in the array and get its track length.
         m_music[m_currentMusicTrack].Play();
         m_currentTrackTimeRemaining = m_music[m_currentMusicTrack].trackLength;
-        Debug.Log("Playing: " + m_currentMusicTrack);
-        Debug.Log("Track Length: " + m_currentTrackTimeRemaining);
 
         //To countdown until the track ends.
         StartCoroutine("RemainingTrack");
