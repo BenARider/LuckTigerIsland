@@ -58,6 +58,12 @@ public class Sound
         m_audioSource.pitch = _pitch;
     }
 
+    public void Loop(bool _loop)
+    {
+        loop = _loop;
+        m_audioSource.loop = _loop;
+    }
+
     public void SetAudioSource(AudioSource _source)
     {
         m_audioSource = _source;
