@@ -128,6 +128,12 @@ public class PlayerManager : MonoBehaviour {
     void ShowDialogue(Dialogue _dialogue)
     {
         Debug.Log(_dialogue.DialogueText);
+        if(activeDialogue.interactAudio != "")
+        {
+            AudioManager.instance.PlaySound(activeDialogue.interactAudio);
+        }
+
+
         for (int i = 0; i < _dialogue.Replies.Length; i++)
         {
             Debug.Log((i + 1) + ": " + _dialogue.Replies[i].ReplyText);//TEMP

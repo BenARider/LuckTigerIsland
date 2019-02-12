@@ -105,10 +105,11 @@ public class AudioManager : MonoBehaviour {
     void Awake()
     {
         if (instance != null) {
-            Debug.LogError("Only one audio manager can be present per scene.");
+            Debug.LogError("Only one audio manager can be present");
         } else
         {
             instance = this;
+            DontDestroyOnLoad(this);
         } 
     }
 
