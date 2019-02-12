@@ -9,24 +9,26 @@ using UnityEngine.Audio;
 [System.Serializable]
 public class Sound
 {
-    public string soundName;
+    public string name;
     public AudioClip audioClip;
     public AudioMixerGroup audioMixer;
 
     [Range(0f, 1f)]
-    public float volume = 1f;
+    public float volume;
 
     [Range(-3f, 3f)]
-    public float pitch = 1f;
+    public float pitch;
 
     public bool loop = false;
     public bool mute = false;
 
-    private AudioSource m_audioSource;
+    protected AudioSource m_audioSource;
 
     //Functions
     public void Play()
     {
+        volume = 1f;
+        pitch = 1f;
         m_audioSource.outputAudioMixerGroup = audioMixer;
         m_audioSource.volume = volume;
         m_audioSource.pitch = pitch;
@@ -63,12 +65,41 @@ public class Sound
     }
 }
 
+
+//Possibly have Music and Sound both inherit from an abstract "Audio" class instead of Music Inheriting from Sound.
+[System.Serializable]
+public class Music : Sound
+{
+    [HideInInspector]
+    public float trackLength;
+
+    //Overloaded from sound to update trackLength.
+    public new void Play()
+    {
+        trackLength = m_audioSource.clip.length;
+        volume = 1f;
+        pitch = 1f;
+        m_audioSource.outputAudioMixerGroup = audioMixer;
+        m_audioSource.volume = volume;
+        m_audioSource.pitch = pitch;
+        m_audioSource.loop = loop;
+        m_audioSource.mute = mute;
+        m_audioSource.Play();
+    }
+}
+
 public class AudioManager : MonoBehaviour {
 
     public static AudioManager instance;
 
     [SerializeField]
-    Sound[] sounds;
+    Sound[] m_sounds;
+    [SerializeField]
+    Music[] m_music;
+
+    //To store which track is currently playing and how long it has left.
+    int m_currentMusicTrack = 0;
+    float m_currentTrackTimeRemaining = 0;
 
     //To make sure there is only one AudioManager per scene.
     void Awake()
@@ -83,30 +114,107 @@ public class AudioManager : MonoBehaviour {
 
     void Start()
     {
-        for(int i = 0; i < sounds.Length; i++) { 
+        //Sounds
+        for(int i = 0; i < m_sounds.Length; i++) { 
             //To stop duplicates in sound name.
-            for(int j = i+1; j < sounds.Length; j++)
+            for(int j = i+1; j < m_sounds.Length; j++)
             {
-                if(sounds[i].soundName == sounds[j].soundName)
+                if(m_sounds[i].name == m_sounds[j].name)
                 {
                     throw new System.Exception("Error! Sound " + i + " and sound " + j + " have the same name.");
                 }
             }
 
             //Create Sound Objects from array.
-            GameObject _so = new GameObject("Sound " + i + ": " + sounds[i].soundName);
+            GameObject _so = new GameObject("Sound " + i + ": " + m_sounds[i].name);
             _so.transform.SetParent(this.transform);
-            sounds[i].SetAudioSource(_so.AddComponent<AudioSource>());
+            m_sounds[i].SetAudioSource(_so.AddComponent<AudioSource>());
         }
+
+        //Music
+        for (int i = 0; i < m_music.Length; i++)
+        {
+            //To stop duplicates in music name.
+            for (int j = i + 1; j < m_music.Length; j++)
+            {
+                if (m_music[i].name == m_music[j].name)
+                {
+                    throw new System.Exception("Error! Music file " + i + " and music " + j + " have the same name.");
+                }
+            }
+
+            //Create Sound Objects from array.
+            GameObject _mo = new GameObject("Music " + i + ": " + m_music[i].name);
+            _mo.transform.SetParent(this.transform);
+            m_music[i].SetAudioSource(_mo.AddComponent<AudioSource>());
+        }
+        PlayMusic();
     }
 
+    //Music Functions
+    //Using a couroutine to constantly check remaining time so the audio manager can still do other things at the same time.
+    IEnumerator RemainingTrack()
+    {
+        //Lower remaning track time and log it until it hits 0.
+        while (m_currentTrackTimeRemaining > 0)
+        {
+            m_currentTrackTimeRemaining -= Time.deltaTime;
+            Debug.Log("Time Remaining: " +  m_currentTrackTimeRemaining);
+            yield return new WaitForEndOfFrame();
+        }        
+        NextTrack();        
+    }
+
+    public void PlayMusic()
+    {
+        //Error checking
+        if(m_music.Length == 0)
+        {
+            Debug.LogError("Music array is empty!");
+            return;
+        }        
+
+        //Play the first track in the array and get its track length.
+        m_music[m_currentMusicTrack].Play();
+        m_currentTrackTimeRemaining = m_music[m_currentMusicTrack].trackLength;
+        Debug.Log("Playing: " + m_currentMusicTrack);
+        Debug.Log("Track Length: " + m_currentTrackTimeRemaining);
+
+        //To countdown until the track ends.
+        StartCoroutine("RemainingTrack");
+    }    
+
+    public void NextTrack()
+    {
+        //Tidy up previous track by stopping the coroutine and the current track.
+        StopCoroutine("RemainingTrack");
+        m_music[m_currentMusicTrack].Stop();
+
+        //If the current track is set to loop, play it again. If not, go to the next track. If there is no next track in the array, go back to the first track.
+        if (m_music[m_currentMusicTrack].loop)
+        {
+            PlayMusic();
+            return;
+        }
+        if (m_currentMusicTrack == m_music.Length -1)
+        {
+            m_currentMusicTrack = 0;
+        } else
+        {
+            m_currentMusicTrack++;
+        }
+        //Play Next track.
+        PlayMusic();
+    }
+
+    //Sound Functions
     public void PlaySound (string _name) 
     {
-        for (int i = 0; i < sounds.Length; i++)
+        for (int i = 0; i < m_sounds.Length; i++)
         {
-            if(sounds[i].soundName == _name)
+            if(m_sounds[i].name == _name)
             {
-                sounds[i].Play();
+                m_sounds[i].Play();
                 return;
             }
         }
@@ -116,11 +224,11 @@ public class AudioManager : MonoBehaviour {
 
     public void StopSound(string _name)
     {
-        for (int i = 0; i < sounds.Length; i++)
+        for (int i = 0; i < m_sounds.Length; i++)
         {
-            if (sounds[i].soundName == _name)
+            if (m_sounds[i].name == _name)
             {
-                sounds[i].Stop();
+                m_sounds[i].Stop();
                 return;
             }
         }
@@ -129,11 +237,11 @@ public class AudioManager : MonoBehaviour {
 
     public void MuteSound(string _name, bool _mute)
     {
-        for (int i = 0; i < sounds.Length; i++)
+        for (int i = 0; i < m_sounds.Length; i++)
         {
-            if (sounds[i].soundName == _name)
+            if (m_sounds[i].name == _name)
             {
-                sounds[i].Mute(_mute);
+                m_sounds[i].Mute(_mute);
                 return;
             }
         }
@@ -142,11 +250,11 @@ public class AudioManager : MonoBehaviour {
 
     public void ChangeSoundVolume(string _name, float _volume)
     {
-        for (int i = 0; i < sounds.Length; i++)
+        for (int i = 0; i < m_sounds.Length; i++)
         {
-            if (sounds[i].soundName == _name)
+            if (m_sounds[i].name == _name)
             {
-                sounds[i].ChangeVolume(Mathf.Clamp(_volume, 0f, 1f));
+                m_sounds[i].ChangeVolume(Mathf.Clamp(_volume, 0f, 1f));
                 return;
             }
         }
@@ -155,11 +263,11 @@ public class AudioManager : MonoBehaviour {
 
     public void ChangeSoundPitch(string _name, float _pitch)
     {
-        for (int i = 0; i < sounds.Length; i++)
+        for (int i = 0; i < m_sounds.Length; i++)
         {
-            if (sounds[i].soundName == _name)
+            if (m_sounds[i].name == _name)
             {
-                sounds[i].ChangePitch(Mathf.Clamp(_pitch, -3f, 3f));
+                m_sounds[i].ChangePitch(Mathf.Clamp(_pitch, -3f, 3f));
                 return;
             }
         }
