@@ -16,6 +16,7 @@ public class PlayerChara : CharaClass {
     public Text magicPowerText;
 
 
+    //for arguments, use the coding convention. so m_health = _health;
     public PlayerChara(int hth, int str, int def, int spd, int lvl, int man, int mp, int exp)
     {
         health = hth;
