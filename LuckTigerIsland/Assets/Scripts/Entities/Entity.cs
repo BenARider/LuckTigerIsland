@@ -140,11 +140,12 @@ public class Entity : MonoBehaviour
     //death function
     protected void Death()
     {
+        /*
         if (m_health <= 0)
         {
             Destroy(gameObject);
         }
-
+        */
     }
 }
 

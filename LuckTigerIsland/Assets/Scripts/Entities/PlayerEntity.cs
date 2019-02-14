@@ -1,8 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class PlayerEntity : Entity {
+    private int m_playerIDStats;
+    public Text healthText;
+    public Text strengthText;
+    public Text defenceText;
+    public Text defenceMGCText;
+    public Text speedText;
+    public Text levelText;
+    public Text magicPowText;
+    public Slider expBar;
+    public Button rightButton;
+    public Button leftButton;
+
+
     //Creates a new player entity with defined stats. Adding an object to one of the entities will apply those stats onto the object
     public PlayerEntity(int _health, int _strength, int _defence, int _defenceMGC, int _speed, int _level, int _mana, int _magicPow, int _EXP, int _value)
     {
@@ -25,14 +38,66 @@ public class PlayerEntity : Entity {
 
     // Use this for initialization
     void Start () {
-		
-	}
+        rightButton.onClick.AddListener(IncreasePlayerStatID);
+    }
 	
 	// Update is called once per frame
 	void Update ()
     {
+        
+        if(m_playerIDStats == 0)
+        {
+            healthText.text = "" + Warrior.m_health;
+            strengthText.text = "" + Warrior.m_strength;
+            defenceText.text = "" + Warrior.m_defence;
+            defenceMGCText.text = "" + Warrior.m_defenceMGC;
+            speedText.text = "" + Warrior.m_speed;
+            levelText.text = "" + Warrior.m_level;
+            magicPowText.text = "" + Warrior.m_magicPow;
+            expBar.value = Warrior.m_EXP;
+            Debug.Log("Showing Warrior");
+        }
+        if (m_playerIDStats == 1)
+        {
+            healthText.text = "3" + Wizard.m_health;
+            strengthText.text = "" + Wizard.m_strength;
+            defenceText.text = "" + Wizard.m_defence;
+            defenceMGCText.text = "" + Wizard.m_defenceMGC;
+            speedText.text = "" + Wizard.m_speed;
+            levelText.text = "" + Wizard.m_level;
+            magicPowText.text = "" + Wizard.m_magicPow;
+            expBar.value = Wizard.m_EXP;
+            Debug.Log("Showing Wizard");
+        }
+        if (m_playerIDStats == 2)
+        {
+            healthText.text = "4" + Cleric.m_health;
+            strengthText.text = "" + Cleric.m_strength;
+            defenceText.text = "" + Cleric.m_defence;
+            defenceMGCText.text = "" + Cleric.m_defenceMGC;
+            speedText.text = "" + Cleric.m_speed;
+            levelText.text = "" + Cleric.m_level;
+            magicPowText.text = "" + Cleric.m_magicPow;
+            expBar.value = Cleric.m_EXP;
+        }
+        if (m_playerIDStats == 3)
+        {
+            healthText.text = "5" + Ninja.m_health;
+            strengthText.text = "" + Ninja.m_strength;
+            defenceText.text = "" + Ninja.m_defence;
+            defenceMGCText.text = "" + Ninja.m_defenceMGC;
+            speedText.text = "" + Ninja.m_speed;
+            levelText.text = "" + Ninja.m_level;
+            magicPowText.text = "" + Ninja.m_magicPow;
+            expBar.value = Ninja.m_EXP;
+        }
         Attack();
         Damage();
         Death();
+    }
+   public void IncreasePlayerStatID()
+    {
+        m_playerIDStats++;
+        Debug.Log("Pressing button");
     }
 }
