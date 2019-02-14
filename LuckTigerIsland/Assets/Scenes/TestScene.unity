@@ -2428,6 +2428,84 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1461727459
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 114184895511927676, guid: 9cb92863e985d24439e735036580d79b,
+        type: 2}
+      propertyPath: m_questList.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220313367166032, guid: 9cb92863e985d24439e735036580d79b, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220313367166032, guid: 9cb92863e985d24439e735036580d79b, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220313367166032, guid: 9cb92863e985d24439e735036580d79b, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220313367166032, guid: 9cb92863e985d24439e735036580d79b, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220313367166032, guid: 9cb92863e985d24439e735036580d79b, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220313367166032, guid: 9cb92863e985d24439e735036580d79b, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220313367166032, guid: 9cb92863e985d24439e735036580d79b, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220313367166032, guid: 9cb92863e985d24439e735036580d79b, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114184895511927676, guid: 9cb92863e985d24439e735036580d79b,
+        type: 2}
+      propertyPath: m_questList.Array.data[0].m_ID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114184895511927676, guid: 9cb92863e985d24439e735036580d79b,
+        type: 2}
+      propertyPath: m_questList.Array.data[1].m_ID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114184895511927676, guid: 9cb92863e985d24439e735036580d79b,
+        type: 2}
+      propertyPath: m_questList.Array.data[2].m_ID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114184895511927676, guid: 9cb92863e985d24439e735036580d79b,
+        type: 2}
+      propertyPath: m_questList.Array.data[3].m_ID
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114184895511927676, guid: 9cb92863e985d24439e735036580d79b,
+        type: 2}
+      propertyPath: m_questList.Array.data[0].m_Name
+      value: Talk To Pig
+      objectReference: {fileID: 0}
+    - target: {fileID: 114184895511927676, guid: 9cb92863e985d24439e735036580d79b,
+        type: 2}
+      propertyPath: m_questList.Array.data[0].m_Description
+      value: You must talk to the pig.
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114184895511927676, guid: 9cb92863e985d24439e735036580d79b, type: 2}
+  m_ParentPrefab: {fileID: 100100000, guid: 9cb92863e985d24439e735036580d79b, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1537656317
 GameObject:
   m_ObjectHideFlags: 0
