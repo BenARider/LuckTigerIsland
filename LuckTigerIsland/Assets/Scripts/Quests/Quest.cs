@@ -2,44 +2,54 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EQuestState
+public abstract class Quest{
+
+    protected string m_title;
+    protected string m_objective;
+
+    protected static List<Quest> m_questList = new List<Quest> { };
+
+    //Use Quest.GetQuests to get a list of active quests.
+    public static List<Quest> GetQuests(){ return new List<Quest>(m_questList); }
+
+    public abstract bool FinishQuest();
+
+    public abstract string GetTitle();
+
+    public abstract string GetObjective();
+}
+
+public class KillQuest : Quest
 {
-    undiscovered,
-    active,
-    completed
-};
-
-[System.Serializable]
-public class Quest : MonoBehaviour {
-
-    private int m_ID;
-    private string m_Name;
-    private string m_Description;
-
-    private EQuestState m_currentState;
-
-    public int GetID()
+    private KillQuest(string _newTitle, string _newObjective)
     {
-        return m_ID;
+        m_title = _newTitle;
     }
 
-    public string GetTitle()
+    //Overrides
+    public override bool FinishQuest() //Give rewards and remove from questlist.
     {
-        return m_Name;
+        throw new System.NotImplementedException("Finish Quest funciton in Kill Quest class not implemented.");
     }
 
-    public string GetDescription()
+    public override string GetTitle()
     {
-        return m_Description;
+        return m_title;
     }
 
-    public EQuestState GetState()
+    public override string GetObjective()
     {
-        return m_currentState;
+        return m_objective;
     }
 
-    public void SetState(EQuestState _state)
+    //Class Specific Functions
+
+    //To begin the KillPig Quest, you only need to call FetchQuest.KillPig in the questgiver code.
+    public static void KillPig()
     {
-        m_currentState = _state;
+        string title = "Boared to Death";
+        string objective = "You have to kill the pig";
+        m_questList.Add(new KillQuest(title, objective));
     }
+    
 }
