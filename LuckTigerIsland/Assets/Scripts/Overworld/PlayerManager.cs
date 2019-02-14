@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 [System.Serializable]
 public struct Interaction
 {
@@ -27,7 +27,12 @@ public class PlayerManager : MonoBehaviour {
     //list of all current nearby interactable scripts
     public List<Interaction> interactions;
     PlayerWorldMove playerMove;
-    
+    public Text npcText;
+    public Text playerText0;
+    public Text playerText1;
+    public Text playerText2;
+    public Text playerText3;
+    public Text playerInteract;
 
     bool inDialogue = false;
     NPCDialogue activeDialogue;
@@ -44,7 +49,6 @@ public class PlayerManager : MonoBehaviour {
     {
         if (!inDialogue)
         {
-
             if (Input.GetKeyDown(KeyCode.E))
             {
                 if (interactions.Count > 0)
@@ -101,7 +105,6 @@ public class PlayerManager : MonoBehaviour {
         }
     }
 
-
     void OnDialogueInput(int index)
     {
         if (activeDialogue.Dialogues[activeDialogue.currentDialogueIndex].Replies.Length > index)
@@ -127,10 +130,34 @@ public class PlayerManager : MonoBehaviour {
     //call each time the player is presented with new options / text
     void ShowDialogue(Dialogue _dialogue)
     {
+      
+        npcText.text = _dialogue.DialogueText;
+        playerText0.text = "";
+        playerText1.text = "";
+        playerText2.text = "";
+        playerText3.text = "";
         Debug.Log(_dialogue.DialogueText);
-        for (int i = 0; i < _dialogue.Replies.Length; i++)
+
+        if(activeDialogue.interactAudio != "")
         {
-            Debug.Log((i + 1) + ": " + _dialogue.Replies[i].ReplyText);//TEMP
+            AudioManager.instance.PlaySound(activeDialogue.interactAudio);
+        }
+
+        if (_dialogue.Replies.Length > 0)
+        {
+            playerText0.text = "1:" + _dialogue.Replies[0].ReplyText;
+        }
+        if (_dialogue.Replies.Length > 1)
+        {
+            playerText1.text = "2:" + _dialogue.Replies[1].ReplyText;
+        }
+        if (_dialogue.Replies.Length > 2)
+        {
+            playerText2.text = "3:" + _dialogue.Replies[2].ReplyText;
+        }
+        if (_dialogue.Replies.Length > 3)
+        {
+            playerText3.text = "4:" + _dialogue.Replies[3].ReplyText;
         }
 
         if (_dialogue.Replies.Length == 0)
@@ -152,6 +179,7 @@ public class PlayerManager : MonoBehaviour {
     {
         if (interactions.Count > 0)
         {
+            playerInteract.text = "Press E";
             Interaction interact = interactions[interactions.Count - 1];
             Debug.Log("Press E to " + interact.text);//TEMP
             switch (interact.type)
@@ -164,6 +192,8 @@ public class PlayerManager : MonoBehaviour {
                     break;
             }
         }
+        else playerInteract.text = "";
+
     }
 
 
