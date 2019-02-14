@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CharaClass : MonoBehaviour {
 
+    //Should change these to private and call them m_health, for example.
     public int health;
     public int strength; //basic attack
     public int defense;
@@ -28,14 +29,17 @@ public class CharaClass : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
+    /*
 	void Update ()
     {
         yield return new WaitForSeconds(1.5f);
         health --;
 	}
+    */
+
     //-----------------------------------------------------------------------------------------------------
     //Setters and Getters
-    public void Sethealth(int m_health)
+    public void Sethealth(int m_health) //The argument should be _health. The body should then be m_health = _health.
     {
         health = m_health;
     }

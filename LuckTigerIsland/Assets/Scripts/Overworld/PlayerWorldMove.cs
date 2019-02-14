@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//manages player movement
 public class PlayerWorldMove : MonoBehaviour {
 
     public Vector2 playerInput;
     public float moveSpeed;
     public bool doMove = true;
-    public AudioManager audioManager;
     private Rigidbody2D m_rigidbody;
     private Vector3 m_lastPosition;
 
@@ -23,11 +23,7 @@ public class PlayerWorldMove : MonoBehaviour {
             //TODO: Show error here//
             Application.Quit();
         }
-
-        if(audioManager == null)
-        {
-            Debug.LogError("No AudioManager referenced in PlayerWorldMove.");
-        }
+        
 
     }
 
@@ -40,13 +36,13 @@ public class PlayerWorldMove : MonoBehaviour {
         playerInput = new Vector2(m_xMove, m_yMove).normalized;
 
         //Example of playing and stopping a sound.
-        if (Input.GetKeyDown("space")) {
-            audioManager.PlaySound("Test");
+        /*if (Input.GetKeyDown("space")) {
+            AudioManager.instance.PlaySound("Test");
         }
-        if (Input.GetKeyDown("e"))
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            audioManager.StopSound("Test");
-        }
+            AudioManager.instance.StopSound("Test");
+        }*/
     }
 
     //FixedUpdate for rigidbody2D
@@ -54,16 +50,13 @@ public class PlayerWorldMove : MonoBehaviour {
     {
         if (doMove)
         {
+            m_rigidbody.simulated = true;
             m_lastPosition = transform.position;
 
             if (playerInput.magnitude > 0.1f)
             {
-                m_rigidbody.drag = 0f;
-                m_rigidbody.velocity = playerInput * moveSpeed;
-            }
-            else
-            {
-                m_rigidbody.drag = 10f;
+                m_rigidbody.AddForce(playerInput * moveSpeed * 10);
+                m_rigidbody.velocity = Vector2.ClampMagnitude(m_rigidbody.velocity, moveSpeed);
             }
         }
         else

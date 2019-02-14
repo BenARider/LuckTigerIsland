@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4541649906262006}
   - component: {fileID: 212932286925776790}
   - component: {fileID: 50906064781458258}
+  - component: {fileID: 114558077088360968}
   - component: {fileID: 114690912955478798}
   - component: {fileID: 61122512912468014}
   - component: {fileID: 114276641457027302}
@@ -56,7 +57,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 10
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -101,6 +102,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   screenOffset: 0
+--- !u!114 &114558077088360968
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1362539979973646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb93873c1dc64e74ab50de01be922815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactions: []
 --- !u!114 &114690912955478798
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -115,6 +128,7 @@ MonoBehaviour:
   playerInput: {x: 0, y: 0}
   moveSpeed: 4
   doMove: 1
+  audioManager: {fileID: 0}
 --- !u!212 &212932286925776790
 SpriteRenderer:
   m_ObjectHideFlags: 1
