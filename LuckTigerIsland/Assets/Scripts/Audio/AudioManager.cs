@@ -58,6 +58,12 @@ public class Sound
         m_audioSource.pitch = _pitch;
     }
 
+    public void Loop(bool _loop)
+    {
+        loop = _loop;
+        m_audioSource.loop = _loop;
+    }
+
     public void SetAudioSource(AudioSource _source)
     {
         m_audioSource = _source;
@@ -105,10 +111,11 @@ public class AudioManager : MonoBehaviour {
     void Awake()
     {
         if (instance != null) {
-            Debug.LogError("Only one audio manager can be present per scene.");
+            Debug.LogError("Only one audio manager can be present");
         } else
         {
             instance = this;
+            DontDestroyOnLoad(this);
         } 
     }
 

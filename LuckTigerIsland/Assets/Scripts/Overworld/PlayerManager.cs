@@ -137,6 +137,12 @@ public class PlayerManager : MonoBehaviour {
         playerText2.text = "";
         playerText3.text = "";
         Debug.Log(_dialogue.DialogueText);
+
+        if(activeDialogue.interactAudio != "")
+        {
+            AudioManager.instance.PlaySound(activeDialogue.interactAudio);
+        }
+
         if (_dialogue.Replies.Length > 0)
         {
             playerText0.text = "1:" + _dialogue.Replies[0].ReplyText;

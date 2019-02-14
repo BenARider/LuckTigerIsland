@@ -40,6 +40,7 @@ public class NPCDialogue : MonoBehaviour
     //The Dialogue element that will come up first. Always the dialogue after the endpoint.
     public int startDialogueIndex = 1;
     public int currentDialogueIndex;
+    public string interactAudio = "";
     public List<Dialogue> Dialogues = new List<Dialogue> { new Dialogue(true), new Dialogue() };
 
     public void BeginDialogue()
