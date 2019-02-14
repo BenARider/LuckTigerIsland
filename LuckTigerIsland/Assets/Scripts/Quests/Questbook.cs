@@ -17,7 +17,6 @@ public class Questbook : MonoBehaviour {
     //Change from update to a specifically called function?
     void Update()
     {
-
         //Make sure Quests are in the correct lists based on their state.
         foreach(Quest q in m_questList)
         {
