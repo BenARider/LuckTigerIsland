@@ -12,6 +12,8 @@ public class BattleEntity : MonoBehaviour {
     [SerializeField]
     protected int m_Speed;
     [SerializeField]
+    protected int m_HealValue;
+    [SerializeField]
     protected bool m_attackedAlready = false;
     [SerializeField]
     private int entityNumber;
@@ -34,8 +36,7 @@ public class BattleEntity : MonoBehaviour {
 
     // Update is called once per frame
     void Update()
-    {
-
+    { 
         if (BattleControl.willDamage == "y" && BattleControl.currentTarget == entityNumber && BattleControl.side == "Enemy")
         {
             m_Health -= BattleControl.currentDamage;
@@ -44,7 +45,6 @@ public class BattleEntity : MonoBehaviour {
             BattleControl.side = " ";
 
         }
- 
     }
     public void CheckForDamage()
     {
@@ -61,6 +61,11 @@ public class BattleEntity : MonoBehaviour {
     {
         Debug.Log("Enemy taking damage");
         m_Health -= damageTaken;
+    }
+
+    void HealTarget(int HealValue)
+    {
+        m_Health += HealValue;
     }
 }
 
