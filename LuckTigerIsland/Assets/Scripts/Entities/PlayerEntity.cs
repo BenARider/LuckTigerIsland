@@ -18,15 +18,14 @@ public class PlayerEntity : Entity {
         m_value = _value;
     }
 
-    public PlayerEntity Warrior = new PlayerEntity(150, 20, 20, 10, 5, 1, 20, 5, 0, 40);
-    public PlayerEntity Wizard = new PlayerEntity(100, 10, 5, 15, 10, 1, 50, 20, 0, 50);
-    public PlayerEntity Cleric = new PlayerEntity(125, 10, 10, 20, 15, 1, 50, 15, 0, 75);
-    public PlayerEntity Ninja = new PlayerEntity(100, 15, 10, 5, 20, 1, 35, 10, 0, 30);
-
     // Use this for initialization
-    void Start () {
-		
-	}
+    void Start ()
+    {
+        PlayerEntity Warrior = new PlayerEntity(150, 20, 20, 10, 5, 1, 20, 5, 0, 40);
+        PlayerEntity Wizard = new PlayerEntity(100, 10, 5, 15, 10, 1, 50, 20, 0, 50);
+        PlayerEntity Cleric = new PlayerEntity(125, 10, 10, 20, 15, 1, 50, 15, 0, 75);
+        PlayerEntity Ninja = new PlayerEntity(100, 15, 10, 5, 20, 1, 35, 10, 0, 30);
+    }
 	
 	// Update is called once per frame
 	void Update ()
