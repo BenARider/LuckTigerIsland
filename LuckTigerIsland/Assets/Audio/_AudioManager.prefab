@@ -70,12 +70,3 @@ MonoBehaviour:
     loop: 0
     mute: 0
     trackLength: 0
-  - name: bg02
-    audioClip: {fileID: 8300000, guid: 7832764cc0abfec4984566f8118ee6fd, type: 3}
-    audioMixer: {fileID: 243770745202374444, guid: 24978eb7020a14d48902d2e5174d495d,
-      type: 2}
-    volume: 0
-    pitch: 0
-    loop: 0
-    mute: 0
-    trackLength: 0

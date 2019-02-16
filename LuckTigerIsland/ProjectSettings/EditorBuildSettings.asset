@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/TestScene.unity
+    guid: 7b625a4f6dda68445a49f32343f66cd2
+  - enabled: 1
+    path: Assets/Scenes/Towns/Castleton01.unity
+    guid: 70a7d8d131d5e704f8693db52e1f18fa
