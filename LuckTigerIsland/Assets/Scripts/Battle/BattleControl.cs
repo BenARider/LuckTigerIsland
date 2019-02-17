@@ -16,8 +16,8 @@ public class BattleControl : MonoBehaviour {
     public GameObject Enemy3;
     public GameObject Enemy4;
 
-    public bool loadSpeeds;
-    public bool sortSpeeds;
+    //public bool loadSpeeds;
+    //public bool sortSpeeds;
     //public BattlePlayer[] m_players;
     //public Enemy_AI[] m_enemies;
     public static int currentTurn;
@@ -28,15 +28,15 @@ public class BattleControl : MonoBehaviour {
 	public static string side;
 	public static int totalFighters = 8; //will be used to check when to reset the turn timer and stuff.
 
-    private float Player1Speed;
-    private float Player2Speed;
-    private float Player3Speed;
-    private float Player4Speed;
+    //private float Player1Speed;
+    //private float Player2Speed;
+    //private float Player3Speed;
+    //private float Player4Speed;
 
-    private float Enemy1Speed;
-    private float Enemy2Speed;
-    private float Enemy3Speed;
-    private float Enemy4Speed;
+    //private float Enemy1Speed;
+    //private float Enemy2Speed;
+    //private float Enemy3Speed;
+    //private float Enemy4Speed;
 
     // Use this for initialization
     void Start () {
@@ -46,46 +46,35 @@ public class BattleControl : MonoBehaviour {
         currentHealValue = 0;
 		currentTarget = 0;
 		Debug.Log("Setup complete");
-		NewTurn();
 
-        List<float> baseSpeedList = new List<float>(8) { Player1Speed, Player2Speed, Player3Speed, Player4Speed, Enemy1Speed, Enemy2Speed, Enemy3Speed, Enemy4Speed };
+        //List<float> baseSpeedList = new List<float>(8) { Player1Speed, Player2Speed, Player3Speed, Player4Speed, Enemy1Speed, Enemy2Speed, Enemy3Speed, Enemy4Speed };
 
 
-        loadSpeed();
-        sortSpeed(baseSpeedList);
+       // loadSpeed();
+       //sortSpeed(baseSpeedList);
 
-        List<float> sortedSpeedList = baseSpeedList;
+       // List<float> sortedSpeedList = baseSpeedList;
 	}
-
-	void NewTurn()
-	{
-        Debug.Log("New turn started");
-	}
-
 	void Update ()
 	{
 		//Debug.Log(willDamage + " " + currentDamage + "On target: " + side + " " + currentTarget);
-		if (currentTurn > 8)
-		{
-            NewTurn();
-		}
 	}
 
-    bool loadSpeed() //add later a error handeler that wouls throw an error if this returned false
-    {
+    //bool loadSpeed() //add later a error handeler that wouls throw an error if this returned false
+    //{
      
-        Player1Speed = Player1.GetComponent<BattleEntity>().GetSpeed();
-        Player2Speed = Player2.GetComponent<BattleEntity>().GetSpeed();
-        Player3Speed = Player3.GetComponent<BattleEntity>().GetSpeed();
-        Player4Speed = Player4.GetComponent<BattleEntity>().GetSpeed();
+    //    Player1Speed = Player1.GetComponent<BattleEntity>().GetSpeed();
+    //    Player2Speed = Player2.GetComponent<BattleEntity>().GetSpeed();
+    //    Player3Speed = Player3.GetComponent<BattleEntity>().GetSpeed();
+    //    Player4Speed = Player4.GetComponent<BattleEntity>().GetSpeed();
 
-        Enemy1Speed = Enemy1.GetComponent<BattleEntity>().GetSpeed();
-        Enemy2Speed = Enemy2.GetComponent<BattleEntity>().GetSpeed();
-        Enemy3Speed = Enemy3.GetComponent<BattleEntity>().GetSpeed();
-        Enemy4Speed = Enemy4.GetComponent<BattleEntity>().GetSpeed();
+    //    Enemy1Speed = Enemy1.GetComponent<BattleEntity>().GetSpeed();
+    //    Enemy2Speed = Enemy2.GetComponent<BattleEntity>().GetSpeed();
+    //    Enemy3Speed = Enemy3.GetComponent<BattleEntity>().GetSpeed();
+    //    Enemy4Speed = Enemy4.GetComponent<BattleEntity>().GetSpeed();
 
-        return true;
-    }
+    //    return true;
+    //}
 
     bool sortSpeed(List<float> baseSpeedList)
     {

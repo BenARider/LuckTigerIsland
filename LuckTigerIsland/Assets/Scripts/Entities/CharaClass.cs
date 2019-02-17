@@ -4,54 +4,115 @@ using UnityEngine;
 
 public class CharaClass : MonoBehaviour {
 
-    //Should change these to private and call them m_health, for example.
-    public int health;
-    public int strength; //basic attack
-    public int defense;
-    public int speed;
-    public int level;
+	//Should change these to private and call them m_health, for example.
+	[SerializeField]
+	protected int maxHealth;
+	[SerializeField]
+	protected int health;
+	[SerializeField]
+	protected int strength; //basic attack
+	[SerializeField]
+	protected int defense;
+	[SerializeField]
+	protected int speed;
+	[SerializeField]
+	protected int mana;
+	[SerializeField]
+	protected int maxMana;
+	[SerializeField]
+	public int magicPower;
+	[SerializeField]
+	protected int level;
 
-    public int tempDMGReduct = 0; //the amount of damage reduced to the intial damage
-    public int totalDMG = 0; //total amount of damage that goes through.
-    public int chanceToHit;
+	/// Following are used purely for battle integration. Used by both enemies and players.
+	[SerializeField]
+	protected bool m_attackedAlready = false;
+	[SerializeField]
+	private int entityNumber;
+	[SerializeField]
+	private int m_enemyNumber;
+	[SerializeField]
+	private string side;
+	[SerializeField]
+	protected float baseRequiredSpeedForTurn = 100;
+	[SerializeField]
+	protected float requiredSpeedForTurn;
+	[SerializeField]
+	protected bool myTurn = false;
+	[SerializeField]
+	public bool battleWon = false;
 
-    //CALCULATION IDEA: (atk: strength / def: defense = tempDMGReduct) atk: strength - tempDMGReduct = totalDMG
-    //e.g. (100 / 10 = 10) 100 - 10 = 90
-    //e.g. (56 / 8 = 7) 56 - 7 = 49
+	public int tempDMGReduct = 0; //the amount of damage reduced to the intial damage
+	public int totalDMG = 0; //total amount of damage that goes through.
+	public int chanceToHit;
 
-    public bool attacking = false;
-    public bool dmgRecieve = false;
-    public bool dmgDealt = false;
+	//CALCULATION IDEA: (atk: strength / def: defense = tempDMGReduct) atk: strength - tempDMGReduct = totalDMG
+	//e.g. (100 / 10 = 10) 100 - 10 = 90
+	//e.g. (56 / 8 = 7) 56 - 7 = 49
+
+	public bool attacking = false;
+	public bool dmgRecieve = false;
+	public bool dmgDealt = false;
 
 	// Use this for initialization
-	void Start () {
-		
+	void Start() {
+
 	}
-	
+
 	// Update is called once per frame
-    /*
-	void Update ()
-    {
-        yield return new WaitForSeconds(1.5f);
-        health --;
+	void Update()
+	{
+		if (BattleControl.willDamage == "y" && BattleControl.currentTarget == entityNumber && BattleControl.side == "Enemy")
+		{
+			health -= BattleControl.currentDamage;
+			BattleControl.willDamage = "n";
+			BattleControl.currentTarget = 0;
+			BattleControl.side = " ";
+
+		}
 	}
-    */
-
-    //-----------------------------------------------------------------------------------------------------
-    //Setters and Getters
-    public void Sethealth(int m_health) //The argument should be _health. The body should then be m_health = _health.
-    {
-        health = m_health;
-    }
-    public int GetHealth()
-    {
-        return health;
-    }
-    public int GetStrength()
-    {
-        return strength;
-    }
-
+	public void CheckForDamage()
+	{
+		if (BattleControl.willDamage == "y" && BattleControl.currentTarget == m_enemyNumber)
+		{
+			health -= BattleControl.currentDamage;
+			Debug.Log("Enemy: " + m_enemyNumber + "health total now: " + GetHealth());
+			BattleControl.willDamage = "n";
+			BattleControl.currentTarget = 0;
+			BattleControl.side = " ";
+		}
+	}
+	void TakeDamage(int damageTaken)
+	{
+		Debug.Log("Enemy taking damage");
+		health -= damageTaken;
+	}
+	//-----------------------------------------------------------------------------------------------------
+	//Setters and Getters
+	public void Sethealth(int m_health) //The argument should be _health. The body should then be m_health = _health.
+	{
+		health = m_health;
+	}
+	public void ResetHealth()  //used at the beginning with initialisation, max health is required for ui calculations and heal effects.
+	{
+		health = maxHealth;
+	}
+	public int GetMaxHealth()
+	{
+		return maxHealth;
+	}
+	public int GetHealth()
+	{
+		return health;
+	}
+	public int GetStrength()
+	{
+		return strength;
+	}
+	public int GetMagicPower()
+	{
+		return magicPower;
+	}
     public int GetDefense()
     {
         return defense;
@@ -61,6 +122,26 @@ public class CharaClass : MonoBehaviour {
     {
         return speed;
     }
+	public float GetRequiredSpeed()
+	{
+		return requiredSpeedForTurn;
+	}
+	public void SetRequiredSpeed()
+	{
+		requiredSpeedForTurn = baseRequiredSpeedForTurn - GetSpeed();
+	}
+	public int GetMaxMana()
+	{
+		return maxMana;
+	}
+	public void ResetMana()
+	{
+		health = maxHealth;
+	}
+	public int GetMana()
+	{
+		return mana;
+	}
 
     public void SetLevel(int m_level)
     {
@@ -89,7 +170,7 @@ public class CharaClass : MonoBehaviour {
         }
     }
 
-    protected void Damage()
+    protected void Damage() //this function will be repurposed soon to utilise various values.
     {
         if (dmgRecieve == true)
         {

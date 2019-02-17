@@ -4,161 +4,63 @@ using UnityEngine;
 using System;
 
 
-public enum EnemyState //Think of mentality of the enemies, this state will change on different values changing i.e low health = fleeing.  Will add to this when i can
+/*public enum EnemyState //Think of mentality of the enemies, this state will change on different values changing i.e low health = fleeing.  Will add to this when i can
 { 
     eAttcking,
     eDefending, //Will code in when defending is working, Ditto for thje other three
     eHealing,
     eFleeing
-}
+}*/
 
-public enum Command
+/*public enum Command
 {
     eAttack,
     eDefend, //Will code in when defending is working, Ditto for thje other three
     eHeal,
     eFlee
-}
+}*/
 
-public class Enemy_AI : BattleEntity
+public class Enemy_AI : EnemChara
 {
-    EnemyState CurrentState;
-    Command Command;
 
-    public void StateTransition(EnemyState currentState, Command command)
+    /*public void StateTransition(EnemyState currentState, Command command)
     {
         CurrentState = currentState;
         Command = command;
-    }
-
-
-    [SerializeField]
-    private int m_Target;
-
+    }*/
     // Use this for initialization
     void Start ()
     {
-        requiredSpeedForTurn = baseRequiredSpeedForTurn - m_Speed;
-    }
-	void SetAttack()
-	{
-		m_attackedAlready = false;
-	}
-
-    void EnemyAttack()
-    {
-        Debug.Log("Enemy attacking");
-        BattleControl.side = "Enemy";
-        BattleControl.willDamage = "y";
-        transform.position = new Vector2(this.transform.position.x + 1, this.transform.position.y);
-    }
-
-    void decideTarget()
-    {
-        if (CurrentState == EnemyState.eAttcking)
-        {
-            m_Target = UnityEngine.Random.Range(1, 4); //determines target for enemy attack
-        }
         
-        if (CurrentState == EnemyState.eHealing)
-        {
-            m_Target = UnityEngine.Random.Range(5, 8); //Random healing for now until healing is actually in game
-        }
-    }
-    void randomBasicAttack()
-    {
-        m_attackedAlready = true;
-        BattleControl.currentDamage = m_Damage;
-        BattleControl.currentTarget = m_Target;
-        transform.position = new Vector2(this.transform.position.x - 1, this.transform.position.y);
-        StartCoroutine(returnEnemy());
     }
 
-    void randomHeal()
-    {
-        m_attackedAlready = true;
-        BattleControl.currentHealValue = m_HealValue;
-        BattleControl.currentTarget = m_Target;
-        transform.position = new Vector2(this.transform.position.x - 1, this.transform.position.y);
-        StartCoroutine(returnEnemy());
-    }
-
-    IEnumerator returnEnemy()
-    {
-        EnemyAttack();
-        yield return new WaitForSeconds(1.5f);
-        SpeedTimer.isPaused = false;
-		Invoke("SetAttack", 1.0f);
-    }
-
+	//this function can be changed depending on the enemy type. It will return the state to EnemChara for use there
     void decideState()
     {
-        if (m_Health< m_Health/2) //would have a && healskill not on cool down later for eHeal
-        {
-            CurrentState = EnemyState.eDefending;
-            Debug.Log("Enemy Defending");
-        }
-        else if (m_Health < m_Health/4)
-        {
-            CurrentState = EnemyState.eFleeing;
-            Debug.Log("The enemy is fleeing");
-        }
-        else
-        {
-            CurrentState = EnemyState.eAttcking;
-            decideTarget();
-            Debug.Log("The enemy is going to attack" + m_Target);
-        }
+		//if (GetHealth() < GetHealth() / 2) //would have a && healskill not on cool down later for eHeal
+		//{
+		//	StateTransition(1);
+		//	Debug.Log("Enemy Defending");
+		//}
+		//else if (GetHealth() < GetHealth()/4)
+  //      {
+		//	StateTransition(2);
+		//	Debug.Log("The enemy is fleeing");
+  //      }
+        
+			StateTransition(0);
+			//Debug.Log("The enemy is going to attack" + m_Target);
+        
     }
-
-
-    bool BattleWon;
 
     // Update is called once per frame
     void Update()
     {
-        if (SpeedTimer.m_speedCounter % requiredSpeedForTurn == 0)
-        {
+		if (SpeedTimer.m_speedCounter % requiredSpeedForTurn == 0 && SpeedTimer.isPaused == false || SpeedTimer.m_speedCounter % requiredSpeedForTurn == 0.5 && m_attackedAlready == false && SpeedTimer.m_speedCounter > 1.0f)
+		{
             SpeedTimer.isPaused = true;
 
-            Debug.Log("Enemies Turn");
-
             decideState();
-
-            if (BattleControl.side == "Player")
-            {
-                CheckForDamage();
-            }
-
-            if (m_attackedAlready == false) //Stuff to be rearranged later for balanced
-            {
-
-                if (CurrentState == EnemyState.eFleeing)
-                {
-                   BattleWon = true;
-                }
-
-                if (CurrentState == EnemyState.eAttcking)
-                {
-                    randomBasicAttack();
-                }
-
-                if (CurrentState == EnemyState.eDefending)
-                {
-                    //Defend
-                }
-
-                if (CurrentState == EnemyState.eHealing)
-                {
-                    //Heal code/skill
-                }
-            }
-            if (m_Health <= 0)
-            {
-                Debug.Log("The enemy is dead");
-            }
         }
-
-
     }
 }

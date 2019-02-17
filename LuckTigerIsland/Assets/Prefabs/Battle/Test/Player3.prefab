@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212692230660967460}
   - component: {fileID: 61362805463148164}
   - component: {fileID: 114325113058881716}
+  - component: {fileID: 114253630115187540}
   m_Layer: 0
   m_Name: Player3
   m_TagString: Untagged
@@ -36,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1751857842274094}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -2, z: 0}
+  m_LocalPosition: {x: -2, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -67,6 +68,49 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6956835, y: 0.81313896}
   m_EdgeRadius: 0
+--- !u!114 &114253630115187540
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1751857842274094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7b9ee21a2a49e64cbdb84b5fe06a9d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 0
+  health: 0
+  strength: 0
+  defense: 0
+  speed: 0
+  mana: 0
+  maxMana: 0
+  level: 0
+  m_attackedAlready: 0
+  entityNumber: 3
+  m_enemyNumber: 0
+  side: Player
+  baseRequiredSpeedForTurn: 100
+  requiredSpeedForTurn: 0
+  myTurn: 0
+  battleWon: 0
+  tempDMGReduct: 0
+  totalDMG: 0
+  chanceToHit: 0
+  attacking: 0
+  dmgRecieve: 0
+  dmgDealt: 0
+  magicPower: 0
+  EXP: 0
+  healthText: {fileID: 0}
+  strengthText: {fileID: 0}
+  defenseText: {fileID: 0}
+  speedText: {fileID: 0}
+  levelText: {fileID: 0}
+  manaText: {fileID: 0}
+  magicPowerText: {fileID: 0}
+  Warrior: {fileID: 114253630115187540}
 --- !u!114 &114325113058881716
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -78,11 +122,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4644a965da41d646b7ce8fe429ed8b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Health: 3
-  m_Damage: 6
-  m_Speed: 5
-  playerNumber: 3
-  m_requiredTurn: 0
+  maxHealth: 0
+  health: 0
+  strength: 0
+  defense: 0
+  speed: 0
+  mana: 0
+  maxMana: 0
+  level: 0
+  m_attackedAlready: 0
+  entityNumber: 3
+  m_enemyNumber: 0
+  side: Player
+  baseRequiredSpeedForTurn: 100
+  requiredSpeedForTurn: 0
+  myTurn: 0
+  battleWon: 0
+  tempDMGReduct: 0
+  totalDMG: 0
+  chanceToHit: 0
+  attacking: 0
+  dmgRecieve: 0
+  dmgDealt: 0
+  magicPower: 0
+  EXP: 0
+  healthText: {fileID: 0}
+  strengthText: {fileID: 0}
+  defenseText: {fileID: 0}
+  speedText: {fileID: 0}
+  levelText: {fileID: 0}
+  manaText: {fileID: 0}
+  magicPowerText: {fileID: 0}
+  Warrior: {fileID: 0}
 --- !u!212 &212692230660967460
 SpriteRenderer:
   m_ObjectHideFlags: 1
