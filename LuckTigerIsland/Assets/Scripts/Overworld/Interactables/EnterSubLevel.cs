@@ -14,6 +14,8 @@ public class EnterSubLevel : GenericInteract {
     {
         Debug.Log("Entering "+ sceneName);
 
+		Camera.main.GetComponent<ScreenTransition>().fromBlack();
+
 		if (!toOverworld)
 		{
 			SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
@@ -33,5 +35,7 @@ public class EnterSubLevel : GenericInteract {
 			transform.root.gameObject.SetActive(false);
 		}
 		player.currentSceneName = sceneName;
-    }
+
+		Camera.main.GetComponent<CameraController>().OnReset();
+	}
 }

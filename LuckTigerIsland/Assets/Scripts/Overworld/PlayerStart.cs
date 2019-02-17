@@ -8,6 +8,7 @@ public class PlayerStart : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		SceneManager.LoadScene("TestScene", LoadSceneMode.Additive);
+
 		Destroy(this);
 	}
 }
