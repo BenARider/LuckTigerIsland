@@ -3,6 +3,7 @@ Have one audio master object per scene using the prefab. Create sounds in the au
 Reference the audio manager script using the audio manager object in other objects to access and play sounds.
 */
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using UnityEngine.Audio;
 
@@ -94,14 +95,28 @@ public class Music : Sound
     }
 }
 
+[System.Serializable]
+public class MusicPlaylist
+{
+    [SerializeField]
+    public string playlistName;
+    [SerializeField]
+    public Music[] m_music;
+}
+
 public class AudioManager : MonoBehaviour {
 
     public static AudioManager instance;
 
+    //Identify which playlist to use.
+    [SerializeField]
+    public int currentPlaylist = 0;
+
     [SerializeField]
     Sound[] m_sounds;
     [SerializeField]
-    Music[] m_music;
+    MusicPlaylist[] m_playlists;
+    
 
     //To store which track is currently playing and how long it has left.
     int m_currentMusicTrack = 0;
@@ -140,22 +155,29 @@ public class AudioManager : MonoBehaviour {
         }
 
         //Music
-        for (int i = 0; i < m_music.Length; i++)
+        if (currentPlaylist >= m_playlists.Length)
+        {
+            string sceneName = SceneManager.GetActiveScene().name;
+            throw new System.IndexOutOfRangeException(sceneName + ": 'currentPlaylist' int is higher than the amount of playlists.");
+        }
+        
+        for (int i = 0; i < m_playlists[currentPlaylist].m_music.Length; i++)
         {
             //To stop duplicates in music name.
-            for (int j = i + 1; j < m_music.Length; j++)
+            for (int j = i + 1; j < m_playlists[currentPlaylist].m_music.Length; j++)
             {
-                if (m_music[i].name == m_music[j].name)
+                if (m_playlists[currentPlaylist].m_music[i].name == m_playlists[currentPlaylist].m_music[j].name)
                 {
                     throw new System.Exception("Error! Music file " + i + " and music " + j + " have the same name.");
                 }
             }
 
             //Create Sound Objects from array.
-            GameObject _mo = new GameObject("Music " + i + ": " + m_music[i].name);
+            GameObject _mo = new GameObject("Music " + i + ": " + m_playlists[currentPlaylist].m_music[i].name);
             _mo.transform.SetParent(this.transform);
-            m_music[i].SetAudioSource(_mo.AddComponent<AudioSource>());
+            m_playlists[currentPlaylist].m_music[i].SetAudioSource(_mo.AddComponent<AudioSource>());
         }
+        
         PlayMusic();
     }
 
@@ -175,15 +197,15 @@ public class AudioManager : MonoBehaviour {
     public void PlayMusic()
     {
         //Error checking
-        if(m_music.Length == 0)
+        if(m_playlists[currentPlaylist].m_music.Length == 0)
         {
             Debug.LogError("Music array is empty!");
             return;
-        }        
+        }
 
         //Play the first track in the array and get its track length.
-        m_music[m_currentMusicTrack].Play();
-        m_currentTrackTimeRemaining = m_music[m_currentMusicTrack].trackLength;
+        m_playlists[currentPlaylist].m_music[m_currentMusicTrack].Play();
+        m_currentTrackTimeRemaining = m_playlists[currentPlaylist].m_music[m_currentMusicTrack].trackLength;
 
         //To countdown until the track ends.
         StartCoroutine("RemainingTrack");
@@ -193,15 +215,15 @@ public class AudioManager : MonoBehaviour {
     {
         //Tidy up previous track by stopping the coroutine and the current track.
         StopCoroutine("RemainingTrack");
-        m_music[m_currentMusicTrack].Stop();
+        m_playlists[currentPlaylist].m_music[m_currentMusicTrack].Stop();
 
         //If the current track is set to loop, play it again. If not, go to the next track. If there is no next track in the array, go back to the first track.
-        if (m_music[m_currentMusicTrack].loop)
+        if (m_playlists[currentPlaylist].m_music[m_currentMusicTrack].loop)
         {
             PlayMusic();
             return;
         }
-        if (m_currentMusicTrack == m_music.Length -1)
+        if (m_currentMusicTrack == m_playlists[currentPlaylist].m_music.Length -1)
         {
             m_currentMusicTrack = 0;
         } else
