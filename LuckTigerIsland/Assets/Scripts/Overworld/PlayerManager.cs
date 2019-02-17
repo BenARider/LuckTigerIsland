@@ -111,12 +111,20 @@ public class PlayerManager : MonoBehaviour {
     void OnDialogueInput(int index)
     {
         if (activeDialogue.Dialogues[activeDialogue.currentDialogueIndex].Replies.Length > index)
-        {
-            activeDialogue.currentDialogueIndex = activeDialogue.Dialogues[activeDialogue.currentDialogueIndex].Replies[index].nextDialogue;
+        {    
+                activeDialogue.currentDialogueIndex = activeDialogue.Dialogues[activeDialogue.currentDialogueIndex].Replies[index].nextDialogue;
             if (activeDialogue.currentDialogueIndex == 0)
             {
                 return;
             }
+
+            //Activate Quest if one exists on the dialogue step.
+            if (activeDialogue.Dialogues[activeDialogue.currentDialogueIndex].quest != null)
+            {
+                activeDialogue.Dialogues[activeDialogue.currentDialogueIndex].quest.StartQuest();
+            }
+            //
+
             ShowDialogue(activeDialogue.Dialogues[activeDialogue.currentDialogueIndex]);
         }
     }

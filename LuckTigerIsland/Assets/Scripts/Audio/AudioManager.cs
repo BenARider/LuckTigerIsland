@@ -107,7 +107,7 @@ public class AudioManager : MonoBehaviour {
     int m_currentMusicTrack = 0;
     float m_currentTrackTimeRemaining = 0;
 
-    //To make sure there is only one AudioManager per scene.
+    //To make sure there is only one AudioManager.
     void Awake()
     {
         if (instance != null) {
@@ -150,7 +150,7 @@ public class AudioManager : MonoBehaviour {
                 }
             }
 
-            //Create Sound Objects from array.
+            //Create Music Objects from array.
             GameObject _mo = new GameObject("Music " + i + ": " + m_music[i].name);
             _mo.transform.SetParent(this.transform);
             m_music[i].SetAudioSource(_mo.AddComponent<AudioSource>());

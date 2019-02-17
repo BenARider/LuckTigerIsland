@@ -7,7 +7,6 @@ public enum InteractionType
     Dialogue, Generic
 }
 
-
 [System.Serializable]
 public class DialogueReply
 {
@@ -18,10 +17,10 @@ public class DialogueReply
 [System.Serializable]
 public class Dialogue
 {
-
-
+    
     [HideInInspector]
     public bool isEndPoint = false;
+    public Quest quest;
     public string DialogueText;
     public DialogueReply[] Replies;
 
