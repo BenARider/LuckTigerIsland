@@ -4,9 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 public class PlayerChara : CharaClass {
 
-
-	[SerializeField]
-	private string playerClass;
     public int EXP;
     public Text healthText;
     public Text strengthText;
@@ -22,26 +19,26 @@ public class PlayerChara : CharaClass {
 
 	// Use this for initialization
 	void Start () {
-		if (playerClass == "Warrior")
+		if (Class == "Warrior")
 		{
 			playerCharaStats(100, 100, 20, 10, 20, 50, 1, 0);
 		}
-		if (playerClass == "Ninja")
+		if (Class == "Ninja")
 		{
 			playerCharaStats(100, 100, 20, 10, 20, 70, 1, 0);
 		}
-		if (playerClass == "Cleric")
+		if (Class == "Cleric")
 		{
 			playerCharaStats(100, 100, 20, 10, 20, 40, 1, 0);
 		}
-		if  (playerClass == "Archer")
+		if  (Class == "Archer")
 		{
 			playerCharaStats(100, 100, 20, 10, 20, 65, 1, 0);
 		}
 		requiredSpeedForTurn = baseRequiredSpeedForTurn - GetSpeed();
 		ResetHealth();
 		ResetMana();
-		Debug.Log("Values Set");
+		Debug.Log("Player Values Set");
 		//healthText.text = " " + Warrior.health.ToString();
   //      strengthText.text = " " + Warrior.strength.ToString();
   //      defenseText.text = " " + Warrior.defense.ToString();
@@ -68,13 +65,15 @@ public class PlayerChara : CharaClass {
 	private void Update ()
     {
 		if (SpeedTimer.m_speedCounter % requiredSpeedForTurn == 0 && SpeedTimer.isPaused == false || SpeedTimer.m_speedCounter % requiredSpeedForTurn == 0.5 && m_attackedAlready == false && SpeedTimer.m_speedCounter > 1.0f)
-		{ 
-			SpeedTimer.isPaused = true;
+		{
+            Debug.Log("Player Turn");
+
+            SpeedTimer.isPaused = true;
 			if (Input.GetKeyDown("1") && !m_attackedAlready)
 			{
 				m_attackedAlready = true;
 				BattleControl.currentDamage = GetStrength();
-				BattleControl.currentTarget = 1;
+				BattleControl.currentTarget = 5;
 				transform.position = new Vector2(this.transform.position.x - 1, this.transform.position.y);
 				StartCoroutine(returnPlayer());
 			}
@@ -82,7 +81,7 @@ public class PlayerChara : CharaClass {
 			{
 				m_attackedAlready = true;
 				BattleControl.currentDamage = GetStrength();
-				BattleControl.currentTarget = 2;
+				BattleControl.currentTarget = 6;
 				transform.position = new Vector2(this.transform.position.x - 1, this.transform.position.y);
 				StartCoroutine(returnPlayer());
 			}
@@ -90,7 +89,7 @@ public class PlayerChara : CharaClass {
 			{
 				m_attackedAlready = true;
 				BattleControl.currentDamage = GetStrength();
-				BattleControl.currentTarget = 3;
+				BattleControl.currentTarget = 7;
 				transform.position = new Vector2(this.transform.position.x - 1, this.transform.position.y);
 				StartCoroutine(returnPlayer());
 			}
@@ -98,13 +97,17 @@ public class PlayerChara : CharaClass {
 			{
 				m_attackedAlready = true;
 				BattleControl.currentDamage = GetStrength();
-				BattleControl.currentTarget = 4;
+				BattleControl.currentTarget = 8;
 				transform.position = new Vector2(this.transform.position.x - 1, this.transform.position.y);
 				StartCoroutine(returnPlayer());
 			}
 		}
-			//Damage();
-			Death(); //only needed when getting attacked or hp<=0
+        if (BattleControl.side == "Enemy")
+        {
+            CheckForDamage("Player");
+        }
+        //Damage();
+        Death(); //only needed when getting attacked or hp<=0
     }
 	protected void playerCharaStats(int hth, int man, int str, int mp, int def, int spd, int lvl, int exp)
 	{

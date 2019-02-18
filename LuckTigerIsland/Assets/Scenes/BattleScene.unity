@@ -185,15 +185,64 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114092490044777738, guid: c414eb60b4bee6e4f8668fca40ae4fd8,
+        type: 2}
+      propertyPath: playerClass
+      value: Archer
+      objectReference: {fileID: 0}
+    - target: {fileID: 114092490044777738, guid: c414eb60b4bee6e4f8668fca40ae4fd8,
+        type: 2}
+      propertyPath: Class
+      value: Cleric
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114997230295266880, guid: c414eb60b4bee6e4f8668fca40ae4fd8, type: 2}
+    - {fileID: 114092490044777738, guid: c414eb60b4bee6e4f8668fca40ae4fd8, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: c414eb60b4bee6e4f8668fca40ae4fd8, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &128130651 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114997230295266880, guid: c414eb60b4bee6e4f8668fca40ae4fd8,
+--- !u!1 &124555242 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1329713860118572, guid: c414eb60b4bee6e4f8668fca40ae4fd8,
     type: 2}
-  m_PrefabInternal: {fileID: 1206635837}
+  m_PrefabInternal: {fileID: 41336230}
+--- !u!114 &124555243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 124555242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1ad11708009c30468e53804204b777a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 0
+  health: 0
+  strength: 0
+  defense: 0
+  speed: 0
+  mana: 0
+  maxMana: 0
+  magicPower: 0
+  level: 0
+  Class: Archer
+  m_attackedAlready: 1
+  entityNumber: 8
+  m_enemyNumber: 4
+  baseRequiredSpeedForTurn: 100
+  requiredSpeedForTurn: 0
+  myTurn: 0
+  battleWon: 0
+  tempDMGReduct: 0
+  totalDMG: 0
+  chanceToHit: 0
+  attacking: 0
+  dmgRecieve: 0
+  dmgDealt: 0
+  aggress: 0
+  intel: 0
+  XP: 0
+  Tiger: {fileID: 0}
 --- !u!1001 &320633819
 Prefab:
   m_ObjectHideFlags: 0
@@ -246,6 +295,11 @@ Prefab:
     - target: {fileID: 4216938318034530, guid: 61aab9b630aa81c4e98f6403fb7b1767, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 114204741815706434, guid: 61aab9b630aa81c4e98f6403fb7b1767,
+        type: 2}
+      propertyPath: Class
+      value: Warrior
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114049356054486856, guid: 61aab9b630aa81c4e98f6403fb7b1767, type: 2}
@@ -304,10 +358,63 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 114703538226917772, guid: 0c2fae182c9bebf41b9cc8479723d42b,
+        type: 2}
+      propertyPath: side
+      value: Archer
+      objectReference: {fileID: 0}
+    - target: {fileID: 114703538226917772, guid: 0c2fae182c9bebf41b9cc8479723d42b,
+        type: 2}
+      propertyPath: Class
+      value: Archer
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114864060825230120, guid: 0c2fae182c9bebf41b9cc8479723d42b, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 0c2fae182c9bebf41b9cc8479723d42b, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &396920777 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1329713860118572, guid: c414eb60b4bee6e4f8668fca40ae4fd8,
+    type: 2}
+  m_PrefabInternal: {fileID: 1251640965}
+--- !u!114 &396920778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 396920777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1ad11708009c30468e53804204b777a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 0
+  health: 0
+  strength: 0
+  defense: 0
+  speed: 0
+  mana: 0
+  maxMana: 0
+  magicPower: 0
+  level: 0
+  Class: Ninja
+  m_attackedAlready: 0
+  entityNumber: 6
+  m_enemyNumber: 2
+  baseRequiredSpeedForTurn: 100
+  requiredSpeedForTurn: 0
+  myTurn: 0
+  battleWon: 0
+  tempDMGReduct: 0
+  totalDMG: 0
+  chanceToHit: 0
+  attacking: 0
+  dmgRecieve: 0
+  dmgDealt: 0
+  aggress: 0
+  intel: 0
+  XP: 0
+  Tiger: {fileID: 0}
 --- !u!1001 &484707751
 Prefab:
   m_ObjectHideFlags: 0
@@ -431,12 +538,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &631599954 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114997230295266880, guid: c414eb60b4bee6e4f8668fca40ae4fd8,
-    type: 2}
-  m_PrefabInternal: {fileID: 663455075}
-  m_Script: {fileID: 11500000, guid: f1ad11708009c30468e53804204b777a, type: 3}
 --- !u!1001 &663455075
 Prefab:
   m_ObjectHideFlags: 0
@@ -509,9 +610,64 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114092490044777738, guid: c414eb60b4bee6e4f8668fca40ae4fd8,
+        type: 2}
+      propertyPath: playerClass
+      value: Cleric
+      objectReference: {fileID: 0}
+    - target: {fileID: 114092490044777738, guid: c414eb60b4bee6e4f8668fca40ae4fd8,
+        type: 2}
+      propertyPath: Class
+      value: Archer
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114997230295266880, guid: c414eb60b4bee6e4f8668fca40ae4fd8, type: 2}
+    - {fileID: 114092490044777738, guid: c414eb60b4bee6e4f8668fca40ae4fd8, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: c414eb60b4bee6e4f8668fca40ae4fd8, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &879542099 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1329713860118572, guid: c414eb60b4bee6e4f8668fca40ae4fd8,
+    type: 2}
+  m_PrefabInternal: {fileID: 1206635837}
+--- !u!114 &879542100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 879542099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1ad11708009c30468e53804204b777a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 0
+  health: 0
+  strength: 0
+  defense: 0
+  speed: 0
+  mana: 0
+  maxMana: 0
+  magicPower: 0
+  level: 0
+  Class: Warrior
+  m_attackedAlready: 0
+  entityNumber: 5
+  m_enemyNumber: 1
+  baseRequiredSpeedForTurn: 100
+  requiredSpeedForTurn: 0
+  myTurn: 0
+  battleWon: 0
+  tempDMGReduct: 0
+  totalDMG: 0
+  chanceToHit: 0
+  attacking: 0
+  dmgRecieve: 0
+  dmgDealt: 0
+  aggress: 0
+  intel: 0
+  XP: 0
+  Tiger: {fileID: 0}
 --- !u!1001 &1206635837
 Prefab:
   m_ObjectHideFlags: 0
@@ -575,7 +731,19 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114092490044777738, guid: c414eb60b4bee6e4f8668fca40ae4fd8,
+        type: 2}
+      propertyPath: playerClass
+      value: Warrior
+      objectReference: {fileID: 0}
+    - target: {fileID: 114092490044777738, guid: c414eb60b4bee6e4f8668fca40ae4fd8,
+        type: 2}
+      propertyPath: Class
+      value: Ninja
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114997230295266880, guid: c414eb60b4bee6e4f8668fca40ae4fd8, type: 2}
+    - {fileID: 114092490044777738, guid: c414eb60b4bee6e4f8668fca40ae4fd8, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: c414eb60b4bee6e4f8668fca40ae4fd8, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1251640965
@@ -655,9 +823,64 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114092490044777738, guid: c414eb60b4bee6e4f8668fca40ae4fd8,
+        type: 2}
+      propertyPath: playerClass
+      value: Ninja
+      objectReference: {fileID: 0}
+    - target: {fileID: 114092490044777738, guid: c414eb60b4bee6e4f8668fca40ae4fd8,
+        type: 2}
+      propertyPath: Class
+      value: Warrior
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114997230295266880, guid: c414eb60b4bee6e4f8668fca40ae4fd8, type: 2}
+    - {fileID: 114092490044777738, guid: c414eb60b4bee6e4f8668fca40ae4fd8, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: c414eb60b4bee6e4f8668fca40ae4fd8, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1469868437 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1329713860118572, guid: c414eb60b4bee6e4f8668fca40ae4fd8,
+    type: 2}
+  m_PrefabInternal: {fileID: 663455075}
+--- !u!114 &1469868438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1469868437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1ad11708009c30468e53804204b777a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 0
+  health: 0
+  strength: 0
+  defense: 0
+  speed: 0
+  mana: 0
+  maxMana: 0
+  magicPower: 0
+  level: 0
+  Class: Cleric
+  m_attackedAlready: 0
+  entityNumber: 7
+  m_enemyNumber: 3
+  baseRequiredSpeedForTurn: 100
+  requiredSpeedForTurn: 0
+  myTurn: 0
+  battleWon: 0
+  tempDMGReduct: 0
+  totalDMG: 0
+  chanceToHit: 0
+  attacking: 0
+  dmgRecieve: 0
+  dmgDealt: 0
+  aggress: 0
+  intel: 0
+  XP: 0
+  Tiger: {fileID: 0}
 --- !u!1001 &1481521430
 Prefab:
   m_ObjectHideFlags: 0
@@ -710,6 +933,11 @@ Prefab:
     - target: {fileID: 4434085917930874, guid: cff1e4945fdc1724f93633bbe984a46a, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 114253630115187540, guid: cff1e4945fdc1724f93633bbe984a46a,
+        type: 2}
+      propertyPath: Class
+      value: Cleric
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114325113058881716, guid: cff1e4945fdc1724f93633bbe984a46a, type: 2}
@@ -836,22 +1064,22 @@ Prefab:
         type: 2}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1867615019}
+      objectReference: {fileID: 396920778}
     - target: {fileID: 114534812801718976, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
         type: 2}
       propertyPath: player
       value: 
-      objectReference: {fileID: 631599954}
+      objectReference: {fileID: 1469868438}
     - target: {fileID: 114103323233881582, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
         type: 2}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1557122403}
+      objectReference: {fileID: 124555243}
     - target: {fileID: 114251953813359784, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
         type: 2}
       propertyPath: player
       value: 
-      objectReference: {fileID: 128130651}
+      objectReference: {fileID: 879542100}
     - target: {fileID: 224016648196944440, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
         type: 2}
       propertyPath: m_AnchorMax.x
@@ -1099,12 +1327,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8534d8d0bb74dc249a89b8d85ff0ad91, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &1557122403 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114997230295266880, guid: c414eb60b4bee6e4f8668fca40ae4fd8,
-    type: 2}
-  m_PrefabInternal: {fileID: 41336230}
-  m_Script: {fileID: 11500000, guid: f1ad11708009c30468e53804204b777a, type: 3}
 --- !u!114 &1643555987 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114292719333458282, guid: 836391845da783d4f8059d9f792ce1c7,
@@ -1164,6 +1386,11 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 114292719333458282, guid: 836391845da783d4f8059d9f792ce1c7,
+        type: 2}
+      propertyPath: Class
+      value: Ninja
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114612257429512174, guid: 836391845da783d4f8059d9f792ce1c7, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 836391845da783d4f8059d9f792ce1c7, type: 2}
@@ -1180,12 +1407,6 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1481521430}
   m_Script: {fileID: 11500000, guid: e7b9ee21a2a49e64cbdb84b5fe06a9d5, type: 3}
---- !u!114 &1867615019 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114997230295266880, guid: c414eb60b4bee6e4f8668fca40ae4fd8,
-    type: 2}
-  m_PrefabInternal: {fileID: 1251640965}
-  m_Script: {fileID: 11500000, guid: f1ad11708009c30468e53804204b777a, type: 3}
 --- !u!114 &2124601100 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114204741815706434, guid: 61aab9b630aa81c4e98f6403fb7b1767,

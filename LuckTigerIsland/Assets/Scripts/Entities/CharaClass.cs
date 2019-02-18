@@ -23,16 +23,14 @@ public class CharaClass : MonoBehaviour {
 	public int magicPower;
 	[SerializeField]
 	protected int level;
+    [SerializeField]
+    protected string Class;
 
-	/// Following are used purely for battle integration. Used by both enemies and players.
-	[SerializeField]
+    /// Following are used purely for battle integration. Used by both enemies and players.
+    [SerializeField]
 	protected bool m_attackedAlready = false;
 	[SerializeField]
 	private int entityNumber;
-	[SerializeField]
-	private int m_enemyNumber;
-	[SerializeField]
-	private string side;
 	[SerializeField]
 	protected float baseRequiredSpeedForTurn = 100;
 	[SerializeField]
@@ -56,13 +54,14 @@ public class CharaClass : MonoBehaviour {
 
 	// Use this for initialization
 	void Start() {
-
+        maxHealth = 200;
 	}
+
 
 	// Update is called once per frame
 	void Update()
 	{
-		if (BattleControl.willDamage == "y" && BattleControl.currentTarget == entityNumber && BattleControl.side == "Enemy")
+		if (BattleControl.willDamage == "y" && BattleControl.currentTarget == entityNumber)
 		{
 			health -= BattleControl.currentDamage;
 			BattleControl.willDamage = "n";
@@ -71,12 +70,12 @@ public class CharaClass : MonoBehaviour {
 
 		}
 	}
-	public void CheckForDamage()
+	public void CheckForDamage(string side)
 	{
-		if (BattleControl.willDamage == "y" && BattleControl.currentTarget == m_enemyNumber)
+		if (BattleControl.willDamage == "y" && BattleControl.currentTarget == entityNumber)
 		{
 			health -= BattleControl.currentDamage;
-			Debug.Log("Enemy: " + m_enemyNumber + "health total now: " + GetHealth());
+			Debug.Log(side + ": " + entityNumber + " health total now: " + GetHealth());
 			BattleControl.willDamage = "n";
 			BattleControl.currentTarget = 0;
 			BattleControl.side = " ";
