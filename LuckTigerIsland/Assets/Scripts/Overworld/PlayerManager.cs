@@ -26,6 +26,7 @@ public struct Interaction
 public class PlayerManager : MonoBehaviour {
     //list of all current nearby interactable scripts
     public List<Interaction> interactions;
+	public string currentSceneName;
     PlayerWorldMove playerMove;
     Text[] textArray;
 
@@ -75,7 +76,9 @@ public class PlayerManager : MonoBehaviour {
                             if (generic)
                             {
                                 generic.OnInteract(this);
-                            }
+								interactions.Remove(interact);
+								textArray[0].text = "";
+							}
                             break;
                     }
                 }

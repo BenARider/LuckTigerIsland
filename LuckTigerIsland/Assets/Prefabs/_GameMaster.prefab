@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 114691575825882542}
   - component: {fileID: 114184895511927676}
   - component: {fileID: 114162883402674870}
+
   m_Layer: 0
   m_Name: _GameMaster
   m_TagString: Untagged
@@ -42,6 +43,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+
 --- !u!114 &114162883402674870
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -65,6 +67,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ce1f781775a7d344a0e61aab06ab13b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+
 --- !u!114 &114691575825882542
 MonoBehaviour:
   m_ObjectHideFlags: 1
