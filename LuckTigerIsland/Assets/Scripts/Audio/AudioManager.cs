@@ -122,7 +122,7 @@ public class AudioManager : MonoBehaviour {
     int m_currentMusicTrack = 0;
     float m_currentTrackTimeRemaining = 0;
 
-    //To make sure there is only one AudioManager per scene.
+    //To make sure there is only one AudioManager.
     void Awake()
     {
         if (instance != null) {
@@ -171,6 +171,7 @@ public class AudioManager : MonoBehaviour {
                     throw new System.Exception("Error! Music file " + i + " and music " + j + " have the same name.");
                 }
             }
+
 
             //Create Sound Objects from array.
             GameObject _mo = new GameObject("Music " + i + ": " + m_playlists[currentPlaylist].m_music[i].name);

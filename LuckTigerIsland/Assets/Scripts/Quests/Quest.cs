@@ -2,54 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Quest{
-
-    protected string m_title;
-    protected string m_objective;
-
-    protected static List<Quest> m_questList = new List<Quest> { };
-
-    //Use Quest.GetQuests to get a list of active quests.
-    public static List<Quest> GetQuests(){ return new List<Quest>(m_questList); }
-
-    public abstract bool FinishQuest();
-
-    public abstract string GetTitle();
-
-    public abstract string GetObjective();
-}
-
-public class KillQuest : Quest
+public class Quest : MonoBehaviour
 {
-    private KillQuest(string _newTitle, string _newObjective)
+    public Quest(string _title, string _objective, int _exp, int _gold)
     {
-        m_title = _newTitle;
+        title = _title;
+        objective = _objective;
+        expReward = _exp;
+        goldReward = _gold;
     }
 
-    //Overrides
-    public override bool FinishQuest() //Give rewards and remove from questlist.
+    public string title;
+    public string objective;
+    public int expReward;
+    public int goldReward;
+
+    public void StartQuest()
     {
-        throw new System.NotImplementedException("Finish Quest funciton in Kill Quest class not implemented.");
+        QuestManager.instance.AddQuest(this);
+        Debug.Log("quest added");
     }
 
-    public override string GetTitle()
+    public void EndQuest()
     {
-        return m_title;
+        QuestManager.instance.RemoveQuest(this);
     }
 
-    public override string GetObjective()
-    {
-        return m_objective;
-    }
-
-    //Class Specific Functions
-
-    //To begin the KillPig Quest, you only need to call FetchQuest.KillPig in the questgiver code.
-    public static void KillPig()
-    {
-        string title = "Boared to Death";
-        string objective = "You have to kill the pig";
-        m_questList.Add(new KillQuest(title, objective));
-    }
-    
+   
 }
+
+
+
