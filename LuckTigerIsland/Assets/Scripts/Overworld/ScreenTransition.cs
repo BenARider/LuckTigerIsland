@@ -11,7 +11,7 @@ public class ScreenTransition : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+	//e. goittem	
 	}
 	
 	// Update is called once per frame

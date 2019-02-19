@@ -23,7 +23,7 @@ public struct Interaction
 [RequireComponent(typeof(BoxCollider2D))]
 
 //manages player interaction
-public class PlayerManager : MonoBehaviour {
+public class PlayerManager : Singleton {
     //list of all current nearby interactable scripts
     public List<Interaction> interactions;
 	public string currentSceneName;

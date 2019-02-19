@@ -104,9 +104,7 @@ public class MusicPlaylist
     public Music[] m_music;
 }
 
-public class AudioManager : MonoBehaviour {
-
-    public static AudioManager instance;
+public class AudioManager : Singleton {
 
     //Identify which playlist to use.
     [SerializeField]
@@ -121,19 +119,6 @@ public class AudioManager : MonoBehaviour {
     //To store which track is currently playing and how long it has left.
     int m_currentMusicTrack = 0;
     float m_currentTrackTimeRemaining = 0;
-
-    //To make sure there is only one AudioManager.
-    void Awake()
-    {
-        if (instance != null) {
-            Debug.LogError("Only one audio manager can be present");
-			Destroy(gameObject);
-        } else
-        {
-            instance = this;
-            DontDestroyOnLoad(this);
-        } 
-    }
 
     void Start()
     {
