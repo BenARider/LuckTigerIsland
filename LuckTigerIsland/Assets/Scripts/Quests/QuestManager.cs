@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QuestManager : MonoBehaviour
+public class QuestManager : Singleton
 {
-    public static QuestManager instance;
-
+    //Array of every quest in the game.
     [SerializeField]
     Quest[] m_quests;
 
+    //List of all currently active quests. Add to this when starting a quest. Remove when finishing a Quest.
     private static List<Quest> m_activeQuestList = new List<Quest> { };
 
     //Use Quest.GetQuests to get a list of active quests.
@@ -38,17 +38,18 @@ public class QuestManager : MonoBehaviour
         }
     }
 
-    //To make sure there is only one QuestManager.
-    void Awake()
+    void Start()
     {
-        if (instance != null)
+        //Checks to see if there are quests with duplicate titles.
+        for(int i = 0; i < m_quests.Length; i++)
         {
-            Debug.LogError("Only one quest manager can be present");
-        }
-        else
-        {
-            instance = this;
-            DontDestroyOnLoad(this);
+            for(int j = i + 1; j < m_quests.Length; j++)
+            {
+                if(m_quests[i].title == m_quests[j].title)
+                {
+                    Debug.LogError("Quest " + i +" has the same title as Quest "+ j );
+                }
+            }
         }
     }
 }
