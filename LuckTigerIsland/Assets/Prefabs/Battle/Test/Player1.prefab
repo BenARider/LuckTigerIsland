@@ -21,8 +21,7 @@ GameObject:
   - component: {fileID: 4216938318034530}
   - component: {fileID: 212148528925726426}
   - component: {fileID: 61422047364754978}
-  - component: {fileID: 114049356054486856}
-  - component: {fileID: 114204741815706434}
+  - component: {fileID: 114608598323689346}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Untagged
@@ -36,13 +35,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1406298571565624}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: 1, z: 0}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 2, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!61 &61422047364754978
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -68,7 +67,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6956835, y: 0.81313896}
   m_EdgeRadius: 0
---- !u!114 &114049356054486856
+--- !u!114 &114608598323689346
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -76,23 +75,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 1406298571565624}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4644a965da41d646b7ce8fe429ed8b8, type: 3}
+  m_Script: {fileID: 11500000, guid: e3116a0ed0362d74ca47e7d76bbc4ca2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
-  health: 0
-  strength: 0
-  defense: 0
-  speed: 0
-  mana: 0
-  maxMana: 0
-  level: 0
+  m_maxHealth: 0
+  m_health: 0
+  m_strength: 0
+  m_magicPower: 0
+  m_defence: 0
+  m_defenceMGC: 0
+  m_speed: 0
+  m_mana: 0
+  m_maxMana: 0
+  m_level: 0
+  m_xpAward: 0
+  m_EXP: 0
+  Class: Cleric
   m_attackedAlready: 0
-  entityNumber: 1
-  m_enemyNumber: 0
-  side: Player
-  baseRequiredSpeedForTurn: 100
-  requiredSpeedForTurn: 0
+  m_entityNumber: 0
+  m_baseRequiredSpeedForTurn: 100
+  m_requiredSpeedForTurn: 0
   myTurn: 0
   battleWon: 0
   tempDMGReduct: 0
@@ -101,7 +103,6 @@ MonoBehaviour:
   attacking: 0
   dmgRecieve: 0
   dmgDealt: 0
-  magicPower: 0
   EXP: 0
   healthText: {fileID: 0}
   strengthText: {fileID: 0}
@@ -110,50 +111,6 @@ MonoBehaviour:
   levelText: {fileID: 0}
   manaText: {fileID: 0}
   magicPowerText: {fileID: 0}
-  Warrior: {fileID: 0}
---- !u!114 &114204741815706434
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1406298571565624}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7b9ee21a2a49e64cbdb84b5fe06a9d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 0
-  health: 3
-  strength: 6
-  defense: 4
-  speed: 50
-  mana: 50
-  maxMana: 0
-  level: 1
-  m_attackedAlready: 0
-  entityNumber: 1
-  m_enemyNumber: 0
-  side: Player
-  baseRequiredSpeedForTurn: 100
-  requiredSpeedForTurn: 0
-  myTurn: 0
-  battleWon: 0
-  tempDMGReduct: 0
-  totalDMG: 0
-  chanceToHit: 0
-  attacking: 0
-  dmgRecieve: 0
-  dmgDealt: 0
-  magicPower: 50
-  EXP: 0
-  healthText: {fileID: 0}
-  strengthText: {fileID: 0}
-  defenseText: {fileID: 0}
-  speedText: {fileID: 0}
-  levelText: {fileID: 0}
-  manaText: {fileID: 0}
-  magicPowerText: {fileID: 0}
-  Warrior: {fileID: 114204741815706434}
 --- !u!212 &212148528925726426
 SpriteRenderer:
   m_ObjectHideFlags: 1

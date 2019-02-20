@@ -2,44 +2,54 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharaClass : MonoBehaviour {
+public class Entity : MonoBehaviour {
 
-	//Should change these to private and call them m_health, for example.
+	//General stats used to initialise entities
 	[SerializeField]
-	protected int maxHealth;
+	protected int m_maxHealth;
 	[SerializeField]
-	protected int health;
+	protected int m_health;
 	[SerializeField]
-	protected int strength; //basic attack
+	protected int m_strength; //basic attack
 	[SerializeField]
-	protected int defense;
+	public int m_magicPower;
 	[SerializeField]
-	protected int speed;
+	protected int m_defence;
 	[SerializeField]
-	protected int mana;
+	protected int m_defenceMGC;
 	[SerializeField]
-	protected int maxMana;
+	protected int m_speed;
 	[SerializeField]
-	public int magicPower;
+	protected int m_mana;
 	[SerializeField]
-	protected int level;
-    [SerializeField]
-    protected string Class;
+	protected int m_maxMana;
+	
+	//level and class values
+	[SerializeField]
+	protected int m_level;
+	[SerializeField]
+	protected int m_xpAward;
+	[SerializeField]
+	protected int m_EXP;
+	[SerializeField]
+    protected string Class; //used to determine stat allocation in the other classes.
 
     /// Following are used purely for battle integration. Used by both enemies and players.
     [SerializeField]
 	protected bool m_attackedAlready = false;
 	[SerializeField]
-	private int entityNumber;
+	private int m_entityNumber;
 	[SerializeField]
-	protected float baseRequiredSpeedForTurn = 100;
+	protected float m_baseRequiredSpeedForTurn = 100;
 	[SerializeField]
-	protected float requiredSpeedForTurn;
+	protected float m_requiredSpeedForTurn;
 	[SerializeField]
 	protected bool myTurn = false;
 	[SerializeField]
 	public bool battleWon = false;
 
+	//used for damage calculations
+	//-------------------------------------------
 	public int tempDMGReduct = 0; //the amount of damage reduced to the intial damage
 	public int totalDMG = 0; //total amount of damage that goes through.
 	public int chanceToHit;
@@ -54,102 +64,105 @@ public class CharaClass : MonoBehaviour {
 
 	// Use this for initialization
 	void Start() {
-        maxHealth = 200;
+       
 	}
 
 
 	// Update is called once per frame
 	void Update()
 	{
-		if (BattleControl.willDamage == "y" && BattleControl.currentTarget == entityNumber)
+		if (BattleControl.willDamage == "y" && BattleControl.currentTarget == m_entityNumber)
 		{
-			health -= BattleControl.currentDamage;
+			m_health -= BattleControl.currentDamage;
 			BattleControl.willDamage = "n";
 			BattleControl.currentTarget = 0;
 			BattleControl.side = " ";
 
 		}
 	}
+
 	public void CheckForDamage(string side)
 	{
-		if (BattleControl.willDamage == "y" && BattleControl.currentTarget == entityNumber)
+		if (BattleControl.willDamage == "y" && BattleControl.currentTarget == m_entityNumber)
 		{
-			health -= BattleControl.currentDamage;
-			Debug.Log(side + ": " + entityNumber + " health total now: " + GetHealth());
+			m_health -= BattleControl.currentDamage;
+			Debug.Log(side + ": " + m_entityNumber + " health total now: " + GetHealth());
 			BattleControl.willDamage = "n";
 			BattleControl.currentTarget = 0;
 			BattleControl.side = " ";
 		}
 	}
+
 	void TakeDamage(int damageTaken)
 	{
 		Debug.Log("Enemy taking damage");
-		health -= damageTaken;
+		m_health -= damageTaken;
 	}
+
 	//-----------------------------------------------------------------------------------------------------
 	//Setters and Getters
-	public void Sethealth(int m_health) //The argument should be _health. The body should then be m_health = _health.
+	public void Sethealth(int _health) //The argument should be _health. The body should then be m_health = _health.
 	{
-		health = m_health;
+		m_health = _health;
 	}
 	public void ResetHealth()  //used at the beginning with initialisation, max health is required for ui calculations and heal effects.
 	{
-		health = maxHealth;
+		m_health = m_maxHealth;
 	}
 	public int GetMaxHealth()
 	{
-		return maxHealth;
+		return m_maxHealth;
 	}
 	public int GetHealth()
 	{
-		return health;
+		return m_health;
 	}
 	public int GetStrength()
 	{
-		return strength;
+		return m_strength;
 	}
 	public int GetMagicPower()
 	{
-		return magicPower;
+		return m_magicPower;
 	}
     public int GetDefense()
     {
-        return defense;
+        return m_defence;
     }
 
     public int GetSpeed()
     {
-        return speed;
+        return m_speed;
     }
 	public float GetRequiredSpeed()
 	{
-		return requiredSpeedForTurn;
+		return m_requiredSpeedForTurn;
 	}
 	public void SetRequiredSpeed()
 	{
-		requiredSpeedForTurn = baseRequiredSpeedForTurn - GetSpeed();
+		m_requiredSpeedForTurn = m_baseRequiredSpeedForTurn - GetSpeed();
 	}
 	public int GetMaxMana()
 	{
-		return maxMana;
+		return m_maxMana;
 	}
 	public void ResetMana()
 	{
-		health = maxHealth;
+		m_mana = m_maxMana;
 	}
 	public int GetMana()
 	{
-		return mana;
+		return m_mana;
 	}
 
-    public void SetLevel(int m_level)
+    public void SetLevel(int _level)
     {
-        level = m_level;
+        m_level = _level;
     }
     
     public int GetLevel()
     {
-        return level;
+        return m_level;
     }
 
     //-----------------------------------------------------------------------------------------------------
@@ -189,9 +202,9 @@ public class CharaClass : MonoBehaviour {
 
     protected void Death()
     {
-        if (health <= 0)
+        if (m_health <= 0)
         {
-            Destroy(gameObject);
+            Destroy(gameObject); //could rework to set the object to be sideways/inactive instead of destroyed
         }
      
     }

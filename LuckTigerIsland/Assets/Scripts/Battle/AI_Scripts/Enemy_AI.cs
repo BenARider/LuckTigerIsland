@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 
 
-public class Enemy_AI : EnemChara
+public class Enemy_AI : EnemEntity
 {
 
     // Use this for initialization

@@ -12,7 +12,7 @@ public enum EnemyState //Think of mentality of the enemies, this state will chan
 	eIdle
 }
 
-public class EnemChara : CharaClass
+public class EnemEntity : Entity
 {
 	//private bool canAttack = false; //used to prevent the ai from having too many turns. Only enabled on use of state transition.
 	public int aggress; //likelihood to attack oppossing attacker (Between 1-20)
@@ -27,38 +27,38 @@ public class EnemChara : CharaClass
 
 	void enemCharaStats(int hth, int man, int str, int def, int spd, int lvl, int agr, int itl, int xp)
 	{
-		maxHealth = hth;
-		maxMana = man;
-		strength = str;
-		defense = def;
-		speed = spd;
-		level = lvl;
+		m_maxHealth = hth;
+		m_maxMana = man;
+		m_strength = str;
+		m_defence = def;
+		m_speed = spd;
+		m_level = lvl;
 		aggress = agr;
 		intel = itl;
 		XP = xp;
 	}
-	public EnemChara Tiger;
+	public EnemEntity Tiger;
 
     // Use this for initialization
     void Start()
 	{
-        if (Class == "Warrior")
+        if (Class == "Goblin")
         {
-            enemCharaStats(150, 50, 40, 20, 80, 3, 20, 4, 50);
+            enemCharaStats(150, 50, 40, 20, 50, 3, 20, 4, 50);
         }
         if (Class == "Ninja")
         {
-            enemCharaStats(75, 100, 10, 15, 85, 2, 15, 6, 50);
+            enemCharaStats(75, 100, 10, 15, 75, 2, 15, 6, 50);
         }
         if (Class == "Cleric")
         {
-            enemCharaStats(50, 150, 5, 7, 70, 3, 5, 5, 50);
+            enemCharaStats(50, 150, 5, 7, 60, 3, 5, 5, 50);
         }
         if (Class == "Archer")
         {
-            enemCharaStats(70, 125, 20, 10, 75, 2, 10, 8, 50);
+            enemCharaStats(70, 125, 20, 10, 65, 2, 10, 8, 50);
         }
-		requiredSpeedForTurn = baseRequiredSpeedForTurn - GetSpeed();
+		m_requiredSpeedForTurn = m_baseRequiredSpeedForTurn - GetSpeed();
 		ResetHealth();
 		ResetMana();
         Debug.Log("Enemy Values Set");
@@ -86,7 +86,7 @@ public class EnemChara : CharaClass
     //for each valid update, determine the state in the specific ai, pass the state to this script for the results to be used here. This will contain almost all the states for any enemy
     void Update()
 	{
-		if (SpeedTimer.m_speedCounter % requiredSpeedForTurn == 0 && SpeedTimer.isPaused == false || SpeedTimer.m_speedCounter % requiredSpeedForTurn == 0.5 && m_attackedAlready == false && SpeedTimer.m_speedCounter > 1.0f)
+		if (SpeedTimer.m_speedCounter % m_requiredSpeedForTurn == 0 && SpeedTimer.isPaused == false || SpeedTimer.m_speedCounter % m_requiredSpeedForTurn == 0.5 && m_attackedAlready == false && SpeedTimer.m_speedCounter > 1.0f)
 		{
             Debug.Log("Enemy Turn");
             decideState();

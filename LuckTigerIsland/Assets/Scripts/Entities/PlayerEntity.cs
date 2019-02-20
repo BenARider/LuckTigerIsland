@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class PlayerChara : CharaClass {
+public class PlayerEntity : Entity {
 
     public int EXP;
     public Text healthText;
@@ -35,7 +35,7 @@ public class PlayerChara : CharaClass {
 		{
 			playerCharaStats(100, 100, 20, 10, 20, 65, 1, 0);
 		}
-		requiredSpeedForTurn = baseRequiredSpeedForTurn - GetSpeed();
+		m_requiredSpeedForTurn = m_baseRequiredSpeedForTurn - GetSpeed();
 		ResetHealth();
 		ResetMana();
 		Debug.Log("Player Values Set");
@@ -64,7 +64,7 @@ public class PlayerChara : CharaClass {
 	// Update is called once per frame
 	private void Update ()
     {
-		if (SpeedTimer.m_speedCounter % requiredSpeedForTurn == 0 && SpeedTimer.isPaused == false || SpeedTimer.m_speedCounter % requiredSpeedForTurn == 0.5 && m_attackedAlready == false && SpeedTimer.m_speedCounter > 1.0f)
+		if (SpeedTimer.m_speedCounter % m_requiredSpeedForTurn == 0 && SpeedTimer.isPaused == false || SpeedTimer.m_speedCounter % m_requiredSpeedForTurn == 0.5 && m_attackedAlready == false && SpeedTimer.m_speedCounter > 1.0f)
 		{
             Debug.Log("Player Turn");
 
@@ -111,13 +111,13 @@ public class PlayerChara : CharaClass {
     }
 	protected void playerCharaStats(int hth, int man, int str, int mp, int def, int spd, int lvl, int exp)
 	{
-		maxHealth = hth;
-		maxMana = man;
-		strength = str;
-		defense = def;
-		speed = spd;
-		level = lvl;
-		mp = magicPower;
+		m_maxHealth = hth;
+		m_maxMana = man;
+		m_strength = str;
+		m_defence = def;
+		m_speed = spd;
+		m_level = lvl;
+		mp = m_magicPower;
 		EXP = exp;
 	}
 }

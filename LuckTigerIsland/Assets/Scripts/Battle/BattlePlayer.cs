@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BattlePlayer : PlayerChara {
+public class BattlePlayer : PlayerEntity {
 
 	// Use this for initialization
 	void Start () {
 		
-		requiredSpeedForTurn = baseRequiredSpeedForTurn - GetSpeed();
+		m_requiredSpeedForTurn = m_baseRequiredSpeedForTurn - GetSpeed();
 		ResetHealth();
 		ResetMana();
     }
