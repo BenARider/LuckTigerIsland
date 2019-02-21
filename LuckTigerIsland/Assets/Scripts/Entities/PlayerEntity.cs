@@ -23,9 +23,9 @@ public class PlayerEntity : Entity {
         m_speed = _speed;
         m_level = _level;
         m_mana = _mana;
-        m_magicPow = _magicPow;
+        m_magicPower = _magicPow;
         m_EXP = _EXP;
-        m_value = _value;
+        m_entityNumber = _value;
     }
 
     public PlayerEntity Warrior;
@@ -88,7 +88,7 @@ public class PlayerEntity : Entity {
                 statTexts[1].text = "Warrior";
                 statTexts[2].text = "" + Warrior.m_health;
                 statTexts[3].text = "" + Warrior.m_strength;
-                statTexts[4].text = "" + Warrior.m_magicPow;
+                statTexts[4].text = "" + Warrior.m_magicPower;
                 statTexts[5].text = "" + Warrior.m_defence;
                 statTexts[6].text = "" + Warrior.m_defenceMGC;
                 statTexts[7].text = "" + 50;//crit chance
@@ -103,7 +103,7 @@ public class PlayerEntity : Entity {
                 statTexts[1].text = "Wizard";
                 statTexts[2].text = "" + Wizard.m_health;
                 statTexts[3].text = "" + Wizard.m_strength;
-                statTexts[4].text = "" + Wizard.m_magicPow;
+                statTexts[4].text = "" + Wizard.m_magicPower;
                 statTexts[5].text = "" + Wizard.m_defence;
                 statTexts[6].text = "" + Wizard.m_defenceMGC;
                 statTexts[7].text = "" + 25;//crit chance
@@ -118,7 +118,7 @@ public class PlayerEntity : Entity {
                 statTexts[1].text = "Cleric";
                 statTexts[2].text = "" + Cleric.m_health;
                 statTexts[3].text = "" + Cleric.m_strength;
-                statTexts[4].text = "" + Cleric.m_magicPow;
+                statTexts[4].text = "" + Cleric.m_magicPower;
                 statTexts[5].text = "" + Cleric.m_defence;
                 statTexts[6].text = "" + Cleric.m_defenceMGC;
                 statTexts[7].text = "" + 10;//crit chance
@@ -133,7 +133,7 @@ public class PlayerEntity : Entity {
                 statTexts[1].text = "Ninja";
                 statTexts[2].text = "" + Ninja.m_health;
                 statTexts[3].text = "" + Ninja.m_strength;
-                statTexts[4].text = "" + Ninja.m_magicPow;
+                statTexts[4].text = "" + Ninja.m_magicPower;
                 statTexts[5].text = "" + Ninja.m_defence;
                 statTexts[6].text = "" + Ninja.m_defenceMGC;
                 statTexts[7].text = "" + 60;//crit chance
