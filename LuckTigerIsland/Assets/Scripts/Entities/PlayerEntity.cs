@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 public class PlayerEntity : Entity {
+
     private int m_playerIDStats = 0;
     public Text[] statTexts;
     public Slider expBar;

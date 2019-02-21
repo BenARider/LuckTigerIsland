@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4284421635817616}
   - component: {fileID: 212996110813582714}
   - component: {fileID: 61985272517631140}
-  - component: {fileID: 114092490044777738}
+  - component: {fileID: 114668607110450952}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -35,13 +35,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1329713860118572}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 4, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &61985272517631140
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -67,7 +67,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8238168, y: 0.81847787}
   m_EdgeRadius: 0
---- !u!114 &114092490044777738
+--- !u!114 &114668607110450952
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -75,20 +75,38 @@ MonoBehaviour:
   m_GameObject: {fileID: 1329713860118572}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab8c553720f19964384fd3d375622116, type: 3}
+  m_Script: {fileID: 11500000, guid: 3a349318ca9f9c448914b0bdc5d352a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player1: {fileID: 1406298571565624, guid: 61aab9b630aa81c4e98f6403fb7b1767, type: 2}
-  Player2: {fileID: 1362467278636896, guid: 836391845da783d4f8059d9f792ce1c7, type: 2}
-  Player3: {fileID: 1751857842274094, guid: cff1e4945fdc1724f93633bbe984a46a, type: 2}
-  Player4: {fileID: 1251957245982722, guid: 0c2fae182c9bebf41b9cc8479723d42b, type: 2}
-  m_Health: 10
-  m_Damage: 1
-  m_Speed: 7
-  m_enemyNumber: 0
-  m_TargetedPlayer: 0
-  m_requiredTurn: 0
+  m_maxHealth: 0
+  m_health: 0
+  m_strength: 0
+  m_magicPower: 0
+  m_defence: 0
+  m_defenceMGC: 0
+  m_speed: 0
+  m_mana: 0
+  m_maxMana: 0
+  m_level: 0
+  m_xpAward: 0
+  m_EXP: 0
+  Class: Goblin
   m_attackedAlready: 0
+  m_entityNumber: 0
+  m_baseRequiredSpeedForTurn: 100
+  m_requiredSpeedForTurn: 0
+  myTurn: 0
+  battleWon: 0
+  tempDMGReduct: 0
+  totalDMG: 0
+  chanceToHit: 0
+  attacking: 0
+  dmgRecieve: 0
+  dmgDealt: 0
+  aggress: 0
+  intel: 0
+  XP: 0
+  Tiger: {fileID: 114668607110450952}
 --- !u!212 &212996110813582714
 SpriteRenderer:
   m_ObjectHideFlags: 1
