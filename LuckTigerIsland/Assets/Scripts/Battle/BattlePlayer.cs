@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BattlePlayer : PlayerEntity {
+/*public class BattlePlayer : PlayerEntity {
 
 	// Use this for initialization
 	void Start () {
@@ -32,4 +32,4 @@ public class BattlePlayer : PlayerEntity {
 
 
 
-}
+}*/
