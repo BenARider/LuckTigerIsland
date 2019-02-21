@@ -9,92 +9,107 @@ public class GenerateNight : MonoBehaviour
     Transform playerTransform;
     Vector3Int playerPos;
     Vector3Int lastPlayerPos;
+    
+    TileBase[,] previousTiles = new TileBase[7,7];
 
-    int[,] previousLights = new int[5,5];
-
-
-	public Tilemap dayMap;
+    public Tilemap dayMap;
 	public Tilemap nightMap;
 	public Vector2Int bound = new Vector2Int(100, 100);
 	public int range = 4;
 	public Tile torch;
+    public Tile dayTorch;
 	public Tile darkness1;
 	public Tile darkness2;
 	public Tile darkness3;
 	public Tile darkness4;
+    
 
-	List<Vector3Int> lightPositions;
 
-
-	void Start()
+	void OnEnable()
 	{
         playerTransform = PlayerManager.Instance.transform;
 
-        playerPos = Vector3Int.RoundToInt(playerTransform.position);
+        playerPos = Vector3Int.FloorToInt(playerTransform.position);
+        lastPlayerPos = playerPos;
 
-        for (int x = 0; x < 4; x++)
+        for (int x = -3; x < 4; x++)
         {
-            for(int y = 0; y < 4; y++)
+            for (int y = -3; y < 4; y++)
             {
-                previousLights[x, y] = TileToStep(nightMap.GetTile<Tile>(new Vector3Int(playerPos.x +(x-2), playerPos.y + (y - 2),0)));
-                //print (TileToStep(nightMap.GetTile<Tile>(new Vector3Int(playerPos.x + (x - 2), playerPos.y + (y - 2), 0))));
+                previousTiles[x + 3, y + 3] = nightMap.GetTile<TileBase>(new Vector3Int(playerPos.x + x, playerPos.y + y, 0));
             }
         }
-
-
     }
 
 
     void Update()
     {
-        lastPlayerPos = playerPos;
-        playerPos = Vector3Int.RoundToInt(playerTransform.position);
+        
+        playerPos = Vector3Int.FloorToInt(playerTransform.position);
         
         if(playerPos != lastPlayerPos)
         {
-            updateLights(playerPos - lastPlayerPos);
+            updateLights();
+            lastPlayerPos = playerPos;
         }
 
     }
 
-    void updateLights(Vector3Int delta)
+    void updateLights()
     {
-        for (int x = 0; x < 4; x++)
+        
+        for (int x = -3; x < 4; x++)
         {
-            for (int y = 0; y < 4; y++)
+            for (int y = -3; y < 4; y++)
             {
-                nightMap.SetTile(new Vector3Int(lastPlayerPos.x + (x - 2), lastPlayerPos.y + (y - 2), 0), StepToTile(previousLights[x, y]));
-                previousLights[x, y] = TileToStep(nightMap.GetTile<Tile>(new Vector3Int(playerPos.x + (x - 2), playerPos.y + (y - 2), 0)));
-                print(nightMap.GetTile<Tile>(new Vector3Int(playerPos.x + (x - 2), playerPos.y + (y - 2), 0)));
-                //nightMap.SetTile(new Vector3Int(lastPlayerPos.x + (x - 2), lastPlayerPos.y + (y - 2), 0), StepToTile(Mathf.Clamp(Mathf.Abs(x-2)+Mathf.Abs(y-2),0,4)));
-                LightTo(1, new Vector3Int(lastPlayerPos.x + (x - 2), lastPlayerPos.y + (y - 2), 0));
-
-                
+                nightMap.SetTile(new Vector3Int(lastPlayerPos.x + x, lastPlayerPos.y + y, 0), previousTiles[x+3,y+3]);
+            }
+        }
+        for (int x = -3; x < 4; x++)
+        {
+            for (int y = -3; y < 4; y++)
+            {
+                previousTiles[x + 3, y + 3] = nightMap.GetTile<TileBase>(new Vector3Int(playerPos.x + x, playerPos.y + y, 0));
             }
         }
 
+        for (int x = -3; x < 4; x++)
+        {
+            for (int y = -3; y < 4; y++)
+            {
+                float lightval = Vector3.Magnitude(new Vector3(x, y, 0));
+                LightTo((int)lightval, new Vector3Int(playerPos.x + x, playerPos.y + y, 0));
+            }
+        }
 
     }
 
     [ContextMenu("Generate")]
 	public void Generate()
 	{
-		nightMap.FloodFill(Vector3Int.zero, darkness4);
-		//BoundsInt bounds = dayMap.cellBounds;
-		//TileBase[] allTiles = dayMap.GetTilesBlock(bounds);
-
+        //nightMap.ClearAllTiles();
+        for (int x = -bound.x; x < bound.x; x++)
+        {
+            for (int y = -bound.y; y < bound.y; y++)
+            {
+                nightMap.SetTile(new Vector3Int(x, y, 0), darkness4);
+                //nightMap.BoxFill(Vector3Int.zero, darkness4, -bound.x, -bound.y , bound.x , bound.y );
+                //nightMap.FloodFill(Vector3Int.zero, darkness4);
+            }
+        }
 		for (int x = -bound.x; x < bound.x; x++)
 		{
 			for (int y = -bound.y; y < bound.y; y++)
 			{
-				//TileBase tile = allTiles[x + y * bounds.size.x];
-				TileBase tile = dayMap.GetTile(new Vector3Int(x, y, 0));
-				if (tile != null)
+                
+                //TileBase tile = allTiles[x + y * bounds.size.x];
+                TileBase tile = dayMap.GetTile(new Vector3Int(x, y, 0));
+				if (tile != null && tile.name == dayTorch.name)
 				{
 					nightMap.SetTile(new Vector3Int(x, y, 0), torch);
-					
-					
-					for(int xoff = -range; xoff <= range; xoff++)
+                    
+
+                    for (int xoff = -range; xoff <= range; xoff++)
 					{
 						for (int yoff = -range; yoff <= range; yoff++)
 						{
@@ -102,8 +117,8 @@ public class GenerateNight : MonoBehaviour
 							lightval = (lightval * 4);
 
 							LightTo((int)lightval, new Vector3Int(x + xoff, y + yoff, 0));
-
-						}
+                            
+                        }
 					}
 
 				}
