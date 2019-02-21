@@ -146,6 +146,7 @@ public class Entity : MonoBehaviour
             Destroy(gameObject);
         }
         */
+
     }
 }
 

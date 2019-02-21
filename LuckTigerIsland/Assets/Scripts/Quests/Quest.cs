@@ -2,44 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EQuestState
+public class Quest : MonoBehaviour
 {
-    undiscovered,
-    active,
-    completed
-};
-
-[System.Serializable]
-public class Quest : MonoBehaviour {
-
-    private int m_ID;
-    private string m_Name;
-    private string m_Description;
-
-    private EQuestState m_currentState;
-
-    public int GetID()
+    public Quest(string _title, string _objective, int _exp, int _gold)
     {
-        return m_ID;
+        title = _title;
+        objective = _objective;
+        expReward = _exp;
+        goldReward = _gold;
     }
 
-    public string GetTitle()
+    public string title;
+    public string objective;
+    public int expReward;
+    public int goldReward;
+
+    public void StartQuest()
     {
-        return m_Name;
+        QuestManager.instance.AddQuest(this);
+        Debug.Log("quest added");
     }
 
-    public string GetDescription()
+    public void EndQuest()
     {
-        return m_Description;
+        QuestManager.instance.RemoveQuest(this);
     }
 
-    public EQuestState GetState()
-    {
-        return m_currentState;
-    }
-
-    public void SetState(EQuestState _state)
-    {
-        m_currentState = _state;
-    }
+   
 }
+
+
+

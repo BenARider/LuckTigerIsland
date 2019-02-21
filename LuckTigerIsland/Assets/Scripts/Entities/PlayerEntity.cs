@@ -42,6 +42,7 @@ public class PlayerEntity : Entity {
         statTexts = new Text[11];
         
         rightButton.onClick.AddListener(IncreasePlayerStatID);
+
     }
 	
 	// Update is called once per frame
@@ -56,7 +57,7 @@ public class PlayerEntity : Entity {
     {
         m_playerIDStats += 1;
         if (m_playerIDStats == 4)
-        {
+        { 
             m_playerIDStats=0;
         }
        

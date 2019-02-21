@@ -22,9 +22,7 @@ public class PlayerWorldMove : MonoBehaviour {
         {
             //TODO: Show error here//
             Application.Quit();
-        }
-        
-
+        } 
     }
 
     // Update is called once per frame
