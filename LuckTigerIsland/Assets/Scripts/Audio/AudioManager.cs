@@ -104,7 +104,8 @@ public class MusicPlaylist
     public Music[] m_music;
 }
 
-public class AudioManager : Singleton {
+public class AudioManager : MonoBehaviour{
+       
 
     //Identify which playlist to use.
     [SerializeField]
@@ -115,10 +116,25 @@ public class AudioManager : Singleton {
     [SerializeField]
     MusicPlaylist[] m_playlists;
     
-
     //To store which track is currently playing and how long it has left.
     int m_currentMusicTrack = 0;
     float m_currentTrackTimeRemaining = 0;
+
+    public static AudioManager instance;
+
+    void Awake()
+    {
+        if (instance != null)
+        {
+            Debug.Log("There were two " + gameObject.name + "s present.");
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(this);
+        }
+    }
 
     void Start()
     {

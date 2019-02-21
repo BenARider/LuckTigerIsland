@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Slider_Manager : MonoBehaviour {
 
-    public PlayerChara player;
+    public PlayerEntity player;
     [SerializeField] private Slider m_healthSlider = null;
     [SerializeField] private Slider m_speedSlider = null;
     [SerializeField] private Slider m_manaSlider = null;
@@ -19,7 +19,7 @@ public class Slider_Manager : MonoBehaviour {
 
         m_healthSlider.value = player.GetHealth();
         m_speedSlider.value = player.GetSpeed();
-        m_manaSlider.value = player.mana;
+        //m_manaSlider.value = player.mana;
     
 	}
 }

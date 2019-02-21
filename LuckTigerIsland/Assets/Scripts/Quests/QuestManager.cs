@@ -2,8 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QuestManager : Singleton
+public class QuestManager : MonoBehaviour
 {
+    //Singleton Stuff
+    public static QuestManager instance;
+
+    void Awake()
+    {
+        if (instance != null)
+        {
+            Debug.Log("There were two " + gameObject.name + "s present.");
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(this);
+        }
+    }
+
     //Array of every quest in the game.
     [SerializeField]
     Quest[] m_quests;
@@ -22,7 +39,7 @@ public class QuestManager : Singleton
         }
         else
         {
-            Debug.LogError("Cannot add quest. " + _quest.title + " is already active.");
+            Debug.LogError("Cannot add quest. " + _quest.GetTitle() + " is already active.");
         }
             
     }
@@ -34,7 +51,7 @@ public class QuestManager : Singleton
             m_activeQuestList.Remove(_quest);
         } else
         {
-            Debug.LogError("Cannot remove. " + _quest.title + " was not in the active quest list.");
+            Debug.LogError("Cannot remove. " + _quest.GetTitle() + " was not in the active quest list.");
         }
     }
 
@@ -45,10 +62,30 @@ public class QuestManager : Singleton
         {
             for(int j = i + 1; j < m_quests.Length; j++)
             {
-                if(m_quests[i].title == m_quests[j].title)
+                if(m_quests[i].GetTitle() == m_quests[j].GetTitle())
                 {
                     Debug.LogError("Quest " + i +" has the same title as Quest "+ j );
                 }
+            }
+        }
+    }
+
+    void FixedUpdate()
+    {
+        foreach(Quest _q in m_activeQuestList)
+        {
+            bool allComplete = true;
+            foreach(QuestObjective _qo in _q.m_objectives)
+            {
+                //If any objectives arn't complete, sel allComplete to false.
+                if (!_qo.GetIsComplete())
+                {
+                    allComplete = false;
+                }
+            }
+            if (allComplete)
+            {
+                _q.EndQuest();
             }
         }
     }
