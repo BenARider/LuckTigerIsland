@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameMaster : Singleton {
+public class GameMaster : LTI.Singleton<GameMaster>{
 
-    
+    private void Start()
+    {
+        instance = this;// as GameMaster;
+    }
 }
