@@ -2,25 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QuestManager : MonoBehaviour
+public class QuestManager : LTI.Singleton<QuestManager>
 {
-    //Singleton Stuff
-    public static QuestManager instance;
-
-    void Awake()
-    {
-        if (instance != null)
-        {
-            Debug.Log("There were two " + gameObject.name + "s present.");
-            Destroy(gameObject);
-        }
-        else
-        {
-            instance = this;
-            DontDestroyOnLoad(this);
-        }
-    }
-
     //Array of every quest in the game.
     [SerializeField]
     Quest[] m_quests;
@@ -57,6 +40,7 @@ public class QuestManager : MonoBehaviour
 
     void Start()
     {
+        instance = this;
         //Checks to see if there are quests with duplicate titles.
         for(int i = 0; i < m_quests.Length; i++)
         {

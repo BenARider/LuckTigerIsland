@@ -23,7 +23,7 @@ public struct Interaction
 [RequireComponent(typeof(BoxCollider2D))]
 
 //manages player interaction
-public class PlayerManager : MonoBehaviour {
+public class PlayerManager : LTI.Singleton<PlayerManager> {
     //list of all current nearby interactable scripts
     public List<Interaction> interactions;
 	public string currentSceneName;
@@ -34,24 +34,10 @@ public class PlayerManager : MonoBehaviour {
     Interaction lastDialogueInteract;
     NPCDialogue activeDialogue;
 
-    public static PlayerManager instance;
-
-    void Awake()
-    {
-        if (instance != null)
-        {
-            Debug.Log("There were two " + gameObject.name + "s present.");
-            Destroy(gameObject);
-        }
-        else
-        {
-            instance = this;
-            DontDestroyOnLoad(this);
-        }
-    }
-
     // Use this for initialization
     void Start () {
+        instance = this;
+
         playerMove = GetComponent<PlayerWorldMove>();
 
         Transform overUI = GameObject.Find("OverworldUI").transform;
@@ -170,7 +156,7 @@ public class PlayerManager : MonoBehaviour {
 
         if(activeDialogue.interactAudio != "")
         {
-            AudioManager.instance.PlaySound(activeDialogue.interactAudio);
+            AudioManager.Instance.PlaySound(activeDialogue.interactAudio);
         }
 
         for(int i = 0; i< _dialogue.Replies.Length; i++)

@@ -23,7 +23,8 @@ public class Quest : MonoBehaviour
 
     //Objectives List
     [SerializeField]
-    public List<QuestObjective> m_objectives;
+    public List<LocationObjective> m_objectives;
+    public List<KillObjective> m_killObjectives;
 
     //For use with creating objects in the inspector. Using o_name to represent objectives_name.
     [SerializeField]
@@ -59,13 +60,13 @@ public class Quest : MonoBehaviour
     //Add to active quest list.
     public void StartQuest()
     {
-        QuestManager.instance.AddQuest(this);
+        QuestManager.Instance.AddQuest(this);
         Debug.Log("quest added");
     }
 
     public void EndQuest()
     {
-        QuestManager.instance.RemoveQuest(this);
+        QuestManager.Instance.RemoveQuest(this);
     }
 
     //Getters and Setters

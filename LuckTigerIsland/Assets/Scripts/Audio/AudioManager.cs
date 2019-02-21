@@ -104,8 +104,7 @@ public class MusicPlaylist
     public Music[] m_music;
 }
 
-public class AudioManager : MonoBehaviour{
-       
+public class AudioManager : LTI.Singleton<AudioManager>{       
 
     //Identify which playlist to use.
     [SerializeField]
@@ -120,24 +119,9 @@ public class AudioManager : MonoBehaviour{
     int m_currentMusicTrack = 0;
     float m_currentTrackTimeRemaining = 0;
 
-    public static AudioManager instance;
-
-    void Awake()
-    {
-        if (instance != null)
-        {
-            Debug.Log("There were two " + gameObject.name + "s present.");
-            Destroy(gameObject);
-        }
-        else
-        {
-            instance = this;
-            DontDestroyOnLoad(this);
-        }
-    }
-
     void Start()
     {
+        instance = this;
         //Sounds
         for(int i = 0; i < m_sounds.Length; i++) { 
             //To stop duplicates in sound name.
