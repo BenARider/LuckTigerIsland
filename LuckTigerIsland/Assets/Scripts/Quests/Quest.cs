@@ -22,8 +22,11 @@ public class Quest : MonoBehaviour
     private int m_goldReward;
 
     //Objectives List
-    [SerializeField]
+
+    public List<QuestObjective> m_allObjectives;
+    [SerializeField]    
     public List<KillObjective> m_killObjectives;
+    [SerializeField]
     public List<LocationObjective> m_locationObjectives;
     
 
@@ -37,20 +40,39 @@ public class Quest : MonoBehaviour
     [SerializeField]
     private int o_enemyAmount;
 
-    //Add Objectives
+    // Add/Remove Objectives
     public void AddLocationObjective(ELocations _location)
     {
         LocationObjective _lo = new LocationObjective(_location);
         m_locationObjectives.Add(_lo);
+        m_allObjectives.Add(_lo);
     }
 
     public void AddKillObjective(EEnemies _enemy, int _amount = 1)
     {
         KillObjective _eo = new KillObjective(_enemy, _amount);
         m_killObjectives.Add(_eo);
+        m_allObjectives.Add(_eo);
     }
 
-    //Add to active quest list.
+    public void RemoveLastLocationObjective()
+    {
+        if (m_locationObjectives.Count != 0)
+        {
+            m_locationObjectives.RemoveAt(m_locationObjectives.Count - 1);
+        }
+     }
+
+    public void RemoveLastKillObjective()
+    {
+        if (m_killObjectives.Count != 0)
+        {
+            m_killObjectives.RemoveAt(m_killObjectives.Count - 1);
+        }
+    }
+
+
+    //Add and remove from active quest list.
     public void StartQuest()
     {
         QuestManager.Instance.AddQuest(this);
@@ -60,6 +82,29 @@ public class Quest : MonoBehaviour
     public void EndQuest()
     {
         QuestManager.Instance.RemoveQuest(this);
+        Debug.Log("quest ended");
+    }
+
+    public void CheckCompletion()
+    {
+        //Check All Objectives
+        if(m_allObjectives.Count != 0)
+        {
+            bool finished = true;
+            foreach(QuestObjective _qo in m_allObjectives)
+            {
+                if (!_qo.GetIsComplete())
+                {
+                    finished = false;
+                }
+            }
+
+            //If all quest objectives were finished, End the Quest.
+            if (!finished)
+            {
+                EndQuest();
+            }
+        }
     }
 
     //Getters and Setters
