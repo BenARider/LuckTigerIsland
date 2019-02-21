@@ -17,12 +17,13 @@ public enum EEnemies
 
 public class EventManager : LTI.Singleton<EventManager>
 {
-    private QuestManager m_questManager = QuestManager.Instance;
+    private QuestManager m_questManager;
 
     private ELocations m_lastLocation;
 
     private void Start()
     {
+        m_questManager = QuestManager.Instance;
         instance = this;
     }
 

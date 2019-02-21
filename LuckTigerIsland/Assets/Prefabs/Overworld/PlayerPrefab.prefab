@@ -78,7 +78,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4591088465556848}
-  - component: {fileID: 114606076565704086}
   m_Layer: 0
   m_Name: PlayerPrefab
   m_TagString: Untagged
@@ -429,17 +428,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactions: []
   currentSceneName: TestScene
---- !u!114 &114606076565704086
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1513774882610904}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a4ffdbb9fbb05f4282d83685be39054, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114609680532348662
 MonoBehaviour:
   m_ObjectHideFlags: 1

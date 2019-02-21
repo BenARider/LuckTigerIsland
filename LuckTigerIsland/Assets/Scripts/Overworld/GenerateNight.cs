@@ -6,6 +6,13 @@ using UnityEngine.Tilemaps;
 public class GenerateNight : MonoBehaviour
 {
 
+    Transform playerTransform;
+    Vector3Int playerPos;
+    Vector3Int lastPlayerPos;
+
+    int[,] previousLights = new int[5,5];
+
+
 	public Tilemap dayMap;
 	public Tilemap nightMap;
 	public Vector2Int bound = new Vector2Int(100, 100);
@@ -21,10 +28,55 @@ public class GenerateNight : MonoBehaviour
 
 	void Start()
 	{
+        playerTransform = PlayerManager.Instance.transform;
 
-		Generate();
-	}
+        playerPos = Vector3Int.RoundToInt(playerTransform.position);
 
+        for (int x = 0; x < 4; x++)
+        {
+            for(int y = 0; y < 4; y++)
+            {
+                previousLights[x, y] = TileToStep(nightMap.GetTile<Tile>(new Vector3Int(playerPos.x +(x-2), playerPos.y + (y - 2),0)));
+                //print (TileToStep(nightMap.GetTile<Tile>(new Vector3Int(playerPos.x + (x - 2), playerPos.y + (y - 2), 0))));
+            }
+        }
+
+
+    }
+
+
+    void Update()
+    {
+        lastPlayerPos = playerPos;
+        playerPos = Vector3Int.RoundToInt(playerTransform.position);
+        
+        if(playerPos != lastPlayerPos)
+        {
+            updateLights(playerPos - lastPlayerPos);
+        }
+
+    }
+
+    void updateLights(Vector3Int delta)
+    {
+        for (int x = 0; x < 4; x++)
+        {
+            for (int y = 0; y < 4; y++)
+            {
+                nightMap.SetTile(new Vector3Int(lastPlayerPos.x + (x - 2), lastPlayerPos.y + (y - 2), 0), StepToTile(previousLights[x, y]));
+                previousLights[x, y] = TileToStep(nightMap.GetTile<Tile>(new Vector3Int(playerPos.x + (x - 2), playerPos.y + (y - 2), 0)));
+                print(nightMap.GetTile<Tile>(new Vector3Int(playerPos.x + (x - 2), playerPos.y + (y - 2), 0)));
+                //nightMap.SetTile(new Vector3Int(lastPlayerPos.x + (x - 2), lastPlayerPos.y + (y - 2), 0), StepToTile(Mathf.Clamp(Mathf.Abs(x-2)+Mathf.Abs(y-2),0,4)));
+                LightTo(1, new Vector3Int(lastPlayerPos.x + (x - 2), lastPlayerPos.y + (y - 2), 0));
+
+                
+            }
+        }
+
+
+    }
+
+    [ContextMenu("Generate")]
 	public void Generate()
 	{
 		nightMap.FloodFill(Vector3Int.zero, darkness4);
@@ -40,28 +92,7 @@ public class GenerateNight : MonoBehaviour
 				if (tile != null)
 				{
 					nightMap.SetTile(new Vector3Int(x, y, 0), torch);
-					/*for (int xoff = -4; xoff < 4; xoff++)
-					{
-						for(int yoff = -4; yoff <4; yoff++)
-						{
-							if(Mathf.Abs(yoff) + Mathf.Abs(xoff) <= 1)
-							{
-								LightTo(0, new Vector3Int(x + xoff, y+ yoff, 0));
-							}
-							else if (Mathf.Abs(yoff) + Mathf.Abs(xoff) <= 2)
-							{
-								LightTo(1, new Vector3Int(x + xoff, y + yoff, 0));
-							}
-							else if (Mathf.Abs(yoff) + Mathf.Abs(xoff) <= 3)
-							{
-								LightTo(2, new Vector3Int(x + xoff, y + yoff, 0));
-							}
-							else if (Mathf.Abs(yoff) + Mathf.Abs(xoff) <= 4)
-							{
-								LightTo(3, new Vector3Int(x + xoff, y + yoff, 0));
-							}
-						}
-					}*/
+					
 					
 					for(int xoff = -range; xoff <= range; xoff++)
 					{
@@ -69,8 +100,9 @@ public class GenerateNight : MonoBehaviour
 						{
 							float lightval = Vector3.Magnitude(new Vector3(xoff , yoff,0))/range;
 							lightval = (lightval * 4);
-							print(lightval);
+
 							LightTo((int)lightval, new Vector3Int(x + xoff, y + yoff, 0));
+
 						}
 					}
 
@@ -81,7 +113,45 @@ public class GenerateNight : MonoBehaviour
 
 	}
 
-	public void LightTo(int step, Vector3Int pos)
+    int TileToStep(Tile tile)
+    {
+        if(tile == null)
+        {
+            return 0;
+        }
+        if(tile.name == darkness4.name)
+        {
+            return 4;
+        }
+        if (tile.name == darkness3.name)
+        {
+            return 3;
+        }
+        if (tile.name == darkness2.name)
+        {
+            return 2;
+        }
+        if (tile.name == darkness1.name)
+        {
+            return 1;
+        }
+        return 0;
+    }
+
+    TileBase StepToTile(int step)
+    {
+        switch (step)
+        {
+            case 0: return null;
+            case 1: return darkness1;
+            case 2: return darkness2;
+            case 3: return darkness3;
+            case 4: return darkness4;
+        }
+        return null;
+    }
+
+    public void LightTo(int step, Vector3Int pos)
 	{
 		Tile tileAt = nightMap.GetTile<Tile>(pos);
 

@@ -53,24 +53,4 @@ public class QuestManager : LTI.Singleton<QuestManager>
             }
         }
     }
-
-    void FixedUpdate()
-    {
-        foreach(Quest _q in m_activeQuestList)
-        {
-            bool allComplete = true;
-            foreach(QuestObjective _qo in _q.m_objectives)
-            {
-                //If any objectives arn't complete, sel allComplete to false.
-                if (!_qo.GetIsComplete())
-                {
-                    allComplete = false;
-                }
-            }
-            if (allComplete)
-            {
-                _q.EndQuest();
-            }
-        }
-    }
 }
