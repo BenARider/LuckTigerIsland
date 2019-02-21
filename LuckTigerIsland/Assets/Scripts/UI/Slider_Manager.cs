@@ -4,7 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Slider_Manager : MonoBehaviour {
 
+
     public Entity player;
+
 
     [SerializeField] private Slider m_healthSlider = null;
     [SerializeField] private Slider m_speedSlider = null;

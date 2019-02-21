@@ -2,21 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Singleton : MonoBehaviour {
-
-    public static Singleton instance;
-
-    void Awake()
+namespace LTI
+{
+    public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     {
-        if (instance != null)
+        protected static T instance;
+        public static T Instance
         {
-            Debug.Log("There were two " + gameObject.name + "s present.");
-            Destroy(gameObject);
-        }
-        else
-        {
-            instance = this;
-            DontDestroyOnLoad(this);
+            get
+            {
+                if (!instance)
+                    instance = FindObjectOfType<T>();
+
+                return instance;
+            }
         }
     }
+   
 }

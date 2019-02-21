@@ -23,7 +23,7 @@ public struct Interaction
 [RequireComponent(typeof(BoxCollider2D))]
 
 //manages player interaction
-public class PlayerManager : Singleton {
+public class PlayerManager : LTI.Singleton<PlayerManager> {
     //list of all current nearby interactable scripts
     public List<Interaction> interactions;
 	public string currentSceneName;
@@ -33,10 +33,11 @@ public class PlayerManager : Singleton {
     bool inDialogue = false;
     Interaction lastDialogueInteract;
     NPCDialogue activeDialogue;
-    
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
+        instance = this;
+
         playerMove = GetComponent<PlayerWorldMove>();
 
         Transform overUI = GameObject.Find("OverworldUI").transform;
@@ -155,7 +156,7 @@ public class PlayerManager : Singleton {
 
         if(activeDialogue.interactAudio != "")
         {
-            AudioManager.instance.PlaySound(activeDialogue.interactAudio);
+            AudioManager.Instance.PlaySound(activeDialogue.interactAudio);
         }
 
         for(int i = 0; i< _dialogue.Replies.Length; i++)
