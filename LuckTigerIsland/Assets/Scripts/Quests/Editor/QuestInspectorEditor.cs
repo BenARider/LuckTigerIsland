@@ -11,7 +11,8 @@ public class LevelScriptEditor : Editor
     SerializedProperty description;
     SerializedProperty exp;
     SerializedProperty gold;
-    SerializedProperty objectives;
+    SerializedProperty killObjectives;
+    SerializedProperty locationObjectives;
 
     //Objective Types
     SerializedProperty objectiveType;
@@ -26,7 +27,8 @@ public class LevelScriptEditor : Editor
         description = serializedObject.FindProperty("m_description");
         exp = serializedObject.FindProperty("m_expReward");
         gold = serializedObject.FindProperty("m_goldReward");
-        objectives = serializedObject.FindProperty("m_objectives");
+        killObjectives = serializedObject.FindProperty("m_killObjectives");
+        locationObjectives = serializedObject.FindProperty("m_locationObjectives");
 
         objectiveType = serializedObject.FindProperty("o_type");
         location = serializedObject.FindProperty("o_location");
@@ -90,14 +92,8 @@ public class LevelScriptEditor : Editor
                     
             }            
         }
-        EditorGUILayout.PropertyField(objectives, true);
-
-        //Button to remove last objective. TODO: add an index option?
-        if (GUILayout.Button("Remove Last Objective"))
-        {
-            myScript.RemoveLastFromList();
-        }
-
+        EditorGUILayout.PropertyField(killObjectives, true);
+        EditorGUILayout.PropertyField(locationObjectives, true);
 
         //End of Inspector GUI
         serializedObject.ApplyModifiedProperties();         
