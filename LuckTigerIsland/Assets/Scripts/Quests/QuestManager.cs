@@ -23,8 +23,7 @@ public class QuestManager : LTI.Singleton<QuestManager>
         else
         {
             Debug.LogError("Cannot add quest. " + _quest.GetTitle() + " is already active.");
-        }
-            
+        }            
     }
 
     //Remove From QuestList
@@ -50,26 +49,6 @@ public class QuestManager : LTI.Singleton<QuestManager>
                 {
                     Debug.LogError("Quest " + i +" has the same title as Quest "+ j );
                 }
-            }
-        }
-    }
-
-    void FixedUpdate()
-    {
-        foreach(Quest _q in m_activeQuestList)
-        {
-            bool allComplete = true;
-            foreach(QuestObjective _qo in _q.m_objectives)
-            {
-                //If any objectives arn't complete, sel allComplete to false.
-                if (!_qo.GetIsComplete())
-                {
-                    allComplete = false;
-                }
-            }
-            if (allComplete)
-            {
-                _q.EndQuest();
             }
         }
     }

@@ -9,7 +9,7 @@ public enum EObjectiveType
 }
 
 [System.Serializable]
-public class QuestObjective : ScriptableObject{
+public class QuestObjective{
     protected EObjectiveType m_objectiveType;
     protected bool m_isComplete;
 

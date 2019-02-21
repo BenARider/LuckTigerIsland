@@ -2004,6 +2004,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 224715973379215456, guid: 55200a096e468ce4aa8c994e42046b41,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -173.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 55200a096e468ce4aa8c994e42046b41, type: 2}
   m_IsPrefabParent: 0
@@ -2074,104 +2079,69 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8656ef68b72e84b4c872145b2033dd82, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &955073796
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 955073797}
-  - component: {fileID: 955073798}
-  m_Layer: 0
-  m_Name: 'Quest 0: Kill the Pig'
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &955073797
+--- !u!4 &882200898 stripped
 Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 955073796}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 380089177}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &955073798
+  m_PrefabParentObject: {fileID: 4360844421562968, guid: 7f73edca001b4b14f8f7c0952ef33a8b,
+    type: 2}
+  m_PrefabInternal: {fileID: 1445442203}
+--- !u!114 &955073798 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 955073796}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
+  m_PrefabParentObject: {fileID: 114335999616212516, guid: f116ffdc986a37441a1b5c2da1eddc12,
+    type: 2}
+  m_PrefabInternal: {fileID: 1319058946}
   m_Script: {fileID: 11500000, guid: 56e13a490385e9f42943e9786a20092c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_title: Boared To Death
-  m_description: Kill the Pig
-  m_expReward: 10
-  m_goldReward: 50
-  m_objectives: []
-  o_type: 1
-  o_location: 2
-  o_enemy: 0
-  o_enemyAmount: 1
---- !u!1 &1073379690
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1073379692}
-  - component: {fileID: 1073379691}
-  m_Layer: 0
-  m_Name: NullQuest
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1073379691
+--- !u!114 &1073379691 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1073379690}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
+  m_PrefabParentObject: {fileID: 114554967780344030, guid: eb32d20a9e376c94381838e4a4d4ceda,
+    type: 2}
+  m_PrefabInternal: {fileID: 1828417770}
   m_Script: {fileID: 11500000, guid: 56e13a490385e9f42943e9786a20092c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_title: 
-  m_description: 
-  m_expReward: 0
-  m_goldReward: 0
-  m_objectives: []
-  o_type: 0
-  o_location: 0
-  o_enemy: 0
-  o_enemyAmount: 0
---- !u!4 &1073379692
-Transform:
+--- !u!1001 &1319058946
+Prefab:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1073379690}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 380089177}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 380089177}
+    m_Modifications:
+    - target: {fileID: 4550387061320062, guid: f116ffdc986a37441a1b5c2da1eddc12, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4550387061320062, guid: f116ffdc986a37441a1b5c2da1eddc12, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4550387061320062, guid: f116ffdc986a37441a1b5c2da1eddc12, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4550387061320062, guid: f116ffdc986a37441a1b5c2da1eddc12, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4550387061320062, guid: f116ffdc986a37441a1b5c2da1eddc12, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4550387061320062, guid: f116ffdc986a37441a1b5c2da1eddc12, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4550387061320062, guid: f116ffdc986a37441a1b5c2da1eddc12, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4550387061320062, guid: f116ffdc986a37441a1b5c2da1eddc12, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1004355233614404, guid: f116ffdc986a37441a1b5c2da1eddc12, type: 2}
+      propertyPath: m_Name
+      value: 'Quest 0: Kill the Pig'
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: f116ffdc986a37441a1b5c2da1eddc12, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1403497305
 GameObject:
   m_ObjectHideFlags: 0
@@ -2248,6 +2218,53 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1445442203
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2051777819}
+    m_Modifications:
+    - target: {fileID: 4360844421562968, guid: 7f73edca001b4b14f8f7c0952ef33a8b, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4360844421562968, guid: 7f73edca001b4b14f8f7c0952ef33a8b, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 4360844421562968, guid: 7f73edca001b4b14f8f7c0952ef33a8b, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4360844421562968, guid: 7f73edca001b4b14f8f7c0952ef33a8b, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4360844421562968, guid: 7f73edca001b4b14f8f7c0952ef33a8b, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4360844421562968, guid: 7f73edca001b4b14f8f7c0952ef33a8b, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4360844421562968, guid: 7f73edca001b4b14f8f7c0952ef33a8b, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4360844421562968, guid: 7f73edca001b4b14f8f7c0952ef33a8b, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114617140192520136, guid: 7f73edca001b4b14f8f7c0952ef33a8b,
+        type: 2}
+      propertyPath: m_location
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7f73edca001b4b14f8f7c0952ef33a8b, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &1461727459
 Prefab:
   m_ObjectHideFlags: 0
@@ -2255,11 +2272,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114184895511927676, guid: 9cb92863e985d24439e735036580d79b,
-        type: 2}
-      propertyPath: m_questList.Array.size
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 4220313367166032, guid: 9cb92863e985d24439e735036580d79b, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2292,39 +2304,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114184895511927676, guid: 9cb92863e985d24439e735036580d79b,
-        type: 2}
-      propertyPath: m_questList.Array.data[0].m_ID
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114184895511927676, guid: 9cb92863e985d24439e735036580d79b,
-        type: 2}
-      propertyPath: m_questList.Array.data[1].m_ID
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114184895511927676, guid: 9cb92863e985d24439e735036580d79b,
-        type: 2}
-      propertyPath: m_questList.Array.data[2].m_ID
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114184895511927676, guid: 9cb92863e985d24439e735036580d79b,
-        type: 2}
-      propertyPath: m_questList.Array.data[3].m_ID
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114184895511927676, guid: 9cb92863e985d24439e735036580d79b,
-        type: 2}
-      propertyPath: m_questList.Array.data[0].m_Name
-      value: Talk To Pig
-      objectReference: {fileID: 0}
-    - target: {fileID: 114184895511927676, guid: 9cb92863e985d24439e735036580d79b,
-        type: 2}
-      propertyPath: m_questList.Array.data[0].m_Description
-      value: You must talk to the pig.
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114184895511927676, guid: 9cb92863e985d24439e735036580d79b, type: 2}
-    - {fileID: 114162883402674870, guid: 9cb92863e985d24439e735036580d79b, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9cb92863e985d24439e735036580d79b, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1537656317
@@ -2503,6 +2483,48 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
+--- !u!1001 &1828417770
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 380089177}
+    m_Modifications:
+    - target: {fileID: 4681404689081836, guid: eb32d20a9e376c94381838e4a4d4ceda, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4681404689081836, guid: eb32d20a9e376c94381838e4a4d4ceda, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4681404689081836, guid: eb32d20a9e376c94381838e4a4d4ceda, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4681404689081836, guid: eb32d20a9e376c94381838e4a4d4ceda, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4681404689081836, guid: eb32d20a9e376c94381838e4a4d4ceda, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4681404689081836, guid: eb32d20a9e376c94381838e4a4d4ceda, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4681404689081836, guid: eb32d20a9e376c94381838e4a4d4ceda, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4681404689081836, guid: eb32d20a9e376c94381838e4a4d4ceda, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: eb32d20a9e376c94381838e4a4d4ceda, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &1938919147
 Prefab:
   m_ObjectHideFlags: 0
@@ -3202,6 +3224,7 @@ Transform:
   m_Children:
   - {fileID: 515884865}
   - {fileID: 1404275211}
+  - {fileID: 882200898}
   m_Father: {fileID: 1441106084}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -66,34 +66,42 @@ public class LevelScriptEditor : Editor
         EObjectiveType ot = (EObjectiveType)objectiveType.enumValueIndex;
         switch (ot)
         {
+            //Location Objective
             case EObjectiveType.LocationObjective:
                 EditorGUILayout.PropertyField(location, locationLabel);
+                if(GUILayout.Button("Add Location Objective"))
+                {
+                    myScript.AddLocationObjective((ELocations)location.enumValueIndex);
+                }
                 break;
 
+            //Kill Objective
             case EObjectiveType.KillObjective:
                 EditorGUILayout.PropertyField(enemy, enemyLabel);
                 EditorGUILayout.PropertyField(enemyAmount, enemyAmountLabel);
+                if (GUILayout.Button("Add Kill Objective"))
+                {
+                    myScript.AddKillObjective((EEnemies)enemy.enumValueIndex, enemyAmount.intValue);
+                }
                 break;
 
         }
 
-        //Add Objective based on input info.
-        if (GUILayout.Button("Add Objective"))
-        {
-            switch (ot)
-            {
-                case EObjectiveType.LocationObjective:
-                    myScript.AddLocationObjective((ELocations)location.enumValueIndex);
-                    break;
-
-                case EObjectiveType.KillObjective:
-                    myScript.AddKillObjective((EEnemies)enemy.enumValueIndex, enemyAmount.intValue);
-                    break;
-                    
-            }            
-        }
+        //Display the current objectives.
+        GUILayout.Label("");
+        GUILayout.Label("Objectives", EditorStyles.boldLabel);
+        //Kill Objectives.
         EditorGUILayout.PropertyField(killObjectives, true);
+        if (GUILayout.Button("Remove Last Kill Objective"))
+        {
+            myScript.RemoveLastKillObjective();
+        }
+        //Location Objectives.
         EditorGUILayout.PropertyField(locationObjectives, true);
+        if (GUILayout.Button("Remove Last Location Objective"))
+        {
+            myScript.RemoveLastLocationObjective();
+        }
 
         //End of Inspector GUI
         serializedObject.ApplyModifiedProperties();         
