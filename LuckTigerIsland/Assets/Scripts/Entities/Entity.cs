@@ -130,6 +130,10 @@ public class Entity : MonoBehaviour {
     {
         return m_defence;
     }
+    public int GetMagicDefence()
+    {
+        return m_defenceMGC;
+    }
 
     public int GetSpeed()
     {
@@ -166,7 +170,10 @@ public class Entity : MonoBehaviour {
     {
         return m_level;
     }
-
+    public int GetEXP()
+    {
+        return m_EXP;
+    }
 
     //--------------------------------------------------------------------------------------------------
     protected void Attack()
@@ -204,12 +211,12 @@ public class Entity : MonoBehaviour {
             }
         }
     }
-
+    
     protected void Death()
     {
         if (m_health <= 0)
         {
-            Destroy(gameObject); //could rework to set the object to be sideways/inactive instead of destroyed
+           // Destroy(gameObject); //could rework to set the object to be sideways/inactive instead of destroyed
         }
      
     }

@@ -20,7 +20,7 @@ public class Slider_Manager : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-		m_healthSlider.value = 100 * (player.GetHealth() / player.GetMaxHealth());
+		m_healthSlider.value = 100* (player.GetHealth() / player.GetMaxHealth());
 		m_speedSlider.value = 100 * (SpeedTimer.m_speedCounter % player.GetRequiredSpeed() / player.GetRequiredSpeed());
 		m_manaSlider.value = player.GetMana() / player.GetMaxMana() * 100;
 

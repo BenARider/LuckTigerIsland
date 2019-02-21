@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Interact
   - EncounterMap
+  - Enemy
+  - Warrior
+  - Wizard
+  - Cleric
+  - Ninja
   layers:
   - Default
   - TransparentFX
