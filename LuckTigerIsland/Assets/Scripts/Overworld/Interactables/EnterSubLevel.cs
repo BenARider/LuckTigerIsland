@@ -12,8 +12,8 @@ public class EnterSubLevel : GenericInteract {
 
     public override void OnInteract(PlayerManager player)
     {
-        Debug.Log("Entering "+ sceneName);
-
+		Debug.Log("Entering "+ sceneName);
+		
 		Camera.main.GetComponent<ScreenTransition>().fromBlack();
 
 		if (!toOverworld)
@@ -36,6 +36,7 @@ public class EnterSubLevel : GenericInteract {
 		}
 		player.currentSceneName = sceneName;
 
+		
 		Camera.main.GetComponent<CameraController>().OnReset();
 	}
 }
