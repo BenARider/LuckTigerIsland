@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: c3ebbe778a5022247b7eb7cf377d1efd
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - dayMap: {instanceID: 0}
+  - nightMap: {instanceID: 0}
+  - darkness1: {fileID: 11400000, guid: d9530ad0a0523624e9d84e9092d1d6f8, type: 2}
+  - darkness2: {fileID: 11400000, guid: 682a1a9bce92f604182c34c993cda9a4, type: 2}
+  - darkness3: {fileID: 11400000, guid: 76aea1d8b7e263a4da492f6f8fb4dc9c, type: 2}
+  - darkness4: {fileID: 11400000, guid: 03115938a620d5549bd3a46d76cd1c92, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
