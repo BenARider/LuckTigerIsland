@@ -39,7 +39,7 @@ public class Entity : MonoBehaviour {
     [SerializeField]
 	protected bool m_attackedAlready = false;
 	[SerializeField]
-	private int m_entityNumber;
+	protected int m_entityNumber;
 	[SerializeField]
 	protected float m_baseRequiredSpeedForTurn = 100;
 	[SerializeField]
@@ -126,7 +126,7 @@ public class Entity : MonoBehaviour {
 	{
 		return m_magicPower;
 	}
-    public int GetDefense()
+    public int GetDefence()
     {
         return m_defence;
     }
