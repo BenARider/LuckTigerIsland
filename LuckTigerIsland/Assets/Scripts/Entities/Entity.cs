@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Entity : MonoBehaviour {
 
 	//General stats used to initialise entities
@@ -134,6 +135,7 @@ public class Entity : MonoBehaviour {
     {
         return m_speed;
     }
+  
 	public float GetRequiredSpeed()
 	{
 		return m_requiredSpeedForTurn;
@@ -159,17 +161,19 @@ public class Entity : MonoBehaviour {
     {
         m_level = _level;
     }
-    
+
     public int GetLevel()
     {
         return m_level;
     }
 
-    //-----------------------------------------------------------------------------------------------------
+
+    //--------------------------------------------------------------------------------------------------
     protected void Attack()
     {
-        if(attacking == true)
+        if (attacking == true)
         {
+            //Chance of the attack hitting
             chanceToHit = Random.Range(1, 100);
 
             if (chanceToHit <= 85)
@@ -178,23 +182,24 @@ public class Entity : MonoBehaviour {
             }
             else
                 return;
-     
+
         }
     }
-
-    protected void Damage() //this function will be repurposed soon to utilise various values.
+    
+    //General logic of damage calculation
+    protected void Damage()
     {
         if (dmgRecieve == true)
         {
-            GetStrength();
-            GetDefense();
-            //(GetStrength() / GetDefense() = tempDMGReduct) GetStrength - tempDMGReduct = totalDMG;
+            tempDMGReduct = GetStrength() / GetDefence();
+            totalDMG = GetStrength() - tempDMGReduct;
+
             dmgRecieve = false;
             dmgDealt = true;
 
-            if(dmgDealt == true)
+            if (dmgDealt == true)
             {
-                //m_health - totalDMG;
+                m_health = m_health - totalDMG;
                 dmgDealt = false;
             }
         }
@@ -209,3 +214,4 @@ public class Entity : MonoBehaviour {
      
     }
 }
+

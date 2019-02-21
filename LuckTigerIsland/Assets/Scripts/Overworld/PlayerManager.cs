@@ -23,18 +23,15 @@ public struct Interaction
 [RequireComponent(typeof(BoxCollider2D))]
 
 //manages player interaction
-public class PlayerManager : MonoBehaviour {
+public class PlayerManager : Singleton {
     //list of all current nearby interactable scripts
     public List<Interaction> interactions;
+	public string currentSceneName;
     PlayerWorldMove playerMove;
-    public Text npcText;
-    public Text playerText0;
-    public Text playerText1;
-    public Text playerText2;
-    public Text playerText3;
-    public Text playerInteract;
+    Text[] textArray;
 
     bool inDialogue = false;
+    Interaction lastDialogueInteract;
     NPCDialogue activeDialogue;
     
 
@@ -42,6 +39,16 @@ public class PlayerManager : MonoBehaviour {
 	void Start () {
         playerMove = GetComponent<PlayerWorldMove>();
 
+        Transform overUI = GameObject.Find("OverworldUI").transform;
+       
+        textArray = new Text[] {
+        overUI.GetChild(0).GetComponent<Text>(), //interact
+        overUI.GetChild(1).GetComponent<Text>(), //npc text
+        overUI.GetChild(2).GetComponent<Text>(), //reply 1,2,3,4
+        overUI.GetChild(3).GetComponent<Text>(),
+        overUI.GetChild(4).GetComponent<Text>(),
+        overUI.GetChild(5).GetComponent<Text>()};//
+        
     }
 
     // Update is called once per frame
@@ -60,6 +67,7 @@ public class PlayerManager : MonoBehaviour {
                             NPCDialogue dia = interact.obj.GetComponent<NPCDialogue>();
                             if (dia)
                             {
+                                lastDialogueInteract = interact;
                                 EnterDialogue(dia);
                             }
                             break;
@@ -68,7 +76,9 @@ public class PlayerManager : MonoBehaviour {
                             if (generic)
                             {
                                 generic.OnInteract(this);
-                            }
+								interactions.Remove(interact);
+								textArray[0].text = "";
+							}
                             break;
                     }
                 }
@@ -96,10 +106,6 @@ public class PlayerManager : MonoBehaviour {
                 {
                     OnDialogueInput(3);
                 }
-                if (Input.GetKeyDown(KeyCode.Alpha5))
-                {
-                    OnDialogueInput(4);
-                }
             }
 
         }
@@ -108,12 +114,20 @@ public class PlayerManager : MonoBehaviour {
     void OnDialogueInput(int index)
     {
         if (activeDialogue.Dialogues[activeDialogue.currentDialogueIndex].Replies.Length > index)
-        {
-            activeDialogue.currentDialogueIndex = activeDialogue.Dialogues[activeDialogue.currentDialogueIndex].Replies[index].nextDialogue;
+        {    
+                activeDialogue.currentDialogueIndex = activeDialogue.Dialogues[activeDialogue.currentDialogueIndex].Replies[index].nextDialogue;
             if (activeDialogue.currentDialogueIndex == 0)
             {
                 return;
             }
+
+            //Activate Quest if one exists on the dialogue step.
+            if (activeDialogue.Dialogues[activeDialogue.currentDialogueIndex].quest != null)
+            {
+                activeDialogue.Dialogues[activeDialogue.currentDialogueIndex].quest.StartQuest();
+            }
+            //
+
             ShowDialogue(activeDialogue.Dialogues[activeDialogue.currentDialogueIndex]);
         }
     }
@@ -130,35 +144,25 @@ public class PlayerManager : MonoBehaviour {
     //call each time the player is presented with new options / text
     void ShowDialogue(Dialogue _dialogue)
     {
-      
-        npcText.text = _dialogue.DialogueText;
-        playerText0.text = "";
-        playerText1.text = "";
-        playerText2.text = "";
-        playerText3.text = "";
-        Debug.Log(_dialogue.DialogueText);
+
+        textArray[1].text = _dialogue.DialogueText;
+
+        for(int i = 2; i < 6; i++)
+        {
+            textArray[i].text = "";
+        }
+        
 
         if(activeDialogue.interactAudio != "")
         {
             AudioManager.instance.PlaySound(activeDialogue.interactAudio);
         }
 
-        if (_dialogue.Replies.Length > 0)
+        for(int i = 0; i< _dialogue.Replies.Length; i++)
         {
-            playerText0.text = "1:" + _dialogue.Replies[0].ReplyText;
+            textArray[i+2].text = (i+1) + ": " + _dialogue.Replies[i].ReplyText;
         }
-        if (_dialogue.Replies.Length > 1)
-        {
-            playerText1.text = "2:" + _dialogue.Replies[1].ReplyText;
-        }
-        if (_dialogue.Replies.Length > 2)
-        {
-            playerText2.text = "3:" + _dialogue.Replies[2].ReplyText;
-        }
-        if (_dialogue.Replies.Length > 3)
-        {
-            playerText3.text = "4:" + _dialogue.Replies[3].ReplyText;
-        }
+        
 
         if (_dialogue.Replies.Length == 0)
         {
@@ -179,10 +183,10 @@ public class PlayerManager : MonoBehaviour {
     {
         if (interactions.Count > 0)
         {
-            playerInteract.text = "Press E";
+            
+            textArray[0].text = "Press E";
             Interaction interact = interactions[interactions.Count - 1];
-            Debug.Log("Press E to " + interact.text);//TEMP
-            switch (interact.type)
+            /*switch (interact.type)
             {
                 case InteractionType.Dialogue:
                     //TODO: show prompt / activate Dialogue
@@ -190,10 +194,25 @@ public class PlayerManager : MonoBehaviour {
                 case InteractionType.Generic:
                     //TODO: show prompt / ect
                     break;
+            }*/
+            bool hasLeft = true;
+            foreach (Interaction checkInteraction in interactions)
+            {
+                if (checkInteraction.Equals(lastDialogueInteract))
+                {
+                    hasLeft = false;
+                }
+            }
+            if (hasLeft)
+            {
+                textArray[1].text = "";
             }
         }
-        else playerInteract.text = "";
-
+        else
+        {
+            textArray[0].text = "";
+            if(!inDialogue) textArray[1].text = "";
+        }
     }
 
 
