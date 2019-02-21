@@ -15,27 +15,15 @@ public enum EEnemies
     Pig
 }
 
-public class EventManager : MonoBehaviour
+public class EventManager : LTI.Singleton<EventManager>
 {
-
-    public static EventManager instance;
-
-    private QuestManager m_questManager = QuestManager.instance;
+    private QuestManager m_questManager = QuestManager.Instance;
 
     private ELocations m_lastLocation;
 
-    void Awake()
+    private void Start()
     {
-        if (instance != null)
-        {
-            Debug.Log("There were two " + gameObject.name + "s present.");
-            Destroy(gameObject);
-        }
-        else
-        {
-            instance = this;
-            DontDestroyOnLoad(this);
-        }
+        instance = this;
     }
 
     public ELocations GetLastLocation()
