@@ -1,16 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
-
-public enum EnemyState //Think of mentality of the enemies, this state will change on different values changing i.e low health = fleeing.  Will add to this when i can
-{
-	eAttcking,
-	eDefending, //Will code in when defending is working, Ditto for the other three
-	eHealing,
-	eFleeing,
-	eIdle
-}
 
 public class EnemEntity : Entity
 {
@@ -19,11 +9,6 @@ public class EnemEntity : Entity
 	public int intel; //likelihood to attack pm with high value (Between 1-20)
 	public int XP; //amount of xp they give
 	private int m_Target; //used to determine where the skills will hit(Prone to change later on)
-	EnemyState CurrentState;
-	/* //currently underdevelopment
-    public string elemWeak;
-    public string elemResi;
-    */
 
 	void SetEnemyStats(int hth, int man, int str, int def, int spd, int lvl, int agr, int itl, int xp)
 	{
@@ -39,9 +24,13 @@ public class EnemEntity : Entity
 	}
 	public EnemEntity Tiger;
 
+    private BattleControl BC;
+    public HandleTurns HT;
+
+
     // Use this for initialization
     void Start()
-	{
+    {
         if (Class == "Goblin")
         {
             SetEnemyStats(150, 50, 40, 20, 50, 3, 20, 4, 50);
@@ -63,104 +52,95 @@ public class EnemEntity : Entity
         ResetHealth();
 		ResetMana();
         Debug.Log("Enemy Values Set");
+        currentState = TurnState.eProssesing; //Set the statemachine to the beggining state
+        BC = GameObject.Find("BattleControl").GetComponent<BattleControl>(); //makes BattleControl shortform to BC
+        startPosition = transform.position; //setting the position based on where the object is on start up
     }
 
-    void decideState()
-    {
-        if (GetHealth() < GetHealth() / 2) //would have a && healskill not on cool down later for eHeal
-        {
-            CurrentState = EnemyState.eDefending;
-            Debug.Log("Enemy Defending");
-        }
-        else if (GetHealth() < GetHealth() / 4)
-        {
-            CurrentState = EnemyState.eFleeing;
-            Debug.Log("The enemy is fleeing");
-        }
-        else
-        {
-            CurrentState = EnemyState.eAttcking;
-            Debug.Log("The enemy is going to attack" + m_Target);
-        }
-    }
-
-    //for each valid update, determine the state in the specific ai, pass the state to this script for the results to be used here. This will contain almost all the states for any enemy
+    // Update is called once per frame
     void Update()
-	{
-		if (SpeedTimer.m_speedCounter % m_requiredSpeedForTurn == 0 && SpeedTimer.isPaused == false || SpeedTimer.m_speedCounter % m_requiredSpeedForTurn == 0.5 && m_attackedAlready == false && SpeedTimer.m_speedCounter > 1.0f)
-		{
-            Debug.Log("Enemy Turn");
-            decideState();
+    {
+        //Debug.Log(currentState);
+        switch (currentState)
+        {
+            case (TurnState.eProssesing):
+                UpdateSpeed(); //Speed check
+                break;
+            case (TurnState.eChooseAction):
+                ChooseAction(); //Do action
+                currentState = TurnState.eWaiting; //move to waiting unil BC tells the entity to do the action
+                break;
+            case (TurnState.eWaiting):
 
-			if (m_attackedAlready == false) //Stuff to be rearranged later for balanced
-			{
-
-				if (CurrentState == EnemyState.eFleeing)
-				{
-					battleWon = true;
-				}
-
-				if (CurrentState == EnemyState.eAttcking)
-				{
-                    decideTarget();
-                    randomBasicAttack();
-				}
-
-				if (CurrentState == EnemyState.eDefending)
-				{
-					//Defend
-				}
-
-				if (CurrentState == EnemyState.eHealing)
-				{
-					//Heal code/skill
-				}
-			}
-		}
-		if (BattleControl.side == "Player")
-		{
-			CheckForDamage("Enemy");
-		}
-		//will eventually replace this update with something similar, or just make it check for very global things, eg death
-		/*
-		Attack();
-        Damage();
-		*/
-		Death();
-		SpeedTimer.isPaused = false;
-	}
-	void decideTarget()
-	{
-		if (CurrentState == EnemyState.eAttcking)
-		{
-			m_Target = UnityEngine.Random.Range(1, 4); //determines target for enemy attack
-            BattleControl.currentTarget = m_Target;
-            Debug.Log("Enemy is going to attack player " + m_Target);
-		}
-
-		if (CurrentState == EnemyState.eHealing)
-		{
-			m_Target = UnityEngine.Random.Range(5, 8); //Random healing for now until healing is actually in game
-            BattleControl.currentTarget = m_Target;
-            Debug.Log("Enemy is going to heal enemy " + m_Target);
+                break;
+            case (TurnState.eAction):
+                StartCoroutine(TimeForAction()); //do the action stored before
+                break;
+            case (TurnState.eDead):
+                Destroy(gameObject);
+                break;
+        }
+        if (GetHealth() < 0)
+        {
+          currentState = TurnState.eDead;
         }
     }
 
-	void SetAttack()
-	{
-		m_attackedAlready = false;
-	}
+    void UpdateSpeed()
+    {
+        if (SpeedTimer.m_speedCounter % m_requiredSpeedForTurn == 0 && SpeedTimer.isPaused == false)
+        {
+            SpeedTimer.isPaused = true;
+            currentState = TurnState.eChooseAction;
+        }
+    }
 
-	IEnumerator returnEnemy()
-	{
-		EnemyAttack();
-		Debug.Log("Enemy attacking");
+    void ChooseAction()
+    {
+        HandleTurns myAttack = new HandleTurns
+        {
+            Attacker = this.name, //Who is attacking
+            Type = "Enemy",//What type are they
+            AttackingGameObject = this.gameObject, //What gameObject is attacking
+            AttackTarget = BC.PartyMembersInBattle[Random.Range(0, BC.PartyMembersInBattle.Count)] //Random a target that is in the List stored in BattleControl
+        };
+        BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
+    }
+
+    private IEnumerator TimeForAction()
+    {
+        if (actionHappening) //stops spamming 
+        {
+            yield break;
+        }
+
+        actionHappening = true;
+
+        Vector3 PartyMemberPosition = new Vector3(EntityToAttack.transform.position.x - 1.5f, EntityToAttack.transform.position.y, EntityToAttack.transform.position.z);
+
+        while (MoveTo(PartyMemberPosition))
+        {
+            yield return null; //wait until moveToward is true
+        }
+
         yield return new WaitForSeconds(1.5f);
-        transform.position = new Vector2(this.transform.position.x - 1, this.transform.position.y);
+        //do damage
+
+        while (MoveTo(startPosition))
+        {
+            yield return null; //wait until moveToward is true
+        }
+
+        //remove from list
+        BC.NextTurn.RemoveAt(0);
+
+        //reset the statemachine
+        BC.battleState = BattleControl.performAction.eWait;
+
+        actionHappening = false;
+        currentState = TurnState.eProssesing;
         SpeedTimer.isPaused = false;
-		Invoke("SetAttack", 1.0f);
-        Debug.Log("Enemy done attacking");
-	}
+    }
 
 	void EnemyAttack()
 	{
@@ -168,32 +148,4 @@ public class EnemEntity : Entity
 		BattleControl.side = "Enemy";
 		BattleControl.willDamage = "y";
 	}
-	//will eventually replace this to utilise inheritance, eg Enemy_AI -> EnemChara -> CharaClass
-	void randomBasicAttack()
-	{
-        Debug.Log("Basic Attack");
-		m_attackedAlready = true;
-		BattleControl.currentDamage = GetStrength();
-		BattleControl.currentTarget = m_Target;
-		BattleControl.side = "Enemy";
-        transform.position = new Vector2(this.transform.position.x + 1, this.transform.position.y);
-        Debug.Log("Enemy has attacked player " + m_Target);
-        StartCoroutine(returnEnemy());
-	}
-
-	void randomHeal() //when healing implemented, chances are it will just send a negative value through the system as that will give health
-	{
-		m_attackedAlready = true;
-		BattleControl.currentHealValue -= GetStrength(); //will be replaced with the magic formula
-		BattleControl.currentTarget = m_Target;
-		transform.position = new Vector2(this.transform.position.x + 1, this.transform.position.y);
-		StartCoroutine(returnEnemy());
-	}
-
-    public void StateTransition(EnemyState currentState)
-    {
-        CurrentState = currentState;
-    }
 }
-
-

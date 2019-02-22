@@ -17,13 +17,16 @@ public class SpeedTimer : MonoBehaviour {
         
     }
 
-	void FixedUpdate()
-	{
-		if (isPaused == false)
-		{
-			m_speedCounter += 0.5f;
-			
-		}
-		Debug.Log("Timer Paused");
+    void FixedUpdate()
+    {
+        if (isPaused == false)
+        {
+            m_speedCounter += 0.5f;
+
+        }
+        else
+        {
+            Debug.Log("Timer Paused");
+        }
 	}
 }

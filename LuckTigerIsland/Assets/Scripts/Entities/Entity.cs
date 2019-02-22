@@ -39,19 +39,21 @@ public class Entity : MonoBehaviour {
     [SerializeField]
 	protected bool m_attackedAlready = false;
 	[SerializeField]
-	protected int m_entityNumber;
+	protected int m_entityNumber; // 1-4 for players party, 5-8 for the enemies
 	[SerializeField]
-	protected float m_baseRequiredSpeedForTurn = 100;
+	protected static float m_baseRequiredSpeedForTurn = 100;
 	[SerializeField]
 	protected float m_requiredSpeedForTurn;
 	[SerializeField]
 	protected bool myTurn = false;
 	[SerializeField]
 	public bool battleWon = false;
+    private float walkSpeed = 5f;
 
-	//used for damage calculations
-	//-------------------------------------------
-	public int tempDMGReduct = 0; //the amount of damage reduced to the intial damage
+
+    //used for damage calculations
+    //-------------------------------------------
+    public int tempDMGReduct = 0; //the amount of damage reduced to the intial damage
 	public int totalDMG = 0; //total amount of damage that goes through.
 	public int chanceToHit;
 
@@ -63,8 +65,22 @@ public class Entity : MonoBehaviour {
 	public bool dmgRecieve = false;
 	public bool dmgDealt = false;
 
-	// Use this for initialization
-	void Start() {
+    public enum TurnState
+    {
+        eProssesing,
+        eChooseAction,
+        eWaiting,
+        eAction,
+        eDead
+    }
+    public TurnState currentState;
+    protected Vector3 startPosition; //used for animation, move to player when attacking and then back
+
+    protected bool actionHappening = false; //Think attackAlready, stops the entities spamming
+    public GameObject EntityToAttack; //What the entity wants to attack
+
+    // Use this for initialization
+    void Start() {
        
 	}
 
@@ -100,9 +116,14 @@ public class Entity : MonoBehaviour {
 		m_health -= damageTaken;
 	}
 
-	//-----------------------------------------------------------------------------------------------------
-	//Setters and Getters
-	public void Sethealth(int _health) //The argument should be _health. The body should then be m_health = _health.
+    protected bool MoveTo(Vector3 target)
+    {
+        return target != (transform.position = Vector3.MoveTowards(transform.position, target, walkSpeed * Time.deltaTime));
+    }
+
+    //-----------------------------------------------------------------------------------------------------
+    //Setters and Getters
+    public void Sethealth(int _health) //The argument should be _health. The body should then be m_health = _health.
 	{
 		m_health = _health;
 	}
