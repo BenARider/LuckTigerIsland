@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 public class GraphicsSettings : MonoBehaviour
 {
-    private Resolution[] m_resolutions;
-    public Dropdown resolutionDropdown;
+   private Resolution[] m_resolutions;
+  // public TMPro.TMP_Dropdown resolutionDropdown;
     // Use this for initialization
     void Start()
     {
+        /*
         resolutionDropdown.ClearOptions();
         m_resolutions = Screen.resolutions;
         int m_currentResolutionIndex = 0;
@@ -17,7 +19,7 @@ public class GraphicsSettings : MonoBehaviour
       
         for (int i = 0; i < m_resolutions.Length; i++)
         {
-            if(m_resolutions[i].refreshRate == 60 && m_resolutions[i].width >= 1280 && m_resolutions[i].height >= 720)
+            if(m_resolutions[i].refreshRate == 60 )
             {
                 string m_option = m_resolutions[i].width + " x " + m_resolutions[i].height;
                 m_options.Add(m_option);
@@ -31,6 +33,8 @@ public class GraphicsSettings : MonoBehaviour
         resolutionDropdown.AddOptions(m_options);
         resolutionDropdown.value = m_currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
+        */
+        
     }
     public void SetResolution(int resolutionIndex)
     {

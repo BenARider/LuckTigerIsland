@@ -268,6 +268,7 @@ public class AudioManager : LTI.Singleton<AudioManager>{
             if (m_sounds[i].name == _name)
             {
                 m_sounds[i].ChangeVolume(Mathf.Clamp(_volume, 0f, 1f));
+
                 return;
             }
         }

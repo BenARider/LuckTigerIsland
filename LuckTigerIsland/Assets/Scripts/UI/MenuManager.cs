@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 public class MenuManager : MonoBehaviour
 {
+    public GameObject startButton;
+    EventSystem m_eventSystem;
     // Use this for initialization
     void Start()
     {
-
+        m_eventSystem = EventSystem.current;
+        //m_eventSystem.SetSelectedGameObject(startButton);
     }
 
     // Update is called once per frame
