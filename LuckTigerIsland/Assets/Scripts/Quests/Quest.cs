@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class Quest : MonoBehaviour
 {
-    Quest(string _title, string _description, int _exp, int _gold)
+    /*public Quest(string _title, string _description, int _exp, int _gold)
     {
         m_title = _title;
         m_description = _description;
         m_expReward = _exp;
         m_goldReward = _gold;
-    }
+    }*/
     
     [SerializeField]
     private string m_title;
@@ -20,6 +21,7 @@ public class Quest : MonoBehaviour
     private int m_expReward;
     [SerializeField]
     private int m_goldReward;
+
 
     //Objectives List
 
@@ -143,7 +145,6 @@ public class Quest : MonoBehaviour
     {
         m_goldReward = _gold;
     }
-
 }
 
 
