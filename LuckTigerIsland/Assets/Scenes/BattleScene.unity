@@ -733,8 +733,6 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_enemy: 0
-  m_amount: 1
 --- !u!1001 &1538191213
 Prefab:
   m_ObjectHideFlags: 0
@@ -1632,6 +1630,10 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
       objectReference: {fileID: 1693660477}
+    - target: {fileID: 1385643461962290, guid: 7062ad1bfdc3dae4aa06e7dd14df9d72, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7062ad1bfdc3dae4aa06e7dd14df9d72, type: 2}
   m_IsPrefabParent: 0
