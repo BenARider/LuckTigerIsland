@@ -21,7 +21,7 @@ public class SpeedTimer : MonoBehaviour {
     {
         if (isPaused == false)
         {
-            m_speedCounter += 0.5f;
+            m_speedCounter += 0.25f;
 
         }
         else
