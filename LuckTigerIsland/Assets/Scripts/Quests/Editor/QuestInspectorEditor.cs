@@ -95,6 +95,7 @@ public class LevelScriptEditor : Editor
         if (killObjectives.arraySize != 0)
         {
             GUILayout.Label("Kill Objectives", EditorStyles.boldLabel);
+            //Display all kill objective objects
             for (int i = 0; i < killObjectives.arraySize; i++)
             {
                 SerializedProperty killObjectivesRef = killObjectives.GetArrayElementAtIndex(i);
@@ -103,7 +104,8 @@ public class LevelScriptEditor : Editor
 
                 EditorGUILayout.PropertyField(enemy);
                 EditorGUILayout.PropertyField(amount);
-      
+
+                //Remove objecttive button
                 if (GUILayout.Button("Remove Objective", GUILayout.MaxWidth(150), GUILayout.MaxHeight(15)))
                 {
                     killObjectives.DeleteArrayElementAtIndex(i);
@@ -117,6 +119,7 @@ public class LevelScriptEditor : Editor
         if (locationObjectives.arraySize != 0)
         {
             GUILayout.Label("Location Objectives", EditorStyles.boldLabel);
+            //Display all location objective objects
             for (int i = 0; i < locationObjectives.arraySize; i++)
             {
                 SerializedProperty locationObjectivesRef = locationObjectives.GetArrayElementAtIndex(i);
@@ -124,6 +127,7 @@ public class LevelScriptEditor : Editor
 
                 EditorGUILayout.PropertyField(location);
 
+                //Remove objecttive button
                 if (GUILayout.Button("Remove Objective", GUILayout.MaxWidth(150), GUILayout.MaxHeight(15)))
                 {
                     locationObjectives.DeleteArrayElementAtIndex(i);

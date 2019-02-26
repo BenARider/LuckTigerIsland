@@ -40,13 +40,11 @@ public class QuestManagerInspector : Editor
         EditorGUILayout.PropertyField(exp);
         EditorGUILayout.PropertyField(gold);
 
-        
-
+        //Create a quest button.
         if (GUILayout.Button("Create Quest"))
         {
             myScript.CreateQuest();          
         }
-        EditorStyles.label.wordWrap = true;
         GUILayout.Label("To Add Quest Objectives, click on the");
         GUILayout.Label("individual quest game objects and");
         GUILayout.Label("add them through the inspector.");
@@ -56,7 +54,7 @@ public class QuestManagerInspector : Editor
         GUILayout.BeginHorizontal();
         index = EditorGUILayout.IntField("Deletion Index", index);
 
-        if (GUILayout.Button("Delete Quest", GUILayout.MaxWidth(150), GUILayout.MaxHeight(15)))
+        if (GUILayout.Button("Delete Quest", GUILayout.MaxWidth(150), GUILayout.MaxHeight(20)))
         {
             myScript.DeleteQuest(index);
         }

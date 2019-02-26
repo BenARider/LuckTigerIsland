@@ -58,6 +58,8 @@ public class KillObjective : QuestObjective
     [SerializeField]
     private int m_amount;
 
+    private int m_amountRemaining;
+
     void Awake()
     {
         m_objectiveType = EObjectiveType.KillObjective;
@@ -85,5 +87,14 @@ public class KillObjective : QuestObjective
     public void SetAmount(int _amount)
     {
         m_amount = _amount;
+    }
+
+    public int GetAmountRemaining()
+    {
+        return m_amountRemaining;
+    }
+    public void ReduceAmountRemaining(int _val = 1)
+    {
+        m_amountRemaining -= _val;
     }
 }

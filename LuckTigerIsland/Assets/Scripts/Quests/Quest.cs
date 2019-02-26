@@ -23,8 +23,7 @@ public class Quest : MonoBehaviour
     private int m_goldReward;
 
 
-    //Objectives List
-
+    //Objectives Lists. Make a new list when a new type of objective is created.
     public List<QuestObjective> m_allObjectives;
     [SerializeField]    
     public List<KillObjective> m_killObjectives;

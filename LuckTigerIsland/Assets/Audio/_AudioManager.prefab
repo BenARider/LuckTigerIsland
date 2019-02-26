@@ -51,54 +51,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75b94020107e8284bb885f7ff3d0241a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPlaylist: 0
+  currentPlaylist: 1
   m_sounds:
-  - name: pigtalk
-    audioClip: {fileID: 8300000, guid: 432339367ed692c45ac24dff51b3bdd7, type: 3}
-    audioMixer: {fileID: 243090632009576548, guid: 24978eb7020a14d48902d2e5174d495d,
+  - m_name: pigtalk
+    m_audioClip: {fileID: 8300000, guid: 432339367ed692c45ac24dff51b3bdd7, type: 3}
+    m_audioMixer: {fileID: 243090632009576548, guid: 24978eb7020a14d48902d2e5174d495d,
       type: 2}
-    volume: 1
-    pitch: 0
-    loop: 0
-    mute: 0
+    m_volume: 1
+    m_pitch: 1
+    m_loop: 0
+    m_mute: 0
   m_playlists:
-  - playlistName: Playlist 1
+  - m_playlistName: Playlist 1
     m_music:
-    - name: Test1
-      audioClip: {fileID: 8300000, guid: a236680e624f14046b1d372263fbb5b3, type: 3}
-      audioMixer: {fileID: 243770745202374444, guid: 24978eb7020a14d48902d2e5174d495d,
+    - m_name: Test 1
+      m_audioClip: {fileID: 8300000, guid: a236680e624f14046b1d372263fbb5b3, type: 3}
+      m_audioMixer: {fileID: 243770745202374444, guid: 24978eb7020a14d48902d2e5174d495d,
         type: 2}
-      volume: 0
-      pitch: 0
-      loop: 0
-      mute: 0
-      trackLength: 0
-    - name: Test2
-      audioClip: {fileID: 8300000, guid: 7832764cc0abfec4984566f8118ee6fd, type: 3}
-      audioMixer: {fileID: 243770745202374444, guid: 24978eb7020a14d48902d2e5174d495d,
+      m_volume: 1
+      m_pitch: 1
+      m_loop: 0
+      m_mute: 0
+    - m_name: Test 2
+      m_audioClip: {fileID: 8300000, guid: 7832764cc0abfec4984566f8118ee6fd, type: 3}
+      m_audioMixer: {fileID: 243770745202374444, guid: 24978eb7020a14d48902d2e5174d495d,
         type: 2}
-      volume: 0
-      pitch: 0
-      loop: 0
-      mute: 0
-      trackLength: 0
-  - playlistName: Playlist 2
+      m_volume: 1
+      m_pitch: 1
+      m_loop: 0
+      m_mute: 0
+  - m_playlistName: Playlist 2
     m_music:
-    - name: Test1
-      audioClip: {fileID: 8300000, guid: 7832764cc0abfec4984566f8118ee6fd, type: 3}
-      audioMixer: {fileID: 243770745202374444, guid: 24978eb7020a14d48902d2e5174d495d,
+    - m_name: Test 2
+      m_audioClip: {fileID: 8300000, guid: 7832764cc0abfec4984566f8118ee6fd, type: 3}
+      m_audioMixer: {fileID: 243770745202374444, guid: 24978eb7020a14d48902d2e5174d495d,
         type: 2}
-      volume: 0
-      pitch: 0
-      loop: 0
-      mute: 0
-      trackLength: 0
-    - name: Test2
-      audioClip: {fileID: 8300000, guid: a236680e624f14046b1d372263fbb5b3, type: 3}
-      audioMixer: {fileID: 243770745202374444, guid: 24978eb7020a14d48902d2e5174d495d,
+      m_volume: 1
+      m_pitch: 1
+      m_loop: 0
+      m_mute: 0
+    - m_name: Test 3
+      m_audioClip: {fileID: 8300000, guid: a236680e624f14046b1d372263fbb5b3, type: 3}
+      m_audioMixer: {fileID: 243770745202374444, guid: 24978eb7020a14d48902d2e5174d495d,
         type: 2}
-      volume: 0
-      pitch: 0
-      loop: 0
-      mute: 0
-      trackLength: 0
+      m_volume: 1
+      m_pitch: 1
+      m_loop: 0
+      m_mute: 0

@@ -6,16 +6,29 @@ using UnityEngine;
 public enum ELocations
 {
     nullLocation,
-    Location1,
-    Location2,
-    Location3,
+    Castleton,
+    Elftown,
+    City,
+    Oceanview,
+    Cliffside,
+    SpiritCave,
+    MtLarge,
+
 }
 
 //Enemies
 public enum EEnemies
 {
     nullEnemy,
-    Pig
+    Pig, //861 final boss pig
+    Goblin,
+    Bandit,
+    Tiger,
+    Skeleton,
+    Knight,
+    Lizardman,
+    SkeletonBoss, //SpriteSheet 734/735. TinytinyHeroes armies
+    MinotaurSkeleton  //838
 }
 
 public class EventManager : LTI.Singleton<EventManager>
@@ -23,6 +36,7 @@ public class EventManager : LTI.Singleton<EventManager>
     private QuestManager m_questManager;
 
     private ELocations m_lastLocation;
+    private List<EEnemies> m_lastBattle;
 
     private void Start()
     {
@@ -33,6 +47,11 @@ public class EventManager : LTI.Singleton<EventManager>
     public ELocations GetLastLocation()
     {
         return m_lastLocation;
+    }
+
+    public List<EEnemies> GetLastBattle()
+    {
+        return new List<EEnemies>(m_lastBattle);
     }
 
     //Set the last location and check all location quests.
@@ -53,6 +72,37 @@ public class EventManager : LTI.Singleton<EventManager>
                     {
                         _lo.SetIsComplete(true);
                         CheckCompletion(_q);
+                    }
+                }
+            }
+        }
+    }
+
+    //Set the last location and check all location quests.
+    public void SetBattleLocation(List<EEnemies> _enemies)
+    {
+        m_lastBattle = _enemies;
+        //In all active quests
+        foreach (Quest _q in m_questManager.GetQuests())
+        {
+            //If the kill objective isnt empty.
+            if (_q.m_killObjectives.Capacity != 0)
+            {
+                //For every kill objective
+                foreach (KillObjective _ko in _q.m_killObjectives)
+                {
+                    foreach (EEnemies _e in m_lastBattle)
+                    {
+                        //Check if the enemies killed are part of an objective
+                        if (_ko.GetEnemy() == _e)
+                        {
+                            _ko.ReduceAmountRemaining();
+                            if (_ko.GetAmountRemaining() <= 0)
+                            {
+                                _ko.SetIsComplete(true);
+                                CheckCompletion(_q);
+                            }
+                        }
                     }
                 }
             }
