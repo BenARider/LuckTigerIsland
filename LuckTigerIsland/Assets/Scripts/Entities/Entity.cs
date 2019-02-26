@@ -48,7 +48,9 @@ public class Entity : MonoBehaviour {
 	protected bool myTurn = false;
 	[SerializeField]
 	public bool battleWon = false;
-    private float walkSpeed = 5f;
+
+
+    protected float walkSpeed = 5f;
 
 
     //used for damage calculations

@@ -9,8 +9,11 @@ public class EnemEntity : Entity
 	public int intel; //likelihood to attack pm with high value (Between 1-20)
 	public int XP; //amount of xp they give
 	private int m_Target; //used to determine where the skills will hit(Prone to change later on)
+    [SerializeField]
+    protected float currentSpeed = 0f;
 
-	void SetEnemyStats(int hth, int man, int str, int def, int spd, int lvl, int agr, int itl, int xp)
+
+    void SetEnemyStats(int hth, int man, int str, int def, int spd, int lvl, int agr, int itl, int xp)
 	{
 		m_maxHealth = hth;
 		m_maxMana = man;
@@ -88,10 +91,20 @@ public class EnemEntity : Entity
 
     void UpdateSpeed()
     {
-        if (SpeedTimer.m_speedCounter % m_requiredSpeedForTurn == 0 && SpeedTimer.isPaused == false)
+        //if (SpeedTimer.m_speedCounter % m_requiredSpeedForTurn == 0 && SpeedTimer.isPaused == false)
+        //{
+        //    SpeedTimer.isPaused = true;
+        //    currentState = TurnState.eChooseAction;
+        //}
+
+        if (BattleControl.turnBeingHad == false)
         {
-            SpeedTimer.isPaused = true;
-            currentState = TurnState.eChooseAction;
+            currentSpeed = currentSpeed + 0.5f;
+            if (currentSpeed >= GetRequiredSpeed())
+            {
+                currentState = TurnState.eChooseAction;
+                BattleControl.turnBeingHad = true;
+            }
         }
     }
 
@@ -138,8 +151,9 @@ public class EnemEntity : Entity
         BC.battleState = BattleControl.performAction.eWait;
 
         actionHappening = false;
+        currentSpeed = 0f;
         currentState = TurnState.eProssesing;
-        SpeedTimer.isPaused = false;
+        BattleControl.turnBeingHad = false;
     }
 
 	void EnemyAttack()

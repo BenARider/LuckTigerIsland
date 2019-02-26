@@ -12,6 +12,8 @@ public class PlayerEntity : Entity {
     public GameObject playerStatMenu;
     [SerializeField]
     private bool m_findTextGameObjects;
+    [SerializeField]
+    protected float currentSpeed = 0f;
 
     [SerializeField]
     PlayerEntity warrior;
@@ -108,10 +110,19 @@ public class PlayerEntity : Entity {
 
     void UpdateSpeed()
     {
-        if (SpeedTimer.m_speedCounter % m_requiredSpeedForTurn == 0 && SpeedTimer.isPaused == false)
+        //if (SpeedTimer.m_speedCounter % m_requiredSpeedForTurn == 0 && SpeedTimer.isPaused == false)
+        //{
+        //    SpeedTimer.isPaused = true;
+        //    currentState = TurnState.eChooseAction;
+        //}
+        if (BattleControl.turnBeingHad == false)
         {
-            SpeedTimer.isPaused = true;
-            currentState = TurnState.eChooseAction;
+            currentSpeed = currentSpeed + 0.5f;
+            if (currentSpeed >= GetRequiredSpeed())
+            {
+                currentState = TurnState.eChooseAction;
+                BattleControl.turnBeingHad = true;
+            }
         }
     }
 
@@ -201,8 +212,9 @@ public class PlayerEntity : Entity {
 
         actionHappening = false;
         m_chosenAction = false; //Reset battle conditions
+        currentSpeed = 0f;
         currentState = TurnState.eProssesing;
-        SpeedTimer.isPaused = false;
+        BattleControl.turnBeingHad = false;
     }
 
     //Used to control the party stat menu by setting and finding all the text values/objects
