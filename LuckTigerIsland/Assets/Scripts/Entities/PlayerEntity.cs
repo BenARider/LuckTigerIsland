@@ -110,11 +110,6 @@ public class PlayerEntity : Entity {
 
     void UpdateSpeed()
     {
-        //if (SpeedTimer.m_speedCounter % m_requiredSpeedForTurn == 0 && SpeedTimer.isPaused == false)
-        //{
-        //    SpeedTimer.isPaused = true;
-        //    currentState = TurnState.eChooseAction;
-        //}
         if (BattleControl.turnBeingHad == false)
         {
             currentSpeed = currentSpeed + 0.5f;
@@ -129,7 +124,7 @@ public class PlayerEntity : Entity {
     void ChooseAction()
     {
         Debug.Log("Player Choose Action");
-            if (Input.GetKeyDown("1") && !m_attackedAlready)
+            if (Input.GetKeyDown("1"))
             {
                 HandleTurns myAttack = new HandleTurns
                 {
@@ -141,7 +136,7 @@ public class PlayerEntity : Entity {
                 BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
                 m_chosenAction = true;
             }
-            if (Input.GetKeyDown("2") && !m_attackedAlready)
+            if (Input.GetKeyDown("2"))
             {
                 HandleTurns myAttack = new HandleTurns
                 {
@@ -154,7 +149,7 @@ public class PlayerEntity : Entity {
                 m_chosenAction = true;
 
             }
-            if (Input.GetKeyDown("3") && !m_attackedAlready)
+            if (Input.GetKeyDown("3"))
             {
                 HandleTurns myAttack = new HandleTurns
                 {
@@ -166,7 +161,7 @@ public class PlayerEntity : Entity {
                 BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
                 m_chosenAction = true;
             }
-            if (Input.GetKeyDown("4") && !m_attackedAlready)
+            if (Input.GetKeyDown("4"))
             {
                 HandleTurns myAttack = new HandleTurns
                 {

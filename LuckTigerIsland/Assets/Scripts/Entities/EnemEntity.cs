@@ -91,12 +91,6 @@ public class EnemEntity : Entity
 
     void UpdateSpeed()
     {
-        //if (SpeedTimer.m_speedCounter % m_requiredSpeedForTurn == 0 && SpeedTimer.isPaused == false)
-        //{
-        //    SpeedTimer.isPaused = true;
-        //    currentState = TurnState.eChooseAction;
-        //}
-
         if (BattleControl.turnBeingHad == false)
         {
             currentSpeed = currentSpeed + 0.5f;
@@ -106,16 +100,6 @@ public class EnemEntity : Entity
                 BattleControl.turnBeingHad = true;
             }
         }
-		/// Players can only attack, usually getting the attacks of the players/enemies beforehand. Player 1 will attack 3 times in a row, player 2 will attack twice
-		//float current_speed = 0;
-		//float max_speed = 3f;
-		//float current_time = current_speed + Time.deltaTime;
-		//if(current_time >= max_speed)
-		//{
-		//	SpeedTimer.isPaused = true;
-		//	currentState = TurnState.eChooseAction;
-		//}
-
 	}
 
     void ChooseAction()
