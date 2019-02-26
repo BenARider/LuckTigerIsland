@@ -8,7 +8,6 @@ public class EnemEntity : Entity
 	public int aggress; //likelihood to attack oppossing attacker (Between 1-20)
 	public int intel; //likelihood to attack pm with high value (Between 1-20)
 	public int XP; //amount of xp they give
-	private int m_Target; //used to determine where the skills will hit(Prone to change later on)
     [SerializeField]
     protected float currentSpeed = 0f;
 
@@ -104,13 +103,19 @@ public class EnemEntity : Entity
 
     void ChooseAction()
     {
+        int num = Random.Range(0, attacks.Count);
+
         HandleTurns myAttack = new HandleTurns
         {
             Attacker = this.name, //Who is attacking
             Type = "Enemy",//What type are they
             AttackingGameObject = this.gameObject, //What gameObject is attacking
-            AttackTarget = BC.PartyMembersInBattle[Random.Range(0, BC.PartyMembersInBattle.Count)] //Random a target that is in the List stored in BattleControl
+            AttackTarget = BC.PartyMembersInBattle[Random.Range(0, BC.PartyMembersInBattle.Count)], //Random a target that is in the List stored in BattleControl
+            chosenAttack = attacks[num]
         };
+
+        Debug.Log(this.gameObject.name + " Is going to attack " + myAttack.AttackTarget + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!");
+
         BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
     }
 
@@ -132,6 +137,7 @@ public class EnemEntity : Entity
 
         yield return new WaitForSeconds(1.5f);
         //do damage
+        enemyDoDamge();
 
         while (MoveTo(startPosition))
         {
@@ -156,4 +162,10 @@ public class EnemEntity : Entity
 		BattleControl.side = "Enemy";
 		BattleControl.willDamage = "y";
 	}
+
+    void enemyDoDamge()
+    {
+        int calculateDamage = GetStrength() + BC.NextTurn[0].chosenAttack.attackDamage;
+        EntityToAttack.GetComponent<PlayerEntity>().TakeDamage(calculateDamage);
+    }
 }

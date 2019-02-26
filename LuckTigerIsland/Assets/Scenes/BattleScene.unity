@@ -264,6 +264,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1687072446}
     m_Modifications:
+    - target: {fileID: 114668607110450952, guid: c414eb60b4bee6e4f8668fca40ae4fd8,
+        type: 2}
+      propertyPath: attacks.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4284421635817616, guid: c414eb60b4bee6e4f8668fca40ae4fd8, type: 2}
       propertyPath: m_LocalPosition.x
       value: -0.6053586
@@ -306,6 +311,33 @@ Prefab:
       propertyPath: m_entityNumber
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114668607110450952, guid: c414eb60b4bee6e4f8668fca40ae4fd8,
+        type: 2}
+      propertyPath: attacks.Array.data[0]
+      value: 
+      objectReference: {fileID: 114328163369887566, guid: 7dd85f30f8c38184c84c1f3ce48962f3,
+        type: 2}
+    - target: {fileID: 114668607110450952, guid: c414eb60b4bee6e4f8668fca40ae4fd8,
+        type: 2}
+      propertyPath: attacks.Array.data[1]
+      value: 
+      objectReference: {fileID: 114173733752592498, guid: dcc51cbdc6ca67c45ba4dec55a177d8a,
+        type: 2}
+    - target: {fileID: 114668607110450952, guid: c414eb60b4bee6e4f8668fca40ae4fd8,
+        type: 2}
+      propertyPath: attacks.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114668607110450952, guid: c414eb60b4bee6e4f8668fca40ae4fd8,
+        type: 2}
+      propertyPath: attacks.Array.data[3]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114668607110450952, guid: c414eb60b4bee6e4f8668fca40ae4fd8,
+        type: 2}
+      propertyPath: attacks.Array.data[4]
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c414eb60b4bee6e4f8668fca40ae4fd8, type: 2}
   m_IsPrefabParent: 0
@@ -325,6 +357,88 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 628204625}
   m_Script: {fileID: 11500000, guid: f1ad11708009c30468e53804204b777a, type: 3}
+--- !u!1001 &1025847721
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1965249834}
+    m_Modifications:
+    - target: {fileID: 114262780470167090, guid: 617b4a62bba3c3f4bb30b754602dd991,
+        type: 2}
+      propertyPath: attacks.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4028990714863560, guid: 617b4a62bba3c3f4bb30b754602dd991, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 3.3946414
+      objectReference: {fileID: 0}
+    - target: {fileID: 4028990714863560, guid: 617b4a62bba3c3f4bb30b754602dd991, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -1.810315
+      objectReference: {fileID: 0}
+    - target: {fileID: 4028990714863560, guid: 617b4a62bba3c3f4bb30b754602dd991, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.2166799
+      objectReference: {fileID: 0}
+    - target: {fileID: 4028990714863560, guid: 617b4a62bba3c3f4bb30b754602dd991, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4028990714863560, guid: 617b4a62bba3c3f4bb30b754602dd991, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4028990714863560, guid: 617b4a62bba3c3f4bb30b754602dd991, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4028990714863560, guid: 617b4a62bba3c3f4bb30b754602dd991, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4028990714863560, guid: 617b4a62bba3c3f4bb30b754602dd991, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114262780470167090, guid: 617b4a62bba3c3f4bb30b754602dd991,
+        type: 2}
+      propertyPath: expBar
+      value: 
+      objectReference: {fileID: 1783717582}
+    - target: {fileID: 114262780470167090, guid: 617b4a62bba3c3f4bb30b754602dd991,
+        type: 2}
+      propertyPath: rightButton
+      value: 
+      objectReference: {fileID: 1721253303}
+    - target: {fileID: 114262780470167090, guid: 617b4a62bba3c3f4bb30b754602dd991,
+        type: 2}
+      propertyPath: playerStatButton
+      value: 
+      objectReference: {fileID: 1984122167}
+    - target: {fileID: 114262780470167090, guid: 617b4a62bba3c3f4bb30b754602dd991,
+        type: 2}
+      propertyPath: playerStatMenu
+      value: 
+      objectReference: {fileID: 858704046}
+    - target: {fileID: 114262780470167090, guid: 617b4a62bba3c3f4bb30b754602dd991,
+        type: 2}
+      propertyPath: warrior
+      value: 
+      objectReference: {fileID: 1643555987}
+    - target: {fileID: 114262780470167090, guid: 617b4a62bba3c3f4bb30b754602dd991,
+        type: 2}
+      propertyPath: wizard
+      value: 
+      objectReference: {fileID: 1866950097}
+    - target: {fileID: 114262780470167090, guid: 617b4a62bba3c3f4bb30b754602dd991,
+        type: 2}
+      propertyPath: cleric
+      value: 
+      objectReference: {fileID: 1779100171}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 617b4a62bba3c3f4bb30b754602dd991, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1145388346
 GameObject:
   m_ObjectHideFlags: 0
@@ -536,9 +650,9 @@ Transform:
 --- !u!1 &1295222466
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1251957245982722, guid: 0c2fae182c9bebf41b9cc8479723d42b,
+  m_PrefabParentObject: {fileID: 1636843524162852, guid: 617b4a62bba3c3f4bb30b754602dd991,
     type: 2}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInternal: {fileID: 1025847721}
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1295222469}
@@ -555,9 +669,9 @@ GameObject:
 --- !u!61 &1295222467
 BoxCollider2D:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 61661914225051548, guid: 0c2fae182c9bebf41b9cc8479723d42b,
+  m_PrefabParentObject: {fileID: 61354573388943180, guid: 617b4a62bba3c3f4bb30b754602dd991,
     type: 2}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInternal: {fileID: 1025847721}
   m_GameObject: {fileID: 1295222466}
   m_Enabled: 1
   m_Density: 1
@@ -581,9 +695,9 @@ BoxCollider2D:
 --- !u!212 &1295222468
 SpriteRenderer:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 212232765917941426, guid: 0c2fae182c9bebf41b9cc8479723d42b,
+  m_PrefabParentObject: {fileID: 212047459430670622, guid: 617b4a62bba3c3f4bb30b754602dd991,
     type: 2}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInternal: {fileID: 1025847721}
   m_GameObject: {fileID: 1295222466}
   m_Enabled: 1
   m_CastShadows: 0
@@ -626,9 +740,9 @@ SpriteRenderer:
 --- !u!4 &1295222469
 Transform:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 4383121678713168, guid: 0c2fae182c9bebf41b9cc8479723d42b,
+  m_PrefabParentObject: {fileID: 4028990714863560, guid: 617b4a62bba3c3f4bb30b754602dd991,
     type: 2}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInternal: {fileID: 1025847721}
   m_GameObject: {fileID: 1295222466}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
   m_LocalPosition: {x: 3.3946414, y: -1.810315, z: -0.2166799}
@@ -1138,6 +1252,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1687072446}
     m_Modifications:
+    - target: {fileID: 114668607110450952, guid: c414eb60b4bee6e4f8668fca40ae4fd8,
+        type: 2}
+      propertyPath: attacks.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4284421635817616, guid: c414eb60b4bee6e4f8668fca40ae4fd8, type: 2}
       propertyPath: m_LocalPosition.x
       value: -0.6053586
@@ -1184,6 +1303,18 @@ Prefab:
       propertyPath: m_entityNumber
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 114668607110450952, guid: c414eb60b4bee6e4f8668fca40ae4fd8,
+        type: 2}
+      propertyPath: attacks.Array.data[0]
+      value: 
+      objectReference: {fileID: 114328163369887566, guid: 7dd85f30f8c38184c84c1f3ce48962f3,
+        type: 2}
+    - target: {fileID: 114668607110450952, guid: c414eb60b4bee6e4f8668fca40ae4fd8,
+        type: 2}
+      propertyPath: attacks.Array.data[1]
+      value: 
+      objectReference: {fileID: 114173733752592498, guid: dcc51cbdc6ca67c45ba4dec55a177d8a,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c414eb60b4bee6e4f8668fca40ae4fd8, type: 2}
   m_IsPrefabParent: 0
@@ -1230,12 +1361,16 @@ MonoBehaviour:
   dmgDealt: 0
   currentState: 0
   EntityToAttack: {fileID: 0}
+  attacks:
+  - {fileID: 114173733752592498, guid: dcc51cbdc6ca67c45ba4dec55a177d8a, type: 2}
+  - {fileID: 114328163369887566, guid: 7dd85f30f8c38184c84c1f3ce48962f3, type: 2}
   statTexts: []
   expBar: {fileID: 1783717582}
   rightButton: {fileID: 1721253303}
   playerStatButton: {fileID: 1984122167}
   playerStatMenu: {fileID: 858704046}
   m_findTextGameObjects: 0
+  currentSpeed: 0
   warrior: {fileID: 1643555987}
   wizard: {fileID: 1866950097}
   cleric: {fileID: 1779100171}
@@ -1245,6 +1380,7 @@ MonoBehaviour:
     Type: 
     AttackingGameObject: {fileID: 0}
     AttackTarget: {fileID: 0}
+    chosenAttack: {fileID: 0}
 --- !u!1 &1687072445
 GameObject:
   m_ObjectHideFlags: 0
@@ -1346,6 +1482,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1687072446}
     m_Modifications:
+    - target: {fileID: 114668607110450952, guid: c414eb60b4bee6e4f8668fca40ae4fd8,
+        type: 2}
+      propertyPath: attacks.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4284421635817616, guid: c414eb60b4bee6e4f8668fca40ae4fd8, type: 2}
       propertyPath: m_LocalPosition.x
       value: -0.6053586
@@ -1392,6 +1533,18 @@ Prefab:
       propertyPath: m_entityNumber
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 114668607110450952, guid: c414eb60b4bee6e4f8668fca40ae4fd8,
+        type: 2}
+      propertyPath: attacks.Array.data[0]
+      value: 
+      objectReference: {fileID: 114328163369887566, guid: 7dd85f30f8c38184c84c1f3ce48962f3,
+        type: 2}
+    - target: {fileID: 114668607110450952, guid: c414eb60b4bee6e4f8668fca40ae4fd8,
+        type: 2}
+      propertyPath: attacks.Array.data[1]
+      value: 
+      objectReference: {fileID: 114173733752592498, guid: dcc51cbdc6ca67c45ba4dec55a177d8a,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c414eb60b4bee6e4f8668fca40ae4fd8, type: 2}
   m_IsPrefabParent: 0
@@ -1444,12 +1597,16 @@ MonoBehaviour:
   dmgDealt: 0
   currentState: 0
   EntityToAttack: {fileID: 0}
+  attacks:
+  - {fileID: 114173733752592498, guid: dcc51cbdc6ca67c45ba4dec55a177d8a, type: 2}
+  - {fileID: 114328163369887566, guid: 7dd85f30f8c38184c84c1f3ce48962f3, type: 2}
   statTexts: []
   expBar: {fileID: 1783717582}
   rightButton: {fileID: 1721253303}
   playerStatButton: {fileID: 1984122167}
   playerStatMenu: {fileID: 858704046}
   m_findTextGameObjects: 0
+  currentSpeed: 0
   warrior: {fileID: 1643555987}
   wizard: {fileID: 1866950097}
   cleric: {fileID: 1779100171}
@@ -1459,6 +1616,7 @@ MonoBehaviour:
     Type: 
     AttackingGameObject: {fileID: 0}
     AttackTarget: {fileID: 0}
+    chosenAttack: {fileID: 0}
 --- !u!114 &1783717582 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114875412578866174, guid: 7062ad1bfdc3dae4aa06e7dd14df9d72,
@@ -1474,9 +1632,9 @@ MonoBehaviour:
 --- !u!114 &1862126966
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114703538226917772, guid: 0c2fae182c9bebf41b9cc8479723d42b,
+  m_PrefabParentObject: {fileID: 114262780470167090, guid: 617b4a62bba3c3f4bb30b754602dd991,
     type: 2}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInternal: {fileID: 1025847721}
   m_GameObject: {fileID: 1295222466}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -1509,12 +1667,16 @@ MonoBehaviour:
   dmgDealt: 0
   currentState: 0
   EntityToAttack: {fileID: 0}
+  attacks:
+  - {fileID: 114173733752592498, guid: dcc51cbdc6ca67c45ba4dec55a177d8a, type: 2}
+  - {fileID: 114328163369887566, guid: 7dd85f30f8c38184c84c1f3ce48962f3, type: 2}
   statTexts: []
   expBar: {fileID: 1783717582}
   rightButton: {fileID: 1721253303}
   playerStatButton: {fileID: 1984122167}
   playerStatMenu: {fileID: 858704046}
   m_findTextGameObjects: 0
+  currentSpeed: 0
   warrior: {fileID: 1643555987}
   wizard: {fileID: 1866950097}
   cleric: {fileID: 1779100171}
@@ -1524,6 +1686,7 @@ MonoBehaviour:
     Type: 
     AttackingGameObject: {fileID: 0}
     AttackTarget: {fileID: 0}
+    chosenAttack: {fileID: 0}
 --- !u!114 &1866950097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1562,12 +1725,16 @@ MonoBehaviour:
   dmgDealt: 0
   currentState: 0
   EntityToAttack: {fileID: 0}
+  attacks:
+  - {fileID: 114173733752592498, guid: dcc51cbdc6ca67c45ba4dec55a177d8a, type: 2}
+  - {fileID: 114328163369887566, guid: 7dd85f30f8c38184c84c1f3ce48962f3, type: 2}
   statTexts: []
   expBar: {fileID: 1783717582}
   rightButton: {fileID: 1721253303}
   playerStatButton: {fileID: 1984122167}
   playerStatMenu: {fileID: 858704046}
   m_findTextGameObjects: 0
+  currentSpeed: 0
   warrior: {fileID: 1643555987}
   wizard: {fileID: 1866950097}
   cleric: {fileID: 1779100171}
@@ -1577,6 +1744,7 @@ MonoBehaviour:
     Type: 
     AttackingGameObject: {fileID: 0}
     AttackTarget: {fileID: 0}
+    chosenAttack: {fileID: 0}
 --- !u!1 &1965249833
 GameObject:
   m_ObjectHideFlags: 0
@@ -1843,6 +2011,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1687072446}
     m_Modifications:
+    - target: {fileID: 114668607110450952, guid: c414eb60b4bee6e4f8668fca40ae4fd8,
+        type: 2}
+      propertyPath: attacks.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4284421635817616, guid: c414eb60b4bee6e4f8668fca40ae4fd8, type: 2}
       propertyPath: m_LocalPosition.x
       value: -0.6053586
@@ -1889,6 +2062,18 @@ Prefab:
       propertyPath: m_entityNumber
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 114668607110450952, guid: c414eb60b4bee6e4f8668fca40ae4fd8,
+        type: 2}
+      propertyPath: attacks.Array.data[0]
+      value: 
+      objectReference: {fileID: 114328163369887566, guid: 7dd85f30f8c38184c84c1f3ce48962f3,
+        type: 2}
+    - target: {fileID: 114668607110450952, guid: c414eb60b4bee6e4f8668fca40ae4fd8,
+        type: 2}
+      propertyPath: attacks.Array.data[1]
+      value: 
+      objectReference: {fileID: 114173733752592498, guid: dcc51cbdc6ca67c45ba4dec55a177d8a,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c414eb60b4bee6e4f8668fca40ae4fd8, type: 2}
   m_IsPrefabParent: 0

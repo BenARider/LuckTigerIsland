@@ -81,46 +81,37 @@ public class Entity : MonoBehaviour {
     protected bool actionHappening = false; //Think attackAlready, stops the entities spamming
     public GameObject EntityToAttack; //What the entity wants to attack
 
-    // Use this for initialization
-    void Start() {
-       
-	}
+    public List<BaseAttack> attacks = new List<BaseAttack>();
 
 
 	// Update is called once per frame
 	void Update()
 	{
-		if (BattleControl.willDamage == "y" && BattleControl.currentTarget == m_entityNumber)
-		{
-			m_health -= BattleControl.currentDamage;
-			BattleControl.willDamage = "n";
-			BattleControl.currentTarget = 0;
-			BattleControl.side = " ";
+		//if (BattleControl.willDamage == "y" && BattleControl.currentTarget == m_entityNumber)
+		//{
+		//	m_health -= BattleControl.currentDamage;
+		//	BattleControl.willDamage = "n";
+		//	BattleControl.currentTarget = 0;
+		//	BattleControl.side = " ";
 
-		}
+		//}
 	}
 
 	public void CheckForDamage(string side)
 	{
-		if (BattleControl.willDamage == "y" && BattleControl.currentTarget == m_entityNumber)
-		{
-			m_health -= BattleControl.currentDamage;
-			Debug.Log(side + ": " + m_entityNumber + " health total now: " + GetHealth());
-			BattleControl.willDamage = "n";
-			BattleControl.currentTarget = 0;
-			BattleControl.side = " ";
-		}
-	}
-
-	void TakeDamage(int damageTaken)
-	{
-		Debug.Log("Enemy taking damage");
-		m_health -= damageTaken;
+		//if (BattleControl.willDamage == "y" && BattleControl.currentTarget == m_entityNumber)
+		//{
+		//	m_health -= BattleControl.currentDamage;
+		//	Debug.Log(side + ": " + m_entityNumber + " health total now: " + GetHealth());
+		//	BattleControl.willDamage = "n";
+		//	BattleControl.currentTarget = 0;
+		//	BattleControl.side = " ";
+		//}
 	}
 
     protected bool MoveTo(Vector3 target)
     {
-        return target != (transform.position = Vector3.MoveTowards(transform.position, target, walkSpeed * Time.deltaTime));
+        return target != (transform.position = Vector3.MoveTowards(transform.position, target, walkSpeed * Time.deltaTime)); //returns false until the enity is at its target
     }
 
     //-----------------------------------------------------------------------------------------------------
@@ -196,6 +187,10 @@ public class Entity : MonoBehaviour {
     public int GetEXP()
     {
         return m_EXP;
+    }
+    public void TakeDamage(int damageAmount)
+    {
+        m_health -= damageAmount;
     }
 
     //--------------------------------------------------------------------------------------------------

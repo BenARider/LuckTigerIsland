@@ -30,7 +30,7 @@ public class BattleControl : MonoBehaviour {
         battleState = performAction.eWait;
         EnemiesInBattle.AddRange (GameObject.FindGameObjectsWithTag("Enemy"));
         PartyMembersInBattle.AddRange (GameObject.FindGameObjectsWithTag("Party"));
-        willDamage = "n";
+        //willDamage = "n";
 		currentDamage = 0;
         currentHealValue = 0;
 		currentTarget = 0;

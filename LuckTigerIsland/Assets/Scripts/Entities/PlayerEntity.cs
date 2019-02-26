@@ -126,24 +126,30 @@ public class PlayerEntity : Entity {
         Debug.Log("Player Choose Action");
             if (Input.GetKeyDown("1"))
             {
-                HandleTurns myAttack = new HandleTurns
+            int num = Random.Range(0, attacks.Count);
+
+            HandleTurns myAttack = new HandleTurns
                 {
                     Attacker = name, //Who is attacking
                     Type = "Player",//What type are they
                     AttackingGameObject = this.gameObject, //What gameObject is attacking
-                    AttackTarget = BC.EnemiesInBattle[3] //Ignore the fact that this says three its always where enemy 1 is in the list ditto for the rest
+                    AttackTarget = BC.EnemiesInBattle[3], //Ignore the fact that this says three its always where enemy 1 is in the list ditto for the rest
+                    chosenAttack = attacks[num]
                 };
                 BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
                 m_chosenAction = true;
             }
             if (Input.GetKeyDown("2"))
             {
-                HandleTurns myAttack = new HandleTurns
+            int num = Random.Range(0, attacks.Count);
+            HandleTurns myAttack = new HandleTurns
                 {
                     Attacker = name, //Who is attacking
                     Type = "Player",//What type are they
                     AttackingGameObject = this.gameObject, //What gameObject is attacking
-                    AttackTarget = BC.EnemiesInBattle[1]
+                    AttackTarget = BC.EnemiesInBattle[1],
+                    chosenAttack = attacks[num]
+
                 };
                 BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
                 m_chosenAction = true;
@@ -151,24 +157,28 @@ public class PlayerEntity : Entity {
             }
             if (Input.GetKeyDown("3"))
             {
-                HandleTurns myAttack = new HandleTurns
+            int num = Random.Range(0, attacks.Count);
+            HandleTurns myAttack = new HandleTurns
                 {
                     Attacker = name, //Who is attacking
                     Type = "Player",//What type are they
                     AttackingGameObject = this.gameObject, //What gameObject is attacking
-                    AttackTarget = BC.EnemiesInBattle[0] 
+                    AttackTarget = BC.EnemiesInBattle[0] ,
+                    chosenAttack = attacks[num]
                 };
                 BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
                 m_chosenAction = true;
             }
             if (Input.GetKeyDown("4"))
             {
-                HandleTurns myAttack = new HandleTurns
+            int num = Random.Range(0, attacks.Count);
+            HandleTurns myAttack = new HandleTurns
                 {
                     Attacker = name, //Who is attacking
                     Type = "Player",//What type are they
                     AttackingGameObject = this.gameObject, //What gameObject is attacking
-                    AttackTarget = BC.EnemiesInBattle[2]
+                    AttackTarget = BC.EnemiesInBattle[2],
+                    chosenAttack = attacks[num]
                 };
                 BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
                 m_chosenAction = true;
@@ -193,6 +203,7 @@ public class PlayerEntity : Entity {
 
         yield return new WaitForSeconds(1.5f);
         //do damage
+        playerDoDamge();
 
         while (MoveTo(startPosition))
         { 
@@ -210,6 +221,13 @@ public class PlayerEntity : Entity {
         currentSpeed = 0f;
         currentState = TurnState.eProssesing;
         BattleControl.turnBeingHad = false;
+    }
+
+    void playerDoDamge()
+    {
+        int calculateDamage = GetStrength() +  BC.NextTurn[0].chosenAttack.attackDamage; //calc should be done here before damage
+         
+        EntityToAttack.GetComponent<EnemEntity>().TakeDamage(calculateDamage);
     }
 
     //Used to control the party stat menu by setting and finding all the text values/objects
