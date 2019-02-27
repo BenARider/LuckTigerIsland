@@ -125,7 +125,7 @@ public class PlayerEntity : Entity {
         Debug.Log("Player Choose Action");
             if (Input.GetKeyDown("1"))
             {
-            int num = Random.Range(0, attacks.Count);
+            int num = Random.Range(0, attacks.Count); // this determines the attack further below
 
             HandleTurns myAttack = new HandleTurns
                 {

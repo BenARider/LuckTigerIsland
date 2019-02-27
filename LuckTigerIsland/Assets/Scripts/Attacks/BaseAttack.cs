@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class BaseAttack : MonoBehaviour
 {
-    public string attackName;
-    public string attackDescription;
-    public int attackDamage;
-    public float attackCost; //for stuff like magic or stanima if we decide to include that
+    public string attackName; //feed into ui
+    public string attackDescription; //feed into ui
+    public int attackDamage; //used for strength scaling
+    public float attackCost; //mp cost for abilities. Feed into ui
     /* 
     
     To create a new ability/skill you need to create a new script and have it inherit from this class

@@ -151,10 +151,15 @@ public class Entity : MonoBehaviour {
         return m_defenceMGC;
     }
 
-    public float GetSpeed()
+    public float GetCurrentSpeed()
     {
         return currentSpeed;
     }
+
+	public int GetSpeed()
+	{
+		return m_speed;
+	}
   
 	public float GetRequiredSpeed()
 	{
