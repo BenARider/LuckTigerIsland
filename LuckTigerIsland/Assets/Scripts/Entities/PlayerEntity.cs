@@ -12,8 +12,7 @@ public class PlayerEntity : Entity {
     public GameObject playerStatMenu;
     [SerializeField]
     private bool m_findTextGameObjects;
-    [SerializeField]
-    protected float currentSpeed = 0f;
+
 
     [SerializeField]
     PlayerEntity warrior;
@@ -112,7 +111,7 @@ public class PlayerEntity : Entity {
     {
         if (BattleControl.turnBeingHad == false)
         {
-            currentSpeed = currentSpeed + 0.5f;
+            currentSpeed = currentSpeed + 0.25f;
             if (currentSpeed >= GetRequiredSpeed())
             {
                 currentState = TurnState.eChooseAction;

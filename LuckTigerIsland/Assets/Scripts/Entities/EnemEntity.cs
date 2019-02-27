@@ -8,8 +8,6 @@ public class EnemEntity : Entity
 	public int aggress; //likelihood to attack oppossing attacker (Between 1-20)
 	public int intel; //likelihood to attack pm with high value (Between 1-20)
 	public int XP; //amount of xp they give
-    [SerializeField]
-    protected float currentSpeed = 0f;
 
 
     void SetEnemyStats(int hth, int man, int str, int def, int spd, int lvl, int agr, int itl, int xp)
@@ -92,7 +90,7 @@ public class EnemEntity : Entity
     {
         if (BattleControl.turnBeingHad == false)
         {
-            currentSpeed = currentSpeed + 0.5f;
+            currentSpeed = currentSpeed + 0.25f;
             if (currentSpeed >= GetRequiredSpeed())
             {
                 currentState = TurnState.eChooseAction;

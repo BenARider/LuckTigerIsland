@@ -48,6 +48,8 @@ public class Entity : MonoBehaviour {
 	protected bool myTurn = false;
 	[SerializeField]
 	public bool battleWon = false;
+    [SerializeField]
+    protected float currentSpeed = 0f;
 
 
     protected float walkSpeed = 5f;
@@ -149,9 +151,9 @@ public class Entity : MonoBehaviour {
         return m_defenceMGC;
     }
 
-    public int GetSpeed()
+    public float GetSpeed()
     {
-        return m_speed;
+        return currentSpeed;
     }
   
 	public float GetRequiredSpeed()
