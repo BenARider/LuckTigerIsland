@@ -6,6 +6,7 @@ public class Bash : BaseAttack{
     public Bash()
     {
         attackName = "Bash";
+        attackType = "Melee";
         attackDamage = 10;
         attackCost = 0;
     }          

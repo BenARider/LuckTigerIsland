@@ -7,7 +7,8 @@ public class Slash : BaseAttack {
     public Slash()
     {
         attackName = "Slash";
-        attackDamage = 5; //use getter later
+        attackType = "Melee";
+        attackDamage = 5;
         attackCost = 0;
     }
 }

@@ -10,7 +10,7 @@ public class EnemEntity : Entity
 	public int XP; //amount of xp they give
 
 
-    void SetEnemyStats(int hth, int man, int str, int def, int spd, int lvl, int agr, int itl, int xp)
+    protected void SetEnemyStats(int hth, int man, int str, int def, int spd, int lvl, int agr, int itl, int xp)
 	{
 		m_maxHealth = hth;
 		m_maxMana = man;
@@ -31,10 +31,6 @@ public class EnemEntity : Entity
     // Use this for initialization
     void Start()
     {
-        if (Class == "Goblin")
-        {
-            SetEnemyStats(150, 50, 40, 20, 50, 3, 20, 4, 50);
-        }
         if (Class == "Ninja")
         {
             SetEnemyStats(75, 100, 10, 15, 75, 2, 15, 6, 50);
@@ -43,10 +39,7 @@ public class EnemEntity : Entity
         {
             SetEnemyStats(50, 150, 5, 7, 60, 3, 5, 5, 50);
         }
-        if (Class == "Archer")
-        {
-            SetEnemyStats(70, 125, 20, 10, 65, 2, 10, 8, 50);
-        }
+
         //m_requiredSpeedForTurn = m_baseRequiredSpeedForTurn - GetSpeed();
         SetRequiredSpeed();
         ResetHealth();
@@ -67,6 +60,7 @@ public class EnemEntity : Entity
                 UpdateSpeed(); //Speed check
                 break;
             case (TurnState.eChooseAction):
+                rollAttack();
                 ChooseAction(); //Do action
                 currentState = TurnState.eWaiting; //move to waiting unil BC tells the entity to do the action
                 break;
@@ -95,13 +89,27 @@ public class EnemEntity : Entity
             {
                 currentState = TurnState.eChooseAction;
                 BattleControl.turnBeingHad = true;
+                Debug.Log("It is " + this.name + "'s turn");
             }
         }
 	}
 
-    void ChooseAction()
+    void rollAttack()
     {
         int num = Random.Range(0, attacks.Count);
+
+        m_chosenAction = attacks[num];
+
+        if (m_chosenAction.attackCost > m_mana)
+        {
+            rollAttack();
+        }
+        Debug.Log(this.name + " has chosen the " + m_chosenAction + " attack");
+
+    }
+
+    void ChooseAction()
+    {
 
         HandleTurns myAttack = new HandleTurns
         {
@@ -109,7 +117,7 @@ public class EnemEntity : Entity
             Type = "Enemy",//What type are they
             AttackingGameObject = this.gameObject, //What gameObject is attacking
             AttackTarget = BC.PartyMembersInBattle[Random.Range(0, BC.PartyMembersInBattle.Count)], //Random a target that is in the List stored in BattleControl
-            chosenAttack = attacks[num]
+            chosenAttack = m_chosenAction
         };
 
         Debug.Log(this.gameObject.name + " Is going to attack " + myAttack.AttackTarget + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!");

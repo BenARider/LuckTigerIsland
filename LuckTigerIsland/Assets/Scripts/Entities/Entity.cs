@@ -73,6 +73,7 @@ public class Entity : MonoBehaviour {
     {
         eProssesing,
         eChooseAction,
+        eChooseTarget,
         eWaiting,
         eAction,
         eDead
@@ -84,37 +85,22 @@ public class Entity : MonoBehaviour {
     public GameObject EntityToAttack; //What the entity wants to attack
 
     public List<BaseAttack> attacks = new List<BaseAttack>();
+    protected BaseAttack m_chosenAction;
 
 
-	// Update is called once per frame
-	void Update()
+
+    // Update is called once per frame
+    void Update()
 	{
-		//if (BattleControl.willDamage == "y" && BattleControl.currentTarget == m_entityNumber)
-		//{
-		//	m_health -= BattleControl.currentDamage;
-		//	BattleControl.willDamage = "n";
-		//	BattleControl.currentTarget = 0;
-		//	BattleControl.side = " ";
 
-		//}
-	}
-
-	public void CheckForDamage(string side)
-	{
-		//if (BattleControl.willDamage == "y" && BattleControl.currentTarget == m_entityNumber)
-		//{
-		//	m_health -= BattleControl.currentDamage;
-		//	Debug.Log(side + ": " + m_entityNumber + " health total now: " + GetHealth());
-		//	BattleControl.willDamage = "n";
-		//	BattleControl.currentTarget = 0;
-		//	BattleControl.side = " ";
-		//}
 	}
 
     protected bool MoveTo(Vector3 target)
     {
         return target != (transform.position = Vector3.MoveTowards(transform.position, target, walkSpeed * Time.deltaTime)); //returns false until the enity is at its target
     }
+
+
 
     //-----------------------------------------------------------------------------------------------------
     //Setters and Getters

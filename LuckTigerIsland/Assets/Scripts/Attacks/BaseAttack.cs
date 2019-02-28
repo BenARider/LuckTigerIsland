@@ -6,6 +6,7 @@ public class BaseAttack : MonoBehaviour
 {
     public string attackName; //feed into ui
     public string attackDescription; //feed into ui
+    public string attackType; //declare magic or melee for different movement
     public int attackDamage; //used for strength scaling
     public float attackCost; //mp cost for abilities. Feed into ui
     /* 
