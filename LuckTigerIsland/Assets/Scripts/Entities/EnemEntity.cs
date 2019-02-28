@@ -25,7 +25,7 @@ public class EnemEntity : Entity
     public string elemResi;
     */
 
-	void enemCharaStats(int hth, int man, int str, int def, int spd, int lvl, int agr, int itl, int xp)
+	void SetEnemyStats(int hth, int man, int str, int def, int spd, int lvl, int agr, int itl, int xp)
 	{
 		m_maxHealth = hth;
 		m_maxMana = man;
@@ -44,22 +44,23 @@ public class EnemEntity : Entity
 	{
         if (Class == "Goblin")
         {
-            enemCharaStats(150, 50, 40, 20, 50, 3, 20, 4, 50);
+            SetEnemyStats(150, 50, 40, 20, 50, 3, 20, 4, 50);
         }
         if (Class == "Ninja")
         {
-            enemCharaStats(75, 100, 10, 15, 75, 2, 15, 6, 50);
+            SetEnemyStats(75, 100, 10, 15, 75, 2, 15, 6, 50);
         }
         if (Class == "Cleric")
         {
-            enemCharaStats(50, 150, 5, 7, 60, 3, 5, 5, 50);
+            SetEnemyStats(50, 150, 5, 7, 60, 3, 5, 5, 50);
         }
         if (Class == "Archer")
         {
-            enemCharaStats(70, 125, 20, 10, 65, 2, 10, 8, 50);
+            SetEnemyStats(70, 125, 20, 10, 65, 2, 10, 8, 50);
         }
-		m_requiredSpeedForTurn = m_baseRequiredSpeedForTurn - GetSpeed();
-		ResetHealth();
+        //m_requiredSpeedForTurn = m_baseRequiredSpeedForTurn - GetSpeed();
+        SetRequiredSpeed();
+        ResetHealth();
 		ResetMana();
         Debug.Log("Enemy Values Set");
     }

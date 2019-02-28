@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 [System.Serializable]
 public struct Interaction
 {
@@ -27,7 +28,7 @@ public class PlayerManager : LTI.Singleton<PlayerManager> {
     public List<Interaction> interactions;
 	public string currentSceneName;
     PlayerWorldMove playerMove;
-    Text[] textArray;
+    TextMeshProUGUI[] textArray;
 
     bool inDialogue = false;
     Interaction lastDialogueInteract;
@@ -41,13 +42,13 @@ public class PlayerManager : LTI.Singleton<PlayerManager> {
 
         Transform overUI = GameObject.Find("OverworldUI").transform;
        
-        textArray = new Text[] {
-        overUI.GetChild(0).GetComponent<Text>(), //interact
-        overUI.GetChild(1).GetComponent<Text>(), //npc text
-        overUI.GetChild(2).GetComponent<Text>(), //reply 1,2,3,4
-        overUI.GetChild(3).GetComponent<Text>(),
-        overUI.GetChild(4).GetComponent<Text>(),
-        overUI.GetChild(5).GetComponent<Text>()};//
+        textArray = new TextMeshProUGUI[] {
+        overUI.GetChild(0).GetComponent<TextMeshProUGUI>(), //interact
+        overUI.GetChild(1).GetComponent<TextMeshProUGUI>(), //npc text
+        overUI.GetChild(2).GetComponent<TextMeshProUGUI>(), //reply 1,2,3,4
+        overUI.GetChild(3).GetComponent<TextMeshProUGUI>(),
+        overUI.GetChild(4).GetComponent<TextMeshProUGUI>(),
+        overUI.GetChild(5).GetComponent<TextMeshProUGUI>()};//
         
     }
 
