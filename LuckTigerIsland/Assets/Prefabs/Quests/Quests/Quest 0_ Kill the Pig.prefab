@@ -61,6 +61,6 @@ MonoBehaviour:
     m_amount: 1
   m_locationObjectives: []
   o_type: 1
-  o_location: 0
+  o_location: 1
   o_enemy: 1
   o_enemyAmount: 1

@@ -90,18 +90,52 @@ public class LevelScriptEditor : Editor
         //Display the current objectives.
         GUILayout.Label("");
         GUILayout.Label("Objectives", EditorStyles.boldLabel);
+        
         //Kill Objectives.
-        EditorGUILayout.PropertyField(killObjectives, true);
-        if (GUILayout.Button("Remove Last Kill Objective"))
+        if (killObjectives.arraySize != 0)
         {
-            myScript.RemoveLastKillObjective();
+            GUILayout.Label("Kill Objectives", EditorStyles.boldLabel);
+            //Display all kill objective objects
+            for (int i = 0; i < killObjectives.arraySize; i++)
+            {
+                SerializedProperty killObjectivesRef = killObjectives.GetArrayElementAtIndex(i);
+                SerializedProperty enemy = killObjectivesRef.FindPropertyRelative("m_enemy");
+                SerializedProperty amount = killObjectivesRef.FindPropertyRelative("m_amount");
+
+                EditorGUILayout.PropertyField(enemy);
+                EditorGUILayout.PropertyField(amount);
+
+                //Remove objecttive button
+                if (GUILayout.Button("Remove Objective", GUILayout.MaxWidth(150), GUILayout.MaxHeight(15)))
+                {
+                    killObjectives.DeleteArrayElementAtIndex(i);
+                }
+            }
+            GUILayout.Label("");
+
         }
-        //Location Objectives.
-        EditorGUILayout.PropertyField(locationObjectives, true);
-        if (GUILayout.Button("Remove Last Location Objective"))
+
+        //Location Objectives
+        if (locationObjectives.arraySize != 0)
         {
-            myScript.RemoveLastLocationObjective();
+            GUILayout.Label("Location Objectives", EditorStyles.boldLabel);
+            //Display all location objective objects
+            for (int i = 0; i < locationObjectives.arraySize; i++)
+            {
+                SerializedProperty locationObjectivesRef = locationObjectives.GetArrayElementAtIndex(i);
+                SerializedProperty location = locationObjectivesRef.FindPropertyRelative("m_location");
+
+                EditorGUILayout.PropertyField(location);
+
+                //Remove objecttive button
+                if (GUILayout.Button("Remove Objective", GUILayout.MaxWidth(150), GUILayout.MaxHeight(15)))
+                {
+                    locationObjectives.DeleteArrayElementAtIndex(i);
+                }
+            }
+            GUILayout.Label("");
         }
+  
 
         //End of Inspector GUI
         serializedObject.ApplyModifiedProperties();         

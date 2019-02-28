@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LocationTrigger : MonoBehaviour {
 
+    //Which location will this trigger.
     [SerializeField]
     ELocations m_location = ELocations.nullLocation;
 

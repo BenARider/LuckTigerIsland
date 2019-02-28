@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class Quest : MonoBehaviour
 {
-    Quest(string _title, string _description, int _exp, int _gold)
+    /*public Quest(string _title, string _description, int _exp, int _gold)
     {
         m_title = _title;
         m_description = _description;
         m_expReward = _exp;
         m_goldReward = _gold;
-    }
+    }*/
     
     [SerializeField]
     private string m_title;
@@ -21,8 +22,8 @@ public class Quest : MonoBehaviour
     [SerializeField]
     private int m_goldReward;
 
-    //Objectives List
 
+    //Objectives Lists. Make a new list when a new type of objective is created.
     public List<QuestObjective> m_allObjectives;
     [SerializeField]    
     public List<KillObjective> m_killObjectives;
@@ -143,7 +144,6 @@ public class Quest : MonoBehaviour
     {
         m_goldReward = _gold;
     }
-
 }
 
 
