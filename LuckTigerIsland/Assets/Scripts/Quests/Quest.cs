@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class Quest : MonoBehaviour
 {
-    Quest(string _title, string _description, int _exp, int _gold)
+    /*public Quest(string _title, string _description, int _exp, int _gold)
     {
         m_title = _title;
         m_description = _description;
         m_expReward = _exp;
         m_goldReward = _gold;
-    }
+    }*/
     
     [SerializeField]
     private string m_title;
@@ -21,9 +22,12 @@ public class Quest : MonoBehaviour
     [SerializeField]
     private int m_goldReward;
 
-    //Objectives List
-    [SerializeField]
+
+    //Objectives Lists. Make a new list when a new type of objective is created.
+    public List<QuestObjective> m_allObjectives;
+    [SerializeField]    
     public List<KillObjective> m_killObjectives;
+    [SerializeField]
     public List<LocationObjective> m_locationObjectives;
     
 
@@ -37,20 +41,39 @@ public class Quest : MonoBehaviour
     [SerializeField]
     private int o_enemyAmount;
 
-    //Add Objectives
+    // Add/Remove Objectives
     public void AddLocationObjective(ELocations _location)
     {
         LocationObjective _lo = new LocationObjective(_location);
         m_locationObjectives.Add(_lo);
+        m_allObjectives.Add(_lo);
     }
 
     public void AddKillObjective(EEnemies _enemy, int _amount = 1)
     {
         KillObjective _eo = new KillObjective(_enemy, _amount);
         m_killObjectives.Add(_eo);
+        m_allObjectives.Add(_eo);
     }
 
-    //Add to active quest list.
+    public void RemoveLastLocationObjective()
+    {
+        if (m_locationObjectives.Count != 0)
+        {
+            m_locationObjectives.RemoveAt(m_locationObjectives.Count - 1);
+        }
+     }
+
+    public void RemoveLastKillObjective()
+    {
+        if (m_killObjectives.Count != 0)
+        {
+            m_killObjectives.RemoveAt(m_killObjectives.Count - 1);
+        }
+    }
+
+
+    //Add and remove from active quest list.
     public void StartQuest()
     {
         QuestManager.Instance.AddQuest(this);
@@ -60,6 +83,29 @@ public class Quest : MonoBehaviour
     public void EndQuest()
     {
         QuestManager.Instance.RemoveQuest(this);
+        Debug.Log("quest ended");
+    }
+
+    public void CheckCompletion()
+    {
+        //Check All Objectives
+        if(m_allObjectives.Count != 0)
+        {
+            bool finished = true;
+            foreach(QuestObjective _qo in m_allObjectives)
+            {
+                if (!_qo.GetIsComplete())
+                {
+                    finished = false;
+                }
+            }
+
+            //If all quest objectives were finished, End the Quest.
+            if (!finished)
+            {
+                EndQuest();
+            }
+        }
     }
 
     //Getters and Setters
@@ -98,7 +144,6 @@ public class Quest : MonoBehaviour
     {
         m_goldReward = _gold;
     }
-
 }
 
 
