@@ -71,7 +71,7 @@ public class PlayerEntity : Entity {
         currentState = TurnState.eProssesing;
         
 
-        Debug.Log("Base required speed is: " + baseSpeed);
+
         statTexts = new TextMeshProUGUI[12];
 
         playerStatButton.onClick.AddListener(IncreasePlayerStatID);
