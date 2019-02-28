@@ -213,7 +213,8 @@ Prefab:
       propertyPath: m_Name
       value: Dark_Elf (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114364347787942890, guid: 74561ebad63b6cc40bcac886e11c6a48, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 74561ebad63b6cc40bcac886e11c6a48, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &501023147 stripped
@@ -221,6 +222,65 @@ Transform:
   m_PrefabParentObject: {fileID: 4194151675307528, guid: 74561ebad63b6cc40bcac886e11c6a48,
     type: 2}
   m_PrefabInternal: {fileID: 501023146}
+--- !u!1 &568874190 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1803766115395474, guid: 74561ebad63b6cc40bcac886e11c6a48,
+    type: 2}
+  m_PrefabInternal: {fileID: 501023146}
+--- !u!114 &568874191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 568874190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1ad11708009c30468e53804204b777a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_maxHealth: 0
+  m_health: 0
+  m_strength: 0
+  m_magicPower: 0
+  m_defence: 0
+  m_defenceMGC: 0
+  m_speed: 0
+  m_mana: 0
+  m_maxMana: 0
+  m_level: 0
+  m_xpAward: 0
+  m_EXP: 0
+  Class: Cleric
+  m_attackedAlready: 0
+  m_entityNumber: 0
+  m_requiredSpeedForTurn: 0
+  myTurn: 0
+  battleWon: 0
+  currentSpeed: 0
+  tempDMGReduct: 0
+  totalDMG: 0
+  chanceToHit: 0
+  attacking: 0
+  dmgRecieve: 0
+  dmgDealt: 0
+  currentState: 0
+  EntityToAttack: {fileID: 0}
+  attacks:
+  - {fileID: 114328163369887566, guid: 7dd85f30f8c38184c84c1f3ce48962f3, type: 2}
+  - {fileID: 114173733752592498, guid: dcc51cbdc6ca67c45ba4dec55a177d8a, type: 2}
+  - {fileID: 114324091392978676, guid: 88c9624f5cc7360449882cfe6afe846c, type: 2}
+  HealthPotions: []
+  ManaPotions: []
+  aggress: 0
+  intel: 0
+  XP: 0
+  Tiger: {fileID: 0}
+  HT:
+    Attacker: 
+    Type: 
+    AttackingGameObject: {fileID: 0}
+    AttackTarget: {fileID: 0}
+    chosenAttack: {fileID: 0}
 --- !u!1 &575533071
 GameObject:
   m_ObjectHideFlags: 0
@@ -302,6 +362,65 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &596202121 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1817286988266508, guid: c7d3f7f0e7591b042a02ab15acf2c7b6,
+    type: 2}
+  m_PrefabInternal: {fileID: 628204625}
+--- !u!114 &596202122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 596202121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1ad11708009c30468e53804204b777a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_maxHealth: 0
+  m_health: 0
+  m_strength: 0
+  m_magicPower: 0
+  m_defence: 0
+  m_defenceMGC: 0
+  m_speed: 0
+  m_mana: 0
+  m_maxMana: 0
+  m_level: 0
+  m_xpAward: 0
+  m_EXP: 0
+  Class: Goblin
+  m_attackedAlready: 0
+  m_entityNumber: 0
+  m_requiredSpeedForTurn: 0
+  myTurn: 0
+  battleWon: 0
+  currentSpeed: 0
+  tempDMGReduct: 0
+  totalDMG: 0
+  chanceToHit: 0
+  attacking: 0
+  dmgRecieve: 0
+  dmgDealt: 0
+  currentState: 0
+  EntityToAttack: {fileID: 0}
+  attacks:
+  - {fileID: 114328163369887566, guid: 7dd85f30f8c38184c84c1f3ce48962f3, type: 2}
+  - {fileID: 114173733752592498, guid: dcc51cbdc6ca67c45ba4dec55a177d8a, type: 2}
+  - {fileID: 114856649035646106, guid: b9d9c1bf41bf848478a6678259f85ecb, type: 2}
+  HealthPotions: []
+  ManaPotions: []
+  aggress: 0
+  intel: 0
+  XP: 0
+  Tiger: {fileID: 0}
+  HT:
+    Attacker: 
+    Type: 
+    AttackingGameObject: {fileID: 0}
+    AttackTarget: {fileID: 0}
+    chosenAttack: {fileID: 0}
 --- !u!1001 &628204625
 Prefab:
   m_ObjectHideFlags: 0
@@ -341,9 +460,69 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114259173079526594, guid: c7d3f7f0e7591b042a02ab15acf2c7b6, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: c7d3f7f0e7591b042a02ab15acf2c7b6, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &747536384 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1803766115395474, guid: 74561ebad63b6cc40bcac886e11c6a48,
+    type: 2}
+  m_PrefabInternal: {fileID: 2080793652}
+--- !u!114 &747536385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 747536384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1ad11708009c30468e53804204b777a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_maxHealth: 0
+  m_health: 0
+  m_strength: 0
+  m_magicPower: 0
+  m_defence: 0
+  m_defenceMGC: 0
+  m_speed: 0
+  m_mana: 0
+  m_maxMana: 0
+  m_level: 0
+  m_xpAward: 0
+  m_EXP: 0
+  Class: Wizard
+  m_attackedAlready: 0
+  m_entityNumber: 0
+  m_requiredSpeedForTurn: 0
+  myTurn: 0
+  battleWon: 0
+  currentSpeed: 0
+  tempDMGReduct: 0
+  totalDMG: 0
+  chanceToHit: 0
+  attacking: 0
+  dmgRecieve: 0
+  dmgDealt: 0
+  currentState: 0
+  EntityToAttack: {fileID: 0}
+  attacks:
+  - {fileID: 114328163369887566, guid: 7dd85f30f8c38184c84c1f3ce48962f3, type: 2}
+  - {fileID: 114173733752592498, guid: dcc51cbdc6ca67c45ba4dec55a177d8a, type: 2}
+  - {fileID: 114324091392978676, guid: 88c9624f5cc7360449882cfe6afe846c, type: 2}
+  HealthPotions: []
+  ManaPotions: []
+  aggress: 0
+  intel: 0
+  XP: 0
+  Tiger: {fileID: 0}
+  HT:
+    Attacker: 
+    Type: 
+    AttackingGameObject: {fileID: 0}
+    AttackTarget: {fileID: 0}
+    chosenAttack: {fileID: 0}
 --- !u!1 &858704046 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1354812630610798, guid: 7062ad1bfdc3dae4aa06e7dd14df9d72,
@@ -578,7 +757,13 @@ Prefab:
       propertyPath: m_Name
       value: Goblin (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114259173079526594, guid: c7d3f7f0e7591b042a02ab15acf2c7b6,
+        type: 2}
+      propertyPath: Class
+      value: Ninja
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114259173079526594, guid: c7d3f7f0e7591b042a02ab15acf2c7b6, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: c7d3f7f0e7591b042a02ab15acf2c7b6, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1286689976
@@ -1044,246 +1229,246 @@ Prefab:
     - target: {fileID: 224016648196944440, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224016648196944440, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224094498841642858, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224094498841642858, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224988164717733262, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224988164717733262, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224809216190898792, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224809216190898792, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224519213683072960, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224519213683072960, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224578853627221390, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224578853627221390, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224557938451756044, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224557938451756044, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224356566496201986, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224356566496201986, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224838894997943470, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224838894997943470, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224517764733926024, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224517764733926024, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224001864938194928, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224001864938194928, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224264700461082036, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224264700461082036, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224667755868797724, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224667755868797724, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224953651783553140, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224953651783553140, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224052252829878688, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224052252829878688, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224353785779416328, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224353785779416328, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224946389402449734, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224946389402449734, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224398104596931548, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224398104596931548, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224593870014582814, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224593870014582814, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224678049729921776, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224678049729921776, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224628086521906202, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224628086521906202, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224818535387957346, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224818535387957346, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224409161846448894, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224409161846448894, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224204169293396114, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224204169293396114, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1285831843340254, guid: 8534d8d0bb74dc249a89b8d85ff0ad91, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114611392581248194, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
         type: 2}
@@ -1304,6 +1489,81 @@ Prefab:
         type: 2}
       propertyPath: m_AnchorMin.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114664538836045758, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
+        type: 2}
+      propertyPath: m_text
+      value: '8: Health P'
+      objectReference: {fileID: 0}
+    - target: {fileID: 114664538836045758, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
+        type: 2}
+      propertyPath: m_textInfo.characterCount
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 114664538836045758, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
+        type: 2}
+      propertyPath: m_textInfo.spaceCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114664538836045758, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
+        type: 2}
+      propertyPath: m_textInfo.wordCount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114664538836045758, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
+        type: 2}
+      propertyPath: m_textInfo.lineCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114743889361139080, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
+        type: 2}
+      propertyPath: m_text
+      value: '9: Mana Potion'
+      objectReference: {fileID: 0}
+    - target: {fileID: 114743889361139080, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
+        type: 2}
+      propertyPath: m_textInfo.characterCount
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 114743889361139080, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
+        type: 2}
+      propertyPath: m_textInfo.spaceCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114743889361139080, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
+        type: 2}
+      propertyPath: m_textInfo.wordCount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114358263150375004, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
+        type: 2}
+      propertyPath: m_text
+      value: '1: Slash Attack'
+      objectReference: {fileID: 0}
+    - target: {fileID: 114358263150375004, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
+        type: 2}
+      propertyPath: m_textInfo.characterCount
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 114358263150375004, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
+        type: 2}
+      propertyPath: m_textInfo.spaceCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114358263150375004, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
+        type: 2}
+      propertyPath: m_textInfo.wordCount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114408987974062792, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
+        type: 2}
+      propertyPath: m_text
+      value: '2: Bash Attack'
+      objectReference: {fileID: 0}
+    - target: {fileID: 114408987974062792, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
+        type: 2}
+      propertyPath: m_textInfo.characterCount
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8534d8d0bb74dc249a89b8d85ff0ad91, type: 2}
@@ -1351,6 +1611,8 @@ MonoBehaviour:
   - {fileID: 114173733752592498, guid: dcc51cbdc6ca67c45ba4dec55a177d8a, type: 2}
   - {fileID: 114328163369887566, guid: 7dd85f30f8c38184c84c1f3ce48962f3, type: 2}
   - {fileID: 114324091392978676, guid: 88c9624f5cc7360449882cfe6afe846c, type: 2}
+  HealthPotions: []
+  ManaPotions: []
   statTexts: []
   expBar: {fileID: 1783717582}
   rightButton: {fileID: 1721253303}
@@ -1510,6 +1772,8 @@ MonoBehaviour:
   - {fileID: 114173733752592498, guid: dcc51cbdc6ca67c45ba4dec55a177d8a, type: 2}
   - {fileID: 114328163369887566, guid: 7dd85f30f8c38184c84c1f3ce48962f3, type: 2}
   - {fileID: 114856649035646106, guid: b9d9c1bf41bf848478a6678259f85ecb, type: 2}
+  HealthPotions: []
+  ManaPotions: []
   statTexts: []
   expBar: {fileID: 1783717582}
   rightButton: {fileID: 1721253303}
@@ -1575,6 +1839,8 @@ MonoBehaviour:
   - {fileID: 114173733752592498, guid: dcc51cbdc6ca67c45ba4dec55a177d8a, type: 2}
   - {fileID: 114328163369887566, guid: 7dd85f30f8c38184c84c1f3ce48962f3, type: 2}
   - {fileID: 114324091392978676, guid: 88c9624f5cc7360449882cfe6afe846c, type: 2}
+  HealthPotions: []
+  ManaPotions: []
   statTexts: []
   expBar: {fileID: 1783717582}
   rightButton: {fileID: 1721253303}
@@ -1634,6 +1900,8 @@ MonoBehaviour:
   - {fileID: 114173733752592498, guid: dcc51cbdc6ca67c45ba4dec55a177d8a, type: 2}
   - {fileID: 114328163369887566, guid: 7dd85f30f8c38184c84c1f3ce48962f3, type: 2}
   - {fileID: 114856649035646106, guid: b9d9c1bf41bf848478a6678259f85ecb, type: 2}
+  HealthPotions: []
+  ManaPotions: []
   statTexts: []
   expBar: {fileID: 1783717582}
   rightButton: {fileID: 1721253303}
@@ -1865,6 +2133,71 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114364347787942890, guid: 74561ebad63b6cc40bcac886e11c6a48,
+        type: 2}
+      propertyPath: Class
+      value: Wizard
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114364347787942890, guid: 74561ebad63b6cc40bcac886e11c6a48, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 74561ebad63b6cc40bcac886e11c6a48, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &2088908152 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1817286988266508, guid: c7d3f7f0e7591b042a02ab15acf2c7b6,
+    type: 2}
+  m_PrefabInternal: {fileID: 1203976729}
+--- !u!114 &2088908153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2088908152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1ad11708009c30468e53804204b777a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_maxHealth: 0
+  m_health: 0
+  m_strength: 0
+  m_magicPower: 0
+  m_defence: 0
+  m_defenceMGC: 0
+  m_speed: 0
+  m_mana: 0
+  m_maxMana: 0
+  m_level: 0
+  m_xpAward: 0
+  m_EXP: 0
+  Class: Ninja
+  m_attackedAlready: 0
+  m_entityNumber: 0
+  m_requiredSpeedForTurn: 0
+  myTurn: 0
+  battleWon: 0
+  currentSpeed: 0
+  tempDMGReduct: 0
+  totalDMG: 0
+  chanceToHit: 0
+  attacking: 0
+  dmgRecieve: 0
+  dmgDealt: 0
+  currentState: 0
+  EntityToAttack: {fileID: 0}
+  attacks:
+  - {fileID: 114328163369887566, guid: 7dd85f30f8c38184c84c1f3ce48962f3, type: 2}
+  - {fileID: 114173733752592498, guid: dcc51cbdc6ca67c45ba4dec55a177d8a, type: 2}
+  - {fileID: 114856649035646106, guid: b9d9c1bf41bf848478a6678259f85ecb, type: 2}
+  HealthPotions: []
+  ManaPotions: []
+  aggress: 0
+  intel: 0
+  XP: 0
+  Tiger: {fileID: 0}
+  HT:
+    Attacker: 
+    Type: 
+    AttackingGameObject: {fileID: 0}
+    AttackTarget: {fileID: 0}
+    chosenAttack: {fileID: 0}

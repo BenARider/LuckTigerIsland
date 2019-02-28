@@ -31,6 +31,14 @@ public class EnemEntity : Entity
     // Use this for initialization
     void Start()
     {
+        if (Class == "Goblin")
+        {
+            SetEnemyStats(150, 50, 40, 20, 50, 3, 20, 4, 50);
+        }
+        if (Class == "Wizard")
+        {
+            SetEnemyStats(70, 125, 20, 10, 65, 2, 10, 8, 50);
+        }
         if (Class == "Ninja")
         {
             SetEnemyStats(75, 100, 10, 15, 75, 2, 15, 6, 50);
@@ -46,6 +54,15 @@ public class EnemEntity : Entity
 		ResetMana();
         Debug.Log("Enemy Values Set");
         currentState = TurnState.eProssesing; //Set the statemachine to the beggining state
+        Health_Potion HpPotion = Health_Potion.CreateInstance<Health_Potion>();
+
+        HealthPotions.Add(HpPotion);
+        HealthPotions.Add(HpPotion);
+
+        Mana_Potion MpPotion = Mana_Potion.CreateInstance<Mana_Potion>();
+
+        ManaPotions.Add(MpPotion);
+        ManaPotions.Add(MpPotion);
         BC = GameObject.Find("BattleControl").GetComponent<BattleControl>(); //makes BattleControl shortform to BC
         startPosition = transform.position; //setting the position based on where the object is on start up
     }

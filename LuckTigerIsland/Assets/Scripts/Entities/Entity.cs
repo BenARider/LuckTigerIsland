@@ -85,9 +85,14 @@ public class Entity : MonoBehaviour {
     public GameObject EntityToAttack; //What the entity wants to attack
 
     public List<BaseAttack> attacks = new List<BaseAttack>();
+    public List<InventoryObject> HealthPotions = new List<InventoryObject>();
+    public List<InventoryObject> ManaPotions = new List<InventoryObject>();
     protected BaseAttack m_chosenAction;
 
+    void Start()
+    {
 
+    }
 
     // Update is called once per frame
     void Update()

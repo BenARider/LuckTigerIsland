@@ -70,8 +70,16 @@ public class PlayerEntity : Entity {
         Debug.Log("Player Stats set");
 
         currentState = TurnState.eProssesing;
-        
 
+        Health_Potion HpPotion = Health_Potion.CreateInstance<Health_Potion>();
+
+        HealthPotions.Add(HpPotion);
+        HealthPotions.Add(HpPotion);
+
+        Mana_Potion MpPotion = Mana_Potion.CreateInstance<Mana_Potion>();
+
+        ManaPotions.Add(MpPotion);
+        ManaPotions.Add(MpPotion);
 
         statTexts = new TextMeshProUGUI[12];
 
@@ -142,33 +150,35 @@ public class PlayerEntity : Entity {
     void ChooseAction()
     {
         Debug.Log(this.name + ": Choose Action");
-            if (Input.GetKeyDown("1"))
-            {
-                m_chosenAction = attacks[0];
+        if (Input.GetKeyDown("1"))
+        {
+            m_chosenAction = attacks[0];
 
-                if (attacks[0].attackCost < m_mana)
-                {
-                    m_hasChosenAction = true;
-                }
-                else
-                {
-                    Debug.Log(this.name + " does not have enough mana!");
-                }
-            }
-            if (Input.GetKeyDown("2"))
+            if (attacks[0].attackCost < m_mana)
             {
-                m_chosenAction = attacks[1];
-
-                if (attacks[1].attackCost < m_mana)
-                {
-                    m_hasChosenAction = true;
-                }
-                else
-                {
-                    Debug.Log(this.name + " does not have enough mana!");
-                }
+                m_hasChosenAction = true;
             }
-             if (Input.GetKeyDown("3"))
+            else
+            {
+                Debug.Log(this.name + " does not have enough mana!");
+            }
+            m_mana -= m_chosenAction.attackCost;
+        }
+        if (Input.GetKeyDown("2"))
+       {
+            m_chosenAction = attacks[1];
+
+            if (attacks[1].attackCost < m_mana)
+            {
+                m_hasChosenAction = true;
+            }
+            else
+            {
+                Debug.Log(this.name + " does not have enough mana!");
+            }
+            m_mana -= m_chosenAction.attackCost;
+        }
+        if (Input.GetKeyDown("3"))
              {
                 m_chosenAction = attacks[2];
                 if (attacks[2].attackCost < m_mana)
@@ -179,7 +189,50 @@ public class PlayerEntity : Entity {
                 {
                     Debug.Log(this.name + " does not have enough mana!");
                 }
+                m_mana-=m_chosenAction.attackCost;
              }
+        if (Input.GetKeyDown("8"))
+        {
+             
+            if (HealthPotions.Count > 0)
+            {
+                m_health += Health_Potion.healthGiven;
+                if (m_health > m_maxHealth)
+                {
+                    m_health = m_maxHealth;
+                    Debug.Log(this.name + " used a health potion");
+                    HealthPotions.RemoveAt(0);
+                }
+                currentSpeed = 0;
+                currentState = TurnState.eProssesing;
+                BattleControl.turnBeingHad = false;
+            }
+            else
+            {
+                Debug.Log(this.name + " does not have enough health potions");
+            }
+        }
+        if (Input.GetKeyDown("9"))
+        {
+
+            if (ManaPotions.Count > 0)
+            {
+                m_mana += Mana_Potion.manaGiven;
+                if (m_mana > m_maxMana)
+                {
+                    m_mana = m_maxMana;
+                    Debug.Log(this.name + " used a mana potion");
+                    ManaPotions.RemoveAt(0);
+                }
+                currentSpeed = 0;
+                currentState = TurnState.eProssesing;
+                BattleControl.turnBeingHad = false;
+            }
+            else
+            {
+                Debug.Log(this.name + " does not have enough mana potions");
+            }
+        }
     }
 
     void ChooseTarget()
