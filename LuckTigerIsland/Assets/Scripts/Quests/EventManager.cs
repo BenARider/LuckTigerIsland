@@ -40,6 +40,7 @@ public class EventManager : LTI.Singleton<EventManager>
 
     private void Start()
     {
+        m_questManager = QuestManager.Instance;
         instance = this;
         m_questManager = QuestManager.Instance;
     }

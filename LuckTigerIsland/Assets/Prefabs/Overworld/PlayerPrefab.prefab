@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114219723684070712}
   - component: {fileID: 61951270896415352}
   - component: {fileID: 114619009007972608}
+  - component: {fileID: 114946370891433330}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -78,7 +79,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4591088465556848}
-  - component: {fileID: 114606076565704086}
   m_Layer: 0
   m_Name: PlayerPrefab
   m_TagString: Untagged
@@ -227,7 +227,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1034347083771214}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 11.61, y: 3.84, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4591088465556848}
@@ -240,7 +240,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1513774882610904}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.6988442, y: -0.3680995, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4101232678605370}
@@ -429,17 +429,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactions: []
   currentSceneName: TestScene
---- !u!114 &114606076565704086
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1513774882610904}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a4ffdbb9fbb05f4282d83685be39054, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114609680532348662
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -673,6 +662,19 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114946370891433330
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1034347083771214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6452951c33e4ba24d80db03f416b8a2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDesert: 0
+  encounterChance: 0
 --- !u!114 &114969573108650090
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -27,7 +27,7 @@ public class PlayerManager : LTI.Singleton<PlayerManager> {
     //list of all current nearby interactable scripts
     public List<Interaction> interactions;
 	public string currentSceneName;
-    PlayerWorldMove playerMove;
+    public PlayerWorldMove playerMove;
     TextMeshProUGUI[] textArray;
 
     bool inDialogue = false;
