@@ -66,34 +66,76 @@ public class LevelScriptEditor : Editor
         EObjectiveType ot = (EObjectiveType)objectiveType.enumValueIndex;
         switch (ot)
         {
+            //Location Objective
             case EObjectiveType.LocationObjective:
                 EditorGUILayout.PropertyField(location, locationLabel);
+                if(GUILayout.Button("Add Location Objective"))
+                {
+                    myScript.AddLocationObjective((ELocations)location.enumValueIndex);
+                }
                 break;
 
+            //Kill Objective
             case EObjectiveType.KillObjective:
                 EditorGUILayout.PropertyField(enemy, enemyLabel);
                 EditorGUILayout.PropertyField(enemyAmount, enemyAmountLabel);
+                if (GUILayout.Button("Add Kill Objective"))
+                {
+                    myScript.AddKillObjective((EEnemies)enemy.enumValueIndex, enemyAmount.intValue);
+                }
                 break;
 
         }
 
-        //Add Objective based on input info.
-        if (GUILayout.Button("Add Objective"))
+        //Display the current objectives.
+        GUILayout.Label("");
+        GUILayout.Label("Objectives", EditorStyles.boldLabel);
+        
+        //Kill Objectives.
+        if (killObjectives.arraySize != 0)
         {
-            switch (ot)
+            GUILayout.Label("Kill Objectives", EditorStyles.boldLabel);
+            //Display all kill objective objects
+            for (int i = 0; i < killObjectives.arraySize; i++)
             {
-                case EObjectiveType.LocationObjective:
-                    myScript.AddLocationObjective((ELocations)location.enumValueIndex);
-                    break;
+                SerializedProperty killObjectivesRef = killObjectives.GetArrayElementAtIndex(i);
+                SerializedProperty enemy = killObjectivesRef.FindPropertyRelative("m_enemy");
+                SerializedProperty amount = killObjectivesRef.FindPropertyRelative("m_amount");
 
-                case EObjectiveType.KillObjective:
-                    myScript.AddKillObjective((EEnemies)enemy.enumValueIndex, enemyAmount.intValue);
-                    break;
-                    
-            }            
+                EditorGUILayout.PropertyField(enemy);
+                EditorGUILayout.PropertyField(amount);
+
+                //Remove objecttive button
+                if (GUILayout.Button("Remove Objective", GUILayout.MaxWidth(150), GUILayout.MaxHeight(15)))
+                {
+                    killObjectives.DeleteArrayElementAtIndex(i);
+                }
+            }
+            GUILayout.Label("");
+
         }
-        EditorGUILayout.PropertyField(killObjectives, true);
-        EditorGUILayout.PropertyField(locationObjectives, true);
+
+        //Location Objectives
+        if (locationObjectives.arraySize != 0)
+        {
+            GUILayout.Label("Location Objectives", EditorStyles.boldLabel);
+            //Display all location objective objects
+            for (int i = 0; i < locationObjectives.arraySize; i++)
+            {
+                SerializedProperty locationObjectivesRef = locationObjectives.GetArrayElementAtIndex(i);
+                SerializedProperty location = locationObjectivesRef.FindPropertyRelative("m_location");
+
+                EditorGUILayout.PropertyField(location);
+
+                //Remove objecttive button
+                if (GUILayout.Button("Remove Objective", GUILayout.MaxWidth(150), GUILayout.MaxHeight(15)))
+                {
+                    locationObjectives.DeleteArrayElementAtIndex(i);
+                }
+            }
+            GUILayout.Label("");
+        }
+  
 
         //End of Inspector GUI
         serializedObject.ApplyModifiedProperties();         

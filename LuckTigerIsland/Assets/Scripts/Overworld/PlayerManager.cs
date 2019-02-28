@@ -17,7 +17,6 @@ public struct Interaction
     }
 }
 
-
 [RequireComponent(typeof(PlayerWorldMove))]
 [RequireComponent(typeof(EntityLayerCalc))]
 [RequireComponent(typeof(Rigidbody2D))]
