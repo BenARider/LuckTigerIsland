@@ -11,6 +11,7 @@ TagManager:
   - Wizard
   - Cleric
   - Ninja
+  - Party
   layers:
   - Default
   - TransparentFX

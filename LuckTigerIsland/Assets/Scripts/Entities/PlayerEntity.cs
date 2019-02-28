@@ -14,6 +14,7 @@ public class PlayerEntity : Entity {
     [SerializeField]
     private bool m_findTextGameObjects;
 
+
     [SerializeField]
     PlayerEntity warrior;
     [SerializeField]
@@ -37,8 +38,12 @@ public class PlayerEntity : Entity {
         m_magicPower = _magicPow;
         m_EXP = _EXP;
     }
-    // Use this for initialization
- 
+
+    private BattleControl BC;
+    public HandleTurns HT;
+
+    private bool m_chosenAction;
+
     void Start () {
 
         if (Class == "Warrior")
@@ -57,26 +62,179 @@ public class PlayerEntity : Entity {
         {
             SetPlayerStats(100, 15, 10, 5, 40, 1, 35, 10, 30);
         }
-        float baseSpeed = 100;
         SetRequiredSpeed();
         ResetHealth();
         ResetMana();
         
         Debug.Log("Player Stats set");
+
+        currentState = TurnState.eProssesing;
+        
+
         Debug.Log("Base required speed is: " + baseSpeed);
         statTexts = new TextMeshProUGUI[12];
+
         playerStatButton.onClick.AddListener(IncreasePlayerStatID);
         rightButton.onClick.AddListener(IncreasePlayerStatID);
+        BC = GameObject.Find("BattleControl").GetComponent<BattleControl>();
+        startPosition = transform.position; //setting the position based on where the object is on start up
+        m_chosenAction = false;
+    }
 
-    }
-	
-	// Update is called once per frame
-	void Update ()
+    // Update is called once per frame
+    void Update ()
     {
-        Attack();
-        Damage();
-        Death();
+        Debug.Log(currentState);
+        switch (currentState)
+        {
+            case (TurnState.eProssesing):
+                UpdateSpeed();
+                break;
+            case (TurnState.eChooseAction):
+                    ChooseAction();
+                if (m_chosenAction)
+                {
+                    currentState = TurnState.eWaiting;
+                }
+                break;
+            case (TurnState.eWaiting):
+
+                break;
+            case (TurnState.eAction):
+                StartCoroutine(PlayerAction());
+                break;
+            case (TurnState.eDead):
+                Destroy(gameObject);
+                break;
+        }
+        if (GetHealth() <= 0)
+        {
+            currentState = TurnState.eDead;
+        }
     }
+
+    void UpdateSpeed()
+    {
+        if (BattleControl.turnBeingHad == false)
+        {
+            currentSpeed = currentSpeed + 0.25f;
+            if (currentSpeed >= GetRequiredSpeed())
+            {
+                currentState = TurnState.eChooseAction;
+                BattleControl.turnBeingHad = true;
+            }
+        }
+    }
+
+    void ChooseAction()
+    {
+        Debug.Log("Player Choose Action");
+            if (Input.GetKeyDown("1"))
+            {
+            int num = Random.Range(0, attacks.Count); // this determines the attack further below
+
+            HandleTurns myAttack = new HandleTurns
+                {
+                    Attacker = name, //Who is attacking
+                    Type = "Player",//What type are they
+                    AttackingGameObject = this.gameObject, //What gameObject is attacking
+                    AttackTarget = BC.EnemiesInBattle[3], //Ignore the fact that this says three its always where enemy 1 is in the list ditto for the rest
+                    chosenAttack = attacks[num]
+                };
+                BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
+                m_chosenAction = true;
+            }
+            if (Input.GetKeyDown("2"))
+            {
+            int num = Random.Range(0, attacks.Count);
+            HandleTurns myAttack = new HandleTurns
+                {
+                    Attacker = name, //Who is attacking
+                    Type = "Player",//What type are they
+                    AttackingGameObject = this.gameObject, //What gameObject is attacking
+                    AttackTarget = BC.EnemiesInBattle[1],
+                    chosenAttack = attacks[num]
+
+                };
+                BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
+                m_chosenAction = true;
+
+            }
+            if (Input.GetKeyDown("3"))
+            {
+            int num = Random.Range(0, attacks.Count);
+            HandleTurns myAttack = new HandleTurns
+                {
+                    Attacker = name, //Who is attacking
+                    Type = "Player",//What type are they
+                    AttackingGameObject = this.gameObject, //What gameObject is attacking
+                    AttackTarget = BC.EnemiesInBattle[0] ,
+                    chosenAttack = attacks[num]
+                };
+                BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
+                m_chosenAction = true;
+            }
+            if (Input.GetKeyDown("4"))
+            {
+            int num = Random.Range(0, attacks.Count);
+            HandleTurns myAttack = new HandleTurns
+                {
+                    Attacker = name, //Who is attacking
+                    Type = "Player",//What type are they
+                    AttackingGameObject = this.gameObject, //What gameObject is attacking
+                    AttackTarget = BC.EnemiesInBattle[2],
+                    chosenAttack = attacks[num]
+                };
+                BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
+                m_chosenAction = true;
+            }
+    }
+
+    private IEnumerator PlayerAction()
+    {
+        if (actionHappening) //stops spamming 
+        {
+            yield break;
+        }
+
+        actionHappening = true;
+
+        Vector3 PartyMemberPosition = new Vector3(EntityToAttack.transform.position.x - 1.5f, EntityToAttack.transform.position.y, EntityToAttack.transform.position.z);
+
+        while (MoveTo(PartyMemberPosition))
+        {
+            yield return null; //wait until moveToward is true
+        }
+
+        yield return new WaitForSeconds(1.5f);
+        //do damage
+        playerDoDamge();
+
+        while (MoveTo(startPosition))
+        { 
+            yield return null; //wait until moveToward is true
+        }
+
+        //remove from list
+        BC.NextTurn.RemoveAt(0);
+
+        //reset the statemachine
+        BC.battleState = BattleControl.performAction.eWait;
+
+        actionHappening = false;
+        m_chosenAction = false; //Reset battle conditions
+        currentSpeed = 0f;
+        currentState = TurnState.eProssesing;
+        BattleControl.turnBeingHad = false;
+    }
+
+    void playerDoDamge()
+    {
+        int calculateDamage = GetStrength() +  BC.NextTurn[0].chosenAttack.attackDamage; //calc should be done here before damage
+         
+        EntityToAttack.GetComponent<EnemEntity>().TakeDamage(calculateDamage);
+    }
+
     //Used to control the party stat menu by setting and finding all the text values/objects
     public void IncreasePlayerStatID()
     {

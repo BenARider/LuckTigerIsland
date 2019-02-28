@@ -39,19 +39,25 @@ public class Entity : MonoBehaviour {
     [SerializeField]
 	protected bool m_attackedAlready = false;
 	[SerializeField]
-	protected int m_entityNumber;
+	protected int m_entityNumber; // 1-4 for players party, 5-8 for the enemies
 	[SerializeField]
-	protected float m_baseRequiredSpeedForTurn = 100;
+	protected static float m_baseRequiredSpeedForTurn = 100;
 	[SerializeField]
 	protected float m_requiredSpeedForTurn;
 	[SerializeField]
 	protected bool myTurn = false;
 	[SerializeField]
 	public bool battleWon = false;
+    [SerializeField]
+    protected float currentSpeed = 0f;
 
-	//used for damage calculations
-	//-------------------------------------------
-	public int tempDMGReduct = 0; //the amount of damage reduced to the intial damage
+
+    protected float walkSpeed = 5f;
+
+
+    //used for damage calculations
+    //-------------------------------------------
+    public int tempDMGReduct = 0; //the amount of damage reduced to the intial damage
 	public int totalDMG = 0; //total amount of damage that goes through.
 	public int chanceToHit;
 
@@ -63,46 +69,56 @@ public class Entity : MonoBehaviour {
 	public bool dmgRecieve = false;
 	public bool dmgDealt = false;
 
-	// Use this for initialization
-	void Start() {
-       
-	}
+    public enum TurnState
+    {
+        eProssesing,
+        eChooseAction,
+        eWaiting,
+        eAction,
+        eDead
+    }
+    public TurnState currentState;
+    protected Vector3 startPosition; //used for animation, move to player when attacking and then back
+
+    protected bool actionHappening = false; //Think attackAlready, stops the entities spamming
+    public GameObject EntityToAttack; //What the entity wants to attack
+
+    public List<BaseAttack> attacks = new List<BaseAttack>();
 
 
 	// Update is called once per frame
 	void Update()
 	{
-		if (BattleControl.willDamage == "y" && BattleControl.currentTarget == m_entityNumber)
-		{
-			m_health -= BattleControl.currentDamage;
-			BattleControl.willDamage = "n";
-			BattleControl.currentTarget = 0;
-			BattleControl.side = " ";
+		//if (BattleControl.willDamage == "y" && BattleControl.currentTarget == m_entityNumber)
+		//{
+		//	m_health -= BattleControl.currentDamage;
+		//	BattleControl.willDamage = "n";
+		//	BattleControl.currentTarget = 0;
+		//	BattleControl.side = " ";
 
-		}
+		//}
 	}
 
 	public void CheckForDamage(string side)
 	{
-		if (BattleControl.willDamage == "y" && BattleControl.currentTarget == m_entityNumber)
-		{
-			m_health -= BattleControl.currentDamage;
-			Debug.Log(side + ": " + m_entityNumber + " health total now: " + GetHealth());
-			BattleControl.willDamage = "n";
-			BattleControl.currentTarget = 0;
-			BattleControl.side = " ";
-		}
+		//if (BattleControl.willDamage == "y" && BattleControl.currentTarget == m_entityNumber)
+		//{
+		//	m_health -= BattleControl.currentDamage;
+		//	Debug.Log(side + ": " + m_entityNumber + " health total now: " + GetHealth());
+		//	BattleControl.willDamage = "n";
+		//	BattleControl.currentTarget = 0;
+		//	BattleControl.side = " ";
+		//}
 	}
 
-	void TakeDamage(int damageTaken)
-	{
-		Debug.Log("Enemy taking damage");
-		m_health -= damageTaken;
-	}
+    protected bool MoveTo(Vector3 target)
+    {
+        return target != (transform.position = Vector3.MoveTowards(transform.position, target, walkSpeed * Time.deltaTime)); //returns false until the enity is at its target
+    }
 
-	//-----------------------------------------------------------------------------------------------------
-	//Setters and Getters
-	public void Sethealth(int _health) //The argument should be _health. The body should then be m_health = _health.
+    //-----------------------------------------------------------------------------------------------------
+    //Setters and Getters
+    public void Sethealth(int _health) //The argument should be _health. The body should then be m_health = _health.
 	{
 		m_health = _health;
 	}
@@ -135,10 +151,15 @@ public class Entity : MonoBehaviour {
         return m_defenceMGC;
     }
 
-    public int GetSpeed()
+    public float GetCurrentSpeed()
     {
-        return m_speed;
+        return currentSpeed;
     }
+
+	public int GetSpeed()
+	{
+		return m_speed;
+	}
   
 	public float GetRequiredSpeed()
 	{
@@ -173,6 +194,10 @@ public class Entity : MonoBehaviour {
     public int GetEXP()
     {
         return m_EXP;
+    }
+    public void TakeDamage(int damageAmount)
+    {
+        m_health -= damageAmount;
     }
 
     //--------------------------------------------------------------------------------------------------
