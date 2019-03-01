@@ -14,7 +14,7 @@ public class MenuOpen : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         m_eventSystem = EventSystem.current;
-        m_eventSystem.SetSelectedGameObject(ResumeButton);
+      //  m_eventSystem.SetSelectedGameObject(ResumeButton);
     }
     // Update is called once per frame
     void Update()

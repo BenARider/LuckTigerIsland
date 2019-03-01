@@ -69,8 +69,6 @@ public class PlayerEntity : Entity {
         Debug.Log("Player Stats set");
 
         currentState = TurnState.eProssesing;
-        
-
 
         statTexts = new TextMeshProUGUI[12];
 
