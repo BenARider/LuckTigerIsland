@@ -91,7 +91,7 @@ public class Entity : MonoBehaviour {
 
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame

@@ -1,14 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
+using TMPro;
 public class EnemEntity : Entity
 {
 	//private bool canAttack = false; //used to prevent the ai from having too many turns. Only enabled on use of state transition.
 	public int aggress; //likelihood to attack oppossing attacker (Between 1-20)
 	public int intel; //likelihood to attack pm with high value (Between 1-20)
 	public int XP; //amount of xp they give
-
+    public TextMeshProUGUI attackDescriptionText;//describes the attack that is happening/happend;
+    public TextMeshProUGUI turnText;//who's turn it is
 
     protected void SetEnemyStats(int hth, int man, int str, int def, int spd, int lvl, int agr, int itl, int xp)
 	{
@@ -106,7 +108,9 @@ public class EnemEntity : Entity
             {
                 currentState = TurnState.eChooseAction;
                 BattleControl.turnBeingHad = true;
+                turnText.text = "It is " + this.name + "'s turn";
                 Debug.Log("It is " + this.name + "'s turn");
+                StartCoroutine("FadeText");
             }
         }
 	}
@@ -136,9 +140,9 @@ public class EnemEntity : Entity
             AttackTarget = BC.PartyMembersInBattle[Random.Range(0, BC.PartyMembersInBattle.Count)], //Random a target that is in the List stored in BattleControl
             chosenAttack = m_chosenAction
         };
-
-        Debug.Log(this.gameObject.name + " Is going to attack " + myAttack.AttackTarget + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!");
-
+        attackDescriptionText.text = this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!";
+        Debug.Log(this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!");
+        StartCoroutine("FadeText");
         BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
     }
 
@@ -190,5 +194,11 @@ public class EnemEntity : Entity
     {
         int calculateDamage = GetStrength() + BC.NextTurn[0].chosenAttack.attackDamage;
         EntityToAttack.GetComponent<PlayerEntity>().TakeDamage(calculateDamage);
+    }
+    IEnumerator FadeText()
+    {
+        yield return new  WaitForSeconds(2.0f);
+        attackDescriptionText.text = "";
+        turnText.text = "";
     }
 }
