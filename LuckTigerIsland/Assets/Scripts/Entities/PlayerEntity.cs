@@ -42,7 +42,8 @@ public class PlayerEntity : Entity {
     private BattleControl BC;
     public HandleTurns HT;
 
-    private bool m_chosenAction;
+    private bool m_hasChosenAction;
+    private bool m_chosenTarget;
 
     void Start () {
 
@@ -70,13 +71,25 @@ public class PlayerEntity : Entity {
 
         currentState = TurnState.eProssesing;
 
+
+        Health_Potion HpPotion = Health_Potion.CreateInstance<Health_Potion>();
+
+        HealthPotions.Add(HpPotion);
+        HealthPotions.Add(HpPotion);
+
+        Mana_Potion MpPotion = Mana_Potion.CreateInstance<Mana_Potion>();
+
+        ManaPotions.Add(MpPotion);
+        ManaPotions.Add(MpPotion);
+
+
         statTexts = new TextMeshProUGUI[12];
 
         playerStatButton.onClick.AddListener(IncreasePlayerStatID);
         rightButton.onClick.AddListener(IncreasePlayerStatID);
         BC = GameObject.Find("BattleControl").GetComponent<BattleControl>();
         startPosition = transform.position; //setting the position based on where the object is on start up
-        m_chosenAction = false;
+        m_hasChosenAction = false;
     }
 
     // Update is called once per frame
@@ -89,12 +102,23 @@ public class PlayerEntity : Entity {
                 UpdateSpeed();
                 break;
             case (TurnState.eChooseAction):
-                    ChooseAction();
-                if (m_chosenAction)
+                ChooseAction();
+
+                if (m_hasChosenAction)
+                {
+                    currentState = TurnState.eChooseTarget;
+                }
+
+                break;
+            case (TurnState.eChooseTarget):
+
+                ChooseTarget();
+                if (m_chosenTarget)
                 {
                     currentState = TurnState.eWaiting;
                 }
-                break;
+
+                    break;
             case (TurnState.eWaiting):
 
                 break;
@@ -120,72 +144,159 @@ public class PlayerEntity : Entity {
             {
                 currentState = TurnState.eChooseAction;
                 BattleControl.turnBeingHad = true;
+                Debug.Log("It is " + this.name + "'s turn");
             }
         }
     }
 
     void ChooseAction()
     {
-        Debug.Log("Player Choose Action");
-            if (Input.GetKeyDown("1"))
-            {
-            int num = Random.Range(0, attacks.Count); // this determines the attack further below
+        Debug.Log(this.name + ": Choose Action");
+        if (Input.GetKeyDown("1"))
+        {
+            m_chosenAction = attacks[0];
 
-            HandleTurns myAttack = new HandleTurns
-                {
-                    Attacker = name, //Who is attacking
-                    Type = "Player",//What type are they
-                    AttackingGameObject = this.gameObject, //What gameObject is attacking
-                    AttackTarget = BC.EnemiesInBattle[3], //Ignore the fact that this says three its always where enemy 1 is in the list ditto for the rest
-                    chosenAttack = attacks[num]
-                };
-                BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
-                m_chosenAction = true;
-            }
-            if (Input.GetKeyDown("2"))
+            if (attacks[0].attackCost < m_mana)
             {
-            int num = Random.Range(0, attacks.Count);
-            HandleTurns myAttack = new HandleTurns
-                {
-                    Attacker = name, //Who is attacking
-                    Type = "Player",//What type are they
-                    AttackingGameObject = this.gameObject, //What gameObject is attacking
-                    AttackTarget = BC.EnemiesInBattle[1],
-                    chosenAttack = attacks[num]
+                m_hasChosenAction = true;
+            }
+            else
+            {
+                Debug.Log(this.name + " does not have enough mana!");
+            }
+            m_mana -= m_chosenAction.attackCost;
+        }
+        if (Input.GetKeyDown("2"))
+       {
+            m_chosenAction = attacks[1];
 
-                };
-                BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
-                m_chosenAction = true;
+            if (attacks[1].attackCost < m_mana)
+            {
+                m_hasChosenAction = true;
+            }
+            else
+            {
+                Debug.Log(this.name + " does not have enough mana!");
+            }
+            m_mana -= m_chosenAction.attackCost;
+        }
+        if (Input.GetKeyDown("3"))
+             {
+                m_chosenAction = attacks[2];
+                if (attacks[2].attackCost < m_mana)
+                {
+                    m_hasChosenAction = true;
+                }
+                else
+                {
+                    Debug.Log(this.name + " does not have enough mana!");
+                }
+                m_mana-=m_chosenAction.attackCost;
+             }
+        if (Input.GetKeyDown("8"))
+        {
+             
+            if (HealthPotions.Count > 0)
+            {
+                m_health += Health_Potion.healthGiven;
+                if (m_health > m_maxHealth)
+                {
+                    m_health = m_maxHealth;
+                    Debug.Log(this.name + " used a health potion");
+                    HealthPotions.RemoveAt(0);
+                }
+                currentSpeed = 0;
+                currentState = TurnState.eProssesing;
+                BattleControl.turnBeingHad = false;
+            }
+            else
+            {
+                Debug.Log(this.name + " does not have enough health potions");
+            }
+        }
+        if (Input.GetKeyDown("9"))
+        {
 
-            }
-            if (Input.GetKeyDown("3"))
+            if (ManaPotions.Count > 0)
             {
-            int num = Random.Range(0, attacks.Count);
-            HandleTurns myAttack = new HandleTurns
+                m_mana += Mana_Potion.manaGiven;
+                if (m_mana > m_maxMana)
                 {
-                    Attacker = name, //Who is attacking
-                    Type = "Player",//What type are they
-                    AttackingGameObject = this.gameObject, //What gameObject is attacking
-                    AttackTarget = BC.EnemiesInBattle[0] ,
-                    chosenAttack = attacks[num]
-                };
-                BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
-                m_chosenAction = true;
+                    m_mana = m_maxMana;
+                    Debug.Log(this.name + " used a mana potion");
+                    ManaPotions.RemoveAt(0);
+                }
+                currentSpeed = 0;
+                currentState = TurnState.eProssesing;
+                BattleControl.turnBeingHad = false;
             }
-            if (Input.GetKeyDown("4"))
+            else
             {
-            int num = Random.Range(0, attacks.Count);
-            HandleTurns myAttack = new HandleTurns
-                {
-                    Attacker = name, //Who is attacking
-                    Type = "Player",//What type are they
-                    AttackingGameObject = this.gameObject, //What gameObject is attacking
-                    AttackTarget = BC.EnemiesInBattle[2],
-                    chosenAttack = attacks[num]
-                };
-                BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
-                m_chosenAction = true;
+                Debug.Log(this.name + " does not have enough mana potions");
             }
+        }
+    }
+
+    void ChooseTarget()
+    {
+        Debug.Log(this.name + ": Choose Target");
+
+        if (Input.GetKeyDown("1"))
+        {
+            HandleTurns myAttack = new HandleTurns
+            {
+                Attacker = name, //Who is attacking
+                Type = "Player",//What type are they
+                AttackingGameObject = this.gameObject, //What gameObject is attacking
+                chosenAttack = m_chosenAction,
+                AttackTarget = BC.EnemiesInBattle[3]
+            };
+            BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
+            m_chosenTarget = true;
+            Debug.Log(this.gameObject.name + " Is going to attack " + myAttack.AttackTarget + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!");
+        }
+        if (Input.GetKeyDown("2"))
+        {
+            HandleTurns myAttack = new HandleTurns
+            {
+                Attacker = name, //Who is attacking
+                Type = "Player",//What type are they
+                AttackingGameObject = this.gameObject, //What gameObject is attacking
+                chosenAttack = m_chosenAction,
+                AttackTarget = BC.EnemiesInBattle[0]
+            };
+            BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
+            m_chosenTarget = true;
+            Debug.Log(this.gameObject.name + " Is going to attack " + myAttack.AttackTarget + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!");
+        }
+        if (Input.GetKeyDown("3"))
+        {
+            HandleTurns myAttack = new HandleTurns
+            {
+                Attacker = name, //Who is attacking
+                Type = "Player",//What type are they
+                AttackingGameObject = this.gameObject, //What gameObject is attacking
+                chosenAttack = m_chosenAction,
+                AttackTarget = BC.EnemiesInBattle[1]
+            };
+            BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
+            m_chosenTarget = true;
+            Debug.Log(this.gameObject.name + " Is going to attack " + myAttack.AttackTarget + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!");
+        }
+        if (Input.GetKeyDown("4"))
+        {
+            HandleTurns myAttack = new HandleTurns
+            {
+                Attacker = name, //Who is attacking
+                Type = "Player",//What type are they
+                AttackingGameObject = this.gameObject, //What gameObject is attacking
+                chosenAttack = m_chosenAction,
+                AttackTarget = BC.EnemiesInBattle[2]
+            };
+            BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
+            m_chosenTarget = true;
+            Debug.Log(this.gameObject.name + " Is going to attack " + myAttack.AttackTarget + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!");
+        }
     }
 
     private IEnumerator PlayerAction()
@@ -197,13 +308,22 @@ public class PlayerEntity : Entity {
 
         actionHappening = true;
 
-        Vector3 PartyMemberPosition = new Vector3(EntityToAttack.transform.position.x - 1.5f, EntityToAttack.transform.position.y, EntityToAttack.transform.position.z);
+        Vector3 meleeAttack = new Vector3(EntityToAttack.transform.position.x - 1.5f, EntityToAttack.transform.position.y, EntityToAttack.transform.position.z);
+        Vector3 magicAttack = new Vector3(transform.position.x + 1.5f, transform.position.y,transform.position.z);
 
-        while (MoveTo(PartyMemberPosition))
+        if (m_chosenAction.attackType == "Melee")
         {
-            yield return null; //wait until moveToward is true
+            while (MoveTo(meleeAttack))
+            {
+                yield return null; //wait until moveToward is true
+            }
+        }else
+        {
+            while (MoveTo(magicAttack))
+            {
+                yield return null; //wait until moveToward is true
+            }
         }
-
         yield return new WaitForSeconds(1.5f);
         //do damage
         playerDoDamge();
@@ -220,7 +340,7 @@ public class PlayerEntity : Entity {
         BC.battleState = BattleControl.performAction.eWait;
 
         actionHappening = false;
-        m_chosenAction = false; //Reset battle conditions
+        m_hasChosenAction = false; //Reset battle conditions
         currentSpeed = 0f;
         currentState = TurnState.eProssesing;
         BattleControl.turnBeingHad = false;
