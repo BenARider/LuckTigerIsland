@@ -46,6 +46,7 @@ public class PlayerEntity : Entity
     }
 
     private BattleControl BC;
+    private BattleUIButton m_BattleButton;
     public HandleTurns HT;
 
     private bool m_hasChosenAction;
@@ -97,6 +98,7 @@ public class PlayerEntity : Entity
         BC = GameObject.Find("BattleControl").GetComponent<BattleControl>();
         startPosition = transform.position; //setting the position based on where the object is on start up
         m_hasChosenAction = false;
+        m_BattleButton = GameObject.Find("Action_List_Holder").GetComponent<BattleUIButton>();
 
     }
 
@@ -163,8 +165,9 @@ public class PlayerEntity : Entity
 
     void ChooseAction()
     {
+       
         Debug.Log(this.name + ": Choose Action");
-        if (Input.GetKeyDown("1"))
+        if (Input.GetKeyDown("1") || m_BattleButton.GetActionTargetNumber() == 1)
         {
             m_chosenAction = attacks[0];
 
@@ -180,7 +183,7 @@ public class PlayerEntity : Entity
             m_mana -= m_chosenAction.attackCost;
         }
         else notEnoughPotionsText.text = "";
-        if (Input.GetKeyDown("2"))
+        if (Input.GetKeyDown("2") || m_BattleButton.GetActionTargetNumber() == 2)
         {
             m_chosenAction = attacks[1];
 
@@ -196,7 +199,7 @@ public class PlayerEntity : Entity
             m_mana -= m_chosenAction.attackCost;
         }
         else notEnoughPotionsText.text = "";
-        if (Input.GetKeyDown("3"))
+        if (Input.GetKeyDown("3") || m_BattleButton.GetActionTargetNumber() == 3)
         {
             m_chosenAction = attacks[2];
             if (attacks[2].attackCost < m_mana)
@@ -211,7 +214,7 @@ public class PlayerEntity : Entity
             m_mana -= m_chosenAction.attackCost;
         }
         else notEnoughPotionsText.text = "";
-        if (Input.GetKeyDown("8"))
+        if (Input.GetKeyDown("8") || m_BattleButton.GetActionTargetNumber() == 8)
         {
 
             if (HealthPotions.Count > 0)
@@ -241,7 +244,7 @@ public class PlayerEntity : Entity
             notEnoughPotionsText.text = "";
         }
    
-        if (Input.GetKeyDown("9"))
+        if (Input.GetKeyDown("9") || m_BattleButton.GetActionTargetNumber() == 9)
         {
             if (ManaPotions.Count > 0)
             {
@@ -274,9 +277,9 @@ public class PlayerEntity : Entity
 
     void ChooseTarget()
     {
+      
         Debug.Log(this.name + ": Choose Target");
-
-        if (Input.GetKeyDown("1"))
+        if (Input.GetKeyDown("1") || m_BattleButton.GetActionTargetNumber() == 10)
         {
             HandleTurns myAttack = new HandleTurns
             {
@@ -292,7 +295,7 @@ public class PlayerEntity : Entity
             Debug.Log(this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!");
             StartCoroutine("FadeText");
         }
-        if (Input.GetKeyDown("2"))
+        if (Input.GetKeyDown("2") || m_BattleButton.GetActionTargetNumber() == 11)
         {
             HandleTurns myAttack = new HandleTurns
             {
@@ -308,7 +311,7 @@ public class PlayerEntity : Entity
             Debug.Log(this.gameObject.name + " Is going to attack " + myAttack.AttackTarget + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!");
             StartCoroutine("FadeText");
         }
-        if (Input.GetKeyDown("3"))
+        if (Input.GetKeyDown("3") || m_BattleButton.GetActionTargetNumber() == 12)
         {
             HandleTurns myAttack = new HandleTurns
             {
@@ -324,7 +327,7 @@ public class PlayerEntity : Entity
             Debug.Log(this.gameObject.name + " Is going to attack " + myAttack.AttackTarget + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!");
             StartCoroutine("FadeText");
         }
-        if (Input.GetKeyDown("4"))
+        if (Input.GetKeyDown("4") || m_BattleButton.GetActionTargetNumber() == 13)
         {
             HandleTurns myAttack = new HandleTurns
             {

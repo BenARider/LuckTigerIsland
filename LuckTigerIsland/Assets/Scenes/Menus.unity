@@ -291,6 +291,7 @@ MonoBehaviour:
   attackDescriptionText: {fileID: 0}
   notEnoughManaText: {fileID: 0}
   notEnoughPotionsText: {fileID: 0}
+  usedPotionText: {fileID: 0}
   expBar: {fileID: 1870389185}
   rightButton: {fileID: 132576409}
   playerStatButton: {fileID: 1972706619}
@@ -1557,6 +1558,7 @@ MonoBehaviour:
   attackDescriptionText: {fileID: 0}
   notEnoughManaText: {fileID: 0}
   notEnoughPotionsText: {fileID: 0}
+  usedPotionText: {fileID: 0}
   expBar: {fileID: 1870389185}
   rightButton: {fileID: 132576409}
   playerStatButton: {fileID: 1972706619}
@@ -7066,6 +7068,7 @@ MonoBehaviour:
   attackDescriptionText: {fileID: 0}
   notEnoughManaText: {fileID: 0}
   notEnoughPotionsText: {fileID: 0}
+  usedPotionText: {fileID: 0}
   expBar: {fileID: 1870389185}
   rightButton: {fileID: 132576409}
   playerStatButton: {fileID: 1972706619}
@@ -11047,6 +11050,7 @@ MonoBehaviour:
   attackDescriptionText: {fileID: 0}
   notEnoughManaText: {fileID: 0}
   notEnoughPotionsText: {fileID: 0}
+  usedPotionText: {fileID: 0}
   expBar: {fileID: 1870389185}
   rightButton: {fileID: 132576409}
   playerStatButton: {fileID: 1972706619}
