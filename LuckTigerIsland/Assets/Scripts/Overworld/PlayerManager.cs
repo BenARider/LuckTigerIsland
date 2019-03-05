@@ -185,8 +185,9 @@ public class PlayerManager : LTI.Singleton<PlayerManager> {
         if (interactions.Count > 0)
         {
             
-            textArray[0].text = "Press E";
+            
             Interaction interact = interactions[interactions.Count - 1];
+            textArray[0].text = "Press E to " + interact.text;
             /*switch (interact.type)
             {
                 case InteractionType.Dialogue:

@@ -13,12 +13,15 @@ public class EncounterManager : MonoBehaviour {
 	public bool isDesert = false;
 	public float encounterChance = 0f;
 
+    ScreenTransition fade;
 
-	// Use this for initialization
-	void Start () {
+    
+    // Use this for initialization
+    void Start () {
 		player = GetComponent<PlayerManager>();
 		lastPos = new Vector3Int(0,0,0);
-	}
+        fade = Camera.main.GetComponent<ScreenTransition>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -29,7 +32,7 @@ public class EncounterManager : MonoBehaviour {
 				encounterMap = GameObject.FindGameObjectWithTag("EncounterMap").GetComponent<Tilemap>();
 			}
 		}
-		else if(player.currentSceneName.Equals("TestScene"))
+		else if(player.currentSceneName.Equals("Overworld"))
 		{
 			Vector3Int currentPos = new Vector3Int((int)(transform.position.x - 0.5f), (int)(transform.position.y-1f),0);
 			
@@ -50,7 +53,9 @@ public class EncounterManager : MonoBehaviour {
 				if(Random.Range(0f,10f) < encounterChance)
 				{
 					print("encounter: " + (isDesert? "desert" : "grassland"));
-				}
+                    fade.flashWhite(0.1f);
+
+                }
 
 				lastPos = currentPos;
 			}
