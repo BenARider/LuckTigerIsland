@@ -40,7 +40,6 @@ public class EventManager : LTI.Singleton<EventManager>
 
     private void Start()
     {
-        m_questManager = QuestManager.Instance;
         instance = this;
         m_questManager = QuestManager.Instance;
     }
@@ -108,6 +107,11 @@ public class EventManager : LTI.Singleton<EventManager>
                 }
             }
         }
+    }
+
+    public void ItemToInventory(InventoryObject _object)
+    {
+
     }
 
     public void CheckCompletion(Quest _q)

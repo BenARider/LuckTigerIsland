@@ -29,17 +29,27 @@ public class Quest : MonoBehaviour
     public List<KillObjective> m_killObjectives;
     [SerializeField]
     public List<LocationObjective> m_locationObjectives;
+    [SerializeField]
+    public List<ItemObjective> m_inventoryObjectives;
     
 
     //For use with creating objects in the inspector. Using o_name to represent objectives_name.
+    //Objective Type
     [SerializeField]
     private EObjectiveType o_type;
+    //Locations
     [SerializeField]
     private ELocations o_location;
+    //Enemies
     [SerializeField]
     private EEnemies o_enemy;
     [SerializeField]
     private int o_enemyAmount;
+    //Items
+    [SerializeField]
+    private InventoryObject o_item;
+    [SerializeField]
+    private int o_itemAmount;
 
     // Add/Remove Objectives
     public void AddLocationObjective(ELocations _location)
@@ -54,6 +64,13 @@ public class Quest : MonoBehaviour
         KillObjective _eo = new KillObjective(_enemy, _amount);
         m_killObjectives.Add(_eo);
         m_allObjectives.Add(_eo);
+    }
+
+    public void AddnventoryObjective(InventoryObject _object, int _amount = 1)
+    {
+        ItemObjective _io = new ItemObjective(_object, _amount);
+        m_inventoryObjectives.Add(_io);
+        m_allObjectives.Add(_io);
     }
 
     public void RemoveLastLocationObjective()
