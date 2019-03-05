@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class InventoryPickup : MonoBehaviour {
 
-	public InventoryObject iobject;
+	private InventoryObject m_iobject;
+
+    private int m_amount;
 
     public void PickupObject() {
-        Inventory.Instance.AddToInventory(iobject);
-        EventManager.Instance.ItemToInventory(iobject);
+        Inventory.Instance.AddToInventory(m_iobject);
+        EventManager.Instance.ItemToInventory(m_iobject, m_amount);
     }
 }

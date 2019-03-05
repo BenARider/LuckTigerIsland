@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public struct InventoryObjectStruct
 {
-    public InventoryObject iobject;   
+    [SerializeField]
+    public InventoryObject iobject;
+    [SerializeField]
     public int amount;
 
     public void IncreaseAmount(int _amount)
@@ -39,5 +42,6 @@ public class Inventory : LTI.Singleton<Inventory> {
         }
     }
 
+    [SerializeField]
     public List<InventoryObjectStruct> inventory;
 }

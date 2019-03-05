@@ -183,8 +183,8 @@ MonoBehaviour:
   o_location: 0
   o_enemy: 0
   o_enemyAmount: 0
-  o_item: {fileID: 11400000, guid: bb0349cb5c0d5ab4eb853e031eacb4a8, type: 2}
-  o_itemAmount: 3
+  o_item: {fileID: 11400000, guid: 26ae73543495d10459ac5f45f8dd0b6b, type: 2}
+  o_itemAmount: 1
 --- !u!114 &114623258347282940
 MonoBehaviour:
   m_ObjectHideFlags: 1

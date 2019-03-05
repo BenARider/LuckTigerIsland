@@ -52,10 +52,14 @@ public class ItemObjective : QuestObjective
     {
         return m_currentAmount;
     }
-    public void IncreaseCurrentAmount(int _amount)
+    public void DecreaseCurrentAmount(int _amount)
     {
-        //use minuses to reduce amount.
-        m_currentAmount += _amount;
+        //use minuses to increase amount.
+        m_currentAmount -= _amount;
+    }
+    public void SetCurrentAmount(int _amount)
+    {
+        m_currentAmount = _amount;
     }
     public int GetTotalAmount()
     {
