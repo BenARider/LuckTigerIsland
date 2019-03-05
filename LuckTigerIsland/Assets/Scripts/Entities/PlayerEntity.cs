@@ -14,7 +14,6 @@ public class PlayerEntity : Entity
     public TextMeshProUGUI notEnoughPotionsText;
     public TextMeshProUGUI usedPotionText;
     public Slider expBar;
-    public Button rightButton;
     public Button playerStatButton;
     public GameObject playerStatMenu;
     [SerializeField]
@@ -94,7 +93,6 @@ public class PlayerEntity : Entity
         statTexts = new TextMeshProUGUI[12];
 
         playerStatButton.onClick.AddListener(IncreasePlayerStatID);
-        rightButton.onClick.AddListener(IncreasePlayerStatID);
         BC = GameObject.Find("BattleControl").GetComponent<BattleControl>();
         startPosition = transform.position; //setting the position based on where the object is on start up
         m_hasChosenAction = false;
