@@ -3,26 +3,34 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public struct ShopItem
-{
-    public InventoryObject sItem;
-    public int sPrice;
-}
-
-public class Shop : MonoBehaviour {
+public class Shop : InteractEvent {
 
     [SerializeField]
-    public List<ShopItem> shop;
+    public List<ShopItem> shopInventory;
+
+    //For inspector use only.
+    [SerializeField]
+    private InventoryObject o_item;
+    [SerializeField]
+    private int o_price;
 
     public void BuyItem(ShopItem _item)
     {
-        if(Inventory.Instance.gold >= _item.sPrice)
+        if(Inventory.Instance.gold >= _item.Price)
         {
-            Inventory.Instance.AddToInventory(_item.sItem);
-            Inventory.Instance.gold -= (_item.sPrice);
+            Inventory.Instance.AddToInventory(_item.Item);
+            Inventory.Instance.gold -= (_item.Price);
         } else
         {
             Debug.Log("Too expensive!");
         }
+    }
+
+    public void AddItem(InventoryObject _item, int _price)
+    {
+        ShopItem item = new ShopItem();
+        item.Item = _item;
+        item.Price = _price;
+        shopInventory.Add(item);
     }
 }

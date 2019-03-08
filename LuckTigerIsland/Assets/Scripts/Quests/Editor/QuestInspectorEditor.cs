@@ -4,7 +4,7 @@ using UnityEditor;
 
 [CanEditMultipleObjects]
 [CustomEditor(typeof(Quest))]
-public class LevelScriptEditor : Editor
+public class QuestInspectorEditor : Editor
 {
     //Quest Information
     SerializedProperty title;

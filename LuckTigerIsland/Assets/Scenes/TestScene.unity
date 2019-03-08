@@ -2283,13 +2283,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 039dc2d6c0fb56145bdb3c6d1d41b089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shop:
-  - sItem: {fileID: 11400000, guid: 37be832cc678a74478c475fba1088c62, type: 2}
-    sPrice: 300
-  - sItem: {fileID: 0}
-    sPrice: 0
-  - sItem: {fileID: 0}
-    sPrice: 0
+  shopInventory:
+  - Item: {fileID: 0}
+    Price: 0
+  - Item: {fileID: 0}
+    Price: 0
+  o_item: {fileID: 11400000, guid: 37be832cc678a74478c475fba1088c62, type: 2}
+  o_price: 60
 --- !u!1001 &1461727459
 Prefab:
   m_ObjectHideFlags: 0
