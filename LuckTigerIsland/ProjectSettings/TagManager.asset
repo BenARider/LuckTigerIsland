@@ -12,6 +12,7 @@ TagManager:
   - Cleric
   - Ninja
   - Party
+  - Night
   layers:
   - Default
   - TransparentFX
