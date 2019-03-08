@@ -40,7 +40,6 @@ public class EventManager : LTI.Singleton<EventManager>
 
     private void Start()
     {
-        m_questManager = QuestManager.Instance;
         instance = this;
         m_questManager = QuestManager.Instance;
     }
@@ -103,6 +102,58 @@ public class EventManager : LTI.Singleton<EventManager>
                                 _ko.SetIsComplete(true);
                                 CheckCompletion(_q);
                             }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public void ItemToInventory(InventoryObject _object, int _amount)
+    {
+        //In all active quests
+        foreach (Quest _q in m_questManager.GetQuests())
+        {
+            //If the inventory objective isnt empty.
+            if (_q.m_inventoryObjectives.Capacity != 0)
+            {
+                //For every inventory objective
+                foreach (ItemObjective _io in _q.m_inventoryObjectives)
+                {                    
+                    //Check if the item picked up is part of the quest
+                    if (_io.GetInvObject() == _object)
+                    {
+                        _io.DecreaseCurrentAmount(_amount);
+                        if (_io.GetCurrentAmount() <= 0)
+                        {
+                            _io.SetIsComplete(true);
+                            CheckCompletion(_q);
+                        }
+                    }                    
+                }
+            }
+        }
+    }
+
+    //When an item is taken from the inventory, reduce 
+    public void ItemFromInventory(InventoryObject _object, int _amount)
+    {
+        //In all active quests
+        foreach (Quest _q in m_questManager.GetQuests())
+        {
+            //If the inventory objective isnt empty.
+            if (_q.m_inventoryObjectives.Capacity != 0)
+            {
+                //For every inventory objective
+                foreach (ItemObjective _io in _q.m_inventoryObjectives)
+                {
+                    //Check if the item picked up is part of the quest
+                    if (_io.GetInvObject() == _object)
+                    {
+                        _io.DecreaseCurrentAmount(-_amount);
+                        if (_io.GetCurrentAmount() >= _io.GetTotalAmount())
+                        {
+                            _io.SetCurrentAmount(_io.GetTotalAmount());
                         }
                     }
                 }

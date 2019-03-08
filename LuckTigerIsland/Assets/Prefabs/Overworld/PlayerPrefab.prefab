@@ -606,10 +606,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4df75c554ecd7c458397c494bbc1c03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory:
-  - {fileID: 11400000, guid: 26ae73543495d10459ac5f45f8dd0b6b, type: 2}
-  - {fileID: 11400000, guid: bb0349cb5c0d5ab4eb853e031eacb4a8, type: 2}
-  - {fileID: 11400000, guid: 37be832cc678a74478c475fba1088c62, type: 2}
+  inventory: []
 --- !u!114 &114219723684070712
 MonoBehaviour:
   m_ObjectHideFlags: 1
