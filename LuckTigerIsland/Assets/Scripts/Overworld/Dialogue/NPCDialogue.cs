@@ -21,6 +21,8 @@ public class Dialogue
     [HideInInspector]
     public bool isEndPoint = false;
     public Quest quest;
+    public int interactArgs;
+    public InteractEvent interactEvent;
     public string DialogueText;
     public DialogueReply[] Replies;
 

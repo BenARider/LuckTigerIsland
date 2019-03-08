@@ -32,7 +32,7 @@ public class EncounterManager : MonoBehaviour {
 				encounterMap = GameObject.FindGameObjectWithTag("EncounterMap").GetComponent<Tilemap>();
 			}
 		}
-		else if(player.currentSceneName.Equals("Overworld"))
+		else if(player.currentSceneName.Equals("Overworld") && player.playerMove.doMove)
 		{
 			Vector3Int currentPos = new Vector3Int((int)(transform.position.x - 0.5f), (int)(transform.position.y-1f),0);
 			
