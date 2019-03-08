@@ -6,7 +6,7 @@ using UnityEngine;
 public struct InventoryObjectStruct
 {
     [SerializeField]
-    public InventoryObject iobject;
+    public InventoryObject iObject;
     [SerializeField]
     public int amount;
 
@@ -18,6 +18,8 @@ public struct InventoryObjectStruct
 
 public class Inventory : LTI.Singleton<Inventory> {
 
+    public int gold;
+
     public void Start()
     {
         instance = this;
@@ -27,15 +29,15 @@ public class Inventory : LTI.Singleton<Inventory> {
     public void AddToInventory(InventoryObject _object, int _amount = 1)
     {
         InventoryObjectStruct iobjstruct;
-        iobjstruct.iobject = _object;
+        iobjstruct.iObject = _object;
         iobjstruct.amount = _amount;
 
-        bool contains = inventory.Exists(x => x.iobject = _object);
+        bool contains = inventory.Exists(x => x.iObject = _object);
 
         //If the item struct already exists, increase the amount instead of making a new one.
         if (contains)
         {
-            inventory.Find(x => x.iobject = _object).IncreaseAmount(_amount);
+            inventory.Find(x => x.iObject = _object).IncreaseAmount(_amount);
         } else //Else, add it to the list.
         {
             inventory.Add(iobjstruct);
