@@ -3,11 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ScreenTransition : MonoBehaviour {
 
+public class ScreenTransition : MonoBehaviour {
+    
 	public Image fadeBox;
-	float transitionValue = 0;
-	float alphaAmount = 0;
+	float fadeTransitionValue = 0;
+	float fadeAlphaAmount = 0;
+
+    public Image whiteBox;
+    float whiteTransitionValue = 0;
+    float whiteAlphaAmount = 0;
+    float whiteDuration = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -17,20 +23,39 @@ public class ScreenTransition : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		alphaAmount += transitionValue * Time.deltaTime;
-		alphaAmount = Mathf.Clamp(alphaAmount, 0, 1);
+        fadeAlphaAmount += fadeTransitionValue * Time.deltaTime;
+        fadeAlphaAmount = Mathf.Clamp(fadeAlphaAmount, 0, 1);
+		fadeBox.color = new Color(0, 0, 0, fadeAlphaAmount);
 
-		fadeBox.color = new Color(0, 0, 0, alphaAmount);
-	}
+        if (whiteDuration <= 0)
+        {
+            whiteAlphaAmount += whiteTransitionValue * Time.deltaTime;
+        }
+        else
+        {
+            whiteDuration -= Time.deltaTime;
+        }
+        whiteAlphaAmount = Mathf.Clamp(whiteAlphaAmount, 0, 1);
+        whiteBox.color = new Color(1, 1, 1, whiteAlphaAmount);
+
+    }
 
 	public void toBlack()
 	{
-		transitionValue = 1;
-		alphaAmount = 0;
+		fadeTransitionValue = 1;
+		fadeAlphaAmount = 0;
 	}
 	public void fromBlack()
 	{
-		transitionValue = -1;
-		alphaAmount = 1;
+        fadeTransitionValue = -1;
+        fadeAlphaAmount = 1;
 	}
+
+    public void flashWhite(float _duration)
+    {
+        whiteAlphaAmount = 1;
+        whiteTransitionValue = -1;
+        whiteDuration = _duration;
+    }
+
 }
