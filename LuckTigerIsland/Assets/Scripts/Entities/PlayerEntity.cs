@@ -56,19 +56,19 @@ public class PlayerEntity : Entity
 
         if (Class == "Warrior")
         {
-            SetPlayerStats(150, 20, 20, 10, 60, 1, 20, 5, 40);
+            SetPlayerStats(150, 20, 20, 10, 50, 1, 20, 5, 40);
         }
         if (Class == "Wizard")
         {
-            SetPlayerStats(100, 10, 5, 15, 45, 1, 50, 20, 50);
+            SetPlayerStats(100, 10, 5, 15, 50, 1, 50, 20, 50);
         }
         if (Class == "Cleric")
         {
-            SetPlayerStats(125, 10, 10, 20, 70, 1, 50, 15, 75);
+            SetPlayerStats(125, 10, 10, 20, 50, 1, 50, 15, 75);
         }
         if (Class == "Ninja")
         {
-            SetPlayerStats(100, 15, 10, 5, 40, 1, 35, 10, 30);
+            SetPlayerStats(100, 15, 10, 5, 50, 1, 35, 10, 30);
         }
         SetRequiredSpeed();
         ResetHealth();
@@ -285,7 +285,7 @@ public class PlayerEntity : Entity
                 Type = "Player",//What type are they
                 AttackingGameObject = this.gameObject, //What gameObject is attacking
                 chosenAttack = m_chosenAction,
-                AttackTarget = BC.EnemiesInBattle[3]
+                AttackTarget = BC.EnemiesInBattle[0]
             };
             BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
             m_chosenTarget = true;
@@ -301,7 +301,7 @@ public class PlayerEntity : Entity
                 Type = "Player",//What type are they
                 AttackingGameObject = this.gameObject, //What gameObject is attacking
                 chosenAttack = m_chosenAction,
-                AttackTarget = BC.EnemiesInBattle[0]
+                AttackTarget = BC.EnemiesInBattle[1]
             };
             BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
             m_chosenTarget = true;
@@ -317,7 +317,7 @@ public class PlayerEntity : Entity
                 Type = "Player",//What type are they
                 AttackingGameObject = this.gameObject, //What gameObject is attacking
                 chosenAttack = m_chosenAction,
-                AttackTarget = BC.EnemiesInBattle[1]
+                AttackTarget = BC.EnemiesInBattle[2]
             };
             BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
             m_chosenTarget = true;
@@ -333,7 +333,7 @@ public class PlayerEntity : Entity
                 Type = "Player",//What type are they
                 AttackingGameObject = this.gameObject, //What gameObject is attacking
                 chosenAttack = m_chosenAction,
-                AttackTarget = BC.EnemiesInBattle[2]
+                AttackTarget = BC.EnemiesInBattle[3]
             };
             BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
             m_chosenTarget = true;

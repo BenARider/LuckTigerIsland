@@ -178,6 +178,10 @@ public class Entity : MonoBehaviour {
         m_level = _level;
     }
 
+    public int GetEntityNo()
+    {
+        return m_entityNumber;
+    }
     public int GetLevel()
     {
         return m_level;
