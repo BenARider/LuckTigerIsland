@@ -128,6 +128,12 @@ public class PlayerManager : LTI.Singleton<PlayerManager> {
                 activeDialogue.Dialogues[activeDialogue.currentDialogueIndex].quest.StartQuest();
             }
             //
+            //Activate Event if one exists on the dialogue step.
+            if (activeDialogue.Dialogues[activeDialogue.currentDialogueIndex].interactEvent != null)
+            {
+                activeDialogue.Dialogues[activeDialogue.currentDialogueIndex].interactEvent.Interact(activeDialogue.Dialogues[activeDialogue.currentDialogueIndex].interactArgs);
+            }
+            //
 
             ShowDialogue(activeDialogue.Dialogues[activeDialogue.currentDialogueIndex]);
         }
@@ -185,8 +191,9 @@ public class PlayerManager : LTI.Singleton<PlayerManager> {
         if (interactions.Count > 0)
         {
             
-            textArray[0].text = "Press E";
+            
             Interaction interact = interactions[interactions.Count - 1];
+            textArray[0].text = "Press E to " + interact.text;
             /*switch (interact.type)
             {
                 case InteractionType.Dialogue:
