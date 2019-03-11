@@ -88,7 +88,7 @@ public class ShopMenuUI : Selectable,ISelectHandler {
     }
     IEnumerator Fader()
     {
-        yield return new  WaitForSeconds(0.2f);
+        yield return new  WaitForSeconds(0.8f);
         ItemBoughtText.text = "";
     }
 }

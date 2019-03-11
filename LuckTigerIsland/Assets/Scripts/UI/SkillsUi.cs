@@ -7,11 +7,13 @@ using UnityEngine.UI;
 using TMPro;
 public class SkillsUi : Selectable,  ISelectHandler
 {
-    PlayerEntity m_playerEntity;
+    PlayerEntity m_playerEntity = null;
     BaseEventData m_baseEvent = null;
     public TextMeshProUGUI skillDescriptionText;
     public TextMeshProUGUI skillTitleText;
-    public BaseAttack[] attacks;
+    public BaseAttack attack;
+    public GameObject m_skillImages;
+    private string m_skillName = null;
     // Use this for initialization
     protected override void Start()
     {
@@ -22,35 +24,14 @@ public class SkillsUi : Selectable,  ISelectHandler
     // Update is called once per frame
     void Update()
     {
-
+        m_skillName = this.gameObject.name;
         if (IsHighlighted(m_baseEvent) == true)
-        {
-            if (this.gameObject.name == "Slash")
+        { 
+            if (this.gameObject.name == m_skillName)
             {
-                skillDescriptionText.text = attacks[0].attackDescription;
-                skillTitleText.text = attacks[0].attackName;
-            }
-            if (this.gameObject.name == "Bash")
-            {
-                skillDescriptionText.text = attacks[1].attackDescription;
-                skillTitleText.text = attacks[1].attackName;
-            }
-            if (this.gameObject.name == "Fireball")
-            {
-                skillDescriptionText.text = attacks[2].attackDescription;
-                skillTitleText.text = attacks[2].attackName;
-            }
-            if (this.gameObject.name == "Ice Lance")
-            {
-                skillDescriptionText.text = attacks[3].attackDescription;
-                skillTitleText.text = attacks[3].attackName;
-            }
-            if (this.gameObject.name == "Clear Text")
-            {
-                skillDescriptionText.text = "";
-                skillTitleText.text = "";
+                skillDescriptionText.text = attack.attackDescription;
+                skillTitleText.text = attack.attackName;
             }
         }
-
     }
 }

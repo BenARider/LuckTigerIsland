@@ -21,8 +21,8 @@ public class QuestUi : Selectable, ISelectHandler
         questTitleText[1] = GameObject.Find("Quest_Title2").GetComponent<TextMeshProUGUI>();
         buttonHighlight = GetComponent<Image>();
 
-        m_buttonColourNonSelect = new Color(0.0f, 0.0f, 0.0f, 0.0f);
-        m_buttonColourSelect = new Color(0.1f, 0.1f, 0.1f, 0.1f);
+        m_buttonColourNonSelect = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+        m_buttonColourSelect = new Color(0.8f, 0.8f, 0.8f, 0.8f);
         buttonHighlight.color = m_buttonColourNonSelect;
     }
 
