@@ -54,8 +54,8 @@ public class EncounterManager : MonoBehaviour {
 				{
 					print("encounter: " + (isDesert? "desert" : "grassland"));
                     fade.flashWhite(0.1f);
-                    fade.toBlack();
-                    player.playerMove.doMove = false;
+                    //fade.toBlack();
+                    //player.playerMove.doMove = false;
                 }
 
 				lastPos = currentPos;
