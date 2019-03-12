@@ -21,6 +21,8 @@ public class Quest : MonoBehaviour
     private int m_expReward;
     [SerializeField]
     private int m_goldReward;
+    [SerializeField]
+    private InventoryObject m_itemReward;
 
 
     //Objectives Lists. Make a new list when a new type of objective is created.
@@ -31,7 +33,7 @@ public class Quest : MonoBehaviour
     public List<LocationObjective> m_locationObjectives;
     [SerializeField]
     public List<ItemObjective> m_inventoryObjectives;
-    
+
 
     //For use with creating objects in the inspector. Using o_name to represent objectives_name.
     //Objective Type

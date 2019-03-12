@@ -2144,6 +2144,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114144157627404276, guid: 8656ef68b72e84b4c872145b2033dd82,
+        type: 2}
+      propertyPath: m_rewardList.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4372615282701590, guid: 8656ef68b72e84b4c872145b2033dd82, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2176,6 +2181,28 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114144157627404276, guid: 8656ef68b72e84b4c872145b2033dd82,
+        type: 2}
+      propertyPath: o_rewardItem
+      value: 
+      objectReference: {fileID: 11400000, guid: bb0349cb5c0d5ab4eb853e031eacb4a8,
+        type: 2}
+    - target: {fileID: 114144157627404276, guid: 8656ef68b72e84b4c872145b2033dd82,
+        type: 2}
+      propertyPath: m_rewardList.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114144157627404276, guid: 8656ef68b72e84b4c872145b2033dd82,
+        type: 2}
+      propertyPath: m_rewardList.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114144157627404276, guid: 8656ef68b72e84b4c872145b2033dd82,
+        type: 2}
+      propertyPath: m_itemReward
+      value: 
+      objectReference: {fileID: 11400000, guid: 37be832cc678a74478c475fba1088c62,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8656ef68b72e84b4c872145b2033dd82, type: 2}
   m_IsPrefabParent: 0
@@ -2484,6 +2511,11 @@ Prefab:
         type: 2}
       propertyPath: m_isInputParsingRequired
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224916824760890168, guid: 55200a096e468ce4aa8c994e42046b41,
+        type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 55200a096e468ce4aa8c994e42046b41, type: 2}

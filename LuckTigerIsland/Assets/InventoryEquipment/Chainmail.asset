@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Name: Chainmail
   m_EditorClassIdentifier: 
   objectName: Chainmail
+  objectDescription: Armour made from many iron rings
   defence: 12

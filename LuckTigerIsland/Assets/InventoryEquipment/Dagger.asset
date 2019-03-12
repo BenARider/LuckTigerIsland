@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Name: Dagger
   m_EditorClassIdentifier: 
   objectName: Dagger
+  objectDescription: Short Blade
   attack: 4

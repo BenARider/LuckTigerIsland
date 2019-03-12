@@ -11,9 +11,11 @@ public class QuestInspectorEditor : Editor
     SerializedProperty description;
     SerializedProperty exp;
     SerializedProperty gold;
+    SerializedProperty itemReward;
     SerializedProperty killObjectives;
     SerializedProperty locationObjectives;
     SerializedProperty inventoryObjectives;
+    
 
     //Objective Types
     SerializedProperty objectiveType;
@@ -30,6 +32,7 @@ public class QuestInspectorEditor : Editor
         description = serializedObject.FindProperty("m_description");
         exp = serializedObject.FindProperty("m_expReward");
         gold = serializedObject.FindProperty("m_goldReward");
+        itemReward = serializedObject.FindProperty("m_itemReward");
         killObjectives = serializedObject.FindProperty("m_killObjectives");
         locationObjectives = serializedObject.FindProperty("m_locationObjectives");
         inventoryObjectives = serializedObject.FindProperty("m_inventoryObjectives");
@@ -56,6 +59,7 @@ public class QuestInspectorEditor : Editor
         GUIContent itemLabel = new GUIContent("Item Type");
         GUIContent itemAmountLabel = new GUIContent("Item Amount");
 
+
         //Start of Inspector GUI
         serializedObject.Update();
 
@@ -65,6 +69,7 @@ public class QuestInspectorEditor : Editor
         EditorGUILayout.PropertyField(description);
         EditorGUILayout.PropertyField(exp);
         EditorGUILayout.PropertyField(gold);
+        EditorGUILayout.PropertyField(itemReward);    
 
         //Create Objectives
         GUILayout.Label("");

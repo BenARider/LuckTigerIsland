@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Name: Shortsword
   m_EditorClassIdentifier: 
   objectName: Shortsword
+  objectDescription: Long Blade
   attack: 8
