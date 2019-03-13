@@ -1,13 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System.Linq;
+[System.Serializable]
 public class BattleControl : MonoBehaviour {
-
-	public static string willDamage; //state n for no damage taken, state y for damage taken. Alternate state could indicate invulnerable or other in future.
-	public static int currentDamage;
-    public static int currentHealValue;
-	public static int currentTarget;
 	public static string side;
 	public static int totalFighters = 8; //will be used to check when to reset the turn timer and stuff.
     [SerializeField]
@@ -23,17 +19,18 @@ public class BattleControl : MonoBehaviour {
 
     public List<HandleTurns> NextTurn = new List<HandleTurns>();
     public List<GameObject> EnemiesInBattle = new List<GameObject>();
+    public List<EnemEntity> Enemies = new List<EnemEntity>();
     public List<GameObject> PartyMembersInBattle = new List<GameObject>();
 
     // Use this for initialization
     void Start () {
         battleState = performAction.eWait;
-        EnemiesInBattle.AddRange (GameObject.FindGameObjectsWithTag("Enemy"));
+
+
         PartyMembersInBattle.AddRange (GameObject.FindGameObjectsWithTag("Party"));
-        //willDamage = "n";
-		currentDamage = 0;
-        currentHealValue = 0;
-		currentTarget = 0;
+        EnemiesInBattle.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
+        EnemiesInBattle = EnemiesInBattle.OrderBy(x => x.GetComponent<EnemEntity>().GetEntityNo()).ToList();
+        PartyMembersInBattle = PartyMembersInBattle.OrderBy(x => x.GetComponent<PlayerEntity>().GetEntityNo()).ToList();
         turnBeingHad = false;
 		Debug.Log("Setup complete");
 	}

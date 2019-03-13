@@ -51,6 +51,8 @@ public class Entity : MonoBehaviour {
     [SerializeField]
     protected float currentSpeed = 0f;
 
+    protected bool alive = true;
+
 
     protected float walkSpeed = 5f;
 
@@ -91,7 +93,7 @@ public class Entity : MonoBehaviour {
 
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
@@ -178,6 +180,10 @@ public class Entity : MonoBehaviour {
         m_level = _level;
     }
 
+    public int GetEntityNo()
+    {
+        return m_entityNumber;
+    }
     public int GetLevel()
     {
         return m_level;
@@ -189,6 +195,10 @@ public class Entity : MonoBehaviour {
     public void TakeDamage(int damageAmount)
     {
         m_health -= damageAmount;
+        if (GetHealth() <= 0)
+        {
+            currentState = TurnState.eDead;
+        }
     }
 
     //--------------------------------------------------------------------------------------------------
@@ -208,6 +218,7 @@ public class Entity : MonoBehaviour {
 
         }
     }
+
     
     //General logic of damage calculation
     protected void Damage()

@@ -12,6 +12,8 @@ TagManager:
   - Cleric
   - Ninja
   - Party
+  - DeadPM
+  - DeadEnemy
   layers:
   - Default
   - TransparentFX

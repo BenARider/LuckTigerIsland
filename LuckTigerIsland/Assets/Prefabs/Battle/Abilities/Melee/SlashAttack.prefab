@@ -19,7 +19,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4996896707751052}
-  - component: {fileID: 114328163369887566}
   m_Layer: 0
   m_Name: SlashAttack
   m_TagString: Untagged
@@ -40,18 +39,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114328163369887566
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1205193869804236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a112c0f2fdc1b7b499fb5daf1a7f0bbe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackName: Slash
-  attackDescription: Quick slash
-  attackDamage: 5
-  attackCost: 0
