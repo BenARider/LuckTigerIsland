@@ -56,6 +56,7 @@ public class EnemEntity : Entity
 		ResetMana();
         Debug.Log("Enemy Values Set");
         currentState = TurnState.eProssesing; //Set the statemachine to the beggining state
+        currentAffliction = Affliction.eNone;
         Health_Potion HpPotion = Health_Potion.CreateInstance<Health_Potion>();
 
         HealthPotions.Add(HpPotion);

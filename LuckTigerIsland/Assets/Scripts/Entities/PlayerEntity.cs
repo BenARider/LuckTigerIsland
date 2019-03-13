@@ -79,6 +79,8 @@ public class PlayerEntity : Entity
 
         currentState = TurnState.eProssesing;
 
+        m_afflicted = true;
+        currentAffliction = Affliction.eOnFire;
 
         Health_Potion HpPotion = Health_Potion.CreateInstance<Health_Potion>();
 
@@ -153,6 +155,7 @@ public class PlayerEntity : Entity
                 break;
         }
 
+
     }
 
     void UpdateSpeed()
@@ -168,7 +171,10 @@ public class PlayerEntity : Entity
                 Debug.Log("It is " + this.name + "'s turn");
                 StartCoroutine("FadeText");
             }
-            
+            if (m_afflicted == true) //Set afflicted in the attacks, use the attack type such as poisonous to set the currentAffliction and m_afflicted 
+            {
+                StartCoroutine("checkAffliction");
+            }
         }
       
     }
