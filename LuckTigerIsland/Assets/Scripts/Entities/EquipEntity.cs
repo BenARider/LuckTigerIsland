@@ -14,16 +14,18 @@ public class EquipEntity : MonoBehaviour, ISelectHandler
     [SerializeField]
     Weapon m_weaponItem; //For equipping
     [SerializeField]
-    private Image[] m_inventorySlots;
+    private List<Image> m_inventorySlots = new List<Image>();
     private int m_id = -1;
     protected bool equipped = false;
-    public TextMeshProUGUI itemTitle;
-    public TextMeshProUGUI itemDescription;
+    private TextMeshProUGUI itemTitle;
+    private TextMeshProUGUI itemDescription;
     private Color m_itemFadeColour;
-
     // Use this for initialization
     void Start()
-    {
+    { 
+     
+        itemTitle = GameObject.Find("ItemName").GetComponent<TextMeshProUGUI>();
+        itemDescription = GameObject.Find("ItemDescription").GetComponent<TextMeshProUGUI>();
         m_player = GameObject.Find("Luck").GetComponent<PlayerEntity>();
         m_itemFadeColour.a = 0.0f;
     }
@@ -52,17 +54,27 @@ public class EquipEntity : MonoBehaviour, ISelectHandler
     }
     public void SetStats()
     {
-
-        if (this.gameObject.name == "Chainmail")
+        if (itemTitle.text == "Chainmail")
         {
             m_player.SetDefence(m_armourItem.defence);
             print("Set defence stat ");
+            print("Image is" + this.gameObject.name);
+        
         }
-        if (this.gameObject.name == "Shortsword")
+        if (itemTitle.text == "Shortsword")
         {
             m_player.SetStrength(m_weaponItem.attack);
             print("Set attack stat ");
+            print("Image is" + this.gameObject.name);
         }
+    }
+    public void ClearItem()
+    {
+      for(int i = 0; i < m_inventorySlots.Count;++i)
+        {
+
+        }
+       
     }
     public void AddArmourToInventory(Armour _armour)
     {
@@ -73,13 +85,13 @@ public class EquipEntity : MonoBehaviour, ISelectHandler
             m_itemFadeColour.r = 1.0f;
             m_itemFadeColour.g = 1.0f;
             m_itemFadeColour.b = 1.0f;
-            inventory[m_id] = _armour;
+          
             print("Added " + inventory[m_id]);
             m_inventorySlots[m_id].sprite = _armour.armourImage;
             m_inventorySlots[m_id].color = m_itemFadeColour;
             m_inventorySlots[m_id].name = _armour.objectName;
-            print("Image is" + m_inventorySlots[m_id].sprite);
         }
+        inventory.Add(m_armourItem);
     }
     public void AddWeaponToInventory(Weapon _weapon)
     {
@@ -90,12 +102,13 @@ public class EquipEntity : MonoBehaviour, ISelectHandler
             m_itemFadeColour.r = 1.0f;
             m_itemFadeColour.g = 1.0f;
             m_itemFadeColour.b = 1.0f;
-            inventory[m_id] = _weapon;
+          
             print("Added " + inventory[m_id]);
             m_inventorySlots[m_id].sprite = _weapon.weaponImage;
             m_inventorySlots[m_id].color = m_itemFadeColour;
             m_inventorySlots[m_id].name = _weapon.objectName;
-            print("Image is" + m_inventorySlots[m_id].sprite);
+
         }
+        inventory.Add(m_weaponItem);
     }
 }
