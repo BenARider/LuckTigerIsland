@@ -12,6 +12,7 @@ TagManager:
   - Cleric
   - Ninja
   - Party
+  - InventorySlot
   layers:
   - Default
   - TransparentFX

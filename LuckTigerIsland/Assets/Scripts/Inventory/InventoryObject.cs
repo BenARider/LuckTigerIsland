@@ -6,5 +6,6 @@ using UnityEngine;
 public class InventoryObject : ScriptableObject {
 
     public string objectName = "New Object";
+
 }
 

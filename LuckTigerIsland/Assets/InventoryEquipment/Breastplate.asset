@@ -13,3 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Breastplate
   defence: 15
+  armourImage: {fileID: 21300000, guid: e3d94cca0c50df8488915605efdb452b, type: 3}
+  armourDescription: A study breastplate

@@ -129,6 +129,10 @@ public class Entity : MonoBehaviour {
 	{
 		return m_strength;
 	}
+    public void SetStrength(int _strength)
+    {
+        m_strength = _strength;
+    }
 	public int GetMagicPower()
 	{
 		return m_magicPower;
@@ -136,6 +140,10 @@ public class Entity : MonoBehaviour {
     public int GetDefence()
     {
         return m_defence;
+    }
+    public void SetDefence(int _defence)
+    {
+        m_defence = _defence;
     }
     public int GetMagicDefence()
     {

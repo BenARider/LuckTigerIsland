@@ -13,3 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Shortsword
   attack: 8
+  weaponImage: {fileID: 21300000, guid: dcadc015861c18543ab9bb49df3db680, type: 3}
+  weaponDescription: A dull shortsword
