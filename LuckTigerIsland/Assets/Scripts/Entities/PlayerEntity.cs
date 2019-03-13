@@ -134,12 +134,19 @@ public class PlayerEntity : Entity
                 StartCoroutine(PlayerAction());
                 break;
             case (TurnState.eDead):
-                Destroy(gameObject);
-                break;
-        }
-        if (GetHealth() <= 0)
-        {
-            currentState = TurnState.eDead;
+                if (!m_alive)
+                {
+                    return;
+                }
+                else
+                {
+                    BC.PartyMembersInBattle.Remove(this.gameObject);
+
+                    this.gameObject.GetComponent<SpriteRenderer>().material.color = new Color32(105, 105, 105, 255);
+
+                    m_alive = false;
+                }
+        break;
         }
     }
 
@@ -386,6 +393,7 @@ public class PlayerEntity : Entity
 
         actionHappening = false;
         m_hasChosenAction = false; //Reset battle conditions
+        m_chosenTarget = false;
         currentSpeed = 0f;
         currentState = TurnState.eProssesing;
         BattleControl.turnBeingHad = false;

@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class Entity : MonoBehaviour {
 
-	//General stats used to initialise entities
-	[SerializeField]
+    //General stats used to initialise entities
+    [SerializeField]
+    protected bool m_alive;
+    [SerializeField]
 	protected int m_maxHealth;
 	[SerializeField]
 	protected int m_health;
@@ -201,6 +203,10 @@ public class Entity : MonoBehaviour {
     public void TakeDamage(int damageAmount)
     {
         m_health -= damageAmount;
+        if (GetHealth() <= 0)
+        {
+            currentState = TurnState.eDead;
+        }
     }
 
     //--------------------------------------------------------------------------------------------------
