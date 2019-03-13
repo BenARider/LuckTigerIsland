@@ -6,7 +6,5 @@ using UnityEngine.UI;
 public class Weapon : InventoryObject
 {
     public int attack = 10;
-    public Sprite weaponImage;
-    public string weaponDescription;
 
 }

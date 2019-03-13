@@ -14,7 +14,7 @@ public class EquipEntity : MonoBehaviour, ISelectHandler
     [SerializeField]
     Weapon m_weaponItem; //For equipping
     [SerializeField]
-    private List<Image> m_inventorySlots = new List<Image>();
+    private List<Image> m_inventorySlots = new List<Image>();// Try to remove and use just the inventory object list
     private int m_id = -1;
     protected bool equipped = false;
     private TextMeshProUGUI itemTitle;
@@ -36,15 +36,18 @@ public class EquipEntity : MonoBehaviour, ISelectHandler
     }
     public void OnSelect(BaseEventData _eventData)
     {
+    
+        
         if (this.gameObject.name == "Chainmail")
         {
+            itemDescription.text = m_armourItem.Description;
             itemTitle.text = m_armourItem.objectName;
-            itemDescription.text = m_armourItem.armourDescription;
+            //  itemDescription.text = _object.Description;
         }
         if (this.gameObject.name == "Shortsword")
         {
-            itemTitle.text = m_weaponItem.objectName;
-            itemDescription.text = m_weaponItem.weaponDescription;
+          itemTitle.text = m_weaponItem.objectName;
+            itemDescription.text = m_weaponItem.Description;
         }
     }
     public void OnDeselect(BaseEventData _eventData)
@@ -70,45 +73,29 @@ public class EquipEntity : MonoBehaviour, ISelectHandler
     }
     public void ClearItem()
     {
-      for(int i = 0; i < m_inventorySlots.Count;++i)
+       for(int i = 0; i < m_inventorySlots.Count;++i)
         {
 
         }
        
     }
-    public void AddArmourToInventory(Armour _armour)
+    public void AddItemToInventory(InventoryObject _object)
     {
         m_id++;
-        if (m_inventorySlots[m_id].sprite == null)
-        {
-            m_itemFadeColour.a = 1.0f;
-            m_itemFadeColour.r = 1.0f;
-            m_itemFadeColour.g = 1.0f;
-            m_itemFadeColour.b = 1.0f;
-          
-            print("Added " + inventory[m_id]);
-            m_inventorySlots[m_id].sprite = _armour.armourImage;
-            m_inventorySlots[m_id].color = m_itemFadeColour;
-            m_inventorySlots[m_id].name = _armour.objectName;
-        }
-        inventory.Add(m_armourItem);
-    }
-    public void AddWeaponToInventory(Weapon _weapon)
-    {
-        m_id++;
-        if (m_inventorySlots[m_id].sprite == null)
-        {
-            m_itemFadeColour.a = 1.0f;
-            m_itemFadeColour.r = 1.0f;
-            m_itemFadeColour.g = 1.0f;
-            m_itemFadeColour.b = 1.0f;
-          
-            print("Added " + inventory[m_id]);
-            m_inventorySlots[m_id].sprite = _weapon.weaponImage;
-            m_inventorySlots[m_id].color = m_itemFadeColour;
-            m_inventorySlots[m_id].name = _weapon.objectName;
+     
+            if (m_inventorySlots[m_id].sprite == null)
+            {
+                inventory.Add(_object);
+                m_itemFadeColour.a = 1.0f;
+                m_itemFadeColour.r = 1.0f;
+                m_itemFadeColour.g = 1.0f;
+                m_itemFadeColour.b = 1.0f;
 
-        }
-        inventory.Add(m_weaponItem);
+                print("Added " + inventory[m_id]);
+                m_inventorySlots[m_id].sprite = _object.Image;
+                m_inventorySlots[m_id].color = m_itemFadeColour;
+                m_inventorySlots[m_id].name = _object.objectName;
+
+            }
     }
 }

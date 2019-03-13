@@ -16,7 +16,7 @@ public class BattleUIButton : MonoBehaviour
     void Update()
     {
           
-            }
+    }
     public void SetTargetActionNumber(int _number)
     {
         m_actionTargetNumber = _number;

@@ -140,6 +140,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4661544797572534, guid: c7d3f7f0e7591b042a02ab15acf2c7b6,
     type: 2}
   m_PrefabInternal: {fileID: 628204625}
+--- !u!1 &388107342 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1303519006581382, guid: 956c025d0bb7bdb43aca14eea4cec5ff,
+    type: 2}
+  m_PrefabInternal: {fileID: 1037304467}
 --- !u!114 &399168720 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114346191294384156, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
@@ -1709,7 +1714,7 @@ Prefab:
         type: 2}
       propertyPath: expBar
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1047964252}
     - target: {fileID: 114262780470167090, guid: 617b4a62bba3c3f4bb30b754602dd991,
         type: 2}
       propertyPath: rightButton
@@ -1719,12 +1724,12 @@ Prefab:
         type: 2}
       propertyPath: playerStatButton
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1038240266}
     - target: {fileID: 114262780470167090, guid: 617b4a62bba3c3f4bb30b754602dd991,
         type: 2}
       propertyPath: playerStatMenu
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 388107342}
     - target: {fileID: 114262780470167090, guid: 617b4a62bba3c3f4bb30b754602dd991,
         type: 2}
       propertyPath: warrior
@@ -1891,6 +1896,18 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 956c025d0bb7bdb43aca14eea4cec5ff, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1038240266 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114526959524518942, guid: 956c025d0bb7bdb43aca14eea4cec5ff,
+    type: 2}
+  m_PrefabInternal: {fileID: 1037304467}
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!114 &1047964252 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114815067805984238, guid: 956c025d0bb7bdb43aca14eea4cec5ff,
+    type: 2}
+  m_PrefabInternal: {fileID: 1037304467}
+  m_Script: {fileID: -113659843, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!114 &1077782080 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114921864571640418, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
@@ -2439,9 +2456,9 @@ MonoBehaviour:
   notEnoughManaText: {fileID: 2044920965}
   notEnoughPotionsText: {fileID: 495246067}
   usedPotionText: {fileID: 1475144976}
-  expBar: {fileID: 0}
-  playerStatButton: {fileID: 0}
-  playerStatMenu: {fileID: 0}
+  expBar: {fileID: 1047964252}
+  playerStatButton: {fileID: 1038240266}
+  playerStatMenu: {fileID: 388107342}
   m_findTextGameObjects: 0
   warrior: {fileID: 1643555987}
   wizard: {fileID: 1866950097}
@@ -2598,9 +2615,9 @@ MonoBehaviour:
   notEnoughManaText: {fileID: 2044920965}
   notEnoughPotionsText: {fileID: 495246067}
   usedPotionText: {fileID: 1475144976}
-  expBar: {fileID: 0}
-  playerStatButton: {fileID: 0}
-  playerStatMenu: {fileID: 0}
+  expBar: {fileID: 1047964252}
+  playerStatButton: {fileID: 1038240266}
+  playerStatMenu: {fileID: 388107342}
   m_findTextGameObjects: 0
   warrior: {fileID: 1643555987}
   wizard: {fileID: 1866950097}
@@ -2663,9 +2680,9 @@ MonoBehaviour:
   notEnoughManaText: {fileID: 2044920965}
   notEnoughPotionsText: {fileID: 495246067}
   usedPotionText: {fileID: 1475144976}
-  expBar: {fileID: 0}
-  playerStatButton: {fileID: 0}
-  playerStatMenu: {fileID: 0}
+  expBar: {fileID: 1047964252}
+  playerStatButton: {fileID: 1038240266}
+  playerStatMenu: {fileID: 388107342}
   m_findTextGameObjects: 0
   warrior: {fileID: 1643555987}
   wizard: {fileID: 1866950097}
@@ -2728,9 +2745,9 @@ MonoBehaviour:
   notEnoughManaText: {fileID: 2044920965}
   notEnoughPotionsText: {fileID: 495246067}
   usedPotionText: {fileID: 1475144976}
-  expBar: {fileID: 0}
-  playerStatButton: {fileID: 0}
-  playerStatMenu: {fileID: 0}
+  expBar: {fileID: 1047964252}
+  playerStatButton: {fileID: 1038240266}
+  playerStatMenu: {fileID: 388107342}
   m_findTextGameObjects: 0
   warrior: {fileID: 1643555987}
   wizard: {fileID: 1866950097}

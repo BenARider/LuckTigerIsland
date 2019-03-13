@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Name: Chainmail
   m_EditorClassIdentifier: 
   objectName: Chainmail
+  Image: {fileID: 21300000, guid: d4a3fae453cc44c498f4bf29510addb9, type: 3}
+  Description: A study piece of chainmail
   defence: 12
-  armourImage: {fileID: 21300000, guid: d4a3fae453cc44c498f4bf29510addb9, type: 3}
-  armourDescription: An old set of chainmail
