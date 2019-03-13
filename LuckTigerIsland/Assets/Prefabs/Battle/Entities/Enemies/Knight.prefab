@@ -9,45 +9,45 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1189689258926450}
+  m_RootGameObject: {fileID: 1477651309186914}
   m_IsPrefabParent: 1
---- !u!1 &1189689258926450
+--- !u!1 &1477651309186914
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4563093626025760}
-  - component: {fileID: 212246370480058480}
-  - component: {fileID: 61337986938001298}
-  - component: {fileID: 114379023881641800}
+  - component: {fileID: 4682097964075320}
+  - component: {fileID: 212423825214227566}
+  - component: {fileID: 61086002541043078}
+  - component: {fileID: 114408136301018762}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Knight
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4563093626025760
+--- !u!4 &4682097964075320
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1189689258926450}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 2, y: 0.05, z: 0}
+  m_GameObject: {fileID: 1477651309186914}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -5.8468094, y: -1.8447798, z: -0.2166799}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!61 &61337986938001298
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &61086002541043078
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1189689258926450}
+  m_GameObject: {fileID: 1477651309186914}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -67,32 +67,68 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8238168, y: 0.81847787}
   m_EdgeRadius: 0
---- !u!114 &114379023881641800
+--- !u!114 &114408136301018762
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1189689258926450}
+  m_GameObject: {fileID: 1477651309186914}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab8c553720f19964384fd3d375622116, type: 3}
+  m_Script: {fileID: 11500000, guid: f1ad11708009c30468e53804204b777a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player1: {fileID: 1406298571565624, guid: 61aab9b630aa81c4e98f6403fb7b1767, type: 2}
-  Player2: {fileID: 1362467278636896, guid: 836391845da783d4f8059d9f792ce1c7, type: 2}
-  Player3: {fileID: 1751857842274094, guid: cff1e4945fdc1724f93633bbe984a46a, type: 2}
-  Player4: {fileID: 1251957245982722, guid: 0c2fae182c9bebf41b9cc8479723d42b, type: 2}
-  m_Health: -56
-  m_Speed: 5
-  Timer: 0
-  enemyNumber: 0
-  requiredTurn: 0
---- !u!212 &212246370480058480
+  m_maxHealth: 0
+  m_health: 0
+  m_strength: 0
+  m_magicPower: 0
+  m_defence: 0
+  m_defenceMGC: 0
+  m_speed: 0
+  m_mana: 0
+  m_maxMana: 0
+  m_level: 0
+  m_xpAward: 0
+  m_EXP: 0
+  Class: Knight
+  m_attackedAlready: 0
+  m_entityNumber: 1
+  m_requiredSpeedForTurn: 0
+  myTurn: 0
+  battleWon: 0
+  currentSpeed: 0
+  tempDMGReduct: 0
+  totalDMG: 0
+  chanceToHit: 0
+  attacking: 0
+  dmgRecieve: 0
+  dmgDealt: 0
+  currentState: 0
+  EntityToAttack: {fileID: 0}
+  attacks:
+  - {fileID: 11400000, guid: 025630a4956fac74da4985d9d134e6f9, type: 2}
+  - {fileID: 11400000, guid: d86d8a8da359f334496d00bb8f362b79, type: 2}
+  - {fileID: 11400000, guid: 514e1c79f37c1ba4aa8e8f99e4b54b94, type: 2}
+  HealthPotions: []
+  ManaPotions: []
+  aggress: 0
+  intel: 0
+  XP: 0
+  attackDescriptionText: {fileID: 0}
+  turnText: {fileID: 0}
+  Tiger: {fileID: 0}
+  HT:
+    Attacker: 
+    Type: 
+    AttackingGameObject: {fileID: 0}
+    AttackTarget: {fileID: 0}
+    chosenAttack: {fileID: 0}
+--- !u!212 &212423825214227566
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1189689258926450}
+  m_GameObject: {fileID: 1477651309186914}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -121,7 +157,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300042, guid: 5b3567110517a8645a4327fe47f69e01, type: 3}
+  m_Sprite: {fileID: 21300582, guid: 5b3567110517a8645a4327fe47f69e01, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

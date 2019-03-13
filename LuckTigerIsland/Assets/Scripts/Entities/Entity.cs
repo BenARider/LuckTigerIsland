@@ -39,7 +39,7 @@ public class Entity : MonoBehaviour {
     [SerializeField]
 	protected bool m_attackedAlready = false;
 	[SerializeField]
-	protected int m_entityNumber; // 1-4 for players party, 5-8 for the enemies
+	protected int m_entityNumber; 
 	[SerializeField]
 	protected static float m_baseRequiredSpeedForTurn = 100;
 	[SerializeField]
@@ -184,6 +184,10 @@ public class Entity : MonoBehaviour {
     {
         return m_entityNumber;
     }
+	public void SetEntityNo(int entityNumber)
+	{
+		m_entityNumber = entityNumber;
+	}
     public int GetLevel()
     {
         return m_level;

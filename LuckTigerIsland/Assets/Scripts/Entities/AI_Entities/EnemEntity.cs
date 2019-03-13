@@ -24,7 +24,7 @@ public class EnemEntity : Entity
 		intel = itl;
 		XP = xp;
 	}
-	public EnemEntity Tiger;
+
 
     private BattleControl BC;
     public HandleTurns HT;
@@ -37,15 +37,15 @@ public class EnemEntity : Entity
         {
             SetEnemyStats(150, 50, 40, 20, 50, 3, 20, 4, 50);
         }
-        if (Class == "Wizard")
+        if (Class == "Dark_Elf")
         {
             SetEnemyStats(70, 125, 20, 10, 65, 2, 10, 8, 50);
         }
-        if (Class == "Ninja")
+        if (Class == "Wizard")
         {
             SetEnemyStats(75, 100, 10, 15, 75, 2, 15, 6, 50);
         }
-        if (Class == "Cleric")
+        if (Class == "Knight")
         {
             SetEnemyStats(50, 150, 15, 7, 60, 3, 5, 5, 50);
         }
@@ -65,6 +65,7 @@ public class EnemEntity : Entity
 
         ManaPotions.Add(MpPotion);
         ManaPotions.Add(MpPotion);
+		transform.position = new Vector2(this.transform.position.x,this.transform.position.y -( GetEntityNo() - 1)); //orders the enemies by their entity number.
         BC = GameObject.Find("BattleControl").GetComponent<BattleControl>(); //makes BattleControl shortform to BC
         startPosition = transform.position; //setting the position based on where the object is on start up
     }
