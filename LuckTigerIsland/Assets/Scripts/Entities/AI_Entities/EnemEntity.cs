@@ -126,7 +126,7 @@ public class EnemEntity : Entity
             {
                 currentState = TurnState.eChooseAction;
                 BattleControl.turnBeingHad = true;
-                turnText.text = "It is " + this.name + "'s turn";
+                //turnText.text = "It is " + this.name + "'s turn";
                 Debug.Log("It is " + this.name + "'s turn");
                 StartCoroutine("FadeText");
             }
@@ -158,7 +158,7 @@ public class EnemEntity : Entity
             AttackTarget = BC.PartyMembersInBattle[Random.Range(0, BC.PartyMembersInBattle.Count)], //Random a target that is in the List stored in BattleControl
             chosenAttack = m_chosenAction
         };
-        attackDescriptionText.text = this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!";
+        //attackDescriptionText.text = this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!";
         Debug.Log(this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!");
         StartCoroutine("FadeText");
         BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
