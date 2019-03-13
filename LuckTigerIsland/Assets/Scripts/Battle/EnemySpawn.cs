@@ -13,7 +13,7 @@ public class EnemySpawn : MonoBehaviour {
 		{
 			Instantiate(enemies[Random.Range(0, enemies.Length)], enemySpawnLocation.position, enemySpawnLocation.rotation);
 		}
-		Destroy(this);
+		Destroy(this.gameObject);
 	}
 	
 	// Update is called once per frame

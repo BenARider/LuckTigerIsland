@@ -57,7 +57,7 @@ public class PlayerEntity : Entity
 
         if (Class == "Warrior")
         {
-            SetPlayerStats(150, 20, 20, 10, 50, 1, 20, 5, 40);
+            SetPlayerStats(150, 20, 20, 10, 75, 1, 20, 5, 40);
         }
         if (Class == "Wizard")
         {

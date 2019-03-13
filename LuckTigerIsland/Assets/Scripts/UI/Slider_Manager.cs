@@ -6,7 +6,7 @@ public class Slider_Manager : MonoBehaviour {
 
 
     public Entity player;
-
+	public string stringname;
 	private bool hasSetSlider = false;
 	[SerializeField]
 	private int m_requiredEntityNumber;
@@ -25,21 +25,12 @@ public class Slider_Manager : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-		//enemies
-		if(isEnemySlider && !hasSetSlider)
-		{
-			Debug.Log("Enemy slider done");
-			player = BC.EnemiesInBattle[m_requiredEntityNumber].GetComponent<Entity>();
-			hasSetSlider = true;
-		}
-		//players
-		if(!isEnemySlider && !hasSetSlider)
-		{
-			Debug.Log("Player slider done");
-			BC.PartyMembersInBattle[m_requiredEntityNumber].GetComponent<Entity>();
-			hasSetSlider = true;
-		}
-        m_healthSlider.maxValue = player.GetMaxHealth();
+		//can get the values of specificly tagged gameObjects. 
+		//if (stringname == "player1")
+		//{
+		//	player = GameObject.FindGameObjectWithTag("Wizard").GetComponent<EnemEntity>();
+		//}
+		m_healthSlider.maxValue = player.GetMaxHealth();
         m_healthSlider.value = player.GetHealth();
 		m_speedSlider.value = 100 * (player.GetCurrentSpeed() % player.GetRequiredSpeed() / player.GetRequiredSpeed());
         m_manaSlider.maxValue = player.GetMaxMana();

@@ -1501,6 +1501,16 @@ Prefab:
       propertyPath: m_requiredEntityNumber
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114251953813359784, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
+        type: 2}
+      propertyPath: stringname
+      value: player1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114716076265979914, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
+        type: 2}
+      propertyPath: stringname
+      value: Player1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8534d8d0bb74dc249a89b8d85ff0ad91, type: 2}
   m_IsPrefabParent: 0
