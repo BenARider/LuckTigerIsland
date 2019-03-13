@@ -140,11 +140,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4661544797572534, guid: c7d3f7f0e7591b042a02ab15acf2c7b6,
     type: 2}
   m_PrefabInternal: {fileID: 628204625}
---- !u!1 &388107342 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1303519006581382, guid: 956c025d0bb7bdb43aca14eea4cec5ff,
-    type: 2}
-  m_PrefabInternal: {fileID: 1037304467}
 --- !u!114 &399168720 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114346191294384156, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
@@ -1375,6 +1370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1ad11708009c30468e53804204b777a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_alive: 0
   m_maxHealth: 0
   m_health: 0
   m_strength: 0
@@ -1517,6 +1513,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1ad11708009c30468e53804204b777a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_alive: 0
   m_maxHealth: 0
   m_health: 0
   m_strength: 0
@@ -1621,6 +1618,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1ad11708009c30468e53804204b777a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_alive: 0
   m_maxHealth: 0
   m_health: 0
   m_strength: 0
@@ -1666,6 +1664,12 @@ MonoBehaviour:
     AttackingGameObject: {fileID: 0}
     AttackTarget: {fileID: 0}
     chosenAttack: {fileID: 0}
+--- !u!114 &759808876 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114526959524518942, guid: 956c025d0bb7bdb43aca14eea4cec5ff,
+    type: 2}
+  m_PrefabInternal: {fileID: 1037304467}
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1001 &1025847721
 Prefab:
   m_ObjectHideFlags: 0
@@ -1714,7 +1718,7 @@ Prefab:
         type: 2}
       propertyPath: expBar
       value: 
-      objectReference: {fileID: 1047964252}
+      objectReference: {fileID: 1759812370}
     - target: {fileID: 114262780470167090, guid: 617b4a62bba3c3f4bb30b754602dd991,
         type: 2}
       propertyPath: rightButton
@@ -1724,12 +1728,12 @@ Prefab:
         type: 2}
       propertyPath: playerStatButton
       value: 
-      objectReference: {fileID: 1038240266}
+      objectReference: {fileID: 759808876}
     - target: {fileID: 114262780470167090, guid: 617b4a62bba3c3f4bb30b754602dd991,
         type: 2}
       propertyPath: playerStatMenu
       value: 
-      objectReference: {fileID: 388107342}
+      objectReference: {fileID: 1232689532}
     - target: {fileID: 114262780470167090, guid: 617b4a62bba3c3f4bb30b754602dd991,
         type: 2}
       propertyPath: warrior
@@ -1896,18 +1900,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 956c025d0bb7bdb43aca14eea4cec5ff, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &1038240266 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114526959524518942, guid: 956c025d0bb7bdb43aca14eea4cec5ff,
-    type: 2}
-  m_PrefabInternal: {fileID: 1037304467}
-  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
---- !u!114 &1047964252 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114815067805984238, guid: 956c025d0bb7bdb43aca14eea4cec5ff,
-    type: 2}
-  m_PrefabInternal: {fileID: 1037304467}
-  m_Script: {fileID: -113659843, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!114 &1077782080 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114921864571640418, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
@@ -2076,6 +2068,11 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 451970238}
   m_Script: {fileID: 1453722849, guid: 89f0137620f6af44b9ba852b4190e64e, type: 3}
+--- !u!1 &1232689532 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1303519006581382, guid: 956c025d0bb7bdb43aca14eea4cec5ff,
+    type: 2}
+  m_PrefabInternal: {fileID: 1037304467}
 --- !u!1 &1286689976
 GameObject:
   m_ObjectHideFlags: 0
@@ -2417,6 +2414,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7b9ee21a2a49e64cbdb84b5fe06a9d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_alive: 0
   m_maxHealth: 0
   m_health: 0
   m_strength: 0
@@ -2456,9 +2454,9 @@ MonoBehaviour:
   notEnoughManaText: {fileID: 2044920965}
   notEnoughPotionsText: {fileID: 495246067}
   usedPotionText: {fileID: 1475144976}
-  expBar: {fileID: 1047964252}
-  playerStatButton: {fileID: 1038240266}
-  playerStatMenu: {fileID: 388107342}
+  expBar: {fileID: 1759812370}
+  playerStatButton: {fileID: 759808876}
+  playerStatMenu: {fileID: 1232689532}
   m_findTextGameObjects: 0
   warrior: {fileID: 1643555987}
   wizard: {fileID: 1866950097}
@@ -2564,6 +2562,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1759812370 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114815067805984238, guid: 956c025d0bb7bdb43aca14eea4cec5ff,
+    type: 2}
+  m_PrefabInternal: {fileID: 1037304467}
+  m_Script: {fileID: -113659843, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!114 &1779100171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2576,6 +2580,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7b9ee21a2a49e64cbdb84b5fe06a9d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_alive: 0
   m_maxHealth: 0
   m_health: 0
   m_strength: 0
@@ -2615,9 +2620,9 @@ MonoBehaviour:
   notEnoughManaText: {fileID: 2044920965}
   notEnoughPotionsText: {fileID: 495246067}
   usedPotionText: {fileID: 1475144976}
-  expBar: {fileID: 1047964252}
-  playerStatButton: {fileID: 1038240266}
-  playerStatMenu: {fileID: 388107342}
+  expBar: {fileID: 1759812370}
+  playerStatButton: {fileID: 759808876}
+  playerStatMenu: {fileID: 1232689532}
   m_findTextGameObjects: 0
   warrior: {fileID: 1643555987}
   wizard: {fileID: 1866950097}
@@ -2641,6 +2646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7b9ee21a2a49e64cbdb84b5fe06a9d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_alive: 0
   m_maxHealth: 0
   m_health: 0
   m_strength: 0
@@ -2680,9 +2686,9 @@ MonoBehaviour:
   notEnoughManaText: {fileID: 2044920965}
   notEnoughPotionsText: {fileID: 495246067}
   usedPotionText: {fileID: 1475144976}
-  expBar: {fileID: 1047964252}
-  playerStatButton: {fileID: 1038240266}
-  playerStatMenu: {fileID: 388107342}
+  expBar: {fileID: 1759812370}
+  playerStatButton: {fileID: 759808876}
+  playerStatMenu: {fileID: 1232689532}
   m_findTextGameObjects: 0
   warrior: {fileID: 1643555987}
   wizard: {fileID: 1866950097}
@@ -2706,6 +2712,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7b9ee21a2a49e64cbdb84b5fe06a9d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_alive: 0
   m_maxHealth: 0
   m_health: 0
   m_strength: 0
@@ -2745,9 +2752,9 @@ MonoBehaviour:
   notEnoughManaText: {fileID: 2044920965}
   notEnoughPotionsText: {fileID: 495246067}
   usedPotionText: {fileID: 1475144976}
-  expBar: {fileID: 1047964252}
-  playerStatButton: {fileID: 1038240266}
-  playerStatMenu: {fileID: 388107342}
+  expBar: {fileID: 1759812370}
+  playerStatButton: {fileID: 759808876}
+  playerStatMenu: {fileID: 1232689532}
   m_findTextGameObjects: 0
   warrior: {fileID: 1643555987}
   wizard: {fileID: 1866950097}
@@ -2861,6 +2868,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1ad11708009c30468e53804204b777a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_alive: 0
   m_maxHealth: 0
   m_health: 0
   m_strength: 0

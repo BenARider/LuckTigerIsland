@@ -90,12 +90,19 @@ public class EnemEntity : Entity
                 StartCoroutine(TimeForAction()); //do the action stored before
                 break;
             case (TurnState.eDead):
-                Destroy(gameObject);
+                if (!m_alive)
+                {
+                    return;
+                }
+                else
+                {
+                    BC.EnemiesInBattle.Remove(this.gameObject);
+
+                    this.gameObject.GetComponent<SpriteRenderer>().material.color = new Color32(105, 105, 105, 255);
+
+                    m_alive = false;
+                }
                 break;
-        }
-        if (GetHealth() < 0)
-        {
-          currentState = TurnState.eDead;
         }
     }
 
