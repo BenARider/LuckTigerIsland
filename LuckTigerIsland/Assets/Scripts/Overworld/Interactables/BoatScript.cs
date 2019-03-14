@@ -22,6 +22,7 @@ public class BoatScript : GenericInteract
 
 	[SerializeField]
 	public BoatPath[] paths;
+    public int pathID = 0;
 
     //public int pathID = 0;
     //int nodeID = 0;
@@ -59,7 +60,7 @@ public class BoatScript : GenericInteract
     {
         if(boatTransition != 0)
         {
-            
+            playerMove.doMove = false;
             if (!fadingTo)
             {
                 fade.toBlack();
@@ -74,9 +75,9 @@ public class BoatScript : GenericInteract
                 }
                 else
                 {
-                    player.transform.position = paths[0].destination;
+                    player.transform.position = paths[pathID].destination;
                     player.transform.localScale = Vector3.one;
-                    transform.position = paths[0].node[0];
+                    transform.position = paths[pathID].node[0];
                 }
                 Camera.main.GetComponent<CameraController>().OnReset();
                 fade.fromBlack();
@@ -109,10 +110,10 @@ public class BoatScript : GenericInteract
     void FixedUpdate () {
 		if (isInBoat && playerMove !=null)
 		{
-			if (timer < paths[0].duration)
+			if (timer < paths[pathID].duration)
 			{
 				timer += Time.fixedDeltaTime;
-				transform.position = positionOnPath(0, timer / paths[0].duration);
+				transform.position = positionOnPath(pathID, timer / paths[pathID].duration);
 				//boat stuff
 				player.transform.position = transform.position;
 			}
