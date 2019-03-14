@@ -5,8 +5,7 @@ using UnityEngine;
 public enum EObjectiveType
 {
     LocationObjective,
-    KillObjective,
-    InventoryObjective
+    KillObjective
 }
 
 [System.Serializable]
@@ -22,54 +21,6 @@ public class QuestObjective{
     {
         m_isComplete = _complete;
     }
-}
-
-[System.Serializable]
-public class ItemObjective : QuestObjective
-{
-    [SerializeField]
-    private InventoryObject m_object;
-
-    [SerializeField]
-    private int m_totalAmount;
-    [SerializeField]
-    private int m_currentAmount;
-
-
-    void Awake()
-    {
-        m_objectiveType = EObjectiveType.InventoryObjective;
-    }
-
-    public ItemObjective(InventoryObject _obj, int _amount)
-    {
-        m_object = _obj;
-        m_totalAmount = _amount;
-        m_currentAmount = m_totalAmount;
-    }
-
-    public int GetCurrentAmount()
-    {
-        return m_currentAmount;
-    }
-    public void DecreaseCurrentAmount(int _amount)
-    {
-        //use minuses to increase amount.
-        m_currentAmount -= _amount;
-    }
-    public void SetCurrentAmount(int _amount)
-    {
-        m_currentAmount = _amount;
-    }
-    public int GetTotalAmount()
-    {
-        return m_totalAmount;
-    }
-    public InventoryObject GetInvObject()
-    {
-        return m_object;
-    }
-
 }
 
 [System.Serializable]

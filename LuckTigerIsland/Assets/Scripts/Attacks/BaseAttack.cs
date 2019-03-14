@@ -1,13 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class BaseAttack : MonoBehaviour
+using UnityEngine.UI;
+[CreateAssetMenu(fileName = "Skill", menuName = "Attacks/Skills")]
+public class BaseAttack : ScriptableObject
 {
     public string attackName; //feed into ui
     public string attackDescription; //feed into ui
+    public string attackType; //declare magic or melee for different movement
     public int attackDamage; //used for strength scaling
-    public float attackCost; //mp cost for abilities. Feed into ui
+    public int attackCost; //mp cost for abilities. Feed into ui
+    public Sprite attackImage;
     /* 
     
     To create a new ability/skill you need to create a new script and have it inherit from this class
