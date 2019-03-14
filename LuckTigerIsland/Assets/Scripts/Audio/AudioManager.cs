@@ -2,8 +2,7 @@
 using UnityEngine.SceneManagement;
 using System.Collections;
 using UnityEngine.Audio;
-
-
+using System.Collections.Generic;
 
 public class AudioManager : LTI.Singleton<AudioManager>{       
 
@@ -12,9 +11,9 @@ public class AudioManager : LTI.Singleton<AudioManager>{
     private int currentPlaylist = 0;
 
     [SerializeField]
-    private Sound[] m_sounds;
+    private List<Sound> m_sounds;
     [SerializeField]
-    private MusicPlaylist[] m_playlists;
+    private List<MusicPlaylist> m_playlists;
     
     //To store which track is currently playing and how long it has left.
     private int m_currentMusicTrack = 0;
@@ -25,9 +24,9 @@ public class AudioManager : LTI.Singleton<AudioManager>{
         instance = this;
 
         //Sounds
-        for(int i = 0; i < m_sounds.Length; i++) { 
+        for(int i = 0; i < m_sounds.Count; i++) { 
             //To stop duplicates in sound name.
-            for(int j = i+1; j < m_sounds.Length; j++)
+            for(int j = i+1; j < m_sounds.Count; j++)
             {
                 if(m_sounds[i].GetName() == m_sounds[j].GetName())
                 {
@@ -42,16 +41,16 @@ public class AudioManager : LTI.Singleton<AudioManager>{
         }
 
         //Music
-        if (currentPlaylist >= m_playlists.Length)
+        if (currentPlaylist >= m_playlists.Count)
         {
             string sceneName = SceneManager.GetActiveScene().name;
             throw new System.IndexOutOfRangeException(sceneName + ": 'currentPlaylist' int is higher than the amount of playlists.");
         }
         
-        for (int i = 0; i < m_playlists[currentPlaylist].GetMusic().Length; i++)
+        for (int i = 0; i < m_playlists[currentPlaylist].GetMusic().Count; i++)
         {
             //To stop duplicates in music name.
-            for (int j = i + 1; j < m_playlists[currentPlaylist].GetMusic().Length; j++)
+            for (int j = i + 1; j < m_playlists[currentPlaylist].GetMusic().Count; j++)
             {
                 if (m_playlists[currentPlaylist].GetMusic()[i].GetName() == m_playlists[currentPlaylist].GetMusic()[j].GetName())
                 {
@@ -85,7 +84,7 @@ public class AudioManager : LTI.Singleton<AudioManager>{
     public void PlayMusic()
     {
         //Error checking
-        if(m_playlists[currentPlaylist].GetMusic().Length == 0)
+        if(m_playlists[currentPlaylist].GetMusic().Count == 0)
         {
             Debug.LogError("Music array is empty!");
             return;
@@ -111,7 +110,7 @@ public class AudioManager : LTI.Singleton<AudioManager>{
             PlayMusic();
             return;
         }
-        if (m_currentMusicTrack == m_playlists[currentPlaylist].GetMusic().Length -1)
+        if (m_currentMusicTrack == m_playlists[currentPlaylist].GetMusic().Count - 1)
         {
             m_currentMusicTrack = 0;
         } else
@@ -125,7 +124,7 @@ public class AudioManager : LTI.Singleton<AudioManager>{
     //Sound Functions
     public void PlaySound (string _name) 
     {
-        for (int i = 0; i < m_sounds.Length; i++)
+        for (int i = 0; i < m_sounds.Count; i++)
         {
             if(m_sounds[i].GetName() == _name)
             {
@@ -139,7 +138,7 @@ public class AudioManager : LTI.Singleton<AudioManager>{
 
     public void StopSound(string _name)
     {
-        for (int i = 0; i < m_sounds.Length; i++)
+        for (int i = 0; i < m_sounds.Count; i++)
         {
             if (m_sounds[i].GetName() == _name)
             {
@@ -152,7 +151,7 @@ public class AudioManager : LTI.Singleton<AudioManager>{
 
     public void MuteSound(string _name, bool _mute)
     {
-        for (int i = 0; i < m_sounds.Length; i++)
+        for (int i = 0; i < m_sounds.Count; i++)
         {
             if (m_sounds[i].GetName() == _name)
             {
@@ -165,7 +164,7 @@ public class AudioManager : LTI.Singleton<AudioManager>{
 
     public void ChangeSoundVolume(string _name, float _volume)
     {
-        for (int i = 0; i < m_sounds.Length; i++)
+        for (int i = 0; i < m_sounds.Count; i++)
         {
             if (m_sounds[i].GetName() == _name)
             {
@@ -179,7 +178,7 @@ public class AudioManager : LTI.Singleton<AudioManager>{
 
     public void ChangeSoundPitch(string _name, float _pitch)
     {
-        for (int i = 0; i < m_sounds.Length; i++)
+        for (int i = 0; i < m_sounds.Count; i++)
         {
             if (m_sounds[i].GetName() == _name)
             {
@@ -189,6 +188,26 @@ public class AudioManager : LTI.Singleton<AudioManager>{
         }
         Debug.LogError(_name + " sound does not exist!");
     }
+
+    public void CreatePlaylist(string _name)
+    {
+        MusicPlaylist _mp = new MusicPlaylist();
+        _mp.SetPlaylistName(_name);
+        m_playlists.Add(_mp);
+
+    }
+
+    public void CreateSound(string _name, AudioClip _audioClip, AudioMixerGroup _mixerGroup, float _volume, float _pitch, bool _loop, bool _mute)
+    {
+        Sound _so = new Sound(_name, _audioClip, _mixerGroup, _volume, _pitch, _loop, _mute);
+        m_sounds.Add(_so);
+    }
+
+    public void CreateMusic()
+    {
+
+    }
+
 }
 
 /*Info on Sound Import Settings

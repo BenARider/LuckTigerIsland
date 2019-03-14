@@ -40,7 +40,15 @@ public class AudioEditor : Editor
                 SerializedProperty soundLoop = soundListRef.FindPropertyRelative("m_loop");
                 SerializedProperty soundMute = soundListRef.FindPropertyRelative("m_mute");
 
+                GUILayout.BeginHorizontal();
                 EditorGUILayout.PropertyField(soundName);
+                //Remove objecttive button
+                if (GUILayout.Button("Remove Sound", GUILayout.MaxWidth(110), GUILayout.MaxHeight(15)))
+                {
+                    soundList.DeleteArrayElementAtIndex(i);
+                }
+                GUILayout.EndHorizontal();
+
                 EditorGUILayout.PropertyField(soundClip);
                 EditorGUILayout.PropertyField(soundMixer);
                 EditorGUILayout.PropertyField(soundVolume);
@@ -48,11 +56,7 @@ public class AudioEditor : Editor
                 EditorGUILayout.PropertyField(soundLoop);
                 EditorGUILayout.PropertyField(soundMute);
 
-                //Remove objecttive button
-                if (GUILayout.Button("Remove Sound", GUILayout.MaxWidth(150), GUILayout.MaxHeight(15)))
-                {
-                    soundList.DeleteArrayElementAtIndex(i);
-                }
+                
             }
             GUILayout.Label("");
         }
@@ -60,11 +64,11 @@ public class AudioEditor : Editor
         //Music Playlists
         if (playlists.arraySize != 0)
         {
-            GUILayout.Label("Playlists", EditorStyles.boldLabel);
+            EditorGUILayout.LabelField("Playlists", EditorStyles.boldLabel);
             //Display all location objective objects
             for (int i = 0; i < playlists.arraySize; i++)
             {
-                SerializedProperty playlistsRef = playlists.GetArrayElementAtIndex(i);
+                SerializedProperty playlistsRef = playlists.GetArrayElementAtIndex(i);                
                 SerializedProperty playlistName = playlistsRef.FindPropertyRelative("m_playlistName");
                 SerializedProperty musicList = playlistsRef.FindPropertyRelative("m_music");
 
@@ -72,13 +76,15 @@ public class AudioEditor : Editor
 
                 //Music
                 if (musicList.arraySize != 0)
-                {
-                    GUILayout.Label("Music", EditorStyles.boldLabel);
+                {                    
+                    EditorGUILayout.LabelField("Music", EditorStyles.boldLabel);
+                    EditorGUI.indentLevel++;
                     //Display all location objective objects
                     for (int j = 0; j < musicList.arraySize; j++)
                     {
                         SerializedProperty musicListRef = musicList.GetArrayElementAtIndex(j);
                         SerializedProperty musicName = musicListRef.FindPropertyRelative("m_name");
+
                         SerializedProperty musicClip = musicListRef.FindPropertyRelative("m_audioClip");
                         SerializedProperty musicMixer = musicListRef.FindPropertyRelative("m_audioMixer");
                         SerializedProperty musicVolume = musicListRef.FindPropertyRelative("m_volume");
@@ -86,7 +92,15 @@ public class AudioEditor : Editor
                         SerializedProperty musicLoop = musicListRef.FindPropertyRelative("m_loop");
                         SerializedProperty musicMute = musicListRef.FindPropertyRelative("m_mute");
 
+                        GUILayout.BeginHorizontal();
                         EditorGUILayout.PropertyField(musicName);
+                        //Remove objecttive button
+                        if (GUILayout.Button("Remove Music", GUILayout.MaxWidth(110), GUILayout.MaxHeight(15)))
+                        {
+                            musicList.DeleteArrayElementAtIndex(j);
+                        }
+                        GUILayout.EndHorizontal();
+                        
                         EditorGUILayout.PropertyField(musicClip);
                         EditorGUILayout.PropertyField(musicMixer);
                         EditorGUILayout.PropertyField(musicVolume);
@@ -94,20 +108,16 @@ public class AudioEditor : Editor
                         EditorGUILayout.PropertyField(musicLoop);
                         EditorGUILayout.PropertyField(musicMute);
 
-                        //Remove objecttive button
-                        if (GUILayout.Button("Remove Music", GUILayout.MaxWidth(150), GUILayout.MaxHeight(15)))
-                        {
-                            musicList.DeleteArrayElementAtIndex(j);
-                        }
+                        
                     }
-                    GUILayout.Label("");
+                    EditorGUI.indentLevel--;
                 }
-
-                //Remove objecttive button
-                if (GUILayout.Button("Remove Playlist", GUILayout.MaxWidth(150), GUILayout.MaxHeight(15)))
+                //Remove playlist button
+                if (GUILayout.Button("Remove Playlist", GUILayout.MaxWidth(120), GUILayout.MaxHeight(15)))
                 {
                     playlists.DeleteArrayElementAtIndex(i);
                 }
+                GUILayout.Label("");
             }
             GUILayout.Label("");
         }

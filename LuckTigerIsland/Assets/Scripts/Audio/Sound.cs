@@ -26,6 +26,22 @@ public class Sound
 
     protected AudioSource m_audioSource;
 
+    public Sound()
+    {
+
+    }
+
+    public Sound(string _name, AudioClip _audioClip, AudioMixerGroup _audioMixerGroup, float _volume, float _pitch, bool _loop, bool _mute)
+    {
+        m_name = _name;
+        m_audioClip = _audioClip;
+        m_audioMixer = _audioMixerGroup;
+        m_volume = _volume;
+        m_pitch = _pitch;
+        m_loop = _pitch;
+        m_mute = _mute;
+    }
+
     //Functions
     public void Play()
     {

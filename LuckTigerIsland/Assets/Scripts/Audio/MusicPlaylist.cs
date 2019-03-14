@@ -8,15 +8,15 @@ public class MusicPlaylist
     [SerializeField]
     private string m_playlistName;
     [SerializeField]
-    private Music[] m_music;
+    private List<Music> m_music;
 
     public string GetPlaylistName()
     {
         return m_playlistName;
     }
-    public Music[] GetMusic()
+    public List<Music> GetMusic()
     {
-        Music[] _m = m_music;
+        List<Music> _m = m_music;
         return _m;
     }
 
