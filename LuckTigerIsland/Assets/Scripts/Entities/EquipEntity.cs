@@ -36,7 +36,6 @@ public class EquipEntity : MonoBehaviour, ISelectHandler
     }
     public void OnSelect(BaseEventData _eventData)
     {
-    
         
         if (this.gameObject.name == "Chainmail")
         {
@@ -73,10 +72,20 @@ public class EquipEntity : MonoBehaviour, ISelectHandler
     }
     public void ClearItem()
     {
-       for(int i = 0; i < m_inventorySlots.Count;++i)
+        for(int i =0; i< inventory.Count; ++i)
         {
+            m_itemFadeColour.a = 0.0f;
+            m_itemFadeColour.r = 0.0f;
+            m_itemFadeColour.g = 0.0f;
+            m_itemFadeColour.b = 0.0f;
+            inventory.RemoveAt(i);
+            m_inventorySlots[i].sprite = null;
+            m_inventorySlots[i].name = "EmptyInventorySlot";
+            m_inventorySlots[i].color = m_itemFadeColour;
+
 
         }
+     
        
     }
     public void AddItemToInventory(InventoryObject _object)
@@ -97,5 +106,6 @@ public class EquipEntity : MonoBehaviour, ISelectHandler
                 m_inventorySlots[m_id].name = _object.objectName;
 
             }
+ 
     }
 }
