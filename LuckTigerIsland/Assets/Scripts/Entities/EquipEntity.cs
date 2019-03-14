@@ -18,16 +18,11 @@ public class EquipEntity : MonoBehaviour
     private int m_id = 0;
     protected bool equipped = false;
     private bool m_addedItem = false;
-    private TextMeshProUGUI itemTitle;
-    private TextMeshProUGUI itemDescription;
     private Color m_itemFadeColour;
     // Use this for initialization
 
     void Start()
     {
-
-        itemTitle = GameObject.Find("ItemName").GetComponent<TextMeshProUGUI>();
-        itemDescription = GameObject.Find("ItemDescription").GetComponent<TextMeshProUGUI>();
         m_player = GameObject.Find("Luck").GetComponent<PlayerEntity>();
         m_itemFadeColour.a = 0.0f;
     }
@@ -71,12 +66,10 @@ public class EquipEntity : MonoBehaviour
                 equipped = true;
             }
             inventory.RemoveAt(0);
-           
-            m_itemFadeColour.a = 0.0f;
-            m_itemFadeColour.r = 0.0f;
-            m_itemFadeColour.g = 0.0f;
-            m_itemFadeColour.b = 0.0f;
-
+            m_itemFadeColour.a = 0.5f;
+            m_itemFadeColour.r = 1.0f;
+            m_itemFadeColour.g = 1.0f;
+            m_itemFadeColour.b = 1.0f;
             m_inventorySlots[_id].sprite = null;
             m_inventorySlots[_id].name = "EmptyInventorySlot";
             m_inventorySlots[_id].color = m_itemFadeColour;
