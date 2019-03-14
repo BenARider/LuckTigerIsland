@@ -13,19 +13,23 @@ public class Slider_Manager : MonoBehaviour {
 	[SerializeField]
 	private bool isEnemySlider;
 	private BattleControl BC;
-
+    public Transform sliderTransform;
     [SerializeField] private Slider m_healthSlider = null;
     [SerializeField] private Slider m_speedSlider = null;
     [SerializeField] private Slider m_manaSlider = null;
 	// Use this for initialization
 	void Start () {
-        
+        sliderTransform = GameObject.Find("Enemy_1").GetComponent<Transform>();
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-		//can get the values of specificly tagged gameObjects. 
+        if(isEnemySlider == true)
+        {
+        this.transform.position = new Vector2(sliderTransform.position.x-47,sliderTransform.position.y+4-(78*(player.GetEntityNo()-1)));		//can get the values of specificly tagged gameObjects. 
+
+        }
 		//if (stringname == "player1")
 		//{
 		//	player = GameObject.FindGameObjectWithTag("Wizard").GetComponent<EnemEntity>();

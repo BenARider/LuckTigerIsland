@@ -35,19 +35,19 @@ public class EnemEntity : Entity
     {
         if (Class == "Goblin")
         {
-            SetEnemyStats(150, 50, 40, 20, 50, 3, 20, 4, 50);
+            SetEnemyStats(75, 50, 40, 20, 50, 3, 20, 4, 50);
         }
         if (Class == "Dark_Elf")
         {
-            SetEnemyStats(70, 125, 20, 10, 55, 2, 10, 8, 50);
+            SetEnemyStats(35, 125, 20, 10, 55, 2, 10, 8, 50);
         }
         if (Class == "Wizard")
         {
-            SetEnemyStats(75, 100, 10, 15, 45, 2, 15, 6, 50);
+            SetEnemyStats(40, 100, 10, 15, 45, 2, 15, 6, 50);
         }
         if (Class == "Knight")
         {
-            SetEnemyStats(50, 150, 15, 7, 50, 3, 5, 5, 50);
+            SetEnemyStats(60, 150, 15, 7, 50, 3, 5, 5, 50);
         }
 
         //m_requiredSpeedForTurn = m_baseRequiredSpeedForTurn - GetSpeed();
@@ -69,11 +69,16 @@ public class EnemEntity : Entity
 		transform.position = new Vector2(this.transform.position.x,this.transform.position.y - (GetEntityNo() - 1)); //orders the enemies by their entity number.
         BC = GameObject.Find("BattleControl").GetComponent<BattleControl>(); //makes BattleControl shortform to BC
         startPosition = transform.position; //setting the position based on where the object is on start up
+
+        attackDescriptionText = GameObject.Find("Enemy_Attack_Description_Text").GetComponent<TextMeshProUGUI>();
+        turnText = GameObject.Find("Enemy_Turn_Text").GetComponent<TextMeshProUGUI>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (GetHealth() <= 0)
+            currentState = TurnState.eDead;
         //Debug.Log(currentState);
         switch (currentState)
         {
@@ -92,15 +97,19 @@ public class EnemEntity : Entity
                 StartCoroutine(TimeForAction()); //do the action stored before
                 break;
             case (TurnState.eDead):
-                if (!alive)
+                if (!isAlive && !countedDead)
                 {
+                    Debug.Log("DeadEnemies increased");
+                    BC.deadEnemies++;
+                    countedDead = true;
+                    this.transform.eulerAngles = new Vector3(this.transform.eulerAngles.x, this.transform.eulerAngles.y, 90);
                     return;
                 }
                 else
                 {
                     this.gameObject.tag = ("DeadPM");
 
-                    BC.EnemiesInBattle.Remove(this.gameObject);
+                    //BC.EnemiesInBattle.Remove(this.gameObject);
 
                     for (int i = 0; i > BC.NextTurn.Count; i++)
                     {
@@ -112,7 +121,7 @@ public class EnemEntity : Entity
 
                     this.gameObject.GetComponent<SpriteRenderer>().material.color = new Color32(105, 105, 105, 255);
 
-                    alive = false;
+                    isAlive = false;
                 }
                 break;
         }
@@ -144,7 +153,7 @@ public class EnemEntity : Entity
         {
             rollAttack();
         }
-        Debug.Log(this.name + " has chosen the " + m_chosenAction + " attack");
+       // Debug.Log(this.name + " has chosen the " + m_chosenAction + " attack");
 
     }
 

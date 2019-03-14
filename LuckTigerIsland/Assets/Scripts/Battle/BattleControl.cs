@@ -13,7 +13,9 @@ public class BattleControl : MonoBehaviour {
     {
         eWait,
         eTakeAnAction,
-        ePerformAction
+        ePerformAction,
+        eLoss,
+        eWin
     }
     public performAction battleState;
 
@@ -21,6 +23,8 @@ public class BattleControl : MonoBehaviour {
     public List<GameObject> EnemiesInBattle = new List<GameObject>();
     public List<EnemEntity> Enemies = new List<EnemEntity>();
     public List<GameObject> PartyMembersInBattle = new List<GameObject>();
+    public int deadEnemies = 0;
+    public int deadPlayers = 0;
 
     // Use this for initialization
     void Start () {
@@ -47,6 +51,14 @@ public class BattleControl : MonoBehaviour {
 	}
 	void Update ()
 	{
+        if(deadEnemies>=4)
+        {
+            battleState = performAction.eLoss;
+        }
+        if(deadPlayers>=4)
+        {
+            battleState = performAction.eWin;
+        }
         switch (battleState)
         {
             case (performAction.eWait):
@@ -72,8 +84,13 @@ public class BattleControl : MonoBehaviour {
                 battleState = performAction.ePerformAction;
                 break;
             case (performAction.ePerformAction):
-
-            break;
+                break;
+            case (performAction.eWin):
+                //go to victory screen/overworld here
+                break;
+            case (performAction.eLoss):
+                //go to gameover screen here
+                break;
         }
 
 

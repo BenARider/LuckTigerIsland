@@ -54,8 +54,10 @@ public class Entity : MonoBehaviour {
 	public bool battleWon = false;
     [SerializeField]
     protected float currentSpeed = 0f;
-
-    protected bool alive = true;
+    [SerializeField]
+    protected bool isAlive = true;
+    [SerializeField]
+    protected bool countedDead = false; //used to prevent insta wins or gameovers
 
 
     protected float walkSpeed = 5f;
@@ -107,48 +109,49 @@ public class Entity : MonoBehaviour {
 
     protected bool MoveTo(Vector3 target)
     {
+        Debug.Log("Player moving");
         return target != (transform.position = Vector3.MoveTowards(transform.position, target, walkSpeed * Time.deltaTime)); //returns false until the enity is at its target
     }
 
-    protected IEnumerator checkAffliction()
-    {
+    //protected IEnumerator checkAffliction()
+    //{
 
-        if (currentAffliction == Affliction.eNone || currentAffliction == Affliction.eStunned)
-        {
-            yield break;
-        }
+    //    if (currentAffliction == Affliction.eNone || currentAffliction == Affliction.eStunned)
+    //    {
+    //        yield break;
+    //    }
 
-        yield return new WaitForSeconds(2.5f);
+    //    yield return new WaitForSeconds(2.5f);
 
-        if (currentAffliction == Affliction.eOnFire)
-        {
-            m_health -= 5; //Do some damge calc against resistances and weaknesses
-            Debug.Log("on fire");
-        }
+    //    if (currentAffliction == Affliction.eOnFire)
+    //    {
+    //        m_health -= 5; //Do some damge calc against resistances and weaknesses
+    //        Debug.Log("on fire");
+    //    }
 
-        if (currentAffliction == Affliction.eInfected)
-        {
-            m_health -= 5; //Do some damge calc against resistances and weaknesses
-        }
+    //    if (currentAffliction == Affliction.eInfected)
+    //    {
+    //        m_health -= 5; //Do some damge calc against resistances and weaknesses
+    //    }
 
-        if (currentAffliction == Affliction.eFrozen)
-        {
-            m_health -= 2;
-        }
+    //    if (currentAffliction == Affliction.eFrozen)
+    //    {
+    //        m_health -= 2;
+    //    }
 
-        if(currentAffliction == Affliction.eStunned)
-        {
-            m_stunned = true;
-        }
-    }
-    protected IEnumerator resetAffliction()
-    {
-        if (currentAffliction != Affliction.eNone)
-        {
-            yield return new WaitForSeconds(10.0f);
-            currentAffliction = Affliction.eNone;
-        }
-    }
+    //    if(currentAffliction == Affliction.eStunned)
+    //    {
+    //        m_stunned = true;
+    //    }
+    //}
+    //protected IEnumerator resetAffliction()
+    //{
+    //    if (currentAffliction != Affliction.eNone)
+    //    {
+    //        yield return new WaitForSeconds(10.0f);
+    //        currentAffliction = Affliction.eNone;
+    //    }
+    //}
 
 
     //-----------------------------------------------------------------------------------------------------

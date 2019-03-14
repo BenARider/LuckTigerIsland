@@ -52,8 +52,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySpawnLocation: {fileID: 4058451305654600}
+  isChildOf: {fileID: 0}
   enemies:
-  - {fileID: 1771465583061682, guid: c3b2f8a9171bf93459c67027041cff9e, type: 2}
-  - {fileID: 1169646758032994, guid: 6c62c346e9a6926498d196a85d9b4cf1, type: 2}
-  - {fileID: 1999118852758662, guid: a4a85c35f0074f24c88ea21b6a4bb7c4, type: 2}
-  - {fileID: 1477651309186914, guid: 4f97062a71df79449b54732da212d294, type: 2}
+  - {fileID: 1054526964431276, guid: 6c62c346e9a6926498d196a85d9b4cf1, type: 2}
+  - {fileID: 1501292474749894, guid: 4f97062a71df79449b54732da212d294, type: 2}
+  - {fileID: 1638147860518498, guid: a4a85c35f0074f24c88ea21b6a4bb7c4, type: 2}
+  - {fileID: 1045750952202180, guid: c3b2f8a9171bf93459c67027041cff9e, type: 2}

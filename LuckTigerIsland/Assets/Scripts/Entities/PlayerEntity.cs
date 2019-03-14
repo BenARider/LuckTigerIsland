@@ -106,6 +106,8 @@ public class PlayerEntity : Entity
     // Update is called once per frame
     void Update()
     {
+        if (GetHealth() <= 0)
+            currentState = TurnState.eDead;
         switch (currentState)
         {
             case (TurnState.eProssesing):
@@ -138,19 +140,23 @@ public class PlayerEntity : Entity
                 StartCoroutine(PlayerAction());
                 break;
             case (TurnState.eDead):
-                if (!alive)
+                if (!isAlive && !countedDead)
                 {
+                    Debug.Log("DeadPlayers increased");
+                    BC.deadPlayers++;
+                    countedDead = true;
+                    this.transform.eulerAngles = new Vector3(this.transform.eulerAngles.x, this.transform.eulerAngles.y, 90);
                     return;
                 }
                 else
                 {
                     this.gameObject.tag = ("DeadPM");
 
-                    BC.PartyMembersInBattle.Remove(this.gameObject);
+                    //BC.PartyMembersInBattle.Remove(this.gameObject);
 
                     this.gameObject.GetComponent<SpriteRenderer>().material.color = new Color32(105, 105, 105, 255);
 
-                    alive = false;
+                    isAlive = false;
                 }
                 break;
         }
@@ -171,10 +177,10 @@ public class PlayerEntity : Entity
                 Debug.Log("It is " + this.name + "'s turn");
                 StartCoroutine("FadeText");
             }
-            if (m_afflicted == true) //Set afflicted in the attacks, use the attack type such as poisonous to set the currentAffliction and m_afflicted 
-            {
-                StartCoroutine("checkAffliction");
-            }
+            //if (m_afflicted == true) //Set afflicted in the attacks, use the attack type such as poisonous to set the currentAffliction and m_afflicted 
+            //{
+            //    StartCoroutine("checkAffliction");
+            //}
         }
       
     }
