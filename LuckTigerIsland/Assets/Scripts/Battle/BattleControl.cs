@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+
 [System.Serializable]
 public class BattleControl : MonoBehaviour {
 	public static string side;
-	public static int totalFighters = 8; //will be used to check when to reset the turn timer and stuff.
     [SerializeField]
     public static bool turnBeingHad;
 
@@ -26,12 +26,21 @@ public class BattleControl : MonoBehaviour {
     void Start () {
         battleState = performAction.eWait;
 
-
         PartyMembersInBattle.AddRange (GameObject.FindGameObjectsWithTag("Party"));
-        EnemiesInBattle.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
+        //prevents the rest of the setup phase until at least one enemy has been instantiated
+        while (EnemiesInBattle.Count == 0)
+        {
+            EnemiesInBattle.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
+        }
+
         EnemiesInBattle = EnemiesInBattle.OrderBy(x => x.GetComponent<EnemEntity>().GetEntityNo()).ToList();
         PartyMembersInBattle = PartyMembersInBattle.OrderBy(x => x.GetComponent<PlayerEntity>().GetEntityNo()).ToList();
-        turnBeingHad = false;
+		//allows the enemies to be targetted and guarantees this is called after they are instantiated
+		for (int i = 0; i<EnemiesInBattle.Count; i++)
+		{
+			EnemiesInBattle[i].GetComponent<EnemEntity>().SetEntityNo(i+1);
+		}
+		turnBeingHad = false;
 		Debug.Log("Setup complete");
 	}
 	void Update ()

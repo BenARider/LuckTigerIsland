@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
+[System.Serializable]
 public class Entity : MonoBehaviour {
+    protected BattleControl BC;
 
-	//General stats used to initialise entities
-	[SerializeField]
+    //General stats used to initialise entities
+    [SerializeField]
 	protected int m_maxHealth;
 	[SerializeField]
 	protected int m_health;
@@ -24,9 +25,13 @@ public class Entity : MonoBehaviour {
 	protected int m_mana;
 	[SerializeField]
 	protected int m_maxMana;
-	
-	//level and class values
-	[SerializeField]
+    [SerializeField]
+    protected bool m_stunned = false;
+    [SerializeField]
+    protected bool m_afflicted = false;
+
+    //level and class values
+    [SerializeField]
 	protected int m_level;
 	[SerializeField]
 	protected int m_xpAward;
@@ -39,7 +44,7 @@ public class Entity : MonoBehaviour {
     [SerializeField]
 	protected bool m_attackedAlready = false;
 	[SerializeField]
-	protected int m_entityNumber; // 1-4 for players party, 5-8 for the enemies
+	protected int m_entityNumber; 
 	[SerializeField]
 	protected static float m_baseRequiredSpeedForTurn = 100;
 	[SerializeField]
@@ -81,6 +86,16 @@ public class Entity : MonoBehaviour {
         eDead
     }
     public TurnState currentState;
+
+    public enum Affliction
+    {
+        eNone,
+        eOnFire,
+        eFrozen,
+        eInfected,
+        eStunned
+    }
+    public Affliction currentAffliction;
     protected Vector3 startPosition; //used for animation, move to player when attacking and then back
 
     protected bool actionHappening = false; //Think attackAlready, stops the entities spamming
@@ -91,22 +106,50 @@ public class Entity : MonoBehaviour {
     public List<InventoryObject> ManaPotions = new List<InventoryObject>();
     protected BaseAttack m_chosenAction;
 
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-	{
-
-	}
-
     protected bool MoveTo(Vector3 target)
     {
         return target != (transform.position = Vector3.MoveTowards(transform.position, target, walkSpeed * Time.deltaTime)); //returns false until the enity is at its target
     }
 
+    protected IEnumerator checkAffliction()
+    {
+
+        if (currentAffliction == Affliction.eNone || currentAffliction == Affliction.eStunned)
+        {
+            yield break;
+        }
+
+        yield return new WaitForSeconds(2.5f);
+
+        if (currentAffliction == Affliction.eOnFire)
+        {
+            m_health -= 5; //Do some damge calc against resistances and weaknesses
+            Debug.Log("on fire");
+        }
+
+        if (currentAffliction == Affliction.eInfected)
+        {
+            m_health -= 5; //Do some damge calc against resistances and weaknesses
+        }
+
+        if (currentAffliction == Affliction.eFrozen)
+        {
+            m_health -= 2;
+        }
+
+        if(currentAffliction == Affliction.eStunned)
+        {
+            m_stunned = true;
+        }
+    }
+    protected IEnumerator resetAffliction()
+    {
+        if (currentAffliction != Affliction.eNone)
+        {
+            yield return new WaitForSeconds(10.0f);
+            currentAffliction = Affliction.eNone;
+        }
+    }
 
 
     //-----------------------------------------------------------------------------------------------------
@@ -184,6 +227,10 @@ public class Entity : MonoBehaviour {
     {
         return m_entityNumber;
     }
+	public void SetEntityNo(int entityNumber)
+	{
+		m_entityNumber = entityNumber;
+	}
     public int GetLevel()
     {
         return m_level;

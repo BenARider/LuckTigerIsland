@@ -24,12 +24,8 @@ public class EnemEntity : Entity
 		intel = itl;
 		XP = xp;
 	}
-	public EnemEntity Tiger;
-
     private BattleControl BC;
     public HandleTurns HT;
-
-
     // Use this for initialization
     void Start()
     {
@@ -37,17 +33,21 @@ public class EnemEntity : Entity
         {
             SetEnemyStats(150, 50, 40, 20, 50, 3, 20, 4, 50);
         }
+        if (Class == "Dark_Elf")
+        {
+            SetEnemyStats(70, 125, 20, 10, 55, 2, 10, 8, 50);
+        }
         if (Class == "Wizard")
         {
-            SetEnemyStats(70, 125, 20, 10, 65, 2, 10, 8, 50);
+            SetEnemyStats(75, 100, 10, 15, 45, 2, 15, 6, 50);
         }
-        if (Class == "Ninja")
+        if (Class == "Knight")
         {
-            SetEnemyStats(75, 100, 10, 15, 75, 2, 15, 6, 50);
+            SetEnemyStats(50, 150, 15, 7, 50, 3, 5, 5, 50);
         }
-        if (Class == "Cleric")
+        if (Class == "TigerBoss")
         {
-            SetEnemyStats(50, 150, 15, 7, 60, 3, 5, 5, 50);
+            SetEnemyStats(500, 350, 75, 27, 30, 13, 25, 5, 500);
         }
 
         //m_requiredSpeedForTurn = m_baseRequiredSpeedForTurn - GetSpeed();
@@ -56,6 +56,7 @@ public class EnemEntity : Entity
 		ResetMana();
         Debug.Log("Enemy Values Set");
         currentState = TurnState.eProssesing; //Set the statemachine to the beggining state
+        currentAffliction = Affliction.eNone;
         Health_Potion HpPotion = Health_Potion.CreateInstance<Health_Potion>();
 
         HealthPotions.Add(HpPotion);
@@ -65,6 +66,7 @@ public class EnemEntity : Entity
 
         ManaPotions.Add(MpPotion);
         ManaPotions.Add(MpPotion);
+		transform.position = new Vector2(this.transform.position.x,this.transform.position.y - (GetEntityNo() - 1)); //orders the enemies by their entity number.
         BC = GameObject.Find("BattleControl").GetComponent<BattleControl>(); //makes BattleControl shortform to BC
         startPosition = transform.position; //setting the position based on where the object is on start up
     }
@@ -125,7 +127,7 @@ public class EnemEntity : Entity
             {
                 currentState = TurnState.eChooseAction;
                 BattleControl.turnBeingHad = true;
-                turnText.text = "It is " + this.name + "'s turn";
+                //turnText.text = "It is " + this.name + "'s turn";
                 Debug.Log("It is " + this.name + "'s turn");
                 StartCoroutine("FadeText");
             }
@@ -142,6 +144,7 @@ public class EnemEntity : Entity
         {
             rollAttack();
         }
+        m_mana -= m_chosenAction.attackCost;
         Debug.Log(this.name + " has chosen the " + m_chosenAction + " attack");
 
     }
@@ -157,7 +160,7 @@ public class EnemEntity : Entity
             AttackTarget = BC.PartyMembersInBattle[Random.Range(0, BC.PartyMembersInBattle.Count)], //Random a target that is in the List stored in BattleControl
             chosenAttack = m_chosenAction
         };
-        attackDescriptionText.text = this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!";
+        //attackDescriptionText.text = this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!";
         Debug.Log(this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!");
         StartCoroutine("FadeText");
         BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
@@ -172,16 +175,22 @@ public class EnemEntity : Entity
 
         actionHappening = true;
 
-        Vector3 PartyMemberPosition = new Vector3(EntityToAttack.transform.position.x - 1.5f, EntityToAttack.transform.position.y, EntityToAttack.transform.position.z);
+        Vector3 bossAttack = new Vector3(transform.position.x + 1.5f, transform.position.y, transform.position.z);
 
-        while (MoveTo(PartyMemberPosition))
+        while (MoveTo(bossAttack))
         {
             yield return null; //wait until moveToward is true
         }
 
         yield return new WaitForSeconds(1.5f);
         //do damage
-        enemyDoDamge();
+        if (m_chosenAction.attackType == "Melee")
+        {
+            enemyDoDamge();
+        } else if(m_chosenAction.attackType == "PartyWide")
+        {
+            partyWideDamage();
+        }
 
         while (MoveTo(startPosition))
         {
@@ -210,6 +219,12 @@ public class EnemEntity : Entity
     {
         int calculateDamage = GetStrength() + BC.NextTurn[0].chosenAttack.attackDamage;
         EntityToAttack.GetComponent<PlayerEntity>().TakeDamage(calculateDamage);
+    }
+    void partyWideDamage()
+    {
+        int calculateDamage = GetStrength() + BC.NextTurn[0].chosenAttack.attackDamage;
+        for (int i = 0; i < BC.PartyMembersInBattle.Count; i++)
+        BC.PartyMembersInBattle[i].GetComponent<PlayerEntity>().TakeDamage(calculateDamage);
     }
     IEnumerator FadeText()
     {
