@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System.Linq;
 public class BattleControl : MonoBehaviour {
 
 	public static string willDamage; //state n for no damage taken, state y for damage taken. Alternate state could indicate invulnerable or other in future.
@@ -23,15 +23,20 @@ public class BattleControl : MonoBehaviour {
 
     public List<HandleTurns> NextTurn = new List<HandleTurns>();
     public List<GameObject> EnemiesInBattle = new List<GameObject>();
+    public List<EnemEntity> Enemies = new List<EnemEntity>();
     public List<GameObject> PartyMembersInBattle = new List<GameObject>();
 
     // Use this for initialization
     void Start () {
         battleState = performAction.eWait;
-        EnemiesInBattle.AddRange (GameObject.FindGameObjectsWithTag("Enemy"));
+
+
         PartyMembersInBattle.AddRange (GameObject.FindGameObjectsWithTag("Party"));
+        EnemiesInBattle.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
+        EnemiesInBattle = EnemiesInBattle.OrderBy(x => x.GetComponent<EnemEntity>().GetEntityNo()).ToList();
+        PartyMembersInBattle = PartyMembersInBattle.OrderBy(x => x.GetComponent<PlayerEntity>().GetEntityNo()).ToList();
         //willDamage = "n";
-		currentDamage = 0;
+        currentDamage = 0;
         currentHealValue = 0;
 		currentTarget = 0;
         turnBeingHad = false;

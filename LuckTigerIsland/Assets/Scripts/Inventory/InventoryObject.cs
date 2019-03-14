@@ -6,6 +6,8 @@ using UnityEngine;
 public class InventoryObject : ScriptableObject {
 
     public string objectName = "New Object";
-    public string objectDescription = "Description";
+    public Sprite Image;
+    public string Description;
+
 }
 

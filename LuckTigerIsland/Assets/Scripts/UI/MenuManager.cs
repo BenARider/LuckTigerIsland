@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 public class MenuManager : MonoBehaviour
 {
     public GameObject startButton;
+    public GameObject MainMenuCanvas;
     EventSystem m_eventSystem;
     // Use this for initialization
     void Start()
@@ -21,7 +22,8 @@ public class MenuManager : MonoBehaviour
     }
     public void StartGame()
     {
-        LoadAsyncScene();
+        SceneManager.LoadScene("Overworld", LoadSceneMode.Additive);
+        MainMenuCanvas.SetActive(false);
         Debug.Log("Starting");
     }
 
@@ -32,7 +34,7 @@ public class MenuManager : MonoBehaviour
     }
     IEnumerator LoadAsyncScene()
     {
-        AsyncOperation m_asyncLoad = SceneManager.LoadSceneAsync("Scene1");
+        AsyncOperation m_asyncLoad = SceneManager.LoadSceneAsync("Overworld");
         while (!m_asyncLoad.isDone)
         {
             yield return null;

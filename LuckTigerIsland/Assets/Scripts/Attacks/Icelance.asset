@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb3f90c68b601614a93655c7cb77ca35, type: 3}
+  m_Name: Icelance
+  m_EditorClassIdentifier: 
+  attackName: Icelance
+  attackDescription: A icelance
+  attackType: Magic
+  attackDamage: 10
+  attackCost: 10

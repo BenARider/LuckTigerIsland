@@ -28,20 +28,19 @@ public class PlayerManager : LTI.Singleton<PlayerManager> {
     public List<Interaction> interactions;
 	public string currentSceneName;
     public PlayerWorldMove playerMove;
-    TextMeshProUGUI[] textArray;
-
+    public TextMeshProUGUI[] textArray;
+    public GameObject[] backgroundTextArray;
     bool inDialogue = false;
     Interaction lastDialogueInteract;
     NPCDialogue activeDialogue;
 
     // Use this for initialization
     void Start () {
+        backgroundTextArray[0] = GameObject.Find("Background_Player_Text");
+        backgroundTextArray[1] = GameObject.Find("Background_NPC_Text");
         instance = this;
-
         playerMove = GetComponent<PlayerWorldMove>();
-
-        Transform overUI = GameObject.Find("OverworldUI").transform;
-       
+        Transform overUI = GameObject.Find("Background_Player_Text").transform;
         textArray = new TextMeshProUGUI[] {
         overUI.GetChild(0).GetComponent<TextMeshProUGUI>(), //interact
         overUI.GetChild(1).GetComponent<TextMeshProUGUI>(), //npc text
@@ -90,6 +89,8 @@ public class PlayerManager : LTI.Singleton<PlayerManager> {
             playerMove.doMove = false;
             if (activeDialogue)
             {
+                backgroundTextArray[0].GetComponent<Image>().enabled = true;
+                backgroundTextArray[1].GetComponent<Image>().enabled = true;
                 //hardcoded input because im a special boy
                 if (Input.GetKeyDown(KeyCode.Alpha1))
                 {
@@ -128,12 +129,6 @@ public class PlayerManager : LTI.Singleton<PlayerManager> {
                 activeDialogue.Dialogues[activeDialogue.currentDialogueIndex].quest.StartQuest();
             }
             //
-            //Activate Event if one exists on the dialogue step.
-            if (activeDialogue.Dialogues[activeDialogue.currentDialogueIndex].interactEvent != null)
-            {
-                activeDialogue.Dialogues[activeDialogue.currentDialogueIndex].interactEvent.Interact(activeDialogue.Dialogues[activeDialogue.currentDialogueIndex].interactArgs);
-            }
-            //
 
             ShowDialogue(activeDialogue.Dialogues[activeDialogue.currentDialogueIndex]);
         }
@@ -158,8 +153,7 @@ public class PlayerManager : LTI.Singleton<PlayerManager> {
         {
             textArray[i].text = "";
         }
-        
-
+       
         if(activeDialogue.interactAudio != "")
         {
             AudioManager.Instance.PlaySound(activeDialogue.interactAudio);
@@ -170,9 +164,8 @@ public class PlayerManager : LTI.Singleton<PlayerManager> {
             textArray[i+2].text = (i+1) + ": " + _dialogue.Replies[i].ReplyText;
         }
         
-
         if (_dialogue.Replies.Length == 0)
-        {
+        { 
             ExitDialogue();
         }
     }
@@ -180,6 +173,7 @@ public class PlayerManager : LTI.Singleton<PlayerManager> {
     //call when an endpoint is reached
     void ExitDialogue()
     {
+        backgroundTextArray[0].GetComponent<Image>().enabled = false;
         activeDialogue = null;
         inDialogue = false;
         playerMove.doMove = true;
@@ -191,9 +185,8 @@ public class PlayerManager : LTI.Singleton<PlayerManager> {
         if (interactions.Count > 0)
         {
             
-            
+            textArray[0].text = "Press E";
             Interaction interact = interactions[interactions.Count - 1];
-            textArray[0].text = "Press E to " + interact.text;
             /*switch (interact.type)
             {
                 case InteractionType.Dialogue:
@@ -218,6 +211,7 @@ public class PlayerManager : LTI.Singleton<PlayerManager> {
         }
         else
         {
+            backgroundTextArray[1].GetComponent<Image>().enabled = false;
             textArray[0].text = "";
             if(!inDialogue) textArray[1].text = "";
         }
