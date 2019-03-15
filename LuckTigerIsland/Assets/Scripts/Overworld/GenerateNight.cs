@@ -22,21 +22,23 @@ public class GenerateNight : MonoBehaviour
 	public Tile darkness2;
 	public Tile darkness3;
 	public Tile darkness4;
-    
+	//bool first = true;
 
-
-	void OnEnable()
+	/*void OnEnable()
 	{
-        playerTransform = PlayerManager.Instance.transform;
-
-        playerPos = Vector3Int.FloorToInt(playerTransform.position);
+		//if (!first) return;
+		previousTiles = new TileBase[7, 7];
+		playerTransform = PlayerManager.Instance.transform;
+		nightMap = GetComponent<Tilemap>();
+		playerPos = Vector3Int.FloorToInt(playerTransform.position);
         lastPlayerPos = playerPos;
-
+	
         for (int x = -3; x < 4; x++)
         {
             for (int y = -3; y < 4; y++)
             {
-                previousTiles[x + 3, y + 3] = nightMap.GetTile<TileBase>(new Vector3Int(playerPos.x + x, playerPos.y + y, 0));
+                previousTiles[x + 3, y + 3] = 
+					nightMap.GetTile<TileBase>(new Vector3Int(playerPos.x + x, playerPos.y + y, 0));
             }
         }
     }
@@ -44,12 +46,20 @@ public class GenerateNight : MonoBehaviour
 
     void Update()
     {
+		playerTransform = PlayerManager.Instance.transform;
+		playerPos = Vector3Int.FloorToInt(playerTransform.position);
         
-        playerPos = Vector3Int.FloorToInt(playerTransform.position);
-        
-        if(playerPos != lastPlayerPos)
+        if(playerPos != lastPlayerPos)// || first)
         {
-            updateLights();
+			//first = false;
+			try
+			{
+				updateLights();
+			}
+			catch
+			{
+				return;
+			}
             lastPlayerPos = playerPos;
         }
 
@@ -57,20 +67,36 @@ public class GenerateNight : MonoBehaviour
 
     void updateLights()
     {
-        
-        for (int x = -3; x < 4; x++)
+
+		//nightMap = GetComponent<Tilemap>();
+		for (int x = -3; x < 4; x++)
         {
             for (int y = -3; y < 4; y++)
             {
-                nightMap.SetTile(new Vector3Int(lastPlayerPos.x + x, lastPlayerPos.y + y, 0), previousTiles[x+3,y+3]);
+				//try
+				//{
+					nightMap.SetTile(new Vector3Int(lastPlayerPos.x + x, lastPlayerPos.y + y, 0), previousTiles[x + 3, y + 3]);
+				//}
+				//catch
+				//{
+					throw new System.Exception(x + "," + y);
+				//}
+				
             }
         }
         for (int x = -3; x < 4; x++)
         {
             for (int y = -3; y < 4; y++)
             {
-                previousTiles[x + 3, y + 3] = nightMap.GetTile<TileBase>(new Vector3Int(playerPos.x + x, playerPos.y + y, 0));
-            }
+				//try
+				//{
+					previousTiles[x + 3, y + 3] = nightMap.GetTile<TileBase>(new Vector3Int(playerPos.x + x, playerPos.y + y, 0));
+				//}
+				//catch
+				//{
+					throw new System.Exception(x + "," + y);
+				//}
+			}
         }
 
         for (int x = -3; x < 4; x++)
@@ -82,7 +108,7 @@ public class GenerateNight : MonoBehaviour
             }
         }
 
-    }
+    }*/
 
     [ContextMenu("Generate")]
 	public void Generate()
