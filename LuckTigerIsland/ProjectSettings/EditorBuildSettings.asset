@@ -20,3 +20,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Dungeons/Mountain.unity
     guid: 5675354fa27d1ae4c990a7807f3b21d1
+  - enabled: 1
+    path: Assets/Scenes/BattleScene.unity
+    guid: afc9ba87bc2c5094693658472446b40c

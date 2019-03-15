@@ -53,10 +53,14 @@ public class EncounterManager : MonoBehaviour {
 				if(Random.Range(0f,10f) < encounterChance)
 				{
 					print("encounter: " + (isDesert? "desert" : "grassland"));
-                    fade.flashWhite(0.1f);
+                    //fade.flashWhite(0.1f);
+					Camera.main.gameObject.SetActive(false);
                     //fade.toBlack();
-                    //player.playerMove.doMove = false;
-                }
+                    player.playerMove.doMove = false;
+					encounterMap.transform.root.gameObject.SetActive(false);
+					SceneManager.LoadScene("BattleScene", LoadSceneMode.Additive);
+					//fade.fromBlack();
+				}
 
 				lastPos = currentPos;
 			}
