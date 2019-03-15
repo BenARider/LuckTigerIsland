@@ -59,22 +59,51 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1427222767366580
+--- !u!1 &1380853468407278
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4990679847638322}
-  - component: {fileID: 114263409243843264}
+  - component: {fileID: 4035651110320760}
+  - component: {fileID: 114973940437512634}
   m_Layer: 0
-  m_Name: 'Quest: Dagger Dagger Dagger'
+  m_Name: Die
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1662632167166390
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4547918277773906}
+  - component: {fileID: 114889507356272804}
+  m_Layer: 0
+  m_Name: Hello
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4035651110320760
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1380853468407278}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4372615282701590}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4147757722853916
 Transform:
   m_ObjectHideFlags: 1
@@ -86,7 +115,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4372615282701590}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4372615282701590
 Transform:
@@ -98,10 +127,24 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 4547918277773906}
+  - {fileID: 4035651110320760}
   - {fileID: 4604751875658160}
   - {fileID: 4147757722853916}
-  - {fileID: 4990679847638322}
   m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4547918277773906
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1662632167166390}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4372615282701590}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4604751875658160
@@ -111,19 +154,6 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1340203435230852}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4372615282701590}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4990679847638322
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1427222767366580}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -150,41 +180,10 @@ MonoBehaviour:
   - m_enemy: 1
     m_amount: 1
   m_locationObjectives: []
-  m_inventoryObjectives: []
   o_type: 0
   o_location: 1
   o_enemy: 1
   o_enemyAmount: 1
-  o_item: {fileID: 0}
-  o_itemAmount: 0
---- !u!114 &114263409243843264
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1427222767366580}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56e13a490385e9f42943e9786a20092c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_title: Dagger Dagger Dagger
-  m_description: F
-  m_expReward: 9
-  m_goldReward: 50
-  m_allObjectives: []
-  m_killObjectives: []
-  m_locationObjectives: []
-  m_inventoryObjectives:
-  - m_object: {fileID: 11400000, guid: bb0349cb5c0d5ab4eb853e031eacb4a8, type: 2}
-    m_totalAmount: 3
-    m_currentAmount: 3
-  o_type: 2
-  o_location: 0
-  o_enemy: 0
-  o_enemyAmount: 0
-  o_item: {fileID: 11400000, guid: 26ae73543495d10459ac5f45f8dd0b6b, type: 2}
-  o_itemAmount: 1
 --- !u!114 &114623258347282940
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -197,13 +196,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_quests:
-  - {fileID: 114751412641993884}
-  - {fileID: 114144157627404276}
-  - {fileID: 114263409243843264}
-  m_title: Dagger Dagger Dagger
-  m_description: F
-  m_exp: 15
-  m_gold: 50
+  - {fileID: 114889507356272804}
+  - {fileID: 114973940437512634}
+  m_title: 
+  m_description: 
+  m_exp: 0
+  m_gold: 0
 --- !u!114 &114751412641993884
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -222,10 +220,55 @@ MonoBehaviour:
   m_allObjectives: []
   m_killObjectives: []
   m_locationObjectives: []
-  m_inventoryObjectives: []
   o_type: 0
   o_location: 0
   o_enemy: 0
   o_enemyAmount: 0
-  o_item: {fileID: 0}
-  o_itemAmount: 0
+--- !u!114 &114889507356272804
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1662632167166390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56e13a490385e9f42943e9786a20092c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_title: Hello
+  m_description: HI
+  m_expReward: 0
+  m_goldReward: 0
+  m_allObjectives: []
+  m_killObjectives:
+  - m_enemy: 0
+    m_amount: 0
+  m_locationObjectives: []
+  o_type: 1
+  o_location: 0
+  o_enemy: 0
+  o_enemyAmount: 1
+--- !u!114 &114973940437512634
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1380853468407278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56e13a490385e9f42943e9786a20092c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_title: DIE
+  m_description: die
+  m_expReward: 4
+  m_goldReward: 4
+  m_allObjectives: []
+  m_killObjectives:
+  - m_enemy: 0
+    m_amount: 0
+  m_locationObjectives: []
+  o_type: 1
+  o_location: 0
+  o_enemy: 0
+  o_enemyAmount: 5

@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class Entity : MonoBehaviour {
 
-	//General stats used to initialise entities
-	[SerializeField]
+    //General stats used to initialise entities
+    [SerializeField]
+    protected bool m_alive;
+    [SerializeField]
 	protected int m_maxHealth;
 	[SerializeField]
 	protected int m_health;
@@ -73,6 +75,7 @@ public class Entity : MonoBehaviour {
     {
         eProssesing,
         eChooseAction,
+        eChooseTarget,
         eWaiting,
         eAction,
         eDead
@@ -84,37 +87,27 @@ public class Entity : MonoBehaviour {
     public GameObject EntityToAttack; //What the entity wants to attack
 
     public List<BaseAttack> attacks = new List<BaseAttack>();
+    public List<InventoryObject> HealthPotions = new List<InventoryObject>();
+    public List<InventoryObject> ManaPotions = new List<InventoryObject>();
+    protected BaseAttack m_chosenAction;
 
+    void Start()
+    {
+        
+    }
 
-	// Update is called once per frame
-	void Update()
+    // Update is called once per frame
+    void Update()
 	{
-		//if (BattleControl.willDamage == "y" && BattleControl.currentTarget == m_entityNumber)
-		//{
-		//	m_health -= BattleControl.currentDamage;
-		//	BattleControl.willDamage = "n";
-		//	BattleControl.currentTarget = 0;
-		//	BattleControl.side = " ";
 
-		//}
-	}
-
-	public void CheckForDamage(string side)
-	{
-		//if (BattleControl.willDamage == "y" && BattleControl.currentTarget == m_entityNumber)
-		//{
-		//	m_health -= BattleControl.currentDamage;
-		//	Debug.Log(side + ": " + m_entityNumber + " health total now: " + GetHealth());
-		//	BattleControl.willDamage = "n";
-		//	BattleControl.currentTarget = 0;
-		//	BattleControl.side = " ";
-		//}
 	}
 
     protected bool MoveTo(Vector3 target)
     {
         return target != (transform.position = Vector3.MoveTowards(transform.position, target, walkSpeed * Time.deltaTime)); //returns false until the enity is at its target
     }
+
+
 
     //-----------------------------------------------------------------------------------------------------
     //Setters and Getters
@@ -138,6 +131,10 @@ public class Entity : MonoBehaviour {
 	{
 		return m_strength;
 	}
+    public void SetStrength(int _strength)
+    {
+        m_strength = _strength;
+    }
 	public int GetMagicPower()
 	{
 		return m_magicPower;
@@ -145,6 +142,10 @@ public class Entity : MonoBehaviour {
     public int GetDefence()
     {
         return m_defence;
+    }
+    public void SetDefence(int _defence)
+    {
+        m_defence = _defence;
     }
     public int GetMagicDefence()
     {
@@ -187,6 +188,10 @@ public class Entity : MonoBehaviour {
         m_level = _level;
     }
 
+    public int GetEntityNo()
+    {
+        return m_entityNumber;
+    }
     public int GetLevel()
     {
         return m_level;
@@ -198,6 +203,10 @@ public class Entity : MonoBehaviour {
     public void TakeDamage(int damageAmount)
     {
         m_health -= damageAmount;
+        if (GetHealth() <= 0)
+        {
+            currentState = TurnState.eDead;
+        }
     }
 
     //--------------------------------------------------------------------------------------------------
