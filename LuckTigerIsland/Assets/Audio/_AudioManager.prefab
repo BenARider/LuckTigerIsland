@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75b94020107e8284bb885f7ff3d0241a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPlaylist: 0
+  currentPlaylist: 5
   m_sounds:
   - m_name: pigtalk
     m_audioClip: {fileID: 8300000, guid: 432339367ed692c45ac24dff51b3bdd7, type: 3}
@@ -62,9 +62,9 @@ MonoBehaviour:
     m_loop: 0
     m_mute: 0
   m_playlists:
-  - m_playlistName: 
+  - m_playlistName: Sand
     m_music:
-    - m_name: 
+    - m_name: 'Battle Music '
       m_audioClip: {fileID: 8300000, guid: a236680e624f14046b1d372263fbb5b3, type: 3}
       m_audioMixer: {fileID: 243770745202374444, guid: 24978eb7020a14d48902d2e5174d495d,
         type: 2}

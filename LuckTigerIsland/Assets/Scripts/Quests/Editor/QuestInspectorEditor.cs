@@ -11,8 +11,10 @@ public class LevelScriptEditor : Editor
     SerializedProperty description;
     SerializedProperty exp;
     SerializedProperty gold;
+    SerializedProperty itemReward;
     SerializedProperty killObjectives;
     SerializedProperty locationObjectives;
+    SerializedProperty inventoryObjectives;
 
     //Objective Types
     SerializedProperty objectiveType;
@@ -27,6 +29,7 @@ public class LevelScriptEditor : Editor
         description = serializedObject.FindProperty("m_description");
         exp = serializedObject.FindProperty("m_expReward");
         gold = serializedObject.FindProperty("m_goldReward");
+        itemReward = serializedObject.FindProperty("m_itemReward");
         killObjectives = serializedObject.FindProperty("m_killObjectives");
         locationObjectives = serializedObject.FindProperty("m_locationObjectives");
 
@@ -47,6 +50,7 @@ public class LevelScriptEditor : Editor
         GUIContent enemyLabel = new GUIContent("Enemy Type");
         GUIContent enemyAmountLabel = new GUIContent("Enemy Amount");
 
+
         //Start of Inspector GUI
         serializedObject.Update();
 
@@ -56,6 +60,7 @@ public class LevelScriptEditor : Editor
         EditorGUILayout.PropertyField(description);
         EditorGUILayout.PropertyField(exp);
         EditorGUILayout.PropertyField(gold);
+        EditorGUILayout.PropertyField(itemReward);    
 
         //Create Objectives
         GUILayout.Label("");

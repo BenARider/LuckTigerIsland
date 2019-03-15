@@ -8,9 +8,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6c05f336967b70409bc466d673386d2, type: 3}
-  m_Name: Breastplate
+  m_Script: {fileID: 11500000, guid: 8fc22db77efd27542b825e67bb7e5aaf, type: 3}
+  m_Name: Longsword
   m_EditorClassIdentifier: 
-  objectName: Breastplate
-  objectDescription: Metal Plate for the torso
-  defence: 15
+  objectName: Longsword
+  objectDescription: Longer Blade
+  attack: 10
