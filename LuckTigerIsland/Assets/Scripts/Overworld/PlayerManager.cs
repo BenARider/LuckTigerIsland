@@ -36,11 +36,11 @@ public class PlayerManager : LTI.Singleton<PlayerManager> {
 
     // Use this for initialization
     void Start () {
-        backgroundTextArray[0] = GameObject.Find("Background_Player_Text");
-        backgroundTextArray[1] = GameObject.Find("Background_NPC_Text");
+        //backgroundTextArray[0] = GameObject.Find("Background_Player_Text");
+        //backgroundTextArray[1] = GameObject.Find("Background_NPC_Text");
         instance = this;
         playerMove = GetComponent<PlayerWorldMove>();
-        Transform overUI = GameObject.Find("Background_Player_Text").transform;
+        Transform overUI = backgroundTextArray[0].transform;
         textArray = new TextMeshProUGUI[] {
         overUI.GetChild(0).GetComponent<TextMeshProUGUI>(), //interact
         overUI.GetChild(1).GetComponent<TextMeshProUGUI>(), //npc text
