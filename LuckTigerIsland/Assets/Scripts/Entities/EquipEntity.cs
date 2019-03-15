@@ -40,14 +40,14 @@ public class EquipEntity : MonoBehaviour, ISelectHandler
         
         if (this.gameObject.name == "Chainmail")
         {
-            itemDescription.text = m_armourItem.Description;
+            itemDescription.text = m_armourItem.objectDescription;
             itemTitle.text = m_armourItem.objectName;
             //  itemDescription.text = _object.Description;
         }
         if (this.gameObject.name == "Shortsword")
         {
           itemTitle.text = m_weaponItem.objectName;
-            itemDescription.text = m_weaponItem.Description;
+            itemDescription.text = m_weaponItem.objectDescription;
         }
     }
     public void OnDeselect(BaseEventData _eventData)

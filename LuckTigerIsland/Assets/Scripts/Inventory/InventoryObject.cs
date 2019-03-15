@@ -7,7 +7,9 @@ public class InventoryObject : ScriptableObject {
 
     [SerializeField]
     public string objectName = "New Object";
-    [SerializeField]
+	public Sprite Image;
+	[SerializeField]
     public string objectDescription = "Description";
+
 }
 

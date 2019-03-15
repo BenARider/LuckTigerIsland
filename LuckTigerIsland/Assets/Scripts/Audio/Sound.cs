@@ -38,7 +38,7 @@ public class Sound
         m_audioMixer = _audioMixerGroup;
         m_volume = _volume;
         m_pitch = _pitch;
-        m_loop = _pitch;
+        m_loop = _loop;
         m_mute = _mute;
     }
 

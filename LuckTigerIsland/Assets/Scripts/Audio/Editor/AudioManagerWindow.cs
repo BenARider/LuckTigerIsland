@@ -61,10 +61,10 @@ public class AudioManagerWindow : EditorWindow
         GUILayout.BeginArea(soundPanel);
         GUILayout.Label("Create Sound");
         //VARIABLES
-        m_audioClip = EditorGUILayout.PropertyField(m_audioClip);
+        //m_audioClip = EditorGUILayout.PropertyField(m_audioClip);
         if (GUILayout.Button("Create Sound", GUILayout.MaxWidth(120), GUILayout.MaxHeight(15)))
         {
-            AudioManager.Instance.CreateSound();
+           // AudioManager.Instance.CreateSound();
         }
         GUILayout.EndArea();
     }
