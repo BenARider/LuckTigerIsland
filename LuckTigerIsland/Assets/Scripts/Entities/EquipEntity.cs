@@ -9,15 +9,18 @@ public class EquipEntity : MonoBehaviour
 {
     PlayerEntity m_player;
     public List<InventoryObject> inventory;
+    
+   public Armour[] m_armourItem; //For equipping
+  
+    public Weapon[] m_weaponItem; //For equipping
     [SerializeField]
-    Armour[] m_armourItem; //For equipping
-    [SerializeField]
-    Weapon m_weaponItem; //For equipping
+    Health_Potion m_health_Potion;
     [SerializeField]
     private List<Image> m_inventorySlots = new List<Image>();// Try to remove and use just the inventory object list
     private int m_id = 0;
     protected bool equipped = false;
     private bool m_addedItem = false;
+    private bool m_removeHealthPotion = false;
     private Color m_itemFadeColour;
     // Use this for initialization
 
@@ -39,6 +42,17 @@ public class EquipEntity : MonoBehaviour
         }
     
     }
+   public Armour[] GetArmourItem()
+    {
+       
+        return m_armourItem;
+    }
+    public Weapon[] GetWeaponItem()
+    {
+
+        return m_weaponItem;
+    }
+
     public void SetStats(int _id)
     {
         if (m_inventorySlots[_id].name != "EmptyInventorySlot")
@@ -60,7 +74,7 @@ public class EquipEntity : MonoBehaviour
 
             if (m_inventorySlots[_id].gameObject.name == "Shortsword")
             {
-                m_player.SetStrength(m_weaponItem.attack);
+                m_player.SetStrength(m_weaponItem[0].attack);
                 print("Set attack stat ");
                 print("Image is" + this.gameObject.name);
                 equipped = true;
@@ -97,5 +111,9 @@ public class EquipEntity : MonoBehaviour
             }
         }
         m_addedItem = false;
+    }
+    public void SetRemoveHpPotionState(bool _remove)
+    {
+        m_removeHealthPotion = _remove;
     }
 }

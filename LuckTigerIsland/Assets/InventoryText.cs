@@ -10,10 +10,8 @@ public class InventoryText : MonoBehaviour, ISelectHandler
     private TextMeshProUGUI itemTitle;
     private TextMeshProUGUI itemDescription;
     private TextMeshProUGUI itemStats;
-    [SerializeField]
-    Armour[] m_armour;
-    [SerializeField]
-    Weapon[] m_weapon;
+    EquipEntity m_equipEntity;
+
 
     // Use this for initialization
     void Start()
@@ -21,6 +19,7 @@ public class InventoryText : MonoBehaviour, ISelectHandler
         itemTitle = GameObject.Find("ItemName").GetComponent<TextMeshProUGUI>();
         itemDescription = GameObject.Find("ItemDescription").GetComponent<TextMeshProUGUI>();
         itemStats = GameObject.Find("ItemStats").GetComponent<TextMeshProUGUI>();
+        m_equipEntity = GameObject.Find("InventoryScreen").GetComponent<EquipEntity>();
     }
 
     // Update is called once per frame
@@ -30,26 +29,26 @@ public class InventoryText : MonoBehaviour, ISelectHandler
     }
     public void OnSelect(BaseEventData _eventData)
     {
+
+        itemTitle.text = this.gameObject.name;
         if (this.gameObject.name == "Chainmail")
         {
+            itemDescription.text = m_equipEntity.m_armourItem[0].Description;
 
-            itemDescription.text = m_armour[0].Description;
-            itemTitle.text = m_armour[0].objectName;
-            itemStats.text = "Defence: " + m_armour[0].defence;
-
+            itemStats.text = "Defence: " + m_equipEntity.m_armourItem[0].defence;
         }
         if (this.gameObject.name == "Breastplate")
         {
 
-            itemDescription.text = m_armour[1].Description;
-            itemTitle.text = m_armour[1].objectName;
-            itemStats.text = "Defence: " + m_armour[1].defence;
+            itemDescription.text = m_equipEntity.m_armourItem[1].Description;
+            itemStats.text = "Defence: " + m_equipEntity.m_armourItem[1].defence;
         }
         if (this.gameObject.name == "Shortsword")
         {
-            itemTitle.text = m_weapon[0].objectName;
-            itemDescription.text = m_weapon[0].Description;
-            itemStats.text = "Attack: " + m_weapon[0].attack;
+            itemDescription.text = m_equipEntity.m_weaponItem[0].Description;
+
+
+            itemStats.text = "Attack: " + m_equipEntity.m_weaponItem[0].attack;
         }
         if(this.gameObject.name == "EmptyInventorySlot")
         {
@@ -57,6 +56,7 @@ public class InventoryText : MonoBehaviour, ISelectHandler
             itemDescription.text = "";
             itemStats.text = "";
         }
+ 
 
 
     }

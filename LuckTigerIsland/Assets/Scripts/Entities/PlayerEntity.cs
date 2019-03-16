@@ -18,7 +18,7 @@ public class PlayerEntity : Entity
     public GameObject playerStatMenu;
     [SerializeField]
     private bool m_findTextGameObjects;
-
+    public EquipEntity m_equipEntity;
 
     [SerializeField]
     PlayerEntity warrior;
@@ -219,7 +219,7 @@ public class PlayerEntity : Entity
             m_mana -= m_chosenAction.attackCost;
         }
         else notEnoughPotionsText.text = "";
-        if (Input.GetKeyDown("8") || m_BattleButton.GetActionTargetNumber() == 8)
+        if (Input.GetKeyDown("8") || m_BattleButton.GetActionTargetNumber() == 8 )
         {
 
             if (HealthPotions.Count > 0)
@@ -231,7 +231,9 @@ public class PlayerEntity : Entity
                     usedPotionText.text = this.name + " used a health potion";
                     Debug.Log(this.name + " used a health potion");
                     HealthPotions.RemoveAt(0);
+                    m_equipEntity.SetRemoveHpPotionState(true);
                 }
+                m_equipEntity.SetRemoveHpPotionState(false);
                 currentSpeed = 0;
                 currentState = TurnState.eProssesing;
                 BattleControl.turnBeingHad = false;
