@@ -81,9 +81,16 @@ public class PlayerEntity : Entity
         currentState = TurnState.eProssesing;
 
 
+
         ///used to test the afflictions, currently procs every second and will stop after 20. Can be changed later though
         //m_afflicted = true;
         //currentAffliction = Affliction.eOnFire;
+
+
+		///used to test the afflictions, currently procs every second and will stop after 20. Can be changed later though
+        //m_afflicted = true;
+        //currentAffliction = Affliction.eOnFire;
+
 
 
         Health_Potion HpPotion = Health_Potion.CreateInstance<Health_Potion>();
@@ -105,13 +112,18 @@ public class PlayerEntity : Entity
         m_hasChosenAction = false;
         m_BattleButton = GameObject.Find("Action_List_Holder").GetComponent<BattleUIButton>();
 
+
         turnText = GameObject.Find("Player_Turn_Text").GetComponent<TextMeshProUGUI>();
         attackDescriptionText = GameObject.Find("Player_Attack_Description_Text").GetComponent<TextMeshProUGUI>();
         notEnoughManaText = GameObject.Find("not_Enough_Mana_Text").GetComponent<TextMeshProUGUI>();
         notEnoughPotionsText = GameObject.Find("not_Enough_Potions_Text").GetComponent<TextMeshProUGUI>();
         usedPotionText = GameObject.Find("used_Potion_Text").GetComponent<TextMeshProUGUI>();
 
-
+		turnText = GameObject.Find("Player_Turn_Text").GetComponent<TextMeshProUGUI>();
+		attackDescriptionText = GameObject.Find("Player_Attack_Description_Text").GetComponent<TextMeshProUGUI>();
+		notEnoughManaText = GameObject.Find("not_Enough_Mana_Text").GetComponent<TextMeshProUGUI>();
+		notEnoughPotionsText = GameObject.Find("not_Enough_Potions_Text").GetComponent<TextMeshProUGUI>();
+		usedPotionText = GameObject.Find("used_Potion_Text").GetComponent<TextMeshProUGUI>();
 
 
     }

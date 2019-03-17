@@ -177,7 +177,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7b9ee21a2a49e64cbdb84b5fe06a9d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_alive: 0
   m_maxHealth: 0
   m_health: 0
   m_strength: 0
@@ -187,6 +186,8 @@ MonoBehaviour:
   m_speed: 0
   m_mana: 0
   m_maxMana: 0
+  m_stunned: 0
+  m_afflicted: 0
   m_level: 0
   m_xpAward: 0
   m_EXP: 0
@@ -197,6 +198,10 @@ MonoBehaviour:
   myTurn: 0
   battleWon: 0
   currentSpeed: 0
+  isAlive: 1
+  countedDead: 0
+  alreadyAfflicted: 0
+  afflictionTimes: 0
   tempDMGReduct: 0
   totalDMG: 0
   chanceToHit: 0
@@ -204,6 +209,7 @@ MonoBehaviour:
   dmgRecieve: 0
   dmgDealt: 0
   currentState: 0
+  currentAffliction: 0
   EntityToAttack: {fileID: 0}
   attacks: []
   HealthPotions: []
@@ -240,6 +246,8 @@ MonoBehaviour:
     AttackingGameObject: {fileID: 0}
     AttackTarget: {fileID: 0}
     chosenAttack: {fileID: 0}
+  m_hasChosenAction: 0
+  m_chosenTarget: 0
 --- !u!114 &48028365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -924,7 +932,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7b9ee21a2a49e64cbdb84b5fe06a9d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_alive: 0
   m_maxHealth: 0
   m_health: 0
   m_strength: 0
@@ -934,6 +941,8 @@ MonoBehaviour:
   m_speed: 0
   m_mana: 0
   m_maxMana: 0
+  m_stunned: 0
+  m_afflicted: 0
   m_level: 0
   m_xpAward: 0
   m_EXP: 0
@@ -944,6 +953,10 @@ MonoBehaviour:
   myTurn: 0
   battleWon: 0
   currentSpeed: 0
+  isAlive: 1
+  countedDead: 0
+  alreadyAfflicted: 0
+  afflictionTimes: 0
   tempDMGReduct: 0
   totalDMG: 0
   chanceToHit: 0
@@ -951,6 +964,7 @@ MonoBehaviour:
   dmgRecieve: 0
   dmgDealt: 0
   currentState: 0
+  currentAffliction: 0
   EntityToAttack: {fileID: 0}
   attacks: []
   HealthPotions: []
@@ -987,6 +1001,8 @@ MonoBehaviour:
     AttackingGameObject: {fileID: 0}
     AttackTarget: {fileID: 0}
     chosenAttack: {fileID: 0}
+  m_hasChosenAction: 0
+  m_chosenTarget: 0
 --- !u!114 &266415004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1732,7 +1748,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1130938919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1746,9 +1762,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   battleState: 0
   NextTurn: []
-  EnemiesInBattle: []
-  Enemies: []
-  PartyMembersInBattle: []
+  EnemiesInBattle:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  Enemies:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  PartyMembersInBattle:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  deadEnemies: 0
+  deadPlayers: 0
 --- !u!4 &1130938920
 Transform:
   m_ObjectHideFlags: 0
@@ -1826,7 +1856,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7b9ee21a2a49e64cbdb84b5fe06a9d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_alive: 0
   m_maxHealth: 0
   m_health: 0
   m_strength: 0
@@ -1836,6 +1865,8 @@ MonoBehaviour:
   m_speed: 0
   m_mana: 0
   m_maxMana: 0
+  m_stunned: 0
+  m_afflicted: 0
   m_level: 0
   m_xpAward: 0
   m_EXP: 0
@@ -1846,6 +1877,10 @@ MonoBehaviour:
   myTurn: 0
   battleWon: 0
   currentSpeed: 0
+  isAlive: 1
+  countedDead: 0
+  alreadyAfflicted: 0
+  afflictionTimes: 0
   tempDMGReduct: 0
   totalDMG: 0
   chanceToHit: 0
@@ -1853,6 +1888,7 @@ MonoBehaviour:
   dmgRecieve: 0
   dmgDealt: 0
   currentState: 0
+  currentAffliction: 0
   EntityToAttack: {fileID: 0}
   attacks:
   - {fileID: 0}
@@ -1891,6 +1927,8 @@ MonoBehaviour:
     AttackingGameObject: {fileID: 0}
     AttackTarget: {fileID: 0}
     chosenAttack: {fileID: 0}
+  m_hasChosenAction: 0
+  m_chosenTarget: 0
 --- !u!114 &1161057275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2332,7 +2370,9 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114809783233774392, guid: c8a71534b3c1649419d90d30655ad7f8, type: 2}
+    - {fileID: 114765850758941004, guid: c8a71534b3c1649419d90d30655ad7f8, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: c8a71534b3c1649419d90d30655ad7f8, type: 2}
   m_IsPrefabParent: 0
 --- !u!114 &1331271203 stripped
@@ -2600,7 +2640,12 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114209230188707286, guid: a17bf556696194e4284d042010483a50, type: 2}
+    - {fileID: 114582806467425992, guid: a17bf556696194e4284d042010483a50, type: 2}
+    - {fileID: 114471598170895918, guid: a17bf556696194e4284d042010483a50, type: 2}
+    - {fileID: 114783002872155614, guid: a17bf556696194e4284d042010483a50, type: 2}
+    - {fileID: 114785283647259844, guid: a17bf556696194e4284d042010483a50, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: a17bf556696194e4284d042010483a50, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1827706545
@@ -2734,7 +2779,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7b9ee21a2a49e64cbdb84b5fe06a9d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_alive: 0
   m_maxHealth: 0
   m_health: 0
   m_strength: 0
@@ -2744,6 +2788,8 @@ MonoBehaviour:
   m_speed: 0
   m_mana: 0
   m_maxMana: 0
+  m_stunned: 0
+  m_afflicted: 0
   m_level: 0
   m_xpAward: 0
   m_EXP: 0
@@ -2754,6 +2800,10 @@ MonoBehaviour:
   myTurn: 0
   battleWon: 0
   currentSpeed: 0
+  isAlive: 1
+  countedDead: 0
+  alreadyAfflicted: 0
+  afflictionTimes: 0
   tempDMGReduct: 0
   totalDMG: 0
   chanceToHit: 0
@@ -2761,6 +2811,7 @@ MonoBehaviour:
   dmgRecieve: 0
   dmgDealt: 0
   currentState: 0
+  currentAffliction: 0
   EntityToAttack: {fileID: 0}
   attacks: []
   HealthPotions: []
@@ -2797,6 +2848,8 @@ MonoBehaviour:
     AttackingGameObject: {fileID: 0}
     AttackTarget: {fileID: 0}
     chosenAttack: {fileID: 0}
+  m_hasChosenAction: 0
+  m_chosenTarget: 0
 --- !u!114 &1925663909
 MonoBehaviour:
   m_ObjectHideFlags: 0
