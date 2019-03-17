@@ -1226,6 +1226,16 @@ Prefab:
       propertyPath: m_margin.z
       value: -847.2457
       objectReference: {fileID: 0}
+    - target: {fileID: 224824931949970992, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
+        type: 2}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 224824931949970992, guid: 8534d8d0bb74dc249a89b8d85ff0ad91,
+        type: 2}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8534d8d0bb74dc249a89b8d85ff0ad91, type: 2}
   m_IsPrefabParent: 0
@@ -1404,6 +1414,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 514e1c79f37c1ba4aa8e8f99e4b54b94, type: 2}
   HealthPotions: []
   ManaPotions: []
+  inventory: []
   aggress: 0
   intel: 0
   XP: 0
@@ -1547,6 +1558,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 514e1c79f37c1ba4aa8e8f99e4b54b94, type: 2}
   HealthPotions: []
   ManaPotions: []
+  inventory: []
   aggress: 0
   intel: 0
   XP: 0
@@ -1652,6 +1664,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 514e1c79f37c1ba4aa8e8f99e4b54b94, type: 2}
   HealthPotions: []
   ManaPotions: []
+  inventory: []
   aggress: 0
   intel: 0
   XP: 0
@@ -2448,6 +2461,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 514e1c79f37c1ba4aa8e8f99e4b54b94, type: 2}
   HealthPotions: []
   ManaPotions: []
+  inventory: []
   statTexts: []
   turnText: {fileID: 1228579993}
   attackDescriptionText: {fileID: 399168720}
@@ -2458,6 +2472,7 @@ MonoBehaviour:
   playerStatButton: {fileID: 759808876}
   playerStatMenu: {fileID: 1232689532}
   m_findTextGameObjects: 0
+  m_equipEntity: {fileID: 0}
   warrior: {fileID: 1643555987}
   wizard: {fileID: 1866950097}
   cleric: {fileID: 1779100171}
@@ -2614,6 +2629,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 514e1c79f37c1ba4aa8e8f99e4b54b94, type: 2}
   HealthPotions: []
   ManaPotions: []
+  inventory: []
   statTexts: []
   turnText: {fileID: 1228579993}
   attackDescriptionText: {fileID: 399168720}
@@ -2624,6 +2640,7 @@ MonoBehaviour:
   playerStatButton: {fileID: 759808876}
   playerStatMenu: {fileID: 1232689532}
   m_findTextGameObjects: 0
+  m_equipEntity: {fileID: 0}
   warrior: {fileID: 1643555987}
   wizard: {fileID: 1866950097}
   cleric: {fileID: 1779100171}
@@ -2680,6 +2697,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 514e1c79f37c1ba4aa8e8f99e4b54b94, type: 2}
   HealthPotions: []
   ManaPotions: []
+  inventory: []
   statTexts: []
   turnText: {fileID: 1228579993}
   attackDescriptionText: {fileID: 399168720}
@@ -2690,6 +2708,7 @@ MonoBehaviour:
   playerStatButton: {fileID: 759808876}
   playerStatMenu: {fileID: 1232689532}
   m_findTextGameObjects: 0
+  m_equipEntity: {fileID: 0}
   warrior: {fileID: 1643555987}
   wizard: {fileID: 1866950097}
   cleric: {fileID: 1779100171}
@@ -2746,6 +2765,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 514e1c79f37c1ba4aa8e8f99e4b54b94, type: 2}
   HealthPotions: []
   ManaPotions: []
+  inventory: []
   statTexts: []
   turnText: {fileID: 1228579993}
   attackDescriptionText: {fileID: 399168720}
@@ -2756,6 +2776,7 @@ MonoBehaviour:
   playerStatButton: {fileID: 759808876}
   playerStatMenu: {fileID: 1232689532}
   m_findTextGameObjects: 0
+  m_equipEntity: {fileID: 0}
   warrior: {fileID: 1643555987}
   wizard: {fileID: 1866950097}
   cleric: {fileID: 1779100171}
@@ -2902,6 +2923,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 514e1c79f37c1ba4aa8e8f99e4b54b94, type: 2}
   HealthPotions: []
   ManaPotions: []
+  inventory: []
   aggress: 0
   intel: 0
   XP: 0

@@ -19,6 +19,7 @@ public class PlayerEntity : Entity
     [SerializeField]
     private bool m_findTextGameObjects;
     public EquipEntity m_equipEntity;
+    public Health_Potion HpPotion;
 
     [SerializeField]
     PlayerEntity warrior;
@@ -78,11 +79,10 @@ public class PlayerEntity : Entity
 
         currentState = TurnState.eProssesing;
 
-
-        Health_Potion HpPotion = Health_Potion.CreateInstance<Health_Potion>();
-
+        Health_Potion HpPotion = Mana_Potion.CreateInstance<Health_Potion>();
         HealthPotions.Add(HpPotion);
         HealthPotions.Add(HpPotion);
+        
 
         Mana_Potion MpPotion = Mana_Potion.CreateInstance<Mana_Potion>();
 
@@ -97,7 +97,7 @@ public class PlayerEntity : Entity
         startPosition = transform.position; //setting the position based on where the object is on start up
         m_hasChosenAction = false;
         m_BattleButton = GameObject.Find("Action_List_Holder").GetComponent<BattleUIButton>();
-
+       
     }
 
     // Update is called once per frame

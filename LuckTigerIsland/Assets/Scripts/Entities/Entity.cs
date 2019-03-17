@@ -89,6 +89,7 @@ public class Entity : MonoBehaviour {
     public List<BaseAttack> attacks = new List<BaseAttack>();
     public List<InventoryObject> HealthPotions = new List<InventoryObject>();
     public List<InventoryObject> ManaPotions = new List<InventoryObject>();
+    public List<InventoryObject> inventory;
     protected BaseAttack m_chosenAction;
 
     void Start()
