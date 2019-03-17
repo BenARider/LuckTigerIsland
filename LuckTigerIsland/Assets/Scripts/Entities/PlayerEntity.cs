@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+[System.Serializable]
 public class PlayerEntity : Entity
 {
 
@@ -18,8 +19,7 @@ public class PlayerEntity : Entity
     public GameObject playerStatMenu;
     [SerializeField]
     private bool m_findTextGameObjects;
-    public EquipEntity m_equipEntity;
-    public Health_Potion HpPotion;
+
 
     [SerializeField]
     PlayerEntity warrior;
@@ -49,15 +49,15 @@ public class PlayerEntity : Entity
     private BattleUIButton m_BattleButton;
     public HandleTurns HT;
 
-    private bool m_hasChosenAction;
-    private bool m_chosenTarget;
+    public bool m_hasChosenAction;
+    public bool m_chosenTarget;
 
     void Start()
     {
 
         if (Class == "Warrior")
         {
-            SetPlayerStats(150, 20, 20, 10, 50, 1, 20, 5, 40);
+            SetPlayerStats(150, 20, 20, 10, 75, 1, 20, 5, 40);
         }
         if (Class == "Wizard")
         {
@@ -79,10 +79,14 @@ public class PlayerEntity : Entity
 
         currentState = TurnState.eProssesing;
 
-        Health_Potion HpPotion = Mana_Potion.CreateInstance<Health_Potion>();
+		///used to test the afflictions, currently procs every second and will stop after 20. Can be changed later though
+        //m_afflicted = true;
+        //currentAffliction = Affliction.eOnFire;
+
+        Health_Potion HpPotion = Health_Potion.CreateInstance<Health_Potion>();
+
         HealthPotions.Add(HpPotion);
         HealthPotions.Add(HpPotion);
-        
 
         Mana_Potion MpPotion = Mana_Potion.CreateInstance<Mana_Potion>();
 
@@ -97,13 +101,19 @@ public class PlayerEntity : Entity
         startPosition = transform.position; //setting the position based on where the object is on start up
         m_hasChosenAction = false;
         m_BattleButton = GameObject.Find("Action_List_Holder").GetComponent<BattleUIButton>();
-       
-    }
+		turnText = GameObject.Find("Player_Turn_Text").GetComponent<TextMeshProUGUI>();
+		attackDescriptionText = GameObject.Find("Player_Attack_Description_Text").GetComponent<TextMeshProUGUI>();
+		notEnoughManaText = GameObject.Find("not_Enough_Mana_Text").GetComponent<TextMeshProUGUI>();
+		notEnoughPotionsText = GameObject.Find("not_Enough_Potions_Text").GetComponent<TextMeshProUGUI>();
+		usedPotionText = GameObject.Find("used_Potion_Text").GetComponent<TextMeshProUGUI>();
 
-    // Update is called once per frame
-    void Update()
+
+
+	}
+
+	// Update is called once per frame
+	void Update()
     {
-        Debug.Log(currentState);
         switch (currentState)
         {
             case (TurnState.eProssesing):
@@ -123,6 +133,8 @@ public class PlayerEntity : Entity
                 ChooseTarget();
                 if (m_chosenTarget)
                 {
+                    Debug.Log("switching to waiting");
+
                     currentState = TurnState.eWaiting;
                 }
 
@@ -134,20 +146,28 @@ public class PlayerEntity : Entity
                 StartCoroutine(PlayerAction());
                 break;
             case (TurnState.eDead):
-                if (!m_alive)
+                if (!isAlive && !countedDead)
                 {
+                    Debug.Log("DeadPlayers increased");
+                    BC.deadPlayers++;
+                    countedDead = true;
+                    this.transform.eulerAngles = new Vector3(this.transform.eulerAngles.x, this.transform.eulerAngles.y, 90);
                     return;
                 }
                 else
                 {
-                    BC.PartyMembersInBattle.Remove(this.gameObject);
+                    this.gameObject.tag = ("DeadPM");
+
+                    //BC.PartyMembersInBattle.Remove(this.gameObject);
 
                     this.gameObject.GetComponent<SpriteRenderer>().material.color = new Color32(105, 105, 105, 255);
 
-                    m_alive = false;
+                    isAlive = false;
                 }
-        break;
+                break;
         }
+
+
     }
 
     void UpdateSpeed()
@@ -163,8 +183,12 @@ public class PlayerEntity : Entity
                 Debug.Log("It is " + this.name + "'s turn");
                 StartCoroutine("FadeText");
             }
-            
-        }
+			if (m_afflicted == true && alreadyAfflicted == false) //Set afflicted in the attacks, use the attack type such as poisonous to set the currentAffliction and m_afflicted 
+			{
+				alreadyAfflicted = true;
+				StartCoroutine("checkAffliction", 20);
+			}
+		}
       
     }
 
@@ -219,7 +243,7 @@ public class PlayerEntity : Entity
             m_mana -= m_chosenAction.attackCost;
         }
         else notEnoughPotionsText.text = "";
-        if (Input.GetKeyDown("8") || m_BattleButton.GetActionTargetNumber() == 8 )
+        if (Input.GetKeyDown("8") || m_BattleButton.GetActionTargetNumber() == 8)
         {
 
             if (HealthPotions.Count > 0)
@@ -231,11 +255,11 @@ public class PlayerEntity : Entity
                     usedPotionText.text = this.name + " used a health potion";
                     Debug.Log(this.name + " used a health potion");
                     HealthPotions.RemoveAt(0);
-                    m_equipEntity.SetRemoveHpPotionState(true);
                 }
-                m_equipEntity.SetRemoveHpPotionState(false);
+				Debug.Log("Resetting speed");
                 currentSpeed = 0;
-                currentState = TurnState.eProssesing;
+				m_BattleButton.ResetTargetActionNumber();
+			    currentState = TurnState.eProssesing;
                 BattleControl.turnBeingHad = false;
             }
             else
@@ -265,7 +289,8 @@ public class PlayerEntity : Entity
                     ManaPotions.RemoveAt(0);
                 }
                 currentSpeed = 0;
-                currentState = TurnState.eProssesing;
+				m_BattleButton.ResetTargetActionNumber();
+				currentState = TurnState.eProssesing;
                 BattleControl.turnBeingHad = false;
             }
             else
@@ -361,7 +386,7 @@ public class PlayerEntity : Entity
 
         actionHappening = true;
 
-        Vector3 meleeAttack = new Vector3(EntityToAttack.transform.position.x - 1.5f, EntityToAttack.transform.position.y, EntityToAttack.transform.position.z);
+        Vector3 meleeAttack = new Vector3(EntityToAttack.transform.position.x + 1.5f, EntityToAttack.transform.position.y, EntityToAttack.transform.position.z);
         Vector3 magicAttack = new Vector3(transform.position.x + 1.5f, transform.position.y, transform.position.z);
 
         if (m_chosenAction.attackType == "Melee")
@@ -406,7 +431,7 @@ public class PlayerEntity : Entity
         attackDescriptionText.text = "";
         turnText.text = "";
     }
-    void playerDoDamge()
+    void playerDoDamge() // calls the take damage on the enemy w/ damage calc
     {
         int calculateDamage = GetStrength() + BC.NextTurn[0].chosenAttack.attackDamage; //calc should be done here before damage
 

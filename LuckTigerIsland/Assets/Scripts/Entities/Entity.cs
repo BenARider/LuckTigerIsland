@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
+[System.Serializable]
 public class Entity : MonoBehaviour {
 
-    //General stats used to initialise entities
-    [SerializeField]
-    protected bool m_alive;
-    [SerializeField]
+	//General stats used to initialise entities
+	[SerializeField]
 	protected int m_maxHealth;
 	[SerializeField]
 	protected int m_health;
@@ -26,9 +24,13 @@ public class Entity : MonoBehaviour {
 	protected int m_mana;
 	[SerializeField]
 	protected int m_maxMana;
-	
-	//level and class values
-	[SerializeField]
+    [SerializeField]
+    protected bool m_stunned = false;
+    [SerializeField]
+    protected bool m_afflicted = false;
+
+    //level and class values
+    [SerializeField]
 	protected int m_level;
 	[SerializeField]
 	protected int m_xpAward;
@@ -41,7 +43,7 @@ public class Entity : MonoBehaviour {
     [SerializeField]
 	protected bool m_attackedAlready = false;
 	[SerializeField]
-	protected int m_entityNumber; // 1-4 for players party, 5-8 for the enemies
+	protected int m_entityNumber; 
 	[SerializeField]
 	protected static float m_baseRequiredSpeedForTurn = 100;
 	[SerializeField]
@@ -52,6 +54,14 @@ public class Entity : MonoBehaviour {
 	public bool battleWon = false;
     [SerializeField]
     protected float currentSpeed = 0f;
+    [SerializeField]
+    protected bool isAlive = true;
+    [SerializeField]
+    protected bool countedDead = false; //used to prevent insta wins or gameovers
+	[SerializeField]
+	protected bool alreadyAfflicted = false;
+	[SerializeField]
+	protected int afflictionTimes = 0;
 
 
     protected float walkSpeed = 5f;
@@ -81,6 +91,16 @@ public class Entity : MonoBehaviour {
         eDead
     }
     public TurnState currentState;
+
+    public enum Affliction
+    {
+        eNone,
+        eOnFire,
+        eFrozen,
+        eInfected,
+        eStunned
+    }
+    public Affliction currentAffliction;
     protected Vector3 startPosition; //used for animation, move to player when attacking and then back
 
     protected bool actionHappening = false; //Think attackAlready, stops the entities spamming
@@ -89,30 +109,70 @@ public class Entity : MonoBehaviour {
     public List<BaseAttack> attacks = new List<BaseAttack>();
     public List<InventoryObject> HealthPotions = new List<InventoryObject>();
     public List<InventoryObject> ManaPotions = new List<InventoryObject>();
-    public List<InventoryObject> inventory;
     protected BaseAttack m_chosenAction;
-
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-	{
-
-	}
 
     protected bool MoveTo(Vector3 target)
     {
+        Debug.Log("Player moving");
         return target != (transform.position = Vector3.MoveTowards(transform.position, target, walkSpeed * Time.deltaTime)); //returns false until the enity is at its target
     }
 
+	protected IEnumerator checkAffliction(int maxAfflictions)
+	{
+
+		if (currentAffliction == Affliction.eNone || currentAffliction == Affliction.eStunned)
+		{
+			yield break;
+		}
+
+		yield return new WaitForSeconds(1.0f);
+		afflictionTimes++;
+
+		if (currentAffliction == Affliction.eOnFire)
+		{
+			m_health -= 5; //Do some damge calc against resistances and weaknesses
+			Debug.Log("on fire");
+		}
+
+		if (currentAffliction == Affliction.eInfected)
+		{
+			m_health -= 5; //Do some damge calc against resistances and weaknesses
+		}
+
+		if (currentAffliction == Affliction.eFrozen)
+		{
+			m_health -= 2;
+		}
+
+		if (currentAffliction == Affliction.eStunned)
+		{
+			m_stunned = true;
+		}
+
+		if (afflictionTimes >= maxAfflictions)
+		{
+			stopAfflictions();
+			StopCoroutine("checkAffliction");
+		}
+	}
+	protected IEnumerator resetAffliction()
+	{
+		if (currentAffliction != Affliction.eNone)
+		{
+			yield return new WaitForSeconds(10.0f);
+			currentAffliction = Affliction.eNone;
+		}
+	}
+	protected void stopAfflictions()
+	{
+		m_afflicted = false;
+		alreadyAfflicted = false;
+	}
 
 
-    //-----------------------------------------------------------------------------------------------------
-    //Setters and Getters
-    public void Sethealth(int _health) //The argument should be _health. The body should then be m_health = _health.
+	//-----------------------------------------------------------------------------------------------------
+	//Setters and Getters
+	public void Sethealth(int _health) //The argument should be _health. The body should then be m_health = _health.
 	{
 		m_health = _health;
 	}
@@ -132,10 +192,6 @@ public class Entity : MonoBehaviour {
 	{
 		return m_strength;
 	}
-    public void SetStrength(int _strength)
-    {
-        m_strength = _strength;
-    }
 	public int GetMagicPower()
 	{
 		return m_magicPower;
@@ -143,10 +199,6 @@ public class Entity : MonoBehaviour {
     public int GetDefence()
     {
         return m_defence;
-    }
-    public void SetDefence(int _defence)
-    {
-        m_defence = _defence;
     }
     public int GetMagicDefence()
     {
@@ -193,6 +245,10 @@ public class Entity : MonoBehaviour {
     {
         return m_entityNumber;
     }
+	public void SetEntityNo(int entityNumber)
+	{
+		m_entityNumber = entityNumber;
+	}
     public int GetLevel()
     {
         return m_level;
@@ -227,6 +283,7 @@ public class Entity : MonoBehaviour {
 
         }
     }
+
     
     //General logic of damage calculation
     protected void Damage()
