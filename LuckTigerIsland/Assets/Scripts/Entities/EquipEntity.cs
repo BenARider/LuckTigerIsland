@@ -10,11 +10,11 @@ public class EquipEntity : MonoBehaviour
     PlayerEntity m_player;
     public List<InventoryObject> inventory;
     
-    public Armour[] m_armourItem; //For equipping
+   public Armour[] m_armourItem; //For equipping
   
     public Weapon[] m_weaponItem; //For equipping
-
-    public Health_Potion[] m_health_Potion;
+    [SerializeField]
+    Health_Potion m_health_Potion;
     [SerializeField]
     private List<Image> m_inventorySlots = new List<Image>();// Try to remove and use just the inventory object list
     private int m_id = 0;

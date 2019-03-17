@@ -19,7 +19,20 @@ public class PlayerEntity : Entity
     public GameObject playerStatMenu;
     [SerializeField]
     private bool m_findTextGameObjects;
+<<<<<<< HEAD
 
+=======
+    public EquipEntity m_equipEntity;
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 7810fdd... Ui Update
+=======
+>>>>>>> parent of 7810fdd... Ui Update
+=======
+>>>>>>> parent of 7810fdd... Ui Update
+=======
+>>>>>>> parent of 7810fdd... Ui Update
 
     [SerializeField]
     PlayerEntity warrior;
@@ -79,9 +92,21 @@ public class PlayerEntity : Entity
 
         currentState = TurnState.eProssesing;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
 		///used to test the afflictions, currently procs every second and will stop after 20. Can be changed later though
         //m_afflicted = true;
         //currentAffliction = Affliction.eOnFire;
+=======
+>>>>>>> parent of 7810fdd... Ui Update
+=======
+>>>>>>> parent of 7810fdd... Ui Update
+=======
+>>>>>>> parent of 7810fdd... Ui Update
+=======
+>>>>>>> parent of 7810fdd... Ui Update
 
         Health_Potion HpPotion = Health_Potion.CreateInstance<Health_Potion>();
 
@@ -101,6 +126,10 @@ public class PlayerEntity : Entity
         startPosition = transform.position; //setting the position based on where the object is on start up
         m_hasChosenAction = false;
         m_BattleButton = GameObject.Find("Action_List_Holder").GetComponent<BattleUIButton>();
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
 		turnText = GameObject.Find("Player_Turn_Text").GetComponent<TextMeshProUGUI>();
 		attackDescriptionText = GameObject.Find("Player_Attack_Description_Text").GetComponent<TextMeshProUGUI>();
 		notEnoughManaText = GameObject.Find("not_Enough_Mana_Text").GetComponent<TextMeshProUGUI>();
@@ -108,6 +137,16 @@ public class PlayerEntity : Entity
 		usedPotionText = GameObject.Find("used_Potion_Text").GetComponent<TextMeshProUGUI>();
 
 
+=======
+=======
+>>>>>>> parent of 7810fdd... Ui Update
+=======
+>>>>>>> parent of 7810fdd... Ui Update
+=======
+>>>>>>> parent of 7810fdd... Ui Update
+
+    }
+>>>>>>> parent of 7810fdd... Ui Update
 
 	}
 

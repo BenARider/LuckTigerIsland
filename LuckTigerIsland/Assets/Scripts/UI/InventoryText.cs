@@ -50,13 +50,6 @@ public class InventoryText : MonoBehaviour, ISelectHandler
 
             itemStats.text = "Attack: " + m_equipEntity.m_weaponItem[0].attack;
         }
-        if(this.gameObject.name == "HpPotion")
-        {
-            itemDescription.text = m_equipEntity.m_health_Potion[0].Description;
-
-
-          //  itemStats.text = "Attack: " + m_equipEntity.m_health_Potion[0].healthGiven;
-        }
         if(this.gameObject.name == "EmptyInventorySlot")
         {
             itemTitle.text = "";
