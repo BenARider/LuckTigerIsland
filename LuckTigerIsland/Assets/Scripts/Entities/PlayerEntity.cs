@@ -27,6 +27,9 @@ public class PlayerEntity : Entity
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 7810fdd... Ui Update
+=======
 >>>>>>> parent of 7810fdd... Ui Update
 =======
 >>>>>>> parent of 7810fdd... Ui Update
@@ -100,9 +103,12 @@ public class PlayerEntity : Entity
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 		///used to test the afflictions, currently procs every second and will stop after 20. Can be changed later though
         //m_afflicted = true;
         //currentAffliction = Affliction.eOnFire;
+=======
+>>>>>>> parent of 7810fdd... Ui Update
 =======
 >>>>>>> parent of 7810fdd... Ui Update
 =======
@@ -137,6 +143,7 @@ public class PlayerEntity : Entity
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 		turnText = GameObject.Find("Player_Turn_Text").GetComponent<TextMeshProUGUI>();
 		attackDescriptionText = GameObject.Find("Player_Attack_Description_Text").GetComponent<TextMeshProUGUI>();
 		notEnoughManaText = GameObject.Find("not_Enough_Mana_Text").GetComponent<TextMeshProUGUI>();
@@ -145,6 +152,8 @@ public class PlayerEntity : Entity
 
 
 =======
+=======
+>>>>>>> parent of 7810fdd... Ui Update
 =======
 >>>>>>> parent of 7810fdd... Ui Update
 =======
