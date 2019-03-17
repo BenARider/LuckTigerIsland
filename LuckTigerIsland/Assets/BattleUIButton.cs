@@ -21,6 +21,10 @@ public class BattleUIButton : MonoBehaviour
     {
         m_actionTargetNumber = _number;
     }
+	public void ResetTargetActionNumber()
+	{
+		m_actionTargetNumber = 0;
+	}
     public int GetActionTargetNumber()
     {
         return m_actionTargetNumber;

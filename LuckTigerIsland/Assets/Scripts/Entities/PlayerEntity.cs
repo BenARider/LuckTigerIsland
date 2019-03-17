@@ -79,8 +79,9 @@ public class PlayerEntity : Entity
 
         currentState = TurnState.eProssesing;
 
-        m_afflicted = true;
-        currentAffliction = Affliction.eOnFire;
+		///used to test the afflictions, currently procs every second and will stop after 20. Can be changed later though
+        //m_afflicted = true;
+        //currentAffliction = Affliction.eOnFire;
 
         Health_Potion HpPotion = Health_Potion.CreateInstance<Health_Potion>();
 
@@ -100,14 +101,19 @@ public class PlayerEntity : Entity
         startPosition = transform.position; //setting the position based on where the object is on start up
         m_hasChosenAction = false;
         m_BattleButton = GameObject.Find("Action_List_Holder").GetComponent<BattleUIButton>();
+		turnText = GameObject.Find("Player_Turn_Text").GetComponent<TextMeshProUGUI>();
+		attackDescriptionText = GameObject.Find("Player_Attack_Description_Text").GetComponent<TextMeshProUGUI>();
+		notEnoughManaText = GameObject.Find("not_Enough_Mana_Text").GetComponent<TextMeshProUGUI>();
+		notEnoughPotionsText = GameObject.Find("not_Enough_Potions_Text").GetComponent<TextMeshProUGUI>();
+		usedPotionText = GameObject.Find("used_Potion_Text").GetComponent<TextMeshProUGUI>();
 
-    }
 
-    // Update is called once per frame
-    void Update()
+
+	}
+
+	// Update is called once per frame
+	void Update()
     {
-        if (GetHealth() <= 0)
-            currentState = TurnState.eDead;
         switch (currentState)
         {
             case (TurnState.eProssesing):
@@ -177,11 +183,12 @@ public class PlayerEntity : Entity
                 Debug.Log("It is " + this.name + "'s turn");
                 StartCoroutine("FadeText");
             }
-            //if (m_afflicted == true) //Set afflicted in the attacks, use the attack type such as poisonous to set the currentAffliction and m_afflicted 
-            //{
-            //    StartCoroutine("checkAffliction");
-            //}
-        }
+			if (m_afflicted == true && alreadyAfflicted == false) //Set afflicted in the attacks, use the attack type such as poisonous to set the currentAffliction and m_afflicted 
+			{
+				alreadyAfflicted = true;
+				StartCoroutine("checkAffliction", 20);
+			}
+		}
       
     }
 
@@ -249,8 +256,10 @@ public class PlayerEntity : Entity
                     Debug.Log(this.name + " used a health potion");
                     HealthPotions.RemoveAt(0);
                 }
+				Debug.Log("Resetting speed");
                 currentSpeed = 0;
-                currentState = TurnState.eProssesing;
+				m_BattleButton.ResetTargetActionNumber();
+			    currentState = TurnState.eProssesing;
                 BattleControl.turnBeingHad = false;
             }
             else
@@ -280,7 +289,8 @@ public class PlayerEntity : Entity
                     ManaPotions.RemoveAt(0);
                 }
                 currentSpeed = 0;
-                currentState = TurnState.eProssesing;
+				m_BattleButton.ResetTargetActionNumber();
+				currentState = TurnState.eProssesing;
                 BattleControl.turnBeingHad = false;
             }
             else

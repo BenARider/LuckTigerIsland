@@ -58,6 +58,10 @@ public class Entity : MonoBehaviour {
     protected bool isAlive = true;
     [SerializeField]
     protected bool countedDead = false; //used to prevent insta wins or gameovers
+	[SerializeField]
+	protected bool alreadyAfflicted = false;
+	[SerializeField]
+	protected int afflictionTimes = 0;
 
 
     protected float walkSpeed = 5f;
@@ -113,50 +117,62 @@ public class Entity : MonoBehaviour {
         return target != (transform.position = Vector3.MoveTowards(transform.position, target, walkSpeed * Time.deltaTime)); //returns false until the enity is at its target
     }
 
-    //protected IEnumerator checkAffliction()
-    //{
+	protected IEnumerator checkAffliction(int maxAfflictions)
+	{
 
-    //    if (currentAffliction == Affliction.eNone || currentAffliction == Affliction.eStunned)
-    //    {
-    //        yield break;
-    //    }
+		if (currentAffliction == Affliction.eNone || currentAffliction == Affliction.eStunned)
+		{
+			yield break;
+		}
 
-    //    yield return new WaitForSeconds(2.5f);
+		yield return new WaitForSeconds(1.0f);
+		afflictionTimes++;
 
-    //    if (currentAffliction == Affliction.eOnFire)
-    //    {
-    //        m_health -= 5; //Do some damge calc against resistances and weaknesses
-    //        Debug.Log("on fire");
-    //    }
+		if (currentAffliction == Affliction.eOnFire)
+		{
+			m_health -= 5; //Do some damge calc against resistances and weaknesses
+			Debug.Log("on fire");
+		}
 
-    //    if (currentAffliction == Affliction.eInfected)
-    //    {
-    //        m_health -= 5; //Do some damge calc against resistances and weaknesses
-    //    }
+		if (currentAffliction == Affliction.eInfected)
+		{
+			m_health -= 5; //Do some damge calc against resistances and weaknesses
+		}
 
-    //    if (currentAffliction == Affliction.eFrozen)
-    //    {
-    //        m_health -= 2;
-    //    }
+		if (currentAffliction == Affliction.eFrozen)
+		{
+			m_health -= 2;
+		}
 
-    //    if(currentAffliction == Affliction.eStunned)
-    //    {
-    //        m_stunned = true;
-    //    }
-    //}
-    //protected IEnumerator resetAffliction()
-    //{
-    //    if (currentAffliction != Affliction.eNone)
-    //    {
-    //        yield return new WaitForSeconds(10.0f);
-    //        currentAffliction = Affliction.eNone;
-    //    }
-    //}
+		if (currentAffliction == Affliction.eStunned)
+		{
+			m_stunned = true;
+		}
+
+		if (afflictionTimes >= maxAfflictions)
+		{
+			stopAfflictions();
+			StopCoroutine("checkAffliction");
+		}
+	}
+	protected IEnumerator resetAffliction()
+	{
+		if (currentAffliction != Affliction.eNone)
+		{
+			yield return new WaitForSeconds(10.0f);
+			currentAffliction = Affliction.eNone;
+		}
+	}
+	protected void stopAfflictions()
+	{
+		m_afflicted = false;
+		alreadyAfflicted = false;
+	}
 
 
-    //-----------------------------------------------------------------------------------------------------
-    //Setters and Getters
-    public void Sethealth(int _health) //The argument should be _health. The body should then be m_health = _health.
+	//-----------------------------------------------------------------------------------------------------
+	//Setters and Getters
+	public void Sethealth(int _health) //The argument should be _health. The body should then be m_health = _health.
 	{
 		m_health = _health;
 	}
