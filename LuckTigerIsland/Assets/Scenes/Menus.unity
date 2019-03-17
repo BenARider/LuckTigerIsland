@@ -1224,6 +1224,20 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 1380853468407278, guid: 8656ef68b72e84b4c872145b2033dd82, type: 2}
+      propertyPath: m_Name
+      value: Greetings
+      objectReference: {fileID: 0}
+    - target: {fileID: 114973940437512634, guid: 8656ef68b72e84b4c872145b2033dd82,
+        type: 2}
+      propertyPath: m_title
+      value: Greetings
+      objectReference: {fileID: 0}
+    - target: {fileID: 114973940437512634, guid: 8656ef68b72e84b4c872145b2033dd82,
+        type: 2}
+      propertyPath: m_description
+      value: greetings
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8656ef68b72e84b4c872145b2033dd82, type: 2}
   m_IsPrefabParent: 0
@@ -2314,6 +2328,10 @@ Prefab:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1993804659605438, guid: c8a71534b3c1649419d90d30655ad7f8, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c8a71534b3c1649419d90d30655ad7f8, type: 2}
   m_IsPrefabParent: 0
@@ -3141,6 +3159,39 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
       objectReference: {fileID: 1827706546}
+    - target: {fileID: 1682327235215642, guid: 956c025d0bb7bdb43aca14eea4cec5ff, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1410482624323690, guid: 956c025d0bb7bdb43aca14eea4cec5ff, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114527475196524816, guid: 956c025d0bb7bdb43aca14eea4cec5ff,
+        type: 2}
+      propertyPath: m_text
+      value: Greetings
+      objectReference: {fileID: 0}
+    - target: {fileID: 114527475196524816, guid: 956c025d0bb7bdb43aca14eea4cec5ff,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114527475196524816, guid: 956c025d0bb7bdb43aca14eea4cec5ff,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114527475196524816, guid: 956c025d0bb7bdb43aca14eea4cec5ff,
+        type: 2}
+      propertyPath: m_textInfo.characterCount
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 114527475196524816, guid: 956c025d0bb7bdb43aca14eea4cec5ff,
+        type: 2}
+      propertyPath: m_textInfo.spaceCount
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 956c025d0bb7bdb43aca14eea4cec5ff, type: 2}
   m_IsPrefabParent: 0
