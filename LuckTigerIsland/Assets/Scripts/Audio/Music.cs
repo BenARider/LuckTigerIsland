@@ -29,6 +29,22 @@ public class Music
 
     protected AudioSource m_audioSource;
 
+    public Music()
+    {
+
+    }
+
+    public Music( string _name, AudioClip _audioClip, AudioMixerGroup _mixerGroup, float _volume, float _pitch, bool _loop, bool _mute)
+    {
+        m_name = _name;
+        m_audioClip = _audioClip;
+        m_audioMixer = _mixerGroup;
+        m_volume = _volume;
+        m_pitch = _pitch;
+        m_loop = _loop;
+        m_mute = _mute;
+    }
+
     public void Stop()
     {
         m_audioSource.Stop();

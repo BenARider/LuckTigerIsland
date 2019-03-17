@@ -24,4 +24,9 @@ public class MusicPlaylist
     {
         m_playlistName = _name;
     }
+
+    public void AddMusic(Music _music)
+    {
+        m_music.Add(_music);
+    }
 }
