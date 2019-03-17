@@ -19,26 +19,8 @@ public class PlayerEntity : Entity
     public GameObject playerStatMenu;
     [SerializeField]
     private bool m_findTextGameObjects;
-<<<<<<< HEAD
-
-=======
     public EquipEntity m_equipEntity;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> parent of 7810fdd... Ui Update
-=======
->>>>>>> parent of 7810fdd... Ui Update
-=======
->>>>>>> parent of 7810fdd... Ui Update
-=======
->>>>>>> parent of 7810fdd... Ui Update
-=======
->>>>>>> parent of 7810fdd... Ui Update
-=======
->>>>>>> parent of 7810fdd... Ui Update
+
 
     [SerializeField]
     PlayerEntity warrior;
@@ -98,27 +80,11 @@ public class PlayerEntity : Entity
 
         currentState = TurnState.eProssesing;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-		///used to test the afflictions, currently procs every second and will stop after 20. Can be changed later though
+
+        ///used to test the afflictions, currently procs every second and will stop after 20. Can be changed later though
         //m_afflicted = true;
         //currentAffliction = Affliction.eOnFire;
-=======
->>>>>>> parent of 7810fdd... Ui Update
-=======
->>>>>>> parent of 7810fdd... Ui Update
-=======
->>>>>>> parent of 7810fdd... Ui Update
-=======
->>>>>>> parent of 7810fdd... Ui Update
-=======
->>>>>>> parent of 7810fdd... Ui Update
-=======
->>>>>>> parent of 7810fdd... Ui Update
+
 
         Health_Potion HpPotion = Health_Potion.CreateInstance<Health_Potion>();
 
@@ -138,38 +104,23 @@ public class PlayerEntity : Entity
         startPosition = transform.position; //setting the position based on where the object is on start up
         m_hasChosenAction = false;
         m_BattleButton = GameObject.Find("Action_List_Holder").GetComponent<BattleUIButton>();
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-		turnText = GameObject.Find("Player_Turn_Text").GetComponent<TextMeshProUGUI>();
-		attackDescriptionText = GameObject.Find("Player_Attack_Description_Text").GetComponent<TextMeshProUGUI>();
-		notEnoughManaText = GameObject.Find("not_Enough_Mana_Text").GetComponent<TextMeshProUGUI>();
-		notEnoughPotionsText = GameObject.Find("not_Enough_Potions_Text").GetComponent<TextMeshProUGUI>();
-		usedPotionText = GameObject.Find("used_Potion_Text").GetComponent<TextMeshProUGUI>();
+
+        turnText = GameObject.Find("Player_Turn_Text").GetComponent<TextMeshProUGUI>();
+        attackDescriptionText = GameObject.Find("Player_Attack_Description_Text").GetComponent<TextMeshProUGUI>();
+        notEnoughManaText = GameObject.Find("not_Enough_Mana_Text").GetComponent<TextMeshProUGUI>();
+        notEnoughPotionsText = GameObject.Find("not_Enough_Potions_Text").GetComponent<TextMeshProUGUI>();
+        usedPotionText = GameObject.Find("used_Potion_Text").GetComponent<TextMeshProUGUI>();
 
 
-=======
-=======
->>>>>>> parent of 7810fdd... Ui Update
-=======
->>>>>>> parent of 7810fdd... Ui Update
-=======
->>>>>>> parent of 7810fdd... Ui Update
-=======
->>>>>>> parent of 7810fdd... Ui Update
-=======
->>>>>>> parent of 7810fdd... Ui Update
+
 
     }
->>>>>>> parent of 7810fdd... Ui Update
 
-	}
 
-	// Update is called once per frame
-	void Update()
+
+
+    // Update is called once per frame
+    void Update()
     {
         switch (currentState)
         {
@@ -240,18 +191,18 @@ public class PlayerEntity : Entity
                 Debug.Log("It is " + this.name + "'s turn");
                 StartCoroutine("FadeText");
             }
-			if (m_afflicted == true && alreadyAfflicted == false) //Set afflicted in the attacks, use the attack type such as poisonous to set the currentAffliction and m_afflicted 
-			{
-				alreadyAfflicted = true;
-				StartCoroutine("checkAffliction", 20);
-			}
-		}
-      
+            if (m_afflicted == true && alreadyAfflicted == false) //Set afflicted in the attacks, use the attack type such as poisonous to set the currentAffliction and m_afflicted 
+            {
+                alreadyAfflicted = true;
+                StartCoroutine("checkAffliction", 20);
+            }
+        }
+
     }
 
     void ChooseAction()
     {
-       
+
         Debug.Log(this.name + ": Choose Action");
         if (Input.GetKeyDown("1") || m_BattleButton.GetActionTargetNumber() == 1)
         {
@@ -313,10 +264,10 @@ public class PlayerEntity : Entity
                     Debug.Log(this.name + " used a health potion");
                     HealthPotions.RemoveAt(0);
                 }
-				Debug.Log("Resetting speed");
+                Debug.Log("Resetting speed");
                 currentSpeed = 0;
-				m_BattleButton.ResetTargetActionNumber();
-			    currentState = TurnState.eProssesing;
+                m_BattleButton.ResetTargetActionNumber();
+                currentState = TurnState.eProssesing;
                 BattleControl.turnBeingHad = false;
             }
             else
@@ -331,7 +282,7 @@ public class PlayerEntity : Entity
             usedPotionText.text = "";
             notEnoughPotionsText.text = "";
         }
-   
+
         if (Input.GetKeyDown("9") || m_BattleButton.GetActionTargetNumber() == 9)
         {
             if (ManaPotions.Count > 0)
@@ -346,8 +297,8 @@ public class PlayerEntity : Entity
                     ManaPotions.RemoveAt(0);
                 }
                 currentSpeed = 0;
-				m_BattleButton.ResetTargetActionNumber();
-				currentState = TurnState.eProssesing;
+                m_BattleButton.ResetTargetActionNumber();
+                currentState = TurnState.eProssesing;
                 BattleControl.turnBeingHad = false;
             }
             else
@@ -366,7 +317,7 @@ public class PlayerEntity : Entity
 
     void ChooseTarget()
     {
-      
+
         Debug.Log(this.name + ": Choose Target");
         if (Input.GetKeyDown("1") || m_BattleButton.GetActionTargetNumber() == 10)
         {
