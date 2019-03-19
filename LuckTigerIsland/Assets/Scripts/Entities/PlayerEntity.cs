@@ -87,12 +87,6 @@ public class PlayerEntity : Entity
         //currentAffliction = Affliction.eOnFire;
 
 
-		///used to test the afflictions, currently procs every second and will stop after 20. Can be changed later though
-        //m_afflicted = true;
-        //currentAffliction = Affliction.eOnFire;
-
-
-
         Health_Potion HpPotion = Health_Potion.CreateInstance<Health_Potion>();
 
         HealthPotions.Add(HpPotion);
@@ -178,7 +172,7 @@ public class PlayerEntity : Entity
                 {
                     this.gameObject.tag = ("DeadPM");
 
-                    //BC.PartyMembersInBattle.Remove(this.gameObject);
+                    BC.PartyMembersInBattle.Remove(this.gameObject);
 
                     this.gameObject.GetComponent<SpriteRenderer>().material.color = new Color32(105, 105, 105, 255);
 

@@ -49,8 +49,9 @@ public class EnemEntity : Entity
         {
             SetEnemyStats(60, 150, 15, 7, 50, 3, 5, 5, 50);
         }
+        this.name = GetEntityNo() + ":" + this.name;
 
-        //m_requiredSpeedForTurn = m_baseRequiredSpeedForTurn - GetSpeed();
+        m_requiredSpeedForTurn = m_baseRequiredSpeedForTurn - GetSpeed();
         SetRequiredSpeed();
         ResetHealth();
 		ResetMana();
@@ -109,7 +110,7 @@ public class EnemEntity : Entity
                 {
                     this.gameObject.tag = ("DeadPM");
 
-                    //BC.EnemiesInBattle.Remove(this.gameObject);
+                    BC.EnemiesInBattle.Remove(this.gameObject);
 
                     for (int i = 0; i > BC.NextTurn.Count; i++)
                     {
