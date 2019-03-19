@@ -15,9 +15,9 @@ public class EncounterManager : MonoBehaviour {
 
     ScreenTransition fade;
 
-    
-    // Use this for initialization
-    void Start () {
+	IEnumerator enumerator;
+	// Use this for initialization
+	void Start () {
 		player = GetComponent<PlayerManager>();
 		lastPos = new Vector3Int(0,0,0);
         fade = Camera.main.GetComponent<ScreenTransition>();
@@ -54,12 +54,25 @@ public class EncounterManager : MonoBehaviour {
 				{
 					print("encounter: " + (isDesert? "desert" : "grassland"));
                     fade.flashWhite(0.1f);
-                    //fade.toBlack();
-                    //player.playerMove.doMove = false;
-                }
+					enumerator = doEncounter();
+					StartCoroutine(enumerator);
+				}
 
 				lastPos = currentPos;
 			}
 		}
+	}
+
+	IEnumerator doEncounter()
+	{
+		player.playerMove.doMove = false;
+		yield return new WaitForSeconds(0.5f);
+		fade.toBlack();
+		yield return new WaitForSeconds(2f);
+		encounterMap.transform.root.gameObject.SetActive(false);
+		Camera.main.gameObject.SetActive(false);
+		SceneManager.LoadScene("BattleScene", LoadSceneMode.Additive);
+		player.currentSceneName = "BattleScene";
+		fade.fromBlack();
 	}
 }

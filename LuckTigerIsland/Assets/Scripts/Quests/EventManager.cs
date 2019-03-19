@@ -80,7 +80,7 @@ public class EventManager : LTI.Singleton<EventManager>
     }
 
     //Set the last location and check all location quests.
-    public void SetBattleLocation(List<EEnemies> _enemies)
+    public void SetLastBattle(List<EEnemies> _enemies)
     {
         m_lastBattle = _enemies;
         //In all active quests
