@@ -12,3 +12,6 @@ MonoBehaviour:
   m_Name: MpPotion
   m_EditorClassIdentifier: 
   objectName: New Object
+  Image: {fileID: 21300030, guid: 42e5c7150895b6241a1ca67791d35c9e, type: 3}
+  Description: A mana potion
+  Price: 5

@@ -24,7 +24,7 @@ public class EnemEntity : Entity
 		intel = itl;
 		XP = xp;
 	}
-	public EnemEntity Tiger;
+
 
     private BattleControl BC;
     public HandleTurns HT;
@@ -35,19 +35,19 @@ public class EnemEntity : Entity
     {
         if (Class == "Goblin")
         {
-            SetEnemyStats(150, 50, 40, 20, 50, 3, 20, 4, 50);
+            SetEnemyStats(75, 50, 40, 20, 50, 3, 20, 4, 50);
+        }
+        if (Class == "Dark_Elf")
+        {
+            SetEnemyStats(35, 125, 20, 10, 55, 2, 10, 8, 50);
         }
         if (Class == "Wizard")
         {
-            SetEnemyStats(70, 125, 20, 10, 65, 2, 10, 8, 50);
+            SetEnemyStats(40, 100, 10, 15, 45, 2, 15, 6, 50);
         }
-        if (Class == "Ninja")
+        if (Class == "Knight")
         {
-            SetEnemyStats(75, 100, 10, 15, 75, 2, 15, 6, 50);
-        }
-        if (Class == "Cleric")
-        {
-            SetEnemyStats(50, 150, 5, 7, 60, 3, 5, 5, 50);
+            SetEnemyStats(60, 150, 15, 7, 50, 3, 5, 5, 50);
         }
 
         //m_requiredSpeedForTurn = m_baseRequiredSpeedForTurn - GetSpeed();
@@ -56,6 +56,7 @@ public class EnemEntity : Entity
 		ResetMana();
         Debug.Log("Enemy Values Set");
         currentState = TurnState.eProssesing; //Set the statemachine to the beggining state
+        currentAffliction = Affliction.eNone;
         Health_Potion HpPotion = Health_Potion.CreateInstance<Health_Potion>();
 
         HealthPotions.Add(HpPotion);
@@ -65,13 +66,19 @@ public class EnemEntity : Entity
 
         ManaPotions.Add(MpPotion);
         ManaPotions.Add(MpPotion);
+		transform.position = new Vector2(this.transform.position.x,this.transform.position.y - (GetEntityNo() - 1)); //orders the enemies by their entity number.
         BC = GameObject.Find("BattleControl").GetComponent<BattleControl>(); //makes BattleControl shortform to BC
         startPosition = transform.position; //setting the position based on where the object is on start up
+
+        attackDescriptionText = GameObject.Find("Enemy_Attack_Description_Text").GetComponent<TextMeshProUGUI>();
+        turnText = GameObject.Find("Enemy_Turn_Text").GetComponent<TextMeshProUGUI>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (GetHealth() <= 0)
+            currentState = TurnState.eDead;
         //Debug.Log(currentState);
         switch (currentState)
         {
@@ -90,17 +97,31 @@ public class EnemEntity : Entity
                 StartCoroutine(TimeForAction()); //do the action stored before
                 break;
             case (TurnState.eDead):
-                if (!m_alive)
+                if (!isAlive && !countedDead)
                 {
+                    Debug.Log("DeadEnemies increased");
+                    BC.deadEnemies++;
+                    countedDead = true;
+                    this.transform.eulerAngles = new Vector3(this.transform.eulerAngles.x, this.transform.eulerAngles.y, 90);
                     return;
                 }
                 else
                 {
-                    BC.EnemiesInBattle.Remove(this.gameObject);
+                    this.gameObject.tag = ("DeadPM");
+
+                    //BC.EnemiesInBattle.Remove(this.gameObject);
+
+                    for (int i = 0; i > BC.NextTurn.Count; i++)
+                    {
+                        if (BC.NextTurn[i].AttackingGameObject == this)
+                        {
+                            BC.NextTurn.Remove(BC.NextTurn[i]);
+                        }
+                    }
 
                     this.gameObject.GetComponent<SpriteRenderer>().material.color = new Color32(105, 105, 105, 255);
 
-                    m_alive = false;
+                    isAlive = false;
                 }
                 break;
         }
@@ -115,7 +136,7 @@ public class EnemEntity : Entity
             {
                 currentState = TurnState.eChooseAction;
                 BattleControl.turnBeingHad = true;
-                turnText.text = "It is " + this.name + "'s turn";
+                //turnText.text = "It is " + this.name + "'s turn";
                 Debug.Log("It is " + this.name + "'s turn");
                 StartCoroutine("FadeText");
             }
@@ -132,7 +153,7 @@ public class EnemEntity : Entity
         {
             rollAttack();
         }
-        Debug.Log(this.name + " has chosen the " + m_chosenAction + " attack");
+       // Debug.Log(this.name + " has chosen the " + m_chosenAction + " attack");
 
     }
 
@@ -147,7 +168,7 @@ public class EnemEntity : Entity
             AttackTarget = BC.PartyMembersInBattle[Random.Range(0, BC.PartyMembersInBattle.Count)], //Random a target that is in the List stored in BattleControl
             chosenAttack = m_chosenAction
         };
-        attackDescriptionText.text = this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!";
+        //attackDescriptionText.text = this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!";
         Debug.Log(this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!");
         StartCoroutine("FadeText");
         BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
@@ -194,7 +215,6 @@ public class EnemEntity : Entity
 	{
 		Debug.Log("Enemy attacking");
 		BattleControl.side = "Enemy";
-		BattleControl.willDamage = "y";
 	}
 
     void enemyDoDamge()

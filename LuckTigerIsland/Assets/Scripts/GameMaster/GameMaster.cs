@@ -40,9 +40,11 @@ public class GameMaster : LTI.Singleton<GameMaster>{
                 {
                     if (go.name.Equals("Level"))
                     {
-                        
 
-                        currentNight = go.transform.GetChild(0).GetChild(0).Find("Lights - Night").GetComponent<Tilemap>();
+						if (go.transform.GetChild(0).GetChild(0).Find("Lights - Night"))
+						{
+							currentNight = go.transform.GetChild(0).GetChild(0).Find("Lights - Night").GetComponent<Tilemap>();
+						}
                         lastScene = currentScene;
                         break;
                     }

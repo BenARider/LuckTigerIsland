@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Name: Dagger
   m_EditorClassIdentifier: 
   objectName: Dagger
-  objectDescription: Short Blade
+  Image: {fileID: 0}
+  Description: 5
+  Price: 0
   attack: 4

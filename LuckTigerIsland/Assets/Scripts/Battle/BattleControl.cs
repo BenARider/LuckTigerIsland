@@ -2,12 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+[System.Serializable]
 public class BattleControl : MonoBehaviour {
-
-	public static string willDamage; //state n for no damage taken, state y for damage taken. Alternate state could indicate invulnerable or other in future.
-	public static int currentDamage;
-    public static int currentHealValue;
-	public static int currentTarget;
 	public static string side;
 	public static int totalFighters = 8; //will be used to check when to reset the turn timer and stuff.
     [SerializeField]
@@ -17,7 +13,9 @@ public class BattleControl : MonoBehaviour {
     {
         eWait,
         eTakeAnAction,
-        ePerformAction
+        ePerformAction,
+        eLoss,
+        eWin
     }
     public performAction battleState;
 
@@ -25,6 +23,8 @@ public class BattleControl : MonoBehaviour {
     public List<GameObject> EnemiesInBattle = new List<GameObject>();
     public List<EnemEntity> Enemies = new List<EnemEntity>();
     public List<GameObject> PartyMembersInBattle = new List<GameObject>();
+    public int deadEnemies = 0;
+    public int deadPlayers = 0;
 
     // Use this for initialization
     void Start () {
@@ -32,18 +32,33 @@ public class BattleControl : MonoBehaviour {
 
 
         PartyMembersInBattle.AddRange (GameObject.FindGameObjectsWithTag("Party"));
-        EnemiesInBattle.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
+		//prevents the rest of the setup phase until at least one enemy has been instantiated
+		while (EnemiesInBattle.Count == 0)
+		{
+			EnemiesInBattle.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
+		}
+		
+
         EnemiesInBattle = EnemiesInBattle.OrderBy(x => x.GetComponent<EnemEntity>().GetEntityNo()).ToList();
         PartyMembersInBattle = PartyMembersInBattle.OrderBy(x => x.GetComponent<PlayerEntity>().GetEntityNo()).ToList();
-        //willDamage = "n";
-        currentDamage = 0;
-        currentHealValue = 0;
-		currentTarget = 0;
-        turnBeingHad = false;
+		//allows the enemies to be targetted and guarantees this is called after they are instantiated
+		for (int i = 0; i<EnemiesInBattle.Count; i++)
+		{
+			EnemiesInBattle[i].GetComponent<EnemEntity>().SetEntityNo(i+1);
+		}
+		turnBeingHad = false;
 		Debug.Log("Setup complete");
 	}
 	void Update ()
 	{
+        if(deadEnemies>=4)
+        {
+            battleState = performAction.eLoss;
+        }
+        if(deadPlayers>=4)
+        {
+            battleState = performAction.eWin;
+        }
         switch (battleState)
         {
             case (performAction.eWait):
@@ -69,8 +84,13 @@ public class BattleControl : MonoBehaviour {
                 battleState = performAction.ePerformAction;
                 break;
             case (performAction.ePerformAction):
-
-            break;
+                break;
+            case (performAction.eWin):
+                //go to victory screen/overworld here
+                break;
+            case (performAction.eLoss):
+                //go to gameover screen here
+                break;
         }
 
 

@@ -5,27 +5,27 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
-public class EquipEntity : MonoBehaviour, ISelectHandler
+public class EquipEntity : MonoBehaviour
 {
     PlayerEntity m_player;
     public List<InventoryObject> inventory;
+    
+   public Armour[] m_armourItem; //For equipping
+  
+    public Weapon[] m_weaponItem; //For equipping
     [SerializeField]
-    Armour m_armourItem; //For equipping
-    [SerializeField]
-    Weapon m_weaponItem; //For equipping
+    Health_Potion m_health_Potion;
     [SerializeField]
     private List<Image> m_inventorySlots = new List<Image>();// Try to remove and use just the inventory object list
-    private int m_id = -1;
+    private int m_id = 0;
     protected bool equipped = false;
-    private TextMeshProUGUI itemTitle;
-    private TextMeshProUGUI itemDescription;
+    private bool m_addedItem = false;
+    private bool m_removeHealthPotion = false;
     private Color m_itemFadeColour;
     // Use this for initialization
+
     void Start()
-    { 
-     
-        itemTitle = GameObject.Find("ItemName").GetComponent<TextMeshProUGUI>();
-        itemDescription = GameObject.Find("ItemDescription").GetComponent<TextMeshProUGUI>();
+    {
         m_player = GameObject.Find("Luck").GetComponent<PlayerEntity>();
         m_itemFadeColour.a = 0.0f;
     }
@@ -34,68 +34,86 @@ public class EquipEntity : MonoBehaviour, ISelectHandler
     void Update()
     {
     }
-    public void OnSelect(BaseEventData _eventData)
+    public void ClearItem(int _id)
     {
+        if (m_inventorySlots[_id].name != "EmptyInventorySlot")
+        {
+          
+        }
     
-        
-        if (this.gameObject.name == "Chainmail")
-        {
-            itemDescription.text = m_armourItem.objectDescription;
-            itemTitle.text = m_armourItem.objectName;
-            //  itemDescription.text = _object.Description;
-        }
-        if (this.gameObject.name == "Shortsword")
-        {
-          itemTitle.text = m_weaponItem.objectName;
-            itemDescription.text = m_weaponItem.objectDescription;
-        }
     }
-    public void OnDeselect(BaseEventData _eventData)
+   public Armour[] GetArmourItem()
     {
-        itemTitle.text = "";
-        itemDescription.text = "";
-    }
-    public void SetStats()
-    {
-        if (itemTitle.text == "Chainmail")
-        {
-            m_player.SetDefence(m_armourItem.defence);
-            print("Set defence stat ");
-            print("Image is" + this.gameObject.name);
-        
-        }
-        if (itemTitle.text == "Shortsword")
-        {
-            m_player.SetStrength(m_weaponItem.attack);
-            print("Set attack stat ");
-            print("Image is" + this.gameObject.name);
-        }
-    }
-    public void ClearItem()
-    {
-       for(int i = 0; i < m_inventorySlots.Count;++i)
-        {
-
-        }
        
+        return m_armourItem;
+    }
+    public Weapon[] GetWeaponItem()
+    {
+
+        return m_weaponItem;
+    }
+
+    public void SetStats(int _id)
+    {
+        if (m_inventorySlots[_id].name != "EmptyInventorySlot")
+        {
+            if (m_inventorySlots[_id].gameObject.name == "Chainmail")
+            {
+                m_player.SetDefence(m_armourItem[0].defence);
+                print("Set defence stat ");
+                print("Image is" + this.gameObject.name);
+                equipped = true;
+            }
+            if (m_inventorySlots[_id].gameObject.name == "Breastplate")
+            {
+                m_player.SetDefence(m_armourItem[1].defence);
+                print("Set defence stat ");
+                print("Image is" + this.gameObject.name);
+                equipped = true;
+            }
+
+            if (m_inventorySlots[_id].gameObject.name == "Shortsword")
+            {
+                m_player.SetStrength(m_weaponItem[0].attack);
+                print("Set attack stat ");
+                print("Image is" + this.gameObject.name);
+                equipped = true;
+            }
+            inventory.RemoveAt(0);
+            m_itemFadeColour.a = 0.5f;
+            m_itemFadeColour.r = 1.0f;
+            m_itemFadeColour.g = 1.0f;
+            m_itemFadeColour.b = 1.0f;
+            m_inventorySlots[_id].sprite = null;
+            m_inventorySlots[_id].name = "EmptyInventorySlot";
+            m_inventorySlots[_id].color = m_itemFadeColour;
+        }
+
     }
     public void AddItemToInventory(InventoryObject _object)
     {
         m_id++;
-     
-            if (m_inventorySlots[m_id].sprite == null)
+        for (int i = 0; i < m_inventorySlots.Count; ++i)
+        {
+            if (m_inventorySlots[i].name == "EmptyInventorySlot" && m_addedItem == false)
             {
                 inventory.Add(_object);
                 m_itemFadeColour.a = 1.0f;
                 m_itemFadeColour.r = 1.0f;
                 m_itemFadeColour.g = 1.0f;
                 m_itemFadeColour.b = 1.0f;
-
-                print("Added " + inventory[m_id]);
-                m_inventorySlots[m_id].sprite = _object.Image;
-                m_inventorySlots[m_id].color = m_itemFadeColour;
-                m_inventorySlots[m_id].name = _object.objectName;
+                m_addedItem = true;
+                print("Added " + inventory[i]);
+                m_inventorySlots[i].sprite = _object.Image;
+                m_inventorySlots[i].color = m_itemFadeColour;
+                m_inventorySlots[i].name = _object.objectName;
 
             }
+        }
+        m_addedItem = false;
+    }
+    public void SetRemoveHpPotionState(bool _remove)
+    {
+        m_removeHealthPotion = _remove;
     }
 }

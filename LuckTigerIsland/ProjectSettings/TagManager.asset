@@ -15,6 +15,8 @@ TagManager:
   - Night
   - InventorySlot
   - AudioManager
+  - DeadPM
+  - DeadEnemy
   layers:
   - Default
   - TransparentFX
