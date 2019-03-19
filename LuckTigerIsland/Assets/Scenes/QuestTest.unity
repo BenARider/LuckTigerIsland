@@ -1972,177 +1972,6 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1468298018}
   m_Script: {fileID: 11500000, guid: 56e13a490385e9f42943e9786a20092c, type: 3}
---- !u!1001 &1268157869
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 114503475037301710, guid: a4b32341a14c0bf4cbf789220fc5d22f,
-        type: 2}
-      propertyPath: m_playlists.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114503475037301710, guid: a4b32341a14c0bf4cbf789220fc5d22f,
-        type: 2}
-      propertyPath: m_playlists.Array.data[0].m_music.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114503475037301710, guid: a4b32341a14c0bf4cbf789220fc5d22f,
-        type: 2}
-      propertyPath: m_playlists.Array.data[1].m_music.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4898813244927398, guid: a4b32341a14c0bf4cbf789220fc5d22f, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4898813244927398, guid: a4b32341a14c0bf4cbf789220fc5d22f, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4898813244927398, guid: a4b32341a14c0bf4cbf789220fc5d22f, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4898813244927398, guid: a4b32341a14c0bf4cbf789220fc5d22f, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4898813244927398, guid: a4b32341a14c0bf4cbf789220fc5d22f, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4898813244927398, guid: a4b32341a14c0bf4cbf789220fc5d22f, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4898813244927398, guid: a4b32341a14c0bf4cbf789220fc5d22f, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4898813244927398, guid: a4b32341a14c0bf4cbf789220fc5d22f, type: 2}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114503475037301710, guid: a4b32341a14c0bf4cbf789220fc5d22f,
-        type: 2}
-      propertyPath: m_playlists.Array.data[0].m_music.Array.data[1].m_name
-      value: Music1234
-      objectReference: {fileID: 0}
-    - target: {fileID: 114503475037301710, guid: a4b32341a14c0bf4cbf789220fc5d22f,
-        type: 2}
-      propertyPath: m_playlists.Array.data[0].m_music.Array.data[1].m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 7832764cc0abfec4984566f8118ee6fd, type: 3}
-    - target: {fileID: 114503475037301710, guid: a4b32341a14c0bf4cbf789220fc5d22f,
-        type: 2}
-      propertyPath: m_playlists.Array.data[0].m_music.Array.data[1].m_audioMixer
-      value: 
-      objectReference: {fileID: 243770745202374444, guid: 24978eb7020a14d48902d2e5174d495d,
-        type: 2}
-    - target: {fileID: 114503475037301710, guid: a4b32341a14c0bf4cbf789220fc5d22f,
-        type: 2}
-      propertyPath: m_playlists.Array.data[0].m_music.Array.data[1].m_volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114503475037301710, guid: a4b32341a14c0bf4cbf789220fc5d22f,
-        type: 2}
-      propertyPath: m_playlists.Array.data[0].m_music.Array.data[1].m_pitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114503475037301710, guid: a4b32341a14c0bf4cbf789220fc5d22f,
-        type: 2}
-      propertyPath: m_playlists.Array.data[0].m_music.Array.data[2].m_name
-      value: Music1234
-      objectReference: {fileID: 0}
-    - target: {fileID: 114503475037301710, guid: a4b32341a14c0bf4cbf789220fc5d22f,
-        type: 2}
-      propertyPath: m_playlists.Array.data[0].m_music.Array.data[2].m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 7832764cc0abfec4984566f8118ee6fd, type: 3}
-    - target: {fileID: 114503475037301710, guid: a4b32341a14c0bf4cbf789220fc5d22f,
-        type: 2}
-      propertyPath: m_playlists.Array.data[0].m_music.Array.data[2].m_audioMixer
-      value: 
-      objectReference: {fileID: 243770745202374444, guid: 24978eb7020a14d48902d2e5174d495d,
-        type: 2}
-    - target: {fileID: 114503475037301710, guid: a4b32341a14c0bf4cbf789220fc5d22f,
-        type: 2}
-      propertyPath: m_playlists.Array.data[0].m_music.Array.data[2].m_volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114503475037301710, guid: a4b32341a14c0bf4cbf789220fc5d22f,
-        type: 2}
-      propertyPath: m_playlists.Array.data[0].m_music.Array.data[2].m_pitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114503475037301710, guid: a4b32341a14c0bf4cbf789220fc5d22f,
-        type: 2}
-      propertyPath: m_playlists.Array.data[1].m_playlistName
-      value: 31
-      objectReference: {fileID: 0}
-    - target: {fileID: 114503475037301710, guid: a4b32341a14c0bf4cbf789220fc5d22f,
-        type: 2}
-      propertyPath: m_playlists.Array.data[1].m_music.Array.data[0].m_name
-      value: Music1234
-      objectReference: {fileID: 0}
-    - target: {fileID: 114503475037301710, guid: a4b32341a14c0bf4cbf789220fc5d22f,
-        type: 2}
-      propertyPath: m_playlists.Array.data[1].m_music.Array.data[0].m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 7832764cc0abfec4984566f8118ee6fd, type: 3}
-    - target: {fileID: 114503475037301710, guid: a4b32341a14c0bf4cbf789220fc5d22f,
-        type: 2}
-      propertyPath: m_playlists.Array.data[1].m_music.Array.data[0].m_audioMixer
-      value: 
-      objectReference: {fileID: 243770745202374444, guid: 24978eb7020a14d48902d2e5174d495d,
-        type: 2}
-    - target: {fileID: 114503475037301710, guid: a4b32341a14c0bf4cbf789220fc5d22f,
-        type: 2}
-      propertyPath: m_playlists.Array.data[1].m_music.Array.data[0].m_volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114503475037301710, guid: a4b32341a14c0bf4cbf789220fc5d22f,
-        type: 2}
-      propertyPath: m_playlists.Array.data[1].m_music.Array.data[0].m_pitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114503475037301710, guid: a4b32341a14c0bf4cbf789220fc5d22f,
-        type: 2}
-      propertyPath: m_playlists.Array.data[1].m_music.Array.data[1].m_name
-      value: Music1234
-      objectReference: {fileID: 0}
-    - target: {fileID: 114503475037301710, guid: a4b32341a14c0bf4cbf789220fc5d22f,
-        type: 2}
-      propertyPath: m_playlists.Array.data[1].m_music.Array.data[1].m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 7832764cc0abfec4984566f8118ee6fd, type: 3}
-    - target: {fileID: 114503475037301710, guid: a4b32341a14c0bf4cbf789220fc5d22f,
-        type: 2}
-      propertyPath: m_playlists.Array.data[1].m_music.Array.data[1].m_audioMixer
-      value: 
-      objectReference: {fileID: 243770745202374444, guid: 24978eb7020a14d48902d2e5174d495d,
-        type: 2}
-    - target: {fileID: 114503475037301710, guid: a4b32341a14c0bf4cbf789220fc5d22f,
-        type: 2}
-      propertyPath: m_playlists.Array.data[1].m_music.Array.data[1].m_volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114503475037301710, guid: a4b32341a14c0bf4cbf789220fc5d22f,
-        type: 2}
-      propertyPath: m_playlists.Array.data[1].m_music.Array.data[1].m_pitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114503475037301710, guid: a4b32341a14c0bf4cbf789220fc5d22f,
-        type: 2}
-      propertyPath: m_playlists.Array.data[2].m_playlistName
-      value: 31
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: a4b32341a14c0bf4cbf789220fc5d22f, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &1403497305
 GameObject:
   m_ObjectHideFlags: 0
@@ -2217,7 +2046,7 @@ Transform:
   - {fileID: 1537656318}
   - {fileID: 2051777819}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1445442203
 Prefab:
@@ -2303,7 +2132,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4220313367166032, guid: 9cb92863e985d24439e735036580d79b, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9cb92863e985d24439e735036580d79b, type: 2}
@@ -2350,7 +2179,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4372615282701590, guid: 8656ef68b72e84b4c872145b2033dd82, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114144157627404276, guid: 8656ef68b72e84b4c872145b2033dd82,
         type: 2}
@@ -2549,6 +2378,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114990349559971048, guid: 55200a096e468ce4aa8c994e42046b41,
+        type: 2}
+      propertyPath: m_playlists.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4591088465556848, guid: 55200a096e468ce4aa8c994e42046b41, type: 2}
       propertyPath: m_LocalPosition.x
       value: -2.7098494
@@ -2579,7 +2413,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4591088465556848, guid: 55200a096e468ce4aa8c994e42046b41, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114822966957604122, guid: 55200a096e468ce4aa8c994e42046b41,
         type: 2}
@@ -2645,6 +2479,16 @@ Prefab:
         type: 2}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114990349559971048, guid: 55200a096e468ce4aa8c994e42046b41,
+        type: 2}
+      propertyPath: m_playlists.Array.data[1].m_playlistName
+      value: Playlist
+      objectReference: {fileID: 0}
+    - target: {fileID: 114990349559971048, guid: 55200a096e468ce4aa8c994e42046b41,
+        type: 2}
+      propertyPath: m_playlists.Array.data[2].m_playlistName
+      value: Playlist
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 55200a096e468ce4aa8c994e42046b41, type: 2}
@@ -3327,7 +3171,7 @@ Transform:
   m_LocalScale: {x: 1000, y: 1000, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2076713496
 SpriteRenderer:

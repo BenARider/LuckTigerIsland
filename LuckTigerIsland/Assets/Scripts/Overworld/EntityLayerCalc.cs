@@ -10,7 +10,7 @@ public class EntityLayerCalc : MonoBehaviour {
     private Transform m_cameraTransform;
 
 	// Use this for initialization
-	void Start () {
+	void OnEnable () {
         m_sprite = GetComponentsInChildren<SpriteRenderer>(); 
         m_cameraTransform = Camera.main.transform;
     }

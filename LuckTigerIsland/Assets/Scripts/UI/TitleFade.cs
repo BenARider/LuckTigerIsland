@@ -7,6 +7,9 @@ public class TitleFade : MonoBehaviour {
     public TextMeshProUGUI titleScreenText;
     private Color m_fadeColour;
     public GameObject mainMenu;
+    public GameObject background;
+    public GameObject mainTitle;
+    public GameObject title;
     // Use this for initialization
     void Start()
     {
@@ -24,5 +27,8 @@ public class TitleFade : MonoBehaviour {
         yield return new WaitForSeconds(3.0f);
         this.gameObject.SetActive(false);
         mainMenu.SetActive(true);
+        background.SetActive(true);
+        mainTitle.SetActive(true);
+        title.SetActive(true);
     }
 }
