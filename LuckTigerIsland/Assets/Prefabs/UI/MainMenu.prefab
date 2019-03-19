@@ -27,7 +27,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1027973482822688
 GameObject:
   m_ObjectHideFlags: 1
@@ -73,7 +73,6 @@ GameObject:
   - component: {fileID: 222645841094845360}
   - component: {fileID: 114858124310087372}
   - component: {fileID: 114674528496455050}
-  - component: {fileID: 114783002872155614}
   m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
@@ -130,7 +129,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1105141677231556
 GameObject:
   m_ObjectHideFlags: 1
@@ -280,7 +279,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1226368087074644
 GameObject:
   m_ObjectHideFlags: 0
@@ -375,7 +374,6 @@ GameObject:
   - component: {fileID: 222216411250002708}
   - component: {fileID: 114371000234439244}
   - component: {fileID: 114917795321292656}
-  - component: {fileID: 114471598170895918}
   m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
@@ -585,7 +583,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1530072122128760
 GameObject:
   m_ObjectHideFlags: 1
@@ -651,7 +649,6 @@ GameObject:
   - component: {fileID: 222905986098901888}
   - component: {fileID: 114101261835508798}
   - component: {fileID: 114356795208925514}
-  - component: {fileID: 114582806467425992}
   m_Layer: 5
   m_Name: Controls
   m_TagString: Untagged
@@ -887,7 +884,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1767123582366706
 GameObject:
   m_ObjectHideFlags: 1
@@ -1000,7 +997,6 @@ GameObject:
   - component: {fileID: 222428690979128356}
   - component: {fileID: 114407375114300690}
   - component: {fileID: 114310086530080058}
-  - component: {fileID: 114209230188707286}
   m_Layer: 5
   m_Name: Graphics
   m_TagString: Untagged
@@ -1085,7 +1081,6 @@ GameObject:
   - component: {fileID: 222257397595945324}
   - component: {fileID: 114146822064498702}
   - component: {fileID: 114781526368023774}
-  - component: {fileID: 114785283647259844}
   m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
@@ -2034,19 +2029,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114209230188707286
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1873604245330032}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e69146de77ec144fb906daec53b6215, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startButton: {fileID: 0}
-  MainMenuCanvas: {fileID: 0}
 --- !u!114 &114217936826897370
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2446,7 +2428,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   titleScreenText: {fileID: 114334809035093930}
-  mainMenu: {fileID: 0}
+  mainMenu: {fileID: 1199601176294560}
+  background: {fileID: 1512540194548384}
+  mainTitle: {fileID: 1105069104526240}
+  title: {fileID: 1006807819271342}
 --- !u!114 &114273637405947568
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2713,11 +2698,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -3123,19 +3108,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &114471598170895918
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1318579669924394}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e69146de77ec144fb906daec53b6215, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startButton: {fileID: 0}
-  MainMenuCanvas: {fileID: 0}
 --- !u!114 &114485519357276864
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3383,19 +3355,6 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1565327055924132}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e69146de77ec144fb906daec53b6215, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startButton: {fileID: 0}
-  MainMenuCanvas: {fileID: 0}
---- !u!114 &114582806467425992
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1570215488121214}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e69146de77ec144fb906daec53b6215, type: 3}
@@ -3670,11 +3629,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -4496,11 +4455,11 @@ MonoBehaviour:
     lineCount: 0
     pageCount: 0
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -4863,11 +4822,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -4978,11 +4937,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -5070,32 +5029,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &114783002872155614
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1051908018097046}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e69146de77ec144fb906daec53b6215, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startButton: {fileID: 0}
-  MainMenuCanvas: {fileID: 0}
---- !u!114 &114785283647259844
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1930439012407154}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e69146de77ec144fb906daec53b6215, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startButton: {fileID: 0}
-  MainMenuCanvas: {fileID: 0}
 --- !u!114 &114815905727011526
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5239,11 +5172,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:

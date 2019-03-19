@@ -22,7 +22,7 @@ public class MenuManager : MonoBehaviour
     }
     public void StartGame()
     {
-        SceneManager.LoadScene("Overworld", LoadSceneMode.Additive);
+        SceneManager.LoadScene("LoadScene");
         MainMenuCanvas.SetActive(false);
         Debug.Log("Starting");
     }
@@ -32,12 +32,5 @@ public class MenuManager : MonoBehaviour
         Application.Quit();
         Debug.Log("Closing");
     }
-    IEnumerator LoadAsyncScene()
-    {
-        AsyncOperation m_asyncLoad = SceneManager.LoadSceneAsync("Overworld");
-        while (!m_asyncLoad.isDone)
-        {
-            yield return null;
-        }
-    }
+ 
 }

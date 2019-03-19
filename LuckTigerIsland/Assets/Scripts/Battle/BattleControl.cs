@@ -86,6 +86,7 @@ public class BattleControl : MonoBehaviour {
             case (performAction.ePerformAction):
                 break;
             case (performAction.eWin):
+                PlayerManager.Instance.transform.root.GetComponent<ReturnToMain>().Return();
                 //go to victory screen/overworld here
                 break;
             case (performAction.eLoss):

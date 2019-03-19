@@ -137,7 +137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1575190346794324
 GameObject:
   m_ObjectHideFlags: 1
@@ -1439,7 +1439,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75b94020107e8284bb885f7ff3d0241a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPlaylist: 5
+  currentPlaylist: 0
   m_sounds:
   - m_name: pigtalk
     m_audioClip: {fileID: 8300000, guid: 432339367ed692c45ac24dff51b3bdd7, type: 3}
