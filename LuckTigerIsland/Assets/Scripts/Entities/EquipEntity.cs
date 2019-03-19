@@ -26,7 +26,7 @@ public class EquipEntity : MonoBehaviour
 
     void Start()
     {
-        m_player = GameObject.Find("Luck").GetComponent<PlayerEntity>();
+        m_player = GameObject.Find("Player1").GetComponent<PlayerEntity>();
         m_itemFadeColour.a = 0.0f;
     }
 

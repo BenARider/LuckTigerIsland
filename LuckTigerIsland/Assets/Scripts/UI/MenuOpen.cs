@@ -8,6 +8,7 @@ public class MenuOpen : MonoBehaviour {
     public GameObject PartyMenu;
     public GameObject ResumeButton;
     public GameObject PartyButton;
+    public GameObject BattleUI;
     EventSystem m_eventSystem;
     [SerializeField]
     private bool m_menuPauseOpen = false;
@@ -31,7 +32,7 @@ public class MenuOpen : MonoBehaviour {
             {
             m_eventSystem.SetSelectedGameObject(ResumeButton);
             Pause();
-
+                BattleUI.SetActive(false);
             }
         }
         if(Input.GetKeyDown(KeyCode.I) && !m_menuPauseOpen)
@@ -44,6 +45,7 @@ public class MenuOpen : MonoBehaviour {
             {
             m_eventSystem.SetSelectedGameObject(PartyButton);
             OpenPartyMenu();
+                BattleUI.SetActive(false);
             }
         }
     }

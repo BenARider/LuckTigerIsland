@@ -718,6 +718,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1238612716989626
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4630234951740222}
+  - component: {fileID: 114469278118295908}
+  m_Layer: 0
+  m_Name: 'Quest: Hello'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1242479141506606
 GameObject:
   m_ObjectHideFlags: 1
@@ -881,6 +897,23 @@ GameObject:
   - component: {fileID: 114710603148457568}
   m_Layer: 5
   m_Name: QualitySettings
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1320964699019244
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4720742837157298}
+  - component: {fileID: 114974284280912434}
+  - component: {fileID: 114672908631603510}
+  m_Layer: 0
+  m_Name: EventSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1242,6 +1275,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224167613240835900}
+  - component: {fileID: 114021558502278574}
   m_Layer: 5
   m_Name: Quests
   m_TagString: Untagged
@@ -2030,6 +2064,22 @@ GameObject:
   - component: {fileID: 114885458271321586}
   m_Layer: 5
   m_Name: ItemDescription
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1643728349169212
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4862687821089134}
+  - component: {fileID: 114022509330802450}
+  m_Layer: 0
+  m_Name: 'Quest: Die'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3075,6 +3125,45 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &4630234951740222
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1238612716989626}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 224167613240835900}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4720742837157298
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1320964699019244}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -589.47107, y: -283.07516, z: 0}
+  m_LocalScale: {x: 1.1111112, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 224581524026864006}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4862687821089134
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1643728349169212}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 224167613240835900}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &114000064973030328
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3481,7 +3570,7 @@ MonoBehaviour:
           m_StringArgument: Paused
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114974284280912434}
         m_MethodName: SetSelectedGameObject
         m_Mode: 2
         m_Arguments:
@@ -3609,6 +3698,48 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &114021558502278574
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1410482624323690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d4b088f254b1b84d8c65ab08293c920, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_quests:
+  - {fileID: 114469278118295908}
+  - {fileID: 114022509330802450}
+  m_title: Die
+  m_description: Hi
+  m_exp: 10
+  m_gold: 0
+--- !u!114 &114022509330802450
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1643728349169212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56e13a490385e9f42943e9786a20092c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_title: Die
+  m_description: DIEEEEEE
+  m_expReward: 10
+  m_goldReward: 0
+  m_itemReward: {fileID: 0}
+  m_allObjectives: []
+  m_killObjectives: []
+  m_locationObjectives: []
+  m_inventoryObjectives: []
+  o_type: 0
+  o_location: 0
+  o_enemy: 0
+  o_enemyAmount: 0
 --- !u!114 &114027652559573128
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3883,7 +4014,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114974284280912434}
         m_MethodName: SetSelectedGameObject
         m_Mode: 2
         m_Arguments:
@@ -3895,11 +4026,11 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 0}
-        m_MethodName: IncreasePlayerStatID
-        m_Mode: 1
+        m_MethodName: 
+        m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4119,7 +4250,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114974284280912434}
         m_MethodName: SetSelectedGameObject
         m_Mode: 2
         m_Arguments:
@@ -4410,7 +4541,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114974284280912434}
         m_MethodName: SetSelectedGameObject
         m_Mode: 2
         m_Arguments:
@@ -4859,6 +4990,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114096428057989732
@@ -5250,7 +5392,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114974284280912434}
         m_MethodName: SetSelectedGameObject
         m_Mode: 2
         m_Arguments:
@@ -5714,7 +5856,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114974284280912434}
         m_MethodName: SetSelectedGameObject
         m_Mode: 2
         m_Arguments:
@@ -5726,11 +5868,11 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 0}
-        m_MethodName: IncreasePlayerStatID
-        m_Mode: 1
+        m_MethodName: 
+        m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -5952,7 +6094,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114974284280912434}
         m_MethodName: SetSelectedGameObject
         m_Mode: 2
         m_Arguments:
@@ -6172,7 +6314,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114974284280912434}
         m_MethodName: SetSelectedGameObject
         m_Mode: 2
         m_Arguments:
@@ -6772,7 +6914,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114974284280912434}
         m_MethodName: SetSelectedGameObject
         m_Mode: 2
         m_Arguments:
@@ -7330,7 +7472,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114974284280912434}
         m_MethodName: SetSelectedGameObject
         m_Mode: 2
         m_Arguments:
@@ -7738,7 +7880,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114974284280912434}
         m_MethodName: SetSelectedGameObject
         m_Mode: 2
         m_Arguments:
@@ -9529,7 +9671,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114974284280912434}
         m_MethodName: SetSelectedGameObject
         m_Mode: 2
         m_Arguments:
@@ -10312,6 +10454,30 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &114469278118295908
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1238612716989626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56e13a490385e9f42943e9786a20092c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_title: Hello
+  m_description: Hi
+  m_expReward: 10
+  m_goldReward: 0
+  m_itemReward: {fileID: 0}
+  m_allObjectives: []
+  m_killObjectives: []
+  m_locationObjectives: []
+  m_inventoryObjectives: []
+  o_type: 0
+  o_location: 0
+  o_enemy: 0
+  o_enemyAmount: 0
 --- !u!114 &114471988748742268
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12120,6 +12286,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114580725445251646
@@ -12194,7 +12371,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114974284280912434}
         m_MethodName: SetSelectedGameObject
         m_Mode: 2
         m_Arguments:
@@ -12612,7 +12789,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114974284280912434}
         m_MethodName: SetSelectedGameObject
         m_Mode: 2
         m_Arguments:
@@ -12708,7 +12885,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114974284280912434}
         m_MethodName: SetSelectedGameObject
         m_Mode: 2
         m_Arguments:
@@ -13061,7 +13238,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114974284280912434}
         m_MethodName: SetSelectedGameObject
         m_Mode: 2
         m_Arguments:
@@ -13089,8 +13266,27 @@ MonoBehaviour:
   PartyMenu: {fileID: 1682327235215642}
   ResumeButton: {fileID: 1846067369039456}
   PartyButton: {fileID: 1629906965570350}
+  BattleUI: {fileID: 0}
   m_menuPauseOpen: 0
   m_partyMenuOpen: 0
+--- !u!114 &114672908631603510
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1320964699019244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1077351063, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
 --- !u!114 &114673677177438292
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -13365,7 +13561,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114974284280912434}
         m_MethodName: SetSelectedGameObject
         m_Mode: 2
         m_Arguments:
@@ -14198,7 +14394,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114974284280912434}
         m_MethodName: SetSelectedGameObject
         m_Mode: 2
         m_Arguments:
@@ -14337,7 +14533,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114974284280912434}
         m_MethodName: SetSelectedGameObject
         m_Mode: 2
         m_Arguments:
@@ -16768,23 +16964,23 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: StartQuest
-        m_Mode: 1
+      - m_Target: {fileID: 114021558502278574}
+        m_MethodName: AddQuest
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 114022509330802450}
+          m_ObjectArgumentAssemblyTypeName: Quest, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: StartQuest
-        m_Mode: 1
+      - m_Target: {fileID: 114021558502278574}
+        m_MethodName: AddQuest
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 114469278118295908}
+          m_ObjectArgumentAssemblyTypeName: Quest, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -16963,6 +17159,20 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &114974284280912434
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1320964699019244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -619905303, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 5
 --- !u!114 &114976659074925974
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -17035,7 +17245,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114974284280912434}
         m_MethodName: SetSelectedGameObject
         m_Mode: 2
         m_Arguments:
@@ -18549,7 +18759,7 @@ RectTransform:
   - {fileID: 224167613240835900}
   - {fileID: 224599134056628924}
   m_Father: {fileID: 224581524026864006}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -18756,6 +18966,8 @@ RectTransform:
   - {fileID: 224777425157651272}
   - {fileID: 224828484234914888}
   - {fileID: 224544890235564284}
+  - {fileID: 4630234951740222}
+  - {fileID: 4862687821089134}
   m_Father: {fileID: 224097578439462984}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -18782,7 +18994,7 @@ RectTransform:
   - {fileID: 224572489227286842}
   - {fileID: 224696080668305454}
   m_Father: {fileID: 224581524026864006}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -20102,6 +20314,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.90000004, y: 1, z: 1}
   m_Children:
+  - {fileID: 4720742837157298}
   - {fileID: 224170132249461880}
   - {fileID: 224097578439462984}
   m_Father: {fileID: 0}
