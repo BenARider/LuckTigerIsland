@@ -51,11 +51,11 @@ public class BattleControl : MonoBehaviour {
 	}
 	void Update ()
 	{
-        if(deadEnemies>=4)
+        if(deadPlayers>=4)
         {
             battleState = performAction.eLoss;
         }
-        if(deadPlayers>=4)
+        if(deadEnemies>=4)
         {
             battleState = performAction.eWin;
         }
