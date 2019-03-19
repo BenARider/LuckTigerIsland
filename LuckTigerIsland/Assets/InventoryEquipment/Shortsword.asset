@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Name: Shortsword
   m_EditorClassIdentifier: 
   objectName: Shortsword
-  objectDescription: Long Blade
+  Image: {fileID: 21300000, guid: dcadc015861c18543ab9bb49df3db680, type: 3}
+  Description: A dull shortsword
+  Price: 15
   attack: 8

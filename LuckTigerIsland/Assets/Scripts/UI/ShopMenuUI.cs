@@ -7,12 +7,16 @@ using UnityEngine.UI;
 using TMPro;
 public class ShopMenuUI : Selectable,ISelectHandler {
     BaseEventData m_baseEvent = null;
-  
+    EquipEntity m_equipEntity;
+    public GameObject inventoryScreen;
+    public GameObject PartyCanvas;
+    public InventoryObject m_object;
     public Sprite Sprite;
     public TextMeshProUGUI ItemDescriptionText;
     public TextMeshProUGUI GoldAmountText;
     public TextMeshProUGUI PriceText;
     public TextMeshProUGUI ItemBoughtText;
+    public TextMeshProUGUI ItemNameText;
     public string PriceDescription;
     public string ItemDescription;
     private Image buttonHighlight;
@@ -22,6 +26,8 @@ public class ShopMenuUI : Selectable,ISelectHandler {
     
     protected override void Start()
     {
+        
+       
         m_itemImage = GameObject.Find("Item_Image").GetComponent<Image>();
         GoldAmountText.text = "100";
         buttonHighlight = GetComponent<Image>();
@@ -32,60 +38,35 @@ public class ShopMenuUI : Selectable,ISelectHandler {
     }
     // Update is called once per frame
     void Update () {
-		if(IsHighlighted(m_baseEvent) == true)
+        ItemNameText.text = m_object.name;
+        if (IsHighlighted(m_baseEvent) == true)
         {
             buttonHighlight.color = m_buttonColorSelect;
-            m_itemImage.sprite = Sprite;
-            ItemDescriptionText.text = ItemDescription;
-            PriceText.text = "Price: " + PriceDescription;
-            if(Input.GetKeyDown(KeyCode.Return))//used to set the correct gold amount
+            m_itemImage.sprite = m_object.Image;
+            ItemDescriptionText.text = m_object.Description;
+            PriceText.text = "Price: " + m_object.Price;
+       
+            if (Input.GetKeyDown(KeyCode.Return))//used to set the correct gold amount
             {
-                if(this.gameObject.name == "Health Potion")
-                {
-                    GoldAmountText.text = "50";
-                    ItemBoughtText.text = "You have bought a " + this.gameObject.name;
-                    StartCoroutine(Fader());
-                }
-                if(this.gameObject.name == "Bomb")
-                {
-                    GoldAmountText.text = "12";
-                    ItemBoughtText.text = "You have bought a " + this.gameObject.name;
-                    StartCoroutine(Fader());
-                }
-                if (this.gameObject.name == "Helmet")
-                {
-                    GoldAmountText.text = "70";
-                    ItemBoughtText.text = "You have bought a " + this.gameObject.name;
-                    StartCoroutine(Fader());
-                }
-                if (this.gameObject.name == "Hat")
-                {
-                    GoldAmountText.text = "12";
-                    ItemBoughtText.text = "You have bought a " + this.gameObject.name;
-                    StartCoroutine(Fader());
-                }
-                if (this.gameObject.name == "Axe")
-                {
-                    GoldAmountText.text = "27";
-                    ItemBoughtText.text = "You have bought a " + this.gameObject.name;
-                    StartCoroutine(Fader());
-                }
-                if (this.gameObject.name == "Breastplate")
-                {
-                    GoldAmountText.text = "8";
-                    ItemBoughtText.text = "You have bought a " + this.gameObject.name;
-                    StartCoroutine(Fader());
-                }
-                if (this.gameObject.name == "Shield")
-                {
-                    GoldAmountText.text = "40";
-                    ItemBoughtText.text = "You have bought a " + this.gameObject.name;
-                    StartCoroutine(Fader());
-                }
+                PartyCanvas.SetActive(true);
+                inventoryScreen.SetActive(true);
+                
+                m_equipEntity = GameObject.Find("InventoryScreen").GetComponent<EquipEntity>();
+                m_equipEntity.AddItemToInventory(m_object);
+              
+                print("Added: " + m_object);
+                ItemBoughtText.text = "You have bought a " + m_object.name;
+                GoldAmountText.text = "50";
+                StartCoroutine(Fader());
+            
             }
         }
         else buttonHighlight.color = m_buttonColorNonSelect;
+     
+        inventoryScreen.SetActive(false);
+        PartyCanvas.SetActive(false);
     }
+   
     IEnumerator Fader()
     {
         yield return new  WaitForSeconds(0.8f);
