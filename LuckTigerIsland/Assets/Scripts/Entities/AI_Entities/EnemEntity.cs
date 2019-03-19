@@ -50,7 +50,8 @@ public class EnemEntity : Entity
             SetEnemyStats(60, 150, 15, 7, 50, 3, 5, 5, 50);
         }
 
-        //m_requiredSpeedForTurn = m_baseRequiredSpeedForTurn - GetSpeed();
+        this.name = GetEntityNo() + ":" + this.name;
+
         SetRequiredSpeed();
         ResetHealth();
 		ResetMana();
@@ -109,7 +110,7 @@ public class EnemEntity : Entity
                 {
                     this.gameObject.tag = ("DeadPM");
 
-                    //BC.EnemiesInBattle.Remove(this.gameObject);
+                    BC.EnemiesInBattle.Remove(this.gameObject);
 
                     for (int i = 0; i > BC.NextTurn.Count; i++)
                     {
@@ -153,8 +154,6 @@ public class EnemEntity : Entity
         {
             rollAttack();
         }
-       // Debug.Log(this.name + " has chosen the " + m_chosenAction + " attack");
-
     }
 
     void ChooseAction()
