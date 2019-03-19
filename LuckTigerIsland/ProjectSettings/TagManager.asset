@@ -12,6 +12,9 @@ TagManager:
   - Cleric
   - Ninja
   - Party
+  - Night
+  - InventorySlot
+  - AudioManager
   - DeadPM
   - DeadEnemy
   layers:

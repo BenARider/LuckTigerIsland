@@ -14,7 +14,7 @@ public class AudioManager : LTI.Singleton<AudioManager>{
     private List<Sound> m_sounds;
     [SerializeField]
     private List<MusicPlaylist> m_playlists;
-    
+
     //To store which track is currently playing and how long it has left.
     private int m_currentMusicTrack = 0;
     private float m_currentTrackTimeRemaining = 0;
@@ -194,7 +194,6 @@ public class AudioManager : LTI.Singleton<AudioManager>{
         MusicPlaylist _mp = new MusicPlaylist();
         _mp.SetPlaylistName(_name);
         m_playlists.Add(_mp);
-
     }
 
     public void CreateSound(string _name, AudioClip _audioClip, AudioMixerGroup _mixerGroup, float _volume, float _pitch, bool _loop, bool _mute)
@@ -203,8 +202,16 @@ public class AudioManager : LTI.Singleton<AudioManager>{
         m_sounds.Add(_so);
     }
 
-    public void CreateMusic()
+    public void CreateMusic(string _playlistName, string _name, AudioClip _audioClip, AudioMixerGroup _mixerGroup, float _volume, float _pitch, bool _loop, bool _mute)
     {
+        Music _mo = new Music(_name, _audioClip, _mixerGroup, _volume, _pitch, _loop, _mute);
+        if (m_playlists.Exists(x => x.GetPlaylistName() == _playlistName))
+        {
+            m_playlists.Find(x => x.GetPlaylistName() == _playlistName).AddMusic(_mo);
+        } else
+        {
+            Debug.LogError("No playlist has that name! Check for spelling mistakes?");
+        }
 
     }
 
