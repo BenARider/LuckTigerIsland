@@ -178,7 +178,7 @@ public class PlayerEntity : Entity
                 {
                     this.gameObject.tag = ("DeadPM");
 
-                    //BC.PartyMembersInBattle.Remove(this.gameObject);
+                    BC.PartyMembersInBattle.Remove(this.gameObject);
 
                     this.gameObject.GetComponent<SpriteRenderer>().material.color = new Color32(105, 105, 105, 255);
 
