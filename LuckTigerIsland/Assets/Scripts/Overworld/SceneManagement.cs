@@ -25,7 +25,7 @@ public class SceneManagement : MonoBehaviour {
 		{
 			Scene mainScene = SceneManager.GetSceneByName(startScene);
 			SceneManager.SetActiveScene(mainScene);
-			Instantiate(player);
+			Instantiate(player,new Vector3(1.5f,-2.5f,0),Quaternion.identity);
 			foreach (GameObject go in mainScene.GetRootGameObjects())
 			{
 				if (go.name.Equals("Level"))
