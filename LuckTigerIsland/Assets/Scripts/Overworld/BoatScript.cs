@@ -90,6 +90,7 @@ public class BoatScript : GenericInteract
             {
                 //get on boat when done
                 isInBoat = true;
+                PlayerManager.Instance.OnListChanged();
             }
 
 
@@ -141,6 +142,7 @@ public class BoatScript : GenericInteract
             fadingFrom = false;
 
             transitionTimer = 0f;
+            
         }
 	}
 }
