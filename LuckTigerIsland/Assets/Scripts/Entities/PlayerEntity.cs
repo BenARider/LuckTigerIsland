@@ -224,6 +224,7 @@ public class PlayerEntity : Entity
                 Debug.Log(this.name + " does not have enough mana!");
             }
             m_mana -= m_chosenAction.attackCost;
+            StartCoroutine("FadeText");
         }
         else notEnoughPotionsText.text = "";
         if (Input.GetKeyDown("2") || m_BattleButton.GetActionTargetNumber() == 2)
@@ -240,6 +241,7 @@ public class PlayerEntity : Entity
                 Debug.Log(this.name + " does not have enough mana!");
             }
             m_mana -= m_chosenAction.attackCost;
+            StartCoroutine("FadeText");
         }
         else notEnoughPotionsText.text = "";
         if (Input.GetKeyDown("3") || m_BattleButton.GetActionTargetNumber() == 3)
@@ -255,6 +257,7 @@ public class PlayerEntity : Entity
                 Debug.Log(this.name + " does not have enough mana!");
             }
             m_mana -= m_chosenAction.attackCost;
+            StartCoroutine("FadeText");
         }
         else notEnoughPotionsText.text = "";
         if (Input.GetKeyDown("8") || m_BattleButton.GetActionTargetNumber() == 8)
@@ -281,12 +284,7 @@ public class PlayerEntity : Entity
                 notEnoughPotionsText.text = this.name + "does not have enough health potions";
                 Debug.Log(this.name + " does not have enough health potions");
             }
-
-        }
-        else
-        {
-            usedPotionText.text = "";
-            notEnoughPotionsText.text = "";
+            StartCoroutine("FadeText");
         }
 
         if (Input.GetKeyDown("9") || m_BattleButton.GetActionTargetNumber() == 9)
@@ -309,15 +307,11 @@ public class PlayerEntity : Entity
             }
             else
             {
-                usedPotionText.text = "";
+                
                 notEnoughPotionsText.text = this.name + "does not have enough mana potions";
                 Debug.Log(this.name + " does not have enough mana potions");
             }
-        }
-        else
-        {
-            usedPotionText.text = "";
-            notEnoughPotionsText.text = "";
+            StartCoroutine("FadeText");
         }
     }
 
@@ -444,7 +438,10 @@ public class PlayerEntity : Entity
         yield return new WaitForSeconds(4.0f);
         attackDescriptionText.text = "";
         turnText.text = "";
-    }
+        notEnoughManaText.text = "";
+        notEnoughPotionsText.text = "";
+        usedPotionText.text = "";
+}
     void playerDoDamge() // calls the take damage on the enemy w/ damage calc
     {
         int calculateDamage = GetStrength() + BC.NextTurn[0].chosenAttack.attackDamage; //calc should be done here before damage
