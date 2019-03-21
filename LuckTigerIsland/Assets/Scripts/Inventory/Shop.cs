@@ -15,11 +15,12 @@ public struct ShopItem
     }
 }
 
-public class Shop : MonoBehaviour
+public class Shop : InteractEvent
 {
 
     [SerializeField]
     public List<ShopItem> shop;
+    public GameObject shopUI;
 
     [SerializeField]
     private float m_buyMod = 1.1f;
@@ -51,6 +52,11 @@ public class Shop : MonoBehaviour
     {
         Inventory.Instance.IncreaseGold(Mathf.CeilToInt(_object.Price * m_sellMod));
        // Inventory.Instance.
+    }
+
+    public override void Interact(int argID)
+    {
+        shopUI.SetActive(true);
 
     }
 }
