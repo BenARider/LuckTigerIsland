@@ -148,6 +148,8 @@ MonoBehaviour:
   - Castleton01
   - Mountain
   - City01
+  - Elftown01
+  - Forest01
   startScene: Overworld
   player: {fileID: 1513774882610904, guid: 55200a096e468ce4aa8c994e42046b41, type: 2}
   text: {fileID: 2033450420}

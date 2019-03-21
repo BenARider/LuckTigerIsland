@@ -6,11 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 327cd96c557c4f3458dd616cfff0a22b
+  - enabled: 1
     path: Assets/Scenes/LoadScene.unity
     guid: 5ca03df2f36e4a44d806944ec5ad86cb
-  - enabled: 1
-    path: Assets/Scenes/Menus.unity
-    guid: 1541a6408b7e3084ea232b80cad34cb4
   - enabled: 1
     path: Assets/Scenes/Overworld.unity
     guid: a58bc6cc596271141acacd1bfafb0c9d
@@ -29,3 +29,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Battles/GrasslandBattle.unity
     guid: 66cfeabefb387e2409b26d63a4c3ba34
+  - enabled: 1
+    path: Assets/Scenes/Towns/Elftown01.unity
+    guid: 4c58be41ac19edc4f806e8c5b8c7f110
+  - enabled: 1
+    path: Assets/Scenes/Towns/Forest01.unity
+    guid: 35d5ec9f76b6b69498299802d3473799

@@ -779,6 +779,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   screenOffset: 100
+  isPlayer: 1
 --- !u!114 &114627343816225668
 MonoBehaviour:
   m_ObjectHideFlags: 1
