@@ -44,6 +44,7 @@ public class EnemEntity : Entity
         {
             SetEnemyStats(60, 150, 15, 7, 50, 3, 5, 5, 50);
         }
+
         if (Class == "Boss")
         {
             SetEnemyStats(200, 350, 60, 17, 60, 3, 5, 5, 50);
