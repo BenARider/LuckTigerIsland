@@ -26,7 +26,7 @@ public class EquipEntity : MonoBehaviour
 
     void Start()
     {
-        m_player = GameObject.Find("Player1").GetComponent<PlayerEntity>();
+        m_player = GameObject.Find("Player").GetComponent<PlayerEntity>();
         m_itemFadeColour.a = 0.0f;
     }
 
@@ -92,21 +92,23 @@ public class EquipEntity : MonoBehaviour
     }
     public void AddItemToInventory(InventoryObject _object)
     {
+       // List<InventoryObjectStruct> invList =  Inventory.Instance.inventory;
+        
         m_id++;
         for (int i = 0; i < m_inventorySlots.Count; ++i)
         {
             if (m_inventorySlots[i].name == "EmptyInventorySlot" && m_addedItem == false)
             {
-                inventory.Add(_object);
+               // inventory.Add(_object);
                 m_itemFadeColour.a = 1.0f;
                 m_itemFadeColour.r = 1.0f;
                 m_itemFadeColour.g = 1.0f;
                 m_itemFadeColour.b = 1.0f;
                 m_addedItem = true;
                 print("Added " + inventory[i]);
-                m_inventorySlots[i].sprite = _object.Image;
-                m_inventorySlots[i].color = m_itemFadeColour;
-                m_inventorySlots[i].name = _object.objectName;
+                m_inventorySlots[0].sprite = Inventory.Instance.inventory[0].iObject.Image;
+                m_inventorySlots[0].color = m_itemFadeColour;
+                m_inventorySlots[0].name = Inventory.Instance.inventory[0].iObject.name;
 
             }
         }

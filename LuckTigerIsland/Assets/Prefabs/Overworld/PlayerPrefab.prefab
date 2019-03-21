@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 61951270896415352}
   - component: {fileID: 114619009007972608}
   - component: {fileID: 114946370891433330}
+  - component: {fileID: 114372536940108506}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -688,9 +689,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory:
-  - {fileID: 11400000, guid: 26ae73543495d10459ac5f45f8dd0b6b, type: 2}
-  - {fileID: 11400000, guid: bb0349cb5c0d5ab4eb853e031eacb4a8, type: 2}
-  - {fileID: 11400000, guid: 37be832cc678a74478c475fba1088c62, type: 2}
+  - iObject: {fileID: 0}
+    amount: 0
 --- !u!114 &114163243979196090
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -743,6 +743,22 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114372536940108506
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1034347083771214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 233f31f18170c33429d899e74793b8b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: []
+  m_armourItem: []
+  m_weaponItem: []
+  m_health_Potion: {fileID: 0}
+  m_inventorySlots: []
 --- !u!114 &114567064487550714
 MonoBehaviour:
   m_ObjectHideFlags: 1
