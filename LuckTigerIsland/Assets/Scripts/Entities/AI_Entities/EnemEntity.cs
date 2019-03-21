@@ -24,13 +24,8 @@ public class EnemEntity : Entity
 		intel = itl;
 		XP = xp;
 	}
-
-
     private BattleControl BC;
     public HandleTurns HT;
-
-
-    // Use this for initialization
     void Start()
     {
         if (Class == "Goblin")
@@ -49,9 +44,14 @@ public class EnemEntity : Entity
         {
             SetEnemyStats(60, 150, 15, 7, 50, 3, 5, 5, 50);
         }
+
+        if (Class == "Boss")
+        {
+            SetEnemyStats(200, 350, 60, 17, 60, 3, 5, 5, 50);
+        }
+
         this.name = GetEntityNo() + ":" + this.name;
 
-        m_requiredSpeedForTurn = m_baseRequiredSpeedForTurn - GetSpeed();
         SetRequiredSpeed();
         ResetHealth();
 		ResetMana();
@@ -154,8 +154,6 @@ public class EnemEntity : Entity
         {
             rollAttack();
         }
-       // Debug.Log(this.name + " has chosen the " + m_chosenAction + " attack");
-
     }
 
     void ChooseAction()
@@ -222,6 +220,14 @@ public class EnemEntity : Entity
     {
         int calculateDamage = GetStrength() + BC.NextTurn[0].chosenAttack.attackDamage;
         EntityToAttack.GetComponent<PlayerEntity>().TakeDamage(calculateDamage);
+    }
+    void EnemyPartyWideDamage()
+    {
+        int calculateDamage = GetStrength() + BC.NextTurn[0].chosenAttack.attackDamage;
+        for(int i = 0; i < BC.PartyMembersInBattle.Count;i++)
+        {
+            BC.PartyMembersInBattle[i].GetComponent<PlayerEntity>().TakeDamage(calculateDamage);
+        }
     }
     IEnumerator FadeText()
     {

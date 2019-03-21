@@ -9,6 +9,7 @@ public class AudioEditor : Editor
     //Quest Information
     SerializedProperty soundList;
     SerializedProperty playlists;
+    SerializedProperty currentPlaylist;
 
     bool soundFold = false;
     bool playlistsFold = false;
@@ -19,6 +20,7 @@ public class AudioEditor : Editor
         //Get the variable info from the path
         soundList = serializedObject.FindProperty("m_sounds");
         playlists = serializedObject.FindProperty("m_playlists");
+        currentPlaylist = serializedObject.FindProperty("currentPlaylist");
     }
 
     public override void OnInspectorGUI()
@@ -68,9 +70,11 @@ public class AudioEditor : Editor
             }
         }
 
+        EditorGUILayout.PropertyField(currentPlaylist);
+
         //Music Playlists
         if (playlists.arraySize != 0)
-        {
+        {                  
             playlistsFold = EditorGUILayout.Foldout(playlistsFold, "Playlists", true);
             if (playlistsFold)
             {

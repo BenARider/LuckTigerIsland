@@ -51,11 +51,11 @@ public class BattleControl : MonoBehaviour {
 	}
 	void Update ()
 	{
-        if(deadEnemies>=4)
+        if(deadPlayers>=4)
         {
             battleState = performAction.eLoss;
         }
-        if(deadPlayers>=4)
+        if(deadEnemies>=4)
         {
             battleState = performAction.eWin;
         }
@@ -86,6 +86,7 @@ public class BattleControl : MonoBehaviour {
             case (performAction.ePerformAction):
                 break;
             case (performAction.eWin):
+                PlayerManager.Instance.transform.root.GetComponent<ReturnToMain>().Return();
                 //go to victory screen/overworld here
                 break;
             case (performAction.eLoss):

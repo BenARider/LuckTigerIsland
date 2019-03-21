@@ -40,7 +40,6 @@ public class EventManager : LTI.Singleton<EventManager>
 
     private void Start()
     {
-        m_questManager = QuestManager.Instance;
         instance = this;
         m_questManager = QuestManager.Instance;
     }
@@ -60,16 +59,16 @@ public class EventManager : LTI.Singleton<EventManager>
     {
         m_lastLocation = _location;
         //In all active quests
-        foreach(Quest _q in m_questManager.GetQuests())
+        foreach (Quest _q in m_questManager.GetQuests())
         {
             //If the location objective isnt empty.
-            if(_q.m_locationObjectives.Capacity != 0)
+            if (_q.m_locationObjectives.Capacity != 0)
             {
                 //For every location objective
-                foreach(LocationObjective _lo in _q.m_locationObjectives)
+                foreach (LocationObjective _lo in _q.m_locationObjectives)
                 {
                     //Check if the objective location is equal to current location.
-                    if(_lo.GetLocation() == m_lastLocation)
+                    if (_lo.GetLocation() == m_lastLocation)
                     {
                         _lo.SetIsComplete(true);
                         CheckCompletion(_q);
@@ -80,7 +79,7 @@ public class EventManager : LTI.Singleton<EventManager>
     }
 
     //Set the last location and check all location quests.
-    public void SetLastBattle(List<EEnemies> _enemies)
+    public void SetBattleLocation(List<EEnemies> _enemies)
     {
         m_lastBattle = _enemies;
         //In all active quests
@@ -103,6 +102,58 @@ public class EventManager : LTI.Singleton<EventManager>
                                 _ko.SetIsComplete(true);
                                 CheckCompletion(_q);
                             }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public void ItemToInventory(InventoryObject _object, int _amount)
+    {
+        //In all active quests
+        foreach (Quest _q in m_questManager.GetQuests())
+        {
+            //If the inventory objective isnt empty.
+            if (_q.m_inventoryObjectives.Capacity != 0)
+            {
+                //For every inventory objective
+                foreach (ItemObjective _io in _q.m_inventoryObjectives)
+                {
+                    //Check if the item picked up is part of the quest
+                    if (_io.GetInvObject() == _object)
+                    {
+                        _io.DecreaseCurrentAmount(_amount);
+                        if (_io.GetCurrentAmount() <= 0)
+                        {
+                            _io.SetIsComplete(true);
+                            CheckCompletion(_q);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    //When an item is taken from the inventory, reduce 
+    public void ItemFromInventory(InventoryObject _object, int _amount)
+    {
+        //In all active quests
+        foreach (Quest _q in m_questManager.GetQuests())
+        {
+            //If the inventory objective isnt empty.
+            if (_q.m_inventoryObjectives.Capacity != 0)
+            {
+                //For every inventory objective
+                foreach (ItemObjective _io in _q.m_inventoryObjectives)
+                {
+                    //Check if the item picked up is part of the quest
+                    if (_io.GetInvObject() == _object)
+                    {
+                        _io.DecreaseCurrentAmount(-_amount);
+                        if (_io.GetCurrentAmount() >= _io.GetTotalAmount())
+                        {
+                            _io.SetCurrentAmount(_io.GetTotalAmount());
                         }
                     }
                 }

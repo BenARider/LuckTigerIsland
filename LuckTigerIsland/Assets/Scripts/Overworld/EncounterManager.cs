@@ -52,18 +52,29 @@ public class EncounterManager : MonoBehaviour {
 
 				if(Random.Range(0f,10f) < encounterChance)
 				{
-					print("encounter: " + (isDesert? "desert" : "grassland"));
                     fade.flashWhite(0.1f);
-					enumerator = doEncounter();
-					StartCoroutine(enumerator);
-				}
+                    if (isDesert)
+                    {
+                        enumerator = doEncounter(2);
+                        StartCoroutine(enumerator);
+                    }
+                    if (!isDesert)
+                    {
+                        enumerator = doEncounter(1);
+                        StartCoroutine(enumerator);
+                    }
+
+                    //print("encounter: " + (isDesert? "desert" : "grassland"));
+
+
+                }
 
 				lastPos = currentPos;
 			}
 		}
 	}
 
-	IEnumerator doEncounter()
+	IEnumerator doEncounter(int sceneNo)
 	{
 		player.playerMove.doMove = false;
 		yield return new WaitForSeconds(0.5f);
@@ -71,8 +82,20 @@ public class EncounterManager : MonoBehaviour {
 		yield return new WaitForSeconds(2f);
 		encounterMap.transform.root.gameObject.SetActive(false);
 		Camera.main.gameObject.SetActive(false);
-		SceneManager.LoadScene("BattleScene", LoadSceneMode.Additive);
-		player.currentSceneName = "BattleScene";
-		fade.fromBlack();
+        string scenename = "GrasslandBattle";
+        switch (sceneNo)
+        {
+            case 1:
+                scenename = "GrasslandBattle";
+                break;
+            case 2:
+                scenename = "DesertBattle";
+                break;
+
+        }
+        SceneManager.LoadScene(scenename, LoadSceneMode.Additive);
+        player.currentSceneName = scenename;
+
+        fade.fromBlack();
 	}
 }
