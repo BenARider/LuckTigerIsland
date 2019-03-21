@@ -9,11 +9,12 @@ public struct ShopItem
     public int sPrice;
 }
 
-public class Shop : MonoBehaviour
+public class Shop : InteractEvent
 {
 
     [SerializeField]
     public List<ShopItem> shop;
+    public GameObject shopUI;
 
     public void BuyItem(ShopItem _item)
     {
@@ -26,5 +27,10 @@ public class Shop : MonoBehaviour
         {
             Debug.Log("Too expensive!");
         }
+    }
+
+    public override void Interact(int argID)
+    {
+        shopUI.SetActive(true);
     }
 }

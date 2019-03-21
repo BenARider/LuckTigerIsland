@@ -186,7 +186,7 @@ public class PlayerManager : LTI.Singleton<PlayerManager> {
     }
 
     //whenever an interact enters or leaves the players area
-    void OnListChanged()
+    public void OnListChanged()
     {
         if (interactions.Count > 0)
         {
