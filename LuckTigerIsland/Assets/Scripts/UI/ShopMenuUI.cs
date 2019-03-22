@@ -7,7 +7,8 @@ using UnityEngine.UI;
 using TMPro;
 public class ShopMenuUI : Selectable,ISelectHandler {
     BaseEventData m_baseEvent = null;
-    EquipEntity m_equipEntity;
+    Inventory m_inventoryEntity;
+    public EquipEntity equipEntity;
     public GameObject inventoryScreen;
     public GameObject PartyCanvas;
     public InventoryObject m_object;
@@ -24,11 +25,11 @@ public class ShopMenuUI : Selectable,ISelectHandler {
     private Color m_buttonColorSelect;
     private Image m_itemImage;
     
+    
     protected override void Start()
     {
-        
-       
-        m_itemImage = GameObject.Find("Item_Image").GetComponent<Image>();
+
+         m_itemImage = GameObject.Find("Item_Image").GetComponent<Image>();
         GoldAmountText.text = "100";
         buttonHighlight = GetComponent<Image>();
         ItemBoughtText.text = "";
@@ -38,6 +39,7 @@ public class ShopMenuUI : Selectable,ISelectHandler {
     }
     // Update is called once per frame
     void Update () {
+
         ItemNameText.text = m_object.name;
         if (IsHighlighted(m_baseEvent) == true)
         {
@@ -45,15 +47,15 @@ public class ShopMenuUI : Selectable,ISelectHandler {
             m_itemImage.sprite = m_object.Image;
             ItemDescriptionText.text = m_object.Description;
             PriceText.text = "Price: " + m_object.Price;
-       
+        
             if (Input.GetKeyDown(KeyCode.Return))//used to set the correct gold amount
             {
                 PartyCanvas.SetActive(true);
                 inventoryScreen.SetActive(true);
                 
-                m_equipEntity = GameObject.Find("InventoryScreen").GetComponent<EquipEntity>();
-                m_equipEntity.AddItemToInventory(m_object);
-              
+                m_inventoryEntity = GameObject.Find("InventoryScreen").GetComponent<Inventory>();
+                Inventory.Instance.AddToInventory(m_object);
+                equipEntity.AddItemToInventory(m_object);
                 print("Added: " + m_object);
                 ItemBoughtText.text = "You have bought a " + m_object.name;
                 GoldAmountText.text = "50";
