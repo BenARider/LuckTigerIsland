@@ -12,32 +12,37 @@ public class ShopMenuUI : Selectable, ISelectHandler
     public GameObject inventoryScreen;
     public GameObject PartyCanvas;
     public InventoryObject m_object;
-    public Sprite Sprite;
-    public TextMeshProUGUI ItemDescriptionText;
-    public TextMeshProUGUI GoldAmountText;
-    public TextMeshProUGUI PriceText;
-    public TextMeshProUGUI ItemBoughtText;
+    private Sprite Sprite;
+    private TextMeshProUGUI ItemDescriptionText;
+    private TextMeshProUGUI GoldAmountText;
+    private TextMeshProUGUI PriceText;
+    private TextMeshProUGUI ItemBoughtText;
     public TextMeshProUGUI[] ItemNameText;
     private Image buttonHighlight;
     private Color m_buttonColorNonSelect;
     private Color m_buttonColorSelect;
     private Image m_itemImage;
-    public Shop m_shop;
+    private Shop m_shop;
+    private int m_nameNum;
+    [SerializeField]
+    private int m_nameNumSet;
     protected override void Start()
     {
 
         m_shop = GameObject.Find("ShopNpc").GetComponent<Shop>();
-
+        ItemDescriptionText = GameObject.Find("Item_Description").GetComponent<TextMeshProUGUI>();
+        ItemBoughtText = GameObject.Find("Item_Bought_Text").GetComponent<TextMeshProUGUI>();
+        PriceText = GameObject.Find("Item_Cost").GetComponent<TextMeshProUGUI>();
+        GoldAmountText = GameObject.Find("Gold_Amount_Text").GetComponent<TextMeshProUGUI>();
         m_itemImage = GameObject.Find("Item_Image").GetComponent<Image>();
+        Sprite = GameObject.Find(this.gameObject.name).GetComponent<Sprite>();
+
         GoldAmountText.text = "100";
         buttonHighlight = GetComponent<Image>();
-        ItemBoughtText.text = "";
-        ItemNameText[0].text = "";
-        ItemNameText[1].text = "";
-        ItemNameText[2].text = "";
-        ItemNameText[3].text = "";
-        ItemNameText[4].text = "";
-        ItemDescriptionText.text = "";
+        m_itemImage.sprite = m_shop.shop[0].sItem.Image;
+        ItemDescriptionText.text = m_shop.shop[0].sItem.Description;
+        PriceText.text = "Price: " + m_shop.shop[0].sPrice;
+        m_itemImage.sprite = m_shop.shop[0].sItem.Image;
         m_buttonColorNonSelect = new Color(0, 0, 0, 0);
         m_buttonColorSelect = new Color(0.8f, 0.8f, 0.8f, 0.8f);
         buttonHighlight.color = m_buttonColorNonSelect;
@@ -46,7 +51,6 @@ public class ShopMenuUI : Selectable, ISelectHandler
     // Update is called once per frame
     void Update()
     {
-
         ItemNameText[0].text = m_shop.shop[0].sItem.name;
         ItemNameText[1].text = m_shop.shop[1].sItem.name;
         ItemNameText[2].text = m_shop.shop[2].sItem.name;
@@ -56,43 +60,11 @@ public class ShopMenuUI : Selectable, ISelectHandler
     public override void OnSelect(BaseEventData eventData)
     {
         buttonHighlight.color = m_buttonColorSelect;
-        if (this.gameObject.name == "Item 1")
-        {
-            m_itemImage.sprite = m_shop.shop[0].sItem.Image;
-            ItemDescriptionText.text = m_shop.shop[0].sItem.Description;
-            PriceText.text = "Price: " + m_shop.shop[0].sPrice;
-            
-        }
-        if (this.gameObject.name == "Item 2")
-        {
-            m_itemImage.sprite = m_shop.shop[1].sItem.Image;
-            ItemDescriptionText.text = m_shop.shop[1].sItem.Description;
-            PriceText.text = "Price: " + m_shop.shop[1].sPrice;
-         
-        }
-
-        if (this.gameObject.name == "Item 3")
-        {
-            m_itemImage.sprite = m_shop.shop[2].sItem.Image;
-            ItemDescriptionText.text = m_shop.shop[2].sItem.Description;
-            PriceText.text = "Price: " + m_shop.shop[2].sPrice;
-        
-        }
-
-        if (this.gameObject.name == "Item 4")
-        {
-            m_itemImage.sprite = m_shop.shop[3].sItem.Image;
-            ItemDescriptionText.text = m_shop.shop[3].sItem.Description;
-            PriceText.text = "Price: " + m_shop.shop[3].sPrice;
-           
-        }
-        if (this.gameObject.name == "Item 5")
-        {
-            m_itemImage.sprite = m_shop.shop[4].sItem.Image;
-            ItemDescriptionText.text = m_shop.shop[4].sItem.Description;
-            PriceText.text = "Price: " + m_shop.shop[4].sPrice;
-         
-        }
+        m_nameNum = m_nameNumSet;
+        m_itemImage.sprite = m_shop.shop[m_nameNum].sItem.Image;
+        ItemDescriptionText.text = m_shop.shop[m_nameNum].sItem.Description;
+        PriceText.text = "Price: " + m_shop.shop[m_nameNum].sPrice;
+        print("nameNum: " + m_nameNum);
         if (Input.GetKeyDown(KeyCode.Return))//used to set the correct gold amount
         {
             PartyCanvas.SetActive(true);
@@ -111,7 +83,6 @@ public class ShopMenuUI : Selectable, ISelectHandler
         inventoryScreen.SetActive(false);
         PartyCanvas.SetActive(false);
     }
-
     public override void OnDeselect(BaseEventData eventData)
     {
         buttonHighlight.color = m_buttonColorNonSelect;

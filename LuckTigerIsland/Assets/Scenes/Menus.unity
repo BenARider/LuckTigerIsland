@@ -2046,6 +2046,26 @@ Prefab:
       propertyPath: PartyCanvas
       value: 
       objectReference: {fileID: 933101036}
+    - target: {fileID: 114018808738895492, guid: e3e332da1678329458ed4c884f941d3a,
+        type: 2}
+      propertyPath: m_nameNumSet
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114201911923061276, guid: e3e332da1678329458ed4c884f941d3a,
+        type: 2}
+      propertyPath: m_nameNumSet
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114925519600129618, guid: e3e332da1678329458ed4c884f941d3a,
+        type: 2}
+      propertyPath: m_nameNumSet
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114808371399077282, guid: e3e332da1678329458ed4c884f941d3a,
+        type: 2}
+      propertyPath: m_nameNumSet
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e3e332da1678329458ed4c884f941d3a, type: 2}
   m_IsPrefabParent: 0
