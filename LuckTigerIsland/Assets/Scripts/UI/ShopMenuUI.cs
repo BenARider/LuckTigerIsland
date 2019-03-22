@@ -17,7 +17,7 @@ public class ShopMenuUI : Selectable, ISelectHandler
     private TextMeshProUGUI GoldAmountText;
     private TextMeshProUGUI PriceText;
     private TextMeshProUGUI ItemBoughtText;
-    public TextMeshProUGUI[] ItemNameText;
+    public TextMeshProUGUI ItemNameText;
     private Image buttonHighlight;
     private Color m_buttonColorNonSelect;
     private Color m_buttonColorSelect;
@@ -25,10 +25,10 @@ public class ShopMenuUI : Selectable, ISelectHandler
     private Shop m_shop;
     private int m_nameNum;
     [SerializeField]
-    private int m_nameNumSet;
+    public int m_nameNumSet;
+    private bool m_canOpenInventory;
     protected override void Start()
     {
-
         m_shop = GameObject.Find("ShopNpc").GetComponent<Shop>();
         ItemDescriptionText = GameObject.Find("Item_Description").GetComponent<TextMeshProUGUI>();
         ItemBoughtText = GameObject.Find("Item_Bought_Text").GetComponent<TextMeshProUGUI>();
@@ -51,11 +51,28 @@ public class ShopMenuUI : Selectable, ISelectHandler
     // Update is called once per frame
     void Update()
     {
-        ItemNameText[0].text = m_shop.shop[0].sItem.name;
-        ItemNameText[1].text = m_shop.shop[1].sItem.name;
-        ItemNameText[2].text = m_shop.shop[2].sItem.name;
-        ItemNameText[3].text = m_shop.shop[3].sItem.name;
-        ItemNameText[4].text = m_shop.shop[4].sItem.name;
+        if (m_canOpenInventory == true)
+        {
+            if (Input.GetKeyDown(KeyCode.Return))//used to set the correct gold amount
+            {
+                PartyCanvas.SetActive(true);
+                inventoryScreen.SetActive(true);
+
+                m_equipEntity = GameObject.Find("InventoryScreen").GetComponent<EquipEntity>();
+                m_equipEntity.AddItemToInventory(m_object);
+                print("nameNum: " + m_nameNum);
+                print("Added: " + m_object);
+                ItemBoughtText.text = "You have bought a " + m_object.name;
+                GoldAmountText.text = "50";
+                StartCoroutine(Fader());
+            }
+            PartyCanvas.SetActive(false);
+            inventoryScreen.SetActive(false);
+        }
+    }
+    public void SetNumName(int _numName)
+    {
+        m_nameNum += _numName;
     }
     public override void OnSelect(BaseEventData eventData)
     {
@@ -64,28 +81,12 @@ public class ShopMenuUI : Selectable, ISelectHandler
         m_itemImage.sprite = m_shop.shop[m_nameNum].sItem.Image;
         ItemDescriptionText.text = m_shop.shop[m_nameNum].sItem.Description;
         PriceText.text = "Price: " + m_shop.shop[m_nameNum].sPrice;
-        print("nameNum: " + m_nameNum);
-        if (Input.GetKeyDown(KeyCode.Return))//used to set the correct gold amount
-        {
-            PartyCanvas.SetActive(true);
-            inventoryScreen.SetActive(true);
-
-            m_equipEntity = GameObject.Find("InventoryScreen").GetComponent<EquipEntity>();
-            m_equipEntity.AddItemToInventory(m_object);
-
-            print("Added: " + m_object);
-            ItemBoughtText.text = "You have bought a " + m_object.name;
-            GoldAmountText.text = "50";
-            StartCoroutine(Fader());
-
-        }
-
-        inventoryScreen.SetActive(false);
-        PartyCanvas.SetActive(false);
+        m_canOpenInventory = true;
     }
     public override void OnDeselect(BaseEventData eventData)
     {
         buttonHighlight.color = m_buttonColorNonSelect;
+        m_canOpenInventory = false;
     }
     IEnumerator Fader()
     {
