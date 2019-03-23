@@ -5,7 +5,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
-public class ShopMenuUI : Selectable, ISelectHandler
+public class ShopMenuUI : MonoBehaviour,ISelectHandler, IDeselectHandler
 {
     BaseEventData m_baseEvent = null;
     EquipEntity m_equipEntity;
@@ -24,10 +24,11 @@ public class ShopMenuUI : Selectable, ISelectHandler
     private Image m_itemImage;
     private Shop m_shop;
     private int m_nameNum;
+    private bool m_stopMultiBuy;
     [SerializeField]
     public int m_nameNumSet;
-    private bool m_canOpenInventory;
-    protected override void Start()
+    public Button m_itemButton;
+    void Start()
     {
         m_shop = GameObject.Find("ShopNpc").GetComponent<Shop>();
         ItemDescriptionText = GameObject.Find("Item_Description").GetComponent<TextMeshProUGUI>();
@@ -47,47 +48,40 @@ public class ShopMenuUI : Selectable, ISelectHandler
         m_buttonColorSelect = new Color(0.8f, 0.8f, 0.8f, 0.8f);
         buttonHighlight.color = m_buttonColorNonSelect;
     }
-
     // Update is called once per frame
     void Update()
     {
-        if (m_canOpenInventory == true)
-        {
-            if (Input.GetKeyDown(KeyCode.Return))//used to set the correct gold amount
-            {
-                PartyCanvas.SetActive(true);
-                inventoryScreen.SetActive(true);
-
-                m_equipEntity = GameObject.Find("InventoryScreen").GetComponent<EquipEntity>();
-                m_equipEntity.AddItemToInventory(m_object);
-                print("nameNum: " + m_nameNum);
-                print("Added: " + m_object);
-                ItemBoughtText.text = "You have bought a " + m_object.name;
-                GoldAmountText.text = "50";
-                StartCoroutine(Fader());
-            }
-            PartyCanvas.SetActive(false);
-            inventoryScreen.SetActive(false);
-        }
+    }
+    public void Buy()
+    {
+        PartyCanvas.SetActive(true);
+        inventoryScreen.SetActive(true);
+        m_stopMultiBuy = true;
+        m_equipEntity = GameObject.Find("InventoryScreen").GetComponent<EquipEntity>();
+        this.m_equipEntity.AddItemToInventory(m_object);
+        print("nameNum: " + m_nameNum);
+        print("Added: " + m_object);
+        ItemBoughtText.text = "You have bought a " + m_object.name;
+        GoldAmountText.text = "50";
+        StartCoroutine(Fader());
+        PartyCanvas.SetActive(false);
+        inventoryScreen.SetActive(false);
     }
     public void SetNumName(int _numName)
     {
         m_nameNum += _numName;
     }
-    public override void OnSelect(BaseEventData eventData)
-    {
-        
+    public void OnSelect(BaseEventData eventData)
+    { 
         buttonHighlight.color = m_buttonColorSelect;
         m_nameNum = m_nameNumSet;
         m_itemImage.sprite = m_shop.shop[m_nameNum].sItem.Image;
         ItemDescriptionText.text = m_shop.shop[m_nameNum].sItem.Description;
         PriceText.text = "Price: " + m_shop.shop[m_nameNum].sPrice;
-        m_canOpenInventory = true;
     }
-    public override void OnDeselect(BaseEventData eventData)
+    public void OnDeselect(BaseEventData eventData)
     {
         buttonHighlight.color = m_buttonColorNonSelect;
-        m_canOpenInventory = false;
     }
     IEnumerator Fader()
     {
