@@ -21,6 +21,11 @@ public class InventoryListControl : MonoBehaviour {
  
     private void Start()
     {
+        UpdateInventoryUI();
+    }
+
+    public void UpdateInventoryUI()
+    {
         try
         {
             if (Inventory.Instance.inventory.Count > 0)
