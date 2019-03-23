@@ -76,6 +76,7 @@ public class ShopMenuUI : Selectable, ISelectHandler
     }
     public override void OnSelect(BaseEventData eventData)
     {
+        
         buttonHighlight.color = m_buttonColorSelect;
         m_nameNum = m_nameNumSet;
         m_itemImage.sprite = m_shop.shop[m_nameNum].sItem.Image;
@@ -93,4 +94,5 @@ public class ShopMenuUI : Selectable, ISelectHandler
         yield return new WaitForSeconds(0.8f);
         ItemBoughtText.text = "";
     }
+  
 }
