@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Dagger
   m_EditorClassIdentifier: 
   objectName: Dagger
-  Image: {fileID: 0}
-  Description: 5
-  Price: 0
+  Image: {fileID: 21300000, guid: a84ed88047b8fc34a985e06ef77fefe9, type: 3}
+  Description: A Dagger
+  Price: 5
   attack: 4
