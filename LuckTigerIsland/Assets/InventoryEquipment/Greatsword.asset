@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Name: Greatsword
   m_EditorClassIdentifier: 
   objectName: Greatsword
-  objectDescription: Longest Blade
+  Image: {fileID: 21300000, guid: a84ed88047b8fc34a985e06ef77fefe9, type: 3}
+  Description: A longboy
+  Price: 45
   attack: 12

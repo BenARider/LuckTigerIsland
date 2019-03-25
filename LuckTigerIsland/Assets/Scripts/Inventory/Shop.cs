@@ -48,10 +48,10 @@ public class Shop : InteractEvent
         }
     }
 
-    public void SellItem(ref InventoryObject _object)
+    public void SellItem(InventoryObject _object)
     {
         Inventory.Instance.IncreaseGold(Mathf.CeilToInt(_object.Price * m_sellMod));
-       // Inventory.Instance.
+        Inventory.Instance.inventory.Find(x => x.iObject == _object).DecreaseAmount(1);
     }
 
     public override void Interact(int argID)

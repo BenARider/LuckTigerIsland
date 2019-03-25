@@ -14,13 +14,17 @@ public struct InventoryObjectStruct
     {
         amount += _amount;
     }
+    public void DecreaseAmount(int _amount)
+    {
+        amount -= _amount;
+    }
 }
 
 public class Inventory : LTI.Singleton<Inventory>
 {
     private int m_gold;
 
-    private int m_inventorySize = 20;
+    private int m_maxInventorySize = 20;
 
     [SerializeField]
     public List<InventoryObjectStruct> inventory;
@@ -44,12 +48,12 @@ public class Inventory : LTI.Singleton<Inventory>
         if (contains)
         {
             inventory.Find(x => x.iObject == _object).IncreaseAmount(_amount);
-            Debug.Log("DED");
+            Debug.Log("Item exists, amount increased");
         }
         else //Else, add it to the list.
         {
             inventory.Add(iobjstruct);
-            Debug.Log("WEKJAH");
+            Debug.Log("Item didnt exist yet but does now");
         }
     }
 
@@ -72,4 +76,8 @@ public class Inventory : LTI.Singleton<Inventory>
         m_gold += _amount;
     }
     
+    public int GetMaxInvSize()
+    {
+        return m_maxInventorySize;
+    }
 }

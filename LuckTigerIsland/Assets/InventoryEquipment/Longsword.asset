@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Name: Longsword
   m_EditorClassIdentifier: 
   objectName: Longsword
-  objectDescription: Longer Blade
+  Image: {fileID: 21300000, guid: a84ed88047b8fc34a985e06ef77fefe9, type: 3}
+  Description: I am a longsword
+  Price: 50
   attack: 10
