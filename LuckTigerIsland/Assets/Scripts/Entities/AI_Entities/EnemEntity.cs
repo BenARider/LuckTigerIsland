@@ -110,7 +110,7 @@ public class EnemEntity : Entity
                 {
                     this.gameObject.tag = ("DeadPM");
 
-                    BC.EnemiesInBattle.Remove(this.gameObject);
+                    isAlive = false;
 
                     for (int i = 0; i > BC.NextTurn.Count; i++)
                     {
