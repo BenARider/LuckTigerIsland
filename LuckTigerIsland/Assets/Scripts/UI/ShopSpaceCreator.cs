@@ -39,7 +39,7 @@ public class ShopSpaceCreator : MonoBehaviour
         {
             if (m_startIncrease == false)
             {
-                m_shopUI.m_nameNumSet = 0;
+                m_shopUI.SetNameNumSet(0);
             }
             if (i < 20)
             {
@@ -57,10 +57,10 @@ public class ShopSpaceCreator : MonoBehaviour
             }
             if (m_startIncrease == true)
             {
-                m_shopUI.m_nameNumSet += 1;
+                m_shopUI.SetNameNumSet(1);
             }
             m_startIncrease = true;
-            m_shopUI.ItemNameText.text = m_shop.shop[m_shopUI.m_nameNumSet].sItem.name;
+            m_shopUI.ItemNameText.text = m_shop.shop[m_shopUI.GetNameNumSet()].sItem.name;
 
             print("SetNameNum");
         }

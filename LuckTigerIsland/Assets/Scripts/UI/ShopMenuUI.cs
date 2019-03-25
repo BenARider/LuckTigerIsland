@@ -19,14 +19,14 @@ public class ShopMenuUI : MonoBehaviour,ISelectHandler, IDeselectHandler
     private TextMeshProUGUI ItemBoughtText;
     public TextMeshProUGUI ItemNameText;
     private Image buttonHighlight;
-    private Color m_buttonColorNonSelect;
-    private Color m_buttonColorSelect;
+    private Color m_buttonColourNonSelect;
+    private Color m_buttonColourSelect;
     private Image m_itemImage;
     private Shop m_shop;
     private int m_nameNum;
     private bool m_stopMultiBuy;
     [SerializeField]
-    public int m_nameNumSet;
+    private int m_nameNumSet;
     public Button m_itemButton;
     void Start()
     {
@@ -44,9 +44,9 @@ public class ShopMenuUI : MonoBehaviour,ISelectHandler, IDeselectHandler
         ItemDescriptionText.text = m_shop.shop[0].sItem.Description;
         PriceText.text = "Price: " + m_shop.shop[0].sPrice;
         m_itemImage.sprite = m_shop.shop[0].sItem.Image;
-        m_buttonColorNonSelect = new Color(0, 0, 0, 0);
-        m_buttonColorSelect = new Color(0.8f, 0.8f, 0.8f, 0.8f);
-        buttonHighlight.color = m_buttonColorNonSelect;
+        m_buttonColourNonSelect = new Color(0, 0, 0, 0);
+        m_buttonColourSelect = new Color(0.8f, 0.8f, 0.8f, 0.8f);
+        buttonHighlight.color = m_buttonColourNonSelect;
     }
     // Update is called once per frame
     void Update()
@@ -73,7 +73,7 @@ public class ShopMenuUI : MonoBehaviour,ISelectHandler, IDeselectHandler
     }
     public void OnSelect(BaseEventData eventData)
     { 
-        buttonHighlight.color = m_buttonColorSelect;
+        buttonHighlight.color = m_buttonColourSelect;
         m_nameNum = m_nameNumSet;
         m_itemImage.sprite = m_shop.shop[m_nameNum].sItem.Image;
         ItemDescriptionText.text = m_shop.shop[m_nameNum].sItem.Description;
@@ -81,7 +81,15 @@ public class ShopMenuUI : MonoBehaviour,ISelectHandler, IDeselectHandler
     }
     public void OnDeselect(BaseEventData eventData)
     {
-        buttonHighlight.color = m_buttonColorNonSelect;
+        buttonHighlight.color = m_buttonColourNonSelect;
+    }
+    public int GetNameNumSet()
+    {
+        return m_nameNumSet;
+    }
+    public void SetNameNumSet(int _nameNum)
+    {
+      m_nameNumSet += _nameNum;
     }
     IEnumerator Fader()
     {
