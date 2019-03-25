@@ -40,6 +40,7 @@ public class QuestUi : Selectable, ISelectHandler
             questTitleText[1].text = "" + questNames[1].GetTitle();
         }
     }
+    
     public override void OnSelect(BaseEventData _eventData)
     {
         //Shows quest description when highlighting a button
