@@ -15,8 +15,6 @@ public class ShopSpaceCreator : MonoBehaviour
     private Shop m_shop;
     private bool m_startIncrease;
     private float m_yPosColumn2;
-    [SerializeField]
-    GameObject m_closeObject;
     ShopBuyItem m_buyitem;
    
     // Use this for initialization
