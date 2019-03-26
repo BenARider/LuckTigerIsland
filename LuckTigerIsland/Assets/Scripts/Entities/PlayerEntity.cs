@@ -328,12 +328,20 @@ public class PlayerEntity : Entity
                 AttackingGameObject = this.gameObject, //What gameObject is attacking
                 chosenAttack = m_chosenAction,
                 AttackTarget = BC.EnemiesInBattle[0]
+                
             };
-            BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
-            m_chosenTarget = true;
-            attackDescriptionText.text = this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!";
-            Debug.Log(this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!");
-            StartCoroutine("FadeText");
+            if (BC.EnemiesInBattle[0].GetComponent<EnemEntity>().isAlive)
+            {
+                BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
+                m_chosenTarget = true;
+                attackDescriptionText.text = this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!";
+                Debug.Log(this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!");
+                StartCoroutine("FadeText");
+            }
+            else
+            {
+                Debug.Log("That enemy is dead choose another");
+            }
         }
         if (Input.GetKeyDown("2") || m_BattleButton.GetActionTargetNumber() == 11)
         {
@@ -345,11 +353,18 @@ public class PlayerEntity : Entity
                 chosenAttack = m_chosenAction,
                 AttackTarget = BC.EnemiesInBattle[1]
             };
-            BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
-            m_chosenTarget = true;
-            attackDescriptionText.text = this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!";
-            Debug.Log(this.gameObject.name + " Is going to attack " + myAttack.AttackTarget + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!");
-            StartCoroutine("FadeText");
+            if (BC.EnemiesInBattle[1].GetComponent<EnemEntity>().isAlive)
+            {
+                BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
+                m_chosenTarget = true;
+                attackDescriptionText.text = this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!";
+                Debug.Log(this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!");
+                StartCoroutine("FadeText");
+            }
+            else
+            {
+                Debug.Log("That enemy is dead choose another");
+            }
         }
         if (Input.GetKeyDown("3") || m_BattleButton.GetActionTargetNumber() == 12)
         {
@@ -361,11 +376,18 @@ public class PlayerEntity : Entity
                 chosenAttack = m_chosenAction,
                 AttackTarget = BC.EnemiesInBattle[2]
             };
-            BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
-            m_chosenTarget = true;
-            attackDescriptionText.text = this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!";
-            Debug.Log(this.gameObject.name + " Is going to attack " + myAttack.AttackTarget + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!");
-            StartCoroutine("FadeText");
+            if (BC.EnemiesInBattle[2].GetComponent<EnemEntity>().isAlive)
+            {
+                BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
+                m_chosenTarget = true;
+                attackDescriptionText.text = this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!";
+                Debug.Log(this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!");
+                StartCoroutine("FadeText");
+            }
+            else
+            {
+                Debug.Log("That enemy is dead choose another");
+            }
         }
         if (Input.GetKeyDown("4") || m_BattleButton.GetActionTargetNumber() == 13)
         {
@@ -377,11 +399,18 @@ public class PlayerEntity : Entity
                 chosenAttack = m_chosenAction,
                 AttackTarget = BC.EnemiesInBattle[3]
             };
-            BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
-            m_chosenTarget = true;
-            attackDescriptionText.text = this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!";
-            Debug.Log(this.gameObject.name + " Is going to attack " + myAttack.AttackTarget + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!");
-            StartCoroutine("FadeText");
+            if (BC.EnemiesInBattle[3].GetComponent<EnemEntity>().isAlive)
+            {
+                BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
+                m_chosenTarget = true;
+                attackDescriptionText.text = this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!";
+                Debug.Log(this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!");
+                StartCoroutine("FadeText");
+            }
+            else
+            {
+                Debug.Log("That enemy is dead choose another");
+            }
         }
     }
 
