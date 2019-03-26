@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 114778612586449330}
   - component: {fileID: 114891578292881914}
   m_Layer: 5
-  m_Name: Axe
+  m_Name: Item 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 222596343267300372}
   - component: {fileID: 114836692462717256}
   m_Layer: 5
-  m_Name: Item_Name_Button
+  m_Name: Item_Name_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 114995809629076342}
   - component: {fileID: 114574320866753390}
   m_Layer: 5
-  m_Name: Helmet
+  m_Name: Item 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 114966709965063908}
   - component: {fileID: 114191143067890214}
   m_Layer: 5
-  m_Name: Hat
+  m_Name: Item 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -145,13 +145,14 @@ GameObject:
   - component: {fileID: 114123490927048658}
   - component: {fileID: 114848857065869082}
   - component: {fileID: 114644648321670328}
+  - component: {fileID: 114456411727650872}
   m_Layer: 5
   m_Name: Shop_UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1345550743869978
 GameObject:
   m_ObjectHideFlags: 1
@@ -181,7 +182,7 @@ GameObject:
   - component: {fileID: 114297284199969914}
   - component: {fileID: 114163157878712594}
   m_Layer: 5
-  m_Name: Bomb
+  m_Name: Item 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -198,7 +199,7 @@ GameObject:
   - component: {fileID: 222365912857564292}
   - component: {fileID: 114943862103861036}
   m_Layer: 5
-  m_Name: Item_Name_Button
+  m_Name: Item_Name_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -216,7 +217,7 @@ GameObject:
   - component: {fileID: 114481862398943216}
   - component: {fileID: 114252408615801502}
   m_Layer: 5
-  m_Name: Health Potion
+  m_Name: Item 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -338,7 +339,7 @@ GameObject:
   - component: {fileID: 222212874080224966}
   - component: {fileID: 114970236183908680}
   m_Layer: 5
-  m_Name: Item_Name_Button
+  m_Name: Item_Name_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -424,7 +425,7 @@ GameObject:
   - component: {fileID: 222447112022201134}
   - component: {fileID: 114797468362252342}
   m_Layer: 5
-  m_Name: Item_Name_Button
+  m_Name: Item_Name_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -441,7 +442,7 @@ GameObject:
   - component: {fileID: 222882284059481192}
   - component: {fileID: 114958954576892934}
   m_Layer: 5
-  m_Name: Item_Name_Button
+  m_Name: Item_Name_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -638,11 +639,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -759,9 +760,13 @@ MonoBehaviour:
   GoldAmountText: {fileID: 114672543935294958}
   PriceText: {fileID: 114123322125286340}
   ItemBoughtText: {fileID: 114780334128994470}
-  ItemNameText: {fileID: 114958954576892934}
-  PriceDescription: 50
-  ItemDescription: This is a bomb
+  ItemNameText:
+  - {fileID: 114970236183908680}
+  - {fileID: 114958954576892934}
+  - {fileID: 114797468362252342}
+  - {fileID: 114836692462717256}
+  - {fileID: 114943862103861036}
+  m_shop: {fileID: 114221010323515860}
 --- !u!114 &114186740051620396
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -858,9 +863,13 @@ MonoBehaviour:
   GoldAmountText: {fileID: 114672543935294958}
   PriceText: {fileID: 114123322125286340}
   ItemBoughtText: {fileID: 114780334128994470}
-  ItemNameText: {fileID: 114836692462717256}
-  PriceDescription: 30
-  ItemDescription: This is a hat
+  ItemNameText:
+  - {fileID: 114970236183908680}
+  - {fileID: 114958954576892934}
+  - {fileID: 114797468362252342}
+  - {fileID: 114836692462717256}
+  - {fileID: 114943862103861036}
+  m_shop: {fileID: 114221010323515860}
 --- !u!114 &114221010323515860
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -877,6 +886,12 @@ MonoBehaviour:
     sPrice: 1
   - sItem: {fileID: 11400000, guid: 4d1c3886544d3cf4ebb8de3fc8ea7534, type: 2}
     sPrice: 2
+  - sItem: {fileID: 11400000, guid: 26ae73543495d10459ac5f45f8dd0b6b, type: 2}
+    sPrice: 3
+  - sItem: {fileID: 11400000, guid: aff6c7e5a7e3d584c83b23d4be36c5ec, type: 2}
+    sPrice: 5
+  - sItem: {fileID: 11400000, guid: 37be832cc678a74478c475fba1088c62, type: 2}
+    sPrice: 4
   shopUI: {fileID: 1330974882605224}
 --- !u!114 &114252408615801502
 MonoBehaviour:
@@ -922,9 +937,13 @@ MonoBehaviour:
   GoldAmountText: {fileID: 114672543935294958}
   PriceText: {fileID: 114123322125286340}
   ItemBoughtText: {fileID: 114780334128994470}
-  ItemNameText: {fileID: 114970236183908680}
-  PriceDescription: 10
-  ItemDescription: This is a health potion
+  ItemNameText:
+  - {fileID: 114970236183908680}
+  - {fileID: 114958954576892934}
+  - {fileID: 114797468362252342}
+  - {fileID: 114836692462717256}
+  - {fileID: 114943862103861036}
+  m_shop: {fileID: 114221010323515860}
 --- !u!114 &114268358600163254
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -982,6 +1001,20 @@ MonoBehaviour:
   m_weaponItem: []
   m_health_Potion: {fileID: 0}
   m_inventorySlots: []
+--- !u!114 &114456411727650872
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1330974882605224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -619905303, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 1428322008668408}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 5
 --- !u!114 &114481862398943216
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1053,9 +1086,13 @@ MonoBehaviour:
   GoldAmountText: {fileID: 114672543935294958}
   PriceText: {fileID: 114123322125286340}
   ItemBoughtText: {fileID: 114780334128994470}
-  ItemNameText: {fileID: 114797468362252342}
-  PriceDescription: 25
-  ItemDescription: This is a helmet
+  ItemNameText:
+  - {fileID: 114970236183908680}
+  - {fileID: 114958954576892934}
+  - {fileID: 114797468362252342}
+  - {fileID: 114836692462717256}
+  - {fileID: 114943862103861036}
+  m_shop: {fileID: 114221010323515860}
 --- !u!114 &114581532355296132
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1191,11 +1228,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -1379,11 +1416,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -1519,11 +1556,11 @@ MonoBehaviour:
     lineCount: 0
     pageCount: 0
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -1556,7 +1593,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Chainmail
+  m_text: Breastplate
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f76ef802b8b940c46a31f9027f2b0158, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 250a1a103b3b4914c9707e6a423446d6, type: 2}
@@ -1624,7 +1661,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 114797468362252342}
-    characterCount: 9
+    characterCount: 11
     spriteCount: 0
     spaceCount: 0
     wordCount: 1
@@ -1632,11 +1669,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 3
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -1747,11 +1784,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -1784,7 +1821,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Breastplate
+  m_text: Chainmail
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f76ef802b8b940c46a31f9027f2b0158, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 250a1a103b3b4914c9707e6a423446d6, type: 2}
@@ -1852,7 +1889,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 114836692462717256}
-    characterCount: 11
+    characterCount: 9
     spriteCount: 0
     spaceCount: 0
     wordCount: 1
@@ -1860,11 +1897,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 3
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -1970,9 +2007,13 @@ MonoBehaviour:
   GoldAmountText: {fileID: 114672543935294958}
   PriceText: {fileID: 114123322125286340}
   ItemBoughtText: {fileID: 114780334128994470}
-  ItemNameText: {fileID: 114943862103861036}
-  PriceDescription: 30
-  ItemDescription: This is a axe
+  ItemNameText:
+  - {fileID: 114970236183908680}
+  - {fileID: 114958954576892934}
+  - {fileID: 114797468362252342}
+  - {fileID: 114836692462717256}
+  - {fileID: 114943862103861036}
+  m_shop: {fileID: 114221010323515860}
 --- !u!114 &114942061836483554
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2068,11 +2109,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -2181,11 +2222,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 3
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -2294,11 +2335,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -2331,7 +2372,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: MpPotion
+  m_text: Longsword
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f76ef802b8b940c46a31f9027f2b0158, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 250a1a103b3b4914c9707e6a423446d6, type: 2}
@@ -2399,7 +2440,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 114958954576892934}
-    characterCount: 8
+    characterCount: 9
     spriteCount: 0
     spaceCount: 0
     wordCount: 1
@@ -2407,11 +2448,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 3
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -2471,7 +2512,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: HpPotion
+  m_text: Dagger
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f76ef802b8b940c46a31f9027f2b0158, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 250a1a103b3b4914c9707e6a423446d6, type: 2}
@@ -2539,7 +2580,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 111.84555, w: 0}
   m_textInfo:
     textComponent: {fileID: 114970236183908680}
-    characterCount: 8
+    characterCount: 6
     spriteCount: 0
     spaceCount: 0
     wordCount: 1
@@ -2547,11 +2588,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 3
   m_hasFontAssetChanged: 0
   m_subTextObjects:

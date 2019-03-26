@@ -12,6 +12,7 @@ public class QuestUi : Selectable, ISelectHandler
     public Image buttonHighlight;
     private Color m_buttonColourNonSelect;
     private Color m_buttonColourSelect;
+    QuestManager m_questManager;
     // Use this for initialization
     protected override void Start()
     {
@@ -19,6 +20,7 @@ public class QuestUi : Selectable, ISelectHandler
         questTitleText = new TextMeshProUGUI[5];
         questTitleText[0] = GameObject.Find("Quest_Title1").GetComponent<TextMeshProUGUI>();
         questTitleText[1] = GameObject.Find("Quest_Title2").GetComponent<TextMeshProUGUI>();
+        m_questManager = GameObject.Find("_QuestManager").GetComponent<QuestManager>();
         buttonHighlight = GetComponent<Image>();
 
         m_buttonColourNonSelect = new Color(1.0f, 1.0f, 1.0f, 1.0f);
@@ -31,12 +33,14 @@ public class QuestUi : Selectable, ISelectHandler
     {
         //Fills the quest titles
         List<Quest> questNames = QuestManager.Instance.GetQuests();
+      
         for (int i = 0; i < questNames.Count; i++)
         {
             questTitleText[0].text = "" + questNames[0].GetTitle();
             questTitleText[1].text = "" + questNames[1].GetTitle();
         }
     }
+    
     public override void OnSelect(BaseEventData _eventData)
     {
         //Shows quest description when highlighting a button

@@ -180,6 +180,8 @@ public class PlayerManager : LTI.Singleton<PlayerManager> {
     void ExitDialogue()
     {
         backgroundTextArray[0].GetComponent<Image>().enabled = false;
+        backgroundTextArray[1].GetComponent<Image>().enabled = false;
+        textArray[0].text = "";
         activeDialogue = null;
         inDialogue = false;
         playerMove.doMove = true;
@@ -217,9 +219,8 @@ public class PlayerManager : LTI.Singleton<PlayerManager> {
         }
         else
         {
-            backgroundTextArray[1].GetComponent<Image>().enabled = false;
             textArray[0].text = "";
-            if(!inDialogue) textArray[1].text = "";
+            if (!inDialogue) textArray[1].text = "";
         }
     }
 
