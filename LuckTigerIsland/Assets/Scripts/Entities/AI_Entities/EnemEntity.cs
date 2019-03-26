@@ -2,9 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 using TMPro;
 public class EnemEntity : Entity
 {
+    public enum Agression
+    {
+        eBackStabber,
+        eRandomAttacker
+    }
+    public Agression AgressionState;
 	//private bool canAttack = false; //used to prevent the ai from having too many turns. Only enabled on use of state transition.
 	public int aggress; //likelihood to attack oppossing attacker (Between 1-20)
 	public int intel; //likelihood to attack pm with high value (Between 1-20)
@@ -31,23 +38,28 @@ public class EnemEntity : Entity
         if (Class == "Goblin")
         {
             SetEnemyStats(75, 50, 40, 20, 50, 3, 20, 4, 50);
+            AgressionState = Agression.eBackStabber;
         }
         if (Class == "Dark_Elf")
         {
             SetEnemyStats(35, 125, 20, 10, 55, 2, 10, 8, 50);
+            AgressionState = Agression.eBackStabber;
         }
         if (Class == "Wizard")
         {
             SetEnemyStats(40, 100, 10, 15, 45, 2, 15, 6, 50);
+            AgressionState = Agression.eRandomAttacker;
         }
         if (Class == "Knight")
         {
             SetEnemyStats(60, 150, 15, 7, 50, 3, 5, 5, 50);
+            AgressionState = Agression.eRandomAttacker;
         }
 
         if (Class == "Boss")
         {
             SetEnemyStats(200, 350, 60, 17, 60, 3, 5, 5, 50);
+            AgressionState = Agression.eRandomAttacker;
         }
 
         this.name = GetEntityNo() + ":" + this.name;
@@ -110,7 +122,7 @@ public class EnemEntity : Entity
                 {
                     this.gameObject.tag = ("DeadPM");
 
-                    BC.EnemiesInBattle.Remove(this.gameObject);
+                    isAlive = false;
 
                     for (int i = 0; i > BC.NextTurn.Count; i++)
                     {
@@ -158,19 +170,40 @@ public class EnemEntity : Entity
 
     void ChooseAction()
     {
-
-        HandleTurns myAttack = new HandleTurns
+        if (AgressionState == Agression.eRandomAttacker)
         {
-            Attacker = this.name, //Who is attacking
-            Type = "Enemy",//What type are they
-            AttackingGameObject = this.gameObject, //What gameObject is attacking
-            AttackTarget = BC.PartyMembersInBattle[Random.Range(0, BC.PartyMembersInBattle.Count)], //Random a target that is in the List stored in BattleControl
-            chosenAttack = m_chosenAction
-        };
-        //attackDescriptionText.text = this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!";
-        Debug.Log(this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!");
-        StartCoroutine("FadeText");
-        BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
+            HandleTurns myAttack = new HandleTurns
+            {
+                Attacker = this.name, //Who is attacking
+                Type = "Enemy",//What type are they
+                AttackingGameObject = this.gameObject, //What gameObject is attacking
+                AttackTarget = BC.PartyMembersInBattle[Random.Range(0, BC.PartyMembersInBattle.Count)], //Random a target that is in the List stored in BattleControl
+                chosenAttack = m_chosenAction
+            };
+
+            //attackDescriptionText.text = this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!";
+            Debug.Log(this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!");
+            StartCoroutine("FadeText");
+            BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
+        }
+
+        if(AgressionState==Agression.eBackStabber)
+        {
+            BC.TargetingListForAI.OrderBy(x => x.GetComponent<PlayerEntity>().GetHealth());
+            HandleTurns myAttack = new HandleTurns
+            {
+                Attacker = this.name, //Who is attacking
+                Type = "Enemy",//What type are they
+                AttackingGameObject = this.gameObject, //What gameObject is attacking
+                AttackTarget = BC.TargetingListForAI[0], //Random a target that is in the List stored in BattleControl
+                chosenAttack = m_chosenAction
+            };
+
+            //attackDescriptionText.text = this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!";
+            Debug.Log(this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!");
+            StartCoroutine("FadeText");
+            BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
+        }
     }
 
     private IEnumerator TimeForAction()

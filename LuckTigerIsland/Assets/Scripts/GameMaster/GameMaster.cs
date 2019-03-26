@@ -33,8 +33,6 @@ public class GameMaster : LTI.Singleton<GameMaster>{
 
             if (currentScene != lastScene)
             {
-                
-
                 GameObject[] sceneobjects = SceneManager.GetSceneByName(currentScene).GetRootGameObjects();
                 foreach (GameObject go in sceneobjects)
                 {

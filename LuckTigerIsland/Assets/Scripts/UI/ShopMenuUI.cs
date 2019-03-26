@@ -8,7 +8,8 @@ using TMPro;
 public class ShopMenuUI : MonoBehaviour,ISelectHandler, IDeselectHandler
 {
     BaseEventData m_baseEvent = null;
-    EquipEntity m_equipEntity;
+    Inventory m_inventoryEntity;
+    public EquipEntity equipEntity;
     public GameObject inventoryScreen;
     public GameObject PartyCanvas;
     public InventoryObject m_object;
@@ -37,7 +38,6 @@ public class ShopMenuUI : MonoBehaviour,ISelectHandler, IDeselectHandler
         GoldAmountText = GameObject.Find("Gold_Amount_Text").GetComponent<TextMeshProUGUI>();
         m_itemImage = GameObject.Find("Item_Image").GetComponent<Image>();
         Sprite = GameObject.Find(this.gameObject.name).GetComponent<Sprite>();
-
         GoldAmountText.text = "100";
         buttonHighlight = GetComponent<Image>();
         m_itemImage.sprite = m_shop.shop[0].sItem.Image;

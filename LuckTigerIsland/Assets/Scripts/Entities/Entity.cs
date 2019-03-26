@@ -55,7 +55,7 @@ public class Entity : MonoBehaviour {
     [SerializeField]
     protected float currentSpeed = 0f;
     [SerializeField]
-    protected bool isAlive = true;
+    public bool isAlive = true;
     [SerializeField]
     protected bool countedDead = false; //used to prevent insta wins or gameovers
 	[SerializeField]
@@ -172,6 +172,7 @@ public class Entity : MonoBehaviour {
 
 	//-----------------------------------------------------------------------------------------------------
 	//Setters and Getters
+
 	public void Sethealth(int _health) //The argument should be _health. The body should then be m_health = _health.
 	{
 		m_health = _health;

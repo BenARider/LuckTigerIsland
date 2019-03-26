@@ -23,6 +23,7 @@ public class BattleControl : MonoBehaviour {
     public List<GameObject> EnemiesInBattle = new List<GameObject>();
     public List<EnemEntity> Enemies = new List<EnemEntity>();
     public List<GameObject> PartyMembersInBattle = new List<GameObject>();
+    public List<GameObject> TargetingListForAI = new List<GameObject>();
     public int deadEnemies = 0;
     public int deadPlayers = 0;
 
@@ -32,8 +33,9 @@ public class BattleControl : MonoBehaviour {
 
 
         PartyMembersInBattle.AddRange (GameObject.FindGameObjectsWithTag("Party"));
-		//prevents the rest of the setup phase until at least one enemy has been instantiated
-		while (EnemiesInBattle.Count == 0)
+        TargetingListForAI.AddRange(GameObject.FindGameObjectsWithTag("Party"));
+        //prevents the rest of the setup phase until at least one enemy has been instantiated
+        while (EnemiesInBattle.Count == 0)
 		{
 			EnemiesInBattle.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
 		}

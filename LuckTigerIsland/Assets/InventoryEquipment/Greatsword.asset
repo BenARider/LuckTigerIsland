@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Greatsword
   m_EditorClassIdentifier: 
   objectName: Greatsword
-  Image: {fileID: 21300000, guid: 6356fede1df224f4d8a0e68fa98d2033, type: 3}
+  Image: {fileID: 21300000, guid: a84ed88047b8fc34a985e06ef77fefe9, type: 3}
   Description: A Greatsword
-  Price: 0
+  Price: 45
   attack: 12
