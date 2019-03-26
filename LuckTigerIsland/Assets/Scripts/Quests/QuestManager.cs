@@ -6,7 +6,7 @@ public class QuestManager : LTI.Singleton<QuestManager>
 {
     //Array of every quest in the game.
     [SerializeField]
-    List<Quest> m_quests = new List<Quest>();
+    public List<Quest> m_quests = new List<Quest>();
 
     //List of all currently active quests. Add to this when starting a quest. Remove when finishing a Quest.
     private static List<Quest> m_activeQuestList = new List<Quest> { };

@@ -9,6 +9,7 @@ public class QuestUi : Selectable, ISelectHandler
 {
     public TextMeshProUGUI questDescriptionText;
     private TextMeshProUGUI[] questTitleText;
+    public TextMeshProUGUI questTitleText2;
     public Image buttonHighlight;
     private Color m_buttonColourNonSelect;
     private Color m_buttonColourSelect;
@@ -31,18 +32,28 @@ public class QuestUi : Selectable, ISelectHandler
     // Update is called once per frame
     void Update()
     {
+     
+       
+    }
+    protected override void OnEnable()
+    {
         //Fills the quest titles
+        QuestManager.Instance.m_quests[0].StartQuest();//Temp active
         List<Quest> questNames = QuestManager.Instance.GetQuests();
-      
-        for (int i = 0; i < questNames.Count; i++)
+
+        if (questNames.Count != 0)
         {
-            questTitleText[0].text = "" + questNames[0].GetTitle();
-            questTitleText[1].text = "" + questNames[1].GetTitle();
+            for (int i = 0; i < questNames.Count; i++)
+            {
+                questTitleText2.text =  questNames[i].GetTitle();
+                questDescriptionText.text = "" + questNames[i].GetObjective();
+
+            }
         }
     }
-    
     public override void OnSelect(BaseEventData _eventData)
     {
+   
         //Shows quest description when highlighting a button
         buttonHighlight.color = m_buttonColourSelect;
         List<Quest> questNames = QuestManager.Instance.GetQuests();
@@ -58,6 +69,7 @@ public class QuestUi : Selectable, ISelectHandler
                 questDescriptionText.text = "" + questNames[1].GetObjective();
             }
         }
+    
     }
     public override void OnDeselect(BaseEventData eventData)
     {

@@ -6,6 +6,7 @@ using UnityEngine;
 public struct ShopItem
 {
     public InventoryObject sItem;
+
     [HideInInspector]
     public int sPrice;
 
@@ -37,7 +38,8 @@ public class Shop : InteractEvent
 
     public void BuyItem(ShopItem _item)
     {
-        if (Inventory.Instance.GetGold() >= _item.sPrice)
+
+        if (Inventory.Instance.GetGold() <= _item.sPrice)
         {
             Inventory.Instance.AddToInventory(_item.sItem);
             Inventory.Instance.ReduceGold(_item.sPrice);

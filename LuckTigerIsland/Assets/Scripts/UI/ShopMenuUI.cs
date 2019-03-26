@@ -57,8 +57,8 @@ public class ShopMenuUI : MonoBehaviour,ISelectHandler, IDeselectHandler
         PartyCanvas.SetActive(true);
         inventoryScreen.SetActive(true);
         m_stopMultiBuy = true;
-        m_equipEntity = GameObject.Find("InventoryScreen").GetComponent<EquipEntity>();
-        this.m_equipEntity.AddItemToInventory(m_object);
+       // m_equipEntity = GameObject.Find("InventoryScreen").GetComponent<EquipEntity>();
+       // this.m_equipEntity.AddItemToInventory(m_object);
         print("nameNum: " + m_nameNum);
         print("Added: " + m_object);
         ItemBoughtText.text = "You have bought a " + m_object.name;
