@@ -56,6 +56,8 @@ GameObject:
   - component: {fileID: 224134393264057642}
   - component: {fileID: 222359157062125456}
   - component: {fileID: 114671920264006830}
+  - component: {fileID: 114435145702573326}
+  - component: {fileID: 114545600155164420}
   - component: {fileID: 114009822713745438}
   - component: {fileID: 114087516294391756}
   m_Layer: 5
@@ -114,7 +116,7 @@ GameObject:
   - component: {fileID: 114634407395011622}
   m_Layer: 5
   m_Name: Button
-  m_TagString: Untagged
+  m_TagString: BaseButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -585,6 +587,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114435145702573326
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1113806372591068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4809ab432581e1448d74aee71fd688c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseButton: {fileID: 1250126839593250}
 --- !u!114 &114517806540319172
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -637,6 +651,21 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114545600155164420
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1113806372591068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb34d267f4851ab4e808deb8f784f63a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debug: 0
+  scrollRect: {fileID: 114009822713745438}
+  scrollbar: {fileID: 114969411253162928}
+  scrollPadding: 20
 --- !u!114 &114551277933323812
 MonoBehaviour:
   m_ObjectHideFlags: 1
