@@ -146,7 +146,7 @@ MonoBehaviour:
   loadAsyncScenes:
   - Overworld
   - Castleton01
-  - Mountain
+  - MountainDungeon
   - City01
   - Elftown01
   - Forest01
