@@ -24,17 +24,11 @@ public class QuestSpaceCreator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        List<Quest> questNames = QuestManager.Instance.GetQuests();
-        for (int i = 0; i < questNames.Count; ++i)
-        {
-            print("SetNameNum" + questNames.Count);
-        }
     }
     private void OnEnable()
     {
         QuestManager.Instance.m_quests[0].StartQuest();//Temp active
         QuestManager.Instance.m_quests[1].StartQuest();//Temp active
-
         List<Quest> questNames = QuestManager.Instance.GetQuests();
         m_eventSystem.SetSelectedGameObject(m_closeObject);
         m_questUI = GameObject.Find("Quest1").GetComponent<QuestUi>();
@@ -56,7 +50,7 @@ public class QuestSpaceCreator : MonoBehaviour
            m_questUI.SetNameNumSet(1);
             }
             m_startIncrease = true;
-           m_questUI.questTitleText2.text =  QuestManager.Instance.m_quests[m_questUI.GetNameNumSet()].GetTitle();
+           m_questUI.questTitleText.text =  QuestManager.Instance.m_quests[m_questUI.GetNameNumSet()].GetTitle();
         }
         print("SetNameNum" + questNames.Count);
     }
@@ -68,8 +62,7 @@ public class QuestSpaceCreator : MonoBehaviour
             m_startIncrease = false;
         }
         m_questUI.m_itemButton.interactable = false;
-        QuestManager.Instance.m_quests[0].EndQuest();//Temp active
-        QuestManager.Instance.m_quests[1].EndQuest();//Temp active
+
     }
 
 }
