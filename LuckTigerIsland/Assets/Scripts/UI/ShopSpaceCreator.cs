@@ -32,7 +32,7 @@ public class ShopSpaceCreator : MonoBehaviour
         m_yPosColumn2 = 0;
         m_eventSystem.SetSelectedGameObject(m_closeObject);
         m_shopUI = GameObject.Find("Item_Base").GetComponent<ShopMenuUI>();
-        m_parentTransform = GameObject.Find(this.gameObject.name).GetComponent<Transform>();
+        m_parentTransform = GameObject.Find("SpawnerTransform").GetComponent<Transform>();
         m_parentTransform2 = GameObject.Find("SpawnerTransform2").GetComponent<Transform>();
         m_shop = GameObject.Find("ShopNpc").GetComponent<Shop>();
         for (int i = 0; i < m_shop.shop.Count; ++i)
