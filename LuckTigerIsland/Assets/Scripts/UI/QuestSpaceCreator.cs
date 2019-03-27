@@ -17,7 +17,6 @@ public class QuestSpaceCreator : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
         m_eventSystem = EventSystem.current;
     }
 
