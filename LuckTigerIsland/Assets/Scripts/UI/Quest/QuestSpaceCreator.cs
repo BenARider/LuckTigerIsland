@@ -28,6 +28,7 @@ public class QuestSpaceCreator : MonoBehaviour
     {
         QuestManager.Instance.m_quests[0].StartQuest();//Temp active
         QuestManager.Instance.m_quests[1].StartQuest();//Temp active
+     /*
         List<Quest> questNames = QuestManager.Instance.GetQuests();
         m_eventSystem.SetSelectedGameObject(m_closeObject);
         m_questUI = GameObject.Find("Quest1").GetComponent<QuestUi>();
@@ -52,16 +53,18 @@ public class QuestSpaceCreator : MonoBehaviour
            m_questUI.questTitleText.text =  QuestManager.Instance.m_quests[m_questUI.GetNameNumSet()].GetTitle();
         }
         print("SetNameNum" + questNames.Count);
+           */
     }
     private void OnDisable()
     {
+        /*
         foreach (Transform child in m_parentTransform.transform)
         {
             Destroy(child.gameObject);
             m_startIncrease = false;
         }
         m_questUI.m_itemButton.interactable = false;
-
+        */
     }
 
 }

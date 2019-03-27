@@ -29,6 +29,7 @@ public class PlayerManager : LTI.Singleton<PlayerManager> {
 	public string currentSceneName;
     public PlayerWorldMove playerMove;
     public TextMeshProUGUI[] textArray;
+    public TextMeshProUGUI m_gold;
     public GameObject[] backgroundTextArray;
     bool inDialogue = false;
     Interaction lastDialogueInteract;
@@ -54,6 +55,7 @@ public class PlayerManager : LTI.Singleton<PlayerManager> {
     // Update is called once per frame
     void Update()
     {
+        m_gold.text = Inventory.Instance.GetGold().ToString();
         if (!inDialogue)
         {
             if (Input.GetKeyDown(KeyCode.E))
