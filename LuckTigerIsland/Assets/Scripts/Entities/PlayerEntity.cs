@@ -186,7 +186,7 @@ public class PlayerEntity : Entity
 
     void UpdateSpeed()
     {
-        if (BattleControl.turnBeingHad == false)
+        if (BattleControl.turnBeingHad == false && currentAffliction != Affliction.eStunned)
         {
             currentSpeed = currentSpeed + 0.25f;
             if (currentSpeed >= GetRequiredSpeed())
@@ -319,7 +319,104 @@ public class PlayerEntity : Entity
     {
 
         Debug.Log(this.name + ": Choose Target");
-        if (Input.GetKeyDown("1") || m_BattleButton.GetActionTargetNumber() == 10)
+        if (m_chosenAction.attackType != "Buff")
+        {
+            if (Input.GetKeyDown("1") || m_BattleButton.GetActionTargetNumber() == 10)
+            {
+                HandleTurns myAttack = new HandleTurns
+                {
+                    Attacker = name, //Who is attacking
+                    Type = "Player",//What type are they
+                    AttackingGameObject = this.gameObject, //What gameObject is attacking
+                    chosenAttack = m_chosenAction,
+                    AttackTarget = BC.EnemiesInBattle[0]
+
+                };
+                if (BC.EnemiesInBattle[0].GetComponent<EnemEntity>().isAlive)
+                {
+                    BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
+                    m_chosenTarget = true;
+                    attackDescriptionText.text = this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!";
+                    Debug.Log(this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!");
+                    StartCoroutine("FadeText");
+                }
+                else
+                {
+                    Debug.Log("That enemy is dead choose another");
+                }
+            }
+            if (Input.GetKeyDown("2") || m_BattleButton.GetActionTargetNumber() == 11)
+            {
+                HandleTurns myAttack = new HandleTurns
+                {
+                    Attacker = name, //Who is attacking
+                    Type = "Player",//What type are they
+                    AttackingGameObject = this.gameObject, //What gameObject is attacking
+                    chosenAttack = m_chosenAction,
+                    AttackTarget = BC.EnemiesInBattle[1]
+                };
+                if (BC.EnemiesInBattle[1].GetComponent<EnemEntity>().isAlive)
+                {
+                    BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
+                    m_chosenTarget = true;
+                    attackDescriptionText.text = this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!";
+                    Debug.Log(this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!");
+                    StartCoroutine("FadeText");
+                }
+                else
+                {
+                    Debug.Log("That enemy is dead choose another");
+                }
+            }
+            if (Input.GetKeyDown("3") || m_BattleButton.GetActionTargetNumber() == 12)
+            {
+                HandleTurns myAttack = new HandleTurns
+                {
+                    Attacker = name, //Who is attacking
+                    Type = "Player",//What type are they
+                    AttackingGameObject = this.gameObject, //What gameObject is attacking
+                    chosenAttack = m_chosenAction,
+                    AttackTarget = BC.EnemiesInBattle[2]
+                };
+                if (BC.EnemiesInBattle[2].GetComponent<EnemEntity>().isAlive)
+                {
+                    BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
+                    m_chosenTarget = true;
+                    attackDescriptionText.text = this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!";
+                    Debug.Log(this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!");
+                    StartCoroutine("FadeText");
+                }
+                else
+                {
+                    Debug.Log("That enemy is dead choose another");
+                }
+            }
+            if (Input.GetKeyDown("4") || m_BattleButton.GetActionTargetNumber() == 13)
+            {
+                HandleTurns myAttack = new HandleTurns
+                {
+                    Attacker = name, //Who is attacking
+                    Type = "Player",//What type are they
+                    AttackingGameObject = this.gameObject, //What gameObject is attacking
+                    chosenAttack = m_chosenAction,
+                    AttackTarget = BC.EnemiesInBattle[3]
+                };
+                if (BC.EnemiesInBattle[3].GetComponent<EnemEntity>().isAlive)
+                {
+                    BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
+                    m_chosenTarget = true;
+                    attackDescriptionText.text = this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!";
+                    Debug.Log(this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!");
+                    StartCoroutine("FadeText");
+                }
+                else
+                {
+                    Debug.Log("That enemy is dead choose another");
+                }
+            }
+        }
+        else
+              if (Input.GetKeyDown("1") || m_BattleButton.GetActionTargetNumber() == 10)
         {
             HandleTurns myAttack = new HandleTurns
             {
@@ -327,15 +424,14 @@ public class PlayerEntity : Entity
                 Type = "Player",//What type are they
                 AttackingGameObject = this.gameObject, //What gameObject is attacking
                 chosenAttack = m_chosenAction,
-                AttackTarget = BC.EnemiesInBattle[0]
-                
+                AttackTarget = BC.PartyMembersInBattle[0]
+
             };
             if (BC.EnemiesInBattle[0].GetComponent<EnemEntity>().isAlive)
             {
                 BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
                 m_chosenTarget = true;
-                attackDescriptionText.text = this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!";
-                Debug.Log(this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!");
+                attackDescriptionText.text = this.gameObject.name + " Is going to help " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName;
                 StartCoroutine("FadeText");
             }
             else
@@ -351,14 +447,13 @@ public class PlayerEntity : Entity
                 Type = "Player",//What type are they
                 AttackingGameObject = this.gameObject, //What gameObject is attacking
                 chosenAttack = m_chosenAction,
-                AttackTarget = BC.EnemiesInBattle[1]
+                AttackTarget = BC.PartyMembersInBattle[1]
             };
             if (BC.EnemiesInBattle[1].GetComponent<EnemEntity>().isAlive)
             {
                 BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
                 m_chosenTarget = true;
-                attackDescriptionText.text = this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!";
-                Debug.Log(this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!");
+                attackDescriptionText.text = this.gameObject.name + " Is going to help " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName;
                 StartCoroutine("FadeText");
             }
             else
@@ -374,14 +469,13 @@ public class PlayerEntity : Entity
                 Type = "Player",//What type are they
                 AttackingGameObject = this.gameObject, //What gameObject is attacking
                 chosenAttack = m_chosenAction,
-                AttackTarget = BC.EnemiesInBattle[2]
+                AttackTarget = BC.PartyMembersInBattle[2]
             };
             if (BC.EnemiesInBattle[2].GetComponent<EnemEntity>().isAlive)
             {
                 BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
                 m_chosenTarget = true;
-                attackDescriptionText.text = this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!";
-                Debug.Log(this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!");
+                attackDescriptionText.text = this.gameObject.name + " Is going to help " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName;
                 StartCoroutine("FadeText");
             }
             else
@@ -397,14 +491,13 @@ public class PlayerEntity : Entity
                 Type = "Player",//What type are they
                 AttackingGameObject = this.gameObject, //What gameObject is attacking
                 chosenAttack = m_chosenAction,
-                AttackTarget = BC.EnemiesInBattle[3]
+                AttackTarget = BC.PartyMembersInBattle[3]
             };
             if (BC.EnemiesInBattle[3].GetComponent<EnemEntity>().isAlive)
             {
                 BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
                 m_chosenTarget = true;
-                attackDescriptionText.text = this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!";
-                Debug.Log(this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!");
+                attackDescriptionText.text = this.gameObject.name + " Is going to help " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName;
                 StartCoroutine("FadeText");
             }
             else
@@ -433,11 +526,18 @@ public class PlayerEntity : Entity
                 yield return null; //wait until moveToward is true
             }
         }
-        else
+        else if (m_chosenAction.attackType == "Magic")
         {
             while (MoveTo(magicAttack))
             {
                 yield return null; //wait until moveToward is true
+            }
+        }
+        else
+        {
+            while (MoveTo(meleeAttack))
+            {
+                yield return null;
             }
         }
         yield return new WaitForSeconds(1.5f);
