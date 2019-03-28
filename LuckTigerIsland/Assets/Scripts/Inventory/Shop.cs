@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.EventSystems;
 [System.Serializable]
 public struct ShopItem
 {
     public InventoryObject sItem;
+
     [HideInInspector]
     public int sPrice;
 
@@ -21,26 +22,30 @@ public class Shop : InteractEvent
     [SerializeField]
     public List<ShopItem> shop;
     public GameObject shopUI;
-
+    public GameObject closeObject;
     [SerializeField]
     private float m_buyMod = 1.1f;
     [SerializeField]
     private float m_sellMod = 0.9f;
-
+    EventSystem m_eventSystem;
     private void Start()
     {
-        foreach(ShopItem _si in shop)
+        m_eventSystem = EventSystem.current;
+        foreach (ShopItem _si in shop)
         {
             _si.ApplyPriceMod(m_buyMod);
         }
+
     }
 
     public void BuyItem(ShopItem _item)
     {
-        if (Inventory.Instance.GetGold() >= _item.sPrice)
+
+        if (Inventory.Instance.GetGold() >= _item.sItem.Price)
         {
             Inventory.Instance.AddToInventory(_item.sItem);
-            Inventory.Instance.ReduceGold(_item.sPrice);
+            Debug.Log(_item.sPrice);
+            Inventory.Instance.ReduceGold(_item.sItem.Price);
         }
         else
         {
@@ -57,6 +62,7 @@ public class Shop : InteractEvent
     public override void Interact(int argID)
     {
         shopUI.SetActive(true);
+        m_eventSystem.SetSelectedGameObject(closeObject);
 
     }
 }

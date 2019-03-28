@@ -17,13 +17,16 @@ public class InventoryListControl : MonoBehaviour {
     private TextMeshProUGUI m_description;
     [SerializeField]
     private TextMeshProUGUI m_price;
+    int index = -1;
 
- 
     private void Start()
+    {
+    
+    }
+    private void OnEnable()
     {
         UpdateInventoryUI();
     }
-
     public void UpdateInventoryUI()
     {
         try
@@ -44,6 +47,7 @@ public class InventoryListControl : MonoBehaviour {
                         button.GetComponent<InventoryListButton>().SetImage(Inventory.Instance.inventory[i].iObject.Image);
                         button.GetComponent<InventoryListButton>().SetPrice(Inventory.Instance.inventory[i].iObject.Price);
                         button.GetComponent<InventoryListButton>().SetAmount(Inventory.Instance.inventory[i].amount);
+                        button.GetComponent<InventoryListButton>().SetIndex(index);
                     }
                     else
                     {

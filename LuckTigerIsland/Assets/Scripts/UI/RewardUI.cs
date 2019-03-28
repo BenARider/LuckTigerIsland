@@ -5,43 +5,58 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
-public class RewardUI : Selectable, ISelectHandler
+public class RewardUI : MonoBehaviour, ISelectHandler,IDeselectHandler
 {
     BaseEventData m_baseEvent = null;
-    private Color m_buttonColorNonSelect;
-    private Color m_buttonColorSelect;
-    private Image m_buttonHighlight;
     public TextMeshProUGUI ItemTitle;
     public TextMeshProUGUI ItemDescription;
-    private Rewards rewards;
+    public Button m_rewardButton;
+    [SerializeField]
+    private int m_nameNumSet;//Could be used in combo with random number for rewards
+    Inventory m_inventory;
+    [SerializeField]
+    InventoryObject m_item;
+    [SerializeField]
+    Image m_image;
+    Rewards m_rewards;
     // Use this for initialization
-    protected override void Start()
+    void Start()
     {
-        m_buttonHighlight = GetComponent<Image>();
-        m_buttonColorNonSelect = new Color(0.8f, 0.8f, 0.8f, 0.8f);
-        m_buttonColorSelect = new Color(1f, 1f, 1f,1f);
-        m_buttonHighlight.color = m_buttonColorNonSelect;
-       
-        rewards = GameObject.Find("RewardUI").GetComponent<Rewards>();
-        ItemTitle.text = rewards.m_rewards[0].name;
-
+        m_inventory = GameObject.Find("Player").GetComponent<Inventory>();
+        m_image = GetComponent<Image>();
+        m_rewards = GameObject.Find("RewardUI").GetComponent<Rewards>();
+      
+     
     }
-
+    public int GetNameNumSet()
+    {
+        return m_nameNumSet;
+    }
+    public void SetNameNumSet(int _nameNum)
+    {
+        m_nameNumSet += _nameNum;
+    }
     // Update is called once per frame
     void Update()
     {
-        if (IsHighlighted(m_baseEvent) == true)
-        {
-            m_buttonHighlight.color = m_buttonColorSelect;
 
-            ItemDescription.text = rewards.m_rewards[0].Description;
-        }
-        
-        if (IsHighlighted(m_baseEvent) == false)
-        {
-            m_buttonHighlight.color = m_buttonColorNonSelect;
-
-            ItemDescription.text = "";
-        }
+        m_item = m_rewards.m_rewards[m_nameNumSet];
+        m_image.sprite = m_rewards.m_rewards[m_nameNumSet].Image;
+    }
+    public void OnSelect(BaseEventData _data)
+    {
+        ItemDescription.text = m_rewards.m_rewards[m_nameNumSet].Description;
+    }
+    public void OnDeselect(BaseEventData _data)
+    {
+        ItemDescription.text = "";
+    }
+    public void AddToInventory()
+    {
+        m_inventory.AddToInventory(m_item);
+    }
+    public void Destroy()
+    {
+        Destroy(this.gameObject);
     }
 }

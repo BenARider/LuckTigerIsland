@@ -15,8 +15,8 @@ public class ShopSpaceCreator : MonoBehaviour
     private Shop m_shop;
     private bool m_startIncrease;
     private float m_yPosColumn2;
-    [SerializeField]
-    GameObject m_closeObject;
+    ShopBuyItem m_buyitem;
+   
     // Use this for initialization
     void Start()
     {
@@ -30,13 +30,20 @@ public class ShopSpaceCreator : MonoBehaviour
     private void OnEnable()
     {
         m_yPosColumn2 = 0;
-        m_eventSystem.SetSelectedGameObject(m_closeObject);
+       // m_eventSystem.SetSelectedGameObject(m_closeObject);
         m_shopUI = GameObject.Find("Item_Base").GetComponent<ShopMenuUI>();
-        m_parentTransform = GameObject.Find(this.gameObject.name).GetComponent<Transform>();
+        m_buyitem = GameObject.Find("Item_Base").GetComponent<ShopBuyItem>();
+        m_parentTransform = GameObject.Find("SpawnerTransform").GetComponent<Transform>();
         m_parentTransform2 = GameObject.Find("SpawnerTransform2").GetComponent<Transform>();
         m_shop = GameObject.Find("ShopNpc").GetComponent<Shop>();
+     
         for (int i = 0; i < m_shop.shop.Count; ++i)
         {
+           
+            ShopItem _item;
+            _item.sItem = m_shop.shop[i].sItem;
+            _item.sPrice = _item.sItem.Price;
+            m_buyitem.m_item = _item;
             if (m_startIncrease == false)
             {
                 m_shopUI.SetNameNumSet(0);
@@ -44,6 +51,7 @@ public class ShopSpaceCreator : MonoBehaviour
             if (i < 20)
             {
                 m_shopUI = Instantiate(m_shopUI, new Vector2(m_parentTransform.transform.position.x, i * -50.0f), m_parentTransform.rotation);
+             
                 m_shopUI.transform.SetParent(m_parentTransform, false);
                 m_shopUI.m_itemButton.interactable = true;
             }
@@ -59,6 +67,7 @@ public class ShopSpaceCreator : MonoBehaviour
             {
                 m_shopUI.SetNameNumSet(1);
             }
+    
             m_startIncrease = true;
             m_shopUI.ItemNameText.text = m_shop.shop[m_shopUI.GetNameNumSet()].sItem.name;
 

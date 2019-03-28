@@ -22,6 +22,7 @@ public struct InventoryObjectStruct
 
 public class Inventory : LTI.Singleton<Inventory>
 {
+    [SerializeField]
     private int m_gold;
 
     private int m_maxInventorySize = 20;

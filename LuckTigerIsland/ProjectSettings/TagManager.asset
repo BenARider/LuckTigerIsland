@@ -17,6 +17,7 @@ TagManager:
   - AudioManager
   - DeadPM
   - DeadEnemy
+  - BaseButton
   layers:
   - Default
   - TransparentFX
