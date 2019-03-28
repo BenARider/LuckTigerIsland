@@ -44,7 +44,6 @@ public class Shop : InteractEvent
         if (Inventory.Instance.GetGold() >= _item.sItem.Price)
         {
             Inventory.Instance.AddToInventory(_item.sItem);
-            Debug.Log(_item.sPrice);
             Inventory.Instance.ReduceGold(_item.sItem.Price);
         }
         else
