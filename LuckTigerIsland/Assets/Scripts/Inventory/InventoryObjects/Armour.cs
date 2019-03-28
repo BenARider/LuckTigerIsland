@@ -6,6 +6,6 @@ using UnityEngine.UI;
 public class Armour : InventoryObject
 {
     public int defence = 10;
-
+   
 }
 

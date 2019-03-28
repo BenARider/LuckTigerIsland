@@ -17,4 +17,5 @@ MonoBehaviour:
   Price: 5
   Equippable: Yes
   ItemType: Weapon
+  isEquipped: 0
   attack: 4

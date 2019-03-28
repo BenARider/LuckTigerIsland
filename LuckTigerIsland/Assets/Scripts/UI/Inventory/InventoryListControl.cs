@@ -38,7 +38,7 @@ public class InventoryListControl : MonoBehaviour {
                 {
                     GameObject button = Instantiate(m_buttonTemplate) as GameObject;
                     button.SetActive(true);
-
+                    index++;
 
                     if (Inventory.Instance.inventory[i].iObject != null)
                     {

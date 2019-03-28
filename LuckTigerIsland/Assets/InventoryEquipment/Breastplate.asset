@@ -17,4 +17,6 @@ MonoBehaviour:
   Price: 20
   Equippable: Yes
   ItemType: Armour
+  isEquipped: 0
+  objectType: 1
   defence: 15
