@@ -56,11 +56,6 @@ public class InventoryListButton : MonoBehaviour,ISelectHandler {
     {
         isNull = _b;
     }
-    public void SellItem()
-    {
-        m_inventoryObject = Inventory.Instance.inventory[this.gameObject.GetComponent<InventoryListButton>().GetIndex()].iObject;
-        m_shop.SellItem(m_inventoryObject);
-    }
 
     public void OnSelect(BaseEventData _data)
     {

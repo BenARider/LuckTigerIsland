@@ -8,112 +8,114 @@ using UnityEngine.EventSystems;
 public class EquipEntity : MonoBehaviour
 {
     PlayerEntity m_player;
-    public List<InventoryObject> inventory;
-    
-   public Armour[] m_armourItem; //For equipping
-  
-    public Weapon[] m_weaponItem; //For equipping
     [SerializeField]
     Health_Potion m_health_Potion;
+
     [SerializeField]
-    private List<Image> m_inventorySlots = new List<Image>();// Try to remove and use just the inventory object list
-    private int m_id = 0;
+    InventoryObject m_armour;
+    [SerializeField]
+    InventoryObject m_weapon;
     protected bool equipped = false;
     private bool m_addedItem = false;
     private bool m_removeHealthPotion = false;
     private Color m_itemFadeColour;
+    [SerializeField]
+    private Image[] m_equipImages;
+    private TextMeshProUGUI m_partyMemberName;
+    private int m_partyImageIndex;
     // Use this for initialization
 
     void Start()
     {
-        m_player = GameObject.Find("Player").GetComponent<PlayerEntity>();
+        m_player = GameObject.Find("Luck").GetComponent<PlayerEntity>();
+        m_partyMemberName = GameObject.Find("PartyMemberName").GetComponent<TextMeshProUGUI>();
         m_itemFadeColour.a = 0.0f;
     }
+
 
     // Update is called once per frame
     void Update()
     {
-    }
-    public void ClearItem(int _id)
-    {
-        if (m_inventorySlots[_id].name != "EmptyInventorySlot")
+        if (this.gameObject.activeSelf == true)
         {
-          
-        }
-    
-    }
-   public Armour[] GetArmourItem()
-    {
-       
-        return m_armourItem;
-    }
-    public Weapon[] GetWeaponItem()
-    {
-
-        return m_weaponItem;
-    }
-
-    public void SetStats(int _id)
-    {
-        if (m_inventorySlots[_id].name != "EmptyInventorySlot")
-        {
-            if (m_inventorySlots[_id].gameObject.name == "Chainmail")
+            m_equipImages[0].sprite = m_armour.Image;
+            m_equipImages[1].sprite = m_weapon.Image;
+            if (m_partyImageIndex == 0)
             {
-                m_player.SetDefence(m_armourItem[0].defence);
-                print("Set defence stat ");
-                print("Image is" + this.gameObject.name);
-                equipped = true;
-            }
-            if (m_inventorySlots[_id].gameObject.name == "Breastplate")
-            {
-                m_player.SetDefence(m_armourItem[1].defence);
-                print("Set defence stat ");
-                print("Image is" + this.gameObject.name);
-                equipped = true;
-            }
 
-            if (m_inventorySlots[_id].gameObject.name == "Shortsword")
-            {
-                m_player.SetStrength(m_weaponItem[0].attack);
-                print("Set attack stat ");
-                print("Image is" + this.gameObject.name);
-                equipped = true;
+                m_partyMemberName.text = "Luck";
             }
-            inventory.RemoveAt(0);
-            m_itemFadeColour.a = 0.5f;
-            m_itemFadeColour.r = 1.0f;
-            m_itemFadeColour.g = 1.0f;
-            m_itemFadeColour.b = 1.0f;
-            m_inventorySlots[_id].sprite = null;
-            m_inventorySlots[_id].name = "EmptyInventorySlot";
-            m_inventorySlots[_id].color = m_itemFadeColour;
+            if (m_partyImageIndex == 1)
+            {
+
+                m_partyMemberName.text = "Duck";
+            }
+            if (m_partyImageIndex == 2)
+            {
+
+                m_partyMemberName.text = "Buck";
+            }
+            if (m_partyImageIndex == 3)
+            {
+                m_partyMemberName.text = "Phil";
+            }
+            if (m_partyImageIndex == 4)
+            {
+                m_partyImageIndex = 0;
+            }
         }
 
     }
-    public void AddItemToInventory(InventoryObject _object)
+    public void UnEquip(string _slot)
     {
-       // List<InventoryObjectStruct> invList =  Inventory.Instance.inventory;
+        if(_slot == "Armour")
+        {
+            m_armour = null;
+            m_equipImages[0].sprite = null;
+        }
+        if(_slot == "Weapon")
+        {
+            m_weapon = null;
+            m_equipImages[1].sprite = null;
+        }
+     
+
+
+    }
+    public void Equip(InventoryObject _object)
+    {
+        if(this.gameObject.activeSelf == true)
+        {
+            for (int i = 0; i < Inventory.Instance.inventory.Count; ++i)
+            {
+                if (_object.Equippable == "Yes")
+                {
+                    if (m_equipImages[0].sprite == null)
+                    {
+                        if (_object.ItemType == "Armour")
+                        {
+                            m_armour = _object;
+                        }
+                    }
+                    if (m_equipImages[1].sprite == null)
+                    {
+                        if (_object.ItemType == "Weapon")
+                        {
+                            m_weapon = _object;
+
+                        }
+                    }
+                }
+                   
+            }
+        }
         
-        m_id++;
-        for (int i = 0; i < m_inventorySlots.Count; ++i)
-        {
-            if (m_inventorySlots[i].name == "EmptyInventorySlot" && m_addedItem == false)
-            {
-               // inventory.Add(_object);
-                m_itemFadeColour.a = 1.0f;
-                m_itemFadeColour.r = 1.0f;
-                m_itemFadeColour.g = 1.0f;
-                m_itemFadeColour.b = 1.0f;
-                m_addedItem = true;
-                print("Added " + inventory[i]);
-                m_inventorySlots[0].sprite = Inventory.Instance.inventory[0].iObject.Image;
-                m_inventorySlots[0].color = m_itemFadeColour;
-                m_inventorySlots[0].name = Inventory.Instance.inventory[0].iObject.name;
-
-            }
-        }
-        m_addedItem = false;
     }
+    public void SetPlayerImageId(int _index)
+    {
+        m_partyImageIndex += _index;
+    }
+
     public void SetRemoveHpPotionState(bool _remove)
     {
         m_removeHealthPotion = _remove;

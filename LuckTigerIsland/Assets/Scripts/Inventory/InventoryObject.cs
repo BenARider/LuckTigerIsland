@@ -9,5 +9,7 @@ public class InventoryObject : ScriptableObject {
     public Sprite Image;
     public string Description;
     public int Price;
+    public string Equippable;//Yes or No
+    public string ItemType;
 }
 

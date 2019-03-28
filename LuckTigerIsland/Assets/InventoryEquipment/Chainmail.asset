@@ -15,4 +15,6 @@ MonoBehaviour:
   Image: {fileID: 21300000, guid: d4a3fae453cc44c498f4bf29510addb9, type: 3}
   Description: A piece of chainmail
   Price: 25
+  Equippable: Yes
+  ItemType: Armour
   defence: 12
