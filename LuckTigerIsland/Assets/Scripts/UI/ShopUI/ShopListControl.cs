@@ -35,6 +35,7 @@ public class ShopListControl : MonoBehaviour
         {
             if (m_shop.shop.Count > 0)
             {
+                ResetChildren();
                 SetDefaults();
                 for (int i = 0; i < m_shop.shop.Count; i++)
                 {
@@ -84,4 +85,19 @@ public class ShopListControl : MonoBehaviour
         m_price.text = "Price: " + _price.ToString();
     }
 
+    private void ResetChildren()
+    {
+        bool first = false;
+        foreach (Transform child in m_buttonTemplate.transform.parent.transform)
+        {
+            if (!first)
+            {
+                first = true;
+            }
+            else
+            {
+                GameObject.Destroy(child.gameObject);
+            }
+        }
+    }
 }

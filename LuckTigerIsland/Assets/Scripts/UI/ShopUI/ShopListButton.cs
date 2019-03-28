@@ -57,6 +57,7 @@ public class ShopListButton : MonoBehaviour,ISelectHandler {
     public void Buy()
     {
         m_item.sItem = m_shop.shop[this.gameObject.GetComponent<ShopListButton>().GetIndex()].sItem;
+        
         m_shop.BuyItem(m_item);
     }
     public void OnEnable()

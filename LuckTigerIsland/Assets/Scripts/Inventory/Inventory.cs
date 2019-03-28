@@ -12,14 +12,10 @@ public class InventoryObjectStruct
 
     public void IncreaseAmount(int _amount)
     {
-        Debug.Log("current amount: " + amount);
-        Debug.Log("Amount to add:  "+ _amount );
         amount += _amount;
-        Debug.Log("current amount: " + amount);
     }
     public void DecreaseAmount(int _amount)
     {
-        Debug.Log("decrease amount");
         amount -= _amount;
     }
 }
