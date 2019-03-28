@@ -41,10 +41,11 @@ public class Shop : InteractEvent
     public void BuyItem(ShopItem _item)
     {
 
-        if (Inventory.Instance.GetGold() >= _item.sPrice)
+        if (Inventory.Instance.GetGold() >= _item.sItem.Price)
         {
             Inventory.Instance.AddToInventory(_item.sItem);
-            Inventory.Instance.ReduceGold(_item.sPrice);
+            Debug.Log(_item.sPrice);
+            Inventory.Instance.ReduceGold(_item.sItem.Price);
         }
         else
         {
