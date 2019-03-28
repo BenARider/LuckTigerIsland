@@ -229,8 +229,13 @@ Transform:
   m_Children:
   - {fileID: 558582637}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &378691671 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1942255325939374, guid: e09f1bcd3a2c10443ab1117241ea0c1b,
+    type: 2}
+  m_PrefabInternal: {fileID: 1530490115}
 --- !u!1 &558582636
 GameObject:
   m_ObjectHideFlags: 0
@@ -815,7 +820,7 @@ Tilemap:
   - first: {x: -9, y: -4, z: 0}
     second:
       m_TileIndex: 5
-      m_TileSpriteIndex: 5
+      m_TileSpriteIndex: 7
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -3167,12 +3172,12 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 16
     m_Data: {fileID: 21300010, guid: c2b5f86fd0325a94e8737350202b9357, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 21300084, guid: c2b5f86fd0325a94e8737350202b9357, type: 3}
-  - m_RefCount: 16
-    m_Data: {fileID: 21300086, guid: c2b5f86fd0325a94e8737350202b9357, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
+  - m_RefCount: 16
+    m_Data: {fileID: 21300086, guid: c2b5f86fd0325a94e8737350202b9357, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300084, guid: c2b5f86fd0325a94e8737350202b9357, type: 3}
   - m_RefCount: 6
     m_Data: {fileID: 21300050, guid: c2b5f86fd0325a94e8737350202b9357, type: 3}
   - m_RefCount: 1
@@ -3277,7 +3282,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4322578184612018, guid: e09f1bcd3a2c10443ab1117241ea0c1b, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224204660697321674, guid: e09f1bcd3a2c10443ab1117241ea0c1b,
         type: 2}
@@ -3574,6 +3579,28 @@ Prefab:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114036129503425902, guid: e09f1bcd3a2c10443ab1117241ea0c1b,
+        type: 2}
+      propertyPath: gameOverPrefab
+      value: 
+      objectReference: {fileID: 1468155589232072, guid: 65e61657945fb7a4cacf0063d6009ac3,
+        type: 2}
+    - target: {fileID: 114036129503425902, guid: e09f1bcd3a2c10443ab1117241ea0c1b,
+        type: 2}
+      propertyPath: m_MainMenu
+      value: 
+      objectReference: {fileID: 1849283676526088, guid: 65e61657945fb7a4cacf0063d6009ac3,
+        type: 2}
+    - target: {fileID: 114265308521281748, guid: e09f1bcd3a2c10443ab1117241ea0c1b,
+        type: 2}
+      propertyPath: m_FirstSelected
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114036129503425902, guid: e09f1bcd3a2c10443ab1117241ea0c1b,
+        type: 2}
+      propertyPath: actionOne
+      value: 
+      objectReference: {fileID: 378691671}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e09f1bcd3a2c10443ab1117241ea0c1b, type: 2}
   m_IsPrefabParent: 0
