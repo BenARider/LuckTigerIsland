@@ -9,6 +9,8 @@ public class BaseAttack : ScriptableObject
     public string attackDescription; //feed into ui
     public string attackType; //declare magic or melee for different movement
     public int attackDamage; //used for strength scaling
+    public int skillMultiplier = 1; //used for multipliers for strong attacks/buffs. Keep at 1 otherwise
+    public float skillDuration = 0; //used for anything with afflictions or buffs. Use whole numbers for afflictions, can use decimals for buffs.
     public int attackCost; //mp cost for abilities. Feed into ui
     public Sprite attackImage;
     public string attackAffliction; //declares what affliction should be applied on contact

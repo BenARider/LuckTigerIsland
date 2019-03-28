@@ -85,6 +85,7 @@ public class EnemEntity : Entity
 
         attackDescriptionText = GameObject.Find("Enemy_Attack_Description_Text").GetComponent<TextMeshProUGUI>();
         turnText = GameObject.Find("Enemy_Turn_Text").GetComponent<TextMeshProUGUI>();
+        SetPreviousStats();//Keep this at the bottom
     }
 
     // Update is called once per frame
@@ -99,6 +100,7 @@ public class EnemEntity : Entity
                 UpdateSpeed(); //Speed check
                 break;
             case (TurnState.eChooseAction):
+                CheckBuffs();
                 rollAttack();
                 ChooseAction(); //Do action
                 currentState = TurnState.eWaiting; //move to waiting unil BC tells the entity to do the action
@@ -252,14 +254,14 @@ public class EnemEntity : Entity
     void enemyDoDamge()
     {
         int calculateDamage = GetStrength() + BC.NextTurn[0].chosenAttack.attackDamage;
-        EntityToAttack.GetComponent<PlayerEntity>().TakeDamage(calculateDamage);
+        EntityToAttack.GetComponent<PlayerEntity>().TakeDamage(calculateDamage, m_chosenAction);
     }
     void EnemyPartyWideDamage()
     {
         int calculateDamage = GetStrength() + BC.NextTurn[0].chosenAttack.attackDamage;
         for(int i = 0; i < BC.PartyMembersInBattle.Count;i++)
         {
-            BC.PartyMembersInBattle[i].GetComponent<PlayerEntity>().TakeDamage(calculateDamage);
+            BC.PartyMembersInBattle[i].GetComponent<PlayerEntity>().TakeDamage(calculateDamage, m_chosenAction);
         }
     }
     IEnumerator FadeText()
