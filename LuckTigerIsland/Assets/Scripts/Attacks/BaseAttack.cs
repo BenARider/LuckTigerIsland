@@ -11,6 +11,8 @@ public class BaseAttack : ScriptableObject
     public int attackDamage; //used for strength scaling
     public int attackCost; //mp cost for abilities. Feed into ui
     public Sprite attackImage;
+    public string attackAffliction; //declares what affliction should be applied on contact
+
     /* 
     
     To create a new ability/skill you need to create a new script and have it inherit from this class

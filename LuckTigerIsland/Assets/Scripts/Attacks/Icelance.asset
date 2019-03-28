@@ -16,3 +16,5 @@ MonoBehaviour:
   attackType: Magic
   attackDamage: 10
   attackCost: 10
+  attackImage: {fileID: 0}
+  attackAffliction: Freeze

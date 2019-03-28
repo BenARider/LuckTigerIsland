@@ -544,6 +544,8 @@ public class PlayerEntity : Entity
         //do damage
         playerDoDamge();
 
+        addAffliction(m_chosenAction);
+
         while (MoveTo(startPosition))
         {
             yield return null; //wait until moveToward is true

@@ -96,7 +96,7 @@ public class Entity : MonoBehaviour {
     {
         eNone,
         eOnFire,
-        eFrozen,
+        eFreeze,
         eInfected,
         eStunned
     }
@@ -110,6 +110,7 @@ public class Entity : MonoBehaviour {
     public List<InventoryObject> HealthPotions = new List<InventoryObject>();
     public List<InventoryObject> ManaPotions = new List<InventoryObject>();
     protected BaseAttack m_chosenAction;
+
 
     protected bool MoveTo(Vector3 target)
     {
@@ -139,7 +140,7 @@ public class Entity : MonoBehaviour {
 			m_health -= 5; //Do some damge calc against resistances and weaknesses
 		}
 
-		if (currentAffliction == Affliction.eFrozen)
+		if (currentAffliction == Affliction.eFreeze)
 		{
 			m_health -= 2;
 		}
@@ -169,6 +170,22 @@ public class Entity : MonoBehaviour {
 		alreadyAfflicted = false;
 	}
 
+    protected void addAffliction(BaseAttack AttackAffliction)
+    {
+
+        if (AttackAffliction.attackAffliction == "Fire")
+            currentAffliction = Affliction.eOnFire;
+
+        if (AttackAffliction.attackAffliction == "Freeze")
+            currentAffliction = Affliction.eFreeze;
+
+        if (AttackAffliction.attackAffliction == "Infect")
+            currentAffliction = Affliction.eInfected;
+
+        if (AttackAffliction.attackAffliction == "Stun")
+            currentAffliction = Affliction.eStunned;
+
+    }
 
 	//-----------------------------------------------------------------------------------------------------
 	//Setters and Getters
