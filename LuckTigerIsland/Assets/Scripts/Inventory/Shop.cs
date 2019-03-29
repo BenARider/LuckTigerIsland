@@ -44,7 +44,6 @@ public class Shop : InteractEvent
         if (Inventory.Instance.GetGold() >= _item.sItem.Price)
         {
             Inventory.Instance.AddToInventory(_item.sItem);
-            Debug.Log(_item.sPrice);
             Inventory.Instance.ReduceGold(_item.sItem.Price);
         }
         else
@@ -55,8 +54,14 @@ public class Shop : InteractEvent
 
     public void SellItem(InventoryObject _object)
     {
-        Inventory.Instance.IncreaseGold(Mathf.CeilToInt(_object.Price * m_sellMod));
-        Inventory.Instance.inventory.Find(x => x.iObject == _object).DecreaseAmount(1);
+        if (Inventory.Instance.inventory.Find(x => x.iObject == _object).amount > 0)
+        {
+            Inventory.Instance.IncreaseGold(Mathf.CeilToInt(_object.Price * m_sellMod));
+            Inventory.Instance.inventory.Find(x => x.iObject == _object).DecreaseAmount(1);
+        } else
+        {
+            Debug.Log("Not enough left to sell!");
+        }
     }
 
     public override void Interact(int argID)

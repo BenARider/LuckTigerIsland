@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class InventoryListControl : MonoBehaviour {
+public class SellListControl : MonoBehaviour
+{
 
     [SerializeField]
     private GameObject m_buttonTemplate;
@@ -19,7 +20,7 @@ public class InventoryListControl : MonoBehaviour {
     private TextMeshProUGUI m_price;
     int index = -1;
 
- 
+
     private void OnEnable()
     {
         UpdateInventoryUI();
@@ -40,17 +41,18 @@ public class InventoryListControl : MonoBehaviour {
 
                     if (Inventory.Instance.inventory[i].iObject != null)
                     {
-                        button.GetComponent<InventoryListButton>().SetText(Inventory.Instance.inventory[i].iObject.name);
-                        button.GetComponent<InventoryListButton>().SetDescription(Inventory.Instance.inventory[i].iObject.Description);
-                        button.GetComponent<InventoryListButton>().SetImage(Inventory.Instance.inventory[i].iObject.Image);
-                        button.GetComponent<InventoryListButton>().SetPrice(Inventory.Instance.inventory[i].iObject.Price);
-                        button.GetComponent<InventoryListButton>().SetAmount(Inventory.Instance.inventory[i].amount);
-                        button.GetComponent<InventoryListButton>().SetIndex(index);
+                        button.GetComponent<SellListButton>().SetText(Inventory.Instance.inventory[i].iObject.name);
+                        button.GetComponent<SellListButton>().SetDescription(Inventory.Instance.inventory[i].iObject.Description);
+                        button.GetComponent<SellListButton>().SetImage(Inventory.Instance.inventory[i].iObject.Image);
+                        button.GetComponent<SellListButton>().SetPrice(Inventory.Instance.inventory[i].iObject.Price);
+                        button.GetComponent<SellListButton>().SetAmount(Inventory.Instance.inventory[i].amount);
+                        button.GetComponent<SellListButton>().SetObject(Inventory.Instance.inventory[i].iObject);
+                        button.GetComponent<SellListButton>().SetIndex(index);
                     }
                     else
                     {
-                        button.GetComponent<InventoryListButton>().SetText("NullInvSlot");
-                        button.GetComponent<InventoryListButton>().SetIsNull(true);
+                        button.GetComponent<SellListButton>().SetText("NullInvSlot");
+                        button.GetComponent<SellListButton>().SetIsNull(true);
                     }
 
                     button.transform.SetParent(m_buttonTemplate.transform.parent, false);
@@ -67,7 +69,7 @@ public class InventoryListControl : MonoBehaviour {
     private void SetDefaults()
     {
         m_image.sprite = Inventory.Instance.inventory[0].iObject.Image;
-        m_name.text = Inventory.Instance.inventory[0].iObject.name; 
+        m_name.text = Inventory.Instance.inventory[0].iObject.name;
         m_description.text = Inventory.Instance.inventory[0].iObject.Description;
         m_price.text = "Price: " + Inventory.Instance.inventory[0].iObject.Price;
     }
@@ -75,12 +77,13 @@ public class InventoryListControl : MonoBehaviour {
     private void ResetChildren()
     {
         bool first = false;
-        foreach(Transform child in m_buttonTemplate.transform.parent.transform)
+        foreach (Transform child in m_buttonTemplate.transform.parent.transform)
         {
             if (!first)
             {
                 first = true;
-            } else
+            }
+            else
             {
                 GameObject.Destroy(child.gameObject);
             }

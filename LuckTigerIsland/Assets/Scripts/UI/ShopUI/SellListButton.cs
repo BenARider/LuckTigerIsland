@@ -5,22 +5,31 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using TMPro;
-public class ShopListButton : MonoBehaviour,ISelectHandler {
+
+public class SellListButton : MonoBehaviour, ISelectHandler
+{
+
     [SerializeField]
     private TextMeshProUGUI m_text;
     [SerializeField]
-    private ShopListControl m_shopListControl;
-
+    private SellListControl m_sellControl;
+    [SerializeField]
+    Shop m_shop;
+    Inventory m_inventory;
+    InventoryObject m_inventoryObject;
     private string m_name;
     private Sprite m_image;
     private string m_description;
     private int m_price;
     private int m_amount;
-    [SerializeField]
     private int m_index;
     private bool isNull = false;
-    Shop m_shop;
-    ShopItem m_item;
+
+    public void SetText(string _text)
+    {
+        m_text.text = _text;
+        m_name = _text;
+    }
     public void SetIndex(int _index)
     {
         m_index += _index;
@@ -28,11 +37,6 @@ public class ShopListButton : MonoBehaviour,ISelectHandler {
     public int GetIndex()
     {
         return m_index;
-    }
-    public void SetText(string _text)
-    {
-        m_text.text = _text;
-        m_name = _text;
     }
     public void SetImage(Sprite _image)
     {
@@ -50,30 +54,30 @@ public class ShopListButton : MonoBehaviour,ISelectHandler {
     {
         m_amount = _amount;
     }
+    public void SetObject(InventoryObject _object)
+    {
+        Debug.Log("Object Set: " + _object);
+        m_inventoryObject = _object;
+    }
     public void SetIsNull(bool _b)
     {
         isNull = _b;
     }
-    public void Buy()
+    public void SellItem()
     {
-        m_item.sItem = m_shop.shop[this.gameObject.GetComponent<ShopListButton>().GetIndex()].sItem;
-        
-        m_shop.BuyItem(m_item);
+        m_shop.SellItem(m_inventoryObject);
+        //m_sellControl.UpdateInventoryUI();
     }
-    public void OnEnable()
-    {
-        m_shop = GameObject.Find("ShopNpc").GetComponent<Shop>();
-    }
+
     public void OnSelect(BaseEventData _data)
     {
         if (!isNull)
         {
-            m_shopListControl.ButtonClicked(m_image, m_name, m_description, m_price);
+            m_sellControl.ButtonClicked(m_image, m_name, m_description, m_price);
         }
         else
         {
             Debug.LogError("Inventory Slot has nothing in it!");
         }
     }
-  
 }

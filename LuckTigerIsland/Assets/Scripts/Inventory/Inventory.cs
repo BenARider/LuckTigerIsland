@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 [System.Serializable]
-public struct InventoryObjectStruct
+public class InventoryObjectStruct
 {
     [SerializeField]
     public InventoryObject iObject;
@@ -17,6 +17,11 @@ public struct InventoryObjectStruct
     public void DecreaseAmount(int _amount)
     {
         amount -= _amount;
+        if(amount <= 0)
+        {
+            int index = Inventory.Instance.inventory.FindIndex(x => x.iObject == iObject);
+            Inventory.Instance.inventory.RemoveAt(index);
+        }
     }
 }
 
@@ -38,23 +43,23 @@ public class Inventory : LTI.Singleton<Inventory>
     //Checks for an instance of the struct in the inventory. If one exists, increase its amount by the amount of item picked up. If it dosent exists, create it and give it an amount.
     public void AddToInventory(InventoryObject _object, int _amount = 1)
     {
-        
-        InventoryObjectStruct iobjstruct;
-        iobjstruct.iObject = _object;
-        iobjstruct.amount = _amount;
+
+        InventoryObjectStruct iobjstruct = new InventoryObjectStruct
+        {
+            iObject = _object,
+            amount = _amount
+        };
 
         bool contains = inventory.Exists(x => x.iObject == _object);
 
         //If the item struct already exists, increase the amount instead of making a new one.
         if (contains)
         {
-            inventory.Find(x => x.iObject == _object).IncreaseAmount(_amount);
-            Debug.Log("Item exists, amount increased");
+            inventory[inventory.FindIndex(x => x.iObject == _object)].IncreaseAmount(_amount);
         }
         else //Else, add it to the list.
         {
             inventory.Add(iobjstruct);
-            Debug.Log("Item didnt exist yet but does now");
         }
     }
 
