@@ -17,6 +17,11 @@ public class InventoryObjectStruct
     public void DecreaseAmount(int _amount)
     {
         amount -= _amount;
+        if(amount <= 0)
+        {
+            int index = Inventory.Instance.inventory.FindIndex(x => x.iObject == iObject);
+            Inventory.Instance.inventory.RemoveAt(index);
+        }
     }
 }
 

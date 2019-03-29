@@ -478,12 +478,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TexturePixelsPerWorldUnit: 16
---- !u!114 &94751953 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114490693442685428, guid: e3e332da1678329458ed4c884f941d3a,
-    type: 2}
-  m_PrefabInternal: {fileID: 1028130712}
-  m_Script: {fileID: 11500000, guid: 957a91fe9e0755841a7751fe72527029, type: 3}
 --- !u!1 &139564715 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1800716353065684, guid: a3dd50de933e3724f85895d8269e3eaf,
@@ -1919,31 +1913,21 @@ Prefab:
       propertyPath: m_RootOrder
       value: 16
       objectReference: {fileID: 0}
-    - target: {fileID: 114334076593104790, guid: e3e332da1678329458ed4c884f941d3a,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 1105524083}
     - target: {fileID: 114848325332629046, guid: e3e332da1678329458ed4c884f941d3a,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Target
       value: 
       objectReference: {fileID: 224551988}
+    - target: {fileID: 114334076593104790, guid: e3e332da1678329458ed4c884f941d3a,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1105524083}
     - target: {fileID: 114332412461590292, guid: e3e332da1678329458ed4c884f941d3a,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Target
       value: 
       objectReference: {fileID: 224551988}
-    - target: {fileID: 114312172094081492, guid: e3e332da1678329458ed4c884f941d3a,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 94751953}
-    - target: {fileID: 114312172094081492, guid: e3e332da1678329458ed4c884f941d3a,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SellItem
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e3e332da1678329458ed4c884f941d3a, type: 2}
   m_IsPrefabParent: 0

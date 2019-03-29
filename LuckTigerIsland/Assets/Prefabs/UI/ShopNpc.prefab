@@ -1302,7 +1302,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114490693442685428}
         m_MethodName: SellItem
         m_Mode: 1
         m_Arguments:
@@ -1837,6 +1837,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_text: {fileID: 114763955604093216}
   m_sellControl: {fileID: 114254225714216092}
+  m_shop: {fileID: 114851832059882590}
 --- !u!114 &114524306152606056
 MonoBehaviour:
   m_ObjectHideFlags: 1

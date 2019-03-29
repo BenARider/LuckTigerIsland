@@ -13,6 +13,7 @@ public class SellListButton : MonoBehaviour, ISelectHandler
     private TextMeshProUGUI m_text;
     [SerializeField]
     private SellListControl m_sellControl;
+    [SerializeField]
     Shop m_shop;
     Inventory m_inventory;
     InventoryObject m_inventoryObject;
@@ -55,6 +56,7 @@ public class SellListButton : MonoBehaviour, ISelectHandler
     }
     public void SetObject(InventoryObject _object)
     {
+        Debug.Log("Object Set: " + _object);
         m_inventoryObject = _object;
     }
     public void SetIsNull(bool _b)
@@ -64,7 +66,7 @@ public class SellListButton : MonoBehaviour, ISelectHandler
     public void SellItem()
     {
         m_shop.SellItem(m_inventoryObject);
-        m_sellControl.UpdateInventoryUI();
+        //m_sellControl.UpdateInventoryUI();
     }
 
     public void OnSelect(BaseEventData _data)
