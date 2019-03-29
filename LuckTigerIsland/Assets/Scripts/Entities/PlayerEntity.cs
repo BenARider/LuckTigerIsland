@@ -31,6 +31,14 @@ public class PlayerEntity : Entity
     [SerializeField]
     PlayerEntity ninja;
 
+    public enum Class
+    {
+        eWarrior,
+        eCleric,
+        eWizard,
+        eNinja,
+    }
+    public Class MyClass;
     //Creates a new player entity with defined stats. Adding an object to one of the entities will apply those stats onto the object
     void SetPlayerStats(int _health, int _strength, int _defence, int _defenceMGC, int _speed, int _level, int _mana, int _magicPow, int _EXP)
     {
@@ -56,19 +64,19 @@ public class PlayerEntity : Entity
     void Start()
     {
 
-        if (Class == "Warrior")
+        if (MyClass == Class.eWarrior)
         {
             SetPlayerStats(150, 20, 20, 10, 75, 1, 20, 5, 40);
         }
-        if (Class == "Wizard")
+        if (MyClass == Class.eWizard)
         {
             SetPlayerStats(100, 10, 5, 15, 50, 1, 50, 20, 50);
         }
-        if (Class == "Cleric")
+        if (MyClass == Class.eCleric)
         {
             SetPlayerStats(125, 10, 10, 20, 50, 1, 50, 15, 75);
         }
-        if (Class == "Ninja")
+        if (MyClass == Class.eNinja)
         {
             SetPlayerStats(100, 15, 10, 5, 50, 1, 35, 10, 30);
         }

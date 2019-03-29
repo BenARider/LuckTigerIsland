@@ -41,8 +41,6 @@ public class Entity : MonoBehaviour {
 	protected int m_xpAward;
 	[SerializeField]
 	protected int m_EXP;
-	[SerializeField]
-    protected string Class; //used to determine stat allocation in the other classes.
 
     /// Following are used purely for battle integration. Used by both enemies and players.
     [SerializeField]
@@ -137,42 +135,34 @@ public class Entity : MonoBehaviour {
 	protected IEnumerator checkAffliction(int maxAfflictions)
 	{
 
-		if (currentAffliction == Affliction.eNone)
-		{
-			yield break;
-		}
-
 		yield return new WaitForSeconds(1.0f);
 		afflictionTimes++;
-
-		if (currentAffliction == Affliction.eOnFire)
-		{
-			m_health -= 5; //Do some damge calc against resistances and weaknesses
-			Debug.Log("on fire");
-		}
-
-		if (currentAffliction == Affliction.eInfected)
-		{
-			m_health -= 5; //Do some damge calc against resistances and weaknesses
-		}
-
-		if (currentAffliction == Affliction.eFreeze)
-		{
-			m_health -= 2;
-		}
-
-		if (currentAffliction == Affliction.eStunned)
-		{
-			m_stunned = true;
-		}
+        switch (currentAffliction)
+        {
+            case Affliction.eNone:
+                yield break;
+            case Affliction.eOnFire:
+                m_health -= 5; //Do some damge calc against resistances and weaknesses
+                Debug.Log("on fire");
+                break;
+            case Affliction.eFreeze:
+                m_health -= 2;
+                break;
+            case Affliction.eInfected:
+                m_health -= 5; //Do some damge calc against resistances and weaknesses
+                break;
+            case Affliction.eStunned:
+                m_stunned = true;
+                break;
+        }
 
 		if (afflictionTimes >= maxAfflictions)
 		{
 			stopAfflictions();
 			StopCoroutine("checkAffliction");
 		}
-	}
-	protected IEnumerator resetAffliction()
+    }
+    protected IEnumerator resetAffliction()
 	{
 		if (currentAffliction != Affliction.eNone)
 		{
@@ -216,41 +206,28 @@ public class Entity : MonoBehaviour {
         switch (currentBuff)
         {
             case Buffs.eNone:
-
-                break;
+                m_canBeBuffed = true;
+                yield break;
             case Buffs.eBlock:
+                Debug.Log("Applying Block");
+                m_previousDefence = m_defence;
+                m_previousDefenceMGC = m_defenceMGC;
+                m_defence = (m_defence * buffMultiplier);
+                m_defenceMGC = (m_defenceMGC * buffMultiplier);
+                break;
             case Buffs.eStrength:
+                m_previousStrength = m_strength;
+                m_strength = m_strength * buffMultiplier;
                 break;
             case Buffs.eMagic:
+                m_previousMagicPower = m_magicPower;
+                m_magicPower = m_magicPower * buffMultiplier;
                 break;
             default:
+
                 break;
         }
 
-        if (currentBuff == Buffs.eNone)
-        {
-            Debug.Log("Returning from apply");
-            m_canBeBuffed = true;
-            yield break;
-        }
-        if (currentBuff == Buffs.eBlock)
-        {
-            Debug.Log("Applying Block");
-            m_previousDefence = m_defence;
-            m_previousDefenceMGC = m_defenceMGC;
-            m_defence = (m_defence * buffMultiplier);
-            m_defenceMGC = (m_defenceMGC * buffMultiplier);
-        }
-        if(currentBuff == Buffs.eMagic)
-        {
-            m_previousMagicPower = m_magicPower;
-            m_magicPower = m_magicPower * buffMultiplier;
-        }
-        if(currentBuff == Buffs.eStrength)
-        {
-            m_previousStrength = m_strength;
-            m_strength = m_strength * buffMultiplier;
-        }
         if(buffTime != 0)
         {
             Debug.Log("About to remove buffs");
@@ -261,7 +238,6 @@ public class Entity : MonoBehaviour {
 
     protected void AddBuff(BaseAttack AttackBuff)
     {
-        Debug.Log("Adding buff");
         if(AttackBuff.attackAffliction == "Block")
         {
             currentBuff = Buffs.eBlock;
@@ -276,10 +252,8 @@ public class Entity : MonoBehaviour {
         }
         if(AttackBuff.attackAffliction != "" && m_canBeBuffed == true)
         {
-            Debug.Log("Applying buff");
             m_canBeBuffed = false;
             StartCoroutine(ApplyBuff(AttackBuff.skillDuration, AttackBuff.skillMultiplier));
-            Debug.Log("Pranked");
         }
     }
     protected void ClearBuffs()
