@@ -103,6 +103,7 @@ public class Entity : MonoBehaviour {
         eOnFire,
         eFreeze,
         eInfected,
+		ePoison,
         eStunned
     }
 
@@ -111,7 +112,10 @@ public class Entity : MonoBehaviour {
         eNone,
         eBlock,
         eStrength,
-        eMagic
+        eMagic,
+		eDefence,
+		eAttack,
+		ePurge
     }
     public Affliction currentAffliction;
     public Buffs currentBuff;
@@ -151,6 +155,9 @@ public class Entity : MonoBehaviour {
             case Affliction.eInfected:
                 m_health -= 5; //Do some damge calc against resistances and weaknesses
                 break;
+			case Affliction.ePoison:
+				m_health -= 3;
+				break;
             case Affliction.eStunned:
                 m_stunned = true;
                 break;
@@ -189,8 +196,12 @@ public class Entity : MonoBehaviour {
         if (AttackAffliction.attackAffliction == "Infect")
             currentAffliction = Affliction.eInfected;
 
+		if (AttackAffliction.attackAffliction == "Posison")
+			currentAffliction = Affliction.ePoison;
+
         if (AttackAffliction.attackAffliction == "Stun")
             currentAffliction = Affliction.eStunned;
+
 
     }
     protected void CheckBuffs()
@@ -217,12 +228,32 @@ public class Entity : MonoBehaviour {
                 break;
             case Buffs.eStrength:
                 m_previousStrength = m_strength;
+				m_previousDefence = m_defence;
+				m_defence = m_defence * (buffMultiplier / 2);
                 m_strength = m_strength * buffMultiplier;
                 break;
             case Buffs.eMagic:
                 m_previousMagicPower = m_magicPower;
+				m_previousDefenceMGC = m_defenceMGC;
+				m_defenceMGC = m_defenceMGC * (buffMultiplier / 2);
                 m_magicPower = m_magicPower * buffMultiplier;
                 break;
+			case Buffs.eDefence:
+				m_previousDefence = m_defence;
+				m_previousDefenceMGC = m_defenceMGC;
+				m_defence = m_defence * buffMultiplier;
+				m_defenceMGC = m_defenceMGC * buffMultiplier;
+				break;
+			case Buffs.eAttack:
+				m_previousStrength = m_strength;
+				m_previousMagicPower = m_magicPower;
+				m_strength = m_strength * buffMultiplier;
+				m_magicPower = m_magicPower * buffMultiplier;
+				break;
+
+			case Buffs.ePurge:
+				currentAffliction = Affliction.eNone;
+				break;
             default:
 
                 break;
@@ -250,6 +281,18 @@ public class Entity : MonoBehaviour {
         {
             currentBuff = Buffs.eStrength;
         }
+		if(AttackBuff.attackAffliction == "Attack")
+		{
+			currentBuff = Buffs.eAttack;
+		}
+		if(AttackBuff.attackAffliction == "Heal")
+		{
+			m_health += AttackBuff.attackDamage * AttackBuff.skillMultiplier;
+			if (m_health > m_maxHealth)
+			{
+				m_health = m_maxHealth;
+			}
+		}
         if(AttackBuff.attackAffliction != "" && m_canBeBuffed == true)
         {
             m_canBeBuffed = false;

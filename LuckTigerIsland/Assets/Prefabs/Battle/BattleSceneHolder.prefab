@@ -6690,8 +6690,8 @@ MonoBehaviour:
   m_level: 0
   m_xpAward: 0
   m_EXP: 0
-  Class: Warrior
   m_attackedAlready: 0
+  m_canBeBuffed: 1
   m_entityNumber: 2
   m_requiredSpeedForTurn: 0
   myTurn: 0
@@ -6709,11 +6709,15 @@ MonoBehaviour:
   dmgDealt: 0
   currentState: 0
   currentAffliction: 0
+  currentBuff: 0
   EntityToAttack: {fileID: 0}
   attacks:
-  - {fileID: 11400000, guid: 025630a4956fac74da4985d9d134e6f9, type: 2}
   - {fileID: 11400000, guid: d86d8a8da359f334496d00bb8f362b79, type: 2}
-  - {fileID: 11400000, guid: 514e1c79f37c1ba4aa8e8f99e4b54b94, type: 2}
+  - {fileID: 11400000, guid: 0190d9973f6cf2f458cb739851d40d8b, type: 2}
+  - {fileID: 11400000, guid: 650e8ac0c428c8640a9f340c6312d912, type: 2}
+  - {fileID: 11400000, guid: 2cb2ecbd777b5d9428034cb0b4ae214d, type: 2}
+  - {fileID: 11400000, guid: 30a6e183a1e1e1446abe4670d8262b84, type: 2}
+  - {fileID: 11400000, guid: 5cb94bfaa252012468b402e6910d22c9, type: 2}
   HealthPotions: []
   ManaPotions: []
   statTexts: []
@@ -6731,6 +6735,7 @@ MonoBehaviour:
   wizard: {fileID: 114243110054014210}
   cleric: {fileID: 114078770038548272}
   ninja: {fileID: 114090179202345774}
+  MyClass: 0
   HT:
     Attacker: 
     Type: 
@@ -6953,6 +6958,7 @@ MonoBehaviour:
   EnemiesInBattle: []
   Enemies: []
   PartyMembersInBattle: []
+  TargetingListForAI: []
   deadEnemies: 0
   deadPlayers: 0
 --- !u!114 &114037872030208688
@@ -8169,8 +8175,8 @@ MonoBehaviour:
   m_level: 0
   m_xpAward: 0
   m_EXP: 0
-  Class: Cleric
   m_attackedAlready: 0
+  m_canBeBuffed: 1
   m_entityNumber: 1
   m_requiredSpeedForTurn: 0
   myTurn: 0
@@ -8188,11 +8194,16 @@ MonoBehaviour:
   dmgDealt: 0
   currentState: 0
   currentAffliction: 0
+  currentBuff: 0
   EntityToAttack: {fileID: 0}
   attacks:
-  - {fileID: 11400000, guid: 025630a4956fac74da4985d9d134e6f9, type: 2}
   - {fileID: 11400000, guid: d86d8a8da359f334496d00bb8f362b79, type: 2}
-  - {fileID: 11400000, guid: 514e1c79f37c1ba4aa8e8f99e4b54b94, type: 2}
+  - {fileID: 11400000, guid: 0190d9973f6cf2f458cb739851d40d8b, type: 2}
+  - {fileID: 11400000, guid: b41045100a947924cbd1e9133c94b66e, type: 2}
+  - {fileID: 11400000, guid: 7d66ae85b45b185408249521a72c4de6, type: 2}
+  - {fileID: 11400000, guid: 4dafe16976e9e8f4bac85f3e807a9c22, type: 2}
+  - {fileID: 11400000, guid: 9d24cd505889bc4469ea81fbdfce136f, type: 2}
+  - {fileID: 11400000, guid: d755fab06be36224f901d317e6cc6e65, type: 2}
   HealthPotions: []
   ManaPotions: []
   statTexts: []
@@ -8210,6 +8221,7 @@ MonoBehaviour:
   wizard: {fileID: 114243110054014210}
   cleric: {fileID: 114078770038548272}
   ninja: {fileID: 114090179202345774}
+  MyClass: 1
   HT:
     Attacker: 
     Type: 
@@ -8507,8 +8519,8 @@ MonoBehaviour:
   m_level: 0
   m_xpAward: 0
   m_EXP: 0
-  Class: Ninja
   m_attackedAlready: 0
+  m_canBeBuffed: 1
   m_entityNumber: 4
   m_requiredSpeedForTurn: 0
   myTurn: 0
@@ -8526,11 +8538,15 @@ MonoBehaviour:
   dmgDealt: 0
   currentState: 0
   currentAffliction: 0
+  currentBuff: 0
   EntityToAttack: {fileID: 0}
   attacks:
-  - {fileID: 11400000, guid: 025630a4956fac74da4985d9d134e6f9, type: 2}
   - {fileID: 11400000, guid: d86d8a8da359f334496d00bb8f362b79, type: 2}
-  - {fileID: 11400000, guid: 514e1c79f37c1ba4aa8e8f99e4b54b94, type: 2}
+  - {fileID: 11400000, guid: 0190d9973f6cf2f458cb739851d40d8b, type: 2}
+  - {fileID: 11400000, guid: fc1ef64ca266cf44cbbd3dec2f027873, type: 2}
+  - {fileID: 11400000, guid: ede9b6e28c7ef494583c7c8fe0c9a00f, type: 2}
+  - {fileID: 11400000, guid: dd88c9207b91c184ab99abf640f7092f, type: 2}
+  - {fileID: 11400000, guid: 2785d8f2fea70f1469bccf4752e01421, type: 2}
   HealthPotions: []
   ManaPotions: []
   statTexts: []
@@ -8548,6 +8564,7 @@ MonoBehaviour:
   wizard: {fileID: 114243110054014210}
   cleric: {fileID: 114078770038548272}
   ninja: {fileID: 114090179202345774}
+  MyClass: 3
   HT:
     Attacker: 
     Type: 
@@ -11445,8 +11462,8 @@ MonoBehaviour:
   m_level: 0
   m_xpAward: 0
   m_EXP: 0
-  Class: Wizard
   m_attackedAlready: 0
+  m_canBeBuffed: 1
   m_entityNumber: 3
   m_requiredSpeedForTurn: 0
   myTurn: 0
@@ -11464,11 +11481,15 @@ MonoBehaviour:
   dmgDealt: 0
   currentState: 0
   currentAffliction: 0
+  currentBuff: 0
   EntityToAttack: {fileID: 0}
   attacks:
-  - {fileID: 11400000, guid: 025630a4956fac74da4985d9d134e6f9, type: 2}
   - {fileID: 11400000, guid: d86d8a8da359f334496d00bb8f362b79, type: 2}
+  - {fileID: 11400000, guid: 0190d9973f6cf2f458cb739851d40d8b, type: 2}
   - {fileID: 11400000, guid: 514e1c79f37c1ba4aa8e8f99e4b54b94, type: 2}
+  - {fileID: 11400000, guid: 7b4b374b9453f4b4aa11f701e492b583, type: 2}
+  - {fileID: 11400000, guid: 5271a29cd3242b64a8f84abaa4cbe353, type: 2}
+  - {fileID: 11400000, guid: 8148558417a3b1542a86f86d8e1445a4, type: 2}
   HealthPotions: []
   ManaPotions: []
   statTexts: []
@@ -11486,6 +11507,7 @@ MonoBehaviour:
   wizard: {fileID: 114243110054014210}
   cleric: {fileID: 114078770038548272}
   ninja: {fileID: 114090179202345774}
+  MyClass: 2
   HT:
     Attacker: 
     Type: 
@@ -13086,33 +13108,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5066758a856b9f743a95fa168acc6379, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 4
-    m_SelectOnUp: {fileID: 114387247447515172}
-    m_SelectOnDown: {fileID: 114698259138078948}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 114464301008619832}
   questDescriptionText: {fileID: 114142600397778966}
+  questTitleText2: {fileID: 0}
   buttonHighlight: {fileID: 114464301008619832}
+  m_nameNumSet: 0
+  m_itemButton: {fileID: 0}
 --- !u!114 &114359240176089450
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -13917,7 +13917,7 @@ MonoBehaviour:
   m_Navigation:
     m_Mode: 4
     m_SelectOnUp: {fileID: 114894511846308840}
-    m_SelectOnDown: {fileID: 114357278706427958}
+    m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -20227,33 +20227,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5066758a856b9f743a95fa168acc6379, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 4
-    m_SelectOnUp: {fileID: 114357278706427958}
-    m_SelectOnDown: {fileID: 114894511846308840}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 114028560544687784}
   questDescriptionText: {fileID: 114142600397778966}
+  questTitleText2: {fileID: 0}
   buttonHighlight: {fileID: 114028560544687784}
+  m_nameNumSet: 0
+  m_itemButton: {fileID: 0}
 --- !u!114 &114699013972607856
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -25017,7 +24995,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 4
-    m_SelectOnUp: {fileID: 114698259138078948}
+    m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 114263546400065074}
     m_SelectOnRight: {fileID: 114071356677613322}
