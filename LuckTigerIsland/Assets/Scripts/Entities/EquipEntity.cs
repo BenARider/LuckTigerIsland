@@ -7,115 +7,203 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 public class EquipEntity : MonoBehaviour
 {
-    PlayerEntity m_player;
-    public List<InventoryObject> inventory;
-    
-   public Armour[] m_armourItem; //For equipping
-  
-    public Weapon[] m_weaponItem; //For equipping
+    PlayerEntity[] m_partMembers;
     [SerializeField]
-    Health_Potion m_health_Potion;
+    InventoryObject m_armour;
     [SerializeField]
-    private List<Image> m_inventorySlots = new List<Image>();// Try to remove and use just the inventory object list
-    private int m_id = 0;
+    InventoryObject m_weapon;
+    InventoryListButton m_inventoryListButton;
     protected bool equipped = false;
-    private bool m_addedItem = false;
-    private bool m_removeHealthPotion = false;
     private Color m_itemFadeColour;
+    [SerializeField]
+    private Image[] m_equipImages;
+
+
+    Inventory m_inventory;
+
+    private TextMeshProUGUI m_partyMemberName;
+    private int m_partyImageIndex;
+    private int[] tempDefence;
+    private int[] tempAttack;
+    private bool m_unEquip;
+    [SerializeField]
+    TextMeshProUGUI m_justEquippedText;
+
     // Use this for initialization
 
     void Start()
     {
-        m_player = GameObject.Find("Player").GetComponent<PlayerEntity>();
+        m_partMembers = new PlayerEntity[4];
+        m_partMembers[0] = GameObject.Find("Luck").GetComponent<PlayerEntity>();
+        m_partMembers[1] = GameObject.Find("Duck").GetComponent<PlayerEntity>();
+        m_partMembers[2] = GameObject.Find("Buck").GetComponent<PlayerEntity>();
+        m_partMembers[3] = GameObject.Find("Phil").GetComponent<PlayerEntity>();
+        m_partyMemberName = GameObject.Find("PartyMemberName").GetComponent<TextMeshProUGUI>();
+        m_partyMemberName.text = "Luck";
         m_itemFadeColour.a = 0.0f;
+        tempDefence = new int[4];
+        tempAttack = new int[4];
+        tempDefence[0] = m_partMembers[0].GetDefence();
+        tempAttack[0] = m_partMembers[0].GetStrength();
+        tempDefence[1] = m_partMembers[1].GetDefence();
+        tempAttack[1] = m_partMembers[1].GetStrength();
+        tempDefence[2] = m_partMembers[2].GetDefence();
+        tempAttack[2] = m_partMembers[2].GetStrength();
+        tempDefence[3] = m_partMembers[3].GetDefence();
+        tempAttack[3] = m_partMembers[3].GetStrength();
     }
-
     // Update is called once per frame
     void Update()
     {
-    }
-    public void ClearItem(int _id)
-    {
-        if (m_inventorySlots[_id].name != "EmptyInventorySlot")
+        if (m_partyImageIndex == 0)
         {
-          
+            m_partyMemberName.text = "Luck";
+
         }
+        if (m_partyImageIndex == 1)
+        {
+            m_partyMemberName.text = "Duck";
+
+        }
+        if (m_partyImageIndex == 2)
+        {
+            m_partyMemberName.text = "Buck";
+
+        }
+        if (m_partyImageIndex == 3)
+        {
+            m_partyMemberName.text = "Phil";
+
+        }
+        if (m_partyImageIndex == 4)
+        {
+            m_partyImageIndex = 0;
+        }
+    }
+    public void UnEquip(string _slotName)
+    {
+        if (_slotName == "Armour")
+        {
+            m_armour = null;
+            m_equipImages[0].sprite = m_equipImages[2].sprite;
+            if (m_partyImageIndex == 0)
+            {
+                m_partMembers[0].SetDefence(tempDefence[0]);
+            }
+            if (m_partyImageIndex == 1)
+            {
+                m_partMembers[1].SetDefence(tempDefence[1]);
+            }
+            if (m_partyImageIndex == 2)
+            {
+                m_partMembers[2].SetDefence(tempDefence[2]);
+            }
+            if (m_partyImageIndex == 3)
+            {
+                m_partMembers[3].SetDefence(tempDefence[3]);
+            }
+
+        }
+        if (_slotName == "Weapon")
+        {
+            m_weapon = null;
+            m_equipImages[1].sprite = m_equipImages[3].sprite;
+            if (m_partyImageIndex == 0)
+            {
+                m_partMembers[0].SetStrength(tempAttack[0]);
+            }
+            if (m_partyImageIndex == 1)
+            {
+                m_partMembers[1].SetStrength(tempAttack[1]);
+            }
+            if (m_partyImageIndex == 2)
+            {
+                m_partMembers[2].SetStrength(tempAttack[2]);
+            }
+            if (m_partyImageIndex == 3)
+            {
+                m_partMembers[3].SetStrength(tempAttack[3]);
+            }
+
+        }
+    }
+    public void EquipWeapon(Weapon _object)
+    {
+        if (m_equipImages[1].sprite.name == "equipment_preview_10")
+        {
+            m_equipImages[1].sprite = _object.Image;
+
+            if (_object.objectType == EObjectType.Weapon)
+            {
+                m_weapon = _object;
+              
+                if (m_partyImageIndex == 0)
+                {
+                    m_partMembers[0].SetStrength(_object.attack);
+
+                }
+                if (m_partyImageIndex == 1)
+                {
+                    m_partMembers[1].SetStrength(_object.attack);
+
+                }
+                if (m_partyImageIndex == 2)
+                {
+                    m_partMembers[2].SetStrength(_object.attack);
     
-    }
-   public Armour[] GetArmourItem()
-    {
-       
-        return m_armourItem;
-    }
-    public Weapon[] GetWeaponItem()
-    {
-
-        return m_weaponItem;
-    }
-
-    public void SetStats(int _id)
-    {
-        if (m_inventorySlots[_id].name != "EmptyInventorySlot")
-        {
-            if (m_inventorySlots[_id].gameObject.name == "Chainmail")
-            {
-                m_player.SetDefence(m_armourItem[0].defence);
-                print("Set defence stat ");
-                print("Image is" + this.gameObject.name);
-                equipped = true;
+                }
+                if (m_partyImageIndex == 3)
+                {
+                    m_partMembers[3].SetStrength(_object.attack);
+ 
+                }
+                m_justEquippedText.text = "Just equipped: " + _object.objectName;
+                StartCoroutine(HideText());
             }
-            if (m_inventorySlots[_id].gameObject.name == "Breastplate")
-            {
-                m_player.SetDefence(m_armourItem[1].defence);
-                print("Set defence stat ");
-                print("Image is" + this.gameObject.name);
-                equipped = true;
-            }
-
-            if (m_inventorySlots[_id].gameObject.name == "Shortsword")
-            {
-                m_player.SetStrength(m_weaponItem[0].attack);
-                print("Set attack stat ");
-                print("Image is" + this.gameObject.name);
-                equipped = true;
-            }
-            inventory.RemoveAt(0);
-            m_itemFadeColour.a = 0.5f;
-            m_itemFadeColour.r = 1.0f;
-            m_itemFadeColour.g = 1.0f;
-            m_itemFadeColour.b = 1.0f;
-            m_inventorySlots[_id].sprite = null;
-            m_inventorySlots[_id].name = "EmptyInventorySlot";
-            m_inventorySlots[_id].color = m_itemFadeColour;
         }
-
     }
-    public void AddItemToInventory(InventoryObject _object)
+    public void EquipArmour(Armour _object)
     {
-       // List<InventoryObjectStruct> invList =  Inventory.Instance.inventory;
-        
-        m_id++;
-        for (int i = 0; i < m_inventorySlots.Count; ++i)
+        if (m_equipImages[0].sprite.name == "equipment_preview_1")
         {
-            if (m_inventorySlots[i].name == "EmptyInventorySlot" && m_addedItem == false)
+            m_equipImages[0].sprite = _object.Image;
+            if (_object.objectType == EObjectType.Armour)
             {
-               // inventory.Add(_object);
-                m_itemFadeColour.a = 1.0f;
-                m_itemFadeColour.r = 1.0f;
-                m_itemFadeColour.g = 1.0f;
-                m_itemFadeColour.b = 1.0f;
-                m_addedItem = true;
-                print("Added " + inventory[i]);
-                m_inventorySlots[0].sprite = Inventory.Instance.inventory[0].iObject.Image;
-                m_inventorySlots[0].color = m_itemFadeColour;
-                m_inventorySlots[0].name = Inventory.Instance.inventory[0].iObject.name;
+                m_armour = _object;
+              
+                if (m_partyImageIndex == 0)
+                {
+                    m_partMembers[0].SetDefence(_object.defence);
+               
+                }
+                if (m_partyImageIndex == 1)
+                {
+                    m_partMembers[1].SetDefence(_object.defence);
+          
+                }
+                if (m_partyImageIndex == 2)
+                {
+                    m_partMembers[2].SetDefence(_object.defence);
+             
+                }
+                if (m_partyImageIndex == 3)
+                {
+                    m_partMembers[3].SetDefence(_object.defence);
+            
+                }
+                m_justEquippedText.text = "Just equipped: " + _object.objectName;
+                StartCoroutine(HideText());
 
             }
         }
-        m_addedItem = false;
     }
-    public void SetRemoveHpPotionState(bool _remove)
+    IEnumerator HideText()
     {
-        m_removeHealthPotion = _remove;
+        yield return new WaitForSeconds(2.0f);
+        m_justEquippedText.text = "";
+    }
+    public void SetPlayerImageId(int _index)
+    {
+        m_partyImageIndex += _index;
     }
 }

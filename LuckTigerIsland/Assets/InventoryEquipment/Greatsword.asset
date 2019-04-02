@@ -15,4 +15,7 @@ MonoBehaviour:
   Image: {fileID: 21300000, guid: a84ed88047b8fc34a985e06ef77fefe9, type: 3}
   Description: A Greatsword
   Price: 45
+  Equippable: Yes
+  ItemType: Weapon
+  isEquipped: 0
   attack: 12

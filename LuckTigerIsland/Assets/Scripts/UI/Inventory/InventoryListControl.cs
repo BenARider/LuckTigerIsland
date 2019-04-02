@@ -19,24 +19,26 @@ public class InventoryListControl : MonoBehaviour {
     private TextMeshProUGUI m_price;
     int index = -1;
 
- 
+    private void Start()
+    {
+    
+    }
     private void OnEnable()
     {
         UpdateInventoryUI();
     }
-
     public void UpdateInventoryUI()
     {
         try
         {
             if (Inventory.Instance.inventory.Count > 0)
             {
-                ResetChildren();
                 SetDefaults();
                 for (int i = 0; i < Inventory.Instance.inventory.Count; i++)
                 {
                     GameObject button = Instantiate(m_buttonTemplate) as GameObject;
                     button.SetActive(true);
+                    index++;
 
                     if (Inventory.Instance.inventory[i].iObject != null)
                     {
@@ -70,21 +72,6 @@ public class InventoryListControl : MonoBehaviour {
         m_name.text = Inventory.Instance.inventory[0].iObject.name; 
         m_description.text = Inventory.Instance.inventory[0].iObject.Description;
         m_price.text = "Price: " + Inventory.Instance.inventory[0].iObject.Price;
-    }
-
-    private void ResetChildren()
-    {
-        bool first = false;
-        foreach(Transform child in m_buttonTemplate.transform.parent.transform)
-        {
-            if (!first)
-            {
-                first = true;
-            } else
-            {
-                GameObject.Destroy(child.gameObject);
-            }
-        }
     }
 
     public void ButtonClicked(Sprite _sprite, string _name, string _description, int _price)

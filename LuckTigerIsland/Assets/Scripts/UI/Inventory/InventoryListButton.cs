@@ -12,9 +12,14 @@ public class InventoryListButton : MonoBehaviour,ISelectHandler {
     private TextMeshProUGUI m_text;
     [SerializeField]
     private InventoryListControl m_invControl;
-    Shop m_shop;
+    [SerializeField]
+    private EquipEntity equipEntity;
     Inventory m_inventory;
     InventoryObject m_inventoryObject;
+    [SerializeField]
+    Weapon m_weapon;
+    [SerializeField]
+    Armour m_armour;
     private string m_name;
     private Sprite m_image;
     private string m_description;
@@ -56,12 +61,29 @@ public class InventoryListButton : MonoBehaviour,ISelectHandler {
     {
         isNull = _b;
     }
-    public void SellItem()
+    void OnEnable()
     {
-        m_inventoryObject = Inventory.Instance.inventory[this.gameObject.GetComponent<InventoryListButton>().GetIndex()].iObject;
-        m_shop.SellItem(m_inventoryObject);
+        m_inventory = GameObject.Find("Player").GetComponent<Inventory>();
     }
 
+    public void EquipFromInventory()
+    {
+        m_inventoryObject = m_inventory.inventory[m_index].iObject;
+
+        print("Index is " + m_index);
+        if (m_inventoryObject.objectType == EObjectType.Weapon)
+        {
+            equipEntity.EquipWeapon((Weapon)m_inventoryObject);
+            print("Object type is " + m_inventoryObject.objectType);
+        }
+        if (m_inventoryObject.objectType == EObjectType.Armour)
+        {
+            equipEntity.EquipArmour((Armour)m_inventoryObject);
+
+            print("Object type is " + m_inventoryObject.objectType);
+        }
+
+    }
     public void OnSelect(BaseEventData _data)
     {
         if (!isNull)
