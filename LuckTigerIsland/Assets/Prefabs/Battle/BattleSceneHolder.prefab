@@ -6953,12 +6953,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e218efa7eb37e9d4abdf2bf8f80e34a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOverPrefab: {fileID: 1468155589232072, guid: 65e61657945fb7a4cacf0063d6009ac3,
+    type: 2}
   battleState: 0
   NextTurn: []
   EnemiesInBattle: []
   Enemies: []
   PartyMembersInBattle: []
   TargetingListForAI: []
+  actionOne: {fileID: 1942255325939374}
   deadEnemies: 0
   deadPlayers: 0
 --- !u!114 &114037872030208688
@@ -9169,34 +9172,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 233f31f18170c33429d899e74793b8b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: []
-  m_armourItem:
-  - {fileID: 11400000, guid: aff6c7e5a7e3d584c83b23d4be36c5ec, type: 2}
-  - {fileID: 11400000, guid: 26ae73543495d10459ac5f45f8dd0b6b, type: 2}
-  m_weaponItem:
-  - {fileID: 11400000, guid: 37be832cc678a74478c475fba1088c62, type: 2}
-  m_health_Potion: {fileID: 11400000, guid: ad55ad25a92593846a8dc2862c8c6dd1, type: 2}
-  m_inventorySlots:
-  - {fileID: 114776051815558692}
-  - {fileID: 114751458880618586}
-  - {fileID: 114181230977895050}
-  - {fileID: 114420190769648200}
-  - {fileID: 114142365157143008}
-  - {fileID: 114259665984512738}
-  - {fileID: 114194363113254264}
-  - {fileID: 114796790044601006}
-  - {fileID: 114020300769703494}
-  - {fileID: 114511676884310112}
-  - {fileID: 114640246708211042}
-  - {fileID: 114474391684559676}
-  - {fileID: 114430680995721876}
-  - {fileID: 114661778985847100}
-  - {fileID: 114604907871231544}
-  - {fileID: 114513775539856900}
-  - {fileID: 114231795932668674}
-  - {fileID: 114108826460336638}
-  - {fileID: 114316229061420336}
-  - {fileID: 114282746855587964}
+  m_armour: {fileID: 0}
+  m_weapon: {fileID: 0}
+  m_equipImages: []
+  m_justEquippedText: {fileID: 0}
 --- !u!114 &114123469897855810
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11875,7 +11854,7 @@ MonoBehaviour:
   m_Script: {fileID: -619905303, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 1942255325939374}
+  m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 5
 --- !u!114 &114267329240233646
@@ -13109,10 +13088,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questDescriptionText: {fileID: 114142600397778966}
-  questTitleText2: {fileID: 0}
+  questTitleText: {fileID: 0}
   buttonHighlight: {fileID: 114464301008619832}
   m_nameNumSet: 0
   m_itemButton: {fileID: 0}
+  m_removeButton: {fileID: 0}
 --- !u!114 &114359240176089450
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -20228,10 +20208,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questDescriptionText: {fileID: 114142600397778966}
-  questTitleText2: {fileID: 0}
+  questTitleText: {fileID: 0}
   buttonHighlight: {fileID: 114028560544687784}
   m_nameNumSet: 0
   m_itemButton: {fileID: 0}
+  m_removeButton: {fileID: 0}
 --- !u!114 &114699013972607856
 MonoBehaviour:
   m_ObjectHideFlags: 1
