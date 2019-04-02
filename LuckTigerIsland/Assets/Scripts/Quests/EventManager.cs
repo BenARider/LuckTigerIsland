@@ -20,13 +20,20 @@ public enum ELocations
 public enum EEnemies
 {
     nullEnemy,
-    Pig, //861 final boss pig
+    PigBoss, //861 final boss pig
     Goblin,
+	Farmer,
     Bandit,
-    Tiger,
-    Skeleton,
     Knight,
-    Lizardman,
+	Wolf,
+    Tiger,
+	Troll,
+	Birdman,
+    Skeleton,
+	Golem,
+	Spirit,
+	Warlock,
+	ChickenBoss,
     SkeletonBoss, //SpriteSheet 734/735. TinytinyHeroes armies
     MinotaurSkeleton  //838
 }

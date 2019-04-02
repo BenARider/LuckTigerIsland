@@ -89,6 +89,12 @@ public class BattleControl : MonoBehaviour {
                     PE.EntityToAttack = NextTurn[0].AttackTarget;
                     PE.currentState = PlayerEntity.TurnState.eAction;
                 }
+                if (NextTurn[0].Type == "PartyBuff")
+                {
+                    PlayerEntity PE = performer.GetComponent<PlayerEntity>();
+                    PE.EntityToAttack = NextTurn[0].AttackTarget;
+                    PE.currentState = PlayerEntity.TurnState.eAction;
+                }
                 battleState = performAction.ePerformAction;
                 break;
             case (performAction.ePerformAction):
