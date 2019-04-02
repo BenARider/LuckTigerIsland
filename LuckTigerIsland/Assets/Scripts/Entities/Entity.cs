@@ -39,6 +39,8 @@ public class Entity : MonoBehaviour {
 	protected int m_level;
 	[SerializeField]
 	protected int m_xpAward;
+    [SerializeField]
+    protected int m_goldAward;
 	[SerializeField]
 	protected int m_EXP;
 
@@ -115,6 +117,7 @@ public class Entity : MonoBehaviour {
         eMagic,
 		eDefence,
 		eAttack,
+        eInvisable,
 		ePurge
     }
     public Affliction currentAffliction;
@@ -418,15 +421,17 @@ public class Entity : MonoBehaviour {
     public void TakeDamage(int damageAmount, BaseAttack attack)
     {
         m_health -= damageAmount;
-        if (m_chosenAction.attackAffliction != "" && m_chosenAction.attackType != "Buff" && alreadyAfflicted == false)
+        if (attack.attackAffliction != "" && attack.attackType != "buff" && alreadyAfflicted == false)
         {
             alreadyAfflicted = true;
-            addAffliction(m_chosenAction);
-            StartCoroutine("checkAffliction", m_chosenAction.skillDuration);
+            addAffliction(attack);
+            StartCoroutine("checkaffliction", attack.skillDuration);
         }
 
         if (GetHealth() <= 0)
         {
+            PlayerManager.Instance.AddXP(m_xpAward);
+            Inventory.Instance.IncreaseGold(m_goldAward);
             currentState = TurnState.eDead;
         }
     }
@@ -474,6 +479,7 @@ public class Entity : MonoBehaviour {
     {
         if (m_health <= 0)
         {
+           
            // Destroy(gameObject); //could rework to set the object to be sideways/inactive instead of destroyed
         }
      
