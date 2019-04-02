@@ -34,10 +34,10 @@ public class EquipEntity : MonoBehaviour
     void Start()
     {
         m_partMembers = new PlayerEntity[4];
-        m_partMembers[0] = GameObject.Find("Luck").GetComponent<PlayerEntity>();
-        m_partMembers[1] = GameObject.Find("Duck").GetComponent<PlayerEntity>();
-        m_partMembers[2] = GameObject.Find("Buck").GetComponent<PlayerEntity>();
-        m_partMembers[3] = GameObject.Find("Phil").GetComponent<PlayerEntity>();
+        m_partMembers[0] = GameObject.Find("Player").GetComponent<PlayerEntity>();
+        m_partMembers[1] = GameObject.Find("Player (1)").GetComponent<PlayerEntity>();
+        m_partMembers[2] = GameObject.Find("Player (2)").GetComponent<PlayerEntity>();
+        m_partMembers[3] = GameObject.Find("Player (3)").GetComponent<PlayerEntity>();
         m_partyMemberName = GameObject.Find("PartyMemberName").GetComponent<TextMeshProUGUI>();
         m_partyMemberName.text = "Luck";
         m_itemFadeColour.a = 0.0f;
