@@ -163,6 +163,7 @@ public class PlayerEntity : Entity
                 if (!isAlive && !countedDead)
                 {
                     Debug.Log("DeadPlayers increased");
+                    BC.PartyMembersInBattle.Remove(this.gameObject);
                     BC.deadPlayers++;
                     countedDead = true;
                     this.transform.eulerAngles = new Vector3(this.transform.eulerAngles.x, this.transform.eulerAngles.y, 90);
