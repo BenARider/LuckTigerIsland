@@ -124,7 +124,7 @@ public class KillObjective : QuestObjective
     {
         return m_enemy;
     }
-    public void SetLocation(EEnemies _enemy)
+    public void SetEnemy(EEnemies _enemy)
     {
         m_enemy = _enemy;
     }

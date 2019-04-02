@@ -35,7 +35,9 @@ public class PlayerManager : LTI.Singleton<PlayerManager> {
     Interaction lastDialogueInteract;
     NPCDialogue activeDialogue;
 
+    [SerializeField]
     private int m_level = 1;
+    [SerializeField]
     private int m_xp = 0;
 
     public int GetLevel()

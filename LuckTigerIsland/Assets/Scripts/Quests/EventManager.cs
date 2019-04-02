@@ -13,7 +13,7 @@ public enum ELocations
     Cliffside,
     SpiritCave,
     MtLarge,
-
+    IslandBoat
 }
 
 //Enemies
