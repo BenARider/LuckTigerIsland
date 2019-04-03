@@ -128,6 +128,7 @@ public class Entity : MonoBehaviour {
     public GameObject EntityToAttack; //What the entity wants to attack
 
     public List<BaseAttack> attacks = new List<BaseAttack>();
+    public List<BaseActivePassive> passiveActiveList = new List<BaseActivePassive>();
     public List<InventoryObject> HealthPotions = new List<InventoryObject>();
     public List<InventoryObject> ManaPotions = new List<InventoryObject>();
     protected BaseAttack m_chosenAction;

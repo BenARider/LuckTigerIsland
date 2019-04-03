@@ -3673,6 +3673,26 @@ Prefab:
       propertyPath: attacks.Array.size
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 114078770038548272, guid: e09f1bcd3a2c10443ab1117241ea0c1b,
+        type: 2}
+      propertyPath: passiveList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114078770038548272, guid: e09f1bcd3a2c10443ab1117241ea0c1b,
+        type: 2}
+      propertyPath: passiveActiveList.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114027231205543680, guid: e09f1bcd3a2c10443ab1117241ea0c1b,
+        type: 2}
+      propertyPath: passiveActiveList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114090179202345774, guid: e09f1bcd3a2c10443ab1117241ea0c1b,
+        type: 2}
+      propertyPath: passiveActiveList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 114519508208850730, guid: e09f1bcd3a2c10443ab1117241ea0c1b,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -5096,6 +5116,35 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 114078770038548272, guid: e09f1bcd3a2c10443ab1117241ea0c1b,
+        type: 2}
+      propertyPath: passiveList.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 67500c36ef7463546a35a6ead711aa30,
+        type: 2}
+    - target: {fileID: 114078770038548272, guid: e09f1bcd3a2c10443ab1117241ea0c1b,
+        type: 2}
+      propertyPath: passiveList.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 49280a6720e4ab34d9bbd617acc312d7,
+        type: 2}
+    - target: {fileID: 114078770038548272, guid: e09f1bcd3a2c10443ab1117241ea0c1b,
+        type: 2}
+      propertyPath: passiveActiveList.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114027231205543680, guid: e09f1bcd3a2c10443ab1117241ea0c1b,
+        type: 2}
+      propertyPath: passiveActiveList.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 035c8daa92bc54f4dac5198d5559e4cb,
+        type: 2}
+    - target: {fileID: 114090179202345774, guid: e09f1bcd3a2c10443ab1117241ea0c1b,
+        type: 2}
+      propertyPath: passiveActiveList.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 576f587f722dbb74fb1af0ec4aae678b,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e09f1bcd3a2c10443ab1117241ea0c1b, type: 2}
   m_IsPrefabParent: 0
