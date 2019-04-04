@@ -9,6 +9,7 @@ public class PlayerEntity : Entity
 
     private int m_playerIDStats = 0;
     public TextMeshProUGUI[] statTexts;
+    public TextMeshProUGUI[] skillTexts;
     public TextMeshProUGUI turnText;//who's turn it is
     public TextMeshProUGUI attackDescriptionText;//describes the attack that is happening/happend
     public TextMeshProUGUI notEnoughManaText;
@@ -17,6 +18,10 @@ public class PlayerEntity : Entity
     public Slider expBar;
     public Button playerStatButton;
     public GameObject playerStatMenu;
+    public GameObject enemyTargets;
+    public GameObject teamTargets;
+    public Button enemyTarget;
+    public Button teamTarget;
     [SerializeField]
     private bool m_findTextGameObjects;
     public EquipEntity m_equipEntity;
@@ -58,6 +63,8 @@ public class PlayerEntity : Entity
     private BattleUIButton m_BattleButton;
     public HandleTurns HT;
 
+    public List<BasePassive> passiveList = new List<BasePassive>();
+
     public bool m_hasChosenAction;
     public bool m_chosenTarget;
 
@@ -88,8 +95,202 @@ public class PlayerEntity : Entity
 
         currentState = TurnState.eProssesing;
 
+        foreach (var passive in passiveList)
+        {
+            switch (passive.passiveType)
+            {
+                case (BasePassive.PassiveType.eAll):
+                    m_health += passive.passiveAmount;
+                    m_strength += passive.passiveAmount;
+                    m_mana += passive.passiveAmount;
+                    break;
+                case (BasePassive.PassiveType.eHealth):
+                    m_health += passive.passiveAmount;
+                    break;
+                case (BasePassive.PassiveType.eStrength):
+                    m_strength += passive.passiveAmount;
+                    break;
+                case (BasePassive.PassiveType.eMagic):
+                    m_mana += passive.passiveAmount;
+                    break;
+            }
+        }
 
-
+        foreach (var passive in passiveActiveList)
+        {
+            if(passive.passiveActive!=true)
+            {
+                switch (passive.lessThanOrMoreThan)
+                {
+                    case (BaseActivePassive.LessThanOrMoreThan.eLessThan):
+                        switch (passive.passiveConditionType)
+                        {
+                            case (BaseActivePassive.PassiveCondition.eHealth):
+                                if (m_health <= passive.passiveCondtitionAmount)
+                                {
+                                    switch (passive.passiveType)
+                                    {
+                                        case (BaseActivePassive.PassiveType.eAll):
+                                            m_health += passive.passiveAmount;
+                                            m_strength += passive.passiveAmount;
+                                            m_mana += passive.passiveAmount;
+                                            passive.passiveActive = true;
+                                            break;
+                                        case (BaseActivePassive.PassiveType.eHealth):
+                                            m_health += passive.passiveAmount;
+                                            passive.passiveActive = true;
+                                            break;
+                                        case (BaseActivePassive.PassiveType.eStrength):
+                                            m_strength += passive.passiveAmount;
+                                            passive.passiveActive = true;
+                                            break;
+                                        case (BaseActivePassive.PassiveType.eMagic):
+                                            m_mana += passive.passiveAmount;
+                                            passive.passiveActive = true;
+                                            break;
+                                    }
+                                }
+                                break;
+                            case (BaseActivePassive.PassiveCondition.eMagic):
+                                if (m_mana <= passive.passiveCondtitionAmount)
+                                {
+                                    switch (passive.passiveType)
+                                    {
+                                        case (BaseActivePassive.PassiveType.eAll):
+                                            m_health += passive.passiveAmount;
+                                            m_strength += passive.passiveAmount;
+                                            m_mana += passive.passiveAmount;
+                                            passive.passiveActive = true;
+                                            break;
+                                        case (BaseActivePassive.PassiveType.eHealth):
+                                            m_health += passive.passiveAmount;
+                                            passive.passiveActive = true;
+                                            break;
+                                        case (BaseActivePassive.PassiveType.eStrength):
+                                            m_strength += passive.passiveAmount;
+                                            passive.passiveActive = true;
+                                            break;
+                                        case (BaseActivePassive.PassiveType.eMagic):
+                                            m_mana += passive.passiveAmount;
+                                            passive.passiveActive = true;
+                                            break;
+                                    }
+                                }
+                                break;
+                            case (BaseActivePassive.PassiveCondition.eStrength):
+                                if (m_strength <= passive.passiveCondtitionAmount)
+                                {
+                                    switch (passive.passiveType)
+                                    {
+                                        case (BaseActivePassive.PassiveType.eAll):
+                                            m_health += passive.passiveAmount;
+                                            m_strength += passive.passiveAmount;
+                                            m_mana += passive.passiveAmount;
+                                            passive.passiveActive = true;
+                                            break;
+                                        case (BaseActivePassive.PassiveType.eHealth):
+                                            m_health += passive.passiveAmount;
+                                            passive.passiveActive = true;
+                                            break;
+                                        case (BaseActivePassive.PassiveType.eStrength):
+                                            m_strength += passive.passiveAmount;
+                                            passive.passiveActive = true;
+                                            break;
+                                        case (BaseActivePassive.PassiveType.eMagic):
+                                            m_mana += passive.passiveAmount;
+                                            passive.passiveActive = true;
+                                            break;
+                                    }
+                                }
+                                break;
+                        }
+                        break;
+                    case (BaseActivePassive.LessThanOrMoreThan.eMoreThan):
+                        switch (passive.passiveConditionType)
+                        {
+                            case (BaseActivePassive.PassiveCondition.eHealth):
+                                if (m_health >= passive.passiveCondtitionAmount)
+                                {
+                                    switch (passive.passiveType)
+                                    {
+                                        case (BaseActivePassive.PassiveType.eAll):
+                                            m_health += passive.passiveAmount;
+                                            m_strength += passive.passiveAmount;
+                                            m_mana += passive.passiveAmount;
+                                            passive.passiveActive = true;
+                                            break;
+                                        case (BaseActivePassive.PassiveType.eHealth):
+                                            m_health += passive.passiveAmount;
+                                            passive.passiveActive = true;
+                                            break;
+                                        case (BaseActivePassive.PassiveType.eStrength):
+                                            m_strength += passive.passiveAmount;
+                                            passive.passiveActive = true;
+                                            break;
+                                        case (BaseActivePassive.PassiveType.eMagic):
+                                            m_mana += passive.passiveAmount;
+                                            passive.passiveActive = true;
+                                            break;
+                                    }
+                                }
+                                break;
+                            case (BaseActivePassive.PassiveCondition.eMagic):
+                                if (m_mana >= passive.passiveCondtitionAmount)
+                                {
+                                    switch (passive.passiveType)
+                                    {
+                                        case (BaseActivePassive.PassiveType.eAll):
+                                            m_health += passive.passiveAmount;
+                                            m_strength += passive.passiveAmount;
+                                            m_mana += passive.passiveAmount;
+                                            passive.passiveActive = true;
+                                            break;
+                                        case (BaseActivePassive.PassiveType.eHealth):
+                                            m_health += passive.passiveAmount;
+                                            passive.passiveActive = true;
+                                            break;
+                                        case (BaseActivePassive.PassiveType.eStrength):
+                                            m_strength += passive.passiveAmount;
+                                            passive.passiveActive = true;
+                                            break;
+                                        case (BaseActivePassive.PassiveType.eMagic):
+                                            m_mana += passive.passiveAmount;
+                                            passive.passiveActive = true;
+                                            break;
+                                    }
+                                }
+                                break;
+                            case (BaseActivePassive.PassiveCondition.eStrength):
+                                if (m_strength >= passive.passiveCondtitionAmount)
+                                {
+                                    switch (passive.passiveType)
+                                    {
+                                        case (BaseActivePassive.PassiveType.eAll):
+                                            m_health += passive.passiveAmount;
+                                            m_strength += passive.passiveAmount;
+                                            m_mana += passive.passiveAmount;
+                                            passive.passiveActive = true;
+                                            break;
+                                        case (BaseActivePassive.PassiveType.eHealth):
+                                            m_health += passive.passiveAmount;
+                                            passive.passiveActive = true;
+                                            break;
+                                        case (BaseActivePassive.PassiveType.eStrength):
+                                            m_strength += passive.passiveAmount;
+                                            passive.passiveActive = true;
+                                            break;
+                                        case (BaseActivePassive.PassiveType.eMagic):
+                                            m_mana += passive.passiveAmount;
+                                            passive.passiveActive = true;
+                                            break;
+                                    }
+                                }
+                                break;
+                        }
+                        break;
+                }
+            }
+        }
         ///used to test the afflictions, currently procs every second and will stop after 20. Can be changed later though
         //m_afflicted = true;
         //currentAffliction = Affliction.eOnFire;
@@ -105,8 +306,17 @@ public class PlayerEntity : Entity
         ManaPotions.Add(MpPotion);
         ManaPotions.Add(MpPotion);
 
+        skillTexts = new TextMeshProUGUI[7];
 
         statTexts = new TextMeshProUGUI[12];
+
+        skillTexts[0] = GameObject.Find("Action_One").GetComponent<TextMeshProUGUI>();
+        skillTexts[1] = GameObject.Find("Action_Two").GetComponent<TextMeshProUGUI>();
+        skillTexts[2] = GameObject.Find("Action_Three").GetComponent<TextMeshProUGUI>();
+        skillTexts[3] = GameObject.Find("Action_Four").GetComponent<TextMeshProUGUI>();
+        skillTexts[4] = GameObject.Find("Action_Five").GetComponent<TextMeshProUGUI>();
+        skillTexts[5] = GameObject.Find("Action_Six").GetComponent<TextMeshProUGUI>();
+        skillTexts[6] = GameObject.Find("Action_Seven").GetComponent<TextMeshProUGUI>();
 
         playerStatButton.onClick.AddListener(IncreasePlayerStatID);
         BC = GameObject.Find("BattleControl").GetComponent<BattleControl>();
@@ -136,6 +346,181 @@ public class PlayerEntity : Entity
     // Update is called once per frame
     void Update()
     {
+        foreach (var passive in passiveActiveList)
+        {
+            if (passive.passiveActive != true)
+            {
+                switch (passive.lessThanOrMoreThan)
+                {
+                    case (BaseActivePassive.LessThanOrMoreThan.eLessThan):
+                        switch (passive.passiveConditionType)
+                        {
+                            case (BaseActivePassive.PassiveCondition.eHealth):
+                                if (m_health <= passive.passiveCondtitionAmount)
+                                {
+                                    switch (passive.passiveType)
+                                    {
+                                        case (BaseActivePassive.PassiveType.eAll):
+                                            m_health += passive.passiveAmount;
+                                            m_strength += passive.passiveAmount;
+                                            m_mana += passive.passiveAmount;
+                                            passive.passiveActive = true;
+                                            break;
+                                        case (BaseActivePassive.PassiveType.eHealth):
+                                            m_health += passive.passiveAmount;
+                                            passive.passiveActive = true;
+                                            break;
+                                        case (BaseActivePassive.PassiveType.eStrength):
+                                            m_strength += passive.passiveAmount;
+                                            passive.passiveActive = true;
+                                            break;
+                                        case (BaseActivePassive.PassiveType.eMagic):
+                                            m_mana += passive.passiveAmount;
+                                            passive.passiveActive = true;
+                                            break;
+                                    }
+                                }
+                                break;
+                            case (BaseActivePassive.PassiveCondition.eMagic):
+                                if (m_mana <= passive.passiveCondtitionAmount)
+                                {
+                                    switch (passive.passiveType)
+                                    {
+                                        case (BaseActivePassive.PassiveType.eAll):
+                                            m_health += passive.passiveAmount;
+                                            m_strength += passive.passiveAmount;
+                                            m_mana += passive.passiveAmount;
+                                            passive.passiveActive = true;
+                                            break;
+                                        case (BaseActivePassive.PassiveType.eHealth):
+                                            m_health += passive.passiveAmount;
+                                            passive.passiveActive = true;
+                                            break;
+                                        case (BaseActivePassive.PassiveType.eStrength):
+                                            m_strength += passive.passiveAmount;
+                                            passive.passiveActive = true;
+                                            break;
+                                        case (BaseActivePassive.PassiveType.eMagic):
+                                            m_mana += passive.passiveAmount;
+                                            passive.passiveActive = true;
+                                            break;
+                                    }
+                                }
+                                break;
+                            case (BaseActivePassive.PassiveCondition.eStrength):
+                                if (m_strength <= passive.passiveCondtitionAmount)
+                                {
+                                    switch (passive.passiveType)
+                                    {
+                                        case (BaseActivePassive.PassiveType.eAll):
+                                            m_health += passive.passiveAmount;
+                                            m_strength += passive.passiveAmount;
+                                            m_mana += passive.passiveAmount;
+                                            passive.passiveActive = true;
+                                            break;
+                                        case (BaseActivePassive.PassiveType.eHealth):
+                                            m_health += passive.passiveAmount;
+                                            passive.passiveActive = true;
+                                            break;
+                                        case (BaseActivePassive.PassiveType.eStrength):
+                                            m_strength += passive.passiveAmount;
+                                            passive.passiveActive = true;
+                                            break;
+                                        case (BaseActivePassive.PassiveType.eMagic):
+                                            m_mana += passive.passiveAmount;
+                                            passive.passiveActive = true;
+                                            break;
+                                    }
+                                }
+                                break;
+                        }
+                        break;
+                    case (BaseActivePassive.LessThanOrMoreThan.eMoreThan):
+                        switch (passive.passiveConditionType)
+                        {
+                            case (BaseActivePassive.PassiveCondition.eHealth):
+                                if (m_health >= passive.passiveCondtitionAmount)
+                                {
+                                    switch (passive.passiveType)
+                                    {
+                                        case (BaseActivePassive.PassiveType.eAll):
+                                            m_health += passive.passiveAmount;
+                                            m_strength += passive.passiveAmount;
+                                            m_mana += passive.passiveAmount;
+                                            passive.passiveActive = true;
+                                            break;
+                                        case (BaseActivePassive.PassiveType.eHealth):
+                                            m_health += passive.passiveAmount;
+                                            passive.passiveActive = true;
+                                            break;
+                                        case (BaseActivePassive.PassiveType.eStrength):
+                                            m_strength += passive.passiveAmount;
+                                            passive.passiveActive = true;
+                                            break;
+                                        case (BaseActivePassive.PassiveType.eMagic):
+                                            m_mana += passive.passiveAmount;
+                                            passive.passiveActive = true;
+                                            break;
+                                    }
+                                }
+                                break;
+                            case (BaseActivePassive.PassiveCondition.eMagic):
+                                if (m_mana >= passive.passiveCondtitionAmount)
+                                {
+                                    switch (passive.passiveType)
+                                    {
+                                        case (BaseActivePassive.PassiveType.eAll):
+                                            m_health += passive.passiveAmount;
+                                            m_strength += passive.passiveAmount;
+                                            m_mana += passive.passiveAmount;
+                                            passive.passiveActive = true;
+                                            break;
+                                        case (BaseActivePassive.PassiveType.eHealth):
+                                            m_health += passive.passiveAmount;
+                                            passive.passiveActive = true;
+                                            break;
+                                        case (BaseActivePassive.PassiveType.eStrength):
+                                            m_strength += passive.passiveAmount;
+                                            passive.passiveActive = true;
+                                            break;
+                                        case (BaseActivePassive.PassiveType.eMagic):
+                                            m_mana += passive.passiveAmount;
+                                            passive.passiveActive = true;
+                                            break;
+                                    }
+                                }
+                                break;
+                            case (BaseActivePassive.PassiveCondition.eStrength):
+                                if (m_strength >= passive.passiveCondtitionAmount)
+                                {
+                                    switch (passive.passiveType)
+                                    {
+                                        case (BaseActivePassive.PassiveType.eAll):
+                                            m_health += passive.passiveAmount;
+                                            m_strength += passive.passiveAmount;
+                                            m_mana += passive.passiveAmount;
+                                            passive.passiveActive = true;
+                                            break;
+                                        case (BaseActivePassive.PassiveType.eHealth):
+                                            m_health += passive.passiveAmount;
+                                            passive.passiveActive = true;
+                                            break;
+                                        case (BaseActivePassive.PassiveType.eStrength):
+                                            m_strength += passive.passiveAmount;
+                                            passive.passiveActive = true;
+                                            break;
+                                        case (BaseActivePassive.PassiveType.eMagic):
+                                            m_mana += passive.passiveAmount;
+                                            passive.passiveActive = true;
+                                            break;
+                                    }
+                                }
+                                break;
+                        }
+                        break;
+                }
+            }
+        }
         switch (currentState)
         {
             case (TurnState.eProssesing):
@@ -210,61 +595,229 @@ public class PlayerEntity : Entity
 
     void ChooseAction()
     {
+      skillTexts[0].text = "1: " + attacks[0].attackName;
+      skillTexts[1].text = "2: " + attacks[1].attackName;
+      skillTexts[2].text = "3: " + attacks[2].attackName;
+      skillTexts[3].text = "4: " + attacks[3].attackName;
+      skillTexts[4].text = "5: " + attacks[4].attackName;
+      skillTexts[5].text = "6: " + attacks[5].attackName;
+      skillTexts[6].text = "7: " + attacks[6].attackName;
+
 
         Debug.Log(this.name + ": Choose Action");
         if (Input.GetKeyDown("1") || m_BattleButton.GetActionTargetNumber() == 1)
         {
+
+            if (attacks[0].attackType == "Buff")
+            {
+                teamTarget.Select();
+                teamTargets.SetActive(true);
+                enemyTargets.SetActive(false);
+            }
+            if (attacks[0].attackType != "Buff")
+            {
+                enemyTarget.Select();
+                teamTargets.SetActive(false);
+                enemyTargets.SetActive(true);
+            }
+
             m_chosenAction = attacks[0];
 
             if (attacks[0].attackCost < m_mana)
             {
                 m_hasChosenAction = true;
+                m_mana -= m_chosenAction.attackCost;
             }
             else
             {
                 notEnoughManaText.text = this.name + " does not have enough mana!";
                 Debug.Log(this.name + " does not have enough mana!");
             }
-            m_mana -= m_chosenAction.attackCost;
             StartCoroutine("FadeText");
         }
-        else notEnoughPotionsText.text = "";
         if (Input.GetKeyDown("2") || m_BattleButton.GetActionTargetNumber() == 2)
         {
             m_chosenAction = attacks[1];
 
+            if (attacks[1].attackType == "Buff")
+            {
+                teamTarget.Select();
+                teamTargets.SetActive(true);
+                enemyTargets.SetActive(false);
+            }
+            if (attacks[1].attackType != "Buff")
+            {
+                enemyTarget.Select();
+                teamTargets.SetActive(false);
+                enemyTargets.SetActive(true);
+            }
             if (attacks[1].attackCost < m_mana)
             {
                 m_hasChosenAction = true;
+                m_mana -= m_chosenAction.attackCost;
             }
             else
             {
                 notEnoughManaText.text = this.name + " does not have enough mana!";
                 Debug.Log(this.name + " does not have enough mana!");
             }
-            m_mana -= m_chosenAction.attackCost;
+            
             StartCoroutine("FadeText");
         }
-        else notEnoughPotionsText.text = "";
         if (Input.GetKeyDown("3") || m_BattleButton.GetActionTargetNumber() == 3)
         {
+            if (attacks[2].attackType == "Buff")
+            {
+                teamTarget.Select();
+                teamTargets.SetActive(true);
+                enemyTargets.SetActive(false);
+            }
+            if (attacks[2].attackType != "Buff")
+            {
+                enemyTarget.Select();
+                teamTargets.SetActive(false);
+                enemyTargets.SetActive(true);
+            }
             m_chosenAction = attacks[2];
             if (attacks[2].attackCost < m_mana)
             {
+             
                 m_hasChosenAction = true;
+                m_mana -= m_chosenAction.attackCost;
             }
             else
             {
                 notEnoughManaText.text = this.name + " does not have enough mana!";
                 Debug.Log(this.name + " does not have enough mana!");
             }
-            m_mana -= m_chosenAction.attackCost;
+           
             StartCoroutine("FadeText");
         }
-        else notEnoughPotionsText.text = "";
-        if (Input.GetKeyDown("8") || m_BattleButton.GetActionTargetNumber() == 8)
+        if (Input.GetKeyDown("4") || m_BattleButton.GetActionTargetNumber() == 4)
+        {
+            if (attacks[3].attackType == "Buff")
+            {
+                teamTarget.Select();
+                teamTargets.SetActive(true);
+                enemyTargets.SetActive(false);
+            }
+            if (attacks[3].attackType != "Buff")
+            {
+                enemyTarget.Select();
+                teamTargets.SetActive(false);
+                enemyTargets.SetActive(true);
+            }
+            m_chosenAction = attacks[3];
+
+            if (attacks[3].attackCost < m_mana)
+            {
+                m_hasChosenAction = true;
+                m_mana -= m_chosenAction.attackCost;
+            }
+            else
+            {
+                notEnoughManaText.text = this.name + " does not have enough mana!";
+                Debug.Log(this.name + " does not have enough mana!");
+            }
+            
+            StartCoroutine("FadeText");
+        }
+        if (Input.GetKeyDown("5") || m_BattleButton.GetActionTargetNumber() == 5)
         {
 
+            if (attacks[4].attackType == "Buff")
+            {
+                teamTarget.Select();
+                teamTargets.SetActive(true);
+                enemyTargets.SetActive(false);
+            }
+            if (attacks[4].attackType != "Buff")
+            {
+                enemyTarget.Select();
+                teamTargets.SetActive(false);
+                enemyTargets.SetActive(true);
+            }
+            m_chosenAction = attacks[4];
+
+            if (attacks[4].attackCost < m_mana)
+            {
+                m_hasChosenAction = true;
+                m_mana -= m_chosenAction.attackCost;
+            }
+            else
+            {
+                notEnoughManaText.text = this.name + " does not have enough mana!";
+                Debug.Log(this.name + " does not have enough mana!");
+            }
+            
+            StartCoroutine("FadeText");
+        }
+        if (Input.GetKeyDown("6") || m_BattleButton.GetActionTargetNumber() == 6)
+        {
+
+            if (attacks[5].attackType == "Buff")
+            {
+                teamTarget.Select();
+                teamTargets.SetActive(true);
+                enemyTargets.SetActive(false);
+            }
+            if (attacks[5].attackType != "Buff")
+            {
+                enemyTarget.Select();
+                teamTargets.SetActive(false);
+                enemyTargets.SetActive(true);
+            }
+
+            m_chosenAction = attacks[5];
+
+            if (attacks[5].attackCost < m_mana)
+            {
+                m_hasChosenAction = true;
+                m_mana -= m_chosenAction.attackCost;
+            }
+            else
+            {
+                notEnoughManaText.text = this.name + " does not have enough mana!";
+                Debug.Log(this.name + " does not have enough mana!");
+            }
+            
+            StartCoroutine("FadeText");
+        }
+        if (Input.GetKeyDown("7") || m_BattleButton.GetActionTargetNumber() == 7)
+        {
+
+                if (attacks[6].attackType == "Buff")
+                {
+                teamTarget.Select();
+                teamTargets.SetActive(true);
+                    enemyTargets.SetActive(false);
+                }
+                if (attacks[6].attackType != "Buff")
+                {
+                enemyTarget.Select();
+                teamTargets.SetActive(false);
+                    enemyTargets.SetActive(true);
+                }
+
+            
+            m_chosenAction = attacks[6];
+
+            if (attacks[6].attackCost < m_mana)
+            {
+                m_hasChosenAction = true;
+                m_mana -= m_chosenAction.attackCost;
+            }
+            else
+            {
+                notEnoughManaText.text = this.name + " does not have enough mana!";
+                Debug.Log(this.name + " does not have enough mana!");
+            }
+            
+            StartCoroutine("FadeText");
+        }
+        if (Input.GetKeyDown("8") || m_BattleButton.GetActionTargetNumber() == 8)
+        {
+           
             if (HealthPotions.Count > 0)
             {
                 m_health += Health_Potion.healthGiven;
@@ -291,6 +844,20 @@ public class PlayerEntity : Entity
 
         if (Input.GetKeyDown("9") || m_BattleButton.GetActionTargetNumber() == 9)
         {
+            for (int i = 0; i < attacks.Count; ++i)
+            {
+                if (attacks[i].attackType == "Buff")
+                {
+                    teamTargets.SetActive(true);
+                    enemyTargets.SetActive(false);
+                }
+                if (attacks[i].attackType != "Buff")
+                {
+                    teamTargets.SetActive(false);
+                    enemyTargets.SetActive(true);
+                }
+
+            }
             if (ManaPotions.Count > 0)
             {
                 m_mana += Mana_Potion.manaGiven;

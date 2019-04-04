@@ -30,6 +30,7 @@ public class BattleControl : MonoBehaviour {
     public List<GameObject> TargetingListForAI = new List<GameObject>();
     EventSystem m_eventSystem;
     public GameObject actionOne;
+    public int battleGoldReward = 0;
     public int deadEnemies = 0;
     public int deadPlayers = 0;
 
@@ -100,7 +101,9 @@ public class BattleControl : MonoBehaviour {
             case (performAction.ePerformAction):
                 break;
             case (performAction.eWin):
+                Inventory.Instance.IncreaseGold(battleGoldReward);
                 PlayerManager.Instance.transform.root.GetComponent<ReturnToMain>().Return();
+
                 //go to victory screen/overworld here
                 break;
             case (performAction.eLoss):

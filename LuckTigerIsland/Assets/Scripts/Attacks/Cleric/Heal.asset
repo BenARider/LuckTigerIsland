@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: Heal
   attackDescription: A powerful single target heal
-  attackType: Magical
+  attackType: Buff
   attackDamage: 40
   skillMultiplier: 2
   skillDuration: 0

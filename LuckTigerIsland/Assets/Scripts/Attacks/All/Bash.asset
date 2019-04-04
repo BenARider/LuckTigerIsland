@@ -16,7 +16,7 @@ MonoBehaviour:
   attackType: Melee
   attackDamage: 8
   skillMultiplier: 1
-  skillDuration: 0
+  skillDuration: 3
   attackCost: 12
   attackImage: {fileID: 0}
   attackAffliction: Stun
