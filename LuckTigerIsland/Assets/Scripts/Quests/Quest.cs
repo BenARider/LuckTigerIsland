@@ -43,6 +43,10 @@ public class Quest : MonoBehaviour
     private EEnemies o_enemy;
     [SerializeField]
     private int o_enemyAmount;
+    [SerializeField]
+    private InventoryObject o_inventoryItem;
+    [SerializeField]
+    private int o_itemAmount;
 
     // Add/Remove Objectives
     public void AddLocationObjective(ELocations _location)
@@ -58,6 +62,14 @@ public class Quest : MonoBehaviour
         m_killObjectives.Add(_eo);
         m_allObjectives.Add(_eo);
     }
+
+    public void AddInventoryObjective(InventoryObject _object, int _amount = 1)
+    {
+        ItemObjective _io = new ItemObjective(_object, _amount);
+        m_inventoryObjectives.Add(_io);
+        m_allObjectives.Add(_io);
+    }
+
 
     public void RemoveLastLocationObjective()
     {

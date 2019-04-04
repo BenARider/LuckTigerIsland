@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4806343326912994}
   - component: {fileID: 114196736021906980}
   m_Layer: 0
-  m_Name: Quest_ A Peach to their own!
+  m_Name: A Peach to their own!
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -59,8 +59,13 @@ MonoBehaviour:
   m_allObjectives: []
   m_killObjectives: []
   m_locationObjectives: []
-  m_inventoryObjectives: []
+  m_inventoryObjectives:
+  - m_object: {fileID: 11400000, guid: 26e48b6ad6a98b344a64504cb7bc2b94, type: 2}
+    m_totalAmount: 5
+    m_currentAmount: 5
   o_type: 2
   o_location: 0
   o_enemy: 0
   o_enemyAmount: 0
+  o_inventoryItem: {fileID: 11400000, guid: 26e48b6ad6a98b344a64504cb7bc2b94, type: 2}
+  o_itemAmount: 5
