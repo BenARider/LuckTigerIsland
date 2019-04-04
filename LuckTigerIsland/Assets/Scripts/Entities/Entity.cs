@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
 public class Entity : MonoBehaviour {
 
 	//General stats used to initialise entities
@@ -170,12 +169,12 @@ public class Entity : MonoBehaviour {
 		if (afflictionTimes >= maxAfflictions)
 		{
 			stopAfflictions();
-			StopCoroutine("checkAffliction");
+			//StopCoroutine(checkAffliction());
 		}
     }
     protected IEnumerator resetAffliction()
 	{
-		if (currentAffliction != Affliction.eNone)
+		//if (currentAffliction != Affliction.eNone)
 		{
 			yield return new WaitForSeconds(10.0f);
 			currentAffliction = Affliction.eNone;
@@ -422,11 +421,12 @@ public class Entity : MonoBehaviour {
     public void TakeDamage(int damageAmount, BaseAttack attack)
     {
         m_health -= damageAmount;
-        if (attack.attackAffliction != "" && attack.attackType != "buff" && alreadyAfflicted == false)
+        if (!string.IsNullOrEmpty(attack.attackAffliction) && attack.attackType != "buff" && alreadyAfflicted == false)
         {
             alreadyAfflicted = true;
             addAffliction(attack);
-            StartCoroutine("checkaffliction", attack.skillDuration);
+            StartCoroutine(checkAffliction((int)attack.skillDuration));
+            StartCoroutine(resetAffliction());
         }
 
         if (GetHealth() <= 0)
@@ -435,55 +435,6 @@ public class Entity : MonoBehaviour {
             Inventory.Instance.IncreaseGold(m_goldAward);
             currentState = TurnState.eDead;
         }
-    }
-
-
-    //--------------------------------------------------------------------------------------------------
-    protected void Attack()
-    {
-        if (attacking == true)
-        {
-            //Chance of the attack hitting
-            chanceToHit = Random.Range(1, 100);
-
-            if (chanceToHit <= 85)
-            {
-                dmgRecieve = true;
-            }
-            else
-                return;
-
-        }
-    }
-
-    
-    //General logic of damage calculation
-    protected void Damage()
-    {
-        if (dmgRecieve == true)
-        {
-            tempDMGReduct = GetStrength() / GetDefence();
-            totalDMG = GetStrength() - tempDMGReduct;
-
-            dmgRecieve = false;
-            dmgDealt = true;
-
-            if (dmgDealt == true)
-            {
-                m_health = m_health - totalDMG;
-                dmgDealt = false;
-            }
-        }
-    }
-    
-    protected void Death()
-    {
-        if (m_health <= 0)
-        {
-           
-           // Destroy(gameObject); //could rework to set the object to be sideways/inactive instead of destroyed
-        }
-     
     }
 }
 
