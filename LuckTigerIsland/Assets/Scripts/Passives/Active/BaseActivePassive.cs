@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 [CreateAssetMenu(fileName = "Passive", menuName = "Passive/Active")]
-public class BaseActivePassive : ScriptableObject
+public class BaseActivePassive : BasePassive
 {
-    public bool passiveActive = false;
+    //public bool passiveActive = false;
 
     public enum PassiveCondition
     {
@@ -24,17 +24,17 @@ public class BaseActivePassive : ScriptableObject
     public int passiveCondtitionAmount;
 
 
-    public enum PassiveType
-    {
-        eAll,
-        eStrength,
-        eHealth,
-        eMagic
-    }
+    //public enum PassiveType
+    //{
+    //    eAll,
+    //    eStrength,
+    //    eHealth,
+    //    eMagic
+    //}
 
-    public PassiveType passiveType;
+    //public PassiveType passiveType;
 
-    public int passiveAmount;
+    //public int passiveAmount;
 
 }
 

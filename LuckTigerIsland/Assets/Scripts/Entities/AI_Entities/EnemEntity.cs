@@ -104,6 +104,7 @@ public class EnemEntity : Entity
                 break;
             case (TurnState.eChooseAction):
                 CheckBuffs();
+                rollsAttempted = 0;
                 rollAttack();
                 ChooseAction(); //Do action
                 currentState = TurnState.eWaiting; //move to waiting unil BC tells the entity to do the action
@@ -166,15 +167,24 @@ public class EnemEntity : Entity
         }
 	}
 
+    int rollsAttempted = 0;
+    int maxRolls = 10;
+
     void rollAttack()
     {
+        rollsAttempted++;
+
         int num = Random.Range(0, attacks.Count);
 
         m_chosenAction = attacks[num];
 
-        if (m_chosenAction.attackCost > m_mana)
+        if (m_chosenAction.attackCost > m_mana && rollsAttempted < maxRolls)
         {
             rollAttack();
+        }
+        if(rollsAttempted >= maxRolls)
+        {
+            m_chosenAction = attacks.First(x => x.attackCost < m_mana);
         }
     }
 

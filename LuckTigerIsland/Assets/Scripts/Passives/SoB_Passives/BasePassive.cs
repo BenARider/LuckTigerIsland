@@ -4,6 +4,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Passive", menuName = "Passive/StartOfBattle")]
 public class BasePassive : ScriptableObject
 {
+    public bool passiveActive = false;
+
     public enum PassiveType
     {
         eAll,
