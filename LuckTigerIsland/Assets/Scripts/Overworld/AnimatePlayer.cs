@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public class AnimatePlayer : MonoBehaviour {
-    Animator animator;
+    public Animator animator;
     Vector3 lastPosition;
 
 	// Use this for initialization
@@ -13,29 +14,35 @@ public class AnimatePlayer : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
         Vector3 compare = transform.position - lastPosition;
-
-        if(compare.x > 0)
+        if (compare.y < -0.01f)
         {
-            animator.SetInteger("X", 1);
-            animator.SetInteger("Y", 0);
-        }
-        if (compare.x < 0)
-        {
-            animator.SetInteger("X", -1);
-            animator.SetInteger("Y", 0);
-        }
-        if (compare.y > 0)
+            animator.SetInteger("X", 0);
+            animator.SetInteger("Y", -1);
+        }else if (compare.y > 0.01f)
         {
             animator.SetInteger("X", 0);
             animator.SetInteger("Y", 1);
         }
-        if (compare.x < 0)
+        else if (compare.x < -0.01f)
+        {
+            animator.SetInteger("X", -1);
+            animator.SetInteger("Y", 0);
+        }
+        else if (compare.x > 0.01f)
+        {
+            animator.SetInteger("X", 1);
+            animator.SetInteger("Y", 0);
+        }
+        else
         {
             animator.SetInteger("X", 0);
-            animator.SetInteger("Y", -1);
+            animator.SetInteger("Y", 0);
+
         }
+
+
 
         lastPosition = transform.position;
     }
