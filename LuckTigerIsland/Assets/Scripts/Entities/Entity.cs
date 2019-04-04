@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
 public class Entity : MonoBehaviour {
 
 	//General stats used to initialise entities
@@ -12,15 +11,20 @@ public class Entity : MonoBehaviour {
 	protected int m_health;
 	[SerializeField]
 	protected int m_strength; //basic attack
+    private int m_previousStrength;
 	[SerializeField]
 	public int m_magicPower;
-	[SerializeField]
+    private int m_previousMagicPower;
+    [SerializeField]
 	protected int m_defence;
-	[SerializeField]
+    private int m_previousDefence;
+    [SerializeField]
 	protected int m_defenceMGC;
-	[SerializeField]
+    private int m_previousDefenceMGC;
+    [SerializeField]
 	protected int m_speed;
-	[SerializeField]
+    private int m_previousSpeed;
+    [SerializeField]
 	protected int m_mana;
 	[SerializeField]
 	protected int m_maxMana;
@@ -34,14 +38,16 @@ public class Entity : MonoBehaviour {
 	protected int m_level;
 	[SerializeField]
 	protected int m_xpAward;
+    [SerializeField]
+    protected int m_goldAward;
 	[SerializeField]
 	protected int m_EXP;
-	[SerializeField]
-    protected string Class; //used to determine stat allocation in the other classes.
 
     /// Following are used purely for battle integration. Used by both enemies and players.
     [SerializeField]
 	protected bool m_attackedAlready = false;
+    [SerializeField]
+    protected bool m_canBeBuffed = true;
 	[SerializeField]
 	protected int m_entityNumber; 
 	[SerializeField]
@@ -91,25 +97,41 @@ public class Entity : MonoBehaviour {
         eDead
     }
     public TurnState currentState;
-
+    
     public enum Affliction
     {
         eNone,
         eOnFire,
-        eFrozen,
+        eFreeze,
         eInfected,
+		ePoison,
         eStunned
     }
+
+    public enum Buffs
+    {
+        eNone,
+        eBlock,
+        eStrength,
+        eMagic,
+		eDefence,
+		eAttack,
+        eInvisable,
+		ePurge
+    }
     public Affliction currentAffliction;
+    public Buffs currentBuff;
     protected Vector3 startPosition; //used for animation, move to player when attacking and then back
 
     protected bool actionHappening = false; //Think attackAlready, stops the entities spamming
     public GameObject EntityToAttack; //What the entity wants to attack
 
     public List<BaseAttack> attacks = new List<BaseAttack>();
+    public List<BaseActivePassive> passiveActiveList = new List<BaseActivePassive>();
     public List<InventoryObject> HealthPotions = new List<InventoryObject>();
     public List<InventoryObject> ManaPotions = new List<InventoryObject>();
     protected BaseAttack m_chosenAction;
+
 
     protected bool MoveTo(Vector3 target)
     {
@@ -117,63 +139,183 @@ public class Entity : MonoBehaviour {
         return target != (transform.position = Vector3.MoveTowards(transform.position, target, walkSpeed * Time.deltaTime)); //returns false until the enity is at its target
     }
 
-	protected IEnumerator checkAffliction(int maxAfflictions)
+	protected IEnumerator checkAffliction()
 	{
-
-		if (currentAffliction == Affliction.eNone || currentAffliction == Affliction.eStunned)
-		{
-			yield break;
-		}
-
 		yield return new WaitForSeconds(1.0f);
-		afflictionTimes++;
-
-		if (currentAffliction == Affliction.eOnFire)
-		{
-			m_health -= 5; //Do some damge calc against resistances and weaknesses
-			Debug.Log("on fire");
-		}
-
-		if (currentAffliction == Affliction.eInfected)
-		{
-			m_health -= 5; //Do some damge calc against resistances and weaknesses
-		}
-
-		if (currentAffliction == Affliction.eFrozen)
-		{
-			m_health -= 2;
-		}
-
-		if (currentAffliction == Affliction.eStunned)
-		{
-			m_stunned = true;
-		}
-
-		if (afflictionTimes >= maxAfflictions)
-		{
-			stopAfflictions();
-			StopCoroutine("checkAffliction");
-		}
-	}
-	protected IEnumerator resetAffliction()
+        switch (currentAffliction)
+        {
+            case Affliction.eNone:
+                yield break;
+            case Affliction.eOnFire:
+                m_health -= 5; //Do some damge calc against resistances and weaknesses
+                Debug.Log("on fire");
+                break;
+            case Affliction.eFreeze:
+                m_health -= 2;
+                break;
+            case Affliction.eInfected:
+                m_health -= 5; //Do some damge calc against resistances and weaknesses
+                break;
+			case Affliction.ePoison:
+				m_health -= 3;
+				break;
+            case Affliction.eStunned:
+                m_stunned = true;
+                break;
+        }
+    }
+    protected IEnumerator resetAffliction(float AttackDuration)
 	{
 		if (currentAffliction != Affliction.eNone)
 		{
-			yield return new WaitForSeconds(10.0f);
+			yield return new WaitForSeconds(AttackDuration);
 			currentAffliction = Affliction.eNone;
+            m_afflicted = false;
+            alreadyAfflicted = false;
 		}
 	}
-	protected void stopAfflictions()
-	{
-		m_afflicted = false;
-		alreadyAfflicted = false;
-	}
 
+    protected void addAffliction(BaseAttack AttackAffliction)
+    {
+        switch (AttackAffliction.attackAffliction)
+        {
+            case BaseAttack.AttackAffliction.eFire:
+                currentAffliction = Affliction.eOnFire;
+                break;
+            case BaseAttack.AttackAffliction.eFreeze:
+                currentAffliction = Affliction.eFreeze;
+                break;
+            case BaseAttack.AttackAffliction.eInfect:
+                currentAffliction = Affliction.eInfected;
+                break;
+            case BaseAttack.AttackAffliction.ePoison:
+                currentAffliction = Affliction.ePoison;
+                break;
+            case BaseAttack.AttackAffliction.eStun:
+                currentAffliction = Affliction.eStunned;
+                break;
+            case BaseAttack.AttackAffliction.eNone:
+                break;
+        }
+    }
+    protected void CheckBuffs()
+    {
+        if (currentBuff == Buffs.eBlock)
+        {
+            Debug.Log("Purging block");
+            ClearBuffs();
+        }
+    }
+    protected IEnumerator ApplyBuff(float buffTime, int buffMultiplier)
+    {
+        switch (currentBuff)
+        {
+            case Buffs.eNone:
+                m_canBeBuffed = true;
+                yield break;
+            case Buffs.eBlock:
+                Debug.Log("Applying Block");
+                m_previousDefence = m_defence;
+                m_previousDefenceMGC = m_defenceMGC;
+                m_defence = (m_defence * buffMultiplier);
+                m_defenceMGC = (m_defenceMGC * buffMultiplier);
+                break;
+            case Buffs.eStrength:
+                m_previousStrength = m_strength;
+				m_previousDefence = m_defence;
+				m_defence = m_defence * (buffMultiplier / 2);
+                m_strength = m_strength * buffMultiplier;
+                break;
+            case Buffs.eMagic:
+                m_previousMagicPower = m_magicPower;
+				m_previousDefenceMGC = m_defenceMGC;
+				m_defenceMGC = m_defenceMGC * (buffMultiplier / 2);
+                m_magicPower = m_magicPower * buffMultiplier;
+                break;
+			case Buffs.eDefence:
+				m_previousDefence = m_defence;
+				m_previousDefenceMGC = m_defenceMGC;
+				m_defence = m_defence * buffMultiplier;
+				m_defenceMGC = m_defenceMGC * buffMultiplier;
+				break;
+			case Buffs.eAttack:
+				m_previousStrength = m_strength;
+				m_previousMagicPower = m_magicPower;
+				m_strength = m_strength * buffMultiplier;
+				m_magicPower = m_magicPower * buffMultiplier;
+				break;
 
-	//-----------------------------------------------------------------------------------------------------
-	//Setters and Getters
+			case Buffs.ePurge:
+				currentAffliction = Affliction.eNone;
+				break;
+            default:
 
-	public void Sethealth(int _health) //The argument should be _health. The body should then be m_health = _health.
+                break;
+        }
+
+        if(buffTime != 0)
+        {
+            Debug.Log("About to remove buffs");
+            yield return new WaitForSeconds(buffTime);
+            ClearBuffs();
+        }
+    }
+
+    protected void AddBuff(BaseAttack AttackBuff)
+    {
+        switch (AttackBuff.attackAffliction)
+        {
+
+            case BaseAttack.AttackAffliction.eBlock:
+                currentBuff = Buffs.eBlock;
+                break;
+            case BaseAttack.AttackAffliction.eMagic:
+                currentBuff = Buffs.eMagic;
+                break;
+            case BaseAttack.AttackAffliction.eStrength:
+                currentBuff = Buffs.eStrength;
+                break;
+            case BaseAttack.AttackAffliction.eAttack:
+                currentBuff = Buffs.eAttack;
+                break;
+            case BaseAttack.AttackAffliction.eHeal:
+                m_health += AttackBuff.attackDamage * AttackBuff.skillMultiplier;
+                if (m_health > m_maxHealth)
+                {
+                    m_health = m_maxHealth;
+                }
+                break;
+
+        }
+        if(AttackBuff.attackAffliction != BaseAttack.AttackAffliction.eNone && m_canBeBuffed == true)
+        {
+            m_canBeBuffed = false;
+            StartCoroutine(ApplyBuff(AttackBuff.skillDuration, AttackBuff.skillMultiplier));
+        }
+    }
+    protected void ClearBuffs()
+    {
+        currentBuff = Buffs.eNone;
+        m_defence = m_previousDefence;
+        m_defenceMGC = m_previousDefenceMGC;
+        m_magicPower = m_previousMagicPower;
+        m_strength = m_previousStrength;
+        m_speed = m_previousSpeed;
+        m_canBeBuffed = true;
+    }
+
+    //-----------------------------------------------------------------------------------------------------
+    //Setters and Getters
+
+    public void SetPreviousStats()
+    {
+        m_previousDefence = m_defence;
+        m_previousDefenceMGC = m_defenceMGC;
+        m_previousMagicPower = m_magicPower;
+        m_previousStrength = m_strength;
+        m_previousSpeed = m_speed;
+    }
+    public void Sethealth(int _health) //The argument should be _health. The body should then be m_health = _health.
 	{
 		m_health = _health;
 	}
@@ -267,60 +409,23 @@ public class Entity : MonoBehaviour {
     {
         return m_EXP;
     }
-    public void TakeDamage(int damageAmount)
+    public void TakeDamage(int damageAmount, BaseAttack attack)
     {
         m_health -= damageAmount;
+        if (currentAffliction == Affliction.eNone && attack.attackType != BaseAttack.AttackType.eBuff && alreadyAfflicted == false)
+        {
+            alreadyAfflicted = true;
+            addAffliction(attack);
+            StartCoroutine(checkAffliction());
+            StartCoroutine(resetAffliction(attack.skillDuration));
+        }
+
         if (GetHealth() <= 0)
         {
+            PlayerManager.Instance.AddXP(m_xpAward);
+            Inventory.Instance.IncreaseGold(m_goldAward);
             currentState = TurnState.eDead;
         }
-    }
-
-    //--------------------------------------------------------------------------------------------------
-    protected void Attack()
-    {
-        if (attacking == true)
-        {
-            //Chance of the attack hitting
-            chanceToHit = Random.Range(1, 100);
-
-            if (chanceToHit <= 85)
-            {
-                dmgRecieve = true;
-            }
-            else
-                return;
-
-        }
-    }
-
-    
-    //General logic of damage calculation
-    protected void Damage()
-    {
-        if (dmgRecieve == true)
-        {
-            tempDMGReduct = GetStrength() / GetDefence();
-            totalDMG = GetStrength() - tempDMGReduct;
-
-            dmgRecieve = false;
-            dmgDealt = true;
-
-            if (dmgDealt == true)
-            {
-                m_health = m_health - totalDMG;
-                dmgDealt = false;
-            }
-        }
-    }
-    
-    protected void Death()
-    {
-        if (m_health <= 0)
-        {
-           // Destroy(gameObject); //could rework to set the object to be sideways/inactive instead of destroyed
-        }
-     
     }
 }
 

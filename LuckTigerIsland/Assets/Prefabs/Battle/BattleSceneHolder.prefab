@@ -6690,8 +6690,8 @@ MonoBehaviour:
   m_level: 0
   m_xpAward: 0
   m_EXP: 0
-  Class: Warrior
   m_attackedAlready: 0
+  m_canBeBuffed: 1
   m_entityNumber: 2
   m_requiredSpeedForTurn: 0
   myTurn: 0
@@ -6709,11 +6709,15 @@ MonoBehaviour:
   dmgDealt: 0
   currentState: 0
   currentAffliction: 0
+  currentBuff: 0
   EntityToAttack: {fileID: 0}
   attacks:
-  - {fileID: 11400000, guid: 025630a4956fac74da4985d9d134e6f9, type: 2}
   - {fileID: 11400000, guid: d86d8a8da359f334496d00bb8f362b79, type: 2}
-  - {fileID: 11400000, guid: 514e1c79f37c1ba4aa8e8f99e4b54b94, type: 2}
+  - {fileID: 11400000, guid: 0190d9973f6cf2f458cb739851d40d8b, type: 2}
+  - {fileID: 11400000, guid: 650e8ac0c428c8640a9f340c6312d912, type: 2}
+  - {fileID: 11400000, guid: 2cb2ecbd777b5d9428034cb0b4ae214d, type: 2}
+  - {fileID: 11400000, guid: 30a6e183a1e1e1446abe4670d8262b84, type: 2}
+  - {fileID: 11400000, guid: 5cb94bfaa252012468b402e6910d22c9, type: 2}
   HealthPotions: []
   ManaPotions: []
   statTexts: []
@@ -6731,6 +6735,7 @@ MonoBehaviour:
   wizard: {fileID: 114243110054014210}
   cleric: {fileID: 114078770038548272}
   ninja: {fileID: 114090179202345774}
+  MyClass: 0
   HT:
     Attacker: 
     Type: 
@@ -6948,12 +6953,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e218efa7eb37e9d4abdf2bf8f80e34a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOverPrefab: {fileID: 1468155589232072, guid: 65e61657945fb7a4cacf0063d6009ac3,
+    type: 2}
   battleState: 0
   NextTurn: []
   EnemiesInBattle: []
   Enemies: []
   PartyMembersInBattle: []
   TargetingListForAI: []
+  actionOne: {fileID: 1942255325939374}
   deadEnemies: 0
   deadPlayers: 0
 --- !u!114 &114037872030208688
@@ -8170,8 +8178,8 @@ MonoBehaviour:
   m_level: 0
   m_xpAward: 0
   m_EXP: 0
-  Class: Cleric
   m_attackedAlready: 0
+  m_canBeBuffed: 1
   m_entityNumber: 1
   m_requiredSpeedForTurn: 0
   myTurn: 0
@@ -8189,11 +8197,16 @@ MonoBehaviour:
   dmgDealt: 0
   currentState: 0
   currentAffliction: 0
+  currentBuff: 0
   EntityToAttack: {fileID: 0}
   attacks:
-  - {fileID: 11400000, guid: 025630a4956fac74da4985d9d134e6f9, type: 2}
   - {fileID: 11400000, guid: d86d8a8da359f334496d00bb8f362b79, type: 2}
-  - {fileID: 11400000, guid: 514e1c79f37c1ba4aa8e8f99e4b54b94, type: 2}
+  - {fileID: 11400000, guid: 0190d9973f6cf2f458cb739851d40d8b, type: 2}
+  - {fileID: 11400000, guid: b41045100a947924cbd1e9133c94b66e, type: 2}
+  - {fileID: 11400000, guid: 7d66ae85b45b185408249521a72c4de6, type: 2}
+  - {fileID: 11400000, guid: 4dafe16976e9e8f4bac85f3e807a9c22, type: 2}
+  - {fileID: 11400000, guid: 9d24cd505889bc4469ea81fbdfce136f, type: 2}
+  - {fileID: 11400000, guid: d755fab06be36224f901d317e6cc6e65, type: 2}
   HealthPotions: []
   ManaPotions: []
   statTexts: []
@@ -8211,6 +8224,7 @@ MonoBehaviour:
   wizard: {fileID: 114243110054014210}
   cleric: {fileID: 114078770038548272}
   ninja: {fileID: 114090179202345774}
+  MyClass: 1
   HT:
     Attacker: 
     Type: 
@@ -8508,8 +8522,8 @@ MonoBehaviour:
   m_level: 0
   m_xpAward: 0
   m_EXP: 0
-  Class: Ninja
   m_attackedAlready: 0
+  m_canBeBuffed: 1
   m_entityNumber: 4
   m_requiredSpeedForTurn: 0
   myTurn: 0
@@ -8527,11 +8541,15 @@ MonoBehaviour:
   dmgDealt: 0
   currentState: 0
   currentAffliction: 0
+  currentBuff: 0
   EntityToAttack: {fileID: 0}
   attacks:
-  - {fileID: 11400000, guid: 025630a4956fac74da4985d9d134e6f9, type: 2}
   - {fileID: 11400000, guid: d86d8a8da359f334496d00bb8f362b79, type: 2}
-  - {fileID: 11400000, guid: 514e1c79f37c1ba4aa8e8f99e4b54b94, type: 2}
+  - {fileID: 11400000, guid: 0190d9973f6cf2f458cb739851d40d8b, type: 2}
+  - {fileID: 11400000, guid: fc1ef64ca266cf44cbbd3dec2f027873, type: 2}
+  - {fileID: 11400000, guid: ede9b6e28c7ef494583c7c8fe0c9a00f, type: 2}
+  - {fileID: 11400000, guid: dd88c9207b91c184ab99abf640f7092f, type: 2}
+  - {fileID: 11400000, guid: 2785d8f2fea70f1469bccf4752e01421, type: 2}
   HealthPotions: []
   ManaPotions: []
   statTexts: []
@@ -8549,6 +8567,7 @@ MonoBehaviour:
   wizard: {fileID: 114243110054014210}
   cleric: {fileID: 114078770038548272}
   ninja: {fileID: 114090179202345774}
+  MyClass: 3
   HT:
     Attacker: 
     Type: 
@@ -9153,34 +9172,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 233f31f18170c33429d899e74793b8b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: []
-  m_armourItem:
-  - {fileID: 11400000, guid: aff6c7e5a7e3d584c83b23d4be36c5ec, type: 2}
-  - {fileID: 11400000, guid: 26ae73543495d10459ac5f45f8dd0b6b, type: 2}
-  m_weaponItem:
-  - {fileID: 11400000, guid: 37be832cc678a74478c475fba1088c62, type: 2}
-  m_health_Potion: {fileID: 11400000, guid: ad55ad25a92593846a8dc2862c8c6dd1, type: 2}
-  m_inventorySlots:
-  - {fileID: 114776051815558692}
-  - {fileID: 114751458880618586}
-  - {fileID: 114181230977895050}
-  - {fileID: 114420190769648200}
-  - {fileID: 114142365157143008}
-  - {fileID: 114259665984512738}
-  - {fileID: 114194363113254264}
-  - {fileID: 114796790044601006}
-  - {fileID: 114020300769703494}
-  - {fileID: 114511676884310112}
-  - {fileID: 114640246708211042}
-  - {fileID: 114474391684559676}
-  - {fileID: 114430680995721876}
-  - {fileID: 114661778985847100}
-  - {fileID: 114604907871231544}
-  - {fileID: 114513775539856900}
-  - {fileID: 114231795932668674}
-  - {fileID: 114108826460336638}
-  - {fileID: 114316229061420336}
-  - {fileID: 114282746855587964}
+  m_armour: {fileID: 0}
+  m_weapon: {fileID: 0}
+  m_equipImages: []
+  m_justEquippedText: {fileID: 0}
 --- !u!114 &114123469897855810
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11446,8 +11441,8 @@ MonoBehaviour:
   m_level: 0
   m_xpAward: 0
   m_EXP: 0
-  Class: Wizard
   m_attackedAlready: 0
+  m_canBeBuffed: 1
   m_entityNumber: 3
   m_requiredSpeedForTurn: 0
   myTurn: 0
@@ -11465,11 +11460,15 @@ MonoBehaviour:
   dmgDealt: 0
   currentState: 0
   currentAffliction: 0
+  currentBuff: 0
   EntityToAttack: {fileID: 0}
   attacks:
-  - {fileID: 11400000, guid: 025630a4956fac74da4985d9d134e6f9, type: 2}
   - {fileID: 11400000, guid: d86d8a8da359f334496d00bb8f362b79, type: 2}
+  - {fileID: 11400000, guid: 0190d9973f6cf2f458cb739851d40d8b, type: 2}
   - {fileID: 11400000, guid: 514e1c79f37c1ba4aa8e8f99e4b54b94, type: 2}
+  - {fileID: 11400000, guid: 7b4b374b9453f4b4aa11f701e492b583, type: 2}
+  - {fileID: 11400000, guid: 5271a29cd3242b64a8f84abaa4cbe353, type: 2}
+  - {fileID: 11400000, guid: 8148558417a3b1542a86f86d8e1445a4, type: 2}
   HealthPotions: []
   ManaPotions: []
   statTexts: []
@@ -11487,6 +11486,7 @@ MonoBehaviour:
   wizard: {fileID: 114243110054014210}
   cleric: {fileID: 114078770038548272}
   ninja: {fileID: 114090179202345774}
+  MyClass: 2
   HT:
     Attacker: 
     Type: 
@@ -11854,7 +11854,7 @@ MonoBehaviour:
   m_Script: {fileID: -619905303, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 1942255325939374}
+  m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 5
 --- !u!114 &114267329240233646
@@ -13088,10 +13088,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questDescriptionText: {fileID: 114142600397778966}
-  questTitleText2: {fileID: 0}
+  questTitleText: {fileID: 0}
   buttonHighlight: {fileID: 114464301008619832}
   m_nameNumSet: 0
   m_itemButton: {fileID: 0}
+  m_removeButton: {fileID: 0}
 --- !u!114 &114359240176089450
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -20207,10 +20208,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questDescriptionText: {fileID: 114142600397778966}
-  questTitleText2: {fileID: 0}
+  questTitleText: {fileID: 0}
   buttonHighlight: {fileID: 114028560544687784}
   m_nameNumSet: 0
   m_itemButton: {fileID: 0}
+  m_removeButton: {fileID: 0}
 --- !u!114 &114699013972607856
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -20550,8 +20552,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -20588,7 +20590,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -341.37354, y: 0, z: -296.84644, w: -24.058979}
+  m_margin: {x: -341.37354, y: 0, z: -296.84644, w: -139.94202}
   m_textInfo:
     textComponent: {fileID: 114709993052649666}
     characterCount: 0
@@ -28839,7 +28841,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 49.9, y: -58.000076}
+  m_AnchoredPosition: {x: 49.9, y: -314}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224060773435752162
@@ -31063,7 +31065,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 28, y: -84}
+  m_AnchoredPosition: {x: 28, y: -240}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224409403369178624
@@ -31471,7 +31473,7 @@ RectTransform:
   m_GameObject: {fileID: 1127895765324590}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 12, y: 2, z: 1}
+  m_LocalScale: {x: 10, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 224052178704370132}
   m_RootOrder: 1
@@ -32829,7 +32831,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 51.5, y: -58}
+  m_AnchoredPosition: {x: 51.5, y: -314}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224644992359053962

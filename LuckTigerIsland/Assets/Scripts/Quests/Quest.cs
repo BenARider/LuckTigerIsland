@@ -97,6 +97,8 @@ public class Quest : MonoBehaviour
 
     public void EndQuest()
     {
+        PlayerManager.Instance.AddXP(m_expReward);
+        Inventory.Instance.IncreaseGold(m_goldReward);
         QuestManager.Instance.RemoveQuest(this);
         Debug.Log("quest ended");
     }

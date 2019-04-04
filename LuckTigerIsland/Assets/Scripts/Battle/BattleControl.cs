@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using System.Linq;
 [System.Serializable]
 public class BattleControl : MonoBehaviour {
@@ -8,6 +9,9 @@ public class BattleControl : MonoBehaviour {
 	public static int totalFighters = 8; //will be used to check when to reset the turn timer and stuff.
     [SerializeField]
     public static bool turnBeingHad;
+
+    public GameObject gameOverPrefab;
+    bool isGameOver = false;
 
     public enum performAction
     {
@@ -24,14 +28,17 @@ public class BattleControl : MonoBehaviour {
     public List<EnemEntity> Enemies = new List<EnemEntity>();
     public List<GameObject> PartyMembersInBattle = new List<GameObject>();
     public List<GameObject> TargetingListForAI = new List<GameObject>();
+    EventSystem m_eventSystem;
+    public GameObject actionOne;
+    public int battleGoldReward = 0;
     public int deadEnemies = 0;
     public int deadPlayers = 0;
 
     // Use this for initialization
     void Start () {
         battleState = performAction.eWait;
-
-
+        m_eventSystem = EventSystem.current;
+        m_eventSystem.SetSelectedGameObject(actionOne);
         PartyMembersInBattle.AddRange (GameObject.FindGameObjectsWithTag("Party"));
         TargetingListForAI.AddRange(GameObject.FindGameObjectsWithTag("Party"));
         //prevents the rest of the setup phase until at least one enemy has been instantiated
@@ -83,16 +90,30 @@ public class BattleControl : MonoBehaviour {
                     PE.EntityToAttack = NextTurn[0].AttackTarget;
                     PE.currentState = PlayerEntity.TurnState.eAction;
                 }
+                if (NextTurn[0].Type == "PartyBuff")
+                {
+                    PlayerEntity PE = performer.GetComponent<PlayerEntity>();
+                    PE.EntityToAttack = NextTurn[0].AttackTarget;
+                    PE.currentState = PlayerEntity.TurnState.eAction;
+                }
                 battleState = performAction.ePerformAction;
                 break;
             case (performAction.ePerformAction):
                 break;
             case (performAction.eWin):
+                Inventory.Instance.IncreaseGold(battleGoldReward);
                 PlayerManager.Instance.transform.root.GetComponent<ReturnToMain>().Return();
+
                 //go to victory screen/overworld here
                 break;
             case (performAction.eLoss):
                 //go to gameover screen here
+                if (!isGameOver)
+                {
+                    GameObject go = Instantiate(gameOverPrefab, transform.parent);
+                    m_eventSystem.SetSelectedGameObject(go.transform.GetChild(2).gameObject);
+                    isGameOver = true;
+                }
                 break;
         }
 

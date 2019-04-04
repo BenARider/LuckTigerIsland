@@ -29,7 +29,7 @@ public class InventoryText : MonoBehaviour, ISelectHandler
     }
     public void OnSelect(BaseEventData _eventData)
     {
-
+        /*
         itemTitle.text = this.gameObject.name;
         if (this.gameObject.name == "Chainmail")
         {
@@ -56,7 +56,7 @@ public class InventoryText : MonoBehaviour, ISelectHandler
             itemDescription.text = "";
             itemStats.text = "";
         }
- 
+ */
 
 
     }

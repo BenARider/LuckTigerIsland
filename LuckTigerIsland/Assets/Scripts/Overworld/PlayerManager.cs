@@ -35,6 +35,32 @@ public class PlayerManager : LTI.Singleton<PlayerManager> {
     Interaction lastDialogueInteract;
     NPCDialogue activeDialogue;
 
+    [SerializeField]
+    private int m_level = 1;
+    [SerializeField]
+    private int m_xp = 0;
+
+    public int GetLevel()
+    {
+        return m_level;
+    }
+
+    public int AddXP(int _xp)
+    {
+        m_xp += _xp;
+        while (m_xp >= (m_level * 100 + (m_level * 10)))
+        {
+            m_xp -= (m_level * 100 + (m_level * 10));
+            ++m_level;
+        }
+        return GetXP();
+    }
+
+    public int GetXP()
+    {
+        return m_xp;
+    }
+
     // Use this for initialization
     void Start () {
         //backgroundTextArray[0] = GameObject.Find("Background_Player_Text");
