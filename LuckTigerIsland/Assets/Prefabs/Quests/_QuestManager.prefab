@@ -175,15 +175,19 @@ MonoBehaviour:
   m_description: Kill the Pig
   m_expReward: 10
   m_goldReward: 50
+  m_itemReward: {fileID: 0}
   m_allObjectives: []
   m_killObjectives:
   - m_enemy: 1
     m_amount: 1
   m_locationObjectives: []
+  m_inventoryObjectives: []
   o_type: 0
   o_location: 1
   o_enemy: 1
   o_enemyAmount: 1
+  o_inventoryItem: {fileID: 0}
+  o_itemAmount: 0
 --- !u!114 &114623258347282940
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -198,10 +202,11 @@ MonoBehaviour:
   m_quests:
   - {fileID: 114889507356272804}
   - {fileID: 114973940437512634}
-  m_title: 
-  m_description: 
-  m_exp: 0
-  m_gold: 0
+  - {fileID: 0}
+  m_title: A Peach to their own!
+  m_description: Collect The Peaches
+  m_exp: 150
+  m_gold: 75
 --- !u!114 &114751412641993884
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -217,13 +222,17 @@ MonoBehaviour:
   m_description: Null
   m_expReward: 0
   m_goldReward: 0
+  m_itemReward: {fileID: 0}
   m_allObjectives: []
   m_killObjectives: []
   m_locationObjectives: []
+  m_inventoryObjectives: []
   o_type: 0
   o_location: 0
   o_enemy: 0
   o_enemyAmount: 0
+  o_inventoryItem: {fileID: 0}
+  o_itemAmount: 0
 --- !u!114 &114889507356272804
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -239,15 +248,19 @@ MonoBehaviour:
   m_description: HI
   m_expReward: 0
   m_goldReward: 0
+  m_itemReward: {fileID: 0}
   m_allObjectives: []
   m_killObjectives:
   - m_enemy: 0
     m_amount: 0
   m_locationObjectives: []
+  m_inventoryObjectives: []
   o_type: 1
   o_location: 0
   o_enemy: 0
   o_enemyAmount: 1
+  o_inventoryItem: {fileID: 0}
+  o_itemAmount: 0
 --- !u!114 &114973940437512634
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -263,12 +276,16 @@ MonoBehaviour:
   m_description: die
   m_expReward: 4
   m_goldReward: 4
+  m_itemReward: {fileID: 0}
   m_allObjectives: []
   m_killObjectives:
   - m_enemy: 0
     m_amount: 0
   m_locationObjectives: []
+  m_inventoryObjectives: []
   o_type: 1
   o_location: 0
   o_enemy: 0
   o_enemyAmount: 5
+  o_inventoryItem: {fileID: 0}
+  o_itemAmount: 0

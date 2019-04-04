@@ -21,6 +21,8 @@ public class LevelScriptEditor : Editor
     SerializedProperty location;
     SerializedProperty enemy;
     SerializedProperty enemyAmount;
+    SerializedProperty inventoryItem;
+    SerializedProperty itemAmount;
 
     void OnEnable()
     {
@@ -32,11 +34,14 @@ public class LevelScriptEditor : Editor
         itemReward = serializedObject.FindProperty("m_itemReward");
         killObjectives = serializedObject.FindProperty("m_killObjectives");
         locationObjectives = serializedObject.FindProperty("m_locationObjectives");
+        inventoryObjectives = serializedObject.FindProperty("m_inventoryObjectives");
 
         objectiveType = serializedObject.FindProperty("o_type");
         location = serializedObject.FindProperty("o_location");
         enemy = serializedObject.FindProperty("o_enemy");
         enemyAmount = serializedObject.FindProperty("o_enemyAmount");
+        inventoryItem = serializedObject.FindProperty("o_inventoryItem");
+        itemAmount = serializedObject.FindProperty("o_itemAmount");
     }
 
     public override void OnInspectorGUI()
@@ -49,6 +54,8 @@ public class LevelScriptEditor : Editor
         GUIContent locationLabel = new GUIContent("Location");
         GUIContent enemyLabel = new GUIContent("Enemy Type");
         GUIContent enemyAmountLabel = new GUIContent("Enemy Amount");
+        GUIContent itemNameLabel = new GUIContent("Item");
+        GUIContent itemAmountLabel = new GUIContent("Item Amount");
 
 
         //Start of Inspector GUI
@@ -87,6 +94,16 @@ public class LevelScriptEditor : Editor
                 if (GUILayout.Button("Add Kill Objective"))
                 {
                     myScript.AddKillObjective((EEnemies)enemy.enumValueIndex, enemyAmount.intValue);
+                }
+                break;
+
+            //Item Objective
+            case EObjectiveType.InventoryObjective:
+                EditorGUILayout.PropertyField(inventoryItem, itemNameLabel);
+                EditorGUILayout.PropertyField(itemAmount, itemAmountLabel);
+                if (GUILayout.Button("Add Inventory Objective"))
+                {
+                    myScript.AddInventoryObjective((InventoryObject)inventoryItem.objectReferenceValue, itemAmount.intValue);
                 }
                 break;
 
@@ -140,7 +157,32 @@ public class LevelScriptEditor : Editor
             }
             GUILayout.Label("");
         }
-  
+
+        //Inventory Objectives
+        if (inventoryObjectives.arraySize != 0)
+        {
+            GUILayout.Label("Inventory Objectives", EditorStyles.boldLabel);
+            //Display all location objective objects
+            for (int i = 0; i < inventoryObjectives.arraySize; i++)
+            {
+                SerializedProperty inventoryObjectivesRef = inventoryObjectives.GetArrayElementAtIndex(i);
+                SerializedProperty itemObj = inventoryObjectivesRef.FindPropertyRelative("m_object");
+                SerializedProperty totAmount = inventoryObjectivesRef.FindPropertyRelative("m_totalAmount");
+                SerializedProperty curAmount = inventoryObjectivesRef.FindPropertyRelative("m_currentAmount");
+
+                EditorGUILayout.PropertyField(itemObj);
+                EditorGUILayout.PropertyField(totAmount);
+                EditorGUILayout.PropertyField(curAmount);
+
+                //Remove objecttive button
+                if (GUILayout.Button("Remove Objective", GUILayout.MaxWidth(150), GUILayout.MaxHeight(15)))
+                {
+                    inventoryObjectives.DeleteArrayElementAtIndex(i);
+                }
+            }
+            GUILayout.Label("");
+        }
+
 
         //End of Inspector GUI
         serializedObject.ApplyModifiedProperties();         
