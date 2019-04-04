@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PartyAnimator : MonoBehaviour {
     public GameObject playerMain;
     public GameObject[] otherPlayers; //3 length

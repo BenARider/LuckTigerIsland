@@ -33,20 +33,24 @@ public class GameMaster : LTI.Singleton<GameMaster>{
 
             if (currentScene != lastScene)
             {
-                GameObject[] sceneobjects = SceneManager.GetSceneByName(currentScene).GetRootGameObjects();
-                foreach (GameObject go in sceneobjects)
+                try
                 {
-                    if (go.name.Equals("Level"))
+                    GameObject[] sceneobjects = SceneManager.GetSceneByName(currentScene).GetRootGameObjects();
+                    foreach (GameObject go in sceneobjects)
                     {
+                        if (go.name.Equals("Level"))
+                        {
 
-						if (go.transform.GetChild(0).GetChild(0).Find("Lights - Night"))
-						{
-							currentNight = go.transform.GetChild(0).GetChild(0).Find("Lights - Night").GetComponent<Tilemap>();
-						}
-                        lastScene = currentScene;
-                        break;
+                            if (go.transform.GetChild(0).GetChild(0).Find("Lights - Night"))
+                            {
+                                currentNight = go.transform.GetChild(0).GetChild(0).Find("Lights - Night").GetComponent<Tilemap>();
+                            }
+                            lastScene = currentScene;
+                            break;
+                        }
                     }
                 }
+                catch { }
 
             }
             if (currentNight)
