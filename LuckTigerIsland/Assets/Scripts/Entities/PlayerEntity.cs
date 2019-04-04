@@ -495,13 +495,13 @@ public class PlayerEntity : Entity
         if (Input.GetKeyDown("1") || m_BattleButton.GetActionTargetNumber() == 1)
         {
 
-            if (attacks[0].attackType == "Buff")
+            if (attacks[0].attackType == BaseAttack.AttackType.eBuff)
             {
                 teamTarget.Select();
                 teamTargets.SetActive(true);
                 enemyTargets.SetActive(false);
             }
-            if (attacks[0].attackType != "Buff")
+            if (attacks[0].attackType != BaseAttack.AttackType.eBuff)
             {
                 enemyTarget.Select();
                 teamTargets.SetActive(false);
@@ -526,13 +526,13 @@ public class PlayerEntity : Entity
         {
             m_chosenAction = attacks[1];
 
-            if (attacks[1].attackType == "Buff")
+            if (attacks[1].attackType == BaseAttack.AttackType.eBuff)
             {
                 teamTarget.Select();
                 teamTargets.SetActive(true);
                 enemyTargets.SetActive(false);
             }
-            if (attacks[1].attackType != "Buff")
+            if (attacks[1].attackType != BaseAttack.AttackType.eBuff)
             {
                 enemyTarget.Select();
                 teamTargets.SetActive(false);
@@ -553,13 +553,13 @@ public class PlayerEntity : Entity
         }
         if (Input.GetKeyDown("3") || m_BattleButton.GetActionTargetNumber() == 3)
         {
-            if (attacks[2].attackType == "Buff")
+            if (attacks[2].attackType == BaseAttack.AttackType.eBuff)
             {
                 teamTarget.Select();
                 teamTargets.SetActive(true);
                 enemyTargets.SetActive(false);
             }
-            if (attacks[2].attackType != "Buff")
+            if (attacks[2].attackType != BaseAttack.AttackType.eBuff)
             {
                 enemyTarget.Select();
                 teamTargets.SetActive(false);
@@ -582,13 +582,13 @@ public class PlayerEntity : Entity
         }
         if (Input.GetKeyDown("4") || m_BattleButton.GetActionTargetNumber() == 4)
         {
-            if (attacks[3].attackType == "Buff")
+            if (attacks[3].attackType == BaseAttack.AttackType.eBuff)
             {
                 teamTarget.Select();
                 teamTargets.SetActive(true);
                 enemyTargets.SetActive(false);
             }
-            if (attacks[3].attackType != "Buff")
+            if (attacks[3].attackType != BaseAttack.AttackType.eBuff)
             {
                 enemyTarget.Select();
                 teamTargets.SetActive(false);
@@ -612,13 +612,13 @@ public class PlayerEntity : Entity
         if (Input.GetKeyDown("5") || m_BattleButton.GetActionTargetNumber() == 5)
         {
 
-            if (attacks[4].attackType == "Buff")
+            if (attacks[4].attackType == BaseAttack.AttackType.eBuff)
             {
                 teamTarget.Select();
                 teamTargets.SetActive(true);
                 enemyTargets.SetActive(false);
             }
-            if (attacks[4].attackType != "Buff")
+            if (attacks[4].attackType != BaseAttack.AttackType.eBuff)
             {
                 enemyTarget.Select();
                 teamTargets.SetActive(false);
@@ -642,13 +642,13 @@ public class PlayerEntity : Entity
         if (Input.GetKeyDown("6") || m_BattleButton.GetActionTargetNumber() == 6)
         {
 
-            if (attacks[5].attackType == "Buff")
+            if (attacks[5].attackType == BaseAttack.AttackType.eBuff)
             {
                 teamTarget.Select();
                 teamTargets.SetActive(true);
                 enemyTargets.SetActive(false);
             }
-            if (attacks[5].attackType != "Buff")
+            if (attacks[5].attackType != BaseAttack.AttackType.eBuff)
             {
                 enemyTarget.Select();
                 teamTargets.SetActive(false);
@@ -673,13 +673,13 @@ public class PlayerEntity : Entity
         if (Input.GetKeyDown("7") || m_BattleButton.GetActionTargetNumber() == 7)
         {
 
-                if (attacks[6].attackType == "Buff")
+                if (attacks[6].attackType == BaseAttack.AttackType.eBuff)
                 {
                 teamTarget.Select();
                 teamTargets.SetActive(true);
                     enemyTargets.SetActive(false);
                 }
-                if (attacks[6].attackType != "Buff")
+                if (attacks[6].attackType != BaseAttack.AttackType.eBuff)
                 {
                 enemyTarget.Select();
                 teamTargets.SetActive(false);
@@ -733,12 +733,12 @@ public class PlayerEntity : Entity
         {
             for (int i = 0; i < attacks.Count; ++i)
             {
-                if (attacks[i].attackType == "Buff")
+                if (attacks[i].attackType == BaseAttack.AttackType.eBuff)
                 {
                     teamTargets.SetActive(true);
                     enemyTargets.SetActive(false);
                 }
-                if (attacks[i].attackType != "Buff")
+                if (attacks[i].attackType != BaseAttack.AttackType.eBuff)
                 {
                     teamTargets.SetActive(false);
                     enemyTargets.SetActive(true);
@@ -775,7 +775,7 @@ public class PlayerEntity : Entity
     {
         ///Targetting enemies
         Debug.Log(this.name + ": Choose Target");
-        if (m_chosenAction.attackType != "Buff")
+        if (m_chosenAction.attackType != BaseAttack.AttackType.eBuff)
         {
             if (Input.GetKeyDown("1") || m_BattleButton.GetActionTargetNumber() == 10)
             {
@@ -872,7 +872,7 @@ public class PlayerEntity : Entity
             }
         }
         ///ally targetting
-        else if (m_chosenAction.attackType == "Buff")
+        else if (m_chosenAction.attackType == BaseAttack.AttackType.eBuff)
         {
             if (Input.GetKeyDown("1") || m_BattleButton.GetActionTargetNumber() == 10)
             {
@@ -980,14 +980,14 @@ public class PlayerEntity : Entity
         Vector3 meleeAttack = new Vector3(EntityToAttack.transform.position.x + 1.5f, EntityToAttack.transform.position.y, EntityToAttack.transform.position.z);
         Vector3 magicAttack = new Vector3(transform.position.x + 1.5f, transform.position.y, transform.position.z);
 
-        if (m_chosenAction.attackType == "Melee")
+        if (m_chosenAction.attackType == BaseAttack.AttackType.eMelee)
         {
             while (MoveTo(meleeAttack))
             {
                 yield return null; //wait until moveToward is true
             }
         }
-        else if (m_chosenAction.attackType == "Magic")
+        else if (m_chosenAction.attackType == BaseAttack.AttackType.eMagic)
         {
             while (MoveTo(magicAttack))
             {
@@ -995,26 +995,19 @@ public class PlayerEntity : Entity
                
             }
         }
-        else if (m_chosenAction.attackType == "Buff")
+        else if (m_chosenAction.attackType == BaseAttack.AttackType.eBuff)
         {
 
-        }
-        else
-        {
-            while (MoveTo(meleeAttack))
-            {
-                yield return null;
-            }
         }
 
         yield return new WaitForSeconds(1.5f);
 
         //do damage
-        if(m_chosenAction.attackType != "Buff")
+        if(m_chosenAction.attackType != BaseAttack.AttackType.eBuff)
         {
             playerDoDamge();
         }
-        if(m_chosenAction.attackType == "Buff" && m_chosenAction.attackAffliction != "")
+        if(m_chosenAction.attackType == BaseAttack.AttackType.eBuff && m_chosenAction.attackAffliction != BaseAttack.AttackAffliction.eNone)
         {
             AddBuff(m_chosenAction);
         }

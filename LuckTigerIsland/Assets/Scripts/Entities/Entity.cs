@@ -139,11 +139,9 @@ public class Entity : MonoBehaviour {
         return target != (transform.position = Vector3.MoveTowards(transform.position, target, walkSpeed * Time.deltaTime)); //returns false until the enity is at its target
     }
 
-	protected IEnumerator checkAffliction(int maxAfflictions)
+	protected IEnumerator checkAffliction()
 	{
-
 		yield return new WaitForSeconds(1.0f);
-		afflictionTimes++;
         switch (currentAffliction)
         {
             case Affliction.eNone:
@@ -165,47 +163,40 @@ public class Entity : MonoBehaviour {
                 m_stunned = true;
                 break;
         }
-
-		if (afflictionTimes >= maxAfflictions)
-		{
-			stopAfflictions();
-			//StopCoroutine(checkAffliction());
-		}
     }
-    protected IEnumerator resetAffliction()
+    protected IEnumerator resetAffliction(float AttackDuration)
 	{
-		//if (currentAffliction != Affliction.eNone)
+		if (currentAffliction != Affliction.eNone)
 		{
-			yield return new WaitForSeconds(10.0f);
+			yield return new WaitForSeconds(AttackDuration);
 			currentAffliction = Affliction.eNone;
+            m_afflicted = false;
+            alreadyAfflicted = false;
 		}
-	}
-	protected void stopAfflictions()
-	{
-        afflictionTimes = 0;
-		m_afflicted = false;
-		alreadyAfflicted = false;
 	}
 
     protected void addAffliction(BaseAttack AttackAffliction)
     {
-
-        if (AttackAffliction.attackAffliction == "Fire")
-            currentAffliction = Affliction.eOnFire;
-
-        if (AttackAffliction.attackAffliction == "Freeze")
-            currentAffliction = Affliction.eFreeze;
-
-        if (AttackAffliction.attackAffliction == "Infect")
-            currentAffliction = Affliction.eInfected;
-
-		if (AttackAffliction.attackAffliction == "Posison")
-			currentAffliction = Affliction.ePoison;
-
-        if (AttackAffliction.attackAffliction == "Stun")
-            currentAffliction = Affliction.eStunned;
-
-
+        switch (AttackAffliction.attackAffliction)
+        {
+            case BaseAttack.AttackAffliction.eFire:
+                currentAffliction = Affliction.eOnFire;
+                break;
+            case BaseAttack.AttackAffliction.eFreeze:
+                currentAffliction = Affliction.eFreeze;
+                break;
+            case BaseAttack.AttackAffliction.eInfect:
+                currentAffliction = Affliction.eInfected;
+                break;
+            case BaseAttack.AttackAffliction.ePoison:
+                currentAffliction = Affliction.ePoison;
+                break;
+            case BaseAttack.AttackAffliction.eStun:
+                currentAffliction = Affliction.eStunned;
+                break;
+            case BaseAttack.AttackAffliction.eNone:
+                break;
+        }
     }
     protected void CheckBuffs()
     {
@@ -272,31 +263,31 @@ public class Entity : MonoBehaviour {
 
     protected void AddBuff(BaseAttack AttackBuff)
     {
-        if(AttackBuff.attackAffliction == "Block")
+        switch (AttackBuff.attackAffliction)
         {
-            currentBuff = Buffs.eBlock;
+
+            case BaseAttack.AttackAffliction.eBlock:
+                currentBuff = Buffs.eBlock;
+                break;
+            case BaseAttack.AttackAffliction.eMagic:
+                currentBuff = Buffs.eMagic;
+                break;
+            case BaseAttack.AttackAffliction.eStrength:
+                currentBuff = Buffs.eStrength;
+                break;
+            case BaseAttack.AttackAffliction.eAttack:
+                currentBuff = Buffs.eAttack;
+                break;
+            case BaseAttack.AttackAffliction.eHeal:
+                m_health += AttackBuff.attackDamage * AttackBuff.skillMultiplier;
+                if (m_health > m_maxHealth)
+                {
+                    m_health = m_maxHealth;
+                }
+                break;
+
         }
-        if(AttackBuff.attackAffliction == "Magic")
-        {
-            currentBuff = Buffs.eMagic;
-        }
-        if(AttackBuff.attackAffliction == "Strength")
-        {
-            currentBuff = Buffs.eStrength;
-        }
-		if(AttackBuff.attackAffliction == "Attack")
-		{
-			currentBuff = Buffs.eAttack;
-		}
-		if(AttackBuff.attackAffliction == "Heal")
-		{
-			m_health += AttackBuff.attackDamage * AttackBuff.skillMultiplier;
-			if (m_health > m_maxHealth)
-			{
-				m_health = m_maxHealth;
-			}
-		}
-        if(AttackBuff.attackAffliction != "" && m_canBeBuffed == true)
+        if(AttackBuff.attackAffliction != BaseAttack.AttackAffliction.eNone && m_canBeBuffed == true)
         {
             m_canBeBuffed = false;
             StartCoroutine(ApplyBuff(AttackBuff.skillDuration, AttackBuff.skillMultiplier));
@@ -421,12 +412,12 @@ public class Entity : MonoBehaviour {
     public void TakeDamage(int damageAmount, BaseAttack attack)
     {
         m_health -= damageAmount;
-        if (!string.IsNullOrEmpty(attack.attackAffliction) && attack.attackType != "buff" && alreadyAfflicted == false)
+        if (currentAffliction == Affliction.eNone && attack.attackType != BaseAttack.AttackType.eBuff && alreadyAfflicted == false)
         {
             alreadyAfflicted = true;
             addAffliction(attack);
-            StartCoroutine(checkAffliction((int)attack.skillDuration));
-            StartCoroutine(resetAffliction());
+            StartCoroutine(checkAffliction());
+            StartCoroutine(resetAffliction(attack.skillDuration));
         }
 
         if (GetHealth() <= 0)
