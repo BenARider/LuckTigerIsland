@@ -48,8 +48,7 @@ public class PlayerManager : LTI.Singleton<PlayerManager> {
     public int AddXP(int _xp)
     {
         m_xp += _xp;
-
-        while(m_xp >= (m_level * 100 + (m_level * 10)))
+        while (m_xp >= (m_level * 100 + (m_level * 10)))
         {
             m_xp -= (m_level * 100 + (m_level * 10));
             ++m_level;
@@ -61,7 +60,6 @@ public class PlayerManager : LTI.Singleton<PlayerManager> {
     {
         return m_xp;
     }
-
 
     // Use this for initialization
     void Start () {

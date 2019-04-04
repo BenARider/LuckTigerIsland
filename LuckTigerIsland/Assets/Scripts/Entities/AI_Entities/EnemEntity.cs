@@ -12,20 +12,16 @@ public class EnemEntity : Entity
         eRandomAttacker
     }
     public Agression AgressionState;
-
-    public enum Class
-    {
-        eGoblin,
-        eDark_Elf,
-        eWizard,
-        eKnight,
-        eBoss
-    }
-    public Class MyClass;
+    
+    /// <summary>
+    /// reference from this
+    /// </summary>
+    EnemyObject thisEnemyObject;
 	//private bool canAttack = false; //used to prevent the ai from having too many turns. Only enabled on use of state transition.
 	public int aggress; //likelihood to attack oppossing attacker (Between 1-20)
 	public int intel; //likelihood to attack pm with high value (Between 1-20)
 	public int XP; //amount of xp they give
+    private GameObject m_AttackTarget;
     public TextMeshProUGUI attackDescriptionText;//describes the attack that is happening/happend;
     public TextMeshProUGUI turnText;//who's turn it is
 
@@ -45,31 +41,31 @@ public class EnemEntity : Entity
     public HandleTurns HT;
     void Start()
     {
-        if (MyClass == Class.eGoblin)
-        {
-            SetEnemyStats(75, 50, 40, 20, 50, 3, 20, 4, 50);
-            AgressionState = Agression.eBackStabber;
-        }
-        if (MyClass == Class.eDark_Elf)
-        {
-            SetEnemyStats(35, 125, 20, 10, 55, 2, 10, 8, 50);
-            AgressionState = Agression.eBackStabber;
-        }
-        if (MyClass == Class.eWizard)
-        {
-            SetEnemyStats(40, 100, 10, 15, 45, 2, 15, 6, 50);
-            AgressionState = Agression.eRandomAttacker;
-        }
-        if (MyClass == Class.eKnight)
-        {
-            SetEnemyStats(60, 150, 15, 7, 50, 3, 5, 5, 50);
-            AgressionState = Agression.eRandomAttacker;
-        }
-        if (MyClass == Class.eBoss)
-        {
-            SetEnemyStats(200, 350, 60, 17, 60, 3, 5, 5, 50);
-            AgressionState = Agression.eRandomAttacker;
-        }
+        //if (MyClass == Class.eGoblin)
+        //{
+        //    SetEnemyStats(75, 50, 40, 20, 50, 3, 20, 4, 50);
+        //    AgressionState = Agression.eBackStabber;
+        //}
+        //if (MyClass == Class.eDark_Elf)
+        //{
+        //    SetEnemyStats(35, 125, 20, 10, 55, 2, 10, 8, 50);
+        //    AgressionState = Agression.eBackStabber;
+        //}
+        //if (MyClass == Class.eWizard)
+        //{
+        //    SetEnemyStats(40, 100, 10, 15, 45, 2, 15, 6, 50);
+        //    AgressionState = Agression.eRandomAttacker;
+        //}
+        //if (MyClass == Class.eKnight)
+        //{
+        //    SetEnemyStats(60, 150, 15, 7, 50, 3, 5, 5, 50);
+        //    AgressionState = Agression.eRandomAttacker;
+        //}
+        //if (MyClass == Class.eBoss)
+        //{
+        //    SetEnemyStats(200, 350, 60, 17, 60, 3, 5, 5, 50);
+        //    AgressionState = Agression.eRandomAttacker;
+        //}
 
         this.name = GetEntityNo() + ":" + this.name;
 
@@ -100,8 +96,6 @@ public class EnemEntity : Entity
     // Update is called once per frame
     void Update()
     {
-        if (GetHealth() <= 0)
-            currentState = TurnState.eDead;
         //Debug.Log(currentState);
         switch (currentState)
         {
@@ -110,6 +104,7 @@ public class EnemEntity : Entity
                 break;
             case (TurnState.eChooseAction):
                 CheckBuffs();
+                rollsAttempted = 0;
                 rollAttack();
                 ChooseAction(); //Do action
                 currentState = TurnState.eWaiting; //move to waiting unil BC tells the entity to do the action
@@ -127,7 +122,12 @@ public class EnemEntity : Entity
                     BC.deadEnemies++;
                     countedDead = true;
                     this.transform.eulerAngles = new Vector3(this.transform.eulerAngles.x, this.transform.eulerAngles.y, 90);
-                    return;
+                    BC.battleGoldReward += m_goldAward; //adds the bounty of the enemy to the gold pool for the end
+                    List<EEnemies> tempList = new List<EEnemies>
+                    {
+                        thisEnemyObject.enemyType
+                    };
+                    EventManager.Instance.SetLastBattle(tempList);
                 }
                 else
                 {
@@ -167,20 +167,30 @@ public class EnemEntity : Entity
         }
 	}
 
+    int rollsAttempted = 0;
+    int maxRolls = 10;
+
     void rollAttack()
     {
+        rollsAttempted++;
+
         int num = Random.Range(0, attacks.Count);
 
         m_chosenAction = attacks[num];
 
-        if (m_chosenAction.attackCost > m_mana)
+        if (m_chosenAction.attackCost > m_mana && rollsAttempted < maxRolls)
         {
             rollAttack();
+        }
+        if(rollsAttempted >= maxRolls)
+        {
+            m_chosenAction = attacks.First(x => x.attackCost < m_mana);
         }
     }
 
     void ChooseAction()
     {
+        m_AttackTarget = BC.PartyMembersInBattle[Random.Range(0, BC.PartyMembersInBattle.Count)];
         if (AgressionState == Agression.eRandomAttacker)
         {
             HandleTurns myAttack = new HandleTurns
@@ -188,14 +198,15 @@ public class EnemEntity : Entity
                 Attacker = this.name, //Who is attacking
                 Type = "Enemy",//What type are they
                 AttackingGameObject = this.gameObject, //What gameObject is attacking
-                AttackTarget = BC.PartyMembersInBattle[Random.Range(0, BC.PartyMembersInBattle.Count)], //Random a target that is in the List stored in BattleControl
+                AttackTarget = m_AttackTarget, //Random a target that is in the List stored in BattleControl
                 chosenAttack = m_chosenAction
             };
-
-            //attackDescriptionText.text = this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!";
-            Debug.Log(this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!");
-            StartCoroutine("FadeText");
-            BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
+            if (m_AttackTarget.GetComponent<PlayerEntity>().currentBuff != Buffs.eInvisable)
+            {
+                BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
+                attackDescriptionText.text = this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!";
+                StartCoroutine("FadeText");
+            }
         }
 
         if(AgressionState==Agression.eBackStabber)

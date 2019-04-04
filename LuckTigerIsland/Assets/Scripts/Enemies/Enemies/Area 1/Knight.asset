@@ -25,7 +25,7 @@ MonoBehaviour:
   m_stunned: 0
   m_afflicted: 0
   m_level: 0
-  m_xpAward: 0
+  m_xpAward: 50
   m_EXP: 0
   Class: 
   m_attackedAlready: 0
