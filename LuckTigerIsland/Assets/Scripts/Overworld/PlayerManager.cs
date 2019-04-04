@@ -55,7 +55,15 @@ public class PlayerManager : LTI.Singleton<PlayerManager> {
     // Update is called once per frame
     void Update()
     {
-        m_gold.text = Inventory.Instance.GetGold().ToString();
+        try
+        {
+            m_gold.text = Inventory.Instance.GetGold().ToString();
+        }
+        catch 
+        {
+            Debug.LogError("gold in playermanager innit");
+        }
+        
         if (!inDialogue)
         {
             if (Input.GetKeyDown(KeyCode.E))

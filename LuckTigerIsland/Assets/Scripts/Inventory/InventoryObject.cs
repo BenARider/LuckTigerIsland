@@ -9,5 +9,6 @@ public class InventoryObject : ScriptableObject {
     public Sprite Image;
     public string Description;
     public int Price;
+    public bool sellable = true;
 }
 
