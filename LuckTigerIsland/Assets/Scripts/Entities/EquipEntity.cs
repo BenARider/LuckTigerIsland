@@ -7,13 +7,11 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 public class EquipEntity : MonoBehaviour
 {
-   
-    public PlayerEntity[] m_partyMembers;
-
+    PlayerEntity[] m_partMembers;
     [SerializeField]
-    Weapon m_currentWeapon;
+    InventoryObject m_armour;
     [SerializeField]
-    Armour m_currentArmour;
+    InventoryObject m_weapon;
     InventoryListButton m_inventoryListButton;
     protected bool equipped = false;
     private Color m_itemFadeColour;
@@ -35,31 +33,28 @@ public class EquipEntity : MonoBehaviour
 
     void Start()
     {
-
-        m_partyMembers = new PlayerEntity[4];
-        m_partyMembers[0] = GameObject.Find("Luck").GetComponent<PlayerEntity>();
-        m_partyMembers[1] = GameObject.Find("Duck").GetComponent<PlayerEntity>();
-        m_partyMembers[2] = GameObject.Find("Buck").GetComponent<PlayerEntity>();
-        m_partyMembers[3] = GameObject.Find("Phil").GetComponent<PlayerEntity>();
-        
+        m_partMembers = new PlayerEntity[4];
+        m_partMembers[0] = GameObject.Find("Player").GetComponent<PlayerEntity>();
+        m_partMembers[1] = GameObject.Find("Player (1)").GetComponent<PlayerEntity>();
+        m_partMembers[2] = GameObject.Find("Player (2)").GetComponent<PlayerEntity>();
+        m_partMembers[3] = GameObject.Find("Player (3)").GetComponent<PlayerEntity>();
         m_partyMemberName = GameObject.Find("PartyMemberName").GetComponent<TextMeshProUGUI>();
         m_partyMemberName.text = "Luck";
         m_itemFadeColour.a = 0.0f;
         tempDefence = new int[4];
         tempAttack = new int[4];
-        tempDefence[0] = m_partyMembers[0].GetDefence();
-        tempAttack[0] = m_partyMembers[0].GetStrength();
-        tempDefence[1] = m_partyMembers[1].GetDefence();
-        tempAttack[1] = m_partyMembers[1].GetStrength();
-        tempDefence[2] = m_partyMembers[2].GetDefence();
-        tempAttack[2] = m_partyMembers[2].GetStrength();
-        tempDefence[3] = m_partyMembers[3].GetDefence();
-        tempAttack[3] = m_partyMembers[3].GetStrength();
+        tempDefence[0] = m_partMembers[0].GetDefence();
+        tempAttack[0] = m_partMembers[0].GetStrength();
+        tempDefence[1] = m_partMembers[1].GetDefence();
+        tempAttack[1] = m_partMembers[1].GetStrength();
+        tempDefence[2] = m_partMembers[2].GetDefence();
+        tempAttack[2] = m_partMembers[2].GetStrength();
+        tempDefence[3] = m_partMembers[3].GetDefence();
+        tempAttack[3] = m_partMembers[3].GetStrength();
     }
     // Update is called once per frame
     void Update()
     {
-        
         if (m_partyImageIndex == 0)
         {
             m_partyMemberName.text = "Luck";
@@ -84,55 +79,50 @@ public class EquipEntity : MonoBehaviour
         {
             m_partyImageIndex = 0;
         }
-        
-        
     }
     public void UnEquip(string _slotName)
     {
         if (_slotName == "Armour")
         {
-           // m_inventory.AddToInventory(m_currentArmour);          
-            
-            m_currentArmour = null;
+            m_armour = null;
             m_equipImages[0].sprite = m_equipImages[2].sprite;
             if (m_partyImageIndex == 0)
             {
-                m_partyMembers[0].SetDefence(tempDefence[0]);
+                m_partMembers[0].SetDefence(tempDefence[0]);
             }
             if (m_partyImageIndex == 1)
             {
-                m_partyMembers[1].SetDefence(tempDefence[1]);
+                m_partMembers[1].SetDefence(tempDefence[1]);
             }
             if (m_partyImageIndex == 2)
             {
-                m_partyMembers[2].SetDefence(tempDefence[2]);
+                m_partMembers[2].SetDefence(tempDefence[2]);
             }
             if (m_partyImageIndex == 3)
             {
-                m_partyMembers[3].SetDefence(tempDefence[3]);
+                m_partMembers[3].SetDefence(tempDefence[3]);
             }
 
         }
         if (_slotName == "Weapon")
         {
-          //  m_inventory.AddToInventory(m_currentWeapon);
-            m_currentWeapon = null;
+            m_weapon = null;
             m_equipImages[1].sprite = m_equipImages[3].sprite;
             if (m_partyImageIndex == 0)
             {
-                m_partyMembers[0].SetStrength(tempAttack[0]);
+                m_partMembers[0].SetStrength(tempAttack[0]);
             }
             if (m_partyImageIndex == 1)
             {
-                m_partyMembers[1].SetStrength(tempAttack[1]);
+                m_partMembers[1].SetStrength(tempAttack[1]);
             }
             if (m_partyImageIndex == 2)
             {
-                m_partyMembers[2].SetStrength(tempAttack[2]);
+                m_partMembers[2].SetStrength(tempAttack[2]);
             }
             if (m_partyImageIndex == 3)
             {
-                m_partyMembers[3].SetStrength(tempAttack[3]);
+                m_partMembers[3].SetStrength(tempAttack[3]);
             }
 
         }
@@ -143,31 +133,33 @@ public class EquipEntity : MonoBehaviour
         {
             m_equipImages[1].sprite = _object.Image;
 
-                m_currentWeapon = _object;
+            if (_object.objectType == EObjectType.Weapon)
+            {
+                m_weapon = _object;
               
                 if (m_partyImageIndex == 0)
                 {
-                    m_partyMembers[0].SetStrength(_object.attack);
+                    m_partMembers[0].SetStrength(_object.attack);
 
                 }
                 if (m_partyImageIndex == 1)
                 {
-                    m_partyMembers[1].SetStrength(_object.attack);
+                    m_partMembers[1].SetStrength(_object.attack);
 
                 }
                 if (m_partyImageIndex == 2)
                 {
-                    m_partyMembers[2].SetStrength(_object.attack);
+                    m_partMembers[2].SetStrength(_object.attack);
     
                 }
                 if (m_partyImageIndex == 3)
                 {
-                    m_partyMembers[3].SetStrength(_object.attack);
+                    m_partMembers[3].SetStrength(_object.attack);
  
                 }
                 m_justEquippedText.text = "Just equipped: " + _object.objectName;
                 StartCoroutine(HideText());
-            
+            }
         }
     }
     public void EquipArmour(Armour _object)
@@ -175,33 +167,34 @@ public class EquipEntity : MonoBehaviour
         if (m_equipImages[0].sprite.name == "equipment_preview_1")
         {
             m_equipImages[0].sprite = _object.Image;
-          
-                m_currentArmour = _object;
+            if (_object.objectType == EObjectType.Armour)
+            {
+                m_armour = _object;
               
                 if (m_partyImageIndex == 0)
                 {
-                    m_partyMembers[0].SetDefence(_object.defence);
+                    m_partMembers[0].SetDefence(_object.defence);
                
                 }
                 if (m_partyImageIndex == 1)
                 {
-                    m_partyMembers[1].SetDefence(_object.defence);
+                    m_partMembers[1].SetDefence(_object.defence);
           
                 }
                 if (m_partyImageIndex == 2)
                 {
-                    m_partyMembers[2].SetDefence(_object.defence);
+                    m_partMembers[2].SetDefence(_object.defence);
              
                 }
                 if (m_partyImageIndex == 3)
                 {
-                    m_partyMembers[3].SetDefence(_object.defence);
+                    m_partMembers[3].SetDefence(_object.defence);
             
                 }
                 m_justEquippedText.text = "Just equipped: " + _object.objectName;
                 StartCoroutine(HideText());
 
-            
+            }
         }
     }
     IEnumerator HideText()

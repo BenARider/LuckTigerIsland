@@ -16,8 +16,6 @@ public class InventoryListControl : MonoBehaviour {
     [SerializeField]
     private TextMeshProUGUI m_description;
     [SerializeField]
-    private TextMeshProUGUI m_amount;
-    [SerializeField]
     private TextMeshProUGUI m_price;
     int index = -1;
 
@@ -35,7 +33,6 @@ public class InventoryListControl : MonoBehaviour {
         {
             if (Inventory.Instance.inventory.Count > 0)
             {
-                ResetChildren();
                 SetDefaults();
                 for (int i = 0; i < Inventory.Instance.inventory.Count; i++)
                 {
@@ -75,31 +72,14 @@ public class InventoryListControl : MonoBehaviour {
         m_name.text = Inventory.Instance.inventory[0].iObject.name; 
         m_description.text = Inventory.Instance.inventory[0].iObject.Description;
         m_price.text = "Price: " + Inventory.Instance.inventory[0].iObject.Price;
-        m_amount.text = "Amount: " + Inventory.Instance.inventory[0].amount;
-    } 
-
-    private void ResetChildren()
-    {
-        bool first = false;
-        foreach (Transform child in m_buttonTemplate.transform.parent.transform)
-        {
-            if (!first)
-            {
-                first = true;
-            }
-            else
-            {
-                GameObject.Destroy(child.gameObject);
-            }
-        }
     }
-    public void ButtonClicked(Sprite _sprite, string _name, string _description, int _price, int _amount)
+
+    public void ButtonClicked(Sprite _sprite, string _name, string _description, int _price)
     {
         m_image.sprite = _sprite;
         m_name.text = _name;
         m_description.text = _description;
         m_price.text = "Price: " + _price.ToString();
-        m_amount.text = "Amount: " + _amount.ToString();
     }
 
 }

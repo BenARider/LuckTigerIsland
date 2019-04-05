@@ -74,13 +74,12 @@ public class InventoryListButton : MonoBehaviour,ISelectHandler {
         if (m_inventoryObject.objectType == EObjectType.Weapon)
         {
             equipEntity.EquipWeapon((Weapon)m_inventoryObject);
-          //  m_inventory.inventory.Find(x => x.iObject == m_inventoryObject).DecreaseAmount(1);
             print("Object type is " + m_inventoryObject.objectType);
         }
         if (m_inventoryObject.objectType == EObjectType.Armour)
         {
             equipEntity.EquipArmour((Armour)m_inventoryObject);
-          //  m_inventory.inventory.Find(x => x.iObject == m_inventoryObject).DecreaseAmount(1);
+
             print("Object type is " + m_inventoryObject.objectType);
         }
 
@@ -89,7 +88,7 @@ public class InventoryListButton : MonoBehaviour,ISelectHandler {
     {
         if (!isNull)
         {
-            m_invControl.ButtonClicked(m_image, m_name, m_description, m_price, m_amount);
+            m_invControl.ButtonClicked(m_image, m_name, m_description, m_price);
         }
         else
         {
