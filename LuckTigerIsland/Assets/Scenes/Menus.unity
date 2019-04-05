@@ -722,6 +722,8 @@ MonoBehaviour:
   backgroundTextArray:
   - {fileID: 0}
   - {fileID: 0}
+  m_level: 1
+  m_xp: 0
 --- !u!114 &48028364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -746,6 +748,7 @@ MonoBehaviour:
   m_afflicted: 0
   m_level: 0
   m_xpAward: 0
+  m_goldAward: 0
   m_EXP: 0
   m_attackedAlready: 0
   m_canBeBuffed: 1
@@ -769,6 +772,7 @@ MonoBehaviour:
   currentBuff: 0
   EntityToAttack: {fileID: 0}
   attacks: []
+  passiveActiveList: []
   HealthPotions: []
   ManaPotions: []
   statTexts:
@@ -783,6 +787,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  skillTexts: []
   turnText: {fileID: 1607371854}
   attackDescriptionText: {fileID: 2008797576}
   notEnoughManaText: {fileID: 1499274251}
@@ -791,6 +796,10 @@ MonoBehaviour:
   expBar: {fileID: 1378857875}
   playerStatButton: {fileID: 1132450977}
   playerStatMenu: {fileID: 614285260}
+  enemyTargets: {fileID: 0}
+  teamTargets: {fileID: 0}
+  enemyTarget: {fileID: 0}
+  teamTarget: {fileID: 0}
   m_findTextGameObjects: 0
   m_equipEntity: {fileID: 0}
   warrior: {fileID: 48028364}
@@ -804,6 +813,7 @@ MonoBehaviour:
     AttackingGameObject: {fileID: 0}
     AttackTarget: {fileID: 0}
     chosenAttack: {fileID: 0}
+  passiveList: []
   m_hasChosenAction: 0
   m_chosenTarget: 0
 --- !u!114 &48028365
@@ -3985,7 +3995,7 @@ MonoBehaviour:
   m_Script: {fileID: -619905303, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 694181978}
   m_sendNavigationEvents: 1
   m_DragThreshold: 5
 --- !u!1 &233342690
@@ -4404,6 +4414,8 @@ MonoBehaviour:
   backgroundTextArray:
   - {fileID: 0}
   - {fileID: 0}
+  m_level: 1
+  m_xp: 0
 --- !u!114 &266415003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4428,6 +4440,7 @@ MonoBehaviour:
   m_afflicted: 0
   m_level: 0
   m_xpAward: 0
+  m_goldAward: 0
   m_EXP: 0
   m_attackedAlready: 0
   m_canBeBuffed: 1
@@ -4451,6 +4464,7 @@ MonoBehaviour:
   currentBuff: 0
   EntityToAttack: {fileID: 0}
   attacks: []
+  passiveActiveList: []
   HealthPotions: []
   ManaPotions: []
   statTexts:
@@ -4465,6 +4479,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  skillTexts: []
   turnText: {fileID: 1607371854}
   attackDescriptionText: {fileID: 2008797576}
   notEnoughManaText: {fileID: 1499274251}
@@ -4473,6 +4488,10 @@ MonoBehaviour:
   expBar: {fileID: 1378857875}
   playerStatButton: {fileID: 1132450977}
   playerStatMenu: {fileID: 614285260}
+  enemyTargets: {fileID: 0}
+  teamTargets: {fileID: 0}
+  enemyTarget: {fileID: 0}
+  teamTarget: {fileID: 0}
   m_findTextGameObjects: 0
   m_equipEntity: {fileID: 0}
   warrior: {fileID: 48028364}
@@ -4486,6 +4505,7 @@ MonoBehaviour:
     AttackingGameObject: {fileID: 0}
     AttackTarget: {fileID: 0}
     chosenAttack: {fileID: 0}
+  passiveList: []
   m_hasChosenAction: 0
   m_chosenTarget: 0
 --- !u!114 &266415004
@@ -13559,6 +13579,7 @@ MonoBehaviour:
   - {fileID: 0}
   TargetingListForAI: []
   actionOne: {fileID: 0}
+  battleGoldReward: 0
   deadEnemies: 0
   deadPlayers: 0
 --- !u!4 &1130938920
@@ -14626,6 +14647,8 @@ MonoBehaviour:
   backgroundTextArray:
   - {fileID: 0}
   - {fileID: 0}
+  m_level: 1
+  m_xp: 0
 --- !u!114 &1161057274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14650,6 +14673,7 @@ MonoBehaviour:
   m_afflicted: 0
   m_level: 0
   m_xpAward: 0
+  m_goldAward: 0
   m_EXP: 0
   m_attackedAlready: 0
   m_canBeBuffed: 1
@@ -14675,6 +14699,7 @@ MonoBehaviour:
   attacks:
   - {fileID: 0}
   - {fileID: 0}
+  passiveActiveList: []
   HealthPotions: []
   ManaPotions: []
   statTexts:
@@ -14689,6 +14714,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  skillTexts: []
   turnText: {fileID: 1607371854}
   attackDescriptionText: {fileID: 2008797576}
   notEnoughManaText: {fileID: 1499274251}
@@ -14697,6 +14723,10 @@ MonoBehaviour:
   expBar: {fileID: 1378857875}
   playerStatButton: {fileID: 1132450977}
   playerStatMenu: {fileID: 614285260}
+  enemyTargets: {fileID: 0}
+  teamTargets: {fileID: 0}
+  enemyTarget: {fileID: 0}
+  teamTarget: {fileID: 0}
   m_findTextGameObjects: 0
   m_equipEntity: {fileID: 0}
   warrior: {fileID: 48028364}
@@ -14710,6 +14740,7 @@ MonoBehaviour:
     AttackingGameObject: {fileID: 0}
     AttackTarget: {fileID: 0}
     chosenAttack: {fileID: 0}
+  passiveList: []
   m_hasChosenAction: 0
   m_chosenTarget: 0
 --- !u!114 &1161057275
@@ -23751,6 +23782,8 @@ MonoBehaviour:
   backgroundTextArray:
   - {fileID: 0}
   - {fileID: 0}
+  m_level: 1
+  m_xp: 0
 --- !u!114 &1925663908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23775,6 +23808,7 @@ MonoBehaviour:
   m_afflicted: 0
   m_level: 0
   m_xpAward: 0
+  m_goldAward: 0
   m_EXP: 0
   m_attackedAlready: 0
   m_canBeBuffed: 1
@@ -23798,6 +23832,7 @@ MonoBehaviour:
   currentBuff: 0
   EntityToAttack: {fileID: 0}
   attacks: []
+  passiveActiveList: []
   HealthPotions: []
   ManaPotions: []
   statTexts:
@@ -23812,6 +23847,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  skillTexts: []
   turnText: {fileID: 1607371854}
   attackDescriptionText: {fileID: 2008797576}
   notEnoughManaText: {fileID: 1499274251}
@@ -23820,6 +23856,10 @@ MonoBehaviour:
   expBar: {fileID: 1378857875}
   playerStatButton: {fileID: 1132450977}
   playerStatMenu: {fileID: 614285260}
+  enemyTargets: {fileID: 0}
+  teamTargets: {fileID: 0}
+  enemyTarget: {fileID: 0}
+  teamTarget: {fileID: 0}
   m_findTextGameObjects: 0
   m_equipEntity: {fileID: 0}
   warrior: {fileID: 48028364}
@@ -23833,6 +23873,7 @@ MonoBehaviour:
     AttackingGameObject: {fileID: 0}
     AttackTarget: {fileID: 0}
     chosenAttack: {fileID: 0}
+  passiveList: []
   m_hasChosenAction: 0
   m_chosenTarget: 0
 --- !u!114 &1925663909
