@@ -8,7 +8,7 @@ public class PlayerEntity : Entity
 {
 
     private int m_playerIDStats = 0;
-    public TextMeshProUGUI[] statTexts;
+    public TextMeshProUGUI statTexts;
     public TextMeshProUGUI[] skillTexts;
     public TextMeshProUGUI turnText;//who's turn it is
     public TextMeshProUGUI attackDescriptionText;//describes the attack that is happening/happend
@@ -109,8 +109,6 @@ public class PlayerEntity : Entity
         ManaPotions.Add(MpPotion);
 
         skillTexts = new TextMeshProUGUI[7];
-
-        statTexts = new TextMeshProUGUI[12];
 
         skillTexts[0] = GameObject.Find("Action_One").GetComponent<TextMeshProUGUI>();
         skillTexts[1] = GameObject.Find("Action_Two").GetComponent<TextMeshProUGUI>();
@@ -1060,41 +1058,32 @@ public class PlayerEntity : Entity
             //Makes sure the objects only need to be found once
             if (m_findTextGameObjects == false)
             {
-                statTexts[0] = GameObject.Find("Party_Member_Name").GetComponent<TextMeshProUGUI>();
-                statTexts[1] = GameObject.Find("Class_Title").GetComponent<TextMeshProUGUI>();
-                statTexts[2] = GameObject.Find("Player_Stats_Values").GetComponent<TextMeshProUGUI>();
+
+                statTexts = GameObject.Find("Player_Stats_Values").GetComponent<TextMeshProUGUI>();
 
                 m_findTextGameObjects = true;
             }
             if (m_playerIDStats == 0)
             {
-                statTexts[0].text = "Luck";
-                statTexts[1].text = "Cleric";
-                statTexts[2].text = " Health: " + cleric.GetMaxHealth() + "\n Mana: " + cleric.GetMaxMana() + "\n Physical Damage: " + cleric.GetStrength() + "\n Magical Damage: " + cleric.GetMagicPower() +
+                statTexts.text = " Name: Luck" + "\n " + "Class: Cleric" + "\n " + "Health: " + cleric.GetMaxHealth() + "\n Mana: " + cleric.GetMaxMana() + "\n Physical Damage: " + cleric.GetStrength() + "\n Magical Damage: " + cleric.GetMagicPower() +
                  "\n Physical Defence: " + cleric.GetDefence() + "\n Magical Defence: " + cleric.GetMagicDefence() + "\n Speed: " + cleric.GetSpeed();
                 expBar.value = cleric.GetEXP();
             }
             if (m_playerIDStats == 1)
             {
-                statTexts[0].text = "Buck";
-                statTexts[1].text = "Warrior";
-                statTexts[2].text = " Health: " + warrior.GetMaxHealth() + "\n Mana: " + warrior.GetMaxMana() + "\n Physical Damage: " + warrior.GetStrength() + "\n Magical Damage: " + warrior.GetMagicPower() +
+                statTexts.text = " Name: Buck" + "\n " + "Class: Warrior" + "\n " + "Health: " + warrior.GetMaxHealth() + "\n Mana: " + warrior.GetMaxMana() + "\n Physical Damage: " + warrior.GetStrength() + "\n Magical Damage: " + warrior.GetMagicPower() +
                  "\n Physical Defence: " + warrior.GetDefence() + "\n Magical Defence: " + warrior.GetMagicDefence() + "\n Speed: " + warrior.GetSpeed();
                 expBar.value = warrior.GetEXP();
             }
             if (m_playerIDStats == 2)
             {
-                statTexts[0].text = "Duck";
-                statTexts[1].text = "Wizard";
-                statTexts[2].text = " Health: " + wizard.GetMaxHealth() + "\n Mana: " + wizard.GetMaxMana() + "\n Physical Damage: " + wizard.GetStrength() + "\n Magical Damage: " + wizard.GetMagicPower() +
+                statTexts.text = " Name: Duck" + "\n " + "Class: Wizard" + "\n "+"Health: " + wizard.GetMaxHealth() + "\n Mana: " + wizard.GetMaxMana() + "\n Physical Damage: " + wizard.GetStrength() + "\n Magical Damage: " + wizard.GetMagicPower() +
               "\n Physical Defence: " + wizard.GetDefence() + "\n Magical Defence: " + wizard.GetMagicDefence() + "\n Speed: " + wizard.GetSpeed();
                 expBar.value = wizard.GetEXP();
             }
             if (m_playerIDStats == 3)
             {
-                statTexts[0].text = "Phil";
-                statTexts[1].text = "Ninja";
-                statTexts[2].text = " Health: " + ninja.GetMaxHealth() + "\n Mana: " + ninja.GetMaxMana() + "\n Physical Damage: " + ninja.GetStrength() + "\n Magical Damage: " + ninja.GetMagicPower() +
+                statTexts.text = " Name: Phil" + "\n " + "Class: Ninja" + "\n " + "Health: " + ninja.GetMaxHealth() + "\n Mana: " + ninja.GetMaxMana() + "\n Physical Damage: " + ninja.GetStrength() + "\n Magical Damage: " + ninja.GetMagicPower() +
              "\n Physical Defence: " + ninja.GetDefence() + "\n Magical Defence: " + ninja.GetMagicDefence() + "\n Speed: " + ninja.GetSpeed();
                 expBar.value = ninja.GetEXP();
             }
