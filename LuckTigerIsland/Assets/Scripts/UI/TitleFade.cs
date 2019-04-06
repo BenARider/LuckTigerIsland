@@ -2,18 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using TMPro;
 public class TitleFade : MonoBehaviour {
+    EventSystem m_eventSystem;
     public TextMeshProUGUI titleScreenText;
     private Color m_fadeColour;
     public GameObject mainMenu;
     public GameObject background;
     public GameObject mainTitle;
     public GameObject title;
+    public GameObject startButton;
     // Use this for initialization
     void Start()
     {
         StartCoroutine("Fade");
+        m_eventSystem = EventSystem.current;
     }
 	
 	// Update is called once per frame
@@ -30,5 +34,7 @@ public class TitleFade : MonoBehaviour {
         background.SetActive(true);
         mainTitle.SetActive(true);
         title.SetActive(true);
+        m_eventSystem.SetSelectedGameObject(startButton);
+
     }
 }

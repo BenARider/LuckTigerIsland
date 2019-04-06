@@ -135,11 +135,11 @@ public class PlayerEntity : Entity
         notEnoughPotionsText = GameObject.Find("not_Enough_Potions_Text").GetComponent<TextMeshProUGUI>();
         usedPotionText = GameObject.Find("used_Potion_Text").GetComponent<TextMeshProUGUI>();
 
-		turnText = GameObject.Find("Player_Turn_Text").GetComponent<TextMeshProUGUI>();
-		attackDescriptionText = GameObject.Find("Player_Attack_Description_Text").GetComponent<TextMeshProUGUI>();
-		notEnoughManaText = GameObject.Find("not_Enough_Mana_Text").GetComponent<TextMeshProUGUI>();
-		notEnoughPotionsText = GameObject.Find("not_Enough_Potions_Text").GetComponent<TextMeshProUGUI>();
-		usedPotionText = GameObject.Find("used_Potion_Text").GetComponent<TextMeshProUGUI>();
+        turnText = GameObject.Find("Player_Turn_Text").GetComponent<TextMeshProUGUI>();
+        attackDescriptionText = GameObject.Find("Player_Attack_Description_Text").GetComponent<TextMeshProUGUI>();
+        notEnoughManaText = GameObject.Find("not_Enough_Mana_Text").GetComponent<TextMeshProUGUI>();
+        notEnoughPotionsText = GameObject.Find("not_Enough_Potions_Text").GetComponent<TextMeshProUGUI>();
+        usedPotionText = GameObject.Find("used_Potion_Text").GetComponent<TextMeshProUGUI>();
 
         currentState = TurnState.eProssesing;
 
@@ -151,7 +151,7 @@ public class PlayerEntity : Entity
         foreach (var passive in passiveActiveList)
         {
 
-            if(!passive.passiveActive)
+            if (!passive.passiveActive)
             {
                 if (passive.lessThanOrMoreThan == BaseActivePassive.LessThanOrMoreThan.eLessThan)
                     ApplyPassives(passive, PassiveConditionLessthan);
@@ -194,7 +194,7 @@ public class PlayerEntity : Entity
         }
         return false;
     }
-    
+
     public delegate bool Check(BaseActivePassive target);
 
     void ApplyPassives(BaseActivePassive passive, Check check)
@@ -475,20 +475,20 @@ public class PlayerEntity : Entity
                 turnText.text = "It is " + this.name + "'s turn";
                 StartCoroutine(FadeText());
             }
-           
+
         }
 
     }
 
     void ChooseAction()
     {
-      skillTexts[0].text = "1: " + attacks[0].attackName;
-      skillTexts[1].text = "2: " + attacks[1].attackName;
-      skillTexts[2].text = "3: " + attacks[2].attackName;
-      skillTexts[3].text = "4: " + attacks[3].attackName;
-      skillTexts[4].text = "5: " + attacks[4].attackName;
-      skillTexts[5].text = "6: " + attacks[5].attackName;
-      skillTexts[6].text = "7: " + attacks[6].attackName;
+        skillTexts[0].text = "1: " + attacks[0].attackName;
+        skillTexts[1].text = "2: " + attacks[1].attackName;
+        skillTexts[2].text = "3: " + attacks[2].attackName;
+        skillTexts[3].text = "4: " + attacks[3].attackName;
+        skillTexts[4].text = "5: " + attacks[4].attackName;
+        skillTexts[5].text = "6: " + attacks[5].attackName;
+        skillTexts[6].text = "7: " + attacks[6].attackName;
 
 
         Debug.Log(this.name + ": Choose Action");
@@ -548,7 +548,7 @@ public class PlayerEntity : Entity
                 notEnoughManaText.text = this.name + " does not have enough mana!";
                 Debug.Log(this.name + " does not have enough mana!");
             }
-            
+
             StartCoroutine("FadeText");
         }
         if (Input.GetKeyDown("3") || m_BattleButton.GetActionTargetNumber() == 3)
@@ -568,7 +568,7 @@ public class PlayerEntity : Entity
             m_chosenAction = attacks[2];
             if (attacks[2].attackCost < m_mana)
             {
-             
+
                 m_hasChosenAction = true;
                 m_mana -= m_chosenAction.attackCost;
             }
@@ -577,7 +577,7 @@ public class PlayerEntity : Entity
                 notEnoughManaText.text = this.name + " does not have enough mana!";
                 Debug.Log(this.name + " does not have enough mana!");
             }
-           
+
             StartCoroutine("FadeText");
         }
         if (Input.GetKeyDown("4") || m_BattleButton.GetActionTargetNumber() == 4)
@@ -606,7 +606,7 @@ public class PlayerEntity : Entity
                 notEnoughManaText.text = this.name + " does not have enough mana!";
                 Debug.Log(this.name + " does not have enough mana!");
             }
-            
+
             StartCoroutine("FadeText");
         }
         if (Input.GetKeyDown("5") || m_BattleButton.GetActionTargetNumber() == 5)
@@ -636,7 +636,7 @@ public class PlayerEntity : Entity
                 notEnoughManaText.text = this.name + " does not have enough mana!";
                 Debug.Log(this.name + " does not have enough mana!");
             }
-            
+
             StartCoroutine("FadeText");
         }
         if (Input.GetKeyDown("6") || m_BattleButton.GetActionTargetNumber() == 6)
@@ -667,26 +667,26 @@ public class PlayerEntity : Entity
                 notEnoughManaText.text = this.name + " does not have enough mana!";
                 Debug.Log(this.name + " does not have enough mana!");
             }
-            
+
             StartCoroutine("FadeText");
         }
         if (Input.GetKeyDown("7") || m_BattleButton.GetActionTargetNumber() == 7)
         {
 
-                if (attacks[6].attackType == BaseAttack.AttackType.eBuff)
-                {
+            if (attacks[6].attackType == BaseAttack.AttackType.eBuff)
+            {
                 teamTarget.Select();
                 teamTargets.SetActive(true);
-                    enemyTargets.SetActive(false);
-                }
-                if (attacks[6].attackType != BaseAttack.AttackType.eBuff)
-                {
+                enemyTargets.SetActive(false);
+            }
+            if (attacks[6].attackType != BaseAttack.AttackType.eBuff)
+            {
                 enemyTarget.Select();
                 teamTargets.SetActive(false);
-                    enemyTargets.SetActive(true);
-                }
+                enemyTargets.SetActive(true);
+            }
 
-            
+
             m_chosenAction = attacks[6];
 
             if (attacks[6].attackCost < m_mana)
@@ -699,12 +699,12 @@ public class PlayerEntity : Entity
                 notEnoughManaText.text = this.name + " does not have enough mana!";
                 Debug.Log(this.name + " does not have enough mana!");
             }
-            
+
             StartCoroutine("FadeText");
         }
         if (Input.GetKeyDown("8") || m_BattleButton.GetActionTargetNumber() == 8)
         {
-           
+
             if (HealthPotions.Count > 0)
             {
                 m_health += Health_Potion.healthGiven;
@@ -763,7 +763,7 @@ public class PlayerEntity : Entity
             }
             else
             {
-                
+
                 notEnoughPotionsText.text = this.name + "does not have enough mana potions";
                 Debug.Log(this.name + " does not have enough mana potions");
             }
@@ -992,7 +992,7 @@ public class PlayerEntity : Entity
             while (MoveTo(magicAttack))
             {
                 yield return null; //wait until moveToward is true
-               
+
             }
         }
         else if (m_chosenAction.attackType == BaseAttack.AttackType.eBuff)
@@ -1003,11 +1003,11 @@ public class PlayerEntity : Entity
         yield return new WaitForSeconds(1.5f);
 
         //do damage
-        if(m_chosenAction.attackType != BaseAttack.AttackType.eBuff)
+        if (m_chosenAction.attackType != BaseAttack.AttackType.eBuff)
         {
             playerDoDamge();
         }
-        if(m_chosenAction.attackType == BaseAttack.AttackType.eBuff && m_chosenAction.attackAffliction != BaseAttack.AttackAffliction.eNone)
+        if (m_chosenAction.attackType == BaseAttack.AttackType.eBuff && m_chosenAction.attackAffliction != BaseAttack.AttackAffliction.eNone)
         {
             AddBuff(m_chosenAction);
         }
@@ -1038,7 +1038,7 @@ public class PlayerEntity : Entity
         notEnoughManaText.text = "";
         notEnoughPotionsText.text = "";
         usedPotionText.text = "";
-}
+    }
     void playerDoDamge() // calls the take damage on the enemy w/ damage calc
     {
         int calculateDamage = GetStrength() + BC.NextTurn[0].chosenAttack.attackDamage; //calc should be done here before damage
@@ -1062,86 +1062,43 @@ public class PlayerEntity : Entity
             {
                 statTexts[0] = GameObject.Find("Party_Member_Name").GetComponent<TextMeshProUGUI>();
                 statTexts[1] = GameObject.Find("Class_Title").GetComponent<TextMeshProUGUI>();
-                statTexts[2] = GameObject.Find("Health_Total").GetComponent<TextMeshProUGUI>();
-                statTexts[3] = GameObject.Find("Physical_Damage_Total").GetComponent<TextMeshProUGUI>();
-                statTexts[4] = GameObject.Find("Magical_Damage_Total").GetComponent<TextMeshProUGUI>();
-                statTexts[5] = GameObject.Find("Physical_Armour_Total").GetComponent<TextMeshProUGUI>();
-                statTexts[6] = GameObject.Find("Magical_Armour_Total").GetComponent<TextMeshProUGUI>();
-                statTexts[7] = GameObject.Find("Critical_Hit_Chance_Total").GetComponent<TextMeshProUGUI>();
-                statTexts[8] = GameObject.Find("Speed_Total").GetComponent<TextMeshProUGUI>();
-                statTexts[9] = GameObject.Find("Level_Total").GetComponent<TextMeshProUGUI>();
-                statTexts[10] = GameObject.Find("Skill_Points_Total").GetComponent<TextMeshProUGUI>();
-                statTexts[11] = GameObject.Find("Mana_Total").GetComponent<TextMeshProUGUI>();
+                statTexts[2] = GameObject.Find("Player_Stats_Values").GetComponent<TextMeshProUGUI>();
 
                 m_findTextGameObjects = true;
             }
-
             if (m_playerIDStats == 0)
             {
                 statTexts[0].text = "Luck";
                 statTexts[1].text = "Cleric";
-                statTexts[2].text = "" + cleric.GetHealth();
-                statTexts[3].text = "" + cleric.GetStrength();
-                statTexts[4].text = "" + cleric.GetMagicPower();
-                statTexts[5].text = "" + cleric.GetDefence();
-                statTexts[6].text = "" + cleric.GetMagicDefence();
-                statTexts[7].text = "" + 50;//crit chance
-                statTexts[8].text = "" + cleric.GetSpeed();
-                statTexts[9].text = "" + cleric.GetLevel();
-                statTexts[10].text = "" + 10;//Skills points
-                statTexts[11].text = "" + cleric.GetMana();
+                statTexts[2].text = " Health: " + cleric.GetMaxHealth() + "\n Mana: " + cleric.GetMaxMana() + "\n Physical Damage: " + cleric.GetStrength() + "\n Magical Damage: " + cleric.GetMagicPower() +
+                 "\n Physical Defence: " + cleric.GetDefence() + "\n Magical Defence: " + cleric.GetMagicDefence() + "\n Speed: " + cleric.GetSpeed();
                 expBar.value = cleric.GetEXP();
-
             }
             if (m_playerIDStats == 1)
             {
                 statTexts[0].text = "Buck";
                 statTexts[1].text = "Warrior";
-                statTexts[2].text = "" + warrior.GetHealth();
-                statTexts[3].text = "" + warrior.GetStrength();
-                statTexts[4].text = "" + warrior.GetMagicPower();
-                statTexts[5].text = "" + warrior.GetDefence();
-                statTexts[6].text = "" + warrior.GetMagicDefence();
-                statTexts[7].text = "" + 50;//crit chance
-                statTexts[8].text = "" + warrior.GetSpeed();
-                statTexts[9].text = "" + warrior.GetLevel();
-                statTexts[10].text = "" + 10;//Skills points
-                statTexts[11].text = "" + warrior.GetMana();
+                statTexts[2].text = " Health: " + warrior.GetMaxHealth() + "\n Mana: " + warrior.GetMaxMana() + "\n Physical Damage: " + warrior.GetStrength() + "\n Magical Damage: " + warrior.GetMagicPower() +
+                 "\n Physical Defence: " + warrior.GetDefence() + "\n Magical Defence: " + warrior.GetMagicDefence() + "\n Speed: " + warrior.GetSpeed();
                 expBar.value = warrior.GetEXP();
-
             }
             if (m_playerIDStats == 2)
             {
                 statTexts[0].text = "Duck";
                 statTexts[1].text = "Wizard";
-                statTexts[2].text = "" + wizard.GetMaxHealth();
-                statTexts[3].text = "" + wizard.GetStrength();
-                statTexts[4].text = "" + wizard.GetMagicPower();
-                statTexts[5].text = "" + wizard.GetDefence();
-                statTexts[6].text = "" + wizard.GetMagicDefence();
-                statTexts[7].text = "" + 50;//crit chance
-                statTexts[8].text = "" + wizard.GetSpeed();
-                statTexts[9].text = "" + wizard.GetLevel();
-                statTexts[10].text = "" + 10;//Skills points
-                statTexts[11].text = "" + wizard.GetMana();
+                statTexts[2].text = " Health: " + wizard.GetMaxHealth() + "\n Mana: " + wizard.GetMaxMana() + "\n Physical Damage: " + wizard.GetStrength() + "\n Magical Damage: " + wizard.GetMagicPower() +
+              "\n Physical Defence: " + wizard.GetDefence() + "\n Magical Defence: " + wizard.GetMagicDefence() + "\n Speed: " + wizard.GetSpeed();
                 expBar.value = wizard.GetEXP();
             }
             if (m_playerIDStats == 3)
             {
                 statTexts[0].text = "Phil";
                 statTexts[1].text = "Ninja";
-                statTexts[2].text = "" + ninja.GetHealth();
-                statTexts[3].text = "" + ninja.GetStrength();
-                statTexts[4].text = "" + ninja.GetMagicPower();
-                statTexts[5].text = "" + ninja.GetDefence();
-                statTexts[6].text = "" + ninja.GetMagicDefence();
-                statTexts[7].text = "" + 50;//crit chance
-                statTexts[8].text = "" + ninja.GetSpeed();
-                statTexts[9].text = "" + ninja.GetLevel();
-                statTexts[10].text = "" + 10;//Skills points
-                statTexts[11].text = "" + ninja.GetMana();
+                statTexts[2].text = " Health: " + ninja.GetMaxHealth() + "\n Mana: " + ninja.GetMaxMana() + "\n Physical Damage: " + ninja.GetStrength() + "\n Magical Damage: " + ninja.GetMagicPower() +
+             "\n Physical Defence: " + ninja.GetDefence() + "\n Magical Defence: " + ninja.GetMagicDefence() + "\n Speed: " + ninja.GetSpeed();
                 expBar.value = ninja.GetEXP();
             }
+
         }
         if (playerStatMenu.activeInHierarchy == false)
         {
