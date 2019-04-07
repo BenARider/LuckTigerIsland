@@ -160,13 +160,17 @@ public class PlayerManager : LTI.Singleton<PlayerManager> {
             }
 
             //Activate Quest if one exists on the dialogue step.
-            if (activeDialogue.Dialogues[activeDialogue.currentDialogueIndex].quest != null)
+            if (activeDialogue.Dialogues[activeDialogue.currentDialogueIndex].questHandout != null)
             {
-                activeDialogue.Dialogues[activeDialogue.currentDialogueIndex].quest.StartQuest();
+                activeDialogue.Dialogues[activeDialogue.currentDialogueIndex].questHandout.StartQuest();
             }
-			//
-			//Activate Event if one exists on the dialogue step.
-			if (activeDialogue.Dialogues[activeDialogue.currentDialogueIndex].interactEvent != null)
+            if (activeDialogue.Dialogues[activeDialogue.currentDialogueIndex].questForDialogueObj != null)
+            {
+                EventManager.instance.CheckDialogueObj(activeDialogue);
+            }
+            //
+            //Activate Event if one exists on the dialogue step.
+            if (activeDialogue.Dialogues[activeDialogue.currentDialogueIndex].interactEvent != null)
 			{
 				activeDialogue.Dialogues[activeDialogue.currentDialogueIndex].interactEvent.Interact(activeDialogue.Dialogues[activeDialogue.currentDialogueIndex].interactArgs);
 			}
@@ -198,7 +202,7 @@ public class PlayerManager : LTI.Singleton<PlayerManager> {
        
         if(activeDialogue.interactAudio != "")
         {
-            AudioManager.Instance.PlaySound(activeDialogue.interactAudio);
+            //AudioManager.Instance.PlaySound(activeDialogue.interactAudio);
         }
 
         for(int i = 0; i< _dialogue.Replies.Length; i++)

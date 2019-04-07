@@ -15,6 +15,7 @@ public class LevelScriptEditor : Editor
     SerializedProperty killObjectives;
     SerializedProperty locationObjectives;
     SerializedProperty inventoryObjectives;
+    SerializedProperty diaObjectives;
 
     //Objective Types
     SerializedProperty objectiveType;
@@ -23,6 +24,7 @@ public class LevelScriptEditor : Editor
     SerializedProperty enemyAmount;
     SerializedProperty inventoryItem;
     SerializedProperty itemAmount;
+    SerializedProperty dialogue;
 
     void OnEnable()
     {
@@ -35,6 +37,7 @@ public class LevelScriptEditor : Editor
         killObjectives = serializedObject.FindProperty("m_killObjectives");
         locationObjectives = serializedObject.FindProperty("m_locationObjectives");
         inventoryObjectives = serializedObject.FindProperty("m_inventoryObjectives");
+        diaObjectives = serializedObject.FindProperty("m_dialogueObjectives");
 
         objectiveType = serializedObject.FindProperty("o_type");
         location = serializedObject.FindProperty("o_location");
@@ -42,6 +45,7 @@ public class LevelScriptEditor : Editor
         enemyAmount = serializedObject.FindProperty("o_enemyAmount");
         inventoryItem = serializedObject.FindProperty("o_inventoryItem");
         itemAmount = serializedObject.FindProperty("o_itemAmount");
+        dialogue = serializedObject.FindProperty("o_dialogue");
     }
 
     public override void OnInspectorGUI()
@@ -56,7 +60,7 @@ public class LevelScriptEditor : Editor
         GUIContent enemyAmountLabel = new GUIContent("Enemy Amount");
         GUIContent itemNameLabel = new GUIContent("Item");
         GUIContent itemAmountLabel = new GUIContent("Item Amount");
-
+        GUIContent dialogueLabel = new GUIContent("Dialogue");
 
         //Start of Inspector GUI
         serializedObject.Update();
@@ -104,6 +108,15 @@ public class LevelScriptEditor : Editor
                 if (GUILayout.Button("Add Inventory Objective"))
                 {
                     myScript.AddInventoryObjective((InventoryObject)inventoryItem.objectReferenceValue, itemAmount.intValue);
+                }
+                break;
+
+            //Dialogue Obj
+            case EObjectiveType.DialogueObjective:
+                EditorGUILayout.PropertyField(dialogue, dialogueLabel);
+                if (GUILayout.Button("Add Dialogue Objective"))
+                {
+                    myScript.AddDialogueObjective((NPCDialogue)dialogue.objectReferenceValue);
                 }
                 break;
 
@@ -183,6 +196,26 @@ public class LevelScriptEditor : Editor
             GUILayout.Label("");
         }
 
+        //Inventory Objectives
+        if (diaObjectives.arraySize != 0)
+        {
+            GUILayout.Label("Dialogue Objectives", EditorStyles.boldLabel);
+            //Display all dialogue objective objects
+            for (int i = 0; i < diaObjectives.arraySize; i++)
+            {
+                SerializedProperty diaObjectivesRef = diaObjectives.GetArrayElementAtIndex(i);
+                SerializedProperty dialogueProp = diaObjectivesRef.FindPropertyRelative("m_NPC");
+               
+                EditorGUILayout.PropertyField(dialogueProp);
+
+                //Remove objecttive button
+                if (GUILayout.Button("Remove Objective", GUILayout.MaxWidth(150), GUILayout.MaxHeight(15)))
+                {
+                    diaObjectives.DeleteArrayElementAtIndex(i);
+                }
+            }
+            GUILayout.Label("");
+        }
 
         //End of Inspector GUI
         serializedObject.ApplyModifiedProperties();         
