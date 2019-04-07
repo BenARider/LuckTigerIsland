@@ -19,6 +19,7 @@ public class InventoryListControl : MonoBehaviour {
     private TextMeshProUGUI m_amount;
     [SerializeField]
     private TextMeshProUGUI m_price;
+
     int index = -1;
 
     private void Start()

@@ -123,9 +123,9 @@ public class EquipEntity : MonoBehaviour
     public void UnEquip(string _slotName)
     {
         if (_slotName == "Armour")
-        {       
+        {
             m_currentArmour = null;
-          
+
             if (m_partyImageIndex == 0)
             {
                 m_partyMembers[0].SetDefence(tempDefence[0]);
@@ -151,7 +151,7 @@ public class EquipEntity : MonoBehaviour
         if (_slotName == "Weapon")
         {
             m_currentWeapon = null;
-          
+
             if (m_partyImageIndex == 0)
             {
                 m_partyMembers[0].SetStrength(tempAttack[0]);
@@ -177,87 +177,98 @@ public class EquipEntity : MonoBehaviour
     }
     public void EquipWeapon(Weapon _object)
     {
-            m_currentWeapon = _object;
+        m_currentWeapon = _object;
+        if (m_partyImageIndex == 0)
+        {
             if (m_equipImages[1].GetComponent<Image>().sprite.name == "equipment_preview_10")
             {
-                if (m_partyImageIndex == 0)
-                {
-                    m_partyMembers[0].SetStrength(_object.attack);
-                    m_equipImages[1].GetComponent<Image>().sprite = _object.Image;
-
-                }
+                m_partyMembers[0].SetStrength(_object.attack);
+                m_equipImages[1].GetComponent<Image>().sprite = _object.Image;
+                m_justEquippedText.text = "Just equipped: " + _object.objectName;
+                StartCoroutine(HideText());
             }
+        }
+        if (m_partyImageIndex == 1)
+        {
             if (m_equipImages[3].GetComponent<Image>().sprite.name == "equipment_preview_10")
             {
-                if (m_partyImageIndex == 1)
-                {
-                    m_partyMembers[1].SetStrength(_object.attack);
-                    m_equipImages[3].GetComponent<Image>().sprite = _object.Image;
-
-                }
+                m_partyMembers[1].SetStrength(_object.attack);
+                m_equipImages[3].GetComponent<Image>().sprite = _object.Image;
+                m_justEquippedText.text = "Just equipped: " + _object.objectName;
+                StartCoroutine(HideText());
             }
+        }
+        if (m_partyImageIndex == 2)
+        {
             if (m_equipImages[5].GetComponent<Image>().sprite.name == "equipment_preview_10")
             {
-                if (m_partyImageIndex == 2)
-                {
-                    m_partyMembers[2].SetStrength(_object.attack);
-                    m_equipImages[5].GetComponent<Image>().sprite = _object.Image;
-
-                }
+                m_partyMembers[2].SetStrength(_object.attack);
+                m_equipImages[5].GetComponent<Image>().sprite = _object.Image;
+                m_justEquippedText.text = "Just equipped: " + _object.objectName;
+                StartCoroutine(HideText());
             }
+        }
+        if (m_partyImageIndex == 3)
+        {
             if (m_equipImages[7].GetComponent<Image>().sprite.name == "equipment_preview_10")
             {
 
-                if (m_partyImageIndex == 3)
-                {
-                    m_partyMembers[3].SetStrength(_object.attack);
-                    m_equipImages[7].GetComponent<Image>().sprite = _object.Image;
-                }
+                m_partyMembers[3].SetStrength(_object.attack);
+                m_equipImages[7].GetComponent<Image>().sprite = _object.Image;
+                m_justEquippedText.text = "Just equipped: " + _object.objectName;
+                StartCoroutine(HideText());
             }
-            m_justEquippedText.text = "Just equipped: " + _object.objectName;
-            StartCoroutine(HideText());
+        }
+
     }
     public void EquipArmour(Armour _object)
     {
 
         m_currentArmour = _object;
-        if (m_equipImages[0].GetComponent<Image>().sprite.name == "equipment_preview_1")
+        if (m_partyImageIndex == 0)
         {
-
-            if (m_partyImageIndex == 0)
+            if (m_equipImages[0].GetComponent<Image>().sprite.name == "equipment_preview_1")
             {
+                m_justEquippedText.text = "Just equipped a : " + _object.objectName;
+                StartCoroutine(HideText());
                 m_equipImages[0].GetComponent<Image>().sprite = _object.Image;
                 m_partyMembers[0].SetDefence(_object.defence);
+
             }
         }
-        if (m_equipImages[2].GetComponent<Image>().sprite.name == "equipment_preview_1")
+        if (m_partyImageIndex == 1)
         {
-
-            if (m_partyImageIndex == 1)
+            if (m_equipImages[2].GetComponent<Image>().sprite.name == "equipment_preview_1")
             {
+
                 m_equipImages[2].GetComponent<Image>().sprite = _object.Image;
                 m_partyMembers[1].SetDefence(_object.defence);
+                m_justEquippedText.text = "Just equipped a : " + _object.objectName;
+                StartCoroutine(HideText());
             }
         }
-        if (m_equipImages[4].GetComponent<Image>().sprite.name == "equipment_preview_1")
+        if (m_partyImageIndex == 2)
         {
-
-            if (m_partyImageIndex == 2)
+            if (m_equipImages[4].GetComponent<Image>().sprite.name == "equipment_preview_1")
             {
+
                 m_equipImages[4].GetComponent<Image>().sprite = _object.Image;
                 m_partyMembers[2].SetDefence(_object.defence);
+                m_justEquippedText.text = "Just equipped a : " + _object.objectName;
+                StartCoroutine(HideText());
             }
         }
-        if (m_equipImages[6].GetComponent<Image>().sprite.name == "equipment_preview_1")
+        if (m_partyImageIndex == 3)
         {
-            if (m_partyImageIndex == 3)
+            if (m_equipImages[6].GetComponent<Image>().sprite.name == "equipment_preview_1")
             {
                 m_equipImages[6].GetComponent<Image>().sprite = _object.Image;
                 m_partyMembers[3].SetDefence(_object.defence);
+                m_justEquippedText.text = "Just equipped a : " + _object.objectName;
+                StartCoroutine(HideText());
             }
         }
-        m_justEquippedText.text = "Just equipped a : " + _object.objectName;
-        StartCoroutine(HideText());
+
     }
     IEnumerator HideText()
     {

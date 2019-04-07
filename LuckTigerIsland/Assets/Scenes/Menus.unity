@@ -9093,6 +9093,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 224551988}
+        m_MethodName: SetSelectedGameObject
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 619673876}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &767355380
@@ -21143,6 +21154,16 @@ Prefab:
       propertyPath: m_AnchoredPosition.y
       value: 301
       objectReference: {fileID: 0}
+    - target: {fileID: 114372536940108506, guid: 55200a096e468ce4aa8c994e42046b41,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114372536940108506, guid: 55200a096e468ce4aa8c994e42046b41,
+        type: 2}
+      propertyPath: m_inventoryListControl
+      value: 
+      objectReference: {fileID: 474823752}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 55200a096e468ce4aa8c994e42046b41, type: 2}
   m_IsPrefabParent: 0
