@@ -20,7 +20,8 @@ public class Dialogue
 
 	[HideInInspector]
 	public bool isEndPoint = false;
-	public Quest quest;
+	public Quest questHandout;
+    public Quest questForDialogueObj;
 	public int interactArgs;
 	public InteractEvent interactEvent;
 	public string DialogueText;
