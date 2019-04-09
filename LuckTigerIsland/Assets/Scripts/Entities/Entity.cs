@@ -422,8 +422,8 @@ public class Entity : MonoBehaviour {
 
         if (GetHealth() <= 0)
         {
-            PlayerManager.Instance.AddXP(m_xpAward);
-            Inventory.Instance.IncreaseGold(m_goldAward);
+            //PlayerManager.Instance.AddXP(m_xpAward);
+            //Inventory.Instance.IncreaseGold(m_goldAward);
             currentState = TurnState.eDead;
         }
     }

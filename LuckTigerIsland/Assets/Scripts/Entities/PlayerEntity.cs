@@ -41,7 +41,7 @@ public class PlayerEntity : Entity
         eWarrior,
         eCleric,
         eWizard,
-        eNinja,
+        eNinja
     }
     public Class MyClass;
     //Creates a new player entity with defined stats. Adding an object to one of the entities will apply those stats onto the object
@@ -73,7 +73,7 @@ public class PlayerEntity : Entity
 
         if (MyClass == Class.eWarrior)
         {
-            SetPlayerStats(150, 20, 20, 10, 75, 1, 20, 5, 40);
+            SetPlayerStats(150, 20, 20, 10, 75, 1, 50, 5, 40);
         }
         if (MyClass == Class.eWizard)
         {
@@ -236,177 +236,13 @@ public class PlayerEntity : Entity
     {
         foreach (var passive in passiveActiveList)
         {
-            if (passive.passiveActive != true)
+
+            if (!passive.passiveActive)
             {
-                switch (passive.lessThanOrMoreThan)
-                {
-                    case (BaseActivePassive.LessThanOrMoreThan.eLessThan):
-                        switch (passive.passiveConditionType)
-                        {
-                            case (BaseActivePassive.PassiveCondition.eHealth):
-                                if (m_health <= passive.passiveCondtitionAmount)
-                                {
-                                    switch (passive.passiveType)
-                                    {
-                                        case (BaseActivePassive.PassiveType.eAll):
-                                            m_health += passive.passiveAmount;
-                                            m_strength += passive.passiveAmount;
-                                            m_mana += passive.passiveAmount;
-                                            passive.passiveActive = true;
-                                            break;
-                                        case (BaseActivePassive.PassiveType.eHealth):
-                                            m_health += passive.passiveAmount;
-                                            passive.passiveActive = true;
-                                            break;
-                                        case (BaseActivePassive.PassiveType.eStrength):
-                                            m_strength += passive.passiveAmount;
-                                            passive.passiveActive = true;
-                                            break;
-                                        case (BaseActivePassive.PassiveType.eMagic):
-                                            m_mana += passive.passiveAmount;
-                                            passive.passiveActive = true;
-                                            break;
-                                    }
-                                }
-                                break;
-                            case (BaseActivePassive.PassiveCondition.eMagic):
-                                if (m_mana <= passive.passiveCondtitionAmount)
-                                {
-                                    switch (passive.passiveType)
-                                    {
-                                        case (BaseActivePassive.PassiveType.eAll):
-                                            m_health += passive.passiveAmount;
-                                            m_strength += passive.passiveAmount;
-                                            m_mana += passive.passiveAmount;
-                                            passive.passiveActive = true;
-                                            break;
-                                        case (BaseActivePassive.PassiveType.eHealth):
-                                            m_health += passive.passiveAmount;
-                                            passive.passiveActive = true;
-                                            break;
-                                        case (BaseActivePassive.PassiveType.eStrength):
-                                            m_strength += passive.passiveAmount;
-                                            passive.passiveActive = true;
-                                            break;
-                                        case (BaseActivePassive.PassiveType.eMagic):
-                                            m_mana += passive.passiveAmount;
-                                            passive.passiveActive = true;
-                                            break;
-                                    }
-                                }
-                                break;
-                            case (BaseActivePassive.PassiveCondition.eStrength):
-                                if (m_strength <= passive.passiveCondtitionAmount)
-                                {
-                                    switch (passive.passiveType)
-                                    {
-                                        case (BaseActivePassive.PassiveType.eAll):
-                                            m_health += passive.passiveAmount;
-                                            m_strength += passive.passiveAmount;
-                                            m_mana += passive.passiveAmount;
-                                            passive.passiveActive = true;
-                                            break;
-                                        case (BaseActivePassive.PassiveType.eHealth):
-                                            m_health += passive.passiveAmount;
-                                            passive.passiveActive = true;
-                                            break;
-                                        case (BaseActivePassive.PassiveType.eStrength):
-                                            m_strength += passive.passiveAmount;
-                                            passive.passiveActive = true;
-                                            break;
-                                        case (BaseActivePassive.PassiveType.eMagic):
-                                            m_mana += passive.passiveAmount;
-                                            passive.passiveActive = true;
-                                            break;
-                                    }
-                                }
-                                break;
-                        }
-                        break;
-                    case (BaseActivePassive.LessThanOrMoreThan.eMoreThan):
-                        switch (passive.passiveConditionType)
-                        {
-                            case (BaseActivePassive.PassiveCondition.eHealth):
-                                if (m_health >= passive.passiveCondtitionAmount)
-                                {
-                                    switch (passive.passiveType)
-                                    {
-                                        case (BaseActivePassive.PassiveType.eAll):
-                                            m_health += passive.passiveAmount;
-                                            m_strength += passive.passiveAmount;
-                                            m_mana += passive.passiveAmount;
-                                            passive.passiveActive = true;
-                                            break;
-                                        case (BaseActivePassive.PassiveType.eHealth):
-                                            m_health += passive.passiveAmount;
-                                            passive.passiveActive = true;
-                                            break;
-                                        case (BaseActivePassive.PassiveType.eStrength):
-                                            m_strength += passive.passiveAmount;
-                                            passive.passiveActive = true;
-                                            break;
-                                        case (BaseActivePassive.PassiveType.eMagic):
-                                            m_mana += passive.passiveAmount;
-                                            passive.passiveActive = true;
-                                            break;
-                                    }
-                                }
-                                break;
-                            case (BaseActivePassive.PassiveCondition.eMagic):
-                                if (m_mana >= passive.passiveCondtitionAmount)
-                                {
-                                    switch (passive.passiveType)
-                                    {
-                                        case (BaseActivePassive.PassiveType.eAll):
-                                            m_health += passive.passiveAmount;
-                                            m_strength += passive.passiveAmount;
-                                            m_mana += passive.passiveAmount;
-                                            passive.passiveActive = true;
-                                            break;
-                                        case (BaseActivePassive.PassiveType.eHealth):
-                                            m_health += passive.passiveAmount;
-                                            passive.passiveActive = true;
-                                            break;
-                                        case (BaseActivePassive.PassiveType.eStrength):
-                                            m_strength += passive.passiveAmount;
-                                            passive.passiveActive = true;
-                                            break;
-                                        case (BaseActivePassive.PassiveType.eMagic):
-                                            m_mana += passive.passiveAmount;
-                                            passive.passiveActive = true;
-                                            break;
-                                    }
-                                }
-                                break;
-                            case (BaseActivePassive.PassiveCondition.eStrength):
-                                if (m_strength >= passive.passiveCondtitionAmount)
-                                {
-                                    switch (passive.passiveType)
-                                    {
-                                        case (BaseActivePassive.PassiveType.eAll):
-                                            m_health += passive.passiveAmount;
-                                            m_strength += passive.passiveAmount;
-                                            m_mana += passive.passiveAmount;
-                                            passive.passiveActive = true;
-                                            break;
-                                        case (BaseActivePassive.PassiveType.eHealth):
-                                            m_health += passive.passiveAmount;
-                                            passive.passiveActive = true;
-                                            break;
-                                        case (BaseActivePassive.PassiveType.eStrength):
-                                            m_strength += passive.passiveAmount;
-                                            passive.passiveActive = true;
-                                            break;
-                                        case (BaseActivePassive.PassiveType.eMagic):
-                                            m_mana += passive.passiveAmount;
-                                            passive.passiveActive = true;
-                                            break;
-                                    }
-                                }
-                                break;
-                        }
-                        break;
-                }
+                if (passive.lessThanOrMoreThan == BaseActivePassive.LessThanOrMoreThan.eLessThan)
+                    ApplyPassives(passive, PassiveConditionLessthan);
+                else
+                    ApplyPassives(passive, PassiveConditionGreaterthan);
             }
         }
         switch (currentState)
@@ -1003,14 +839,20 @@ public class PlayerEntity : Entity
         yield return new WaitForSeconds(1.5f);
 
         //do damage
-        if(m_chosenAction.attackType != BaseAttack.AttackType.eBuff)
+        if(m_chosenAction.attackType == BaseAttack.AttackType.eMelee || m_chosenAction.attackType == BaseAttack.AttackType.eMagic)
         {
             playerDoDamge();
         }
-        if(m_chosenAction.attackType == BaseAttack.AttackType.eBuff && m_chosenAction.attackAffliction != BaseAttack.AttackAffliction.eNone)
+        else if(m_chosenAction.attackType == BaseAttack.AttackType.eBuff)
         {
             AddBuff(m_chosenAction);
         }
+        else
+        {
+            PartyWideDamage();
+            Debug.Log("Party wide damage");
+        }
+
 
         while (MoveTo(startPosition))
         {
@@ -1044,6 +886,14 @@ public class PlayerEntity : Entity
         int calculateDamage = GetStrength() + BC.NextTurn[0].chosenAttack.attackDamage; //calc should be done here before damage
 
         EntityToAttack.GetComponent<EnemEntity>().TakeDamage(calculateDamage, m_chosenAction);
+    }
+    void PartyWideDamage()
+    {
+        int calculateDamage = GetStrength() + BC.NextTurn[0].chosenAttack.attackDamage;
+        for (int i = 0; i < BC.EnemiesInBattle.Count; i++)
+        {
+            BC.EnemiesInBattle[i].GetComponent<EnemEntity>().TakeDamage(calculateDamage, m_chosenAction);
+        }
     }
 
     //Used to control the party stat menu by setting and finding all the text values/objects

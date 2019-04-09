@@ -24,7 +24,8 @@ public class BaseAttack : ScriptableObject
     {
         eMelee,
         eMagic,
-        eBuff
+        eBuff,
+        ePartyWide
     }
 
     public string attackName; //feed into ui
