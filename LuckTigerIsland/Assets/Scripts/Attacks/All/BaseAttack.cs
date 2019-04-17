@@ -17,6 +17,7 @@ public class BaseAttack : ScriptableObject
         eMagic,
         eStrength,
         eAttack,
+		eDeffence,
         eHeal
     }
 

@@ -13,10 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: Icelance
   attackDescription: A lance of ice with a chance to freeze the enemy
-  attackType: Magic
+  attackType: 1
   attackDamage: 10
   skillMultiplier: 1
   skillDuration: 0
   attackCost: 10
   attackImage: {fileID: 0}
-  attackAffliction: Freeze
+  attackAffliction: 1

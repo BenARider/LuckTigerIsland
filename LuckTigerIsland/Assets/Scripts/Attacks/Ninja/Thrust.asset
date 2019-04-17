@@ -13,10 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: Thrust
   attackDescription: Attack with a quick strike for decent damage.
-  attackType: Melee
+  attackType: 0
   attackDamage: 40
   skillMultiplier: 2
   skillDuration: 0
   attackCost: 25
   attackImage: {fileID: 0}
-  attackAffliction: 
+  attackAffliction: 5
