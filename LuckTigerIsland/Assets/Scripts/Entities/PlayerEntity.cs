@@ -45,23 +45,10 @@ public class PlayerEntity : Entity
     }
     public Class MyClass;
     //Creates a new player entity with defined stats. Adding an object to one of the entities will apply those stats onto the object
-    void SetPlayerStats(int _health, int _strength, int _defence, int _defenceMGC, int _speed, int _level, int _mana, int _magicPow, int _EXP)
-    {
-        m_maxHealth = _health;
-        m_strength = _strength;
-        m_defence = _defence;
-        m_defenceMGC = _defenceMGC;
-        m_speed = _speed;
-        m_baseRequiredSpeedForTurn = 100;
-        m_level = _level;
-        m_maxMana = _mana;
-        m_magicPower = _magicPow;
-        m_EXP = _EXP;
-    }
-
     private BattleControl BC;
     private BattleUIButton m_BattleButton;
     public HandleTurns HT;
+	public PlayerManager PM;
 
     public List<BasePassive> passiveList = new List<BasePassive>();
 
@@ -73,20 +60,48 @@ public class PlayerEntity : Entity
 
         if (MyClass == Class.eWarrior)
         {
-            SetPlayerStats(150, 20, 20, 10, 75, 1, 50, 5, 40);
+			m_maxHealth = PM.warrior.GetMaxHealth();
+			m_maxMana = PM.warrior.GetMaxMana();
+			m_strength = PM.warrior.GetStrength();
+			m_magicPower = PM.warrior.GetMagicPower();
+			m_defence = PM.warrior.GetDefence();
+			m_defenceMGC = PM.warrior.GetMagicDefence();
+			m_speed = PM.warrior.GetSpeed();
+			Debug.Log("Stats Applied");
         }
         if (MyClass == Class.eWizard)
         {
-            SetPlayerStats(100, 10, 5, 15, 50, 1, 50, 20, 50);
-        }
+			m_maxHealth = PM.wizard.GetMaxHealth();
+			m_maxMana = PM.wizard.GetMaxMana();
+			m_strength = PM.wizard.GetStrength();
+			m_magicPower = PM.wizard.GetMagicPower();
+			m_defence = PM.wizard.GetDefence();
+			m_defenceMGC = PM.wizard.GetMagicDefence();
+			m_speed = PM.wizard.GetSpeed();
+			Debug.Log("Stats Applied Wizard");
+		}
         if (MyClass == Class.eCleric)
         {
-            SetPlayerStats(125, 10, 10, 20, 50, 1, 50, 15, 75);
-        }
+			m_maxHealth = PM.cleric.GetMaxHealth();
+			m_maxMana = PM.cleric.GetMaxMana();
+			m_strength = PM.cleric.GetStrength();
+			m_magicPower = PM.cleric.GetMagicPower();
+			m_defence = PM.cleric.GetDefence();
+			m_defenceMGC = PM.cleric.GetMagicDefence();
+			m_speed = PM.cleric.GetSpeed();
+			Debug.Log("Stats Applied Cleric");
+		}
         if (MyClass == Class.eNinja)
         {
-            SetPlayerStats(100, 15, 10, 5, 50, 1, 35, 10, 30);
-        }
+			m_maxHealth = PM.ninja.GetMaxHealth();
+			m_maxMana = PM.ninja.GetMaxMana();
+			m_strength = PM.ninja.GetStrength();
+			m_magicPower = PM.ninja.GetMagicPower();
+			m_defence = PM.ninja.GetDefence();
+			m_defenceMGC = PM.ninja.GetMagicDefence();
+			m_speed = PM.ninja.GetSpeed();
+			Debug.Log("Stats Applied Ninja");
+		}
         SetRequiredSpeed();
         ResetHealth();
         ResetMana();
