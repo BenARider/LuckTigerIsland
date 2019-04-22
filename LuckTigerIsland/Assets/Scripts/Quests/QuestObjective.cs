@@ -6,7 +6,8 @@ public enum EObjectiveType
 {
     LocationObjective,
     KillObjective,
-	InventoryObjective
+	InventoryObjective,
+    DialogueObjective
 }
 
 [System.Serializable]
@@ -146,4 +147,27 @@ public class KillObjective : QuestObjective
     {
         m_amountRemaining -= _val;
     }
+}
+
+[System.Serializable]
+public class DialogueObjective : QuestObjective
+{
+    [SerializeField]
+    private NPCDialogue m_NPC;
+
+    void Awake()
+    {
+        m_objectiveType = EObjectiveType.DialogueObjective;
+    }
+
+    public DialogueObjective(NPCDialogue _dialogue)
+    {
+        m_NPC = _dialogue;
+    }
+
+    public NPCDialogue GetDialogue()
+    {
+        return m_NPC;
+    }
+
 }

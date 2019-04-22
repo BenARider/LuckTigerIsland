@@ -24,6 +24,8 @@ GameObject:
   - component: {fileID: 114338613137919038}
   - component: {fileID: 114804862830962936}
   - component: {fileID: 114073736672872470}
+  - component: {fileID: 114773628781400424}
+  - component: {fileID: 114797778456647578}
   m_Layer: 0
   m_Name: TestNPC
   m_TagString: Untagged
@@ -230,6 +232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   screenOffset: 0
+  isPlayer: 0
 --- !u!114 &114339619076521036
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -244,6 +247,35 @@ MonoBehaviour:
   type: 0
   interactionText: speak to el Piggo
   scriptObject: {fileID: 1615971094121176}
+--- !u!114 &114773628781400424
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1615971094121176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114797778456647578
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1615971094121176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66ef82f848e11534cb55a5054584fa01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shop:
+  - sItem: {fileID: 11400000, guid: bb0349cb5c0d5ab4eb853e031eacb4a8, type: 2}
+    sPrice: 10
+  shopUI: {fileID: 0}
+  closeObject: {fileID: 0}
+  m_buyMod: 1.1
+  m_sellMod: 0.9
 --- !u!114 &114804862830962936
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -260,13 +292,15 @@ MonoBehaviour:
   interactAudio: pigtalk
   Dialogues:
   - isEndPoint: 1
-    quest: {fileID: 0}
+    questHandout: {fileID: 0}
+    questForDialogueObj: {fileID: 0}
     interactArgs: 0
     interactEvent: {fileID: 0}
     DialogueText: ENDPOINT DO NOT TOUCH
     Replies: []
   - isEndPoint: 0
-    quest: {fileID: 0}
+    questHandout: {fileID: 0}
+    questForDialogueObj: {fileID: 0}
     interactArgs: 0
     interactEvent: {fileID: 0}
     DialogueText: Hello there!
@@ -276,13 +310,15 @@ MonoBehaviour:
     - ReplyText: Begone swine!
       nextDialogue: 2
   - isEndPoint: 0
-    quest: {fileID: 0}
+    questHandout: {fileID: 0}
+    questForDialogueObj: {fileID: 0}
     interactArgs: 0
     interactEvent: {fileID: 0}
     DialogueText: Then perish.
     Replies: []
   - isEndPoint: 0
-    quest: {fileID: 0}
+    questHandout: {fileID: 0}
+    questForDialogueObj: {fileID: 0}
     interactArgs: 0
     interactEvent: {fileID: 0}
     DialogueText: Have a nice day!

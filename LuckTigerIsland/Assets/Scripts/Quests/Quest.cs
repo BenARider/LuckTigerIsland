@@ -33,6 +33,8 @@ public class Quest : MonoBehaviour
     public List<LocationObjective> m_locationObjectives;
     [SerializeField]
     public List<ItemObjective> m_inventoryObjectives;
+    [SerializeField]
+    public List<DialogueObjective> m_dialogueObjectives;
 
     //For use with creating objects in the inspector. Using o_name to represent objectives_name.
     [SerializeField]
@@ -47,6 +49,8 @@ public class Quest : MonoBehaviour
     private InventoryObject o_inventoryItem;
     [SerializeField]
     private int o_itemAmount;
+    [SerializeField]
+    private NPCDialogue o_dialogue;
 
     // Add/Remove Objectives
     public void AddLocationObjective(ELocations _location)
@@ -70,6 +74,12 @@ public class Quest : MonoBehaviour
         m_allObjectives.Add(_io);
     }
 
+    public void AddDialogueObjective(NPCDialogue _dialogue)
+    {
+        DialogueObjective _do = new DialogueObjective(_dialogue);
+        m_dialogueObjectives.Add(_do);
+        m_allObjectives.Add(_do);
+    }
 
     public void RemoveLastLocationObjective()
     {

@@ -13,10 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: Poison
   attackDescription: Physical attack with chance to poison enemy
-  attackType: Melee
+  attackType: 0
   attackDamage: 15
   skillMultiplier: 1
   skillDuration: 10
   attackCost: 20
   attackImage: {fileID: 0}
-  attackAffliction: Poison
+  attackAffliction: 4

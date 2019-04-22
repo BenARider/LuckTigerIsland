@@ -34,7 +34,8 @@ public enum EEnemies
 	Spirit,
 	Warlock,
 	ChickenBoss,
-    SkeletonBoss, //SpriteSheet 734/735. TinytinyHeroes armies
+    TigerBoss, //SpriteSheet 734/735. TinytinyHeroes armies
+	PorkBoss,
     MinotaurSkeleton  //838
 }
 
@@ -162,6 +163,28 @@ public class EventManager : LTI.Singleton<EventManager>
                         {
                             _io.SetCurrentAmount(_io.GetTotalAmount());
                         }
+                    }
+                }
+            }
+        }
+    }
+
+    public void CheckDialogueObj(NPCDialogue _dialogue)
+    {
+        //In all active quests
+        foreach (Quest _q in m_questManager.GetQuests())
+        {
+            //If the inventory objective isnt empty.
+            if (_q.m_dialogueObjectives.Capacity != 0)
+            {
+                //For every inventory objective
+                foreach (DialogueObjective _do in _q.m_dialogueObjectives)
+                {
+                    //Check if the item picked up is part of the quest
+                    if (_do.GetDialogue() == _dialogue)
+                    {
+                        _do.SetIsComplete(true);
+                        _q.CheckCompletion();
                     }
                 }
             }

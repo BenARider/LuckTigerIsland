@@ -8,7 +8,7 @@ public class PlayerEntity : Entity
 {
 
     private int m_playerIDStats = 0;
-    public TextMeshProUGUI statTexts;
+    public TextMeshProUGUI[] statTexts;
     public TextMeshProUGUI[] skillTexts;
     public TextMeshProUGUI turnText;//who's turn it is
     public TextMeshProUGUI attackDescriptionText;//describes the attack that is happening/happend
@@ -41,7 +41,7 @@ public class PlayerEntity : Entity
         eWarrior,
         eCleric,
         eWizard,
-        eNinja,
+        eNinja
     }
     public Class MyClass;
     //Creates a new player entity with defined stats. Adding an object to one of the entities will apply those stats onto the object
@@ -73,7 +73,7 @@ public class PlayerEntity : Entity
 
         if (MyClass == Class.eWarrior)
         {
-            SetPlayerStats(150, 20, 20, 10, 75, 1, 20, 5, 40);
+            SetPlayerStats(150, 20, 20, 10, 75, 1, 50, 5, 40);
         }
         if (MyClass == Class.eWizard)
         {
@@ -110,6 +110,8 @@ public class PlayerEntity : Entity
 
         skillTexts = new TextMeshProUGUI[7];
 
+        statTexts = new TextMeshProUGUI[12];
+
         skillTexts[0] = GameObject.Find("Action_One").GetComponent<TextMeshProUGUI>();
         skillTexts[1] = GameObject.Find("Action_Two").GetComponent<TextMeshProUGUI>();
         skillTexts[2] = GameObject.Find("Action_Three").GetComponent<TextMeshProUGUI>();
@@ -133,11 +135,11 @@ public class PlayerEntity : Entity
         notEnoughPotionsText = GameObject.Find("not_Enough_Potions_Text").GetComponent<TextMeshProUGUI>();
         usedPotionText = GameObject.Find("used_Potion_Text").GetComponent<TextMeshProUGUI>();
 
-        turnText = GameObject.Find("Player_Turn_Text").GetComponent<TextMeshProUGUI>();
-        attackDescriptionText = GameObject.Find("Player_Attack_Description_Text").GetComponent<TextMeshProUGUI>();
-        notEnoughManaText = GameObject.Find("not_Enough_Mana_Text").GetComponent<TextMeshProUGUI>();
-        notEnoughPotionsText = GameObject.Find("not_Enough_Potions_Text").GetComponent<TextMeshProUGUI>();
-        usedPotionText = GameObject.Find("used_Potion_Text").GetComponent<TextMeshProUGUI>();
+		turnText = GameObject.Find("Player_Turn_Text").GetComponent<TextMeshProUGUI>();
+		attackDescriptionText = GameObject.Find("Player_Attack_Description_Text").GetComponent<TextMeshProUGUI>();
+		notEnoughManaText = GameObject.Find("not_Enough_Mana_Text").GetComponent<TextMeshProUGUI>();
+		notEnoughPotionsText = GameObject.Find("not_Enough_Potions_Text").GetComponent<TextMeshProUGUI>();
+		usedPotionText = GameObject.Find("used_Potion_Text").GetComponent<TextMeshProUGUI>();
 
         currentState = TurnState.eProssesing;
 
@@ -149,7 +151,7 @@ public class PlayerEntity : Entity
         foreach (var passive in passiveActiveList)
         {
 
-            if (!passive.passiveActive)
+            if(!passive.passiveActive)
             {
                 if (passive.lessThanOrMoreThan == BaseActivePassive.LessThanOrMoreThan.eLessThan)
                     ApplyPassives(passive, PassiveConditionLessthan);
@@ -192,7 +194,7 @@ public class PlayerEntity : Entity
         }
         return false;
     }
-
+    
     public delegate bool Check(BaseActivePassive target);
 
     void ApplyPassives(BaseActivePassive passive, Check check)
@@ -234,177 +236,13 @@ public class PlayerEntity : Entity
     {
         foreach (var passive in passiveActiveList)
         {
-            if (passive.passiveActive != true)
+
+            if (!passive.passiveActive)
             {
-                switch (passive.lessThanOrMoreThan)
-                {
-                    case (BaseActivePassive.LessThanOrMoreThan.eLessThan):
-                        switch (passive.passiveConditionType)
-                        {
-                            case (BaseActivePassive.PassiveCondition.eHealth):
-                                if (m_health <= passive.passiveCondtitionAmount)
-                                {
-                                    switch (passive.passiveType)
-                                    {
-                                        case (BaseActivePassive.PassiveType.eAll):
-                                            m_health += passive.passiveAmount;
-                                            m_strength += passive.passiveAmount;
-                                            m_mana += passive.passiveAmount;
-                                            passive.passiveActive = true;
-                                            break;
-                                        case (BaseActivePassive.PassiveType.eHealth):
-                                            m_health += passive.passiveAmount;
-                                            passive.passiveActive = true;
-                                            break;
-                                        case (BaseActivePassive.PassiveType.eStrength):
-                                            m_strength += passive.passiveAmount;
-                                            passive.passiveActive = true;
-                                            break;
-                                        case (BaseActivePassive.PassiveType.eMagic):
-                                            m_mana += passive.passiveAmount;
-                                            passive.passiveActive = true;
-                                            break;
-                                    }
-                                }
-                                break;
-                            case (BaseActivePassive.PassiveCondition.eMagic):
-                                if (m_mana <= passive.passiveCondtitionAmount)
-                                {
-                                    switch (passive.passiveType)
-                                    {
-                                        case (BaseActivePassive.PassiveType.eAll):
-                                            m_health += passive.passiveAmount;
-                                            m_strength += passive.passiveAmount;
-                                            m_mana += passive.passiveAmount;
-                                            passive.passiveActive = true;
-                                            break;
-                                        case (BaseActivePassive.PassiveType.eHealth):
-                                            m_health += passive.passiveAmount;
-                                            passive.passiveActive = true;
-                                            break;
-                                        case (BaseActivePassive.PassiveType.eStrength):
-                                            m_strength += passive.passiveAmount;
-                                            passive.passiveActive = true;
-                                            break;
-                                        case (BaseActivePassive.PassiveType.eMagic):
-                                            m_mana += passive.passiveAmount;
-                                            passive.passiveActive = true;
-                                            break;
-                                    }
-                                }
-                                break;
-                            case (BaseActivePassive.PassiveCondition.eStrength):
-                                if (m_strength <= passive.passiveCondtitionAmount)
-                                {
-                                    switch (passive.passiveType)
-                                    {
-                                        case (BaseActivePassive.PassiveType.eAll):
-                                            m_health += passive.passiveAmount;
-                                            m_strength += passive.passiveAmount;
-                                            m_mana += passive.passiveAmount;
-                                            passive.passiveActive = true;
-                                            break;
-                                        case (BaseActivePassive.PassiveType.eHealth):
-                                            m_health += passive.passiveAmount;
-                                            passive.passiveActive = true;
-                                            break;
-                                        case (BaseActivePassive.PassiveType.eStrength):
-                                            m_strength += passive.passiveAmount;
-                                            passive.passiveActive = true;
-                                            break;
-                                        case (BaseActivePassive.PassiveType.eMagic):
-                                            m_mana += passive.passiveAmount;
-                                            passive.passiveActive = true;
-                                            break;
-                                    }
-                                }
-                                break;
-                        }
-                        break;
-                    case (BaseActivePassive.LessThanOrMoreThan.eMoreThan):
-                        switch (passive.passiveConditionType)
-                        {
-                            case (BaseActivePassive.PassiveCondition.eHealth):
-                                if (m_health >= passive.passiveCondtitionAmount)
-                                {
-                                    switch (passive.passiveType)
-                                    {
-                                        case (BaseActivePassive.PassiveType.eAll):
-                                            m_health += passive.passiveAmount;
-                                            m_strength += passive.passiveAmount;
-                                            m_mana += passive.passiveAmount;
-                                            passive.passiveActive = true;
-                                            break;
-                                        case (BaseActivePassive.PassiveType.eHealth):
-                                            m_health += passive.passiveAmount;
-                                            passive.passiveActive = true;
-                                            break;
-                                        case (BaseActivePassive.PassiveType.eStrength):
-                                            m_strength += passive.passiveAmount;
-                                            passive.passiveActive = true;
-                                            break;
-                                        case (BaseActivePassive.PassiveType.eMagic):
-                                            m_mana += passive.passiveAmount;
-                                            passive.passiveActive = true;
-                                            break;
-                                    }
-                                }
-                                break;
-                            case (BaseActivePassive.PassiveCondition.eMagic):
-                                if (m_mana >= passive.passiveCondtitionAmount)
-                                {
-                                    switch (passive.passiveType)
-                                    {
-                                        case (BaseActivePassive.PassiveType.eAll):
-                                            m_health += passive.passiveAmount;
-                                            m_strength += passive.passiveAmount;
-                                            m_mana += passive.passiveAmount;
-                                            passive.passiveActive = true;
-                                            break;
-                                        case (BaseActivePassive.PassiveType.eHealth):
-                                            m_health += passive.passiveAmount;
-                                            passive.passiveActive = true;
-                                            break;
-                                        case (BaseActivePassive.PassiveType.eStrength):
-                                            m_strength += passive.passiveAmount;
-                                            passive.passiveActive = true;
-                                            break;
-                                        case (BaseActivePassive.PassiveType.eMagic):
-                                            m_mana += passive.passiveAmount;
-                                            passive.passiveActive = true;
-                                            break;
-                                    }
-                                }
-                                break;
-                            case (BaseActivePassive.PassiveCondition.eStrength):
-                                if (m_strength >= passive.passiveCondtitionAmount)
-                                {
-                                    switch (passive.passiveType)
-                                    {
-                                        case (BaseActivePassive.PassiveType.eAll):
-                                            m_health += passive.passiveAmount;
-                                            m_strength += passive.passiveAmount;
-                                            m_mana += passive.passiveAmount;
-                                            passive.passiveActive = true;
-                                            break;
-                                        case (BaseActivePassive.PassiveType.eHealth):
-                                            m_health += passive.passiveAmount;
-                                            passive.passiveActive = true;
-                                            break;
-                                        case (BaseActivePassive.PassiveType.eStrength):
-                                            m_strength += passive.passiveAmount;
-                                            passive.passiveActive = true;
-                                            break;
-                                        case (BaseActivePassive.PassiveType.eMagic):
-                                            m_mana += passive.passiveAmount;
-                                            passive.passiveActive = true;
-                                            break;
-                                    }
-                                }
-                                break;
-                        }
-                        break;
-                }
+                if (passive.lessThanOrMoreThan == BaseActivePassive.LessThanOrMoreThan.eLessThan)
+                    ApplyPassives(passive, PassiveConditionLessthan);
+                else
+                    ApplyPassives(passive, PassiveConditionGreaterthan);
             }
         }
         switch (currentState)
@@ -473,20 +311,20 @@ public class PlayerEntity : Entity
                 turnText.text = "It is " + this.name + "'s turn";
                 StartCoroutine(FadeText());
             }
-
+           
         }
 
     }
 
     void ChooseAction()
     {
-        skillTexts[0].text = "1: " + attacks[0].attackName;
-        skillTexts[1].text = "2: " + attacks[1].attackName;
-        skillTexts[2].text = "3: " + attacks[2].attackName;
-        skillTexts[3].text = "4: " + attacks[3].attackName;
-        skillTexts[4].text = "5: " + attacks[4].attackName;
-        skillTexts[5].text = "6: " + attacks[5].attackName;
-        skillTexts[6].text = "7: " + attacks[6].attackName;
+      skillTexts[0].text = "1: " + attacks[0].attackName;
+      skillTexts[1].text = "2: " + attacks[1].attackName;
+      skillTexts[2].text = "3: " + attacks[2].attackName;
+      skillTexts[3].text = "4: " + attacks[3].attackName;
+      skillTexts[4].text = "5: " + attacks[4].attackName;
+      skillTexts[5].text = "6: " + attacks[5].attackName;
+      skillTexts[6].text = "7: " + attacks[6].attackName;
 
 
         Debug.Log(this.name + ": Choose Action");
@@ -546,7 +384,7 @@ public class PlayerEntity : Entity
                 notEnoughManaText.text = this.name + " does not have enough mana!";
                 Debug.Log(this.name + " does not have enough mana!");
             }
-
+            
             StartCoroutine("FadeText");
         }
         if (Input.GetKeyDown("3") || m_BattleButton.GetActionTargetNumber() == 3)
@@ -566,7 +404,7 @@ public class PlayerEntity : Entity
             m_chosenAction = attacks[2];
             if (attacks[2].attackCost < m_mana)
             {
-
+             
                 m_hasChosenAction = true;
                 m_mana -= m_chosenAction.attackCost;
             }
@@ -575,7 +413,7 @@ public class PlayerEntity : Entity
                 notEnoughManaText.text = this.name + " does not have enough mana!";
                 Debug.Log(this.name + " does not have enough mana!");
             }
-
+           
             StartCoroutine("FadeText");
         }
         if (Input.GetKeyDown("4") || m_BattleButton.GetActionTargetNumber() == 4)
@@ -604,7 +442,7 @@ public class PlayerEntity : Entity
                 notEnoughManaText.text = this.name + " does not have enough mana!";
                 Debug.Log(this.name + " does not have enough mana!");
             }
-
+            
             StartCoroutine("FadeText");
         }
         if (Input.GetKeyDown("5") || m_BattleButton.GetActionTargetNumber() == 5)
@@ -634,7 +472,7 @@ public class PlayerEntity : Entity
                 notEnoughManaText.text = this.name + " does not have enough mana!";
                 Debug.Log(this.name + " does not have enough mana!");
             }
-
+            
             StartCoroutine("FadeText");
         }
         if (Input.GetKeyDown("6") || m_BattleButton.GetActionTargetNumber() == 6)
@@ -665,26 +503,26 @@ public class PlayerEntity : Entity
                 notEnoughManaText.text = this.name + " does not have enough mana!";
                 Debug.Log(this.name + " does not have enough mana!");
             }
-
+            
             StartCoroutine("FadeText");
         }
         if (Input.GetKeyDown("7") || m_BattleButton.GetActionTargetNumber() == 7)
         {
 
-            if (attacks[6].attackType == BaseAttack.AttackType.eBuff)
-            {
+                if (attacks[6].attackType == BaseAttack.AttackType.eBuff)
+                {
                 teamTarget.Select();
                 teamTargets.SetActive(true);
-                enemyTargets.SetActive(false);
-            }
-            if (attacks[6].attackType != BaseAttack.AttackType.eBuff)
-            {
+                    enemyTargets.SetActive(false);
+                }
+                if (attacks[6].attackType != BaseAttack.AttackType.eBuff)
+                {
                 enemyTarget.Select();
                 teamTargets.SetActive(false);
-                enemyTargets.SetActive(true);
-            }
+                    enemyTargets.SetActive(true);
+                }
 
-
+            
             m_chosenAction = attacks[6];
 
             if (attacks[6].attackCost < m_mana)
@@ -697,12 +535,12 @@ public class PlayerEntity : Entity
                 notEnoughManaText.text = this.name + " does not have enough mana!";
                 Debug.Log(this.name + " does not have enough mana!");
             }
-
+            
             StartCoroutine("FadeText");
         }
         if (Input.GetKeyDown("8") || m_BattleButton.GetActionTargetNumber() == 8)
         {
-
+           
             if (HealthPotions.Count > 0)
             {
                 m_health += Health_Potion.healthGiven;
@@ -761,7 +599,7 @@ public class PlayerEntity : Entity
             }
             else
             {
-
+                
                 notEnoughPotionsText.text = this.name + "does not have enough mana potions";
                 Debug.Log(this.name + " does not have enough mana potions");
             }
@@ -990,7 +828,7 @@ public class PlayerEntity : Entity
             while (MoveTo(magicAttack))
             {
                 yield return null; //wait until moveToward is true
-
+               
             }
         }
         else if (m_chosenAction.attackType == BaseAttack.AttackType.eBuff)
@@ -1001,14 +839,20 @@ public class PlayerEntity : Entity
         yield return new WaitForSeconds(1.5f);
 
         //do damage
-        if (m_chosenAction.attackType != BaseAttack.AttackType.eBuff)
+        if(m_chosenAction.attackType == BaseAttack.AttackType.eMelee || m_chosenAction.attackType == BaseAttack.AttackType.eMagic)
         {
             playerDoDamge();
         }
-        if (m_chosenAction.attackType == BaseAttack.AttackType.eBuff && m_chosenAction.attackAffliction != BaseAttack.AttackAffliction.eNone)
+        else if(m_chosenAction.attackType == BaseAttack.AttackType.eBuff)
         {
             AddBuff(m_chosenAction);
         }
+        else
+        {
+            PartyWideDamage();
+            Debug.Log("Party wide damage");
+        }
+
 
         while (MoveTo(startPosition))
         {
@@ -1036,12 +880,20 @@ public class PlayerEntity : Entity
         notEnoughManaText.text = "";
         notEnoughPotionsText.text = "";
         usedPotionText.text = "";
-    }
+}
     void playerDoDamge() // calls the take damage on the enemy w/ damage calc
     {
         int calculateDamage = GetStrength() + BC.NextTurn[0].chosenAttack.attackDamage; //calc should be done here before damage
 
         EntityToAttack.GetComponent<EnemEntity>().TakeDamage(calculateDamage, m_chosenAction);
+    }
+    void PartyWideDamage()
+    {
+        int calculateDamage = GetStrength() + BC.NextTurn[0].chosenAttack.attackDamage;
+        for (int i = 0; i < BC.EnemiesInBattle.Count; i++)
+        {
+            BC.EnemiesInBattle[i].GetComponent<EnemEntity>().TakeDamage(calculateDamage, m_chosenAction);
+        }
     }
 
     //Used to control the party stat menu by setting and finding all the text values/objects
@@ -1058,36 +910,88 @@ public class PlayerEntity : Entity
             //Makes sure the objects only need to be found once
             if (m_findTextGameObjects == false)
             {
-
-                statTexts = GameObject.Find("Player_Stats_Values").GetComponent<TextMeshProUGUI>();
+                statTexts[0] = GameObject.Find("Party_Member_Name").GetComponent<TextMeshProUGUI>();
+                statTexts[1] = GameObject.Find("Class_Title").GetComponent<TextMeshProUGUI>();
+                statTexts[2] = GameObject.Find("Health_Total").GetComponent<TextMeshProUGUI>();
+                statTexts[3] = GameObject.Find("Physical_Damage_Total").GetComponent<TextMeshProUGUI>();
+                statTexts[4] = GameObject.Find("Magical_Damage_Total").GetComponent<TextMeshProUGUI>();
+                statTexts[5] = GameObject.Find("Physical_Armour_Total").GetComponent<TextMeshProUGUI>();
+                statTexts[6] = GameObject.Find("Magical_Armour_Total").GetComponent<TextMeshProUGUI>();
+                statTexts[7] = GameObject.Find("Critical_Hit_Chance_Total").GetComponent<TextMeshProUGUI>();
+                statTexts[8] = GameObject.Find("Speed_Total").GetComponent<TextMeshProUGUI>();
+                statTexts[9] = GameObject.Find("Level_Total").GetComponent<TextMeshProUGUI>();
+                statTexts[10] = GameObject.Find("Skill_Points_Total").GetComponent<TextMeshProUGUI>();
+                statTexts[11] = GameObject.Find("Mana_Total").GetComponent<TextMeshProUGUI>();
 
                 m_findTextGameObjects = true;
             }
+
             if (m_playerIDStats == 0)
             {
-                statTexts.text = " Name: Luck" + "\n " + "Class: Cleric" + "\n " + "Health: " + cleric.GetMaxHealth() + "\n Mana: " + cleric.GetMaxMana() + "\n Physical Damage: " + cleric.GetStrength() + "\n Magical Damage: " + cleric.GetMagicPower() +
-                 "\n Physical Defence: " + cleric.GetDefence() + "\n Magical Defence: " + cleric.GetMagicDefence() + "\n Speed: " + cleric.GetSpeed();
+                statTexts[0].text = "Luck";
+                statTexts[1].text = "Cleric";
+                statTexts[2].text = "" + cleric.GetHealth();
+                statTexts[3].text = "" + cleric.GetStrength();
+                statTexts[4].text = "" + cleric.GetMagicPower();
+                statTexts[5].text = "" + cleric.GetDefence();
+                statTexts[6].text = "" + cleric.GetMagicDefence();
+                statTexts[7].text = "" + 50;//crit chance
+                statTexts[8].text = "" + cleric.GetSpeed();
+                statTexts[9].text = "" + cleric.GetLevel();
+                statTexts[10].text = "" + 10;//Skills points
+                statTexts[11].text = "" + cleric.GetMana();
                 expBar.value = cleric.GetEXP();
+
             }
             if (m_playerIDStats == 1)
             {
-                statTexts.text = " Name: Buck" + "\n " + "Class: Warrior" + "\n " + "Health: " + warrior.GetMaxHealth() + "\n Mana: " + warrior.GetMaxMana() + "\n Physical Damage: " + warrior.GetStrength() + "\n Magical Damage: " + warrior.GetMagicPower() +
-                 "\n Physical Defence: " + warrior.GetDefence() + "\n Magical Defence: " + warrior.GetMagicDefence() + "\n Speed: " + warrior.GetSpeed();
+                statTexts[0].text = "Buck";
+                statTexts[1].text = "Warrior";
+                statTexts[2].text = "" + warrior.GetHealth();
+                statTexts[3].text = "" + warrior.GetStrength();
+                statTexts[4].text = "" + warrior.GetMagicPower();
+                statTexts[5].text = "" + warrior.GetDefence();
+                statTexts[6].text = "" + warrior.GetMagicDefence();
+                statTexts[7].text = "" + 50;//crit chance
+                statTexts[8].text = "" + warrior.GetSpeed();
+                statTexts[9].text = "" + warrior.GetLevel();
+                statTexts[10].text = "" + 10;//Skills points
+                statTexts[11].text = "" + warrior.GetMana();
                 expBar.value = warrior.GetEXP();
+
             }
             if (m_playerIDStats == 2)
             {
-                statTexts.text = " Name: Duck" + "\n " + "Class: Wizard" + "\n "+"Health: " + wizard.GetMaxHealth() + "\n Mana: " + wizard.GetMaxMana() + "\n Physical Damage: " + wizard.GetStrength() + "\n Magical Damage: " + wizard.GetMagicPower() +
-              "\n Physical Defence: " + wizard.GetDefence() + "\n Magical Defence: " + wizard.GetMagicDefence() + "\n Speed: " + wizard.GetSpeed();
+                statTexts[0].text = "Duck";
+                statTexts[1].text = "Wizard";
+                statTexts[2].text = "" + wizard.GetMaxHealth();
+                statTexts[3].text = "" + wizard.GetStrength();
+                statTexts[4].text = "" + wizard.GetMagicPower();
+                statTexts[5].text = "" + wizard.GetDefence();
+                statTexts[6].text = "" + wizard.GetMagicDefence();
+                statTexts[7].text = "" + 50;//crit chance
+                statTexts[8].text = "" + wizard.GetSpeed();
+                statTexts[9].text = "" + wizard.GetLevel();
+                statTexts[10].text = "" + 10;//Skills points
+                statTexts[11].text = "" + wizard.GetMana();
                 expBar.value = wizard.GetEXP();
             }
             if (m_playerIDStats == 3)
             {
-                statTexts.text = " Name: Phil" + "\n " + "Class: Ninja" + "\n " + "Health: " + ninja.GetMaxHealth() + "\n Mana: " + ninja.GetMaxMana() + "\n Physical Damage: " + ninja.GetStrength() + "\n Magical Damage: " + ninja.GetMagicPower() +
-             "\n Physical Defence: " + ninja.GetDefence() + "\n Magical Defence: " + ninja.GetMagicDefence() + "\n Speed: " + ninja.GetSpeed();
+                statTexts[0].text = "Phil";
+                statTexts[1].text = "Ninja";
+                statTexts[2].text = "" + ninja.GetHealth();
+                statTexts[3].text = "" + ninja.GetStrength();
+                statTexts[4].text = "" + ninja.GetMagicPower();
+                statTexts[5].text = "" + ninja.GetDefence();
+                statTexts[6].text = "" + ninja.GetMagicDefence();
+                statTexts[7].text = "" + 50;//crit chance
+                statTexts[8].text = "" + ninja.GetSpeed();
+                statTexts[9].text = "" + ninja.GetLevel();
+                statTexts[10].text = "" + 10;//Skills points
+                statTexts[11].text = "" + ninja.GetMana();
                 expBar.value = ninja.GetEXP();
             }
-
         }
         if (playerStatMenu.activeInHierarchy == false)
         {
