@@ -19,6 +19,8 @@ public class PartyStatsUI : MonoBehaviour {
     public Image skillImage;
     public GameObject playerStatMenu;
     [SerializeField]
+    TextMeshProUGUI m_partyLevelTotal;
+    [SerializeField]
     TextMeshProUGUI m_skillTitle;
     [SerializeField]
     TextMeshProUGUI m_skillDescription;
@@ -48,7 +50,8 @@ public class PartyStatsUI : MonoBehaviour {
     }
     private void OnEnable()
     {
-      
+        expBar.value = m_playerManager.GetXP();
+        m_partyLevelTotal.text = "" + m_playerManager.GetLevel();
         statText.text = " Name: Luck" + "\n " + "Class: Cleric" + "\n " + "Health: " + m_playerManager.cleric.GetMaxHealth() + "\n Mana: " + m_playerManager.cleric.GetMaxMana() + "\n Physical Damage: " + m_playerManager.cleric.GetStrength() + "\n Magical Damage: " + m_playerManager.cleric.GetMagicPower() +
         "\n Physical Defence: " + m_playerManager.cleric.GetDefence() + "\n Magical Defence: " + m_playerManager.cleric.GetMagicDefence() + "\n Speed: " + m_playerManager.cleric.GetSpeed();
     }
