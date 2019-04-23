@@ -6,24 +6,16 @@ using TMPro;
 [System.Serializable]
 public class PlayerEntity : Entity
 {
-
-    private int m_playerIDStats = 0;
-    public TextMeshProUGUI statText;
     public TextMeshProUGUI[] skillTexts;
     public TextMeshProUGUI turnText;//who's turn it is
     public TextMeshProUGUI attackDescriptionText;//describes the attack that is happening/happend
     public TextMeshProUGUI notEnoughManaText;
     public TextMeshProUGUI notEnoughPotionsText;
     public TextMeshProUGUI usedPotionText;
-    public Slider expBar;
-    public Button playerStatButton;
-    public GameObject playerStatMenu;
     public GameObject enemyTargets;
     public GameObject teamTargets;
     public Button enemyTarget;
     public Button teamTarget;
-    [SerializeField]
-    private bool m_findTextGameObjects;
     public EquipEntity m_equipEntity;
 
 
@@ -134,8 +126,6 @@ public class PlayerEntity : Entity
         skillTexts[5] = GameObject.Find("Action_Six").GetComponent<TextMeshProUGUI>();
         skillTexts[6] = GameObject.Find("Action_Seven").GetComponent<TextMeshProUGUI>();
 
-        playerStatButton.onClick.AddListener(IncreasePlayerStatID);
-
         BC = GameObject.Find("BattleControl").GetComponent<BattleControl>();
 
         startPosition = transform.position; //setting the position based on where the object is on start up
@@ -148,12 +138,6 @@ public class PlayerEntity : Entity
         notEnoughManaText = GameObject.Find("not_Enough_Mana_Text").GetComponent<TextMeshProUGUI>();
         notEnoughPotionsText = GameObject.Find("not_Enough_Potions_Text").GetComponent<TextMeshProUGUI>();
         usedPotionText = GameObject.Find("used_Potion_Text").GetComponent<TextMeshProUGUI>();
-
-		turnText = GameObject.Find("Player_Turn_Text").GetComponent<TextMeshProUGUI>();
-		attackDescriptionText = GameObject.Find("Player_Attack_Description_Text").GetComponent<TextMeshProUGUI>();
-		notEnoughManaText = GameObject.Find("not_Enough_Mana_Text").GetComponent<TextMeshProUGUI>();
-		notEnoughPotionsText = GameObject.Find("not_Enough_Potions_Text").GetComponent<TextMeshProUGUI>();
-		usedPotionText = GameObject.Find("used_Potion_Text").GetComponent<TextMeshProUGUI>();
 
         currentState = TurnState.eProssesing;
 
@@ -907,57 +891,6 @@ public class PlayerEntity : Entity
         for (int i = 0; i < BC.EnemiesInBattle.Count; i++)
         {
             BC.EnemiesInBattle[i].GetComponent<EnemEntity>().TakeDamage(calculateDamage, m_chosenAction);
-        }
-    }
-
-    //Used to control the party stat menu by setting and finding all the text values/objects
-    public void IncreasePlayerStatID()
-    {
-        m_playerIDStats += 1;
-        if (m_playerIDStats == 4)
-        {
-            m_playerIDStats = 0;
-        }
-
-        if (playerStatMenu.activeInHierarchy == true)
-        {
-            //Makes sure the objects only need to be found once
-            if (m_findTextGameObjects == false)
-            {
-
-                statText = GameObject.Find("Player_Stats_Values").GetComponent<TextMeshProUGUI>();
-
-                m_findTextGameObjects = true;
-            }
-            if (m_playerIDStats == 0)
-            {
-                statText.text = " Name: Luck" + "\n " + "Class: Cleric" + "\n " + "Health: " + cleric.GetMaxHealth() + "\n Mana: " + cleric.GetMaxMana() + "\n Physical Damage: " + cleric.GetStrength() + "\n Magical Damage: " + cleric.GetMagicPower() +
-                 "\n Physical Defence: " + cleric.GetDefence() + "\n Magical Defence: " + cleric.GetMagicDefence() + "\n Speed: " + cleric.GetSpeed();
-                expBar.value = cleric.GetEXP();
-            }
-            if (m_playerIDStats == 1)
-            {
-                statText.text = " Name: Buck" + "\n " + "Class: Warrior" + "\n " + "Health: " + warrior.GetMaxHealth() + "\n Mana: " + warrior.GetMaxMana() + "\n Physical Damage: " + warrior.GetStrength() + "\n Magical Damage: " + warrior.GetMagicPower() +
-                 "\n Physical Defence: " + warrior.GetDefence() + "\n Magical Defence: " + warrior.GetMagicDefence() + "\n Speed: " + warrior.GetSpeed();
-                expBar.value = warrior.GetEXP();
-            }
-            if (m_playerIDStats == 2)
-            {
-                statText.text = " Name: Duck" + "\n " + "Class: Wizard" + "\n " + "Health: " + wizard.GetMaxHealth() + "\n Mana: " + wizard.GetMaxMana() + "\n Physical Damage: " + wizard.GetStrength() + "\n Magical Damage: " + wizard.GetMagicPower() +
-              "\n Physical Defence: " + wizard.GetDefence() + "\n Magical Defence: " + wizard.GetMagicDefence() + "\n Speed: " + wizard.GetSpeed();
-                expBar.value = wizard.GetEXP();
-            }
-            if (m_playerIDStats == 3)
-            {
-                statText.text = " Name: Phil" + "\n " + "Class: Ninja" + "\n " + "Health: " + ninja.GetMaxHealth() + "\n Mana: " + ninja.GetMaxMana() + "\n Physical Damage: " + ninja.GetStrength() + "\n Magical Damage: " + ninja.GetMagicPower() +
-             "\n Physical Defence: " + ninja.GetDefence() + "\n Magical Defence: " + ninja.GetMagicDefence() + "\n Speed: " + ninja.GetSpeed();
-                expBar.value = ninja.GetEXP();
-            }
-
-        }
-        if (playerStatMenu.activeInHierarchy == false)
-        {
-            m_findTextGameObjects = false;
         }
     }
 }

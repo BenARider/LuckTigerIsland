@@ -46,7 +46,11 @@ public class Stats : MonoBehaviour {
 	{
 		m_strength += value;
 	}
-	public int GetMagicPower()
+    public void SetStrength(int value)
+    {
+        m_strength = value;
+    }
+    public int GetMagicPower()
 	{
 		return m_magicPower;
 	}
@@ -62,7 +66,11 @@ public class Stats : MonoBehaviour {
 	{
 		m_defence += value;
 	}
-	public int GetMagicDefence()
+    public void SetDefence(int value)
+    {
+        m_defence = value;
+    }
+    public int GetMagicDefence()
 	{
 		return m_defenceMGC;
 	}

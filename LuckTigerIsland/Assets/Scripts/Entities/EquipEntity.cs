@@ -9,7 +9,8 @@ public class EquipEntity : MonoBehaviour
 {
 
     public PlayerEntity[] m_partyMembers;
-
+    [SerializeField]
+    PlayerManager m_playerManager;
     [SerializeField]
     Weapon m_currentWeapon;
     [SerializeField]
@@ -38,25 +39,19 @@ public class EquipEntity : MonoBehaviour
     void Start()
     {
 
-        m_partyMembers = new PlayerEntity[4];
-        m_partyMembers[0] = GameObject.Find("Luck").GetComponent<PlayerEntity>();
-        m_partyMembers[1] = GameObject.Find("Duck").GetComponent<PlayerEntity>();
-        m_partyMembers[2] = GameObject.Find("Buck").GetComponent<PlayerEntity>();
-        m_partyMembers[3] = GameObject.Find("Phil").GetComponent<PlayerEntity>();
-
         m_partyMemberName = GameObject.Find("PartyMemberName").GetComponent<TextMeshProUGUI>();
         m_partyMemberName.text = "Luck";
         m_itemFadeColour.a = 0.0f;
         tempDefence = new int[4];
         tempAttack = new int[4];
-        tempDefence[0] = m_partyMembers[0].GetDefence();
-        tempAttack[0] = m_partyMembers[0].GetStrength();
-        tempDefence[1] = m_partyMembers[1].GetDefence();
-        tempAttack[1] = m_partyMembers[1].GetStrength();
-        tempDefence[2] = m_partyMembers[2].GetDefence();
-        tempAttack[2] = m_partyMembers[2].GetStrength();
-        tempDefence[3] = m_partyMembers[3].GetDefence();
-        tempAttack[3] = m_partyMembers[3].GetStrength();
+        tempDefence[0] = m_playerManager.cleric.GetDefence();
+        tempAttack[0] = m_playerManager.cleric.GetStrength();
+        tempDefence[1] = m_playerManager.warrior.GetDefence();
+        tempAttack[1] = m_playerManager.warrior.GetStrength();
+        tempDefence[2] = m_playerManager.wizard.GetDefence();
+        tempAttack[2] = m_playerManager.wizard.GetStrength();
+        tempDefence[3] = m_playerManager.ninja.GetDefence();
+        tempAttack[3] = m_playerManager.ninja.GetStrength();
     }
     // Update is called once per frame
     void Update()
@@ -128,22 +123,22 @@ public class EquipEntity : MonoBehaviour
 
             if (m_partyImageIndex == 0)
             {
-                m_partyMembers[0].SetDefence(tempDefence[0]);
+                m_playerManager.cleric.SetDefence(tempDefence[0]);
                 m_equipImages[0].GetComponent<Image>().sprite = m_baseSlotImages[0].GetComponent<Image>().sprite;
             }
             if (m_partyImageIndex == 1)
             {
-                m_partyMembers[1].SetDefence(tempDefence[1]);
+                m_playerManager.warrior.SetDefence(tempDefence[1]);
                 m_equipImages[2].GetComponent<Image>().sprite = m_baseSlotImages[0].GetComponent<Image>().sprite;
             }
             if (m_partyImageIndex == 2)
             {
-                m_partyMembers[2].SetDefence(tempDefence[2]);
+                m_playerManager.wizard.SetDefence(tempDefence[2]);
                 m_equipImages[4].GetComponent<Image>().sprite = m_baseSlotImages[0].GetComponent<Image>().sprite;
             }
             if (m_partyImageIndex == 3)
             {
-                m_partyMembers[3].SetDefence(tempDefence[3]);
+                m_playerManager.ninja.SetDefence(tempDefence[3]);
                 m_equipImages[6].GetComponent<Image>().sprite = m_baseSlotImages[0].GetComponent<Image>().sprite;
             }
 
@@ -154,22 +149,22 @@ public class EquipEntity : MonoBehaviour
 
             if (m_partyImageIndex == 0)
             {
-                m_partyMembers[0].SetStrength(tempAttack[0]);
+                m_playerManager.cleric.SetStrength(tempAttack[0]);
                 m_equipImages[1].GetComponent<Image>().sprite = m_baseSlotImages[1].GetComponent<Image>().sprite;
             }
             if (m_partyImageIndex == 1)
             {
-                m_partyMembers[1].SetStrength(tempAttack[1]);
+                m_playerManager.warrior.SetStrength(tempAttack[1]);
                 m_equipImages[3].GetComponent<Image>().sprite = m_baseSlotImages[1].GetComponent<Image>().sprite;
             }
             if (m_partyImageIndex == 2)
             {
-                m_partyMembers[2].SetStrength(tempAttack[2]);
+                m_playerManager.wizard.SetStrength(tempAttack[2]);
                 m_equipImages[5].GetComponent<Image>().sprite = m_baseSlotImages[1].GetComponent<Image>().sprite;
             }
             if (m_partyImageIndex == 3)
             {
-                m_partyMembers[3].SetStrength(tempAttack[3]);
+                m_playerManager.ninja.SetStrength(tempAttack[3]);
                 m_equipImages[7].GetComponent<Image>().sprite = m_baseSlotImages[1].GetComponent<Image>().sprite;
             }
 
@@ -182,7 +177,7 @@ public class EquipEntity : MonoBehaviour
         {
             if (m_equipImages[1].GetComponent<Image>().sprite.name == "equipment_preview_10")
             {
-                m_partyMembers[0].SetStrength(_object.attack);
+                m_playerManager.cleric.SetStrength(_object.attack);
                 m_equipImages[1].GetComponent<Image>().sprite = _object.Image;
                 m_justEquippedText.text = "Just equipped: " + _object.objectName;
                 StartCoroutine(HideText());
@@ -192,7 +187,7 @@ public class EquipEntity : MonoBehaviour
         {
             if (m_equipImages[3].GetComponent<Image>().sprite.name == "equipment_preview_10")
             {
-                m_partyMembers[1].SetStrength(_object.attack);
+                m_playerManager.warrior.SetStrength(_object.attack);
                 m_equipImages[3].GetComponent<Image>().sprite = _object.Image;
                 m_justEquippedText.text = "Just equipped: " + _object.objectName;
                 StartCoroutine(HideText());
@@ -202,7 +197,7 @@ public class EquipEntity : MonoBehaviour
         {
             if (m_equipImages[5].GetComponent<Image>().sprite.name == "equipment_preview_10")
             {
-                m_partyMembers[2].SetStrength(_object.attack);
+                m_playerManager.wizard.SetStrength(_object.attack);
                 m_equipImages[5].GetComponent<Image>().sprite = _object.Image;
                 m_justEquippedText.text = "Just equipped: " + _object.objectName;
                 StartCoroutine(HideText());
@@ -211,9 +206,8 @@ public class EquipEntity : MonoBehaviour
         if (m_partyImageIndex == 3)
         {
             if (m_equipImages[7].GetComponent<Image>().sprite.name == "equipment_preview_10")
-            {
-
-                m_partyMembers[3].SetStrength(_object.attack);
+            {      
+                m_playerManager.ninja.SetStrength(_object.attack);
                 m_equipImages[7].GetComponent<Image>().sprite = _object.Image;
                 m_justEquippedText.text = "Just equipped: " + _object.objectName;
                 StartCoroutine(HideText());
@@ -232,7 +226,7 @@ public class EquipEntity : MonoBehaviour
                 m_justEquippedText.text = "Just equipped a : " + _object.objectName;
                 StartCoroutine(HideText());
                 m_equipImages[0].GetComponent<Image>().sprite = _object.Image;
-                m_partyMembers[0].SetDefence(_object.defence);
+                m_playerManager.cleric.SetDefence(_object.defence);
 
             }
         }
@@ -242,7 +236,7 @@ public class EquipEntity : MonoBehaviour
             {
 
                 m_equipImages[2].GetComponent<Image>().sprite = _object.Image;
-                m_partyMembers[1].SetDefence(_object.defence);
+                m_playerManager.warrior.SetDefence(_object.defence);
                 m_justEquippedText.text = "Just equipped a : " + _object.objectName;
                 StartCoroutine(HideText());
             }
@@ -251,9 +245,8 @@ public class EquipEntity : MonoBehaviour
         {
             if (m_equipImages[4].GetComponent<Image>().sprite.name == "equipment_preview_1")
             {
-
                 m_equipImages[4].GetComponent<Image>().sprite = _object.Image;
-                m_partyMembers[2].SetDefence(_object.defence);
+                m_playerManager.wizard.SetDefence(_object.defence);
                 m_justEquippedText.text = "Just equipped a : " + _object.objectName;
                 StartCoroutine(HideText());
             }
@@ -263,7 +256,7 @@ public class EquipEntity : MonoBehaviour
             if (m_equipImages[6].GetComponent<Image>().sprite.name == "equipment_preview_1")
             {
                 m_equipImages[6].GetComponent<Image>().sprite = _object.Image;
-                m_partyMembers[3].SetDefence(_object.defence);
+                m_playerManager.ninja.SetDefence(_object.defence);
                 m_justEquippedText.text = "Just equipped a : " + _object.objectName;
                 StartCoroutine(HideText());
             }
