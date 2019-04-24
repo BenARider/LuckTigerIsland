@@ -248,7 +248,7 @@ public class EnemEntity : Entity
 
         actionHappening = true;
 
-        Vector3 PartyMemberPosition = new Vector3(EntityToAttack.transform.position.x - 1.5f, EntityToAttack.transform.position.y, EntityToAttack.transform.position.z);
+        Vector3 PartyMemberPosition = new Vector3(EntityToAttack.transform.position.x + 1.5f, EntityToAttack.transform.position.y, EntityToAttack.transform.position.z);
 
         while (MoveTo(PartyMemberPosition))
         {

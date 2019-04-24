@@ -19,7 +19,7 @@ public class Slider_Manager : MonoBehaviour {
     [SerializeField] private Slider m_manaSlider = null;
 	// Use this for initialization
 	void Start () {
-        sliderTransform = GameObject.Find("Enemy_1").GetComponent<Transform>();
+        
 	}
 	
 	// Update is called once per frame
@@ -27,7 +27,27 @@ public class Slider_Manager : MonoBehaviour {
     {
         if(isEnemySlider == true)
         {
-        this.transform.position = new Vector2(sliderTransform.position.x-47,sliderTransform.position.y+4-(78*(player.GetEntityNo()-1)));		//can get the values of specificly tagged gameObjects. 
+            if (player.GetEntityNo() == 1)
+            {
+                sliderTransform = GameObject.Find("Enemy_1").GetComponent<Transform>();
+                transform.position = new Vector2(sliderTransform.position.x+1995, sliderTransform.position.y + (290*(player.GetEntityNo())));
+            }
+            if (player.GetEntityNo() == 2)
+            {
+                sliderTransform = GameObject.Find("Enemy_2").GetComponent<Transform>();
+                transform.position = new Vector2(sliderTransform.position.x+78, sliderTransform.position.y + (4 * (player.GetEntityNo())));
+            }
+            if (player.GetEntityNo() == 3)
+            {
+                sliderTransform = GameObject.Find("Enemy_3").GetComponent<Transform>();
+                transform.position = new Vector2(sliderTransform.position.x +78, sliderTransform.position.y + 8+ (1 * (player.GetEntityNo())));
+            }
+            if (player.GetEntityNo() == 4)
+            {
+                sliderTransform = GameObject.Find("Enemy_4").GetComponent<Transform>();
+                transform.position = new Vector2(sliderTransform.position.x + 78, sliderTransform.position.y + (2 * (player.GetEntityNo())));
+            }
+           	//can get the values of specificly tagged gameObjects. 
 
         }
 		//if (stringname == "player1")

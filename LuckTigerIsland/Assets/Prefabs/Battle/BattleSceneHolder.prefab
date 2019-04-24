@@ -6138,7 +6138,7 @@ Transform:
   m_GameObject: {fileID: 1281238456981294}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
   m_LocalPosition: {x: 3, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4321396499613922}
   m_RootOrder: 0
@@ -6150,7 +6150,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1133208119666452}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.5360527, y: 24.937555, z: -0.078125}
+  m_LocalPosition: {x: -11.76, y: 24.937555, z: -0.078125}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4053151492258808}
@@ -6186,7 +6186,7 @@ Transform:
   m_GameObject: {fileID: 1884131588901164}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
   m_LocalPosition: {x: 3, y: -2, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4321396499613922}
   m_RootOrder: 3
@@ -6198,7 +6198,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1605386927685432}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1, y: 1, z: -0}
+  m_LocalPosition: {x: 2.91, y: 1, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4803841630535240}
@@ -6238,7 +6238,7 @@ Transform:
   m_GameObject: {fileID: 1385177191430076}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
   m_LocalPosition: {x: 3, y: -1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4321396499613922}
   m_RootOrder: 2
@@ -6251,7 +6251,7 @@ Transform:
   m_GameObject: {fileID: 1296576603162368}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
   m_LocalPosition: {x: 3, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4321396499613922}
   m_RootOrder: 1
@@ -6866,21 +6866,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 035c8daa92bc54f4dac5198d5559e4cb, type: 2}
   HealthPotions: []
   ManaPotions: []
-  statText: {fileID: 0}
   skillTexts: []
   turnText: {fileID: 0}
   attackDescriptionText: {fileID: 0}
   notEnoughManaText: {fileID: 0}
   notEnoughPotionsText: {fileID: 0}
   usedPotionText: {fileID: 0}
-  expBar: {fileID: 114055536316295730}
-  playerStatButton: {fileID: 114686936438163352}
-  playerStatMenu: {fileID: 1952482017696360}
   enemyTargets: {fileID: 1654309051661946}
   teamTargets: {fileID: 1451313798598070}
   enemyTarget: {fileID: 114456750969428722}
   teamTarget: {fileID: 114294185385930862}
-  m_findTextGameObjects: 0
   m_equipEntity: {fileID: 0}
   warrior: {fileID: 114027231205543680}
   wizard: {fileID: 114243110054014210}
@@ -8440,21 +8435,16 @@ MonoBehaviour:
   passiveActiveList: []
   HealthPotions: []
   ManaPotions: []
-  statText: {fileID: 0}
   skillTexts: []
   turnText: {fileID: 0}
   attackDescriptionText: {fileID: 0}
   notEnoughManaText: {fileID: 0}
   notEnoughPotionsText: {fileID: 0}
   usedPotionText: {fileID: 0}
-  expBar: {fileID: 114055536316295730}
-  playerStatButton: {fileID: 114686936438163352}
-  playerStatMenu: {fileID: 1952482017696360}
   enemyTargets: {fileID: 1654309051661946}
   teamTargets: {fileID: 1451313798598070}
   enemyTarget: {fileID: 114456750969428722}
   teamTarget: {fileID: 114294185385930862}
-  m_findTextGameObjects: 0
   m_equipEntity: {fileID: 0}
   warrior: {fileID: 114027231205543680}
   wizard: {fileID: 114243110054014210}
@@ -8797,21 +8787,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 576f587f722dbb74fb1af0ec4aae678b, type: 2}
   HealthPotions: []
   ManaPotions: []
-  statText: {fileID: 0}
   skillTexts: []
   turnText: {fileID: 0}
   attackDescriptionText: {fileID: 0}
   notEnoughManaText: {fileID: 0}
   notEnoughPotionsText: {fileID: 0}
   usedPotionText: {fileID: 0}
-  expBar: {fileID: 114055536316295730}
-  playerStatButton: {fileID: 114686936438163352}
-  playerStatMenu: {fileID: 1952482017696360}
   enemyTargets: {fileID: 1654309051661946}
   teamTargets: {fileID: 1451313798598070}
   enemyTarget: {fileID: 114456750969428722}
   teamTarget: {fileID: 114294185385930862}
-  m_findTextGameObjects: 0
   m_equipEntity: {fileID: 0}
   warrior: {fileID: 114027231205543680}
   wizard: {fileID: 114243110054014210}
@@ -9427,6 +9412,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_partyMembers: []
+  m_playerManager: {fileID: 0}
   m_currentWeapon: {fileID: 0}
   m_currentArmour: {fileID: 0}
   m_equipImages: []
@@ -11731,21 +11717,16 @@ MonoBehaviour:
   passiveActiveList: []
   HealthPotions: []
   ManaPotions: []
-  statText: {fileID: 0}
   skillTexts: []
   turnText: {fileID: 0}
   attackDescriptionText: {fileID: 0}
   notEnoughManaText: {fileID: 0}
   notEnoughPotionsText: {fileID: 0}
   usedPotionText: {fileID: 0}
-  expBar: {fileID: 114055536316295730}
-  playerStatButton: {fileID: 114686936438163352}
-  playerStatMenu: {fileID: 1952482017696360}
   enemyTargets: {fileID: 1654309051661946}
   teamTargets: {fileID: 1451313798598070}
   enemyTarget: {fileID: 114456750969428722}
   teamTarget: {fileID: 114294185385930862}
-  m_findTextGameObjects: 0
   m_equipEntity: {fileID: 0}
   warrior: {fileID: 114027231205543680}
   wizard: {fileID: 114243110054014210}
@@ -30215,7 +30196,7 @@ RectTransform:
   m_GameObject: {fileID: 1252598712890216}
   m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0000014, y: 1.0000014, z: 1.0000014}
+  m_LocalScale: {x: -1, y: 1.0000014, z: 1.0000014}
   m_Children:
   - {fileID: 224995167476900926}
   - {fileID: 224365659452850994}
@@ -30224,7 +30205,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: 180}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -4, y: 0}
+  m_AnchoredPosition: {x: 3, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224224589544482062
@@ -30417,7 +30398,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 229, y: -504.99994}
+  m_AnchoredPosition: {x: 661, y: -504.99994}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224240162012946652
@@ -34793,7 +34774,7 @@ RectTransform:
   m_GameObject: {fileID: 1134704849403214}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
   - {fileID: 224294957263827406}
   - {fileID: 224975407574857518}

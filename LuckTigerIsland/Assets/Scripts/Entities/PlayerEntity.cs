@@ -811,7 +811,7 @@ public class PlayerEntity : Entity
 
         actionHappening = true;
 
-        Vector3 meleeAttack = new Vector3(EntityToAttack.transform.position.x + 1.5f, EntityToAttack.transform.position.y, EntityToAttack.transform.position.z);
+        Vector3 meleeAttack = new Vector3(EntityToAttack.transform.position.x - 1.5f, EntityToAttack.transform.position.y, EntityToAttack.transform.position.z);
         Vector3 magicAttack = new Vector3(transform.position.x + 1.5f, transform.position.y, transform.position.z);
 
         if (m_chosenAction.attackType == BaseAttack.AttackType.eMelee)
