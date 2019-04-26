@@ -19,9 +19,9 @@ public class Slider_Manager : MonoBehaviour {
     [SerializeField] private Slider m_manaSlider = null;
 	// Use this for initialization
 	void Start () {
-        
+
 	}
-	
+
 	// Update is called once per frame
 	void Update ()
     {
@@ -30,8 +30,7 @@ public class Slider_Manager : MonoBehaviour {
             if (player.GetEntityNo() == 1)
             {
                 sliderTransform = GameObject.Find("Enemy_1").GetComponent<Transform>();
-<<<<<<< HEAD
-                transform.position = new Vector2(sliderTransform.position.x+78, sliderTransform.position.y +8+ (1*(player.GetEntityNo())));
+                transform.position = new Vector2(sliderTransform.position.x+78, sliderTransform.position.y + 8 + (1*(player.GetEntityNo())));
 =======
                 transform.position = new Vector2(sliderTransform.position.x+78, sliderTransform.position.y + 8 + (1*(player.GetEntityNo())));
 >>>>>>> 02ba25978c0e0df10c49e7028e5e16f6c3882c4e
@@ -51,7 +50,7 @@ public class Slider_Manager : MonoBehaviour {
                 sliderTransform = GameObject.Find("Enemy_4").GetComponent<Transform>();
                 transform.position = new Vector2(sliderTransform.position.x + 78, sliderTransform.position.y + (2 * (player.GetEntityNo())));
             }
-           	//can get the values of specificly tagged gameObjects. 
+           	//can get the values of specificly tagged gameObjects.
 
         }
 		//if (stringname == "player1")
