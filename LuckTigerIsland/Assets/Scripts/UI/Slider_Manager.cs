@@ -31,9 +31,6 @@ public class Slider_Manager : MonoBehaviour {
             {
                 sliderTransform = GameObject.Find("Enemy_1").GetComponent<Transform>();
                 transform.position = new Vector2(sliderTransform.position.x+78, sliderTransform.position.y + 8 + (1*(player.GetEntityNo())));
-=======
-                transform.position = new Vector2(sliderTransform.position.x+78, sliderTransform.position.y + 8 + (1*(player.GetEntityNo())));
->>>>>>> 02ba25978c0e0df10c49e7028e5e16f6c3882c4e
             }
             if (player.GetEntityNo() == 2)
             {
