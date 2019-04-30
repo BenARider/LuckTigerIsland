@@ -40,30 +40,30 @@ public class PlayerManager : LTI.Singleton<PlayerManager> {
     NPCDialogue activeDialogue;
 
     [SerializeField]
-    private int m_level = 1;
+    public int m_partyLevel = 20;
     [SerializeField]
-    private int m_xp = 0;
+    public int m_xperience = 0;
 	
 	public int GetLevel()
     {
-        return m_level;
+        return m_partyLevel;
     }
 	
 
 	public int AddXP(int _xp)
     {
-        m_xp += _xp;
-        while (m_xp >= (m_level * 100 + (m_level * 10)))
+        m_xperience += _xp;
+        while (m_xperience >= (m_partyLevel * 100 + (m_partyLevel * 10)))
         {
-            m_xp -= (m_level * 100 + (m_level * 10));
-            ++m_level;
+            m_xperience -= (m_partyLevel * 100 + (m_partyLevel * 10));
+            ++m_partyLevel;
         }
         return GetXP();
     }
 
     public int GetXP()
     {
-        return m_xp;
+        return m_xperience;
     }
 
     // Use this for initialization

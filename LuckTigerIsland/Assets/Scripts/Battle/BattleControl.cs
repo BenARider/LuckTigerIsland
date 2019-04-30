@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using TMPro;
 using System.Linq;
 [System.Serializable]
 public class BattleControl : MonoBehaviour {
@@ -28,11 +29,21 @@ public class BattleControl : MonoBehaviour {
     //public List<EnemEntity> Enemies = new List<EnemEntity>();
     public List<GameObject> PartyMembersInBattle = new List<GameObject>();
     public List<GameObject> TargetingListForAI = new List<GameObject>();
+    public List<InventoryObject> rewards;
+    public RewardUI rewardUI;
+    [SerializeField]
+    TextMeshProUGUI m_itemsAdded;
+    [SerializeField]
+    Inventory m_inventory;
+    [SerializeField]
+    Rewards m_rewards;
     EventSystem m_eventSystem;
+    private bool m_itemRolled;
     public GameObject actionOne;
     public int battleGoldReward = 0;
     public int deadEnemies = 0;
     public int deadPlayers = 0;
+    private int m_itemRoll;
 
     // Use this for initialization
     void Start () {
@@ -101,8 +112,21 @@ public class BattleControl : MonoBehaviour {
             case (performAction.ePerformAction):
                 break;
             case (performAction.eWin):
-                Inventory.Instance.IncreaseGold(battleGoldReward);
-                PlayerManager.Instance.transform.root.GetComponent<ReturnToMain>().Return();
+         
+              //  PlayerManager.Instance.transform.root.GetComponent<ReturnToMain>().Return();
+              if (!m_itemRolled)
+                {
+                    battleGoldReward = Random.Range(100, 150);
+              Inventory.Instance.IncreaseGold(battleGoldReward);
+                    PlayerManager.Instance.AddXP(100);
+                    m_itemRoll = Random.Range(0, m_rewards.rewards.Count());
+                    m_inventory.AddToInventory(rewards[m_itemRoll]);
+                    Debug.Log("Additem success" + rewards[m_itemRoll]);
+                    m_itemRolled = true;
+                    m_itemsAdded.text = "Items gained: " + "\n"+ rewards[m_itemRoll].objectName;
+                }
+             
+
 
                 //go to victory screen/overworld here
                 break;

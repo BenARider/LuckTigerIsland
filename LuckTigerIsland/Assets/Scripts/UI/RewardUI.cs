@@ -24,7 +24,7 @@ public class RewardUI : MonoBehaviour, ISelectHandler,IDeselectHandler
     {
         m_inventory = GameObject.Find("Player").GetComponent<Inventory>();
         m_image = GetComponent<Image>();
-        m_rewards = GameObject.Find("RewardUI").GetComponent<Rewards>();
+        m_rewards = GameObject.Find("RewardPool").GetComponent<Rewards>();
       
      
     }
@@ -40,8 +40,14 @@ public class RewardUI : MonoBehaviour, ISelectHandler,IDeselectHandler
     void Update()
     {
 
-        m_item = m_rewards.rewards[m_nameNumSet];
-        m_image.sprite = m_rewards.rewards[m_nameNumSet].Image;
+    
+    }
+    public void ItemReward(int _itemID)
+    {
+      //  m_item = m_rewards.rewards[_itemID];
+        m_image.sprite = m_rewards.rewards[_itemID].Image;
+
+
     }
     public void OnSelect(BaseEventData _data)
     {
@@ -51,13 +57,10 @@ public class RewardUI : MonoBehaviour, ISelectHandler,IDeselectHandler
     {
         ItemDescription.text = "";
     }
-    public void AddToInventory()
+    public void AddToInventory(int _itemId)
     {
-       for(int i = 0; i< m_rewards.rewards.Count; ++i)
-        {
-            m_inventory.AddToInventory(m_rewards.rewards[i]);
-        }
-    
+
+            m_inventory.AddToInventory(m_rewards.rewards[_itemId]);
     }
     public void Destroy()
     {
