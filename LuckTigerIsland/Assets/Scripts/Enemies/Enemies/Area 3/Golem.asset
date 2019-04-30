@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b51f7dc5b1000c409f21517c088e099, type: 3}
+  m_Name: Golem
+  m_EditorClassIdentifier: 
+  go: {fileID: 0}
+  enemyType: 11
+  Sprite1: {fileID: 0}
+  m_maxHealth: 250
+  m_health: 0
+  m_strength: 45
+  m_magicPower: 30
+  m_defence: 50
+  m_defenceMGC: 50
+  m_speed: 70
+  m_mana: 0
+  m_maxMana: 400
+  m_stunned: 0
+  m_afflicted: 0
+  m_level: 10
+  m_xpAward: 200
+  m_EXP: 0
+  Class: 
+  m_attackedAlready: 0
+  m_entityNumber: 0
+  m_requiredSpeedForTurn: 0
+  myTurn: 0
+  battleWon: 0
+  currentSpeed: 0
+  isAlive: 1
+  countedDead: 0
+  alreadyAfflicted: 0
+  afflictionTimes: 0
+  aggress: 0
+  intel: 0
+  XP: 0
+  attackDescriptionText: {fileID: 0}
+  turnText: {fileID: 0}
+  tempDMGReduct: 0
+  totalDMG: 0
+  chanceToHit: 0
+  attacking: 0
+  dmgRecieve: 0
+  dmgDealt: 0
+  currentState: 0
+  currentAffliction: 0
+  EntityToAttack: {fileID: 0}
+  attacks:
+  - {fileID: 11400000, guid: 7b4b374b9453f4b4aa11f701e492b583, type: 2}
+  - {fileID: 11400000, guid: 514e1c79f37c1ba4aa8e8f99e4b54b94, type: 2}
+  - {fileID: 11400000, guid: 8d382809ca217ee4bb6274a2256cd7f6, type: 2}
+  HealthPotions: []
+  ManaPotions: []
+  HT:
+    Attacker: 
+    Type: 
+    AttackingGameObject: {fileID: 0}
+    AttackTarget: {fileID: 0}
+    chosenAttack: {fileID: 0}

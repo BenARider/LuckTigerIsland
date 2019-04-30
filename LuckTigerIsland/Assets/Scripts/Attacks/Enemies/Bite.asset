@@ -13,10 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: Bite
   attackDescription: Physical attack with chance to infect
-  attackType: Melee
+  attackType: 0
   attackDamage: 20
   skillMultiplier: 1
   skillDuration: 10
   attackCost: 0
   attackImage: {fileID: 0}
-  attackAffliction: Infect
+  attackAffliction: 2

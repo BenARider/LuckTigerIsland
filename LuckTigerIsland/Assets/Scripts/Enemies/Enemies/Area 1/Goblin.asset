@@ -13,13 +13,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   go: {fileID: 0}
   enemyType: 2
+  Sprite1: {fileID: 0}
   m_maxHealth: 75
   m_health: 0
   m_strength: 25
   m_magicPower: 15
   m_defence: 20
   m_defenceMGC: 15
-  m_speed: 40
+  m_speed: 50
   m_mana: 0
   m_maxMana: 100
   m_stunned: 0

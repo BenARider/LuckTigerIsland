@@ -13,10 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: Flash
   attackDescription: Throw a flashbang to stun enemies for a short time
-  attackType: Magic
+  attackType: 1
   attackDamage: 5
   skillMultiplier: 1
   skillDuration: 10
   attackCost: 35
   attackImage: {fileID: 0}
-  attackAffliction: Stun
+  attackAffliction: 3

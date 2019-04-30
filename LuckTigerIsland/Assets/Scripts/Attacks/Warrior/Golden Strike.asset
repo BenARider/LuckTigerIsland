@@ -13,10 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: Golden Strike
   attackDescription: Physical attack with chance to electrocute the enemy
-  attackType: Melee
+  attackType: 0
   attackDamage: 30
   skillMultiplier: 1
   skillDuration: 15
   attackCost: 35
   attackImage: {fileID: 0}
-  attackAffliction: Freeze
+  attackAffliction: 3
