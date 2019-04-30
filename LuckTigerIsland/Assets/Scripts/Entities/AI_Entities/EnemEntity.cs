@@ -26,7 +26,7 @@ public class EnemEntity : Entity
     /// <summary>
     /// reference from this
     /// </summary>
-    EnemyObject thisEnemyObject;
+    public EnemyObject thisEnemyObject;
 	//private bool canAttack = false; //used to prevent the ai from having too many turns. Only enabled on use of state transition.
 	public int aggress; //likelihood to attack oppossing attacker (Between 1-20)
 	public int intel; //likelihood to attack pm with high value (Between 1-20)
@@ -51,6 +51,7 @@ public class EnemEntity : Entity
     public HandleTurns HT;
     void Start()
     {
+
         if (MyClass == Class.eGoblin)
         {
             SetEnemyStats(75, 50, 40, 20, 50, 3, 20, 4, 50);

@@ -104,6 +104,13 @@ public class BattleControl : MonoBehaviour {
                 Inventory.Instance.IncreaseGold(battleGoldReward);
                 PlayerManager.Instance.transform.root.GetComponent<ReturnToMain>().Return();
 
+                List<EEnemies> toSet = new List<EEnemies>();
+                foreach (var i in EnemiesInBattle)
+                {
+                   toSet.Add(i.GetComponent<EnemEntity>().thisEnemyObject.enemyType);
+                }                
+                EventManager.Instance.SetLastBattle(toSet);
+
                 //go to victory screen/overworld here
                 break;
             case (performAction.eLoss):

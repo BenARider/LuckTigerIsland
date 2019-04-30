@@ -6,10 +6,16 @@ public class PeachScript : GenericInteract {
 
     [SerializeField]
     InventoryObject peachObject;
+    [SerializeField]
+    Quest peachQuest;
+
 
     public override void OnInteract(PlayerManager player)
     {
-        Inventory.Instance.AddToInventory(peachObject);
-        gameObject.SetActive(false);
+        if (peachQuest.isActive)
+        {
+            Inventory.Instance.AddToInventory(peachObject);
+            gameObject.SetActive(false);
+        }
     }
 }
