@@ -923,9 +923,16 @@ public class PlayerEntity : Entity
 }
     void playerDoDamge() // calls the take damage on the enemy w/ damage calc
     {
-        int calculateDamage = GetStrength() + BC.NextTurn[0].chosenAttack.attackDamage; //calc should be done here before damage
-
-        EntityToAttack.GetComponent<EnemEntity>().TakeDamage(calculateDamage, m_chosenAction);
+        if (m_chosenAction.attackType == BaseAttack.AttackType.eMelee)
+        {
+            int calculateDamage = GetStrength() + BC.NextTurn[0].chosenAttack.attackDamage; //calc should be done here before damage
+            EntityToAttack.GetComponent<EnemEntity>().TakeDamage(calculateDamage, m_chosenAction);
+        }
+        else
+        {
+            int calculateMagicDamage = GetMagicPower() + BC.NextTurn[0].chosenAttack.attackDamage;
+            EntityToAttack.GetComponent<EnemEntity>().TakeDamage(calculateMagicDamage, m_chosenAction);
+        }
     }
     void PartyWideDamage()
     {
