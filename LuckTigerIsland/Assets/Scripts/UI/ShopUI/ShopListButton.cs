@@ -10,7 +10,8 @@ public class ShopListButton : MonoBehaviour,ISelectHandler {
     private TextMeshProUGUI m_text;
     [SerializeField]
     private ShopListControl m_shopListControl;
-
+    [SerializeField]
+    private TextMeshProUGUI m_buyText;
     private string m_name;
     private Sprite m_image;
     private string m_description;
@@ -58,6 +59,8 @@ public class ShopListButton : MonoBehaviour,ISelectHandler {
     {
         m_item.sItem = m_shop.shop[m_index].sItem;
         m_shop.BuyItem(m_item);
+        m_buyText.text = "Just bought: " + m_item.sItem.objectName;
+        StartCoroutine(FadeText());
     }
     public void OnEnable()
     {
@@ -74,5 +77,10 @@ public class ShopListButton : MonoBehaviour,ISelectHandler {
             Debug.LogError("Inventory Slot has nothing in it!");
         }
     }
-  
+    IEnumerator FadeText()
+    {
+        yield return new WaitForSeconds(2);
+        m_buyText.text = "";
+    }
+
 }

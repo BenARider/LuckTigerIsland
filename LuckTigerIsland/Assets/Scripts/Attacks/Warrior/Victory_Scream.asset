@@ -13,10 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: Victory Scream
   attackDescription: Raises attack and defence
-  attackType: Buff
+  attackType: 2
   attackDamage: 0
   skillMultiplier: 2
   skillDuration: 20
   attackCost: 40
   attackImage: {fileID: 0}
-  attackAffliction: Strength
+  attackAffliction: 8
