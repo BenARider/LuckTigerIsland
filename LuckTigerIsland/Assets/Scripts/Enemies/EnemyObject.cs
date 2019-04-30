@@ -33,6 +33,7 @@ public class EnemyObject : ScriptableObject
     [SerializeField]
     public EEnemies enemyType;
 
+	public Sprite Sprite1;
     //General stats used to initialise entities
     [SerializeField]
     protected int m_maxHealth;

@@ -25,7 +25,7 @@ public class BattleControl : MonoBehaviour {
 
     public List<HandleTurns> NextTurn = new List<HandleTurns>();
     public List<GameObject> EnemiesInBattle = new List<GameObject>();
-    public List<EnemEntity> Enemies = new List<EnemEntity>();
+    //public List<EnemEntity> Enemies = new List<EnemEntity>();
     public List<GameObject> PartyMembersInBattle = new List<GameObject>();
     public List<GameObject> TargetingListForAI = new List<GameObject>();
     EventSystem m_eventSystem;
@@ -123,10 +123,7 @@ public class BattleControl : MonoBehaviour {
                 }
                 break;
         }
-
-
-	}
-
+    }
     public void collectActions(HandleTurns Action)
     {
 

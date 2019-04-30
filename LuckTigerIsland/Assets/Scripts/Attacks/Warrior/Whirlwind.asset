@@ -13,10 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: Whirlwind
   attackDescription: Deals physical damage to all enemies
-  attackType: PartyWide
-  attackDamage: 20
+  attackType: 3
+  attackDamage: 35
   skillMultiplier: 1
   skillDuration: 0
   attackCost: 20
   attackImage: {fileID: 0}
-  attackAffliction: 
+  attackAffliction: 5

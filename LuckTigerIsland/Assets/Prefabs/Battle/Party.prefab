@@ -9,88 +9,20 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1862958577163576}
+  m_RootGameObject: {fileID: 1812475912109420}
   m_IsPrefabParent: 1
---- !u!1 &1083710151830532
+--- !u!1 &1525168381552708
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4146624870101896}
-  - component: {fileID: 212475610719061680}
-  - component: {fileID: 61620824344026988}
-  - component: {fileID: 114458450758633312}
-  m_Layer: 0
-  m_Name: Player2
-  m_TagString: Party
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1322128086926268
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4352556291478254}
-  - component: {fileID: 212900737210944542}
-  - component: {fileID: 61145100431262330}
-  - component: {fileID: 114441759367436360}
-  m_Layer: 0
-  m_Name: Player3
-  m_TagString: Party
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1862958577163576
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4204976800658986}
-  m_Layer: 0
-  m_Name: Party
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1888261674363040
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4189678700823186}
-  - component: {fileID: 212828842481783856}
-  - component: {fileID: 61778341673843168}
-  - component: {fileID: 114906831645218688}
-  m_Layer: 0
-  m_Name: Player1
-  m_TagString: Party
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1930792809475556
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4294165107687222}
-  - component: {fileID: 212209843955889348}
-  - component: {fileID: 61668433373346548}
-  - component: {fileID: 114624081900001476}
+  - component: {fileID: 4620404049863444}
+  - component: {fileID: 212893589816573234}
+  - component: {fileID: 61608087083666802}
+  - component: {fileID: 114649299493122020}
+  - component: {fileID: 114910512130800688}
   m_Layer: 0
   m_Name: Player4
   m_TagString: Party
@@ -98,81 +30,153 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4146624870101896
+--- !u!1 &1583244954638302
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4875107645699534}
+  - component: {fileID: 212919407112859924}
+  - component: {fileID: 61162166093562740}
+  - component: {fileID: 114154293176566892}
+  - component: {fileID: 114689885257801702}
+  m_Layer: 0
+  m_Name: Player2
+  m_TagString: Party
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1812475912109420
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4790365207491826}
+  m_Layer: 0
+  m_Name: Party
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1841430630641846
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4887727864620998}
+  - component: {fileID: 212902540767231180}
+  - component: {fileID: 61087264091182694}
+  - component: {fileID: 114965574666688870}
+  - component: {fileID: 114894803575059366}
+  m_Layer: 0
+  m_Name: Player1
+  m_TagString: Party
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1846485825048292
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4984286476481934}
+  - component: {fileID: 212823421424148036}
+  - component: {fileID: 61494854003511494}
+  - component: {fileID: 114828858503107124}
+  - component: {fileID: 114342263745504802}
+  m_Layer: 0
+  m_Name: Player3
+  m_TagString: Party
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4620404049863444
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1083710151830532}
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 3, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4204976800658986}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!4 &4189678700823186
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1888261674363040}
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 3, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4204976800658986}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!4 &4204976800658986
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1862958577163576}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 4189678700823186}
-  - {fileID: 4146624870101896}
-  - {fileID: 4352556291478254}
-  - {fileID: 4294165107687222}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4294165107687222
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1930792809475556}
+  m_GameObject: {fileID: 1525168381552708}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
   m_LocalPosition: {x: 3, y: -2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4204976800658986}
+  m_Father: {fileID: 4790365207491826}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!4 &4352556291478254
+--- !u!4 &4790365207491826
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1322128086926268}
+  m_GameObject: {fileID: 1812475912109420}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -7.5360527, y: 24.937555, z: -0.078125}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4887727864620998}
+  - {fileID: 4875107645699534}
+  - {fileID: 4984286476481934}
+  - {fileID: 4620404049863444}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4875107645699534
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1583244954638302}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 3, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4790365207491826}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!4 &4887727864620998
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1841430630641846}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 3, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4790365207491826}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!4 &4984286476481934
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1846485825048292}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
   m_LocalPosition: {x: 3, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4204976800658986}
+  m_Father: {fileID: 4790365207491826}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!61 &61145100431262330
+--- !u!61 &61087264091182694
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1322128086926268}
+  m_GameObject: {fileID: 1841430630641846}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -192,12 +196,12 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6956835, y: 0.81313896}
   m_EdgeRadius: 0
---- !u!61 &61620824344026988
+--- !u!61 &61162166093562740
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1083710151830532}
+  m_GameObject: {fileID: 1583244954638302}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -217,12 +221,12 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6956835, y: 0.81313896}
   m_EdgeRadius: 0
---- !u!61 &61668433373346548
+--- !u!61 &61494854003511494
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1930792809475556}
+  m_GameObject: {fileID: 1846485825048292}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -242,12 +246,12 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6956835, y: 0.81313896}
   m_EdgeRadius: 0
---- !u!61 &61778341673843168
+--- !u!61 &61608087083666802
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1888261674363040}
+  m_GameObject: {fileID: 1525168381552708}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -267,17 +271,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6956835, y: 0.81313896}
   m_EdgeRadius: 0
---- !u!114 &114441759367436360
+--- !u!114 &114154293176566892
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1322128086926268}
+  m_GameObject: {fileID: 1583244954638302}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e7b9ee21a2a49e64cbdb84b5fe06a9d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  assignedScriptableObject: {fileID: 0}
   m_maxHealth: 0
   m_health: 0
   m_strength: 0
@@ -291,82 +296,10 @@ MonoBehaviour:
   m_afflicted: 0
   m_level: 0
   m_xpAward: 0
+  m_goldAward: 0
   m_EXP: 0
-  Class: Wizard
   m_attackedAlready: 0
-  m_entityNumber: 3
-  m_requiredSpeedForTurn: 0
-  myTurn: 0
-  battleWon: 0
-  currentSpeed: 0
-  isAlive: 1
-  countedDead: 0
-  alreadyAfflicted: 0
-  afflictionTimes: 0
-  tempDMGReduct: 0
-  totalDMG: 0
-  chanceToHit: 0
-  attacking: 0
-  dmgRecieve: 0
-  dmgDealt: 0
-  currentState: 0
-  currentAffliction: 0
-  EntityToAttack: {fileID: 0}
-  attacks:
-  - {fileID: 11400000, guid: 025630a4956fac74da4985d9d134e6f9, type: 2}
-  - {fileID: 11400000, guid: d86d8a8da359f334496d00bb8f362b79, type: 2}
-  - {fileID: 11400000, guid: 514e1c79f37c1ba4aa8e8f99e4b54b94, type: 2}
-  HealthPotions: []
-  ManaPotions: []
-  statTexts: []
-  turnText: {fileID: 0}
-  attackDescriptionText: {fileID: 0}
-  notEnoughManaText: {fileID: 0}
-  notEnoughPotionsText: {fileID: 0}
-  usedPotionText: {fileID: 0}
-  expBar: {fileID: 0}
-  playerStatButton: {fileID: 0}
-  playerStatMenu: {fileID: 0}
-  m_findTextGameObjects: 0
-  warrior: {fileID: 114458450758633312}
-  wizard: {fileID: 114441759367436360}
-  cleric: {fileID: 114906831645218688}
-  ninja: {fileID: 114624081900001476}
-  HT:
-    Attacker: 
-    Type: 
-    AttackingGameObject: {fileID: 0}
-    AttackTarget: {fileID: 0}
-    chosenAttack: {fileID: 0}
-  m_hasChosenAction: 0
-  m_chosenTarget: 0
---- !u!114 &114458450758633312
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1083710151830532}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7b9ee21a2a49e64cbdb84b5fe06a9d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_maxHealth: 0
-  m_health: 0
-  m_strength: 0
-  m_magicPower: 0
-  m_defence: 0
-  m_defenceMGC: 0
-  m_speed: 0
-  m_mana: 0
-  m_maxMana: 0
-  m_stunned: 0
-  m_afflicted: 0
-  m_level: 0
-  m_xpAward: 0
-  m_EXP: 0
-  Class: Warrior
-  m_attackedAlready: 0
+  m_canBeBuffed: 1
   m_entityNumber: 2
   m_requiredSpeedForTurn: 0
   myTurn: 0
@@ -384,46 +317,77 @@ MonoBehaviour:
   dmgDealt: 0
   currentState: 0
   currentAffliction: 0
+  currentBuff: 0
   EntityToAttack: {fileID: 0}
   attacks:
-  - {fileID: 11400000, guid: 025630a4956fac74da4985d9d134e6f9, type: 2}
   - {fileID: 11400000, guid: d86d8a8da359f334496d00bb8f362b79, type: 2}
-  - {fileID: 11400000, guid: 514e1c79f37c1ba4aa8e8f99e4b54b94, type: 2}
+  - {fileID: 11400000, guid: 0190d9973f6cf2f458cb739851d40d8b, type: 2}
+  - {fileID: 11400000, guid: 650e8ac0c428c8640a9f340c6312d912, type: 2}
+  - {fileID: 11400000, guid: 2cb2ecbd777b5d9428034cb0b4ae214d, type: 2}
+  - {fileID: 11400000, guid: 30a6e183a1e1e1446abe4670d8262b84, type: 2}
+  - {fileID: 11400000, guid: 5cb94bfaa252012468b402e6910d22c9, type: 2}
+  - {fileID: 11400000, guid: 5cb94bfaa252012468b402e6910d22c9, type: 2}
+  passiveActiveList:
+  - {fileID: 11400000, guid: 035c8daa92bc54f4dac5198d5559e4cb, type: 2}
   HealthPotions: []
   ManaPotions: []
-  statTexts: []
+  skillTexts: []
   turnText: {fileID: 0}
   attackDescriptionText: {fileID: 0}
   notEnoughManaText: {fileID: 0}
   notEnoughPotionsText: {fileID: 0}
   usedPotionText: {fileID: 0}
-  expBar: {fileID: 0}
-  playerStatButton: {fileID: 0}
-  playerStatMenu: {fileID: 0}
-  m_findTextGameObjects: 0
-  warrior: {fileID: 114458450758633312}
-  wizard: {fileID: 114441759367436360}
-  cleric: {fileID: 114906831645218688}
-  ninja: {fileID: 114624081900001476}
+  enemyTargets: {fileID: 0}
+  teamTargets: {fileID: 0}
+  enemyTarget: {fileID: 0}
+  teamTarget: {fileID: 0}
+  m_equipEntity: {fileID: 0}
+  warrior: {fileID: 114154293176566892}
+  wizard: {fileID: 114828858503107124}
+  cleric: {fileID: 114965574666688870}
+  ninja: {fileID: 114649299493122020}
+  MyClass: 0
   HT:
     Attacker: 
     Type: 
     AttackingGameObject: {fileID: 0}
     AttackTarget: {fileID: 0}
     chosenAttack: {fileID: 0}
+  PM: {fileID: 0}
+  passiveList: []
   m_hasChosenAction: 0
   m_chosenTarget: 0
---- !u!114 &114624081900001476
+--- !u!114 &114342263745504802
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1930792809475556}
+  m_GameObject: {fileID: 1846485825048292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bece2aa7a40e8ba499e68faf688c6f5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PM: {fileID: 0}
+  m_maxHealth: 0
+  m_strength: 0
+  m_magicPower: 0
+  m_defence: 0
+  m_defenceMGC: 0
+  m_speed: 0
+  m_maxMana: 0
+--- !u!114 &114649299493122020
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1525168381552708}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e7b9ee21a2a49e64cbdb84b5fe06a9d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  assignedScriptableObject: {fileID: 0}
   m_maxHealth: 0
   m_health: 0
   m_strength: 0
@@ -437,9 +401,10 @@ MonoBehaviour:
   m_afflicted: 0
   m_level: 0
   m_xpAward: 0
+  m_goldAward: 0
   m_EXP: 0
-  Class: Ninja
   m_attackedAlready: 0
+  m_canBeBuffed: 1
   m_entityNumber: 4
   m_requiredSpeedForTurn: 0
   myTurn: 0
@@ -457,46 +422,77 @@ MonoBehaviour:
   dmgDealt: 0
   currentState: 0
   currentAffliction: 0
+  currentBuff: 0
   EntityToAttack: {fileID: 0}
   attacks:
-  - {fileID: 11400000, guid: 025630a4956fac74da4985d9d134e6f9, type: 2}
   - {fileID: 11400000, guid: d86d8a8da359f334496d00bb8f362b79, type: 2}
-  - {fileID: 11400000, guid: 514e1c79f37c1ba4aa8e8f99e4b54b94, type: 2}
+  - {fileID: 11400000, guid: 0190d9973f6cf2f458cb739851d40d8b, type: 2}
+  - {fileID: 11400000, guid: fc1ef64ca266cf44cbbd3dec2f027873, type: 2}
+  - {fileID: 11400000, guid: ede9b6e28c7ef494583c7c8fe0c9a00f, type: 2}
+  - {fileID: 11400000, guid: dd88c9207b91c184ab99abf640f7092f, type: 2}
+  - {fileID: 11400000, guid: 2785d8f2fea70f1469bccf4752e01421, type: 2}
+  - {fileID: 11400000, guid: 2785d8f2fea70f1469bccf4752e01421, type: 2}
+  passiveActiveList:
+  - {fileID: 11400000, guid: 576f587f722dbb74fb1af0ec4aae678b, type: 2}
   HealthPotions: []
   ManaPotions: []
-  statTexts: []
+  skillTexts: []
   turnText: {fileID: 0}
   attackDescriptionText: {fileID: 0}
   notEnoughManaText: {fileID: 0}
   notEnoughPotionsText: {fileID: 0}
   usedPotionText: {fileID: 0}
-  expBar: {fileID: 0}
-  playerStatButton: {fileID: 0}
-  playerStatMenu: {fileID: 0}
-  m_findTextGameObjects: 0
-  warrior: {fileID: 114458450758633312}
-  wizard: {fileID: 114441759367436360}
-  cleric: {fileID: 114906831645218688}
-  ninja: {fileID: 114624081900001476}
+  enemyTargets: {fileID: 0}
+  teamTargets: {fileID: 0}
+  enemyTarget: {fileID: 0}
+  teamTarget: {fileID: 0}
+  m_equipEntity: {fileID: 0}
+  warrior: {fileID: 114154293176566892}
+  wizard: {fileID: 114828858503107124}
+  cleric: {fileID: 114965574666688870}
+  ninja: {fileID: 114649299493122020}
+  MyClass: 3
   HT:
     Attacker: 
     Type: 
     AttackingGameObject: {fileID: 0}
     AttackTarget: {fileID: 0}
     chosenAttack: {fileID: 0}
+  PM: {fileID: 0}
+  passiveList: []
   m_hasChosenAction: 0
   m_chosenTarget: 0
---- !u!114 &114906831645218688
+--- !u!114 &114689885257801702
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1888261674363040}
+  m_GameObject: {fileID: 1583244954638302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12c6eca73b8bbd34ba1031b4bf4ecfd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PM: {fileID: 0}
+  m_maxHealth: 0
+  m_strength: 0
+  m_magicPower: 0
+  m_defence: 0
+  m_defenceMGC: 0
+  m_speed: 0
+  m_maxMana: 0
+--- !u!114 &114828858503107124
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1846485825048292}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e7b9ee21a2a49e64cbdb84b5fe06a9d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  assignedScriptableObject: {fileID: 0}
   m_maxHealth: 0
   m_health: 0
   m_strength: 0
@@ -510,9 +506,133 @@ MonoBehaviour:
   m_afflicted: 0
   m_level: 0
   m_xpAward: 0
+  m_goldAward: 0
   m_EXP: 0
-  Class: Cleric
   m_attackedAlready: 0
+  m_canBeBuffed: 1
+  m_entityNumber: 3
+  m_requiredSpeedForTurn: 0
+  myTurn: 0
+  battleWon: 0
+  currentSpeed: 0
+  isAlive: 1
+  countedDead: 0
+  alreadyAfflicted: 0
+  afflictionTimes: 0
+  tempDMGReduct: 0
+  totalDMG: 0
+  chanceToHit: 0
+  attacking: 0
+  dmgRecieve: 0
+  dmgDealt: 0
+  currentState: 0
+  currentAffliction: 0
+  currentBuff: 0
+  EntityToAttack: {fileID: 0}
+  attacks:
+  - {fileID: 11400000, guid: d86d8a8da359f334496d00bb8f362b79, type: 2}
+  - {fileID: 11400000, guid: 0190d9973f6cf2f458cb739851d40d8b, type: 2}
+  - {fileID: 11400000, guid: 514e1c79f37c1ba4aa8e8f99e4b54b94, type: 2}
+  - {fileID: 11400000, guid: 7b4b374b9453f4b4aa11f701e492b583, type: 2}
+  - {fileID: 11400000, guid: 5271a29cd3242b64a8f84abaa4cbe353, type: 2}
+  - {fileID: 11400000, guid: 8148558417a3b1542a86f86d8e1445a4, type: 2}
+  - {fileID: 11400000, guid: 8148558417a3b1542a86f86d8e1445a4, type: 2}
+  passiveActiveList: []
+  HealthPotions: []
+  ManaPotions: []
+  skillTexts: []
+  turnText: {fileID: 0}
+  attackDescriptionText: {fileID: 0}
+  notEnoughManaText: {fileID: 0}
+  notEnoughPotionsText: {fileID: 0}
+  usedPotionText: {fileID: 0}
+  enemyTargets: {fileID: 0}
+  teamTargets: {fileID: 0}
+  enemyTarget: {fileID: 0}
+  teamTarget: {fileID: 0}
+  m_equipEntity: {fileID: 0}
+  warrior: {fileID: 114154293176566892}
+  wizard: {fileID: 114828858503107124}
+  cleric: {fileID: 114965574666688870}
+  ninja: {fileID: 114649299493122020}
+  MyClass: 2
+  HT:
+    Attacker: 
+    Type: 
+    AttackingGameObject: {fileID: 0}
+    AttackTarget: {fileID: 0}
+    chosenAttack: {fileID: 0}
+  PM: {fileID: 0}
+  passiveList: []
+  m_hasChosenAction: 0
+  m_chosenTarget: 0
+--- !u!114 &114894803575059366
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1841430630641846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02aab52e15e4f53458dd3835fce7015b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PM: {fileID: 0}
+  m_maxHealth: 0
+  m_strength: 0
+  m_magicPower: 0
+  m_defence: 0
+  m_defenceMGC: 0
+  m_speed: 0
+  m_maxMana: 0
+--- !u!114 &114910512130800688
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1525168381552708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d698bdf9719ecb439321e2d33d4caa6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PM: {fileID: 0}
+  m_maxHealth: 0
+  m_strength: 0
+  m_magicPower: 0
+  m_defence: 0
+  m_defenceMGC: 0
+  m_speed: 0
+  m_maxMana: 0
+--- !u!114 &114965574666688870
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1841430630641846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7b9ee21a2a49e64cbdb84b5fe06a9d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  assignedScriptableObject: {fileID: 0}
+  m_maxHealth: 0
+  m_health: 0
+  m_strength: 0
+  m_magicPower: 0
+  m_defence: 0
+  m_defenceMGC: 0
+  m_speed: 0
+  m_mana: 0
+  m_maxMana: 0
+  m_stunned: 0
+  m_afflicted: 0
+  m_level: 0
+  m_xpAward: 0
+  m_goldAward: 0
+  m_EXP: 0
+  m_attackedAlready: 0
+  m_canBeBuffed: 1
   m_entityNumber: 1
   m_requiredSpeedForTurn: 0
   myTurn: 0
@@ -530,41 +650,97 @@ MonoBehaviour:
   dmgDealt: 0
   currentState: 0
   currentAffliction: 0
+  currentBuff: 0
   EntityToAttack: {fileID: 0}
   attacks:
-  - {fileID: 11400000, guid: 025630a4956fac74da4985d9d134e6f9, type: 2}
   - {fileID: 11400000, guid: d86d8a8da359f334496d00bb8f362b79, type: 2}
-  - {fileID: 11400000, guid: 514e1c79f37c1ba4aa8e8f99e4b54b94, type: 2}
+  - {fileID: 11400000, guid: 0190d9973f6cf2f458cb739851d40d8b, type: 2}
+  - {fileID: 11400000, guid: b41045100a947924cbd1e9133c94b66e, type: 2}
+  - {fileID: 11400000, guid: 7d66ae85b45b185408249521a72c4de6, type: 2}
+  - {fileID: 11400000, guid: 4dafe16976e9e8f4bac85f3e807a9c22, type: 2}
+  - {fileID: 11400000, guid: 9d24cd505889bc4469ea81fbdfce136f, type: 2}
+  - {fileID: 11400000, guid: d755fab06be36224f901d317e6cc6e65, type: 2}
+  passiveActiveList: []
   HealthPotions: []
   ManaPotions: []
-  statTexts: []
+  skillTexts: []
   turnText: {fileID: 0}
   attackDescriptionText: {fileID: 0}
   notEnoughManaText: {fileID: 0}
   notEnoughPotionsText: {fileID: 0}
   usedPotionText: {fileID: 0}
-  expBar: {fileID: 0}
-  playerStatButton: {fileID: 0}
-  playerStatMenu: {fileID: 0}
-  m_findTextGameObjects: 0
-  warrior: {fileID: 114458450758633312}
-  wizard: {fileID: 114441759367436360}
-  cleric: {fileID: 114906831645218688}
-  ninja: {fileID: 114624081900001476}
+  enemyTargets: {fileID: 0}
+  teamTargets: {fileID: 0}
+  enemyTarget: {fileID: 0}
+  teamTarget: {fileID: 0}
+  m_equipEntity: {fileID: 0}
+  warrior: {fileID: 114154293176566892}
+  wizard: {fileID: 114828858503107124}
+  cleric: {fileID: 114965574666688870}
+  ninja: {fileID: 114649299493122020}
+  MyClass: 1
   HT:
     Attacker: 
     Type: 
     AttackingGameObject: {fileID: 0}
     AttackTarget: {fileID: 0}
     chosenAttack: {fileID: 0}
+  PM: {fileID: 0}
+  passiveList:
+  - {fileID: 11400000, guid: 67500c36ef7463546a35a6ead711aa30, type: 2}
+  - {fileID: 11400000, guid: 49280a6720e4ab34d9bbd617acc312d7, type: 2}
   m_hasChosenAction: 0
   m_chosenTarget: 0
---- !u!212 &212209843955889348
+--- !u!212 &212823421424148036
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1930792809475556}
+  m_GameObject: {fileID: 1846485825048292}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300012, guid: 5b3567110517a8645a4327fe47f69e01, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+--- !u!212 &212893589816573234
+SpriteRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1525168381552708}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -603,56 +779,12 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
---- !u!212 &212475610719061680
+--- !u!212 &212902540767231180
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1083710151830532}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300006, guid: 5b3567110517a8645a4327fe47f69e01, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
---- !u!212 &212828842481783856
-SpriteRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1888261674363040}
+  m_GameObject: {fileID: 1841430630641846}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -691,12 +823,12 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
---- !u!212 &212900737210944542
+--- !u!212 &212919407112859924
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1322128086926268}
+  m_GameObject: {fileID: 1583244954638302}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -725,7 +857,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300012, guid: 5b3567110517a8645a4327fe47f69e01, type: 3}
+  m_Sprite: {fileID: 21300006, guid: 5b3567110517a8645a4327fe47f69e01, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

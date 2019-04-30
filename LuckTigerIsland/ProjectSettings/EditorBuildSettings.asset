@@ -29,9 +29,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Battles/CaveBattle.unity
     guid: ca49559f04c604d4c8ebf5fff675b311
-  - enabled: 1
-    path: Assets/Scenes/Towns/Elftown01.unity
-    guid: 4c58be41ac19edc4f806e8c5b8c7f110
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Towns/Forest01.unity
     guid: 35d5ec9f76b6b69498299802d3473799
