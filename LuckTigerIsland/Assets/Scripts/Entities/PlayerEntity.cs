@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using TMPro;
 [System.Serializable]
 public class PlayerEntity : Entity
@@ -12,12 +13,13 @@ public class PlayerEntity : Entity
     public TextMeshProUGUI notEnoughManaText;
     public TextMeshProUGUI notEnoughPotionsText;
     public TextMeshProUGUI usedPotionText;
+    public TextMeshProUGUI skillDescription;
     public GameObject enemyTargets;
     public GameObject teamTargets;
     public Button enemyTarget;
     public Button teamTarget;
     public EquipEntity m_equipEntity;
-
+    EventSystem m_eventSystem;
 
     [SerializeField]
     PlayerEntity warrior;
@@ -125,7 +127,6 @@ public class PlayerEntity : Entity
         skillTexts[4] = GameObject.Find("Action_Five").GetComponent<TextMeshProUGUI>();
         skillTexts[5] = GameObject.Find("Action_Six").GetComponent<TextMeshProUGUI>();
         skillTexts[6] = GameObject.Find("Action_Seven").GetComponent<TextMeshProUGUI>();
-
         BC = GameObject.Find("BattleControl").GetComponent<BattleControl>();
 
         startPosition = transform.position; //setting the position based on where the object is on start up
@@ -138,7 +139,7 @@ public class PlayerEntity : Entity
         notEnoughManaText = GameObject.Find("not_Enough_Mana_Text").GetComponent<TextMeshProUGUI>();
         notEnoughPotionsText = GameObject.Find("not_Enough_Potions_Text").GetComponent<TextMeshProUGUI>();
         usedPotionText = GameObject.Find("used_Potion_Text").GetComponent<TextMeshProUGUI>();
-
+        m_eventSystem = EventSystem.current;
         currentState = TurnState.eProssesing;
 
         foreach (var passive in passiveList)
@@ -293,8 +294,6 @@ public class PlayerEntity : Entity
                 }
                 break;
         }
-
-
     }
 
     void UpdateSpeed()
@@ -323,7 +322,42 @@ public class PlayerEntity : Entity
       skillTexts[4].text = "5: " + attacks[4].attackName;
       skillTexts[5].text = "6: " + attacks[5].attackName;
       skillTexts[6].text = "7: " + attacks[6].attackName;
-
+        if (m_eventSystem.currentSelectedGameObject == GameObject.Find("Action_One"))
+        {
+            skillDescription.text = "Mana Cost: " + attacks[0].attackCost + "\n" + "Damage: " +attacks[0].attackDamage + "\n" + "Description: " + attacks[0].attackDescription;
+        }
+        if (m_eventSystem.currentSelectedGameObject == GameObject.Find("Action_Two"))
+        {
+            skillDescription.text = "Mana Cost: " + attacks[1].attackCost + "\n" + "Damage: " + attacks[1].attackDamage + "\n" + "Description: " + attacks[1].attackDescription;
+        }
+        if (m_eventSystem.currentSelectedGameObject == GameObject.Find("Action_Three"))
+        {
+            skillDescription.text = "Mana Cost: " + attacks[2].attackCost + "\n" + "Damage: " + attacks[2].attackDamage + "\n" + "Description: " + attacks[2].attackDescription;
+        }
+        if (m_eventSystem.currentSelectedGameObject == GameObject.Find("Action_Four"))
+        {
+            skillDescription.text = "Mana Cost: " + attacks[3].attackCost + "\n" + "Damage: " + attacks[3].attackDamage + "\n" + "Description: " + attacks[3].attackDescription;
+        }
+        if (m_eventSystem.currentSelectedGameObject == GameObject.Find("Action_Five"))
+        {
+            skillDescription.text = "Mana Cost: " + attacks[4].attackCost + "\n" + "Damage: " + attacks[4].attackDamage + "\n" + "Description: " + attacks[4].attackDescription;
+        }
+        if (m_eventSystem.currentSelectedGameObject == GameObject.Find("Action_Six"))
+        {
+            skillDescription.text = "Mana Cost: " + attacks[5].attackCost + "\n" + "Damage: " + attacks[5].attackDamage + "\n" + "Description: " + attacks[5].attackDescription;
+        }
+        if (m_eventSystem.currentSelectedGameObject == GameObject.Find("Action_Seven"))
+        {
+            skillDescription.text = "Mana Cost: " + attacks[6].attackCost + "\n" + "Damage: " + attacks[0].attackDamage + "\n" + "Description: " + attacks[6].attackDescription;
+        }
+        if (m_eventSystem.currentSelectedGameObject == GameObject.Find("Action_Eight"))
+        {
+            skillDescription.text = "Restores: " + Health_Potion.healthGiven + " Health";
+        }
+        if (m_eventSystem.currentSelectedGameObject == GameObject.Find("Action_Nine"))
+        {
+            skillDescription.text = "Restores: " + Mana_Potion.manaGiven + " Mana";
+        }
 
         Debug.Log(this.name + ": Choose Action");
         if (Input.GetKeyDown("1") || m_BattleButton.GetActionTargetNumber() == 1)

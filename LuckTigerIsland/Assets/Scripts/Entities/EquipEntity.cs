@@ -38,7 +38,6 @@ public class EquipEntity : MonoBehaviour
 
     void Start()
     {
-
         m_partyMemberName = GameObject.Find("PartyMemberName").GetComponent<TextMeshProUGUI>();
         m_partyMemberName.text = "Luck";
         m_itemFadeColour.a = 0.0f;
@@ -177,7 +176,7 @@ public class EquipEntity : MonoBehaviour
         {
             if (m_equipImages[1].GetComponent<Image>().sprite.name == "equipment_preview_10")
             {
-                m_playerManager.cleric.SetStrength(_object.attack);
+                m_playerManager.cleric.AddStrength(_object.attack);
                 m_equipImages[1].GetComponent<Image>().sprite = _object.Image;
                 m_justEquippedText.text = "Just equipped: " + _object.objectName;
                 StartCoroutine(HideText());
@@ -187,7 +186,7 @@ public class EquipEntity : MonoBehaviour
         {
             if (m_equipImages[3].GetComponent<Image>().sprite.name == "equipment_preview_10")
             {
-                m_playerManager.warrior.SetStrength(_object.attack);
+                m_playerManager.warrior.AddStrength(_object.attack);
                 m_equipImages[3].GetComponent<Image>().sprite = _object.Image;
                 m_justEquippedText.text = "Just equipped: " + _object.objectName;
                 StartCoroutine(HideText());
@@ -197,7 +196,7 @@ public class EquipEntity : MonoBehaviour
         {
             if (m_equipImages[5].GetComponent<Image>().sprite.name == "equipment_preview_10")
             {
-                m_playerManager.wizard.SetStrength(_object.attack);
+                m_playerManager.wizard.AddStrength(_object.attack);
                 m_equipImages[5].GetComponent<Image>().sprite = _object.Image;
                 m_justEquippedText.text = "Just equipped: " + _object.objectName;
                 StartCoroutine(HideText());
@@ -207,7 +206,7 @@ public class EquipEntity : MonoBehaviour
         {
             if (m_equipImages[7].GetComponent<Image>().sprite.name == "equipment_preview_10")
             {      
-                m_playerManager.ninja.SetStrength(_object.attack);
+                m_playerManager.ninja.AddStrength(_object.attack);
                 m_equipImages[7].GetComponent<Image>().sprite = _object.Image;
                 m_justEquippedText.text = "Just equipped: " + _object.objectName;
                 StartCoroutine(HideText());
@@ -226,7 +225,7 @@ public class EquipEntity : MonoBehaviour
                 m_justEquippedText.text = "Just equipped a : " + _object.objectName;
                 StartCoroutine(HideText());
                 m_equipImages[0].GetComponent<Image>().sprite = _object.Image;
-                m_playerManager.cleric.SetDefence(_object.defence);
+                m_playerManager.cleric.AddDefence(_object.defence);
 
             }
         }
@@ -236,7 +235,7 @@ public class EquipEntity : MonoBehaviour
             {
 
                 m_equipImages[2].GetComponent<Image>().sprite = _object.Image;
-                m_playerManager.warrior.SetDefence(_object.defence);
+                m_playerManager.warrior.AddDefence(_object.defence);
                 m_justEquippedText.text = "Just equipped a : " + _object.objectName;
                 StartCoroutine(HideText());
             }
@@ -246,7 +245,7 @@ public class EquipEntity : MonoBehaviour
             if (m_equipImages[4].GetComponent<Image>().sprite.name == "equipment_preview_1")
             {
                 m_equipImages[4].GetComponent<Image>().sprite = _object.Image;
-                m_playerManager.wizard.SetDefence(_object.defence);
+                m_playerManager.wizard.AddDefence(_object.defence);
                 m_justEquippedText.text = "Just equipped a : " + _object.objectName;
                 StartCoroutine(HideText());
             }
@@ -256,7 +255,7 @@ public class EquipEntity : MonoBehaviour
             if (m_equipImages[6].GetComponent<Image>().sprite.name == "equipment_preview_1")
             {
                 m_equipImages[6].GetComponent<Image>().sprite = _object.Image;
-                m_playerManager.ninja.SetDefence(_object.defence);
+                m_playerManager.ninja.AddDefence(_object.defence);
                 m_justEquippedText.text = "Just equipped a : " + _object.objectName;
                 StartCoroutine(HideText());
             }
