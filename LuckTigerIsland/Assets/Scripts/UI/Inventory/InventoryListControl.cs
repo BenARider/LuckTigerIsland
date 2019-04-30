@@ -19,6 +19,7 @@ public class InventoryListControl : MonoBehaviour {
     private TextMeshProUGUI m_amount;
     [SerializeField]
     private TextMeshProUGUI m_price;
+
     int index = -1;
 
     private void Start()
@@ -89,9 +90,12 @@ public class InventoryListControl : MonoBehaviour {
             }
             else
             {
+               
                 GameObject.Destroy(child.gameObject);
             }
+            index = -1;
         }
+       
     }
     public void ButtonClicked(Sprite _sprite, string _name, string _description, int _price, int _amount)
     {

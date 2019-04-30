@@ -437,7 +437,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1ad11708009c30468e53804204b777a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  assignedScriptableObject: {fileID: 0}
   m_maxHealth: 0
   m_health: 0
   m_strength: 0
@@ -482,7 +481,7 @@ MonoBehaviour:
   HealthPotions: []
   ManaPotions: []
   AgressionState: 1
-  MyClass: 0
+  MyClass: 2
   aggress: 0
   intel: 0
   XP: 0

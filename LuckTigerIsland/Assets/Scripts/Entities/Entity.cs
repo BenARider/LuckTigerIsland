@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Entity : MonoBehaviour {
 
-	[SerializeField]
-	protected ScriptableObject assignedScriptableObject;
 	//General stats used to initialise entities
 	[SerializeField]
 	protected int m_maxHealth;
@@ -153,7 +151,7 @@ public class Entity : MonoBehaviour {
                 Debug.Log("on fire");
                 break;
             case Affliction.eFreeze:
-				m_stunned = true;
+                m_stunned = true;
                 m_health -= 2;
                 break;
             case Affliction.eInfected:
