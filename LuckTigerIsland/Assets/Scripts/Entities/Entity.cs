@@ -148,7 +148,6 @@ public class Entity : MonoBehaviour {
                 yield break;
             case Affliction.eOnFire:
                 m_health -= 5; //Do some damge calc against resistances and weaknesses
-                Debug.Log("on fire");
                 break;
             case Affliction.eFreeze:
                 m_stunned = true;
@@ -195,7 +194,7 @@ public class Entity : MonoBehaviour {
             case BaseAttack.AttackAffliction.eStun:
                 currentAffliction = Affliction.eStunned;
                 break;
-            case BaseAttack.AttackAffliction.eNone:
+            case BaseAttack.AttackAffliction.ePhysical:
                 break;
         }
     }
@@ -288,7 +287,7 @@ public class Entity : MonoBehaviour {
                 break;
 
         }
-        if(AttackBuff.attackAffliction != BaseAttack.AttackAffliction.eNone && m_canBeBuffed == true)
+        if(AttackBuff.attackAffliction != BaseAttack.AttackAffliction.ePhysical && m_canBeBuffed == true)
         {
             m_canBeBuffed = false;
             StartCoroutine(ApplyBuff(AttackBuff.skillDuration, AttackBuff.skillMultiplier));
@@ -412,15 +411,29 @@ public class Entity : MonoBehaviour {
     }
     public void TakeDamage(int damageAmount, BaseAttack attack)
     {
-        m_health -= damageAmount;
-        if (currentAffliction == Affliction.eNone && attack.attackType != BaseAttack.AttackType.eBuff && alreadyAfflicted == false)
+        if (attack.attackType == BaseAttack.AttackType.eMelee)
         {
-            alreadyAfflicted = true;
-            addAffliction(attack);
-            StartCoroutine(checkAffliction());
-            StartCoroutine(resetAffliction(attack.skillDuration));
+            int damagecalc = m_defence - damageAmount;
+            if (damagecalc < 10)
+                damagecalc = 10;
+            m_health -= damagecalc;
+        } else
+        {
+            int magicCalc = m_defenceMGC - damageAmount;
+            if (magicCalc < 10)
+                magicCalc = 10;
+            m_health -= magicCalc;
         }
-
+        if (Random.Range(0, 100) < attack.afflictionChance)
+        {
+            if (currentAffliction == Affliction.eNone && attack.attackType != BaseAttack.AttackType.eBuff && alreadyAfflicted == false)
+            {
+                alreadyAfflicted = true;
+                addAffliction(attack);
+                StartCoroutine(checkAffliction());
+                StartCoroutine(resetAffliction(attack.skillDuration));
+            }
+        }
         if (GetHealth() <= 0)
         {
             //PlayerManager.Instance.AddXP(m_xpAward);

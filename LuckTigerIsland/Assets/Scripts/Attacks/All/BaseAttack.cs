@@ -12,12 +12,12 @@ public class BaseAttack : ScriptableObject
         eInfect,
         eStun,
         ePoison,
-        eNone,
+        ePhysical,
         eBlock,
         eMagic,
         eStrength,
         eAttack,
-		eDeffence,
+		eDefence,
         eHeal
     }
 
@@ -38,6 +38,7 @@ public class BaseAttack : ScriptableObject
     public int attackCost; //mp cost for abilities. Feed into ui
     public Sprite attackImage;
     public AttackAffliction attackAffliction; //declares what affliction should be applied on contact
+    public int afflictionChance;
 
     /* 
     
