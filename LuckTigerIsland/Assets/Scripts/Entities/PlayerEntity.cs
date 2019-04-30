@@ -324,31 +324,31 @@ public class PlayerEntity : Entity
       skillTexts[6].text = "7: " + attacks[6].attackName;
         if (m_eventSystem.currentSelectedGameObject == GameObject.Find("Action_One"))
         {
-            skillDescription.text = "Mana Cost: " + attacks[0].attackCost + "\n" + "Damage: " +attacks[0].attackDamage + "\n" + "Description: " + attacks[0].attackDescription;
+            skillDescription.text = "Mana Cost: " + attacks[0].attackCost + " Type: " + attacks[0].attackType + "\n" + attacks[0].attackAffliction + " Damage: " +attacks[0].attackDamage + "\n" + "Description: " + attacks[0].attackDescription;
         }
         if (m_eventSystem.currentSelectedGameObject == GameObject.Find("Action_Two"))
         {
-            skillDescription.text = "Mana Cost: " + attacks[1].attackCost + "\n" + "Damage: " + attacks[1].attackDamage + "\n" + "Description: " + attacks[1].attackDescription;
+            skillDescription.text = "Mana Cost: " + attacks[1].attackCost + " Type: " + attacks[0].attackType + "\n" + attacks[0].attackAffliction + " Damage: " + attacks[1].attackDamage + "\n" + "Description: " + attacks[1].attackDescription;
         }
         if (m_eventSystem.currentSelectedGameObject == GameObject.Find("Action_Three"))
         {
-            skillDescription.text = "Mana Cost: " + attacks[2].attackCost + "\n" + "Damage: " + attacks[2].attackDamage + "\n" + "Description: " + attacks[2].attackDescription;
+            skillDescription.text = "Mana Cost: " + attacks[2].attackCost + " Type: " + attacks[0].attackType + "\n" + attacks[0].attackAffliction +" Damage: " + attacks[2].attackDamage + "\n" + "Description: " + attacks[2].attackDescription;
         }
         if (m_eventSystem.currentSelectedGameObject == GameObject.Find("Action_Four"))
         {
-            skillDescription.text = "Mana Cost: " + attacks[3].attackCost + "\n" + "Damage: " + attacks[3].attackDamage + "\n" + "Description: " + attacks[3].attackDescription;
+            skillDescription.text = "Mana Cost: " + attacks[3].attackCost + " Type: " + attacks[0].attackType + "\n" + attacks[0].attackAffliction + " Damage: " + attacks[3].attackDamage + "\n" + "Description: " + attacks[3].attackDescription;
         }
         if (m_eventSystem.currentSelectedGameObject == GameObject.Find("Action_Five"))
         {
-            skillDescription.text = "Mana Cost: " + attacks[4].attackCost + "\n" + "Damage: " + attacks[4].attackDamage + "\n" + "Description: " + attacks[4].attackDescription;
+            skillDescription.text = "Mana Cost: " + attacks[4].attackCost + " Type: " + attacks[0].attackType + "\n" + attacks[0].attackAffliction +" Damage: " + attacks[4].attackDamage + "\n" + "Description: " + attacks[4].attackDescription;
         }
         if (m_eventSystem.currentSelectedGameObject == GameObject.Find("Action_Six"))
         {
-            skillDescription.text = "Mana Cost: " + attacks[5].attackCost + "\n" + "Damage: " + attacks[5].attackDamage + "\n" + "Description: " + attacks[5].attackDescription;
+            skillDescription.text = "Mana Cost: " + attacks[5].attackCost + " Type: " + attacks[0].attackType + "\n" + attacks[0].attackAffliction + " Damage: " + attacks[5].attackDamage + "\n" + "Description: " + attacks[5].attackDescription;
         }
         if (m_eventSystem.currentSelectedGameObject == GameObject.Find("Action_Seven"))
         {
-            skillDescription.text = "Mana Cost: " + attacks[6].attackCost + "\n" + "Damage: " + attacks[0].attackDamage + "\n" + "Description: " + attacks[6].attackDescription;
+            skillDescription.text = "Mana Cost: " + attacks[6].attackCost + " Type: " + attacks[0].attackType + "\n" + attacks[0].attackAffliction +" Damage: " + attacks[0].attackDamage + "\n" + "Description: " + attacks[6].attackDescription;
         }
         if (m_eventSystem.currentSelectedGameObject == GameObject.Find("Action_Eight"))
         {
