@@ -3394,6 +3394,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  stringname: 
+  m_requiredEntityNumber: 0
+  isEnemySlider: 0
+  sliderTransform: {fileID: 0}
   m_healthSlider: {fileID: 114003157483554542}
   m_speedSlider: {fileID: 114481524905078000}
   m_manaSlider: {fileID: 114625484582062740}
@@ -3532,6 +3536,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  stringname: 
+  m_requiredEntityNumber: 0
+  isEnemySlider: 0
+  sliderTransform: {fileID: 0}
   m_healthSlider: {fileID: 114611392581248194}
   m_speedSlider: {fileID: 114719594385291218}
   m_manaSlider: {fileID: 114219695764438898}
@@ -3617,6 +3625,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  stringname: 
+  m_requiredEntityNumber: 0
+  isEnemySlider: 0
+  sliderTransform: {fileID: 0}
   m_healthSlider: {fileID: 114456920428395244}
   m_speedSlider: {fileID: 114110299848391114}
   m_manaSlider: {fileID: 114459270904974048}
@@ -3745,6 +3757,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  stringname: 
+  m_requiredEntityNumber: 0
+  isEnemySlider: 0
+  sliderTransform: {fileID: 0}
   m_healthSlider: {fileID: 114401073660406718}
   m_speedSlider: {fileID: 114649691393967660}
   m_manaSlider: {fileID: 114031484107379282}
@@ -4119,6 +4135,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  stringname: 
+  m_requiredEntityNumber: 0
+  isEnemySlider: 0
+  sliderTransform: {fileID: 0}
   m_healthSlider: {fileID: 114431813540491718}
   m_speedSlider: {fileID: 114250578600529766}
   m_manaSlider: {fileID: 114406469455756370}
@@ -4262,6 +4282,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  stringname: 
+  m_requiredEntityNumber: 0
+  isEnemySlider: 0
+  sliderTransform: {fileID: 0}
   m_healthSlider: {fileID: 114779689556830512}
   m_speedSlider: {fileID: 114615656981370984}
   m_manaSlider: {fileID: 114579302792909498}
@@ -5972,6 +5996,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  stringname: 
+  m_requiredEntityNumber: 0
+  isEnemySlider: 0
+  sliderTransform: {fileID: 0}
   m_healthSlider: {fileID: 114996170914245030}
   m_speedSlider: {fileID: 114768987940348086}
   m_manaSlider: {fileID: 114646846907087042}
@@ -7021,6 +7049,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  stringname: 
+  m_requiredEntityNumber: 0
+  isEnemySlider: 0
+  sliderTransform: {fileID: 0}
   m_healthSlider: {fileID: 114337736070686684}
   m_speedSlider: {fileID: 114683601605513540}
   m_manaSlider: {fileID: 114105649750289382}

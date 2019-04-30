@@ -1120,6 +1120,8 @@ MonoBehaviour:
   m_expReward: 150
   m_goldReward: 75
   m_itemReward: {fileID: 0}
+  isActive: 0
+  hasBeenAccepted: 0
   m_allObjectives: []
   m_killObjectives: []
   m_locationObjectives: []
@@ -1191,9 +1193,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_partyMembers: []
+  m_playerManager: {fileID: 0}
   m_currentWeapon: {fileID: 0}
   m_currentArmour: {fileID: 0}
   m_equipImages: []
+  m_baseSlotImages: []
   m_justEquippedText: {fileID: 0}
 --- !u!114 &114409322239591768
 MonoBehaviour:
@@ -1245,8 +1249,12 @@ MonoBehaviour:
   backgroundTextArray:
   - {fileID: 1453249050284420}
   - {fileID: 1896703443657732}
-  m_level: 1
-  m_xp: 0
+  warrior: {fileID: 0}
+  cleric: {fileID: 0}
+  wizard: {fileID: 0}
+  ninja: {fileID: 0}
+  m_partyLevel: 20
+  m_xperience: 0
 --- !u!114 &114619009007972608
 MonoBehaviour:
   m_ObjectHideFlags: 1
