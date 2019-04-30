@@ -13,14 +13,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   go: {fileID: 0}
   enemyType: 3
-  Sprite1: {fileID: 0}
   m_maxHealth: 50
   m_health: 0
   m_strength: 20
   m_magicPower: 20
   m_defence: 15
   m_defenceMGC: 15
-  m_speed: 60
+  m_speed: 50
   m_mana: 0
   m_maxMana: 100
   m_stunned: 0
@@ -54,7 +53,7 @@ MonoBehaviour:
   currentAffliction: 0
   EntityToAttack: {fileID: 0}
   attacks:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 9ca88da600d46a44fad797a5ddd876cb, type: 2}
   - {fileID: 11400000, guid: 979b5f6c5fe4fac40a3e65a0234fe0e4, type: 2}
   - {fileID: 11400000, guid: 832d4a7ed8792ae409d0af83f94ab38d, type: 2}
   HealthPotions: []

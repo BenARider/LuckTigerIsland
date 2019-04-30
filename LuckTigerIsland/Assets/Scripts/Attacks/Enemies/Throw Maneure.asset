@@ -13,10 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: Throw Maneure
   attackDescription: Throws some poop at the enemy
-  attackType: 1
+  attackType: Magic
   attackDamage: 15
   skillMultiplier: 1
-  skillDuration: 2
+  skillDuration: 0
   attackCost: 10
   attackImage: {fileID: 0}
-  attackAffliction: 4
+  attackAffliction: 

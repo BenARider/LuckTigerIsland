@@ -13,10 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: Whistle
   attackDescription: Buffs Defence
-  attackType: 2
+  attackType: Buff
   attackDamage: 0
   skillMultiplier: 2
   skillDuration: 10
   attackCost: 20
   attackImage: {fileID: 0}
-  attackAffliction: 0
+  attackAffliction: Defence

@@ -13,10 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: Heal
   attackDescription: A powerful single target heal
-  attackType: 2
+  attackType: Buff
   attackDamage: 40
   skillMultiplier: 2
   skillDuration: 0
   attackCost: 40
   attackImage: {fileID: 0}
-  attackAffliction: 10
+  attackAffliction: Heal

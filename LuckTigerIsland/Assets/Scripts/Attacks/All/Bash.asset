@@ -13,10 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: Bash
   attackDescription: A bash
-  attackType: 0
+  attackType: Melee
   attackDamage: 8
   skillMultiplier: 1
-  skillDuration: 0
-  attackCost: 0
+  skillDuration: 3
+  attackCost: 12
   attackImage: {fileID: 0}
-  attackAffliction: 5
+  attackAffliction: Stun

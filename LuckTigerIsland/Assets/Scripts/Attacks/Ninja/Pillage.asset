@@ -13,10 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: Pillage
   attackDescription: High power attack witha  chance to steal an item
-  attackType: 0
+  attackType: Melee
   attackDamage: 20
   skillMultiplier: 2
   skillDuration: 0
   attackCost: 35
   attackImage: {fileID: 0}
-  attackAffliction: 5
+  attackAffliction: Steal

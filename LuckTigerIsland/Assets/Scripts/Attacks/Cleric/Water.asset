@@ -13,10 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: Water
   attackDescription: A blast of water
-  attackType: 1
+  attackType: Magic
   attackDamage: 25
   skillMultiplier: 1
   skillDuration: 0
   attackCost: 10
   attackImage: {fileID: 0}
-  attackAffliction: 5
+  attackAffliction: 

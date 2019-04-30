@@ -13,10 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: Howl
   attackDescription: Attack buff to an ally
-  attackType: 2
+  attackType: Buff
   attackDamage: 0
   skillMultiplier: 2
   skillDuration: 15
   attackCost: 0
   attackImage: {fileID: 0}
-  attackAffliction: 9
+  attackAffliction: Attack

@@ -13,10 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: Fireball
   attackDescription: A fireball with a chance to set the enemy on fire
-  attackType: 1
+  attackType: Magic
   attackDamage: 15
   skillMultiplier: 1
   skillDuration: 5
   attackCost: 5
   attackImage: {fileID: 0}
-  attackAffliction: 0
+  attackAffliction: Fire

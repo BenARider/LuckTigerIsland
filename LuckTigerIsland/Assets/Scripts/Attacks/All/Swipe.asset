@@ -13,10 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: Swipe
   attackDescription: a wide reaching swipe
-  attackType: 3
+  attackType: PartyWide
   attackDamage: 25
   skillMultiplier: 1
   skillDuration: 0
   attackCost: 0
   attackImage: {fileID: 0}
-  attackAffliction: 5
+  attackAffliction: 

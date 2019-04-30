@@ -13,10 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: Earth
   attackDescription: A powerful strike infused with earth
-  attackType: 0
+  attackType: Magic
   attackDamage: 20
   skillMultiplier: 1
   skillDuration: 0
   attackCost: 15
   attackImage: {fileID: 0}
-  attackAffliction: 5
+  attackAffliction: 

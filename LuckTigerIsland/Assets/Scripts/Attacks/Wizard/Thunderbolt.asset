@@ -13,10 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: Thunderbolt
   attackDescription: Smite an enemy with this powerful but costly spell
-  attackType: 1
+  attackType: Magic
   attackDamage: 30
   skillMultiplier: 2
   skillDuration: 0
   attackCost: 35
   attackImage: {fileID: 0}
-  attackAffliction: 5
+  attackAffliction: 

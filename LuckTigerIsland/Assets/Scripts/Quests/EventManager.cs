@@ -34,8 +34,7 @@ public enum EEnemies
 	Spirit,
 	Warlock,
 	ChickenBoss,
-    TigerBoss, //SpriteSheet 734/735. TinytinyHeroes armies
-	PorkBoss,
+    SkeletonBoss, //SpriteSheet 734/735. TinytinyHeroes armies
     MinotaurSkeleton  //838
 }
 

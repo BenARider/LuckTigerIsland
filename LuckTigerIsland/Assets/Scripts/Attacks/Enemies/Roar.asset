@@ -13,10 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: Roar
   attackDescription: Can stun enemy
-  attackType: 1
+  attackType: Magic
   attackDamage: 15
   skillMultiplier: 1
   skillDuration: 5
   attackCost: 20
   attackImage: {fileID: 0}
-  attackAffliction: 3
+  attackAffliction: Stun

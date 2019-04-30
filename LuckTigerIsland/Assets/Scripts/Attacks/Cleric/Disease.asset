@@ -13,10 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: Disease
   attackDescription: Inflicts a powerful disease on the enemy
-  attackType: 1
+  attackType: Magic
   attackDamage: 0
   skillMultiplier: 2
   skillDuration: 20
   attackCost: 25
   attackImage: {fileID: 0}
-  attackAffliction: 2
+  attackAffliction: Infect

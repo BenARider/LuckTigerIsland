@@ -13,7 +13,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   go: {fileID: 0}
   enemyType: 5
-  Sprite1: {fileID: 0}
   m_maxHealth: 100
   m_health: 0
   m_strength: 35
@@ -25,7 +24,7 @@ MonoBehaviour:
   m_maxMana: 100
   m_stunned: 0
   m_afflicted: 0
-  m_level: 3
+  m_level: 0
   m_xpAward: 50
   m_EXP: 0
   Class: 

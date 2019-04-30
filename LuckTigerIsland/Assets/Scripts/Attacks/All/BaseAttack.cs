@@ -17,7 +17,6 @@ public class BaseAttack : ScriptableObject
         eMagic,
         eStrength,
         eAttack,
-		eDeffence,
         eHeal
     }
 
@@ -25,8 +24,7 @@ public class BaseAttack : ScriptableObject
     {
         eMelee,
         eMagic,
-        eBuff,
-        ePartyWide
+        eBuff
     }
 
     public string attackName; //feed into ui

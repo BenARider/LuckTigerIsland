@@ -13,10 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: Invisibility
   attackDescription: Shroud yourself from each enemy until your next turn.
-  attackType: 2
+  attackType: Buff
   attackDamage: 0
   skillMultiplier: 1
   skillDuration: 0
   attackCost: 0
   attackImage: {fileID: 0}
-  attackAffliction: 5
+  attackAffliction: Invisibility

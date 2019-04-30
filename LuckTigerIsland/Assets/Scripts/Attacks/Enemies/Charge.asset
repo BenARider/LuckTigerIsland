@@ -13,10 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: Charge
   attackDescription: Powerful physical attack
-  attackType: 0
+  attackType: Melee
   attackDamage: 50
   skillMultiplier: 1
   skillDuration: 0
   attackCost: 25
   attackImage: {fileID: 0}
-  attackAffliction: 5
+  attackAffliction: 
