@@ -119,6 +119,7 @@ public class EventManager : LTI.Singleton<EventManager>
 
     public void ItemToInventory(InventoryObject _object, int _amount)
     {
+        
         //In all active quests
         foreach (Quest _q in m_questManager.GetQuests())
         {
@@ -131,9 +132,12 @@ public class EventManager : LTI.Singleton<EventManager>
                     //Check if the item picked up is part of the quest
                     if (_io.GetInvObject() == _object)
                     {
+                        Debug.Log("Item picked up");
                         _io.DecreaseCurrentAmount(_amount);
+                        Debug.Log("curr am: " + _io.GetCurrentAmount());
                         if (_io.GetCurrentAmount() <= 0)
                         {
+                            Debug.Log("all picked up");
                             _io.SetIsComplete(true);
                             CheckCompletion(_q);
                         }
@@ -193,6 +197,7 @@ public class EventManager : LTI.Singleton<EventManager>
 
     public void CheckCompletion(Quest _q)
     {
+        Debug.Log("Checking Completion");
         _q.CheckCompletion();
     }
 
