@@ -7,10 +7,9 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 public class EquipEntity : MonoBehaviour
 {
-
+   
     public PlayerEntity[] m_partyMembers;
-    [SerializeField]
-    PlayerManager m_playerManager;
+
     [SerializeField]
     Weapon m_currentWeapon;
     [SerializeField]
@@ -19,9 +18,7 @@ public class EquipEntity : MonoBehaviour
     protected bool equipped = false;
     private Color m_itemFadeColour;
     [SerializeField]
-    private GameObject[] m_equipImages;
-    [SerializeField]
-    private GameObject[] m_baseSlotImages;
+    private Image[] m_equipImages;
 
 
     Inventory m_inventory;
@@ -38,229 +35,174 @@ public class EquipEntity : MonoBehaviour
 
     void Start()
     {
+
+        m_partyMembers = new PlayerEntity[4];
+        m_partyMembers[0] = GameObject.Find("Player").GetComponent<PlayerEntity>();
+        m_partyMembers[1] = GameObject.Find("Player (1)").GetComponent<PlayerEntity>();
+        m_partyMembers[2] = GameObject.Find("Player (2)").GetComponent<PlayerEntity>();
+        m_partyMembers[3] = GameObject.Find("Player (3)").GetComponent<PlayerEntity>();
+        
         m_partyMemberName = GameObject.Find("PartyMemberName").GetComponent<TextMeshProUGUI>();
         m_partyMemberName.text = "Luck";
         m_itemFadeColour.a = 0.0f;
         tempDefence = new int[4];
         tempAttack = new int[4];
-        tempDefence[0] = m_playerManager.cleric.GetDefence();
-        tempAttack[0] = m_playerManager.cleric.GetStrength();
-        tempDefence[1] = m_playerManager.warrior.GetDefence();
-        tempAttack[1] = m_playerManager.warrior.GetStrength();
-        tempDefence[2] = m_playerManager.wizard.GetDefence();
-        tempAttack[2] = m_playerManager.wizard.GetStrength();
-        tempDefence[3] = m_playerManager.ninja.GetDefence();
-        tempAttack[3] = m_playerManager.ninja.GetStrength();
+        tempDefence[0] = m_partyMembers[0].GetDefence();
+        tempAttack[0] = m_partyMembers[0].GetStrength();
+        tempDefence[1] = m_partyMembers[1].GetDefence();
+        tempAttack[1] = m_partyMembers[1].GetStrength();
+        tempDefence[2] = m_partyMembers[2].GetDefence();
+        tempAttack[2] = m_partyMembers[2].GetStrength();
+        tempDefence[3] = m_partyMembers[3].GetDefence();
+        tempAttack[3] = m_partyMembers[3].GetStrength();
     }
     // Update is called once per frame
     void Update()
     {
-
+        
         if (m_partyImageIndex == 0)
         {
             m_partyMemberName.text = "Luck";
-            m_equipImages[0].SetActive(true);
-            m_equipImages[1].SetActive(true);
-            m_equipImages[2].SetActive(false);
-            m_equipImages[3].SetActive(false);
-            m_equipImages[4].SetActive(false);
-            m_equipImages[5].SetActive(false);
-            m_equipImages[6].SetActive(false);
-            m_equipImages[7].SetActive(false);
 
         }
         if (m_partyImageIndex == 1)
         {
             m_partyMemberName.text = "Duck";
-            m_equipImages[0].SetActive(false);
-            m_equipImages[1].SetActive(false);
-            m_equipImages[2].SetActive(true);
-            m_equipImages[3].SetActive(true);
-            m_equipImages[4].SetActive(false);
-            m_equipImages[5].SetActive(false);
-            m_equipImages[6].SetActive(false);
-            m_equipImages[7].SetActive(false);
 
         }
         if (m_partyImageIndex == 2)
         {
             m_partyMemberName.text = "Buck";
-            m_equipImages[0].SetActive(false);
-            m_equipImages[1].SetActive(false);
-            m_equipImages[2].SetActive(false);
-            m_equipImages[3].SetActive(false);
-            m_equipImages[4].SetActive(true);
-            m_equipImages[5].SetActive(true);
-            m_equipImages[6].SetActive(false);
-            m_equipImages[7].SetActive(false);
 
         }
         if (m_partyImageIndex == 3)
         {
             m_partyMemberName.text = "Phil";
-            m_equipImages[0].SetActive(false);
-            m_equipImages[1].SetActive(false);
-            m_equipImages[2].SetActive(false);
-            m_equipImages[3].SetActive(false);
-            m_equipImages[4].SetActive(false);
-            m_equipImages[5].SetActive(false);
-            m_equipImages[6].SetActive(true);
-            m_equipImages[7].SetActive(true);
+
         }
         if (m_partyImageIndex == 4)
         {
             m_partyImageIndex = 0;
         }
-
-
+        
+        
     }
     public void UnEquip(string _slotName)
     {
         if (_slotName == "Armour")
         {
+           // m_inventory.AddToInventory(m_currentArmour);          
+            
             m_currentArmour = null;
-
+            m_equipImages[0].sprite = m_equipImages[2].sprite;
             if (m_partyImageIndex == 0)
             {
-                m_playerManager.cleric.SetDefence(tempDefence[0]);
-                m_equipImages[0].GetComponent<Image>().sprite = m_baseSlotImages[0].GetComponent<Image>().sprite;
+                m_partyMembers[0].SetDefence(tempDefence[0]);
             }
             if (m_partyImageIndex == 1)
             {
-                m_playerManager.warrior.SetDefence(tempDefence[1]);
-                m_equipImages[2].GetComponent<Image>().sprite = m_baseSlotImages[0].GetComponent<Image>().sprite;
+                m_partyMembers[1].SetDefence(tempDefence[1]);
             }
             if (m_partyImageIndex == 2)
             {
-                m_playerManager.wizard.SetDefence(tempDefence[2]);
-                m_equipImages[4].GetComponent<Image>().sprite = m_baseSlotImages[0].GetComponent<Image>().sprite;
+                m_partyMembers[2].SetDefence(tempDefence[2]);
             }
             if (m_partyImageIndex == 3)
             {
-                m_playerManager.ninja.SetDefence(tempDefence[3]);
-                m_equipImages[6].GetComponent<Image>().sprite = m_baseSlotImages[0].GetComponent<Image>().sprite;
+                m_partyMembers[3].SetDefence(tempDefence[3]);
             }
 
         }
         if (_slotName == "Weapon")
         {
+          //  m_inventory.AddToInventory(m_currentWeapon);
             m_currentWeapon = null;
-
+            m_equipImages[1].sprite = m_equipImages[3].sprite;
             if (m_partyImageIndex == 0)
             {
-                m_playerManager.cleric.SetStrength(tempAttack[0]);
-                m_equipImages[1].GetComponent<Image>().sprite = m_baseSlotImages[1].GetComponent<Image>().sprite;
+                m_partyMembers[0].SetStrength(tempAttack[0]);
             }
             if (m_partyImageIndex == 1)
             {
-                m_playerManager.warrior.SetStrength(tempAttack[1]);
-                m_equipImages[3].GetComponent<Image>().sprite = m_baseSlotImages[1].GetComponent<Image>().sprite;
+                m_partyMembers[1].SetStrength(tempAttack[1]);
             }
             if (m_partyImageIndex == 2)
             {
-                m_playerManager.wizard.SetStrength(tempAttack[2]);
-                m_equipImages[5].GetComponent<Image>().sprite = m_baseSlotImages[1].GetComponent<Image>().sprite;
+                m_partyMembers[2].SetStrength(tempAttack[2]);
             }
             if (m_partyImageIndex == 3)
             {
-                m_playerManager.ninja.SetStrength(tempAttack[3]);
-                m_equipImages[7].GetComponent<Image>().sprite = m_baseSlotImages[1].GetComponent<Image>().sprite;
+                m_partyMembers[3].SetStrength(tempAttack[3]);
             }
 
         }
     }
     public void EquipWeapon(Weapon _object)
     {
-        m_currentWeapon = _object;
-        if (m_partyImageIndex == 0)
+        if (m_equipImages[1].sprite.name == "equipment_preview_10")
         {
-            if (m_equipImages[1].GetComponent<Image>().sprite.name == "equipment_preview_10")
-            {
-                m_playerManager.cleric.AddStrength(_object.attack);
-                m_equipImages[1].GetComponent<Image>().sprite = _object.Image;
-                m_justEquippedText.text = "Just equipped: " + _object.objectName;
-                StartCoroutine(HideText());
-            }
-        }
-        if (m_partyImageIndex == 1)
-        {
-            if (m_equipImages[3].GetComponent<Image>().sprite.name == "equipment_preview_10")
-            {
-                m_playerManager.warrior.AddStrength(_object.attack);
-                m_equipImages[3].GetComponent<Image>().sprite = _object.Image;
-                m_justEquippedText.text = "Just equipped: " + _object.objectName;
-                StartCoroutine(HideText());
-            }
-        }
-        if (m_partyImageIndex == 2)
-        {
-            if (m_equipImages[5].GetComponent<Image>().sprite.name == "equipment_preview_10")
-            {
-                m_playerManager.wizard.AddStrength(_object.attack);
-                m_equipImages[5].GetComponent<Image>().sprite = _object.Image;
-                m_justEquippedText.text = "Just equipped: " + _object.objectName;
-                StartCoroutine(HideText());
-            }
-        }
-        if (m_partyImageIndex == 3)
-        {
-            if (m_equipImages[7].GetComponent<Image>().sprite.name == "equipment_preview_10")
-            {      
-                m_playerManager.ninja.AddStrength(_object.attack);
-                m_equipImages[7].GetComponent<Image>().sprite = _object.Image;
-                m_justEquippedText.text = "Just equipped: " + _object.objectName;
-                StartCoroutine(HideText());
-            }
-        }
+            m_equipImages[1].sprite = _object.Image;
 
+                m_currentWeapon = _object;
+              
+                if (m_partyImageIndex == 0)
+                {
+                    m_partyMembers[0].SetStrength(_object.attack);
+
+                }
+                if (m_partyImageIndex == 1)
+                {
+                    m_partyMembers[1].SetStrength(_object.attack);
+
+                }
+                if (m_partyImageIndex == 2)
+                {
+                    m_partyMembers[2].SetStrength(_object.attack);
+    
+                }
+                if (m_partyImageIndex == 3)
+                {
+                    m_partyMembers[3].SetStrength(_object.attack);
+ 
+                }
+                m_justEquippedText.text = "Just equipped: " + _object.objectName;
+                StartCoroutine(HideText());
+            
+        }
     }
     public void EquipArmour(Armour _object)
     {
-
-        m_currentArmour = _object;
-        if (m_partyImageIndex == 0)
+        if (m_equipImages[0].sprite.name == "equipment_preview_1")
         {
-            if (m_equipImages[0].GetComponent<Image>().sprite.name == "equipment_preview_1")
-            {
-                m_justEquippedText.text = "Just equipped a : " + _object.objectName;
+            m_equipImages[0].sprite = _object.Image;
+          
+                m_currentArmour = _object;
+              
+                if (m_partyImageIndex == 0)
+                {
+                    m_partyMembers[0].SetDefence(_object.defence);
+               
+                }
+                if (m_partyImageIndex == 1)
+                {
+                    m_partyMembers[1].SetDefence(_object.defence);
+          
+                }
+                if (m_partyImageIndex == 2)
+                {
+                    m_partyMembers[2].SetDefence(_object.defence);
+             
+                }
+                if (m_partyImageIndex == 3)
+                {
+                    m_partyMembers[3].SetDefence(_object.defence);
+            
+                }
+                m_justEquippedText.text = "Just equipped: " + _object.objectName;
                 StartCoroutine(HideText());
-                m_equipImages[0].GetComponent<Image>().sprite = _object.Image;
-                m_playerManager.cleric.AddDefence(_object.defence);
 
-            }
+            
         }
-        if (m_partyImageIndex == 1)
-        {
-            if (m_equipImages[2].GetComponent<Image>().sprite.name == "equipment_preview_1")
-            {
-
-                m_equipImages[2].GetComponent<Image>().sprite = _object.Image;
-                m_playerManager.warrior.AddDefence(_object.defence);
-                m_justEquippedText.text = "Just equipped a : " + _object.objectName;
-                StartCoroutine(HideText());
-            }
-        }
-        if (m_partyImageIndex == 2)
-        {
-            if (m_equipImages[4].GetComponent<Image>().sprite.name == "equipment_preview_1")
-            {
-                m_equipImages[4].GetComponent<Image>().sprite = _object.Image;
-                m_playerManager.wizard.AddDefence(_object.defence);
-                m_justEquippedText.text = "Just equipped a : " + _object.objectName;
-                StartCoroutine(HideText());
-            }
-        }
-        if (m_partyImageIndex == 3)
-        {
-            if (m_equipImages[6].GetComponent<Image>().sprite.name == "equipment_preview_1")
-            {
-                m_equipImages[6].GetComponent<Image>().sprite = _object.Image;
-                m_playerManager.ninja.AddDefence(_object.defence);
-                m_justEquippedText.text = "Just equipped a : " + _object.objectName;
-                StartCoroutine(HideText());
-            }
-        }
-
     }
     IEnumerator HideText()
     {
