@@ -51,50 +51,58 @@ public class PlayerEntity : Entity
 
     void Start()
     {
-
+        PM = PlayerManager.Instance;
         if (MyClass == Class.eWarrior)
         {
-			m_maxHealth = PM.warrior.GetMaxHealth();
-			m_maxMana = PM.warrior.GetMaxMana();
-			m_strength = PM.warrior.GetStrength();
-			m_magicPower = PM.warrior.GetMagicPower();
-			m_defence = PM.warrior.GetDefence();
-			m_defenceMGC = PM.warrior.GetMagicDefence();
-			m_speed = PM.warrior.GetSpeed();
-			Debug.Log("Stats Applied");
+            Stats thisStats = GetComponent<WarriorStats>();
+
+            m_maxHealth = thisStats.GetMaxHealth();
+            m_maxMana = thisStats.GetMaxMana();
+            m_strength = thisStats.GetStrength();
+            m_magicPower = thisStats.GetMagicPower();
+            m_defence = thisStats.GetDefence();
+            m_defenceMGC = thisStats.GetMagicDefence();
+            m_speed = thisStats.GetSpeed();
+            Debug.Log("Stats Applied Warrior");
         }
         if (MyClass == Class.eWizard)
         {
-			m_maxHealth = PM.wizard.GetMaxHealth();
-			m_maxMana = PM.wizard.GetMaxMana();
-			m_strength = PM.wizard.GetStrength();
-			m_magicPower = PM.wizard.GetMagicPower();
-			m_defence = PM.wizard.GetDefence();
-			m_defenceMGC = PM.wizard.GetMagicDefence();
-			m_speed = PM.wizard.GetSpeed();
-			Debug.Log("Stats Applied Wizard");
+            Stats thisStats = GetComponent<WizardStats>();
+
+            m_maxHealth = thisStats.GetMaxHealth();
+            m_maxMana = thisStats.GetMaxMana();
+            m_strength = thisStats.GetStrength();
+            m_magicPower = thisStats.GetMagicPower();
+            m_defence = thisStats.GetDefence();
+            m_defenceMGC = thisStats.GetMagicDefence();
+            m_speed = thisStats.GetSpeed();
+            Debug.Log("Stats Applied Wizard");
 		}
         if (MyClass == Class.eCleric)
         {
-			m_maxHealth = PM.cleric.GetMaxHealth();
-			m_maxMana = PM.cleric.GetMaxMana();
-			m_strength = PM.cleric.GetStrength();
-			m_magicPower = PM.cleric.GetMagicPower();
-			m_defence = PM.cleric.GetDefence();
-			m_defenceMGC = PM.cleric.GetMagicDefence();
-			m_speed = PM.cleric.GetSpeed();
+            Stats thisStats = GetComponent<ClericStats>();
+
+            m_maxHealth = thisStats.GetMaxHealth();
+			m_maxMana = thisStats.GetMaxMana();
+			m_strength = thisStats.GetStrength();
+			m_magicPower = thisStats.GetMagicPower();
+			m_defence = thisStats.GetDefence();
+			m_defenceMGC = thisStats.GetMagicDefence();
+			m_speed = thisStats.GetSpeed();
 			Debug.Log("Stats Applied Cleric");
 		}
         if (MyClass == Class.eNinja)
         {
-			m_maxHealth = PM.ninja.GetMaxHealth();
-			m_maxMana = PM.ninja.GetMaxMana();
-			m_strength = PM.ninja.GetStrength();
-			m_magicPower = PM.ninja.GetMagicPower();
-			m_defence = PM.ninja.GetDefence();
-			m_defenceMGC = PM.ninja.GetMagicDefence();
-			m_speed = PM.ninja.GetSpeed();
-			Debug.Log("Stats Applied Ninja");
+            Stats thisStats = GetComponent<NinjaStats>();
+
+            m_maxHealth = thisStats.GetMaxHealth();
+            m_maxMana = thisStats.GetMaxMana();
+            m_strength = thisStats.GetStrength();
+            m_magicPower = thisStats.GetMagicPower();
+            m_defence = thisStats.GetDefence();
+            m_defenceMGC = thisStats.GetMagicDefence();
+            m_speed = thisStats.GetSpeed();
+            Debug.Log("Stats Applied Ninja");
 		}
         SetRequiredSpeed();
         ResetHealth();

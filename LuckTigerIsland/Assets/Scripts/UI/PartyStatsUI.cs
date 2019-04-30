@@ -31,8 +31,7 @@ public class PartyStatsUI : MonoBehaviour {
     // Use this for initialization
     void Start () {
         m_playerEntity = new PlayerEntity[4];
-        m_playerManager = GameObject.Find("Playermanager").GetComponent<PlayerManager>();
-
+        m_playerManager = PlayerManager.Instance;
 
         m_playerEntity[0] = GameObject.Find("Player1").GetComponent<PlayerEntity>();
         m_playerEntity[1] = GameObject.Find("Player2").GetComponent<PlayerEntity>();

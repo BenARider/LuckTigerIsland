@@ -25,7 +25,6 @@ GameObject:
   - component: {fileID: 50069466831973438}
   - component: {fileID: 114342839754915870}
   - component: {fileID: 114683162627925966}
-  - component: {fileID: 114731957434902292}
   m_Layer: 0
   m_Name: BattleControl
   m_TagString: Untagged
@@ -130,7 +129,6 @@ MonoBehaviour:
   battleState: 0
   NextTurn: []
   EnemiesInBattle: []
-  Enemies: []
   PartyMembersInBattle: []
   TargetingListForAI: []
   actionOne: {fileID: 0}
@@ -151,26 +149,3 @@ MonoBehaviour:
   playerInput: {x: 0, y: 0}
   moveSpeed: 0
   doMove: 1
---- !u!114 &114731957434902292
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1946320760179912}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb93873c1dc64e74ab50de01be922815, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactions: []
-  currentSceneName: 
-  playerMove: {fileID: 0}
-  textArray: []
-  m_gold: {fileID: 0}
-  backgroundTextArray: []
-  warrior: {fileID: 0}
-  cleric: {fileID: 0}
-  wizard: {fileID: 0}
-  ninja: {fileID: 0}
-  m_level: 1
-  m_xp: 0
