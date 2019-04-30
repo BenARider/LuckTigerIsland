@@ -43,7 +43,7 @@ public class Inventory : LTI.Singleton<Inventory>
     //Checks for an instance of the struct in the inventory. If one exists, increase its amount by the amount of item picked up. If it dosent exists, create it and give it an amount.
     public void AddToInventory(InventoryObject _object, int _amount = 1)
     {
-
+        EventManager.Instance.ItemToInventory(_object, _amount);
         InventoryObjectStruct iobjstruct = new InventoryObjectStruct
         {
             iObject = _object,

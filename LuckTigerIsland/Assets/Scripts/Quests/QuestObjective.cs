@@ -13,7 +13,7 @@ public enum EObjectiveType
 [System.Serializable]
 public class QuestObjective{
     protected EObjectiveType m_objectiveType;
-    protected bool m_isComplete;
+    protected bool m_isComplete = false;
 
     public bool GetIsComplete()
     {

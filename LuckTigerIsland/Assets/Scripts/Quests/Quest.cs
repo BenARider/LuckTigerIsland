@@ -89,6 +89,14 @@ public class Quest : MonoBehaviour
         }
      }
 
+    public void RemoveLastInventoryObjective()
+    {
+        if (m_inventoryObjectives.Count != 0)
+        {
+            m_inventoryObjectives.RemoveAt(m_inventoryObjectives.Count - 1);
+        }
+    }
+
     public void RemoveLastKillObjective()
     {
         if (m_killObjectives.Count != 0)
@@ -119,17 +127,19 @@ public class Quest : MonoBehaviour
         if(m_allObjectives.Count != 0)
         {
             bool finished = true;
-            foreach(QuestObjective _qo in m_allObjectives)
+            foreach(ItemObjective _io in m_inventoryObjectives)
             {
-                if (!_qo.GetIsComplete())
+                Debug.Log("E " + _io.GetIsComplete());
+                if (_io.GetIsComplete())
                 {
+                    Debug.Log("Completed Quest");
                     finished = false;
                 }
             }
 
             //If all quest objectives were finished, End the Quest.
             if (!finished)
-            {
+            {                
                 EndQuest();
             }
         }
