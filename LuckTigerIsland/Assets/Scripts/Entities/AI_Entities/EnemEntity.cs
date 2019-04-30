@@ -16,7 +16,7 @@ public class EnemEntity : Entity
     /// <summary>
     /// reference from this
     /// </summary>
-    EnemyObject thisEnemyObject;
+    public EnemyObject thisEnemyObject;
 	//private bool canAttack = false; //used to prevent the ai from having too many turns. Only enabled on use of state transition.
 	public int aggress; //likelihood to attack oppossing attacker (Between 1-20)
 	public int intel; //likelihood to attack pm with high value (Between 1-20)
@@ -41,32 +41,6 @@ public class EnemEntity : Entity
     public HandleTurns HT;
     void Start()
     {
-        //if (MyClass == Class.eGoblin)
-        //{
-        //    SetEnemyStats(75, 50, 40, 20, 50, 3, 20, 4, 50);
-        //    AgressionState = Agression.eBackStabber;
-        //}
-        //if (MyClass == Class.eDark_Elf)
-        //{
-        //    SetEnemyStats(35, 125, 20, 10, 55, 2, 10, 8, 50);
-        //    AgressionState = Agression.eBackStabber;
-        //}
-        //if (MyClass == Class.eWizard)
-        //{
-        //    SetEnemyStats(40, 100, 10, 15, 45, 2, 15, 6, 50);
-        //    AgressionState = Agression.eRandomAttacker;
-        //}
-        //if (MyClass == Class.eKnight)
-        //{
-        //    SetEnemyStats(60, 150, 15, 7, 50, 3, 5, 5, 50);
-        //    AgressionState = Agression.eRandomAttacker;
-        //}
-        //if (MyClass == Class.eBoss)
-        //{
-        //    SetEnemyStats(200, 350, 60, 17, 60, 3, 5, 5, 50);
-        //    AgressionState = Agression.eRandomAttacker;
-        //}
-
         this.name = GetEntityNo() + ":" + this.name;
 
         SetRequiredSpeed();

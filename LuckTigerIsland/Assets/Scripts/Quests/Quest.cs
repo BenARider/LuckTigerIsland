@@ -24,6 +24,9 @@ public class Quest : MonoBehaviour
     [SerializeField]
     private InventoryObject m_itemReward;
 
+    public bool isActive = false;
+    public bool hasBeenAccepted = false;
+
 
     //Objectives Lists. Make a new list when a new type of objective is created.
     public List<QuestObjective> m_allObjectives;
@@ -109,12 +112,15 @@ public class Quest : MonoBehaviour
     //Add and remove from active quest list.
     public void StartQuest()
     {
+        isActive = true;
+        hasBeenAccepted = true;
         QuestManager.Instance.AddQuest(this);
         Debug.Log("quest added");
     }
 
     public void EndQuest()
     {
+        isActive = false;
         PlayerManager.Instance.AddXP(m_expReward);
         Inventory.Instance.IncreaseGold(m_goldReward);
         QuestManager.Instance.RemoveQuest(this);

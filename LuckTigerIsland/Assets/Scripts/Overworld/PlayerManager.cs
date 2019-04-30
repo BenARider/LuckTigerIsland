@@ -162,7 +162,10 @@ public class PlayerManager : LTI.Singleton<PlayerManager> {
             //Activate Quest if one exists on the dialogue step.
             if (activeDialogue.Dialogues[activeDialogue.currentDialogueIndex].questHandout != null)
             {
-                activeDialogue.Dialogues[activeDialogue.currentDialogueIndex].questHandout.StartQuest();
+                if (!activeDialogue.Dialogues[activeDialogue.currentDialogueIndex].questHandout.hasBeenAccepted)
+                {
+                    activeDialogue.Dialogues[activeDialogue.currentDialogueIndex].questHandout.StartQuest();
+                }
             }
             if (activeDialogue.Dialogues[activeDialogue.currentDialogueIndex].questForDialogueObj != null)
             {

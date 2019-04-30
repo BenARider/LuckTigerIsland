@@ -12,6 +12,5 @@ public class InventoryPickup : MonoBehaviour
     public void PickupObject()
     {
         Inventory.Instance.AddToInventory(m_iobject);
-        EventManager.Instance.ItemToInventory(m_iobject, m_amount);
     }
 }
