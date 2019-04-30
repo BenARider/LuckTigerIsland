@@ -192,7 +192,6 @@ public class EnemEntity : Entity
         {
             rollAttack();
         }
-
         if(rollsAttempted >= maxRolls)
         {
             m_chosenAction = attacks.First(x => x.attackCost < m_mana);
@@ -204,7 +203,6 @@ public class EnemEntity : Entity
         m_AttackTarget = BC.PartyMembersInBattle[Random.Range(0, BC.PartyMembersInBattle.Count)];
         if (AgressionState == Agression.eRandomAttacker)
         {
-            Debug.Log("Random");
             HandleTurns myAttack = new HandleTurns
             {
                 Attacker = this.name, //Who is attacking
@@ -223,7 +221,8 @@ public class EnemEntity : Entity
 
         if(AgressionState==Agression.eBackStabber)
         {
-            BC.TargetingListForAI = BC.PartyMembersInBattle.OrderBy(x => x.GetComponent<PlayerEntity>().GetHealth()).ToList();
+            BC.TargetingListForAI = BC.PartyMembersInBattle;
+            BC.TargetingListForAI.OrderBy(x => x.GetComponent<PlayerEntity>().GetHealth());
             HandleTurns myAttack = new HandleTurns
             {
                 Attacker = this.name, //Who is attacking
@@ -233,12 +232,10 @@ public class EnemEntity : Entity
                 chosenAttack = m_chosenAction
             };
 
-            if (m_AttackTarget.GetComponent<PlayerEntity>().currentBuff != Buffs.eInvisable)
-            {
-                BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
-                attackDescriptionText.text = this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!";
-                StartCoroutine("FadeText");
-            }
+            //attackDescriptionText.text = this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!";
+            Debug.Log(this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!");
+            StartCoroutine("FadeText");
+            BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
         }
     }
 
@@ -251,7 +248,7 @@ public class EnemEntity : Entity
 
         actionHappening = true;
 
-        Vector3 PartyMemberPosition = new Vector3(EntityToAttack.transform.position.x + 1.5f, EntityToAttack.transform.position.y, EntityToAttack.transform.position.z);
+        Vector3 PartyMemberPosition = new Vector3(EntityToAttack.transform.position.x - 1.5f, EntityToAttack.transform.position.y, EntityToAttack.transform.position.z);
 
         while (MoveTo(PartyMemberPosition))
         {

@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Rewards : MonoBehaviour {
-    public List<InventoryObject> rewards;
+    [SerializeField]
+    public List<InventoryObject> m_rewards;
 	// Use this for initialization
 	void Start () {
 	

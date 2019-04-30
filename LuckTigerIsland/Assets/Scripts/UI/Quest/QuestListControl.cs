@@ -7,6 +7,9 @@ public class QuestListControl : MonoBehaviour {
 
     [SerializeField]
     private GameObject m_buttonTemplate;
+
+    [SerializeField]
+    private TextMeshProUGUI m_name;
     [SerializeField]
     private TextMeshProUGUI m_description;
 
@@ -52,11 +55,13 @@ public class QuestListControl : MonoBehaviour {
 
     private void SetDefaults()
     {
+        m_name.text = QuestManager.Instance.m_quests[0].GetTitle();
         m_description.text = QuestManager.Instance.m_quests[0].GetObjective();
     }
 
     public void ButtonClicked(string _name, string _description)
     {
+        m_name.text = _name;
         m_description.text = _description;
     }
 }

@@ -17,12 +17,6 @@ public class SellListButton : MonoBehaviour, ISelectHandler
     Shop m_shop;
     Inventory m_inventory;
     InventoryObject m_inventoryObject;
-    [SerializeField]
-    TextMeshProUGUI m_soldText;
-    [SerializeField]
-    GameObject m_closeButton;
-    EventSystem m_eventSystem;
-
     private string m_name;
     private Sprite m_image;
     private string m_description;
@@ -71,31 +65,19 @@ public class SellListButton : MonoBehaviour, ISelectHandler
     }
     public void SellItem()
     {
-        m_eventSystem = EventSystem.current;
-        if (Inventory.Instance.inventory.Find(x => x.iObject == m_inventoryObject).amount > 0)
-        {
-            m_shop.SellItem(m_inventoryObject);
-            m_soldText.text = "Just sold: " + m_inventoryObject.objectName;
-            StartCoroutine(FadeText());
-            m_sellControl.UpdateInventoryUI();
-            m_eventSystem.SetSelectedGameObject(m_closeButton);
-        }
+        m_shop.SellItem(m_inventoryObject);
+        //m_sellControl.UpdateInventoryUI();
     }
 
     public void OnSelect(BaseEventData _data)
     {
         if (!isNull)
         {
-            m_sellControl.ButtonClicked(m_image, m_name, m_description, m_price,m_amount);
+            m_sellControl.ButtonClicked(m_image, m_name, m_description, m_price);
         }
         else
         {
             Debug.LogError("Inventory Slot has nothing in it!");
         }
-    }
-    IEnumerator FadeText()
-    {
-        yield return new WaitForSeconds(2);
-        m_soldText.text = "";
     }
 }

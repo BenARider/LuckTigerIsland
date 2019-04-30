@@ -31,10 +31,6 @@ public class PlayerManager : LTI.Singleton<PlayerManager> {
     public TextMeshProUGUI[] textArray;
     public TextMeshProUGUI m_gold;
     public GameObject[] backgroundTextArray;
-	public WarriorStats warrior;
-	public ClericStats cleric;
-	public WizardStats wizard;
-	public NinjaStats ninja;
     bool inDialogue = false;
     Interaction lastDialogueInteract;
     NPCDialogue activeDialogue;
@@ -43,14 +39,13 @@ public class PlayerManager : LTI.Singleton<PlayerManager> {
     private int m_level = 1;
     [SerializeField]
     private int m_xp = 0;
-	
-	public int GetLevel()
+
+    public int GetLevel()
     {
         return m_level;
     }
-	
 
-	public int AddXP(int _xp)
+    public int AddXP(int _xp)
     {
         m_xp += _xp;
         while (m_xp >= (m_level * 100 + (m_level * 10)))

@@ -41,7 +41,7 @@ public class RewardSlotCreator : MonoBehaviour {
                 m_rewardUI.SetNameNumSet(1);
             }
             m_startIncrease = true;
-            m_rewardUI.ItemTitle.text = m_rewards.rewards[m_rewardUI.GetNameNumSet()].objectName;
+            m_rewardUI.ItemTitle.text = m_rewards.m_rewards[m_rewardUI.GetNameNumSet()].objectName;
         }
     }
     private void OnDisable()

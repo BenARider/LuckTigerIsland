@@ -73,7 +73,6 @@ GameObject:
   - component: {fileID: 222645841094845360}
   - component: {fileID: 114858124310087372}
   - component: {fileID: 114674528496455050}
-  - component: {fileID: 114109166727022538}
   m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
@@ -193,7 +192,6 @@ GameObject:
   - component: {fileID: 114683522107372104}
   - component: {fileID: 114952789396377412}
   - component: {fileID: 114226844424797704}
-  - component: {fileID: 114133329539580616}
   m_Layer: 5
   m_Name: Start
   m_TagString: Untagged
@@ -210,7 +208,6 @@ GameObject:
   m_Component:
   - component: {fileID: 224444670200900194}
   - component: {fileID: 114585668138140952}
-  - component: {fileID: 114283195077725316}
   m_Layer: 5
   m_Name: Master_Slider
   m_TagString: Untagged
@@ -310,7 +307,6 @@ GameObject:
   - component: {fileID: 114198300140037822}
   - component: {fileID: 114970219024819370}
   - component: {fileID: 114221228549034132}
-  - component: {fileID: 114899185923719758}
   m_Layer: 5
   m_Name: Quit
   m_TagString: Untagged
@@ -378,7 +374,6 @@ GameObject:
   - component: {fileID: 222216411250002708}
   - component: {fileID: 114371000234439244}
   - component: {fileID: 114917795321292656}
-  - component: {fileID: 114175170480836040}
   m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
@@ -617,7 +612,6 @@ GameObject:
   - component: {fileID: 222718323655392366}
   - component: {fileID: 114485519357276864}
   - component: {fileID: 114921991566917240}
-  - component: {fileID: 114272692388172838}
   m_Layer: 5
   m_Name: QualitySettings
   m_TagString: Untagged
@@ -637,7 +631,6 @@ GameObject:
   - component: {fileID: 114759364126352504}
   - component: {fileID: 114500843023877246}
   - component: {fileID: 114546902103664084}
-  - component: {fileID: 114630475763757276}
   m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
@@ -656,7 +649,6 @@ GameObject:
   - component: {fileID: 222905986098901888}
   - component: {fileID: 114101261835508798}
   - component: {fileID: 114356795208925514}
-  - component: {fileID: 114848083618776254}
   m_Layer: 5
   m_Name: Controls
   m_TagString: Untagged
@@ -675,7 +667,6 @@ GameObject:
   - component: {fileID: 222483862794090348}
   - component: {fileID: 114385239792079516}
   - component: {fileID: 114246761826348162}
-  - component: {fileID: 114305856083410414}
   m_Layer: 5
   m_Name: Options
   m_TagString: Untagged
@@ -692,7 +683,6 @@ GameObject:
   m_Component:
   - component: {fileID: 224141749425348280}
   - component: {fileID: 114413458656746590}
-  - component: {fileID: 114125645538881486}
   m_Layer: 5
   m_Name: Sounds_Slider
   m_TagString: Untagged
@@ -938,7 +928,6 @@ GameObject:
   - component: {fileID: 222212036753636900}
   - component: {fileID: 114670076159962718}
   - component: {fileID: 114607344728362370}
-  - component: {fileID: 114969580467276052}
   m_Layer: 5
   m_Name: Sounds
   m_TagString: Untagged
@@ -973,7 +962,6 @@ GameObject:
   - component: {fileID: 224089788972580478}
   - component: {fileID: 114749468697146384}
   - component: {fileID: 114896527848381466}
-  - component: {fileID: 114780452328680498}
   m_Layer: 5
   m_Name: Fullscreen_Toggle
   m_TagString: Untagged
@@ -1009,7 +997,6 @@ GameObject:
   - component: {fileID: 222428690979128356}
   - component: {fileID: 114407375114300690}
   - component: {fileID: 114310086530080058}
-  - component: {fileID: 114804352918574684}
   m_Layer: 5
   m_Name: Graphics
   m_TagString: Untagged
@@ -1094,7 +1081,6 @@ GameObject:
   - component: {fileID: 222257397595945324}
   - component: {fileID: 114146822064498702}
   - component: {fileID: 114781526368023774}
-  - component: {fileID: 114264931699215216}
   m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
@@ -1176,7 +1162,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224980944608262080}
-  - component: {fileID: 114923248181751158}
   m_Layer: 5
   m_Name: Sounds
   m_TagString: Untagged
@@ -1229,7 +1214,6 @@ GameObject:
   m_Component:
   - component: {fileID: 224907523536503098}
   - component: {fileID: 114285607879076614}
-  - component: {fileID: 114534291204990060}
   m_Layer: 5
   m_Name: Music_Slider
   m_TagString: Untagged
@@ -1365,11 +1349,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -1505,12 +1489,12 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
-  m_inputSource: 0
+  m_isInputParsingRequired: 0
+  m_inputSource: 3
   m_hasFontAssetChanged: 0
   m_subTextObjects:
   - {fileID: 0}
@@ -1604,18 +1588,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114109166727022538
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1051908018097046}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6ece521d477758408526740f60dfa52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonSelectSound: buttonSelectSound
 --- !u!114 &114124036720990090
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1643,18 +1615,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114125645538881486
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1600678836912834}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6ece521d477758408526740f60dfa52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonSelectSound: buttonSelectSound
 --- !u!114 &114125812318803520
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1709,18 +1669,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114133329539580616
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1163621543342678}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6ece521d477758408526740f60dfa52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonSelectSound: buttonSelectSound
 --- !u!114 &114143811601915936
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1880,11 +1828,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -1898,18 +1846,6 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &114175170480836040
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1318579669924394}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6ece521d477758408526740f60dfa52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonSelectSound: buttonSelectSound
 --- !u!114 &114186894389233494
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2032,11 +1968,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -2348,11 +2284,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -2385,8 +2321,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: "Keyboard \nKeys 1-9\nWASD or Arrow Keys for menus\ni to open party menu\nEscape
-    to open pause menu"
+  m_text: "Keyboard \nKeys 1-9\nWASD or Arrow Keys for menus\ni to open party/quest
+    menu"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f76ef802b8b940c46a31f9027f2b0158, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 250a1a103b3b4914c9707e6a423446d6, type: 2}
@@ -2454,19 +2390,19 @@ MonoBehaviour:
   m_margin: {x: -282.94055, y: 0, z: -482.50647, w: -155.29468}
   m_textInfo:
     textComponent: {fileID: 114262305727521666}
-    characterCount: 94
+    characterCount: 74
     spriteCount: 0
-    spaceCount: 19
-    wordCount: 19
+    spaceCount: 14
+    wordCount: 15
     linkCount: 0
-    lineCount: 5
+    lineCount: 4
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -2496,31 +2432,6 @@ MonoBehaviour:
   background: {fileID: 1512540194548384}
   mainTitle: {fileID: 1105069104526240}
   title: {fileID: 1006807819271342}
-  startButton: {fileID: 1163621543342678}
---- !u!114 &114264931699215216
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1930439012407154}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6ece521d477758408526740f60dfa52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonSelectSound: buttonSelectSound
---- !u!114 &114272692388172838
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1542137131434256}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6ece521d477758408526740f60dfa52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonSelectSound: buttonSelectSound
 --- !u!114 &114273637405947568
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2548,18 +2459,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114283195077725316
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1174135309901410}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6ece521d477758408526740f60dfa52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonSelectSound: buttonSelectSound
 --- !u!114 &114285607879076614
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2606,9 +2505,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114923248181751158}
+      - m_Target: {fileID: 0}
         m_MethodName: SetSoundMusic
-        m_Mode: 0
+        m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2619,18 +2518,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &114305856083410414
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1576485514461112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6ece521d477758408526740f60dfa52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonSelectSound: buttonSelectSound
 --- !u!114 &114310086530080058
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3090,11 +2977,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -3208,9 +3095,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114923248181751158}
+      - m_Target: {fileID: 0}
         m_MethodName: SetSoundSounds
-        m_Mode: 0
+        m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3417,11 +3304,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -3462,18 +3349,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114534291204990060
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1992244288087500}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6ece521d477758408526740f60dfa52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonSelectSound: buttonSelectSound
 --- !u!114 &114546902103664084
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3533,9 +3408,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114923248181751158}
+      - m_Target: {fileID: 0}
         m_MethodName: SetSoundMaster
-        m_Mode: 0
+        m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3999,11 +3874,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -4017,18 +3892,6 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &114630475763757276
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1565327055924132}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6ece521d477758408526740f60dfa52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonSelectSound: buttonSelectSound
 --- !u!114 &114637880648479082
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4236,11 +4099,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -4452,11 +4315,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -4817,11 +4680,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -5092,18 +4955,6 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &114780452328680498
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1832402917091860}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6ece521d477758408526740f60dfa52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonSelectSound: buttonSelectSound
 --- !u!114 &114781526368023774
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5178,18 +5029,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &114804352918574684
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1873604245330032}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6ece521d477758408526740f60dfa52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonSelectSound: buttonSelectSound
 --- !u!114 &114815905727011526
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5351,18 +5190,6 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &114848083618776254
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1570215488121214}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6ece521d477758408526740f60dfa52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonSelectSound: buttonSelectSound
 --- !u!114 &114858124310087372
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5514,11 +5341,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -5543,18 +5370,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cd8111e692099d4786870a7d6d5565d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114899185923719758
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1252856056984476}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6ece521d477758408526740f60dfa52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonSelectSound: buttonSelectSound
 --- !u!114 &114917795321292656
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5734,18 +5549,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: TMPro.TMP_Dropdown+DropdownEvent, TextMeshPro-2017.3-Runtime, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &114923248181751158
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1959219088196528}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29efad8ac8fc46f42898d58dd5a15331, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  masterMixer: {fileID: 24100000, guid: 24978eb7020a14d48902d2e5174d495d, type: 2}
 --- !u!114 &114930314899254742
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5868,11 +5671,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -5938,18 +5741,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &114969580467276052
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1800947536815014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6ece521d477758408526740f60dfa52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonSelectSound: buttonSelectSound
 --- !u!114 &114970219024819370
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6525,7 +6316,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -247}
+  m_AnchoredPosition: {x: 0, y: -200.40851}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224132152984796180
@@ -6870,7 +6661,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 521, y: 305}
+  m_AnchoredPosition: {x: 500.5, y: 281.5}
   m_SizeDelta: {x: 1001, y: 563}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224341033338954190
@@ -6926,7 +6717,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -247}
+  m_AnchoredPosition: {x: 0, y: -200.40851}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224399223055479486
@@ -6945,7 +6736,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -247}
+  m_AnchoredPosition: {x: 0, y: -200.40851}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224405386745221378
@@ -7189,7 +6980,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 32.5372, y: -226}
+  m_AnchoredPosition: {x: 32.5372, y: -180.50385}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224690947631918814
@@ -7723,7 +7514,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 32.5372, y: -64}
+  m_AnchoredPosition: {x: 32.5372, y: -53.29344}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224993500571002036

@@ -21,11 +21,6 @@ GameObject:
   - component: {fileID: 4333663883876904}
   - component: {fileID: 114379924690153364}
   - component: {fileID: 114056408993337110}
-  - component: {fileID: 61789399663218650}
-  - component: {fileID: 50069466831973438}
-  - component: {fileID: 114342839754915870}
-  - component: {fileID: 114683162627925966}
-  - component: {fileID: 114731957434902292}
   m_Layer: 0
   m_Name: BattleControl
   m_TagString: Untagged
@@ -46,51 +41,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50069466831973438
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1946320760179912}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!61 &61789399663218650
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1946320760179912}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!114 &114056408993337110
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -102,19 +52,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e26e210fc280d24b8758f6a2fb68504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114342839754915870
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1946320760179912}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f6db68bd94f64f468cf9604a696771f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  screenOffset: 0
-  isPlayer: 0
 --- !u!114 &114379924690153364
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -126,51 +63,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e218efa7eb37e9d4abdf2bf8f80e34a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOverPrefab: {fileID: 0}
   battleState: 0
   NextTurn: []
   EnemiesInBattle: []
   Enemies: []
   PartyMembersInBattle: []
-  TargetingListForAI: []
-  actionOne: {fileID: 0}
-  battleGoldReward: 0
   deadEnemies: 0
   deadPlayers: 0
---- !u!114 &114683162627925966
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1946320760179912}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75e53b224794f4e4b88d3971794e6798, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerInput: {x: 0, y: 0}
-  moveSpeed: 0
-  doMove: 1
---- !u!114 &114731957434902292
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1946320760179912}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb93873c1dc64e74ab50de01be922815, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactions: []
-  currentSceneName: 
-  playerMove: {fileID: 0}
-  textArray: []
-  m_gold: {fileID: 0}
-  backgroundTextArray: []
-  warrior: {fileID: 0}
-  cleric: {fileID: 0}
-  wizard: {fileID: 0}
-  ninja: {fileID: 0}
-  m_level: 1
-  m_xp: 0
