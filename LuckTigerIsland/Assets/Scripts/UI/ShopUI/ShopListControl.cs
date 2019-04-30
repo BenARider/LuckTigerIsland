@@ -25,6 +25,10 @@ public class ShopListControl : MonoBehaviour
         m_shop = GameObject.Find("ShopNpc").GetComponent<Shop>();
         UpdateShopUI();
     }
+    public void OnEnable()
+    { 
+      
+    }
     public void UpdateShopUI()
     {
         try

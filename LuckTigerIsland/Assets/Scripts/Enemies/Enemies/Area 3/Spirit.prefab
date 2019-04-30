@@ -293,7 +293,7 @@ Transform:
   m_GameObject: {fileID: 1880756387233082}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -3.29, y: -1.72, z: -0.2166799}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224832119740484138}
   m_Father: {fileID: 0}
@@ -335,7 +335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 106324cbd0ae5334bb75664d81e8a72e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 114974356741846758}
+  player: {fileID: 0}
   stringname: player1
   m_requiredEntityNumber: 1
   isEnemySlider: 1
@@ -698,10 +698,7 @@ MonoBehaviour:
   currentAffliction: 0
   currentBuff: 0
   EntityToAttack: {fileID: 0}
-  attacks:
-  - {fileID: 11400000, guid: 025630a4956fac74da4985d9d134e6f9, type: 2}
-  - {fileID: 11400000, guid: d86d8a8da359f334496d00bb8f362b79, type: 2}
-  - {fileID: 11400000, guid: 514e1c79f37c1ba4aa8e8f99e4b54b94, type: 2}
+  attacks: []
   passiveActiveList: []
   HealthPotions: []
   ManaPotions: []
@@ -1069,7 +1066,7 @@ RectTransform:
   m_GameObject: {fileID: 1083141249997014}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.2, y: 2.2, z: 0.56204}
+  m_LocalScale: {x: 1.12408, y: 1.12408, z: 0.56204}
   m_Children:
   - {fileID: 224332002007656488}
   - {fileID: 224996057193790412}
