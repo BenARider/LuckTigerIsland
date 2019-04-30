@@ -20,4 +20,3 @@ MonoBehaviour:
   attackCost: 0
   attackImage: {fileID: 21300030, guid: ebc6d8c8bd0a92f478a3e839743eb8fb, type: 3}
   attackAffliction: 5
- 
