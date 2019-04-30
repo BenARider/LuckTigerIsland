@@ -34,10 +34,10 @@ public class PartyStatsUI : MonoBehaviour {
         m_playerEntity = new PlayerEntity[4];
         m_playerManager = PlayerManager.Instance;
         Debug.Log("PLayer manager" + m_playerManager);
-        m_playerEntity[0] = GameObject.Find("Player").GetComponent<PlayerEntity>();
-        m_playerEntity[1] = GameObject.Find("Player (1)").GetComponent<PlayerEntity>();
-        m_playerEntity[2] = GameObject.Find("Player (2)").GetComponent<PlayerEntity>();
-        m_playerEntity[3] = GameObject.Find("Player (3)").GetComponent<PlayerEntity>();
+        m_playerEntity[0] = GameObject.Find("Player1").GetComponent<PlayerEntity>();
+        m_playerEntity[1] = GameObject.Find("Player2").GetComponent<PlayerEntity>();
+        m_playerEntity[2] = GameObject.Find("Player3").GetComponent<PlayerEntity>();
+        m_playerEntity[3] = GameObject.Find("Player4").GetComponent<PlayerEntity>();
     }
 	
 	// Update is called once per frame
