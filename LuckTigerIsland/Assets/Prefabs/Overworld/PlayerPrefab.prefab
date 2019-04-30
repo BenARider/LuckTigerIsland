@@ -450,7 +450,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4591088465556848}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4564900334292334
 Transform:
@@ -510,7 +510,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4591088465556848}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &20379397313385920
 Camera:
@@ -1129,9 +1129,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 233f31f18170c33429d899e74793b8b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_armour: {fileID: 0}
-  m_weapon: {fileID: 0}
+  m_partyMembers: []
+  m_playerManager: {fileID: 0}
+  m_currentWeapon: {fileID: 0}
+  m_currentArmour: {fileID: 0}
   m_equipImages: []
+  m_baseSlotImages: []
   m_justEquippedText: {fileID: 0}
 --- !u!114 &114409322239591768
 MonoBehaviour:
@@ -1183,6 +1186,10 @@ MonoBehaviour:
   backgroundTextArray:
   - {fileID: 1453249050284420}
   - {fileID: 1896703443657732}
+  warrior: {fileID: 114689885257801702, guid: 5204c8acdc84eab4ba159d73f1ddb089, type: 2}
+  cleric: {fileID: 114894803575059366, guid: 5204c8acdc84eab4ba159d73f1ddb089, type: 2}
+  wizard: {fileID: 114342263745504802, guid: 5204c8acdc84eab4ba159d73f1ddb089, type: 2}
+  ninja: {fileID: 114910512130800688, guid: 5204c8acdc84eab4ba159d73f1ddb089, type: 2}
   m_level: 1
   m_xp: 0
 --- !u!114 &114619009007972608

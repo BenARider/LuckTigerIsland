@@ -98,4 +98,9 @@ public class Stats : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    private void Awake()
+    {
+        PM = PlayerManager.Instance;
+    }
 }

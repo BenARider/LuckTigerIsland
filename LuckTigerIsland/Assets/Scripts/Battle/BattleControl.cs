@@ -34,6 +34,15 @@ public class BattleControl : MonoBehaviour {
     public int deadEnemies = 0;
     public int deadPlayers = 0;
 
+    //private void Awake()
+    //{
+    //    PlayerManager.Instance.cleric = GameObject.Find("Player1").GetComponent<ClericStats>();
+    //    PlayerManager.Instance.warrior = GameObject.Find("Player2").GetComponent<WarriorStats>();
+    //    PlayerManager.Instance.wizard = GameObject.Find("Player3").GetComponent<WizardStats>();
+    //    PlayerManager.Instance.ninja = GameObject.Find("Player4").GetComponent<NinjaStats>();
+    //}
+
+
     // Use this for initialization
     void Start () {
         battleState = performAction.eWait;

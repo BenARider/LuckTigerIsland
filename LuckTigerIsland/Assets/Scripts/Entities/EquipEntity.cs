@@ -38,6 +38,7 @@ public class EquipEntity : MonoBehaviour
 
     void Start()
     {
+        m_playerManager = PlayerManager.Instance;
         m_partyMemberName = GameObject.Find("PartyMemberName").GetComponent<TextMeshProUGUI>();
         m_partyMemberName.text = "Luck";
         m_itemFadeColour.a = 0.0f;

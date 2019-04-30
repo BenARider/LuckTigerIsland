@@ -335,8 +335,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1ad11708009c30468e53804204b777a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  assignedScriptableObject: {fileID: 11400000, guid: 62419f90ce3c5084fbccb8162c930375,
-    type: 2}
   m_maxHealth: 0
   m_health: 0
   m_strength: 0
@@ -401,7 +399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 106324cbd0ae5334bb75664d81e8a72e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 114023673835571194}
   stringname: player1
   m_requiredEntityNumber: 1
   isEnemySlider: 1
