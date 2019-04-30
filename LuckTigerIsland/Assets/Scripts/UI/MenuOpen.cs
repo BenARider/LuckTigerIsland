@@ -9,6 +9,7 @@ public class MenuOpen : MonoBehaviour {
     public GameObject ResumeButton;
     public GameObject PartyButton;
     public GameObject BattleUI;
+    public GameObject ActionOneButton;
     EventSystem m_eventSystem;
     [SerializeField]
     private bool m_menuPauseOpen = false;
@@ -27,11 +28,13 @@ public class MenuOpen : MonoBehaviour {
             if(m_menuPauseOpen)
             {
                 Resume();
+
             }
             else
             {
             m_eventSystem.SetSelectedGameObject(ResumeButton);
             Pause();
+                BattleUI = GameObject.Find("Battle_UI");
                 BattleUI.SetActive(false);
             }
         }
@@ -45,6 +48,7 @@ public class MenuOpen : MonoBehaviour {
             {
             m_eventSystem.SetSelectedGameObject(PartyButton);
             OpenPartyMenu();
+                BattleUI = GameObject.Find("Battle_UI");
                 BattleUI.SetActive(false);
             }
         }
@@ -58,6 +62,9 @@ public class MenuOpen : MonoBehaviour {
     {
         PauseMenu.SetActive(false);
         PartyMenu.SetActive(false);
+        BattleUI.SetActive(true);
+        ActionOneButton = GameObject.Find("Action_One");
+        m_eventSystem.SetSelectedGameObject(ActionOneButton);
         m_menuPauseOpen = false;
         m_partyMenuOpen = false;
     }
