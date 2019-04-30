@@ -21052,10 +21052,18 @@ MonoBehaviour:
   enemySpawnLocation: {fileID: 1036723228}
   isChildOf: {fileID: 457023155}
   enemies:
+  - {fileID: 1904302935361172, guid: ed20941b6c0bc3d4da5e4ed4862c5508, type: 2}
+  - {fileID: 1054526964431276, guid: 6c62c346e9a6926498d196a85d9b4cf1, type: 2}
+  - {fileID: 1501292474749894, guid: 4f97062a71df79449b54732da212d294, type: 2}
+  - {fileID: 1690102025896528, guid: ae34637bfd3ede44c92190afd00e471f, type: 2}
+  - {fileID: 1987479021698198, guid: ac8b44867d0d4ed46ae230388c43c6c0, type: 2}
+  - {fileID: 1332974246847006, guid: dd04632a103697347a5d9b88e8625466, type: 2}
+  - {fileID: 1574612810189658, guid: dff1583e04873154db3dbaaeeb460e60, type: 2}
   - {fileID: 1170419463462448, guid: c3e52d5e0aeb6d04d8ec09ab6f16e1a6, type: 2}
   - {fileID: 1842688910896240, guid: bcf028af64b8a1947b3cf549c2d81133, type: 2}
   - {fileID: 1880756387233082, guid: b79eb683dd063e94db6b6229fe32e243, type: 2}
   - {fileID: 1225732447636644, guid: 73331d4a4efc63144aab85ae564ed5d8, type: 2}
+  - {fileID: 1638147860518498, guid: a4a85c35f0074f24c88ea21b6a4bb7c4, type: 2}
 --- !u!1 &1040823084
 GameObject:
   m_ObjectHideFlags: 0
@@ -26039,8 +26047,8 @@ MonoBehaviour:
   cleric: {fileID: 1015691781}
   wizard: {fileID: 1252757219}
   ninja: {fileID: 1143653626}
-  m_level: 1
-  m_xp: 0
+  m_partyLevel: 20
+  m_xperience: 0
 --- !u!114 &1333191324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26148,6 +26156,11 @@ MonoBehaviour:
   EnemiesInBattle: []
   PartyMembersInBattle: []
   TargetingListForAI: []
+  rewards: []
+  rewardUI: {fileID: 0}
+  m_itemsAdded: {fileID: 0}
+  m_inventory: {fileID: 0}
+  m_rewards: {fileID: 0}
   actionOne: {fileID: 378691671}
   battleGoldReward: 0
   deadEnemies: 0

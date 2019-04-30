@@ -15,11 +15,24 @@ public class EnemEntity : Entity
 
     public enum Class
     {
-        eGoblin,
-        eDark_Elf,
-        eWizard,
-        eKnight,
-        eBoss
+        nullEnemy,
+        PigBoss, 
+        Goblin,
+        Farmer,
+        Bandit,
+        Knight,
+        Wolf,
+        Tiger,
+        Troll,
+        Birdman,
+        Skeleton,
+        Golem,
+        Spirit,
+        Warlock,
+        ChickenBoss,
+        TigerBoss, 
+        PorkBoss,
+        MinotaurSkeleton  
     }
     public Class MyClass;
 
@@ -35,47 +48,74 @@ public class EnemEntity : Entity
     public TextMeshProUGUI attackDescriptionText;//describes the attack that is happening/happend;
     public TextMeshProUGUI turnText;//who's turn it is
 
-    protected void SetEnemyStats(int hth, int man, int str, int def, int spd, int lvl, int agr, int itl, int xp)
+    protected void SetEnemyStats(int hth, int man, int str, int def, int magDef, int magPower, int spd, int lvl, int xp)
 	{
 		m_maxHealth = hth;
 		m_maxMana = man;
 		m_strength = str;
 		m_defence = def;
+        m_defenceMGC = magDef;
+        m_magicPower = magPower;
 		m_speed = spd;
 		m_level = lvl;
-		aggress = agr;
-		intel = itl;
 		XP = xp;
 	}
     private BattleControl BC;
     public HandleTurns HT;
     void Start()
     {
-
-        if (MyClass == Class.eGoblin)
+        switch (MyClass)
         {
-            SetEnemyStats(75, 50, 40, 20, 50, 3, 20, 4, 50);
-            AgressionState = Agression.eBackStabber;
-        }
-        if (MyClass == Class.eDark_Elf)
-        {
-            SetEnemyStats(35, 125, 20, 10, 55, 2, 10, 8, 50);
-            AgressionState = Agression.eBackStabber;
-        }
-        if (MyClass == Class.eWizard)
-        {
-            SetEnemyStats(40, 100, 10, 15, 45, 2, 15, 6, 50);
-            AgressionState = Agression.eRandomAttacker;
-        }
-        if (MyClass == Class.eKnight)
-        {
-            SetEnemyStats(60, 150, 15, 7, 50, 3, 5, 5, 50);
-            AgressionState = Agression.eRandomAttacker;
-        }
-        if (MyClass == Class.eBoss)
-        {
-            SetEnemyStats(200, 350, 60, 17, 60, 3, 5, 5, 50);
-            AgressionState = Agression.eRandomAttacker;
+            case Class.PigBoss:
+                SetEnemyStats(350, 350, 45, 25, 20, 15, 50, 5, 500);
+                break;
+            case Class.Goblin:
+                SetEnemyStats(75, 50, 40, 20, 50, 3, 20, 4, 50);
+                break;
+            case Class.Farmer:
+                SetEnemyStats(50, 100, 25, 15, 60, 1, 0, 0, 25);
+                break;
+            case Class.Bandit:
+                SetEnemyStats(75, 50, 35, 20, 20, 15, 40, 2, 20);
+                break;
+            case Class.Knight:
+                SetEnemyStats(60, 150, 15, 7, 50, 3, 5, 5, 50);
+                break;
+            case Class.Wolf:
+                SetEnemyStats(125, 100, 30, 15, 20, 10, 35, 5, 80);
+                break;
+            case Class.Tiger:
+                SetEnemyStats(150, 100, 40, 25, 35, 20, 50, 6, 100);
+                break;
+            case Class.Troll:
+                SetEnemyStats(175, 125, 40, 25, 30, 25, 65, 7, 120);
+                break;
+            case Class.Birdman:
+                SetEnemyStats(200, 200, 10, 15, 40, 50, 45, 8, 150);
+                break;
+            case Class.Skeleton:
+                SetEnemyStats(300, 400, 60, 65, 30, 20, 50, 11, 230);
+                break;
+            case Class.Golem:
+                SetEnemyStats(250, 400, 45, 50, 50, 30, 70, 10, 200);
+                break;
+            case Class.Spirit:
+                SetEnemyStats(350, 700, 40, 70, 20, 60, 55, 12, 260);
+                break;
+            case Class.Warlock:
+                SetEnemyStats(400, 700, 50, 35, 55, 60, 45, 13, 300);
+                break;
+            case Class.ChickenBoss:
+                SetEnemyStats(1000, 0, 25, 35, 45, 60, 50, 10, 2000);
+                break;
+            case Class.TigerBoss:
+                SetEnemyStats(2500, 999, 30, 35, 35, 30, 50, 15, 4000);
+                break;
+            case Class.PorkBoss:
+                SetEnemyStats(3000,9999,70,40,40,50,40,16,9999);
+                break;
+            case Class.MinotaurSkeleton:
+                break;
         }
 
         this.name = GetEntityNo() + ":" + this.name;

@@ -28,6 +28,12 @@ public class EnemyObject : ScriptableObject
         eStunned
     }
 
+    public enum Agression
+    {
+        eBackStabber,
+        eRandomAttacker
+    }
+
     [SerializeField]
     public GameObject go;
     [SerializeField]
@@ -117,6 +123,7 @@ public class EnemyObject : ScriptableObject
     
     public TurnState currentState;
     public Affliction currentAffliction;
+    public Agression AgressionState;
 
     protected Vector3 startPosition; //used for animation, move to player when attacking and then back
 
