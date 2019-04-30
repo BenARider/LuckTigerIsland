@@ -34,7 +34,7 @@ public class MenuOpen : MonoBehaviour {
             {
             m_eventSystem.SetSelectedGameObject(ResumeButton);
             Pause();
-                BattleUI = GameObject.Find("Battle_UI");
+                BattleUI = GameObject.Find("Action_List_Holder");
                 BattleUI.SetActive(false);
             }
         }
@@ -48,7 +48,7 @@ public class MenuOpen : MonoBehaviour {
             {
             m_eventSystem.SetSelectedGameObject(PartyButton);
             OpenPartyMenu();
-                BattleUI = GameObject.Find("Battle_UI");
+                BattleUI = GameObject.Find("Action_List_Holder");
                 BattleUI.SetActive(false);
             }
         }
