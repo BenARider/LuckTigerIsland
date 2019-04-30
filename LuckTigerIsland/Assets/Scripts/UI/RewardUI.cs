@@ -40,12 +40,12 @@ public class RewardUI : MonoBehaviour, ISelectHandler,IDeselectHandler
     void Update()
     {
 
-        m_item = m_rewards.m_rewards[m_nameNumSet];
-        m_image.sprite = m_rewards.m_rewards[m_nameNumSet].Image;
+        m_item = m_rewards.rewards[m_nameNumSet];
+        m_image.sprite = m_rewards.rewards[m_nameNumSet].Image;
     }
     public void OnSelect(BaseEventData _data)
     {
-        ItemDescription.text = m_rewards.m_rewards[m_nameNumSet].Description;
+        ItemDescription.text = m_rewards.rewards[m_nameNumSet].Description;
     }
     public void OnDeselect(BaseEventData _data)
     {
@@ -53,7 +53,11 @@ public class RewardUI : MonoBehaviour, ISelectHandler,IDeselectHandler
     }
     public void AddToInventory()
     {
-        m_inventory.AddToInventory(m_item);
+       for(int i = 0; i< m_rewards.rewards.Count; ++i)
+        {
+            m_inventory.AddToInventory(m_rewards.rewards[i]);
+        }
+    
     }
     public void Destroy()
     {

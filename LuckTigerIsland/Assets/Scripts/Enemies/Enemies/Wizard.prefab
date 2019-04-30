@@ -482,7 +482,7 @@ MonoBehaviour:
   HealthPotions: []
   ManaPotions: []
   AgressionState: 1
-  MyClass: 0
+  MyClass: 2
   aggress: 0
   intel: 0
   XP: 0

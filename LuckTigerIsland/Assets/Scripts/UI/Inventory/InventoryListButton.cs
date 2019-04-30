@@ -69,19 +69,22 @@ public class InventoryListButton : MonoBehaviour,ISelectHandler {
     public void EquipFromInventory()
     {
         m_inventoryObject = m_inventory.inventory[m_index].iObject;
+     
 
         print("Index is " + m_index);
         if (m_inventoryObject.objectType == EObjectType.Weapon)
         {
             equipEntity.EquipWeapon((Weapon)m_inventoryObject);
-          //  m_inventory.inventory.Find(x => x.iObject == m_inventoryObject).DecreaseAmount(1);
+            //m_inventory.inventory.Find(x => x.iObject == m_inventoryObject).DecreaseAmount(1);
             print("Object type is " + m_inventoryObject.objectType);
+            m_invControl.UpdateInventoryUI();
         }
         if (m_inventoryObject.objectType == EObjectType.Armour)
         {
             equipEntity.EquipArmour((Armour)m_inventoryObject);
-          //  m_inventory.inventory.Find(x => x.iObject == m_inventoryObject).DecreaseAmount(1);
+            //m_inventory.inventory.Find(x => x.iObject == m_inventoryObject).DecreaseAmount(1);
             print("Object type is " + m_inventoryObject.objectType);
+            m_invControl.UpdateInventoryUI();
         }
 
     }
