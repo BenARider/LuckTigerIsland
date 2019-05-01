@@ -15,6 +15,8 @@ public class MenuOpen : MonoBehaviour {
     private GameObject m_ShopUI;
     [SerializeField]
     private GameObject m_closeShopButton;
+    [SerializeField]
+    private GameObject m_targetButton;
     EventSystem m_eventSystem;
     [SerializeField]
     private bool m_menuPauseOpen = false;
@@ -88,10 +90,20 @@ public class MenuOpen : MonoBehaviour {
         m_menuPauseOpen = false;
         m_partyMenuOpen = false;
         BattleUI = GameObject.Find("Battle_UI");
-        if(BattleUI.activeSelf == true)
+        m_targetButton = GameObject.Find("Target_One");
+        ActionOneButton = GameObject.Find("Action_One");
+
+        if (BattleUI.activeSelf == true)
         {
-            ActionOneButton = GameObject.Find("Action_One");
             m_eventSystem.SetSelectedGameObject(ActionOneButton);
+            PauseMenu.SetActive(false);
+            PartyMenu.SetActive(false);
+
+        }
+        if(m_targetButton.activeSelf == true)
+        {
+           
+            m_eventSystem.SetSelectedGameObject(m_targetButton);
 
             PauseMenu.SetActive(false);
             PartyMenu.SetActive(false);
