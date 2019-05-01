@@ -49,7 +49,7 @@ public class MenuOpen : MonoBehaviour {
             }
             else
             {
-                m_lastButton = m_eventSystem.currentSelectedGameObject;
+             m_lastButton = m_eventSystem.currentSelectedGameObject;
             m_eventSystem.SetSelectedGameObject(ResumeButton);
             Pause();
                 
@@ -64,7 +64,8 @@ public class MenuOpen : MonoBehaviour {
             }
             else
             {
-            m_eventSystem.SetSelectedGameObject(PartyButton);
+                m_lastButton = m_eventSystem.currentSelectedGameObject;
+                m_eventSystem.SetSelectedGameObject(PartyButton);
             OpenPartyMenu();
            // BattleUI.SetActive(false);
             }
