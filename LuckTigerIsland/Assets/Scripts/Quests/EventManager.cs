@@ -79,7 +79,7 @@ public class EventManager : LTI.Singleton<EventManager>
                     if (_lo.GetLocation() == m_lastLocation)
                     {
                         _lo.SetIsComplete(true);
-                        CheckCompletion(_q);
+                        _q.CheckCompletion();
                     }
                 }
             }
@@ -108,7 +108,7 @@ public class EventManager : LTI.Singleton<EventManager>
                             if (_ko.GetAmountRemaining() <= 0)
                             {
                                 _ko.SetIsComplete(true);
-                                CheckCompletion(_q);
+                                _q.CheckCompletion();
                             }
                         }
                     }
@@ -139,7 +139,7 @@ public class EventManager : LTI.Singleton<EventManager>
                         {
                             Debug.Log("all picked up");
                             _io.SetIsComplete(true);
-                            CheckCompletion(_q);
+                            _q.CheckCompletion();
                         }
                     }
                 }
@@ -194,12 +194,5 @@ public class EventManager : LTI.Singleton<EventManager>
             }
         }
     }
-
-    public void CheckCompletion(Quest _q)
-    {
-        Debug.Log("Checking Completion");
-        _q.CheckCompletion();
-    }
-
 }
 
