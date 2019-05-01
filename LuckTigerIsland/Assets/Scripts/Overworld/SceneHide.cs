@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SceneHide : MonoBehaviour {
-    public bool hidescene= true;
+    public bool flag = true;
     private void Awake()
     {
-        if (hidescene)
+        if (flag)
         {
             gameObject.SetActive(false);
         }
