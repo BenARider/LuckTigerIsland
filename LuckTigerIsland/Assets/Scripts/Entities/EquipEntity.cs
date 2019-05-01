@@ -40,6 +40,7 @@ public class EquipEntity : MonoBehaviour
     {
         m_playerManager = PlayerManager.Instance;
         m_partyMemberName = GameObject.Find("PartyMemberName").GetComponent<TextMeshProUGUI>();
+        m_justEquippedText = GameObject.Find("JustEquippedText").GetComponent<TextMeshProUGUI>();
         m_partyMemberName.text = "Luck";
         m_itemFadeColour.a = 0.0f;
         tempDefence = new int[4];
@@ -72,7 +73,7 @@ public class EquipEntity : MonoBehaviour
         }
         if (m_partyImageIndex == 1)
         {
-            m_partyMemberName.text = "Duck";
+            m_partyMemberName.text = "Buck";
             m_equipImages[0].SetActive(false);
             m_equipImages[1].SetActive(false);
             m_equipImages[2].SetActive(true);
@@ -85,7 +86,7 @@ public class EquipEntity : MonoBehaviour
         }
         if (m_partyImageIndex == 2)
         {
-            m_partyMemberName.text = "Buck";
+            m_partyMemberName.text = "Duck";
             m_equipImages[0].SetActive(false);
             m_equipImages[1].SetActive(false);
             m_equipImages[2].SetActive(false);

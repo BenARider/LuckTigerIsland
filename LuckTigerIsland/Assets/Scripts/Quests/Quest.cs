@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 [System.Serializable]
 public class Quest : MonoBehaviour
 {
@@ -23,6 +23,8 @@ public class Quest : MonoBehaviour
     private int m_goldReward;
     [SerializeField]
     private InventoryObject m_itemReward;
+    [SerializeField]
+    private TextMeshProUGUI m_questText;
 
     public bool isActive = false;
     public bool hasBeenAccepted = false;
@@ -115,6 +117,9 @@ public class Quest : MonoBehaviour
         isActive = true;
         hasBeenAccepted = true;
         QuestManager.Instance.AddQuest(this);
+        m_questText = GameObject.Find("QuestCompleteText").GetComponent<TextMeshProUGUI>();
+        m_questText.text = "Added: " + this.name + " to the quest book";
+        StartCoroutine(FadeText());
         Debug.Log("quest added");
     }
 
@@ -123,7 +128,10 @@ public class Quest : MonoBehaviour
         isActive = false;
         PlayerManager.Instance.AddXP(m_expReward);
         Inventory.Instance.IncreaseGold(m_goldReward);
+        m_questText = GameObject.Find("QuestCompleteText").GetComponent<TextMeshProUGUI>();
+        m_questText.text = "Ended quest: " + this.name;
         QuestManager.Instance.RemoveQuest(this);
+        StartCoroutine(FadeText());
         Debug.Log("quest ended");
     }
 
@@ -186,6 +194,12 @@ public class Quest : MonoBehaviour
     public void SetGoldReward(int _gold)
     {
         m_goldReward = _gold;
+    }
+    IEnumerator FadeText()
+    {
+        yield return new WaitForSeconds(5);
+        m_questText = GameObject.Find("QuestCompleteText").GetComponent<TextMeshProUGUI>();
+        m_questText.text = "";
     }
 }
 

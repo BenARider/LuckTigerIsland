@@ -14,7 +14,7 @@ public class InventoryListButton : MonoBehaviour,ISelectHandler {
     private InventoryListControl m_invControl;
     [SerializeField]
     private EquipEntity equipEntity;
-    Inventory m_inventory;
+
     InventoryObject m_inventoryObject;
     [SerializeField]
     Weapon m_weapon;
@@ -63,13 +63,12 @@ public class InventoryListButton : MonoBehaviour,ISelectHandler {
     }
     void OnEnable()
     {
-        m_inventory = GameObject.Find("Player").GetComponent<Inventory>();
+        
     }
 
     public void EquipFromInventory()
     {
-        m_inventoryObject = m_inventory.inventory[m_index].iObject;
-     
+        m_inventoryObject = Inventory.Instance.inventory[m_index].iObject;
 
         print("Index is " + m_index);
         if (m_inventoryObject.objectType == EObjectType.Weapon)

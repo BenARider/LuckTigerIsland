@@ -33,7 +33,6 @@ public class PartyStatsUI : MonoBehaviour {
     void Start () {
         m_playerEntity = new PlayerEntity[4];
         m_playerManager = PlayerManager.Instance;
-        Debug.Log("PLayer manager" + m_playerManager);
         m_playerEntity[0] = GameObject.Find("Player1").GetComponent<PlayerEntity>();
         m_playerEntity[1] = GameObject.Find("Player2").GetComponent<PlayerEntity>();
         m_playerEntity[2] = GameObject.Find("Player3").GetComponent<PlayerEntity>();
@@ -50,6 +49,11 @@ public class PartyStatsUI : MonoBehaviour {
     }
     private void OnEnable()
     {
+        IncreasePlayerStatID();
+        m_playerEntity[0] = GameObject.Find("Player1").GetComponent<PlayerEntity>();
+        m_playerEntity[1] = GameObject.Find("Player2").GetComponent<PlayerEntity>();
+        m_playerEntity[2] = GameObject.Find("Player3").GetComponent<PlayerEntity>();
+        m_playerEntity[3] = GameObject.Find("Player4").GetComponent<PlayerEntity>();
         expBar.value = m_playerManager.GetXP();
         m_partyLevelTotal.text = "" + m_playerManager.GetLevel();
         statText.text = " Name: Luck" + "\n " + "Class: Cleric" + "\n " + "Health: " + m_playerManager.cleric.GetMaxHealth() + "\n Mana: " + m_playerManager.cleric.GetMaxMana() + "\n Physical Damage: " + m_playerManager.cleric.GetStrength() + "\n Magical Damage: " + m_playerManager.cleric.GetMagicPower() +
@@ -377,8 +381,7 @@ public class PartyStatsUI : MonoBehaviour {
                 Debug.Log("Wizard");
             }
             if (m_playerIDStats == 3)
-            {
-         
+            { 
             
                 statText.text = " Name: Phil" + "\n " + "Class: Ninja" + "\n " + "Health: " + m_playerManager.ninja.GetMaxHealth() + "\n Mana: " + m_playerManager.ninja.GetMaxMana() + "\n Physical Damage: " + m_playerManager.ninja.GetStrength() + "\n Magical Damage: " + m_playerManager.ninja.GetMagicPower() +
              "\n Physical Defence: " + m_playerManager.ninja.GetDefence() + "\n Magical Defence: " + m_playerManager.ninja.GetMagicDefence() + "\n Speed: " + m_playerManager.ninja.GetSpeed();
