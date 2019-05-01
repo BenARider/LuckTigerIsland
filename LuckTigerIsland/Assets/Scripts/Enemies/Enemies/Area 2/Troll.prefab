@@ -666,7 +666,7 @@ MonoBehaviour:
   m_magicPower: 25
   m_defence: 25
   m_defenceMGC: 30
-  m_speed: 65
+  m_speed: 40
   m_mana: 0
   m_maxMana: 125
   m_stunned: 0

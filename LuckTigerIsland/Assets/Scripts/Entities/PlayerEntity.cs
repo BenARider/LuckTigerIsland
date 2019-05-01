@@ -57,7 +57,7 @@ public class PlayerEntity : Entity
             Stats thisStats = GetComponent<WarriorStats>();
 
             m_maxHealth = thisStats.GetMaxHealth();
-            m_maxMana = thisStats.GetMaxMana();
+			m_maxMana = thisStats.GetMaxMana();
             m_strength = thisStats.GetStrength();
             m_magicPower = thisStats.GetMagicPower();
             m_defence = thisStats.GetDefence();
@@ -70,7 +70,7 @@ public class PlayerEntity : Entity
             Stats thisStats = GetComponent<WizardStats>();
 
             m_maxHealth = thisStats.GetMaxHealth();
-            m_maxMana = thisStats.GetMaxMana();
+			m_maxMana = thisStats.GetMaxMana();
             m_strength = thisStats.GetStrength();
             m_magicPower = thisStats.GetMagicPower();
             m_defence = thisStats.GetDefence();
@@ -96,7 +96,7 @@ public class PlayerEntity : Entity
             Stats thisStats = GetComponent<NinjaStats>();
 
             m_maxHealth = thisStats.GetMaxHealth();
-            m_maxMana = thisStats.GetMaxMana();
+			m_maxMana = thisStats.GetMaxMana();
             m_strength = thisStats.GetStrength();
             m_magicPower = thisStats.GetMagicPower();
             m_defence = thisStats.GetDefence();

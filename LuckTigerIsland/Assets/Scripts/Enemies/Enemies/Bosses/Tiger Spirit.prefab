@@ -315,7 +315,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 5.36, y: 4.06}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -364,11 +364,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_maxHealth: 1400
   m_health: 0
-  m_strength: 35
-  m_magicPower: 35
+  m_strength: 65
+  m_magicPower: 65
   m_defence: 25
   m_defenceMGC: 25
-  m_speed: 50
+  m_speed: 70
   m_mana: 0
   m_maxMana: 9999
   m_stunned: 0
@@ -461,7 +461,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 106324cbd0ae5334bb75664d81e8a72e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 114261961757593672}
   stringname: player1
   m_requiredEntityNumber: 1
   isEnemySlider: 1
@@ -755,7 +755,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300042, guid: 5b3567110517a8645a4327fe47f69e01, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8239b60ca8a0cac4187ed8e86b911757, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
