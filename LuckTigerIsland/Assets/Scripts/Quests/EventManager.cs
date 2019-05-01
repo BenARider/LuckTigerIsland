@@ -136,7 +136,7 @@ public class EventManager : LTI.Singleton<EventManager>
                         _io.DecreaseCurrentAmount(_amount);
                         Debug.Log("curr am: " + _io.GetCurrentAmount());
                         m_currentAmountText = GameObject.Find("QuestCompleteText").GetComponent<TextMeshProUGUI>();
-                        m_currentAmountText.text = "Amount of left to collect: " + _io.GetCurrentAmount();
+                        m_currentAmountText.text = "Amount left to collect: " + _io.GetCurrentAmount();
                         StartCoroutine(FadeText());
                         if (_io.GetCurrentAmount() <= 0)
                         {

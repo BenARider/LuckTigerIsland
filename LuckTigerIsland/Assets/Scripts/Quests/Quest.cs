@@ -118,7 +118,7 @@ public class Quest : MonoBehaviour
         hasBeenAccepted = true;
         QuestManager.Instance.AddQuest(this);
         m_questText = GameObject.Find("QuestCompleteText").GetComponent<TextMeshProUGUI>();
-        m_questText.text = "Added: " + this.name + " to the quest book";
+        m_questText.text = "Added " + this.name + " to the quest book";
         StartCoroutine(FadeText());
         Debug.Log("quest added");
     }
