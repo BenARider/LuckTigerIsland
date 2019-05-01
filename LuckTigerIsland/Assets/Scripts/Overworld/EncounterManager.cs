@@ -23,9 +23,15 @@ public class EncounterManager : MonoBehaviour {
 		lastPos = new Vector3Int(0,0,0);
         fade = Camera.main.GetComponent<ScreenTransition>();
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    public void DoEncounter (int sceneNo)
+    {
+        enumerator = doEncounter(sceneNo);
+        StartCoroutine(enumerator);
+    }
+
+    // Update is called once per frame
+    void Update () {
         if (player.currentSceneName.Contains("Dungeon"))
         {
             encounterChance = 1f;
@@ -138,6 +144,9 @@ public class EncounterManager : MonoBehaviour {
                 break;
             case 3:
                 scenename = "CaveBattle";
+                break;
+            case 4:
+                scenename = "Boss1Battle";
                 break;
 
         }
