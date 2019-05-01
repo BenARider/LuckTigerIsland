@@ -668,7 +668,7 @@ public class PlayerEntity : Entity
                 {
                     BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
                     m_chosenTarget = true;
-                    attackDescriptionText.text = this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!";
+                    attackDescriptionText.text = this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + m_displayDamage + " damage!";
                     Debug.Log(this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!");
                     StartCoroutine("FadeText");
                 }
@@ -691,7 +691,7 @@ public class PlayerEntity : Entity
                 {
                     BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
                     m_chosenTarget = true;
-                    attackDescriptionText.text = this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!";
+                    attackDescriptionText.text = this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + m_displayDamage + " damage!";
                     Debug.Log(this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!");
                     StartCoroutine("FadeText");
                 }
@@ -714,7 +714,7 @@ public class PlayerEntity : Entity
                 {
                     BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
                     m_chosenTarget = true;
-                    attackDescriptionText.text = this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!";
+                    attackDescriptionText.text = this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + m_displayDamage + " damage!";
                     Debug.Log(this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!");
                     StartCoroutine("FadeText");
                 }
@@ -737,7 +737,7 @@ public class PlayerEntity : Entity
                 {
                     BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
                     m_chosenTarget = true;
-                    attackDescriptionText.text = this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!";
+                    attackDescriptionText.text = this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + m_displayDamage + " damage!";
                     Debug.Log(this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!");
                     StartCoroutine("FadeText");
                 }
@@ -925,21 +925,22 @@ public class PlayerEntity : Entity
     {
         if (m_chosenAction.attackType == BaseAttack.AttackType.eMelee)
         {
-            int calculateDamage = GetStrength() + BC.NextTurn[0].chosenAttack.attackDamage; //calc should be done here before damage
+            int calculateDamage = GetStrength() + (BC.NextTurn[0].chosenAttack.attackDamage * BC.NextTurn[0].chosenAttack.skillMultiplier); //calc should be done here before damage
             EntityToAttack.GetComponent<EnemEntity>().TakeDamage(calculateDamage, m_chosenAction);
         }
         else
         {
-            int calculateMagicDamage = GetMagicPower() + BC.NextTurn[0].chosenAttack.attackDamage;
-            EntityToAttack.GetComponent<EnemEntity>().TakeDamage(calculateMagicDamage, m_chosenAction);
+            int calculateMagicDamage = GetMagicPower() + (BC.NextTurn[0].chosenAttack.attackDamage * BC.NextTurn[0].chosenAttack.skillMultiplier);
+			EntityToAttack.GetComponent<EnemEntity>().TakeDamage(calculateMagicDamage, m_chosenAction);
         }
     }
     void PartyWideDamage()
     {
-        int calculateDamage = GetStrength() + BC.NextTurn[0].chosenAttack.attackDamage;
+        int calculateDamage = GetStrength() + (BC.NextTurn[0].chosenAttack.attackDamage * BC.NextTurn[0].chosenAttack.skillMultiplier);
         for (int i = 0; i < BC.EnemiesInBattle.Count; i++)
         {
-            BC.EnemiesInBattle[i].GetComponent<EnemEntity>().TakeDamage(calculateDamage, m_chosenAction);
+			Debug.Log("Display Damage: " + m_displayDamage);
+			BC.EnemiesInBattle[i].GetComponent<EnemEntity>().TakeDamage(calculateDamage, m_chosenAction);
         }
     }
 }

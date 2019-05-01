@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Name: Pillage
   m_EditorClassIdentifier: 
   attackName: Pillage
-  attackDescription: High power attack witha  chance to steal an item
+  attackDescription: High power attack with a chance to poison
   attackType: 0
   attackDamage: 20
   skillMultiplier: 2
   skillDuration: 0
   attackCost: 35
   attackImage: {fileID: 0}
-  attackAffliction: 5
+  attackAffliction: 4
+  afflictionChance: 20

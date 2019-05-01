@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Name: Water
   m_EditorClassIdentifier: 
   attackName: Water
-  attackDescription: A blast of water
+  attackDescription: A blast of water. Very small chance to freeze.
   attackType: 1
   attackDamage: 25
   skillMultiplier: 1
-  skillDuration: 0
+  skillDuration: 5
   attackCost: 10
   attackImage: {fileID: 0}
-  attackAffliction: 5
+  attackAffliction: 1
+  afflictionChance: 2

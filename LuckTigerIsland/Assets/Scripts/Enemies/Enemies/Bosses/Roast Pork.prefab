@@ -464,22 +464,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1ad11708009c30468e53804204b777a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  assignedScriptableObject: {fileID: 11400000, guid: f6b07c54a4b10ca41b49c792aca5fc98,
-    type: 2}
-  m_maxHealth: 0
+  m_maxHealth: 2000
   m_health: 0
-  m_strength: 0
-  m_magicPower: 0
-  m_defence: 0
-  m_defenceMGC: 0
-  m_speed: 0
+  m_strength: 35
+  m_magicPower: 35
+  m_defence: 25
+  m_defenceMGC: 25
+  m_speed: 40
   m_mana: 0
-  m_maxMana: 0
+  m_maxMana: 9999
   m_stunned: 0
   m_afflicted: 0
-  m_level: 0
-  m_xpAward: 0
-  m_goldAward: 0
+  m_displayDamage: 0
+  m_level: 16
+  m_xpAward: 9999
+  m_goldAward: 9999
   m_EXP: 0
   m_attackedAlready: 0
   m_canBeBuffed: 1
@@ -502,12 +501,20 @@ MonoBehaviour:
   currentAffliction: 0
   currentBuff: 0
   EntityToAttack: {fileID: 0}
-  attacks: []
+  attacks:
+  - {fileID: 11400000, guid: 8d382809ca217ee4bb6274a2256cd7f6, type: 2}
+  - {fileID: 11400000, guid: 64ea5b77117103b46bdc4e33e4bc316d, type: 2}
+  - {fileID: 11400000, guid: be48b1461e3ab81469f971fc808f080f, type: 2}
+  - {fileID: 11400000, guid: d86d20ecc0bb48d42b8ee8006b93fe28, type: 2}
+  - {fileID: 11400000, guid: 7b4b374b9453f4b4aa11f701e492b583, type: 2}
+  - {fileID: 11400000, guid: 514e1c79f37c1ba4aa8e8f99e4b54b94, type: 2}
+  - {fileID: 11400000, guid: 730c238f744d33444958f3fe7e456c0f, type: 2}
   passiveActiveList: []
   HealthPotions: []
   ManaPotions: []
   AgressionState: 1
-  MyClass: 0
+  MyClass: 16
+  thisEnemyObject: {fileID: 0}
   aggress: 0
   intel: 0
   XP: 0
@@ -989,7 +996,7 @@ RectTransform:
   m_GameObject: {fileID: 1894480785776404}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.12408, y: 1.12408, z: 0.56204}
+  m_LocalScale: {x: 2.2, y: 2.2, z: 0.56204}
   m_Children:
   - {fileID: 224260314021106744}
   - {fileID: 224662766177558134}

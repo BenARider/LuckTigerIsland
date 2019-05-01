@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Name: Invisibility
   m_EditorClassIdentifier: 
   attackName: Invisibility
-  attackDescription: Shroud yourself from each enemy until your next turn.
+  attackDescription: Increase your defences for a while.
   attackType: 2
   attackDamage: 0
-  skillMultiplier: 1
-  skillDuration: 0
-  attackCost: 0
+  skillMultiplier: 2
+  skillDuration: 20
+  attackCost: 35
   attackImage: {fileID: 0}
-  attackAffliction: 5
+  attackAffliction: 10
+  afflictionChance: 100

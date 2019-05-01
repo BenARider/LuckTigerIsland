@@ -437,22 +437,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1ad11708009c30468e53804204b777a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  assignedScriptableObject: {fileID: 11400000, guid: 1e34555d367fe7643b05c4549671266d,
-    type: 2}
-  m_maxHealth: 0
+  m_maxHealth: 300
   m_health: 0
-  m_strength: 0
-  m_magicPower: 0
-  m_defence: 0
-  m_defenceMGC: 0
-  m_speed: 0
+  m_strength: 25
+  m_magicPower: 25
+  m_defence: 20
+  m_defenceMGC: 20
+  m_speed: 50
   m_mana: 0
-  m_maxMana: 0
+  m_maxMana: 999
   m_stunned: 0
   m_afflicted: 0
-  m_level: 0
-  m_xpAward: 0
-  m_goldAward: 0
+  m_displayDamage: 0
+  m_level: 5
+  m_xpAward: 500
+  m_goldAward: 500
   m_EXP: 0
   m_attackedAlready: 0
   m_canBeBuffed: 1
@@ -475,12 +474,16 @@ MonoBehaviour:
   currentAffliction: 0
   currentBuff: 0
   EntityToAttack: {fileID: 0}
-  attacks: []
+  attacks:
+  - {fileID: 11400000, guid: be48b1461e3ab81469f971fc808f080f, type: 2}
+  - {fileID: 11400000, guid: 64ea5b77117103b46bdc4e33e4bc316d, type: 2}
+  - {fileID: 11400000, guid: 589513165f3b2a24faaecfe97cd71d66, type: 2}
   passiveActiveList: []
   HealthPotions: []
   ManaPotions: []
   AgressionState: 1
-  MyClass: 0
+  MyClass: 1
+  thisEnemyObject: {fileID: 0}
   aggress: 0
   intel: 0
   XP: 0
@@ -858,7 +861,7 @@ RectTransform:
   m_GameObject: {fileID: 1048865518018926}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.12408, y: 1.12408, z: 0.56204}
+  m_LocalScale: {x: 2.2, y: 2.2, z: 0.56204}
   m_Children:
   - {fileID: 224856564211317300}
   - {fileID: 224268776941992582}

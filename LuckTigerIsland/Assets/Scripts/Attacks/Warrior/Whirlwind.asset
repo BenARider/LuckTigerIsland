@@ -14,9 +14,10 @@ MonoBehaviour:
   attackName: Whirlwind
   attackDescription: Deals physical damage to all enemies
   attackType: 3
-  attackDamage: 35
+  attackDamage: 15
   skillMultiplier: 1
   skillDuration: 0
   attackCost: 20
   attackImage: {fileID: 0}
   attackAffliction: 5
+  afflictionChance: 0

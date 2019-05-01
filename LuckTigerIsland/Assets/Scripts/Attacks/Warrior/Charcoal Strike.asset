@@ -13,10 +13,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: Charcoal strike
   attackDescription: Physical attack with chance to set enemy on fire
-  attackType: Melee
+  attackType: 0
   attackDamage: 30
   skillMultiplier: 1
   skillDuration: 15
   attackCost: 35
   attackImage: {fileID: 0}
-  attackAffliction: Fire
+  attackAffliction: 0
+  afflictionChance: 25

@@ -335,19 +335,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1ad11708009c30468e53804204b777a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_maxHealth: 0
+  m_maxHealth: 30
   m_health: 0
-  m_strength: 0
-  m_magicPower: 0
-  m_defence: 0
-  m_defenceMGC: 0
-  m_speed: 0
+  m_strength: 25
+  m_magicPower: 20
+  m_defence: 10
+  m_defenceMGC: 13
+  m_speed: 40
   m_mana: 0
-  m_maxMana: 0
+  m_maxMana: 100
   m_stunned: 0
   m_afflicted: 0
-  m_level: 0
-  m_xpAward: 0
+  m_displayDamage: 0
+  m_level: 2
+  m_xpAward: 25
   m_goldAward: 0
   m_EXP: 0
   m_attackedAlready: 0
@@ -371,12 +372,16 @@ MonoBehaviour:
   currentAffliction: 0
   currentBuff: 0
   EntityToAttack: {fileID: 0}
-  attacks: []
+  attacks:
+  - {fileID: 11400000, guid: 025630a4956fac74da4985d9d134e6f9, type: 2}
+  - {fileID: 11400000, guid: 3a19ab07dbe98794da367a9df54c6eea, type: 2}
+  - {fileID: 11400000, guid: d86d8a8da359f334496d00bb8f362b79, type: 2}
   passiveActiveList: []
   HealthPotions: []
   ManaPotions: []
   AgressionState: 1
-  MyClass: 0
+  MyClass: 2
+  thisEnemyObject: {fileID: 0}
   aggress: 0
   intel: 0
   XP: 0
@@ -951,7 +956,7 @@ RectTransform:
   m_GameObject: {fileID: 1167818520699890}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.12408, y: 1.12408, z: 0.56204}
+  m_LocalScale: {x: 2.2, y: 2.2, z: 0.56204}
   m_Children:
   - {fileID: 224014476086681012}
   - {fileID: 224534821194478290}

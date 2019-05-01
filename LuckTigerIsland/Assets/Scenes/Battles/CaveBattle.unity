@@ -20749,6 +20749,7 @@ MonoBehaviour:
   m_maxMana: 0
   m_stunned: 0
   m_afflicted: 0
+  m_displayDamage: 0
   m_level: 0
   m_xpAward: 0
   m_goldAward: 0
@@ -22965,6 +22966,7 @@ MonoBehaviour:
   m_maxMana: 0
   m_stunned: 0
   m_afflicted: 0
+  m_displayDamage: 0
   m_level: 0
   m_xpAward: 0
   m_goldAward: 0
@@ -24390,6 +24392,7 @@ MonoBehaviour:
   m_maxMana: 0
   m_stunned: 0
   m_afflicted: 0
+  m_displayDamage: 0
   m_level: 0
   m_xpAward: 0
   m_goldAward: 0
@@ -25994,7 +25997,6 @@ GameObject:
   - component: {fileID: 1333191326}
   - component: {fileID: 1333191325}
   - component: {fileID: 1333191324}
-  - component: {fileID: 1333191323}
   m_Layer: 0
   m_Name: BattleControl
   m_TagString: Untagged
@@ -26016,31 +26018,6 @@ Transform:
   m_Father: {fileID: 1704153060}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1333191323
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114535540040248110, guid: e09f1bcd3a2c10443ab1117241ea0c1b,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1333191321}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb93873c1dc64e74ab50de01be922815, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactions: []
-  currentSceneName: 
-  playerMove: {fileID: 0}
-  textArray: []
-  m_gold: {fileID: 0}
-  backgroundTextArray:
-  - {fileID: 1015691779}
-  warrior: {fileID: 1380834929}
-  cleric: {fileID: 1015691781}
-  wizard: {fileID: 1252757219}
-  ninja: {fileID: 1143653626}
-  m_level: 1
-  m_xp: 0
 --- !u!114 &1333191324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26148,6 +26125,11 @@ MonoBehaviour:
   EnemiesInBattle: []
   PartyMembersInBattle: []
   TargetingListForAI: []
+  rewards: []
+  rewardUI: {fileID: 0}
+  m_itemsAdded: {fileID: 0}
+  m_inventory: {fileID: 0}
+  m_rewards: {fileID: 0}
   actionOne: {fileID: 378691671}
   battleGoldReward: 0
   deadEnemies: 0
@@ -26557,6 +26539,7 @@ MonoBehaviour:
   m_maxMana: 0
   m_stunned: 0
   m_afflicted: 0
+  m_displayDamage: 0
   m_level: 0
   m_xpAward: 0
   m_goldAward: 0
