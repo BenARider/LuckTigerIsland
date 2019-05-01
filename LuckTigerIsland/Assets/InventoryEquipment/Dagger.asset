@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Name: Dagger
   m_EditorClassIdentifier: 
   objectName: Dagger
-  Image: {fileID: 21300000, guid: a84ed88047b8fc34a985e06ef77fefe9, type: 3}
+  Image: {fileID: 21300000, guid: 8e2a8a085b3b847458c0ab25c07d0c0c, type: 3}
   Description: A Dagger
   Price: 5
+  sellable: 1
   Equippable: Yes
   ItemType: Weapon
   isEquipped: 0
+  objectType: 0
   attack: 4
