@@ -33,10 +33,6 @@ public class BattleControl : MonoBehaviour {
     public RewardUI rewardUI;
     [SerializeField]
     TextMeshProUGUI m_itemsAdded;
-    [SerializeField]
-    Inventory m_inventory;
-    [SerializeField]
-    Rewards m_rewards;
     EventSystem m_eventSystem;
     private bool m_itemRolled;
     public GameObject actionOne;
@@ -44,7 +40,6 @@ public class BattleControl : MonoBehaviour {
     public int deadEnemies = 0;
     public int deadPlayers = 0;
     private int m_itemRoll;
-
     //private void Awake()
     //{
     //    PlayerManager.Instance.cleric = GameObject.Find("Player1").GetComponent<ClericStats>();
@@ -66,8 +61,6 @@ public class BattleControl : MonoBehaviour {
 		{
 			EnemiesInBattle.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
 		}
-		
-
         EnemiesInBattle = EnemiesInBattle.OrderBy(x => x.GetComponent<EnemEntity>().GetEntityNo()).ToList();
         PartyMembersInBattle = PartyMembersInBattle.OrderBy(x => x.GetComponent<PlayerEntity>().GetEntityNo()).ToList();
 		//allows the enemies to be targetted and guarantees this is called after they are instantiated
@@ -126,10 +119,10 @@ public class BattleControl : MonoBehaviour {
               if (!m_itemRolled)
                 {
                     battleGoldReward = Random.Range(100, 150);
-              Inventory.Instance.IncreaseGold(battleGoldReward);
+                    Inventory.Instance.IncreaseGold(battleGoldReward);
                     PlayerManager.Instance.AddXP(100);
-                    m_itemRoll = Random.Range(0, m_rewards.rewards.Count());
-                    m_inventory.AddToInventory(rewards[m_itemRoll]);
+                    m_itemRoll = Random.Range(0, rewards.Count()-1);
+                    Inventory.Instance.AddToInventory(rewards[m_itemRoll]);
                     Debug.Log("Additem success" + rewards[m_itemRoll]);
                     m_itemRolled = true;
                     m_itemsAdded.text = "Items gained: " + "\n"+ rewards[m_itemRoll].objectName;

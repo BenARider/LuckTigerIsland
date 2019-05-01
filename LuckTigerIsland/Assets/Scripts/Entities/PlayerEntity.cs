@@ -139,7 +139,7 @@ public class PlayerEntity : Entity
 
         startPosition = transform.position; //setting the position based on where the object is on start up
         m_hasChosenAction = false;
-        m_BattleButton = GameObject.Find("Action_List_Holder").GetComponent<BattleUIButton>();
+        m_BattleButton = GameObject.Find("Action_One").GetComponent<BattleUIButton>();
 
 
         turnText = GameObject.Find("Player_Turn_Text").GetComponent<TextMeshProUGUI>();

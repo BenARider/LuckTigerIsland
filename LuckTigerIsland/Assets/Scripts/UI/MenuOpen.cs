@@ -19,10 +19,17 @@ public class MenuOpen : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         m_eventSystem = EventSystem.current;
+        BattleUI = GameObject.Find("Action_List_Holder");
+        Debug.Log("BattleUI" + BattleUI);
     }
     // Update is called once per frame
+    private void OnEnable()
+    {
+        BattleUI = GameObject.Find("Action_List_Holder");
+    }
     void Update()
     {
+
         if (Input.GetKeyDown(KeyCode.Escape)&& !m_partyMenuOpen)
         {
             if(m_menuPauseOpen)
@@ -34,8 +41,8 @@ public class MenuOpen : MonoBehaviour {
             {
             m_eventSystem.SetSelectedGameObject(ResumeButton);
             Pause();
-                BattleUI = GameObject.Find("Action_List_Holder");
-                BattleUI.SetActive(false);
+                
+                //BattleUI.SetActive(false);
             }
         }
         if(Input.GetKeyDown(KeyCode.I) && !m_menuPauseOpen)
@@ -48,8 +55,7 @@ public class MenuOpen : MonoBehaviour {
             {
             m_eventSystem.SetSelectedGameObject(PartyButton);
             OpenPartyMenu();
-                BattleUI = GameObject.Find("Action_List_Holder");
-                BattleUI.SetActive(false);
+           // BattleUI.SetActive(false);
             }
         }
     }
@@ -58,11 +64,21 @@ public class MenuOpen : MonoBehaviour {
         PartyMenu.SetActive(true);
         m_partyMenuOpen = true;
     }
+    public bool GetPartyMenuState()
+    {
+        return m_partyMenuOpen;
+
+    }
+    public bool GetPauseMenuState()
+    {
+        return m_menuPauseOpen;
+
+    }
     public void Resume()
     {
         PauseMenu.SetActive(false);
         PartyMenu.SetActive(false);
-        BattleUI.SetActive(true);
+        //BattleUI.SetActive(true);
         ActionOneButton = GameObject.Find("Action_One");
         m_eventSystem.SetSelectedGameObject(ActionOneButton);
         m_menuPauseOpen = false;

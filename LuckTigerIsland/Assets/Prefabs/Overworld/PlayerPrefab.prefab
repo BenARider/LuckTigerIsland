@@ -1210,13 +1210,13 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1496887805522860}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 233f31f18170c33429d899e74793b8b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_partyMembers: []
-  m_playerManager: {fileID: 0}
+  m_playerManager: {fileID: 114567064487550714}
   m_currentWeapon: {fileID: 0}
   m_currentArmour: {fileID: 0}
   m_equipImages: []
