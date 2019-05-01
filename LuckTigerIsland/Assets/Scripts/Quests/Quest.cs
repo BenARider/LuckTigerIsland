@@ -125,13 +125,13 @@ public class Quest : MonoBehaviour
 
     public void EndQuest()
     {
+        m_questText = GameObject.Find("QuestCompleteText").GetComponent<TextMeshProUGUI>();
+        m_questText.text = "Ended quest: " + this.name;
+        StartCoroutine(FadeText());
         isActive = false;
         PlayerManager.Instance.AddXP(m_expReward);
         Inventory.Instance.IncreaseGold(m_goldReward);
-        m_questText = GameObject.Find("QuestCompleteText").GetComponent<TextMeshProUGUI>();
-        m_questText.text = "Ended quest: " + this.name;
         QuestManager.Instance.RemoveQuest(this);
-        StartCoroutine(FadeText());
         Debug.Log("quest ended");
     }
 
@@ -238,6 +238,7 @@ public class Quest : MonoBehaviour
     {
         yield return new WaitForSeconds(5);
         m_questText = GameObject.Find("QuestCompleteText").GetComponent<TextMeshProUGUI>();
+        Debug.Log("Faded");
         m_questText.text = "";
     }
 }
