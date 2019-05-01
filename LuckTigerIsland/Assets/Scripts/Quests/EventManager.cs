@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+
 //Locations
 public enum ELocations
 {
@@ -42,7 +42,7 @@ public enum EEnemies
 public class EventManager : LTI.Singleton<EventManager>
 {
     private QuestManager m_questManager;
-    private TextMeshProUGUI m_currentAmountText;
+
     private ELocations m_lastLocation;
     private List<EEnemies> m_lastBattle;
 
@@ -79,7 +79,7 @@ public class EventManager : LTI.Singleton<EventManager>
                     if (_lo.GetLocation() == m_lastLocation)
                     {
                         _lo.SetIsComplete(true);
-                        CheckCompletion(_q);
+                        _q.CheckCompletion();
                     }
                 }
             }
@@ -108,7 +108,7 @@ public class EventManager : LTI.Singleton<EventManager>
                             if (_ko.GetAmountRemaining() <= 0)
                             {
                                 _ko.SetIsComplete(true);
-                                CheckCompletion(_q);
+                                _q.CheckCompletion();
                             }
                         }
                     }
@@ -135,14 +135,11 @@ public class EventManager : LTI.Singleton<EventManager>
                         Debug.Log("Item picked up");
                         _io.DecreaseCurrentAmount(_amount);
                         Debug.Log("curr am: " + _io.GetCurrentAmount());
-                        m_currentAmountText = GameObject.Find("QuestCompleteText").GetComponent<TextMeshProUGUI>();
-                        m_currentAmountText.text = "Amount left to collect: " + _io.GetCurrentAmount();
-                        StartCoroutine(FadeText());
                         if (_io.GetCurrentAmount() <= 0)
                         {
                             Debug.Log("all picked up");
                             _io.SetIsComplete(true);
-                            CheckCompletion(_q);
+                            _q.CheckCompletion();
                         }
                     }
                 }
@@ -197,18 +194,5 @@ public class EventManager : LTI.Singleton<EventManager>
             }
         }
     }
-
-    public void CheckCompletion(Quest _q)
-    {
-        Debug.Log("Checking Completion");
-        _q.CheckCompletion();
-    }
-    IEnumerator FadeText()
-    {
-        yield return new WaitForSeconds(2);
-        m_currentAmountText = GameObject.Find("QuestCompleteText").GetComponent<TextMeshProUGUI>();
-        m_currentAmountText.text = "";
-    }
-
 }
 
