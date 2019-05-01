@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Name: Peach
   m_EditorClassIdentifier: 
   objectName: New Object
-  Image: {fileID: 21300000, guid: a84ed88047b8fc34a985e06ef77fefe9, type: 3}
+  Image: {fileID: 21300000, guid: 8ce2228844d9fa44d8e61eb4fea04882, type: 3}
   Description: It's a Peach
   Price: 1
   sellable: 0
+  Equippable: 
+  ItemType: 
+  isEquipped: 0
+  objectType: 3

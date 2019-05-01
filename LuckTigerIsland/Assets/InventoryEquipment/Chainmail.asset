@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Name: Chainmail
   m_EditorClassIdentifier: 
   objectName: Chainmail
-  Image: {fileID: 21300000, guid: d4a3fae453cc44c498f4bf29510addb9, type: 3}
+  Image: {fileID: 21300000, guid: 025490ee018d6f544b43762cefc39d17, type: 3}
   Description: A piece of chainmail
   Price: 25
+  sellable: 1
   Equippable: Yes
   ItemType: Armour
   isEquipped: 0

@@ -74,11 +74,17 @@ public class SellListButton : MonoBehaviour, ISelectHandler
         m_eventSystem = EventSystem.current;
         if (Inventory.Instance.inventory.Find(x => x.iObject == m_inventoryObject).amount > 0)
         {
-            m_shop.SellItem(m_inventoryObject);
-            m_soldText.text = "Just sold: " + m_inventoryObject.objectName;
-            StartCoroutine(FadeText());
-            m_sellControl.UpdateInventoryUI();
-            m_eventSystem.SetSelectedGameObject(m_closeButton);
+            if (m_inventoryObject.sellable)
+            {
+                m_shop.SellItem(m_inventoryObject);
+                m_soldText.text = "Just sold: " + m_inventoryObject.objectName;
+                StartCoroutine(FadeText());
+                m_sellControl.UpdateInventoryUI();
+                m_eventSystem.SetSelectedGameObject(m_closeButton);
+            } else
+            {
+                Debug.Log("This item cannot be sold.");
+            }
         }
     }
 
