@@ -117,9 +117,9 @@ public class BattleControl : MonoBehaviour {
               //  PlayerManager.Instance.transform.root.GetComponent<ReturnToMain>().Return();
               if (!m_itemRolled)
                 {
-                    battleGoldReward = Random.Range(100, 150);
-                    Inventory.Instance.IncreaseGold(battleGoldReward);
-                    PlayerManager.Instance.AddXP(Random.Range(100, 150));
+                    //battleGoldReward = Random.Range(100, 150);
+                    
+                    //PlayerManager.Instance.AddXP(Random.Range(100, 150));
                     //m_itemRoll = Random.Range(0, rewards.Count()-1);
                     //
                     //
@@ -129,13 +129,22 @@ public class BattleControl : MonoBehaviour {
                     //Debug.Log("Additem success" + rewards[m_itemRoll]);
                     //m_itemRolled = true;
                     //m_itemsAdded.text = "Items gained: " + "\n"+ rewards[m_itemRoll].objectName;
-                
-                    
+
+                    battleGoldReward = 0;
+                    int battleExpReward = 0;
                     List<EEnemies> toSet = new List<EEnemies>();
-                    foreach (var i in EnemiesInBattle)
+                    for (int i=0; i< 4; ++i)
                     {
-                       toSet.Add(i.GetComponent<EnemEntity>().MyClass);
+                
+                       toSet.Add(EnemiesInBattle[i].GetComponent<EnemEntity>().MyClass);
+                        battleExpReward += EnemiesInBattle[i].GetComponent<EnemEntity>().GetEXP();
+                        Debug.Log("EXP Gained" + battleExpReward);
+
+                        battleGoldReward += EnemiesInBattle[i].GetComponent<EnemEntity>().GetGold();
+                        Debug.Log("Gold Gained" + battleGoldReward);
                     }
+                    PlayerManager.Instance.AddXP(battleExpReward);
+                    Inventory.Instance.IncreaseGold(battleGoldReward);
                     EventManager.Instance.SetLastBattle(toSet);
                     PlayerManager.Instance.transform.parent.GetComponent<ReturnToMain>().Return();
                     Debug.Log("Won");

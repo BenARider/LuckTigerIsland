@@ -44,6 +44,8 @@ public class Entity : MonoBehaviour {
     protected int m_goldAward;
 	[SerializeField]
 	protected int m_EXP;
+    [SerializeField]
+    protected int m_gold;
 
     /// Following are used purely for battle integration. Used by both enemies and players.
     [SerializeField]
@@ -316,6 +318,10 @@ public class Entity : MonoBehaviour {
         m_previousMagicPower = m_magicPower;
         m_previousStrength = m_strength;
         m_previousSpeed = m_speed;
+    }
+    public int GetGold()
+    {
+        return m_gold;
     }
     public void Sethealth(int _health) //The argument should be _health. The body should then be m_health = _health.
 	{

@@ -30,7 +30,7 @@ public class Slider_Manager : MonoBehaviour {
             if (player.GetEntityNo() == 1)
             {
                 sliderTransform = GameObject.Find("Enemy_1").GetComponent<Transform>();
-                transform.position = new Vector2(sliderTransform.position.x+78, sliderTransform.position.y + 8 + (1*(player.GetEntityNo())));
+                transform.position = new Vector2(sliderTransform.position.x+1993, sliderTransform.position.y +473 + (1*(player.GetEntityNo())));//x 78 //y 8 or //x 1983 //y 473
             }
             if (player.GetEntityNo() == 2)
             {

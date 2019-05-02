@@ -19,5 +19,5 @@ MonoBehaviour:
   skillDuration: 0
   attackCost: 0
   attackImage: {fileID: 21300070, guid: ebc6d8c8bd0a92f478a3e839743eb8fb, type: 3}
-  attackAffliction: 0
-  afflictionChance: 20
+  attackAffliction: 12
+  afflictionChance: 0

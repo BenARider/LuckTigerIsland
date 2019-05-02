@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4898813244927398}
   - component: {fileID: 114503475037301710}
+  - component: {fileID: 114360710648590110}
   m_Layer: 0
   m_Name: _AudioManager
   m_TagString: AudioManager
@@ -40,6 +41,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114360710648590110
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1133110365404502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2639c4d083ea76418e897e910512245, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114503475037301710
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -51,10 +63,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75b94020107e8284bb885f7ff3d0241a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPlaylist: 1
+  currentPlaylist: 0
   m_sounds:
-  - m_name: pigtalk
-    m_audioClip: {fileID: 8300000, guid: 432339367ed692c45ac24dff51b3bdd7, type: 3}
+  - m_name: buttonSelectSound
+    m_audioClip: {fileID: 8300000, guid: 9344d4e8268ed254699c61b7c3b2fd77, type: 3}
     m_audioMixer: {fileID: 243090632009576548, guid: 24978eb7020a14d48902d2e5174d495d,
       type: 2}
     m_volume: 1
@@ -62,13 +74,103 @@ MonoBehaviour:
     m_loop: 0
     m_mute: 0
   m_playlists:
-  - m_playlistName: Sand
+  - m_playlistName: Overworld
     m_music:
-    - m_name: 'Battle Music '
-      m_audioClip: {fileID: 8300000, guid: a236680e624f14046b1d372263fbb5b3, type: 3}
+    - m_name: OverworldMusic
+      m_audioClip: {fileID: 8300000, guid: 9c1375e3fa0e2dd44a97f58bb3fb98ff, type: 3}
       m_audioMixer: {fileID: 243770745202374444, guid: 24978eb7020a14d48902d2e5174d495d,
         type: 2}
       m_volume: 1
       m_pitch: 1
-      m_loop: 0
-      m_mute: 1
+      m_loop: 1
+      m_mute: 0
+  - m_playlistName: Town
+    m_music:
+    - m_name: TownMusic
+      m_audioClip: {fileID: 8300000, guid: 534873f359921b24fa2eff3f43ddf61d, type: 3}
+      m_audioMixer: {fileID: 243770745202374444, guid: 24978eb7020a14d48902d2e5174d495d,
+        type: 2}
+      m_volume: 1
+      m_pitch: 1
+      m_loop: 1
+      m_mute: 0
+  - m_playlistName: SpiritTiger
+    m_music:
+    - m_name: SpiritTigerMusic
+      m_audioClip: {fileID: 8300000, guid: 627c4a63ea71c6e4cb562481c0f1110d, type: 3}
+      m_audioMixer: {fileID: 243770745202374444, guid: 24978eb7020a14d48902d2e5174d495d,
+        type: 2}
+      m_volume: 1
+      m_pitch: 1
+      m_loop: 1
+      m_mute: 0
+  - m_playlistName: RoastPork
+    m_music:
+    - m_name: RoastPorkMusic
+      m_audioClip: {fileID: 8300000, guid: 3fcc5572dda9acd45a7099c2a6370f3e, type: 3}
+      m_audioMixer: {fileID: 243770745202374444, guid: 24978eb7020a14d48902d2e5174d495d,
+        type: 2}
+      m_volume: 1
+      m_pitch: 1
+      m_loop: 1
+      m_mute: 0
+  - m_playlistName: PigBattle
+    m_music:
+    - m_name: PigBattleMusic
+      m_audioClip: {fileID: 8300000, guid: 9f3592ab31036154fb215dd7693a5e06, type: 3}
+      m_audioMixer: {fileID: 243770745202374444, guid: 24978eb7020a14d48902d2e5174d495d,
+        type: 2}
+      m_volume: 1
+      m_pitch: 1
+      m_loop: 1
+      m_mute: 0
+  - m_playlistName: HeadlessChicken
+    m_music:
+    - m_name: HeadlessChickenMusic
+      m_audioClip: {fileID: 8300000, guid: 8bb1228c2ccd7b140a853f376c4c4d24, type: 3}
+      m_audioMixer: {fileID: 243770745202374444, guid: 24978eb7020a14d48902d2e5174d495d,
+        type: 2}
+      m_volume: 1
+      m_pitch: 1
+      m_loop: 1
+      m_mute: 0
+  - m_playlistName: Dungeon
+    m_music:
+    - m_name: DungeonMusic
+      m_audioClip: {fileID: 8300000, guid: 43ede6e4ac14ed84cad926b609e1dd04, type: 3}
+      m_audioMixer: {fileID: 243770745202374444, guid: 24978eb7020a14d48902d2e5174d495d,
+        type: 2}
+      m_volume: 1
+      m_pitch: 1
+      m_loop: 1
+      m_mute: 0
+  - m_playlistName: Area3
+    m_music:
+    - m_name: Area3Music
+      m_audioClip: {fileID: 8300000, guid: 10d87eb4aac81c24297d1ff4f210b985, type: 3}
+      m_audioMixer: {fileID: 243770745202374444, guid: 24978eb7020a14d48902d2e5174d495d,
+        type: 2}
+      m_volume: 1
+      m_pitch: 1
+      m_loop: 1
+      m_mute: 0
+  - m_playlistName: Area2
+    m_music:
+    - m_name: Area2Music
+      m_audioClip: {fileID: 8300000, guid: 40a7ba1b17646e64f9af3e82dc982ca6, type: 3}
+      m_audioMixer: {fileID: 243770745202374444, guid: 24978eb7020a14d48902d2e5174d495d,
+        type: 2}
+      m_volume: 1
+      m_pitch: 1
+      m_loop: 1
+      m_mute: 0
+  - m_playlistName: Area1
+    m_music:
+    - m_name: Area1Music
+      m_audioClip: {fileID: 8300000, guid: 04343282dd9c9804ab141d5113e80432, type: 3}
+      m_audioMixer: {fileID: 243770745202374444, guid: 24978eb7020a14d48902d2e5174d495d,
+        type: 2}
+      m_volume: 1
+      m_pitch: 1
+      m_loop: 1
+      m_mute: 0
