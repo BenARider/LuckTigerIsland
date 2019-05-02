@@ -23,7 +23,7 @@ public class MenuManager : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadScene("LoadScene");
-        MainMenuCanvas.SetActive(false);
+        if(MainMenuCanvas)MainMenuCanvas.SetActive(false);
         Debug.Log("Starting");
     }
 
