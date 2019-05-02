@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Gold Bar
   m_EditorClassIdentifier: 
   objectName: Gold Bar
-  Image: {fileID: 0}
+  Image: {fileID: 21300236, guid: 4a13d5163f2117f47a07b256e7813680, type: 3}
   Description: This could sell for a lot!
   Price: 500
   sellable: 1
