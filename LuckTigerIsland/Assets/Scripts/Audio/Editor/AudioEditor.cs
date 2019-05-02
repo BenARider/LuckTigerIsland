@@ -124,8 +124,9 @@ public class AudioEditor : Editor
                                 GUILayout.EndHorizontal();
                                 GUILayout.Label("");
                             }
-                            EditorGUI.indentLevel--;
+                            
                         }
+                        EditorGUI.indentLevel--;
                     }
                     //Remove playlist button
                     if (GUILayout.Button("Remove Playlist", GUILayout.MaxWidth(120), GUILayout.MaxHeight(15)))

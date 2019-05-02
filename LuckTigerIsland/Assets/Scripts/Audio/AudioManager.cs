@@ -19,6 +19,14 @@ public class AudioManager : LTI.Singleton<AudioManager>{
     private int m_currentMusicTrack = 0;
     private float m_currentTrackTimeRemaining = 0;
 
+    void ChangePlaylist(int _index)
+    {
+        if (_index < 0 && _index > 9)
+            Debug.LogError("Enter a playlist value between 0 and 9");
+        else
+            currentPlaylist = _index;
+    }
+
     void Start()
     {
         instance = this;
