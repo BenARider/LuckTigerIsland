@@ -673,9 +673,10 @@ MonoBehaviour:
   m_afflicted: 0
   m_displayDamage: 0
   m_level: 10
-  m_xpAward: 800
-  m_goldAward: 1500
-  m_EXP: 0
+  m_xpAward: 0
+  m_goldAward: 0
+  m_EXP: 800
+  m_gold: 1500
   m_attackedAlready: 0
   m_canBeBuffed: 1
   m_entityNumber: 0

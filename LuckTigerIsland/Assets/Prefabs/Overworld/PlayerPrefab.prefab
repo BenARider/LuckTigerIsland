@@ -1340,7 +1340,7 @@ MonoBehaviour:
   cleric: {fileID: 114080063606257766}
   wizard: {fileID: 114522828843662846}
   ninja: {fileID: 114639582945968924}
-  m_partyLevel: 20
+  m_partyLevel: 1
   m_xperience: 0
 --- !u!114 &114619009007972608
 MonoBehaviour:
