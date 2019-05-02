@@ -27,7 +27,6 @@ public class QuestListControl : MonoBehaviour {
                     GameObject button = Instantiate(m_buttonTemplate) as GameObject;
                     button.SetActive(true);
 
-
                     if (QuestManager.Instance.m_quests[i] != null)
                     {
                         button.GetComponent<QuestListButton>().SetText(QuestManager.Instance.m_quests[i].GetTitle());
@@ -46,7 +45,7 @@ public class QuestListControl : MonoBehaviour {
         }
         catch (System.NullReferenceException)
         {
-            Debug.LogError("An Inventory does not exist in the scene! Is there a player?");
+          
         }
     }
 

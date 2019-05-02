@@ -323,6 +323,7 @@ public class PlayerEntity : Entity
 
     void ChooseAction()
     {
+        Debug.Log("Action number" + m_BattleButton.GetActionTargetNumber());
       skillTexts[0].text = "1: " + attacks[0].attackName;
       skillTexts[1].text = "2: " + attacks[1].attackName;
       skillTexts[2].text = "3: " + attacks[2].attackName;

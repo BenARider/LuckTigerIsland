@@ -8,13 +8,14 @@ public class BattleUIButton : MonoBehaviour,ISelectHandler
 {
     private int m_actionTargetNumber;
     public TextMeshProUGUI m_skillDescription;
-    public Entity m_entity;
+    MenuOpen m_menuOpen;
+    public Button m_currentButton;
     private int m_currentSelectedAction;
     
     // Use this for initialization
     void Start()
     {
-       
+        m_menuOpen = GameObject.Find("PauseSystemHolder").GetComponent<MenuOpen>();
 
 
     }
@@ -22,59 +23,60 @@ public class BattleUIButton : MonoBehaviour,ISelectHandler
     // Update is called once per frame
     void Update()
     {
-     
-          
+     if(m_menuOpen.GetPartyMenuState() == true)
+        {
+            m_currentButton.interactable = false;
+
+        }
+        if (m_menuOpen.GetPartyMenuState() == false)
+        {
+            m_currentButton.interactable = true;
+           
+
+        }
+
     }
     public void OnSelect(BaseEventData _eventData)
     {
         if(this.gameObject.name == "Action_One")
         {
             m_currentSelectedAction = 1;
-            Debug.Log("hi1");
         }
         if (this.gameObject.name == "Action_Two")
         {
             m_currentSelectedAction = 2;
-            Debug.Log("hi2");
         }
         if (this.gameObject.name == "Action_Three")
         {
             m_currentSelectedAction = 3;
-            Debug.Log("hi3");
         }
         if (this.gameObject.name == "Action_Four")
         {
             m_currentSelectedAction = 4;
-            Debug.Log("hi4");
         }
         if (this.gameObject.name == "Action_Five")
         {
             m_currentSelectedAction = 5;
-            Debug.Log("hi5");
 
         }
         if (this.gameObject.name == "Action_Six")
         {
             m_currentSelectedAction = 6;
-            Debug.Log("hi6");
 
         }
         if (this.gameObject.name == "Action_Seven")
         {
             m_currentSelectedAction = 7;
-            Debug.Log("hi7");
 
         }
         if (this.gameObject.name == "Action_Eight")
         {
             m_currentSelectedAction = 8;
-            Debug.Log("hi8");
 
         }
         if (this.gameObject.name == "Action_Nine")
         {
             m_currentSelectedAction = 9;
-            Debug.Log("hi9");
 
         }
 

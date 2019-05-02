@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 [System.Serializable]
 public class Quest : MonoBehaviour
 {
@@ -23,6 +23,8 @@ public class Quest : MonoBehaviour
     private int m_goldReward;
     [SerializeField]
     private InventoryObject m_itemReward;
+    [SerializeField]
+    private TextMeshProUGUI m_questText;
 
     public bool isActive = false;
     public bool hasBeenAccepted = false;
@@ -115,11 +117,17 @@ public class Quest : MonoBehaviour
         isActive = true;
         hasBeenAccepted = true;
         QuestManager.Instance.AddQuest(this);
+        m_questText = GameObject.Find("QuestCompleteText").GetComponent<TextMeshProUGUI>();
+        m_questText.text = "Added " + this.name + " to the quest book";
+        StartCoroutine(FadeText());
         Debug.Log("quest added");
     }
 
     public void EndQuest()
     {
+        m_questText = GameObject.Find("QuestCompleteText").GetComponent<TextMeshProUGUI>();
+        m_questText.text = "Ended quest: " + this.name;
+        StartCoroutine(FadeText());
         isActive = false;
         PlayerManager.Instance.AddXP(m_expReward);
         Inventory.Instance.IncreaseGold(m_goldReward);
@@ -129,23 +137,62 @@ public class Quest : MonoBehaviour
 
     public void CheckCompletion()
     {
+        Debug.Log("Checking completion");
+        Debug.Log("Objectives size " + m_allObjectives.Count);
         //Check All Objectives
         if(m_allObjectives.Count != 0)
         {
             bool finished = true;
-            foreach(ItemObjective _io in m_inventoryObjectives)
+
+            //Inventory Objective
+            if (m_inventoryObjectives.Count != 0)
             {
-                Debug.Log("E " + _io.GetIsComplete());
-                if (_io.GetIsComplete())
+                foreach (ItemObjective _io in m_inventoryObjectives)
                 {
-                    Debug.Log("Completed Quest");
-                    finished = false;
+                    if (!_io.GetIsComplete())
+                    {
+                        finished = false;
+                    }
+                }
+            }
+            //Location Objective
+            if (m_locationObjectives.Count != 0)
+            {
+                foreach (LocationObjective _lo in m_locationObjectives)
+                {
+                    if (!_lo.GetIsComplete())
+                    {
+                        finished = false;
+                    }
+                }
+            }
+            //Kill
+            if (m_killObjectives.Count != 0)
+            {
+                foreach (KillObjective _ko in m_killObjectives)
+                {
+                    if (!_ko.GetIsComplete())
+                    {
+                        finished = false;
+                    }
+                }
+            }
+            //Dialgoue
+            if (m_dialogueObjectives.Count != 0)
+            {
+                foreach (DialogueObjective _do in m_dialogueObjectives)
+                {
+                    if (!_do.GetIsComplete())
+                    {
+                        finished = false;
+                    }
                 }
             }
 
             //If all quest objectives were finished, End the Quest.
-            if (!finished)
-            {                
+            if (finished)
+            {
+                Debug.Log("Completed Quest");
                 EndQuest();
             }
         }
@@ -186,6 +233,13 @@ public class Quest : MonoBehaviour
     public void SetGoldReward(int _gold)
     {
         m_goldReward = _gold;
+    }
+    IEnumerator FadeText()
+    {
+        yield return new WaitForSeconds(5);
+        m_questText = GameObject.Find("QuestCompleteText").GetComponent<TextMeshProUGUI>();
+        Debug.Log("Faded");
+        m_questText.text = "";
     }
 }
 
