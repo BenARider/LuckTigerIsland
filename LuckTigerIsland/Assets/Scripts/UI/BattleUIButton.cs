@@ -8,14 +8,12 @@ public class BattleUIButton : MonoBehaviour,ISelectHandler
 {
     private int m_actionTargetNumber;
     public TextMeshProUGUI m_skillDescription;
-    MenuOpen m_menuOpen;
-    public Button m_currentButton;
     private int m_currentSelectedAction;
     
     // Use this for initialization
     void Start()
     {
-        m_menuOpen = GameObject.Find("PauseSystemHolder").GetComponent<MenuOpen>();
+ 
 
 
     }
@@ -23,17 +21,7 @@ public class BattleUIButton : MonoBehaviour,ISelectHandler
     // Update is called once per frame
     void Update()
     {
-     if(m_menuOpen.GetPartyMenuState() == true)
-        {
-            m_currentButton.interactable = false;
-
-        }
-        if (m_menuOpen.GetPartyMenuState() == false)
-        {
-            m_currentButton.interactable = true;
-           
-
-        }
+  
 
     }
     public void OnSelect(BaseEventData _eventData)
