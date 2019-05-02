@@ -13,7 +13,7 @@ public class EnemEntity : Entity
     }
     public Agression AgressionState;
 
-    public enum Class
+    /*public enum Class
     {
         nullEnemy,
         PigBoss, 
@@ -33,8 +33,8 @@ public class EnemEntity : Entity
         TigerBoss, 
         PorkBoss,
         MinotaurSkeleton  
-    }
-    public Class MyClass;
+    }*/
+    public EEnemies MyClass;
 
     /// <summary>
     /// reference from this

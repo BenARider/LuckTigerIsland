@@ -20,23 +20,23 @@ public enum ELocations
 public enum EEnemies
 {
     nullEnemy,
-    PigBoss, //861 final boss pig
+    PigBoss,
     Goblin,
-	Farmer,
+    Farmer,
     Bandit,
     Knight,
-	Wolf,
+    Wolf,
     Tiger,
-	Troll,
-	Birdman,
+    Troll,
+    Birdman,
     Skeleton,
-	Golem,
-	Spirit,
-	Warlock,
-	ChickenBoss,
-    TigerBoss, //SpriteSheet 734/735. TinytinyHeroes armies
-	PorkBoss,
-    MinotaurSkeleton  //838
+    Golem,
+    Spirit,
+    Warlock,
+    ChickenBoss,
+    TigerBoss,
+    PorkBoss,
+    MinotaurSkeleton
 }
 
 public class EventManager : LTI.Singleton<EventManager>
@@ -90,6 +90,14 @@ public class EventManager : LTI.Singleton<EventManager>
     public void SetLastBattle(List<EEnemies> _enemies)
     {
         m_lastBattle = _enemies;
+
+
+        foreach (EEnemies _e in m_lastBattle)
+        {
+            Debug.Log(_e);
+        }
+
+
         //In all active quests
         foreach (Quest _q in m_questManager.GetQuests())
         {

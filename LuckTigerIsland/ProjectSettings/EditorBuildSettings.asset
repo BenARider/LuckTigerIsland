@@ -41,3 +41,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Battles/DesertBattle.unity
     guid: 511a16361a71da547be353248890bae5
+  - enabled: 1
+    path: Assets/Scenes/Battles/HeadlessChickenBossBattle.unity
+    guid: 8387953730df99641927b3923c10e64f
+  - enabled: 1
+    path: Assets/Scenes/Battles/PigBossBattle.unity
+    guid: 1f65bd726e13f6240a293063efc0e164
+  - enabled: 1
+    path: Assets/Scenes/Battles/PulledPorkBossBattle.unity
+    guid: 79c8e86e22ac6bb49a7569876f253eb6
+  - enabled: 1
+    path: Assets/Scenes/Battles/SpiritTigerBossBattle.unity
+    guid: 3ae001ec01deac34bb008ee2e97b5321
