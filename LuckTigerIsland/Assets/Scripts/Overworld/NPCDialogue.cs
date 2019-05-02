@@ -26,6 +26,17 @@ public class Dialogue
 	public InteractEvent interactEvent;
 	public string DialogueText;
 	public DialogueReply[] Replies;
+    public int index = 0;
+    public bool hasQuest = false;
+
+    void OnEnable()
+    {
+        if (hasQuest)
+        {
+            if(QuestManager.Instance)
+             questHandout = QuestManager.Instance.transform.GetChild(index).GetComponent<Quest>();
+        }
+    }
 
 	public Dialogue(bool _isEnd = false)
 	{
