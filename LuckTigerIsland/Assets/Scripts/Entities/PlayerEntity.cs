@@ -678,6 +678,10 @@ public class PlayerEntity : Entity
                 else
                 {
                     Debug.Log("That enemy is dead choose another");
+              
+                teamTargets.SetActive(false);
+                enemyTargets.SetActive(true);
+
                 }
             }
             if (Input.GetKeyDown("2") || m_BattleButton.GetActionTargetNumber() == 11)
@@ -693,6 +697,9 @@ public class PlayerEntity : Entity
                 }
                 else
                 {
+                   
+                    teamTargets.SetActive(false);
+                    enemyTargets.SetActive(true);
                     Debug.Log("That enemy is dead choose another");
                 }
             }
@@ -709,6 +716,9 @@ public class PlayerEntity : Entity
                 }
                 else
                 {
+                   
+                    teamTargets.SetActive(false);
+                    enemyTargets.SetActive(true);
                     Debug.Log("That enemy is dead choose another");
                 }
             }
@@ -725,6 +735,9 @@ public class PlayerEntity : Entity
                 }
                 else
                 {
+                    
+                    teamTargets.SetActive(false);
+                    enemyTargets.SetActive(true);
                     Debug.Log("That enemy is dead choose another");
                 }
             }
@@ -746,6 +759,8 @@ public class PlayerEntity : Entity
                 else
                 {
                     Debug.Log("That player is dead choose another");
+                    teamTargets.SetActive(false);
+                    enemyTargets.SetActive(true);
                 }
             }
             if (Input.GetKeyDown("2") || m_BattleButton.GetActionTargetNumber() == 11)
@@ -763,6 +778,9 @@ public class PlayerEntity : Entity
                 else
                 {
                     Debug.Log("That player is dead choose another");
+                    teamTargets.SetActive(false);
+                    enemyTargets.SetActive(true);
+
                 }
             }
             if (Input.GetKeyDown("3") || m_BattleButton.GetActionTargetNumber() == 12)
@@ -780,6 +798,8 @@ public class PlayerEntity : Entity
                 else
                 {
                     Debug.Log("That player is dead choose another");
+                    teamTargets.SetActive(false);
+                    enemyTargets.SetActive(true);
                 }
             }
             if (Input.GetKeyDown("4") || m_BattleButton.GetActionTargetNumber() == 13)
@@ -796,6 +816,8 @@ public class PlayerEntity : Entity
                 else
                 {
                     Debug.Log("That player is dead choose another");
+                    teamTargets.SetActive(false);
+                    enemyTargets.SetActive(true);
                 }
             }
         }

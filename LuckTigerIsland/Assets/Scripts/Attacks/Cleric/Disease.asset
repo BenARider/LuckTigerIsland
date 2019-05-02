@@ -18,6 +18,6 @@ MonoBehaviour:
   skillMultiplier: 2
   skillDuration: 20
   attackCost: 25
-  attackImage: {fileID: 0}
+  attackImage: {fileID: 21300012, guid: 97753664d7af4314fb55d14c99a8d54a, type: 3}
   attackAffliction: 2
   afflictionChance: 100
