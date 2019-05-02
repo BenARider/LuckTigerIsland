@@ -127,12 +127,13 @@ public class BattleControl : MonoBehaviour {
                     m_itemRolled = true;
                     m_itemsAdded.text = "Items gained: " + "\n"+ rewards[m_itemRoll].objectName;
                 }
-             
 
 
+                battleGoldReward = 0;
                 List<EEnemies> toSet = new List<EEnemies>();
                 foreach (var i in EnemiesInBattle)
                 {
+                   
                    toSet.Add(i.GetComponent<EnemEntity>().thisEnemyObject.enemyType);
                 }                
                 EventManager.Instance.SetLastBattle(toSet);

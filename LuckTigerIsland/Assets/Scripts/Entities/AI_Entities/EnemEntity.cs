@@ -47,7 +47,7 @@ public class EnemEntity : Entity
     private GameObject m_AttackTarget;
     public TextMeshProUGUI attackDescriptionText;//describes the attack that is happening/happend;
     public TextMeshProUGUI turnText;//who's turn it is
-
+    HandleTurns myAttack = new HandleTurns();
     protected void SetEnemyStats(int hth, int man, int str, int def, int magDef, int magPower, int spd, int lvl, int xp)
 	{
 		m_maxHealth = hth;
@@ -193,44 +193,28 @@ public class EnemEntity : Entity
 
     void ChooseAction()
     {
-        m_AttackTarget = BC.PartyMembersInBattle[Random.Range(0, BC.PartyMembersInBattle.Count)];
         if (AgressionState == Agression.eRandomAttacker)
+        m_AttackTarget = BC.PartyMembersInBattle[Random.Range(0, BC.PartyMembersInBattle.Count)];
         {
             Debug.Log("Random");
-            HandleTurns myAttack = new HandleTurns
-            {
-                Attacker = this.name, //Who is attacking
-                Type = "Enemy",//What type are they
-                AttackingGameObject = this.gameObject, //What gameObject is attacking
-                AttackTarget = m_AttackTarget, //Random a target that is in the List stored in BattleControl
-                chosenAttack = m_chosenAction
-            };
-            if (m_AttackTarget.GetComponent<PlayerEntity>().currentBuff != Buffs.eInvisable)
-            {
-                BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
-                attackDescriptionText.text = this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + m_displayDamage + " damage!";
-                StartCoroutine("FadeText");
-            }
         }
 
         if(AgressionState==Agression.eBackStabber)
         {
             BC.TargetingListForAI = BC.PartyMembersInBattle.OrderBy(x => x.GetComponent<PlayerEntity>().GetHealth()).ToList();
-            HandleTurns myAttack = new HandleTurns
-            {
-                Attacker = this.name, //Who is attacking
-                Type = "Enemy",//What type are they
-                AttackingGameObject = this.gameObject, //What gameObject is attacking
-                AttackTarget = BC.TargetingListForAI[0], //Random a target that is in the List stored in BattleControl
-                chosenAttack = m_chosenAction
-            };
 
-            if (m_AttackTarget.GetComponent<PlayerEntity>().currentBuff != Buffs.eInvisable)
-            {
-                BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
-                attackDescriptionText.text = this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + m_displayDamage + " damage!";
-                StartCoroutine("FadeText");
-            }
+        }
+        myAttack.Attacker = this.name; //Who is attacking
+
+        myAttack.Type = "Enemy";//What type are they
+        myAttack.AttackingGameObject = this.gameObject; //What gameObject is attacking
+        myAttack.AttackTarget = m_AttackTarget; //Random a target that is in the List stored in BattleControl
+        myAttack.chosenAttack = m_chosenAction;
+
+        if (m_AttackTarget.GetComponent<PlayerEntity>().currentBuff != Buffs.eInvisable)
+        {
+            BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
+            StartCoroutine("FadeText");
         }
     }
 
@@ -296,7 +280,9 @@ public class EnemEntity : Entity
 			calculateDamage = 5;
 		}
 		m_displayDamage = calculateDamage;
-		EntityToAttack.GetComponent<PlayerEntity>().TakeDamage(calculateDamage, m_chosenAction);
+        attackDescriptionText.text = this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + m_displayDamage + " damage!";
+        StartCoroutine("FadeText");
+        EntityToAttack.GetComponent<PlayerEntity>().TakeDamage(calculateDamage, m_chosenAction);
     }
 	void enemyDoMagicDamage()
 	{
@@ -307,7 +293,9 @@ public class EnemEntity : Entity
 			calculateDamage = 5;
 		}
 		m_displayDamage = calculateDamage;
-		EntityToAttack.GetComponent<PlayerEntity>().TakeDamage(calculateDamage, m_chosenAction);
+        attackDescriptionText.text = this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + m_displayDamage + " damage!";
+        StartCoroutine("FadeText");
+        EntityToAttack.GetComponent<PlayerEntity>().TakeDamage(calculateDamage, m_chosenAction);
 	}
     void EnemyPartyWideDamage()
     {
@@ -321,6 +309,8 @@ public class EnemEntity : Entity
 				tempDamage = 5;
 			}
 			m_displayDamage = tempDamage;
+            attackDescriptionText.text = this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + m_displayDamage + " damage!";
+            StartCoroutine("FadeText");
             BC.PartyMembersInBattle[i].GetComponent<PlayerEntity>().TakeDamage(calculateDamage, m_chosenAction);
         }
     }
