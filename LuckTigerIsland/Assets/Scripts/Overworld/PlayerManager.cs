@@ -106,13 +106,14 @@ public class PlayerManager : LTI.Singleton<PlayerManager> {
         {
             if (!inShop.activeInHierarchy)
             {
-                inDialogue = false;
+                //inDialogue = false;
                 inShop = null;
                 playerMove.doMove = true;
             }
             else
             {
-                inDialogue = true;
+                //inDialogue = true;
+                playerMove.doMove = false;
             }
         }
 
