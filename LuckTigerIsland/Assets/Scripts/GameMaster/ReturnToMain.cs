@@ -36,7 +36,7 @@ public class ReturnToMain : MonoBehaviour {
         }
 
         bool isDungeon = false;
-        if (PlayerManager.Instance.currentSceneName.Contains("CaveBattle"))
+        if (PlayerManager.Instance.currentSceneName.Contains("CaveBattle") || PlayerManager.Instance.currentSceneName.Contains("Tiger"))
         {
             isDungeon = true;
             

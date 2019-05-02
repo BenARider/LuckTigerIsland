@@ -1,0 +1,268 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1457452636766796}
+  m_IsPrefabParent: 1
+--- !u!1 &1457452636766796
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4641278010267776}
+  - component: {fileID: 212901998683985604}
+  - component: {fileID: 61697423753214282}
+  - component: {fileID: 114321036302634754}
+  - component: {fileID: 114014679881688028}
+  - component: {fileID: 114624997242048976}
+  m_Layer: 0
+  m_Name: Tiger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1729295555803282
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4156563002271086}
+  - component: {fileID: 61882186526169216}
+  - component: {fileID: 114666033533600822}
+  m_Layer: 0
+  m_Name: InteractionArea
+  m_TagString: Interact
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4156563002271086
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1729295555803282}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.51, y: -0.23, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4641278010267776}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4641278010267776
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1457452636766796}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 54.945656, y: -17.412172, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4156563002271086}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &61697423753214282
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1457452636766796}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.09924579, y: -0.067188084}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.3015084, y: 1.3561741}
+  m_EdgeRadius: 0
+--- !u!61 &61882186526169216
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1729295555803282}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.63513565, y: 0.17359543}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.876854, y: 2.8471909}
+  m_EdgeRadius: 0
+--- !u!114 &114014679881688028
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1457452636766796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c42feeedf9acd3f45ac0f1f9a7510ceb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startDialogueIndex: 1
+  currentDialogueIndex: 0
+  interactAudio: pigtalk
+  Dialogues:
+  - isEndPoint: 1
+    questHandout: {fileID: 0}
+    questForDialogueObj: {fileID: 0}
+    interactArgs: 0
+    interactEvent: {fileID: 0}
+    DialogueText: ENDPOINT DO NOT TOUCH
+    Replies: []
+  - isEndPoint: 0
+    questHandout: {fileID: 0}
+    questForDialogueObj: {fileID: 0}
+    interactArgs: 0
+    interactEvent: {fileID: 0}
+    DialogueText: '*Oink*'
+    Replies:
+    - ReplyText: Did you just oink?
+      nextDialogue: 3
+    - ReplyText: Die spirit!
+      nextDialogue: 2
+  - isEndPoint: 0
+    questHandout: {fileID: 0}
+    questForDialogueObj: {fileID: 0}
+    interactArgs: 3
+    interactEvent: {fileID: 114624997242048976}
+    DialogueText: Watch and learn.
+    Replies: []
+  - isEndPoint: 0
+    questHandout: {fileID: 0}
+    questForDialogueObj: {fileID: 0}
+    interactArgs: 0
+    interactEvent: {fileID: 0}
+    DialogueText: What? *Oink* No! I am the great spirit tiger, and you shall go no
+      further!
+    Replies:
+    - ReplyText: Oh, okay I'll leave.
+      nextDialogue: 4
+    - ReplyText: I dont think so! Stand aside!
+      nextDialogue: 2
+  - isEndPoint: 0
+    questHandout: {fileID: 0}
+    questForDialogueObj: {fileID: 0}
+    interactArgs: 0
+    interactEvent: {fileID: 0}
+    DialogueText: 
+    Replies: []
+--- !u!114 &114321036302634754
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1457452636766796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f6db68bd94f64f468cf9604a696771f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screenOffset: 0
+  isPlayer: 0
+--- !u!114 &114624997242048976
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1457452636766796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5ebd6a78bd371340a37a68dcb2ca2ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114666033533600822
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1729295555803282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f63e57155fef7b459cc69f66be67e05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  interactionText: speak to el Piggo
+  scriptObject: {fileID: 1457452636766796}
+--- !u!212 &212901998683985604
+SpriteRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1457452636766796}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 10
+  m_Sprite: {fileID: 21300000, guid: 0cd0f0c864d4bd249ac62bf5703eb307, type: 3}
+  m_Color: {r: 0.28979236, g: 0.7838384, b: 0.9852941, a: 0.516}
+  m_FlipX: 1
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
