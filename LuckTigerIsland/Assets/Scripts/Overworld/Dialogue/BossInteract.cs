@@ -8,5 +8,6 @@ public class BossInteract : InteractEvent
     public override void Interact(int argID)
     {
         PlayerManager.Instance.GetComponent<EncounterManager>().DoEncounter(argID+3);
+        Destroy(gameObject);
     }
 }

@@ -112,8 +112,10 @@ public class EncounterManager : MonoBehaviour {
 
 	IEnumerator doEncounter(int sceneNo)
 	{
-		player.playerMove.doMove = false;
-		yield return new WaitForSeconds(0.5f);
+        //Debug.Log("hecsk");
+        player.playerMove.enabled = false;
+        //Debug.Log("heck");
+        yield return new WaitForSeconds(0.5f);
 		fade.toBlack();
 		yield return new WaitForSeconds(2f);
 

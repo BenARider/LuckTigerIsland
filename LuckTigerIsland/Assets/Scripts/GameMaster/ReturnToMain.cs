@@ -18,6 +18,7 @@ public class ReturnToMain : MonoBehaviour {
 	
     public void Return()
     {
+        PlayerManager.Instance.playerMove.enabled = true;
         if (PlayerManager.Instance.currentSceneName.Contains("Battle"))
         {
             SceneManager.UnloadSceneAsync(PlayerManager.Instance.currentSceneName);
