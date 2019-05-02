@@ -47,23 +47,26 @@ public class AudioManager : LTI.Singleton<AudioManager>{
             string sceneName = SceneManager.GetActiveScene().name;
             throw new System.IndexOutOfRangeException(sceneName + ": 'currentPlaylist' int is higher than the amount of playlists.");
         }
-        
-        for (int i = 0; i < m_playlists[currentPlaylist].GetMusic().Count; i++)
+
+        for (int h = 0; h < m_playlists.Count; h++)
         {
-            //To stop duplicates in music name.
-            for (int j = i + 1; j < m_playlists[currentPlaylist].GetMusic().Count; j++)
+            for (int i = 0; i < m_playlists[h].GetMusic().Count; i++)
             {
-                if (m_playlists[currentPlaylist].GetMusic()[i].GetName() == m_playlists[currentPlaylist].GetMusic()[j].GetName())
+                //To stop duplicates in music name.
+                for (int j = i + 1; j < m_playlists[h].GetMusic().Count; j++)
                 {
-                    throw new System.Exception("Error! Music file " + i + " and music " + j + " have the same name.");
+                    if (m_playlists[h].GetMusic()[i].GetName() == m_playlists[h].GetMusic()[j].GetName())
+                    {
+                        throw new System.Exception("Error! Music file " + i + " and music " + j + " have the same name.");
+                    }
                 }
+
+
+                //Create Sound Objects from array.
+                GameObject _mo = new GameObject("Music " + h + ": " + m_playlists[h].GetMusic()[i].GetName());
+                _mo.transform.SetParent(this.transform);
+                m_playlists[h].GetMusic()[i].SetAudioSource(_mo.AddComponent<AudioSource>());
             }
-
-
-            //Create Sound Objects from array.
-            GameObject _mo = new GameObject("Music " + i + ": " + m_playlists[currentPlaylist].GetMusic()[i].GetName());
-            _mo.transform.SetParent(this.transform);
-            m_playlists[currentPlaylist].GetMusic()[i].SetAudioSource(_mo.AddComponent<AudioSource>());
         }
         
         PlayMusic();
@@ -73,6 +76,9 @@ public class AudioManager : LTI.Singleton<AudioManager>{
     {
         try
         {
+            Debug.Log("1");
+            m_playlists[currentPlaylist].GetMusic()[m_currentMusicTrack].Stop();
+            Debug.Log("2");
             switch (_name)
             {
                 case "MainMenu": case "LoadScene": case "Overworld":
@@ -129,7 +135,9 @@ public class AudioManager : LTI.Singleton<AudioManager>{
                     Debug.Log("Something went wrong with playlists");
                     break;
             }
+            Debug.Log("3");
             NextTrack();
+            Debug.Log("4");
         }
         catch (System.Exception ex)
         {
@@ -172,16 +180,21 @@ public class AudioManager : LTI.Singleton<AudioManager>{
 
     public void NextTrack()
     {
-        //Tidy up previous track by stopping the coroutine and the current track.
-        StopCoroutine("RemainingTrack");
-        m_playlists[currentPlaylist].GetMusic()[m_currentMusicTrack].Stop();
 
+        //Tidy up previous track by stopping the coroutine and the current track.
+        try
+        {
+            StopCoroutine("RemainingTrack");
+            m_playlists[currentPlaylist].GetMusic()[m_currentMusicTrack].Stop();
+        }
+        catch { Debug.Log("fuck"); }
         //If the current track is set to loop, play it again. If not, go to the next track. If there is no next track in the array, go back to the first track.
         if (m_playlists[currentPlaylist].GetMusic()[m_currentMusicTrack].GetIsLooped())
         {
             PlayMusic();
             return;
         }
+        Debug.Log("3.1");
         if (m_currentMusicTrack == m_playlists[currentPlaylist].GetMusic().Count - 1)
         {
             m_currentMusicTrack = 0;
@@ -189,8 +202,10 @@ public class AudioManager : LTI.Singleton<AudioManager>{
         {
             m_currentMusicTrack++;
         }
+        Debug.Log("3.2");
         //Play Next track.
         PlayMusic();
+        Debug.Log("3.3");
     }
 
     //Sound Functions

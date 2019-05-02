@@ -23,7 +23,7 @@ public class Music
     protected float m_pitch = 1;
 
     [SerializeField]
-    protected bool m_loop = false;
+    protected bool m_loop = true;
     [SerializeField]
     protected bool m_mute = false;
 
