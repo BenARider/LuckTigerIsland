@@ -1291,8 +1291,7 @@ MonoBehaviour:
   - m_object: {fileID: 11400000, guid: 26e48b6ad6a98b344a64504cb7bc2b94, type: 2}
     m_totalAmount: 5
     m_currentAmount: 5
-  m_dialogueObjectives:
-  - m_NPC: {fileID: 0}
+  m_dialogueObjectives: []
   o_type: 3
   o_location: 0
   o_enemy: 0
@@ -1573,7 +1572,7 @@ MonoBehaviour:
   ninja: {fileID: 114639582945968924}
   inDialogue: 0
   inShop: {fileID: 0}
-  m_partyLevel: 1
+  m_partyLevel: 10
   m_xperience: 0
 --- !u!114 &114619009007972608
 MonoBehaviour:

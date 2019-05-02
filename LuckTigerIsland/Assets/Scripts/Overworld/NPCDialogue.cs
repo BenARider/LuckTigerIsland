@@ -29,12 +29,20 @@ public class Dialogue
     public int index = 0;
     public bool hasQuest = false;
 
-    void OnEnable()
+    public void OnEnable()
     {
+        Debug.Log("fffff ");
         if (hasQuest)
         {
-            if(QuestManager.Instance)
-             questHandout = QuestManager.Instance.transform.GetChild(index).GetComponent<Quest>();
+            if (QuestManager.Instance)
+            {
+                Debug.Log("gets " + QuestManager.Instance.transform.GetChild(index).name);
+                questHandout = QuestManager.Instance.transform.GetChild(index).GetComponent<Quest>();
+            }
+            else
+            {
+                Debug.Log("no quest :c ");
+            }
         }
     }
 
@@ -60,4 +68,12 @@ public class NPCDialogue : MonoBehaviour
 	{
 		currentDialogueIndex = startDialogueIndex;
 	}
+
+    private void OnEnable()
+    {
+        foreach(Dialogue d in Dialogues)
+        {
+            d.OnEnable();
+        }
+    }
 }
