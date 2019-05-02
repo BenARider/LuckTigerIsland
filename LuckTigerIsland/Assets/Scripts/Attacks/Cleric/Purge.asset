@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Name: Purge
   m_EditorClassIdentifier: 
   attackName: Purge
-  attackDescription: Erases both friendly and negative buffs
+  attackDescription: Erases both friendly and negative buffs, but increases the party
+    members' defence for a while
   attackType: 2
   attackDamage: 0
   skillMultiplier: 1
-  skillDuration: 0
+  skillDuration: 10
   attackCost: 30
   attackImage: {fileID: 0}
-  attackAffliction: 5
+  attackAffliction: 10
+  afflictionChance: 100

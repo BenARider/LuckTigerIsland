@@ -32,6 +32,8 @@ public class Entity : MonoBehaviour {
     protected bool m_stunned = false;
     [SerializeField]
     protected bool m_afflicted = false;
+	[SerializeField]
+	protected int m_displayDamage; //used for the UI and should display actual damage dealt to enemies and players.
 
     //level and class values
     [SerializeField]
@@ -411,18 +413,21 @@ public class Entity : MonoBehaviour {
     }
     public void TakeDamage(int damageAmount, BaseAttack attack)
     {
-        if (attack.attackType == BaseAttack.AttackType.eMelee)
+        if (attack.attackType == BaseAttack.AttackType.eMelee || attack.attackType == BaseAttack.AttackType.ePartyWide)
         {
-            int damagecalc = m_defence - damageAmount;
-            if (damagecalc < 10)
-                damagecalc = 10;
-            m_health -= damagecalc;
-        } else
+			int damageCalc = damageAmount - m_defence;
+            if (damageCalc < 10)
+                damageCalc = 10;
+			m_displayDamage = damageCalc;
+            m_health -= damageCalc;
+        }
+		else
         {
-            int magicCalc = m_defenceMGC - damageAmount;
+            int magicCalc = damageAmount - m_defenceMGC;
             if (magicCalc < 10)
                 magicCalc = 10;
-            m_health -= magicCalc;
+			m_displayDamage = magicCalc;
+			m_health -= magicCalc;
         }
         if (Random.Range(0, 100) < attack.afflictionChance)
         {

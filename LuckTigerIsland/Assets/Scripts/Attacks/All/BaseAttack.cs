@@ -18,7 +18,8 @@ public class BaseAttack : ScriptableObject
         eStrength,
         eAttack,
 		eDefence,
-        eHeal
+        eHeal,
+		eNone
     }
 
     public enum AttackType

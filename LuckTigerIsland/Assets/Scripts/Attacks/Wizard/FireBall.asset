@@ -20,3 +20,4 @@ MonoBehaviour:
   attackCost: 5
   attackImage: {fileID: 0}
   attackAffliction: 0
+  afflictionChance: 25

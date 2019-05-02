@@ -660,22 +660,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1ad11708009c30468e53804204b777a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  assignedScriptableObject: {fileID: 11400000, guid: 6c0c9ca96a8c24a4fac18646f1b6b2cc,
-    type: 2}
-  m_maxHealth: 0
+  m_maxHealth: 115
   m_health: 0
-  m_strength: 0
-  m_magicPower: 0
-  m_defence: 0
-  m_defenceMGC: 0
-  m_speed: 0
+  m_strength: 25
+  m_magicPower: 40
+  m_defence: 25
+  m_defenceMGC: 35
+  m_speed: 60
   m_mana: 0
-  m_maxMana: 0
+  m_maxMana: 666
   m_stunned: 0
   m_afflicted: 0
-  m_level: 0
-  m_xpAward: 0
-  m_goldAward: 0
+  m_displayDamage: 0
+  m_level: 11
+  m_xpAward: 215
+  m_goldAward: 140
   m_EXP: 0
   m_attackedAlready: 0
   m_canBeBuffed: 1
@@ -707,6 +706,7 @@ MonoBehaviour:
   ManaPotions: []
   AgressionState: 1
   MyClass: 0
+  thisEnemyObject: {fileID: 0}
   aggress: 0
   intel: 0
   XP: 0
@@ -752,7 +752,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300042, guid: 5b3567110517a8645a4327fe47f69e01, type: 3}
+  m_Sprite: {fileID: 21301896, guid: 5b3567110517a8645a4327fe47f69e01, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -614,7 +614,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 106324cbd0ae5334bb75664d81e8a72e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 114999437606958834}
   stringname: player1
   m_requiredEntityNumber: 1
   isEnemySlider: 1
@@ -660,22 +660,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1ad11708009c30468e53804204b777a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  assignedScriptableObject: {fileID: 11400000, guid: c71a24726a5d6ff4f8a7417f9180a367,
-    type: 2}
-  m_maxHealth: 0
+  m_maxHealth: 90
   m_health: 0
-  m_strength: 0
-  m_magicPower: 0
-  m_defence: 0
-  m_defenceMGC: 0
-  m_speed: 0
+  m_strength: 30
+  m_magicPower: 25
+  m_defence: 25
+  m_defenceMGC: 30
+  m_speed: 40
   m_mana: 0
-  m_maxMana: 0
+  m_maxMana: 125
   m_stunned: 0
   m_afflicted: 0
-  m_level: 0
-  m_xpAward: 0
-  m_goldAward: 0
+  m_displayDamage: 0
+  m_level: 7
+  m_xpAward: 120
+  m_goldAward: 55
   m_EXP: 0
   m_attackedAlready: 0
   m_canBeBuffed: 1
@@ -698,12 +697,16 @@ MonoBehaviour:
   currentAffliction: 0
   currentBuff: 0
   EntityToAttack: {fileID: 0}
-  attacks: []
+  attacks:
+  - {fileID: 11400000, guid: 8d382809ca217ee4bb6274a2256cd7f6, type: 2}
+  - {fileID: 11400000, guid: 514e1c79f37c1ba4aa8e8f99e4b54b94, type: 2}
+  - {fileID: 11400000, guid: 1f38f5a884c54124eabc4ede5993b36b, type: 2}
   passiveActiveList: []
   HealthPotions: []
   ManaPotions: []
   AgressionState: 1
-  MyClass: 0
+  MyClass: 8
+  thisEnemyObject: {fileID: 0}
   aggress: 0
   intel: 0
   XP: 0
@@ -749,7 +752,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300042, guid: 5b3567110517a8645a4327fe47f69e01, type: 3}
+  m_Sprite: {fileID: 21302064, guid: 5b3567110517a8645a4327fe47f69e01, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -970,7 +973,7 @@ RectTransform:
   m_GameObject: {fileID: 1198663948150052}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.12408, y: 1.12408, z: 0.56204}
+  m_LocalScale: {x: 2.2, y: 2.2, z: 0.56204}
   m_Children:
   - {fileID: 224880993975714076}
   - {fileID: 224928125000536138}

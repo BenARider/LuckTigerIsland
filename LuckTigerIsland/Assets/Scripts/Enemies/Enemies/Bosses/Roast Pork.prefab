@@ -315,7 +315,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 4.44, y: 5.98}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -464,22 +464,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1ad11708009c30468e53804204b777a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  assignedScriptableObject: {fileID: 11400000, guid: f6b07c54a4b10ca41b49c792aca5fc98,
-    type: 2}
-  m_maxHealth: 0
+  m_maxHealth: 2000
   m_health: 0
-  m_strength: 0
-  m_magicPower: 0
-  m_defence: 0
-  m_defenceMGC: 0
-  m_speed: 0
+  m_strength: 80
+  m_magicPower: 80
+  m_defence: 25
+  m_defenceMGC: 25
+  m_speed: 70
   m_mana: 0
-  m_maxMana: 0
+  m_maxMana: 9999
   m_stunned: 0
   m_afflicted: 0
-  m_level: 0
-  m_xpAward: 0
-  m_goldAward: 0
+  m_displayDamage: 0
+  m_level: 16
+  m_xpAward: 9999
+  m_goldAward: 9999
   m_EXP: 0
   m_attackedAlready: 0
   m_canBeBuffed: 1
@@ -502,12 +501,20 @@ MonoBehaviour:
   currentAffliction: 0
   currentBuff: 0
   EntityToAttack: {fileID: 0}
-  attacks: []
+  attacks:
+  - {fileID: 11400000, guid: 8d382809ca217ee4bb6274a2256cd7f6, type: 2}
+  - {fileID: 11400000, guid: 64ea5b77117103b46bdc4e33e4bc316d, type: 2}
+  - {fileID: 11400000, guid: be48b1461e3ab81469f971fc808f080f, type: 2}
+  - {fileID: 11400000, guid: d86d20ecc0bb48d42b8ee8006b93fe28, type: 2}
+  - {fileID: 11400000, guid: 7b4b374b9453f4b4aa11f701e492b583, type: 2}
+  - {fileID: 11400000, guid: 514e1c79f37c1ba4aa8e8f99e4b54b94, type: 2}
+  - {fileID: 11400000, guid: 730c238f744d33444958f3fe7e456c0f, type: 2}
   passiveActiveList: []
   HealthPotions: []
   ManaPotions: []
   AgressionState: 1
-  MyClass: 0
+  MyClass: 16
+  thisEnemyObject: {fileID: 0}
   aggress: 0
   intel: 0
   XP: 0
@@ -584,7 +591,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 106324cbd0ae5334bb75664d81e8a72e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 114390868381662558}
   stringname: player1
   m_requiredEntityNumber: 1
   isEnemySlider: 1
@@ -749,7 +756,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300042, guid: 5b3567110517a8645a4327fe47f69e01, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 175f8208ae279a942b13f110d2748d53, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -989,7 +996,7 @@ RectTransform:
   m_GameObject: {fileID: 1894480785776404}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.12408, y: 1.12408, z: 0.56204}
+  m_LocalScale: {x: 2.2, y: 2.2, z: 0.56204}
   m_Children:
   - {fileID: 224260314021106744}
   - {fileID: 224662766177558134}
