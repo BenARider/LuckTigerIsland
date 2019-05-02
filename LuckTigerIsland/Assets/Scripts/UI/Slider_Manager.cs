@@ -30,21 +30,34 @@ public class Slider_Manager : MonoBehaviour {
             if (player.GetEntityNo() == 1)
             {
                 sliderTransform = GameObject.Find("Enemy_1").GetComponent<Transform>();
+                m_healthSlider.interactable = false;
+              
+                m_speedSlider.interactable = false;
+                m_manaSlider.interactable = false;
                 transform.position = new Vector2(sliderTransform.position.x+ 78, sliderTransform.position.y + 8 + (1*(player.GetEntityNo())));//x 78 //y 8 or //x 1983 //y 473
             }
             if (player.GetEntityNo() == 2)
             {
                 sliderTransform = GameObject.Find("Enemy_2").GetComponent<Transform>();
+                m_healthSlider.interactable = false;
+                m_speedSlider.interactable = false;
+                m_manaSlider.interactable = false;
                 transform.position = new Vector2(sliderTransform.position.x+78, sliderTransform.position.y + (4 * (player.GetEntityNo())));
             }
             if (player.GetEntityNo() == 3)
             {
                 sliderTransform = GameObject.Find("Enemy_3").GetComponent<Transform>();
+                m_healthSlider.interactable = false;
+                m_speedSlider.interactable = false;
+                m_manaSlider.interactable = false;
                 transform.position = new Vector2(sliderTransform.position.x +78, sliderTransform.position.y + 8 + (1 * (player.GetEntityNo())));
             }
             if (player.GetEntityNo() == 4)
             {
                 sliderTransform = GameObject.Find("Enemy_4").GetComponent<Transform>();
+                m_healthSlider.interactable = false;
+                m_speedSlider.interactable = false;
+                m_manaSlider.interactable = false;
                 transform.position = new Vector2(sliderTransform.position.x + 78, sliderTransform.position.y + (2 * (player.GetEntityNo())));
             }
            	//can get the values of specificly tagged gameObjects.

@@ -35,9 +35,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Battles/GrasslandBattle.unity
     guid: 882402cc7b315374380e7eed3e6cd58e
-  - enabled: 1
-    path: Assets/Scenes/Battles/Boss1Battle.unity
-    guid: b9d4d200816595e4091f2f858304d784
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Battles/DesertBattle.unity
     guid: 511a16361a71da547be353248890bae5

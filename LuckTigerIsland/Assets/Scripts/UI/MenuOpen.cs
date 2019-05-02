@@ -9,6 +9,7 @@ public class MenuOpen : MonoBehaviour {
     public GameObject ResumeButton;
     public GameObject PartyButton;
     private GameObject QuestAddText;
+
     [SerializeField]
     private GameObject m_lastButton;
     EventSystem m_eventSystem;
@@ -31,7 +32,6 @@ public class MenuOpen : MonoBehaviour {
     }
     void Update()
     {
-
         if (Input.GetKeyDown(KeyCode.Escape)&& !m_partyMenuOpen)
         {
             if(m_menuPauseOpen)
@@ -55,6 +55,7 @@ public class MenuOpen : MonoBehaviour {
             }
             else
             {
+            
                 m_lastButton = EventSystem.current.currentSelectedGameObject;
                 m_eventSystem.SetSelectedGameObject(PartyButton);
             OpenPartyMenu();
@@ -64,8 +65,6 @@ public class MenuOpen : MonoBehaviour {
     public void OpenPartyMenu()
     {
         PartyMenu.SetActive(true);
-
-
         m_partyMenuOpen = true;
     }
     public bool GetPartyMenuState()
@@ -90,7 +89,6 @@ public class MenuOpen : MonoBehaviour {
     }
    void Pause()
     {
-
         PauseMenu.SetActive(true);
         m_menuPauseOpen = true;
     }
