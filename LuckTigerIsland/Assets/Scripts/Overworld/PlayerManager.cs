@@ -30,13 +30,16 @@ public class PlayerManager : LTI.Singleton<PlayerManager> {
     public string previousSceneName;
     public PlayerWorldMove playerMove;
     public TextMeshProUGUI[] textArray;
+    public SpriteRenderer[] playerSprites;
     public TextMeshProUGUI m_gold;
     public GameObject[] backgroundTextArray;
 	public WarriorStats warrior;
 	public ClericStats cleric;
 	public WizardStats wizard;
 	public NinjaStats ninja;
-    bool inDialogue = false;
+    public bool inDialogue = false;
+    public GameObject inShop;
+
     Interaction lastDialogueInteract;
     NPCDialogue activeDialogue;
 
@@ -98,6 +101,21 @@ public class PlayerManager : LTI.Singleton<PlayerManager> {
     void Update()
     {
         CheckForSceneChange();
+
+        if (inShop)
+        {
+            if (!inShop.activeInHierarchy)
+            {
+                inDialogue = false;
+                inShop = null;
+                playerMove.doMove = true;
+            }
+            else
+            {
+                inDialogue = true;
+            }
+        }
+
         try
         {
             m_gold.text = Inventory.Instance.GetGold().ToString();

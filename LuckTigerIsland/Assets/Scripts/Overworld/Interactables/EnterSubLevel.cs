@@ -40,6 +40,7 @@ public class EnterSubLevel : GenericInteract
                     PlayerManager.Instance.playerMove.doMove = true;
                     PlayerManager.Instance.transform.position = exitPos;
                     PlayerManager.Instance.currentSceneName = sceneName;
+                    PlayerManager.Instance.GetComponent<PartyAnimator>().ResetVars();
 
                     Camera.main.GetComponent<ScreenTransition>().fromBlack();
                     Camera.main.GetComponent<CameraController>().OnReset();
