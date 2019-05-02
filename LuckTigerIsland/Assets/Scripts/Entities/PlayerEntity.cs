@@ -20,6 +20,7 @@ public class PlayerEntity : Entity
     public Button teamTarget;
     public EquipEntity m_equipEntity;
     EventSystem m_eventSystem;
+    HandleTurns myAttack = new HandleTurns();
 
     [SerializeField]
     PlayerEntity warrior;
@@ -337,27 +338,27 @@ public class PlayerEntity : Entity
         }
         if (m_eventSystem.currentSelectedGameObject == GameObject.Find("Action_Two"))
         {
-            skillDescription.text = "Mana Cost: " + attacks[1].attackCost + " Type: " + attacks[0].attackType + "\n" + attacks[0].attackAffliction + " Damage: " + attacks[1].attackDamage + "\n" + "Description: " + attacks[1].attackDescription;
+            skillDescription.text = "Mana Cost: " + attacks[1].attackCost + " Type: " + attacks[1].attackType + "\n" + attacks[1].attackAffliction + " Damage: " + attacks[1].attackDamage + "\n" + "Description: " + attacks[1].attackDescription;
         }
         if (m_eventSystem.currentSelectedGameObject == GameObject.Find("Action_Three"))
         {
-            skillDescription.text = "Mana Cost: " + attacks[2].attackCost + " Type: " + attacks[0].attackType + "\n" + attacks[0].attackAffliction +" Damage: " + attacks[2].attackDamage + "\n" + "Description: " + attacks[2].attackDescription;
+            skillDescription.text = "Mana Cost: " + attacks[2].attackCost + " Type: " + attacks[2].attackType + "\n" + attacks[2].attackAffliction +" Damage: " + attacks[2].attackDamage + "\n" + "Description: " + attacks[2].attackDescription;
         }
         if (m_eventSystem.currentSelectedGameObject == GameObject.Find("Action_Four"))
         {
-            skillDescription.text = "Mana Cost: " + attacks[3].attackCost + " Type: " + attacks[0].attackType + "\n" + attacks[0].attackAffliction + " Damage: " + attacks[3].attackDamage + "\n" + "Description: " + attacks[3].attackDescription;
+            skillDescription.text = "Mana Cost: " + attacks[3].attackCost + " Type: " + attacks[3].attackType + "\n" + attacks[3].attackAffliction + " Damage: " + attacks[3].attackDamage + "\n" + "Description: " + attacks[3].attackDescription;
         }
         if (m_eventSystem.currentSelectedGameObject == GameObject.Find("Action_Five"))
         {
-            skillDescription.text = "Mana Cost: " + attacks[4].attackCost + " Type: " + attacks[0].attackType + "\n" + attacks[0].attackAffliction +" Damage: " + attacks[4].attackDamage + "\n" + "Description: " + attacks[4].attackDescription;
+            skillDescription.text = "Mana Cost: " + attacks[4].attackCost + " Type: " + attacks[4].attackType + "\n" + attacks[4].attackAffliction +" Damage: " + attacks[4].attackDamage + "\n" + "Description: " + attacks[4].attackDescription;
         }
         if (m_eventSystem.currentSelectedGameObject == GameObject.Find("Action_Six"))
         {
-            skillDescription.text = "Mana Cost: " + attacks[5].attackCost + " Type: " + attacks[0].attackType + "\n" + attacks[0].attackAffliction + " Damage: " + attacks[5].attackDamage + "\n" + "Description: " + attacks[5].attackDescription;
+            skillDescription.text = "Mana Cost: " + attacks[5].attackCost + " Type: " + attacks[5].attackType + "\n" + attacks[5].attackAffliction + " Damage: " + attacks[5].attackDamage + "\n" + "Description: " + attacks[5].attackDescription;
         }
         if (m_eventSystem.currentSelectedGameObject == GameObject.Find("Action_Seven"))
         {
-            skillDescription.text = "Mana Cost: " + attacks[6].attackCost + " Type: " + attacks[0].attackType + "\n" + attacks[0].attackAffliction +" Damage: " + attacks[0].attackDamage + "\n" + "Description: " + attacks[6].attackDescription;
+            skillDescription.text = "Mana Cost: " + attacks[6].attackCost + " Type: " + attacks[6].attackType + "\n" + attacks[6].attackAffliction +" Damage: " + attacks[6].attackDamage + "\n" + "Description: " + attacks[6].attackDescription;
         }
         if (m_eventSystem.currentSelectedGameObject == GameObject.Find("Action_Eight"))
         {
@@ -654,22 +655,23 @@ public class PlayerEntity : Entity
         Debug.Log(this.name + ": Choose Target");
         if (m_chosenAction.attackType != BaseAttack.AttackType.eBuff)
         {
+            myAttack.Attacker = name;//Who is attacking
+            myAttack.Type = "Player";
+            myAttack.AttackingGameObject = this.gameObject;
+            myAttack.chosenAttack = m_chosenAction;
+
+          
             if (Input.GetKeyDown("1") || m_BattleButton.GetActionTargetNumber() == 10)
             {
-                HandleTurns myAttack = new HandleTurns
-                {
-                    Attacker = name, //Who is attacking
-                    Type = "Player",//What type are they
-                    AttackingGameObject = this.gameObject, //What gameObject is attacking
-                    chosenAttack = m_chosenAction,
-                    AttackTarget = BC.EnemiesInBattle[0]
+           
+                    myAttack.AttackTarget = BC.EnemiesInBattle[0];
 
-                };
+              
                 if (BC.EnemiesInBattle[0].GetComponent<EnemEntity>().isAlive)
                 {
                     BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
                     m_chosenTarget = true;
-                    attackDescriptionText.text = this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + m_displayDamage + " damage!";
+                
                     Debug.Log(this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!");
                     StartCoroutine("FadeText");
                 }
@@ -680,19 +682,12 @@ public class PlayerEntity : Entity
             }
             if (Input.GetKeyDown("2") || m_BattleButton.GetActionTargetNumber() == 11)
             {
-                HandleTurns myAttack = new HandleTurns
-                {
-                    Attacker = name, //Who is attacking
-                    Type = "Player",//What type are they
-                    AttackingGameObject = this.gameObject, //What gameObject is attacking
-                    chosenAttack = m_chosenAction,
-                    AttackTarget = BC.EnemiesInBattle[1]
-                };
+                myAttack.AttackTarget = BC.EnemiesInBattle[1];
+            
                 if (BC.EnemiesInBattle[1].GetComponent<EnemEntity>().isAlive)
                 {
                     BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
                     m_chosenTarget = true;
-                    attackDescriptionText.text = this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + m_displayDamage + " damage!";
                     Debug.Log(this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!");
                     StartCoroutine("FadeText");
                 }
@@ -703,19 +698,12 @@ public class PlayerEntity : Entity
             }
             if (Input.GetKeyDown("3") || m_BattleButton.GetActionTargetNumber() == 12)
             {
-                HandleTurns myAttack = new HandleTurns
-                {
-                    Attacker = name, //Who is attacking
-                    Type = "Player",//What type are they
-                    AttackingGameObject = this.gameObject, //What gameObject is attacking
-                    chosenAttack = m_chosenAction,
-                    AttackTarget = BC.EnemiesInBattle[2]
-                };
+
+                myAttack.AttackTarget = BC.EnemiesInBattle[2];
                 if (BC.EnemiesInBattle[2].GetComponent<EnemEntity>().isAlive)
                 {
                     BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
                     m_chosenTarget = true;
-                    attackDescriptionText.text = this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + m_displayDamage + " damage!";
                     Debug.Log(this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!");
                     StartCoroutine("FadeText");
                 }
@@ -726,19 +714,12 @@ public class PlayerEntity : Entity
             }
             if (Input.GetKeyDown("4") || m_BattleButton.GetActionTargetNumber() == 13)
             {
-                HandleTurns myAttack = new HandleTurns
-                {
-                    Attacker = name, //Who is attacking
-                    Type = "Player",//What type are they
-                    AttackingGameObject = this.gameObject, //What gameObject is attacking
-                    chosenAttack = m_chosenAction,
-                    AttackTarget = BC.EnemiesInBattle[3]
-                };
+
+                myAttack.AttackTarget = BC.EnemiesInBattle[3];
                 if (BC.EnemiesInBattle[3].GetComponent<EnemEntity>().isAlive)
                 {
                     BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
                     m_chosenTarget = true;
-                    attackDescriptionText.text = this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + m_displayDamage + " damage!";
                     Debug.Log(this.gameObject.name + " Is going to attack " + myAttack.AttackTarget.name + " with " + myAttack.chosenAttack.attackName + " and does " + myAttack.chosenAttack.attackDamage + " damage!");
                     StartCoroutine("FadeText");
                 }
@@ -753,15 +734,8 @@ public class PlayerEntity : Entity
         {
             if (Input.GetKeyDown("1") || m_BattleButton.GetActionTargetNumber() == 10)
             {
-                HandleTurns myAttack = new HandleTurns
-                {
-                    Attacker = name, //Who is attacking
-                    Type = "Player",//What type are they
-                    AttackingGameObject = this.gameObject, //What gameObject is attacking
-                    chosenAttack = m_chosenAction,
-                    AttackTarget = BC.PartyMembersInBattle[0]
 
-                };
+                myAttack.AttackTarget = BC.PartyMembersInBattle[0];
                 if (BC.PartyMembersInBattle[0].GetComponent<PlayerEntity>().isAlive)
                 {
                     BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
@@ -776,14 +750,9 @@ public class PlayerEntity : Entity
             }
             if (Input.GetKeyDown("2") || m_BattleButton.GetActionTargetNumber() == 11)
             {
-                HandleTurns myAttack = new HandleTurns
-                {
-                    Attacker = name, //Who is attacking
-                    Type = "Player",//What type are they
-                    AttackingGameObject = this.gameObject, //What gameObject is attacking
-                    chosenAttack = m_chosenAction,
-                    AttackTarget = BC.PartyMembersInBattle[1]
-                };
+
+            myAttack.AttackTarget = BC.PartyMembersInBattle[1];
+                
                 if (BC.PartyMembersInBattle[1].GetComponent<PlayerEntity>().isAlive)
                 {
                     BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
@@ -798,14 +767,9 @@ public class PlayerEntity : Entity
             }
             if (Input.GetKeyDown("3") || m_BattleButton.GetActionTargetNumber() == 12)
             {
-                HandleTurns myAttack = new HandleTurns
-                {
-                    Attacker = name, //Who is attacking
-                    Type = "Player",//What type are they
-                    AttackingGameObject = this.gameObject, //What gameObject is attacking
-                    chosenAttack = m_chosenAction,
-                    AttackTarget = BC.PartyMembersInBattle[2]
-                };
+
+            myAttack.AttackTarget = BC.PartyMembersInBattle[2];
+              
                 if (BC.PartyMembersInBattle[2].GetComponent<PlayerEntity>().isAlive)
                 {
                     BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
@@ -820,14 +784,8 @@ public class PlayerEntity : Entity
             }
             if (Input.GetKeyDown("4") || m_BattleButton.GetActionTargetNumber() == 13)
             {
-                HandleTurns myAttack = new HandleTurns
-                {
-                    Attacker = name, //Who is attacking
-                    Type = "Player",//What type are they
-                    AttackingGameObject = this.gameObject, //What gameObject is attacking
-                    chosenAttack = m_chosenAction,
-                    AttackTarget = BC.PartyMembersInBattle[3]
-                };
+
+            myAttack.AttackTarget = BC.PartyMembersInBattle[3];
                 if (BC.PartyMembersInBattle[3].GetComponent<PlayerEntity>().isAlive)
                 {
                     BC.collectActions(myAttack); //Thow the attack to the stack in BattleControl
@@ -928,11 +886,13 @@ public class PlayerEntity : Entity
         {
             int calculateDamage = GetStrength() + (BC.NextTurn[0].chosenAttack.attackDamage * BC.NextTurn[0].chosenAttack.skillMultiplier); //calc should be done here before damage
             EntityToAttack.GetComponent<EnemEntity>().TakeDamage(calculateDamage, m_chosenAction);
+            attackDescriptionText.text = this.gameObject.name + " Is going to attack " + EntityToAttack.GetComponent<EnemEntity>().MyClass + " with " + m_chosenAction.attackName + " and does " + m_displayDamage + " damage!";
         }
         else
         {
             int calculateMagicDamage = GetMagicPower() + (BC.NextTurn[0].chosenAttack.attackDamage * BC.NextTurn[0].chosenAttack.skillMultiplier);
 			EntityToAttack.GetComponent<EnemEntity>().TakeDamage(calculateMagicDamage, m_chosenAction);
+            attackDescriptionText.text = this.gameObject.name + " Is going to attack " + EntityToAttack.GetComponent<EnemEntity>().MyClass + " with " + m_chosenAction.attackName + " and does " + m_displayDamage + " damage!";
         }
     }
     void PartyWideDamage()
@@ -942,6 +902,9 @@ public class PlayerEntity : Entity
         {
 			Debug.Log("Display Damage: " + m_displayDamage);
 			BC.EnemiesInBattle[i].GetComponent<EnemEntity>().TakeDamage(calculateDamage, m_chosenAction);
+      
+            attackDescriptionText.text = this.gameObject.name + " Is going to attack " + EntityToAttack.GetComponent<EnemEntity>().MyClass + " with " + m_chosenAction.attackName + " and does " + m_displayDamage + " damage!";
         }
+
     }
 }
