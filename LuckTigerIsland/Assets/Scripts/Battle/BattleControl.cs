@@ -34,7 +34,7 @@ public class BattleControl : MonoBehaviour {
     [SerializeField]
     TextMeshProUGUI m_itemsAdded;
     EventSystem m_eventSystem;
-    private bool m_itemRolled;
+    private bool m_itemRolled = false;
     public GameObject actionOne;
     public int battleGoldReward = 0;
     public int deadEnemies = 0;
@@ -114,30 +114,33 @@ public class BattleControl : MonoBehaviour {
             case (performAction.ePerformAction):
                 break;
             case (performAction.eWin):
-         
               //  PlayerManager.Instance.transform.root.GetComponent<ReturnToMain>().Return();
               if (!m_itemRolled)
                 {
                     battleGoldReward = Random.Range(100, 150);
                     Inventory.Instance.IncreaseGold(battleGoldReward);
-                    PlayerManager.Instance.AddXP(100);
-                    m_itemRoll = Random.Range(0, rewards.Count()-1);
-                    Inventory.Instance.AddToInventory(rewards[m_itemRoll]);
-                    Debug.Log("Additem success" + rewards[m_itemRoll]);
-                    m_itemRolled = true;
-                    m_itemsAdded.text = "Items gained: " + "\n"+ rewards[m_itemRoll].objectName;
+                    PlayerManager.Instance.AddXP(Random.Range(100, 150));
+                    //m_itemRoll = Random.Range(0, rewards.Count()-1);
+                    //
+                    //
+                    //Inventory.Instance.AddToInventory(rewards[m_itemRoll]);
+                    //
+
+                    //Debug.Log("Additem success" + rewards[m_itemRoll]);
+                    //m_itemRolled = true;
+                    //m_itemsAdded.text = "Items gained: " + "\n"+ rewards[m_itemRoll].objectName;
+                
+                    
+                    List<EEnemies> toSet = new List<EEnemies>();
+                    foreach (var i in EnemiesInBattle)
+                    {
+                       toSet.Add(i.GetComponent<EnemEntity>().MyClass);
+                    }
+                    EventManager.Instance.SetLastBattle(toSet);
+                    PlayerManager.Instance.transform.parent.GetComponent<ReturnToMain>().Return();
+                    Debug.Log("Won");
+                        //go to victory screen/overworld here
                 }
-             
-
-
-                List<EEnemies> toSet = new List<EEnemies>();
-                foreach (var i in EnemiesInBattle)
-                {
-                   toSet.Add(i.GetComponent<EnemEntity>().thisEnemyObject.enemyType);
-                }                
-                EventManager.Instance.SetLastBattle(toSet);
-
-                //go to victory screen/overworld here
                 break;
             case (performAction.eLoss):
                 //go to gameover screen here

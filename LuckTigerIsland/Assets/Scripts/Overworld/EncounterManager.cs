@@ -146,7 +146,16 @@ public class EncounterManager : MonoBehaviour {
                 scenename = "CaveBattle";
                 break;
             case 4:
-                scenename = "Boss1Battle";
+                scenename = "PigBossBattle";
+                break;
+            case 5:
+                scenename = "HeadlessChickenBossBattle";
+                break;
+            case 6:
+                scenename = "SpiritTigerBossBattle";
+                break;
+            case 7:
+                scenename = "PulledPorkBossBattle";
                 break;
 
         }
