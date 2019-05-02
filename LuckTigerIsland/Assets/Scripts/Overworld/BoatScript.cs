@@ -71,12 +71,20 @@ public class BoatScript : GenericInteract
                 if (boatTransition == 1)
                 {
                     player.transform.position = transform.position;
-                    player.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
+                    //player.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
+                    foreach(SpriteRenderer sr in PlayerManager.Instance.playerSprites)
+                    {
+                        sr.enabled = false;
+                    }
                 }
                 else
                 {
                     player.transform.position = paths[pathID].destination;
-                    player.transform.localScale = Vector3.one;
+                    //player.transform.localScale = Vector3.one;
+                    foreach (SpriteRenderer sr in PlayerManager.Instance.playerSprites)
+                    {
+                        sr.enabled = true;
+                    }
                     transform.position = paths[pathID].node[0];
                 }
                 Camera.main.GetComponent<CameraController>().OnReset();
