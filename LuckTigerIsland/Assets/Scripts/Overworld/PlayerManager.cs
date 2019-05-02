@@ -26,7 +26,8 @@ public struct Interaction
 public class PlayerManager : LTI.Singleton<PlayerManager> {
     //list of all current nearby interactable scripts
     public List<Interaction> interactions;
-	public string currentSceneName;
+	public string currentSceneName = "";
+    public string previousSceneName;
     public PlayerWorldMove playerMove;
     public TextMeshProUGUI[] textArray;
     public TextMeshProUGUI m_gold;
@@ -70,6 +71,7 @@ public class PlayerManager : LTI.Singleton<PlayerManager> {
     void Start () {
         //backgroundTextArray[0] = GameObject.Find("Background_Player_Text");
         //backgroundTextArray[1] = GameObject.Find("Background_NPC_Text");
+        previousSceneName = currentSceneName;
         instance = this;
         playerMove = GetComponent<PlayerWorldMove>();
         Transform overUI = backgroundTextArray[0].transform;
@@ -83,10 +85,19 @@ public class PlayerManager : LTI.Singleton<PlayerManager> {
         
     }
 
+    void CheckForSceneChange()
+    {        
+        if(currentSceneName != previousSceneName)
+        {            
+            AudioManager.Instance.ChangePlaylist(currentSceneName);
+            previousSceneName = currentSceneName;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
-        
+        CheckForSceneChange();
         try
         {
             m_gold.text = Inventory.Instance.GetGold().ToString();

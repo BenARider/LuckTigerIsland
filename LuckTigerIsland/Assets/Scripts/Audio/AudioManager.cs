@@ -19,14 +19,7 @@ public class AudioManager : LTI.Singleton<AudioManager>{
     private int m_currentMusicTrack = 0;
     private float m_currentTrackTimeRemaining = 0;
 
-    void ChangePlaylist(int _index)
-    {
-        if (_index < 0 && _index > 9)
-            Debug.LogError("Enter a playlist value between 0 and 9");
-        else
-            currentPlaylist = _index;
-    }
-
+   
     void Start()
     {
         instance = this;
@@ -75,6 +68,77 @@ public class AudioManager : LTI.Singleton<AudioManager>{
         
         PlayMusic();
     }
+
+    public void ChangePlaylist(string _name)
+    {
+        try
+        {
+            switch (_name)
+            {
+                case "MainMenu": case "LoadScene": case "Overworld":
+                    currentPlaylist = 0;
+                    Debug.Log("Overworld Playlist");
+                    break;
+               
+                case "Castleton01": case "Elftown01": case "City01": case "Forest01":
+                    currentPlaylist = 1;
+                    Debug.Log("Town Playlist");
+                    break;                                   
+
+                case "MountainDungeon":
+                    currentPlaylist = 6;
+                    Debug.Log("Dungeon Playlist");
+                    break;                
+
+                case "CaveBattle":
+                    currentPlaylist = 7;
+                    Debug.Log("Area 3 Playlist");
+                    break;
+
+                case "GrasslandBattle":
+                    currentPlaylist = 9;
+                    Debug.Log("Area 1 Playlist");
+                    break;
+
+                case "DesertBattle":
+                    currentPlaylist = 8;
+                    Debug.Log("Area 2 Playlist");
+                    break;
+
+                case "HeadlessChickenBossBattle":
+                    currentPlaylist = 5;
+                    Debug.Log("HeadlessChicken Playlist");
+                    break;
+
+                case "PigBossBattle":
+                    currentPlaylist = 4;
+                    Debug.Log("PigBossBattle Playlist");
+                    break;
+
+                case "PulledPorkBossBattle":
+                    currentPlaylist = 3;
+                    Debug.Log("PulledPorkBossBattle Playlist");
+                    break;
+
+                case "SpiritTigerBossBattle":
+                    currentPlaylist = 2;
+                    Debug.Log("SpiritTigerBossBattle Playlist");
+                    break;
+
+                default:
+                    Debug.Log("Something went wrong with playlists");
+                    break;
+            }
+            NextTrack();
+        }
+        catch (System.Exception ex)
+        {
+            Debug.LogError("Exception in AudioManager.ChangePlayist: ");
+            Debug.LogError(ex.Message);
+        }
+        // currentPlaylist = _index;
+    }
+
 
     //Music Functions
     //Using a couroutine to constantly check remaining time so the audio manager can still do other things at the same time.
