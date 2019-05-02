@@ -222,22 +222,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1074483235893456
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 224916126982244574}
-  - component: {fileID: 114207088131179316}
-  m_Layer: 5
-  m_Name: Player1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1074756393446202
 GameObject:
   m_ObjectHideFlags: 1
@@ -568,22 +552,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1147216125006468
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 224058085023685418}
-  - component: {fileID: 114604086439993048}
-  m_Layer: 5
-  m_Name: Player2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1151791366645290
 GameObject:
   m_ObjectHideFlags: 1
@@ -743,6 +711,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1215316765760408
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 224167716566339268}
+  - component: {fileID: 222964170422527712}
+  - component: {fileID: 114110782996561212}
+  m_Layer: 5
+  m_Name: PartyLevelTotal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1222496026030016
 GameObject:
   m_ObjectHideFlags: 1
@@ -892,23 +877,6 @@ GameObject:
   - component: {fileID: 114600421714492764}
   m_Layer: 5
   m_Name: ButtonListScrollbar
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1273398276269454
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 224257769801120882}
-  - component: {fileID: 222197582428964608}
-  - component: {fileID: 114719701477161344}
-  m_Layer: 5
-  m_Name: Party_Level_Total
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1697,21 +1665,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1496098123224278
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 224694767902809322}
-  m_Layer: 5
-  m_Name: PlayersTemp
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
 --- !u!1 &1509456782741476
 GameObject:
   m_ObjectHideFlags: 1
@@ -2187,22 +2140,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!1 &1701721766326206
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 224388540296077984}
-  - component: {fileID: 114805982109188444}
-  m_Layer: 5
-  m_Name: Player4
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1709896046777470
 GameObject:
   m_ObjectHideFlags: 1
@@ -2503,22 +2440,6 @@ GameObject:
   - component: {fileID: 224066170841536654}
   m_Layer: 5
   m_Name: SlotImages
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1797741234381202
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 224404341419267574}
-  - component: {fileID: 114464310855561080}
-  m_Layer: 5
-  m_Name: Player3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3484,11 +3405,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -3740,11 +3661,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -3853,11 +3774,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -4079,11 +4000,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -4522,6 +4443,119 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114110782996561212
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1215316765760408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1453722849, guid: 89f0137620f6af44b9ba852b4190e64e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_text: 1
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: f76ef802b8b940c46a31f9027f2b0158, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 250a1a103b3b4914c9707e6a423446d6, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_outlineColor:
+    serializedVersion: 2
+    rgba: 4278190080
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_textAlignment: 257
+  m_isAlignmentEnumConverted: 1
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_firstOverflowCharacterIndex: 0
+  m_linkedTextComponent: {fileID: 0}
+  m_isLinkedTextComponent: 0
+  m_isTextTruncated: 0
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_ignoreRectMaskCulling: 0
+  m_ignoreCulling: 1
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_firstVisibleCharacter: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 91.647125, w: 0}
+  m_textInfo:
+    textComponent: {fileID: 114110782996561212}
+    characterCount: 1
+    spriteCount: 0
+    spaceCount: 0
+    wordCount: 1
+    linkCount: 0
+    lineCount: 1
+    pageCount: 1
+    materialCount: 1
+  m_havePropertiesChanged: 0
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_spriteAnimator: {fileID: 0}
+  m_isInputParsingRequired: 0
+  m_inputSource: 0
+  m_hasFontAssetChanged: 0
+  m_subTextObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &114120129945227608
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4926,11 +4960,11 @@ MonoBehaviour:
     lineCount: 0
     pageCount: 0
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -5204,11 +5238,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -5649,11 +5683,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -5898,84 +5932,6 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &114207088131179316
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1074483235893456}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7b9ee21a2a49e64cbdb84b5fe06a9d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_maxHealth: 0
-  m_health: 0
-  m_strength: 0
-  m_magicPower: 0
-  m_defence: 0
-  m_defenceMGC: 0
-  m_speed: 0
-  m_mana: 0
-  m_maxMana: 0
-  m_stunned: 0
-  m_afflicted: 0
-  m_level: 0
-  m_xpAward: 0
-  m_goldAward: 0
-  m_EXP: 0
-  m_attackedAlready: 0
-  m_canBeBuffed: 1
-  m_entityNumber: 0
-  m_requiredSpeedForTurn: 0
-  myTurn: 0
-  battleWon: 0
-  currentSpeed: 0
-  isAlive: 1
-  countedDead: 0
-  alreadyAfflicted: 0
-  afflictionTimes: 0
-  tempDMGReduct: 0
-  totalDMG: 0
-  chanceToHit: 0
-  attacking: 0
-  dmgRecieve: 0
-  dmgDealt: 0
-  currentState: 0
-  currentAffliction: 0
-  currentBuff: 0
-  EntityToAttack: {fileID: 0}
-  attacks: []
-  passiveActiveList: []
-  HealthPotions: []
-  ManaPotions: []
-  skillTexts: []
-  turnText: {fileID: 0}
-  attackDescriptionText: {fileID: 0}
-  notEnoughManaText: {fileID: 0}
-  notEnoughPotionsText: {fileID: 0}
-  usedPotionText: {fileID: 0}
-  skillDescription: {fileID: 0}
-  enemyTargets: {fileID: 0}
-  teamTargets: {fileID: 0}
-  enemyTarget: {fileID: 0}
-  teamTarget: {fileID: 0}
-  m_equipEntity: {fileID: 0}
-  warrior: {fileID: 114604086439993048}
-  wizard: {fileID: 114464310855561080}
-  cleric: {fileID: 114207088131179316}
-  ninja: {fileID: 114805982109188444}
-  MyClass: 1
-  HT:
-    Attacker: 
-    Type: 
-    AttackingGameObject: {fileID: 0}
-    AttackTarget: {fileID: 0}
-    chosenAttack: {fileID: 0}
-  PM: {fileID: 0}
-  passiveList: []
-  m_hasChosenAction: 0
-  m_chosenTarget: 0
 --- !u!114 &114207349928276456
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6071,11 +6027,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -6113,6 +6069,67 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ee62a438c443ca40a58448fa5268eb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_maxHealth: 0
+  m_health: 0
+  m_strength: 0
+  m_magicPower: 0
+  m_defence: 0
+  m_defenceMGC: 0
+  m_speed: 0
+  m_mana: 0
+  m_maxMana: 0
+  m_stunned: 0
+  m_afflicted: 0
+  m_displayDamage: 0
+  m_level: 0
+  m_xpAward: 0
+  m_goldAward: 0
+  m_EXP: 0
+  m_gold: 0
+  m_attackedAlready: 0
+  m_canBeBuffed: 1
+  m_entityNumber: 0
+  m_requiredSpeedForTurn: 0
+  myTurn: 0
+  battleWon: 0
+  currentSpeed: 0
+  isAlive: 1
+  countedDead: 0
+  alreadyAfflicted: 0
+  afflictionTimes: 0
+  tempDMGReduct: 0
+  totalDMG: 0
+  chanceToHit: 0
+  attacking: 0
+  dmgRecieve: 0
+  dmgDealt: 0
+  currentState: 0
+  currentAffliction: 0
+  currentBuff: 0
+  EntityToAttack: {fileID: 0}
+  attacks:
+  - {fileID: 11400000, guid: d86d8a8da359f334496d00bb8f362b79, type: 2}
+  - {fileID: 11400000, guid: 0190d9973f6cf2f458cb739851d40d8b, type: 2}
+  - {fileID: 11400000, guid: b41045100a947924cbd1e9133c94b66e, type: 2}
+  - {fileID: 11400000, guid: 7d66ae85b45b185408249521a72c4de6, type: 2}
+  - {fileID: 11400000, guid: 4dafe16976e9e8f4bac85f3e807a9c22, type: 2}
+  - {fileID: 11400000, guid: 9d24cd505889bc4469ea81fbdfce136f, type: 2}
+  - {fileID: 11400000, guid: d755fab06be36224f901d317e6cc6e65, type: 2}
+  - {fileID: 11400000, guid: 650e8ac0c428c8640a9f340c6312d912, type: 2}
+  - {fileID: 11400000, guid: 2cb2ecbd777b5d9428034cb0b4ae214d, type: 2}
+  - {fileID: 11400000, guid: 30a6e183a1e1e1446abe4670d8262b84, type: 2}
+  - {fileID: 11400000, guid: 5cb94bfaa252012468b402e6910d22c9, type: 2}
+  - {fileID: 11400000, guid: 514e1c79f37c1ba4aa8e8f99e4b54b94, type: 2}
+  - {fileID: 11400000, guid: 7b4b374b9453f4b4aa11f701e492b583, type: 2}
+  - {fileID: 11400000, guid: 5271a29cd3242b64a8f84abaa4cbe353, type: 2}
+  - {fileID: 11400000, guid: 8148558417a3b1542a86f86d8e1445a4, type: 2}
+  - {fileID: 11400000, guid: fc1ef64ca266cf44cbbd3dec2f027873, type: 2}
+  - {fileID: 11400000, guid: ede9b6e28c7ef494583c7c8fe0c9a00f, type: 2}
+  - {fileID: 11400000, guid: dd88c9207b91c184ab99abf640f7092f, type: 2}
+  - {fileID: 11400000, guid: 2785d8f2fea70f1469bccf4752e01421, type: 2}
+  passiveActiveList: []
+  HealthPotions: []
+  ManaPotions: []
   statText: {fileID: 114452269520882472}
   m_playerManager: {fileID: 0}
   m_playerEntity: []
@@ -6122,7 +6139,7 @@ MonoBehaviour:
   playerSkillButton: {fileID: 114227711100697202}
   skillImage: {fileID: 114562709967864768}
   playerStatMenu: {fileID: 1670842945534116}
-  m_partyLevelTotal: {fileID: 114719701477161344}
+  m_partyLevelTotal: {fileID: 114110782996561212}
   m_skillTitle: {fileID: 114791999793089942}
   m_skillDescription: {fileID: 114961684344349660}
   m_skillDamage: {fileID: 114289054752498582}
@@ -6356,11 +6373,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -6690,11 +6707,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -7073,11 +7090,11 @@ MonoBehaviour:
     lineCount: 0
     pageCount: 0
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -7785,11 +7802,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -8109,11 +8126,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -8224,11 +8241,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -8504,11 +8521,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -9156,11 +9173,11 @@ MonoBehaviour:
     lineCount: 0
     pageCount: 0
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -9410,84 +9427,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114464310855561080
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1797741234381202}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7b9ee21a2a49e64cbdb84b5fe06a9d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_maxHealth: 0
-  m_health: 0
-  m_strength: 0
-  m_magicPower: 0
-  m_defence: 0
-  m_defenceMGC: 0
-  m_speed: 0
-  m_mana: 0
-  m_maxMana: 0
-  m_stunned: 0
-  m_afflicted: 0
-  m_level: 0
-  m_xpAward: 0
-  m_goldAward: 0
-  m_EXP: 0
-  m_attackedAlready: 0
-  m_canBeBuffed: 1
-  m_entityNumber: 0
-  m_requiredSpeedForTurn: 0
-  myTurn: 0
-  battleWon: 0
-  currentSpeed: 0
-  isAlive: 1
-  countedDead: 0
-  alreadyAfflicted: 0
-  afflictionTimes: 0
-  tempDMGReduct: 0
-  totalDMG: 0
-  chanceToHit: 0
-  attacking: 0
-  dmgRecieve: 0
-  dmgDealt: 0
-  currentState: 0
-  currentAffliction: 0
-  currentBuff: 0
-  EntityToAttack: {fileID: 0}
-  attacks: []
-  passiveActiveList: []
-  HealthPotions: []
-  ManaPotions: []
-  skillTexts: []
-  turnText: {fileID: 0}
-  attackDescriptionText: {fileID: 0}
-  notEnoughManaText: {fileID: 0}
-  notEnoughPotionsText: {fileID: 0}
-  usedPotionText: {fileID: 0}
-  skillDescription: {fileID: 0}
-  enemyTargets: {fileID: 0}
-  teamTargets: {fileID: 0}
-  enemyTarget: {fileID: 0}
-  teamTarget: {fileID: 0}
-  m_equipEntity: {fileID: 0}
-  warrior: {fileID: 0}
-  wizard: {fileID: 0}
-  cleric: {fileID: 0}
-  ninja: {fileID: 0}
-  MyClass: 2
-  HT:
-    Attacker: 
-    Type: 
-    AttackingGameObject: {fileID: 0}
-    AttackTarget: {fileID: 0}
-    chosenAttack: {fileID: 0}
-  PM: {fileID: 0}
-  passiveList: []
-  m_hasChosenAction: 0
-  m_chosenTarget: 0
 --- !u!114 &114466081040585980
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10504,11 +10443,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -11039,84 +10978,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonSelectSound: buttonSelectSound
---- !u!114 &114604086439993048
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1147216125006468}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7b9ee21a2a49e64cbdb84b5fe06a9d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_maxHealth: 0
-  m_health: 0
-  m_strength: 0
-  m_magicPower: 0
-  m_defence: 0
-  m_defenceMGC: 0
-  m_speed: 0
-  m_mana: 0
-  m_maxMana: 0
-  m_stunned: 0
-  m_afflicted: 0
-  m_level: 0
-  m_xpAward: 0
-  m_goldAward: 0
-  m_EXP: 0
-  m_attackedAlready: 0
-  m_canBeBuffed: 1
-  m_entityNumber: 0
-  m_requiredSpeedForTurn: 0
-  myTurn: 0
-  battleWon: 0
-  currentSpeed: 0
-  isAlive: 1
-  countedDead: 0
-  alreadyAfflicted: 0
-  afflictionTimes: 0
-  tempDMGReduct: 0
-  totalDMG: 0
-  chanceToHit: 0
-  attacking: 0
-  dmgRecieve: 0
-  dmgDealt: 0
-  currentState: 0
-  currentAffliction: 0
-  currentBuff: 0
-  EntityToAttack: {fileID: 0}
-  attacks: []
-  passiveActiveList: []
-  HealthPotions: []
-  ManaPotions: []
-  skillTexts: []
-  turnText: {fileID: 0}
-  attackDescriptionText: {fileID: 0}
-  notEnoughManaText: {fileID: 0}
-  notEnoughPotionsText: {fileID: 0}
-  usedPotionText: {fileID: 0}
-  skillDescription: {fileID: 0}
-  enemyTargets: {fileID: 0}
-  teamTargets: {fileID: 0}
-  enemyTarget: {fileID: 0}
-  teamTarget: {fileID: 0}
-  m_equipEntity: {fileID: 0}
-  warrior: {fileID: 0}
-  wizard: {fileID: 0}
-  cleric: {fileID: 0}
-  ninja: {fileID: 0}
-  MyClass: 0
-  HT:
-    Attacker: 
-    Type: 
-    AttackingGameObject: {fileID: 0}
-    AttackTarget: {fileID: 0}
-    chosenAttack: {fileID: 0}
-  PM: {fileID: 0}
-  passiveList: []
-  m_hasChosenAction: 0
-  m_chosenTarget: 0
 --- !u!114 &114604850198503520
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11945,119 +11806,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &114719701477161344
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1273398276269454}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1453722849, guid: 89f0137620f6af44b9ba852b4190e64e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: f76ef802b8b940c46a31f9027f2b0158, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 250a1a103b3b4914c9707e6a423446d6, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-  m_enableVertexGradient: 0
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_outlineColor:
-    serializedVersion: 2
-    rgba: 4278190080
-  m_fontSize: 30
-  m_fontSizeBase: 30
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_textAlignment: 257
-  m_isAlignmentEnumConverted: 1
-  m_characterSpacing: 0
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
-  m_linkedTextComponent: {fileID: 0}
-  m_isLinkedTextComponent: 0
-  m_isTextTruncated: 0
-  m_enableKerning: 1
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_ignoreRectMaskCulling: 0
-  m_ignoreCulling: 1
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_firstVisibleCharacter: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -660.8177, w: 0}
-  m_textInfo:
-    textComponent: {fileID: 114719701477161344}
-    characterCount: 0
-    spriteCount: 0
-    spaceCount: 0
-    wordCount: 0
-    linkCount: 0
-    lineCount: 0
-    pageCount: 0
-    materialCount: 1
-  m_havePropertiesChanged: 1
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
-  m_inputSource: 0
-  m_hasFontAssetChanged: 0
-  m_subTextObjects:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &114723180253582408
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12469,11 +12217,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -12541,7 +12289,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 43.3
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -12727,11 +12475,7 @@ MonoBehaviour:
   PartyMenu: {fileID: 1325251233473460}
   ResumeButton: {fileID: 1158879834243388}
   PartyButton: {fileID: 1299640542439450}
-  BattleUI: {fileID: 0}
-  ActionOneButton: {fileID: 0}
-  m_ShopUI: {fileID: 0}
-  m_closeShopButton: {fileID: 0}
-  m_targetButton: {fileID: 0}
+  m_lastButton: {fileID: 0}
   m_menuPauseOpen: 0
   m_partyMenuOpen: 0
 --- !u!114 &114783498062566406
@@ -12829,11 +12573,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -12942,11 +12686,11 @@ MonoBehaviour:
     lineCount: 0
     pageCount: 0
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -13121,11 +12865,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -13139,84 +12883,6 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &114805982109188444
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1701721766326206}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7b9ee21a2a49e64cbdb84b5fe06a9d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_maxHealth: 0
-  m_health: 0
-  m_strength: 0
-  m_magicPower: 0
-  m_defence: 0
-  m_defenceMGC: 0
-  m_speed: 0
-  m_mana: 0
-  m_maxMana: 0
-  m_stunned: 0
-  m_afflicted: 0
-  m_level: 0
-  m_xpAward: 0
-  m_goldAward: 0
-  m_EXP: 0
-  m_attackedAlready: 0
-  m_canBeBuffed: 1
-  m_entityNumber: 0
-  m_requiredSpeedForTurn: 0
-  myTurn: 0
-  battleWon: 0
-  currentSpeed: 0
-  isAlive: 1
-  countedDead: 0
-  alreadyAfflicted: 0
-  afflictionTimes: 0
-  tempDMGReduct: 0
-  totalDMG: 0
-  chanceToHit: 0
-  attacking: 0
-  dmgRecieve: 0
-  dmgDealt: 0
-  currentState: 0
-  currentAffliction: 0
-  currentBuff: 0
-  EntityToAttack: {fileID: 0}
-  attacks: []
-  passiveActiveList: []
-  HealthPotions: []
-  ManaPotions: []
-  skillTexts: []
-  turnText: {fileID: 0}
-  attackDescriptionText: {fileID: 0}
-  notEnoughManaText: {fileID: 0}
-  notEnoughPotionsText: {fileID: 0}
-  usedPotionText: {fileID: 0}
-  skillDescription: {fileID: 0}
-  enemyTargets: {fileID: 0}
-  teamTargets: {fileID: 0}
-  enemyTarget: {fileID: 0}
-  teamTarget: {fileID: 0}
-  m_equipEntity: {fileID: 0}
-  warrior: {fileID: 0}
-  wizard: {fileID: 0}
-  cleric: {fileID: 0}
-  ninja: {fileID: 0}
-  MyClass: 3
-  HT:
-    Attacker: 
-    Type: 
-    AttackingGameObject: {fileID: 0}
-    AttackTarget: {fileID: 0}
-    chosenAttack: {fileID: 0}
-  PM: {fileID: 0}
-  passiveList: []
-  m_hasChosenAction: 0
-  m_chosenTarget: 0
 --- !u!114 &114807859875127220
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -13522,11 +13188,11 @@ MonoBehaviour:
     lineCount: 0
     pageCount: 0
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -14865,11 +14531,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -15389,11 +15055,11 @@ MonoBehaviour:
     lineCount: 0
     pageCount: 0
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -15768,12 +15434,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1343306547320432}
---- !u!222 &222197582428964608
-CanvasRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1273398276269454}
 --- !u!222 &222199389290066096
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -16404,6 +16064,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1736588732148028}
+--- !u!222 &222964170422527712
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1215316765760408}
 --- !u!222 &222977785416272456
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -16622,24 +16288,6 @@ RectTransform:
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -7, y: -850}
   m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!224 &224058085023685418
-RectTransform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1147216125006468}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 224694767902809322}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000061035156, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224063994783864144
 RectTransform:
@@ -17076,6 +16724,24 @@ RectTransform:
   m_AnchoredPosition: {x: 453.6, y: 67.7}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!224 &224167716566339268
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1215316765760408}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 224356067753305124}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 171.7, y: 0}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224181184383445158
 RectTransform:
   m_ObjectHideFlags: 1
@@ -17299,24 +16965,6 @@ RectTransform:
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0.00030517532, y: 0.39999402}
   m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!224 &224257769801120882
-RectTransform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1273398276269454}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 7.9614625}
-  m_LocalScale: {x: 0, y: 0, z: 0}
-  m_Children: []
-  m_Father: {fileID: 224356067753305124}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 292.17606, y: -205.85223}
-  m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224262094952741534
 RectTransform:
@@ -17669,7 +17317,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 224257769801120882}
+  - {fileID: 224167716566339268}
   m_Father: {fileID: 224962508467435342}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -17736,24 +17384,6 @@ RectTransform:
   m_AnchoredPosition: {x: 50, y: -284}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!224 &224388540296077984
-RectTransform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1701721766326206}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 224694767902809322}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000061035156, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224394056016632214
 RectTransform:
   m_ObjectHideFlags: 1
@@ -17767,7 +17397,6 @@ RectTransform:
   - {fileID: 4269574330059892}
   - {fileID: 224686237489656890}
   - {fileID: 224619578603483512}
-  - {fileID: 224694767902809322}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -17793,24 +17422,6 @@ RectTransform:
   m_AnchorMax: {x: 1, y: 0.2}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!224 &224404341419267574
-RectTransform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1797741234381202}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 224694767902809322}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000061035156, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224409938643506850
 RectTransform:
@@ -18600,28 +18211,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!224 &224694767902809322
-RectTransform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1496098123224278}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 224916126982244574}
-  - {fileID: 224058085023685418}
-  - {fileID: 224404341419267574}
-  - {fileID: 224388540296077984}
-  m_Father: {fileID: 224394056016632214}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224700816176415392
 RectTransform:
   m_ObjectHideFlags: 1
@@ -19383,7 +18972,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.433, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -19406,24 +18995,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 28}
   m_Pivot: {x: 0.5, y: 1}
---- !u!224 &224916126982244574
-RectTransform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1074483235893456}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 224694767902809322}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224916651166221298
 RectTransform:
   m_ObjectHideFlags: 1

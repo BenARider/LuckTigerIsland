@@ -8,15 +8,7 @@ public class MenuOpen : MonoBehaviour {
     public GameObject PartyMenu;
     public GameObject ResumeButton;
     public GameObject PartyButton;
-    public GameObject BattleUI;
-    public GameObject ActionOneButton;
     private GameObject QuestAddText;
-    [SerializeField]
-    private GameObject m_ShopUI;
-    [SerializeField]
-    private GameObject m_closeShopButton;
-    [SerializeField]
-    private GameObject m_targetButton;
     [SerializeField]
     private GameObject m_lastButton;
     EventSystem m_eventSystem;
@@ -50,11 +42,9 @@ public class MenuOpen : MonoBehaviour {
             else
             {
                 m_lastButton = EventSystem.current.currentSelectedGameObject;
-                Debug.Log("Last button was" + m_lastButton);
                 m_eventSystem.SetSelectedGameObject(ResumeButton);
             Pause();
                 
-                //BattleUI.SetActive(false);
             }
         }
         if(Input.GetKeyDown(KeyCode.I) && !m_menuPauseOpen)
@@ -66,10 +56,8 @@ public class MenuOpen : MonoBehaviour {
             else
             {
                 m_lastButton = EventSystem.current.currentSelectedGameObject;
-                Debug.Log("Last button was" + m_lastButton);
                 m_eventSystem.SetSelectedGameObject(PartyButton);
             OpenPartyMenu();
-           // BattleUI.SetActive(false);
             }
         }
     }
@@ -92,40 +80,11 @@ public class MenuOpen : MonoBehaviour {
     }
     public void Resume()
     {
-
         m_menuPauseOpen = false;
         m_partyMenuOpen = false;
         m_eventSystem.SetSelectedGameObject(m_lastButton);
-        /*
-        BattleUI = GameObject.Find("Battle_UI");
-        m_targetButton = GameObject.Find("Target_One");
-        ActionOneButton = GameObject.Find("Action_One");
-
-        if (BattleUI.activeSelf == true)
-        {
-            m_eventSystem.SetSelectedGameObject(ActionOneButton);
-            PauseMenu.SetActive(false);
-            PartyMenu.SetActive(false);
-
-        }
-        if(m_targetButton.activeSelf == true)
-        { 
-            m_eventSystem.SetSelectedGameObject(m_targetButton);
-            PauseMenu.SetActive(false);
-            PartyMenu.SetActive(false);
-        }
-        m_ShopUI = GameObject.Find("Shop_UI");
-        if(m_ShopUI.activeSelf == true)
-        {
-            m_closeShopButton = GameObject.Find("Close");
-            m_eventSystem.SetSelectedGameObject(m_closeShopButton);
-            PauseMenu.SetActive(false);
-            PartyMenu.SetActive(false);
-        }
-        */
         PauseMenu.SetActive(false);
         PartyMenu.SetActive(false);
-        //BattleUI.SetActive(true);
         QuestAddText.SetActive(true);
    
     }
