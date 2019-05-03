@@ -14,12 +14,11 @@ public class MenuOpen : MonoBehaviour {
     private bool m_battleUIOpen;
     [SerializeField]
     private GameObject m_lastButton;
-    [SerializeField]
-    private GameObject m_battleUI;
+
     [SerializeField]
     private GameObject m_shopUI;
     [SerializeField]
-    private Button[] m_BattleUIButtons;
+    private GameObject m_ActionListHolder;
     EventSystem m_eventSystem;
     [SerializeField]
     private bool m_menuPauseOpen = false;
@@ -29,7 +28,7 @@ public class MenuOpen : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         m_eventSystem = EventSystem.current;
-        m_BattleUIButtons = new Button[9];
+    
   
     }
     // Update is called once per frame
@@ -42,7 +41,7 @@ public class MenuOpen : MonoBehaviour {
     }
     void Update()
     {
-        
+      
         if (Input.GetKeyDown(KeyCode.Escape)&& !m_partyMenuOpen)
         {
             if(m_menuPauseOpen)
@@ -79,33 +78,16 @@ public class MenuOpen : MonoBehaviour {
         PartyMenu.SetActive(true);
         m_partyMenuOpen = true;
         m_shopUI = GameObject.Find("Shop_UI");
-        if(m_shopUI.activeSelf == true)
+        m_ActionListHolder = GameObject.Find("Action_List_Holder");
+        if (m_shopUI.activeSelf == true)
         {
             m_shopUI.SetActive(false);
         }
-        m_battleUI = GameObject.Find("Battle_UI");
-        if (m_battleUI.activeSelf == true)
-        {
-            m_battleUIOpen = true;
-            m_BattleUIButtons[0] = GameObject.Find("Action_One").GetComponent<Button>();
-            m_BattleUIButtons[1] = GameObject.Find("Action_Two").GetComponent<Button>();
-            m_BattleUIButtons[2] = GameObject.Find("Action_Three").GetComponent<Button>();
-            m_BattleUIButtons[3] = GameObject.Find("Action_Four").GetComponent<Button>();
-            m_BattleUIButtons[4] = GameObject.Find("Action_Five").GetComponent<Button>();
-            m_BattleUIButtons[5] = GameObject.Find("Action_Six").GetComponent<Button>();
-            m_BattleUIButtons[6] = GameObject.Find("Action_Seven").GetComponent<Button>();
-            m_BattleUIButtons[7] = GameObject.Find("Action_Eight").GetComponent<Button>();
-            m_BattleUIButtons[8] = GameObject.Find("Action_Nine").GetComponent<Button>();
-            m_BattleUIButtons[0].interactable = false;
-            m_BattleUIButtons[1].interactable = false;
-            m_BattleUIButtons[2].interactable = false;
-            m_BattleUIButtons[3].interactable = false;
-            m_BattleUIButtons[4].interactable = false;
-            m_BattleUIButtons[5].interactable = false;
-            m_BattleUIButtons[6].interactable = false;
-            m_BattleUIButtons[7].interactable = false;
-            m_BattleUIButtons[8].interactable = false;
-        }
+
+        m_ActionListHolder.SetActive(false);
+
+
+
     }
     public bool GetPartyMenuState()
     {
@@ -119,18 +101,7 @@ public class MenuOpen : MonoBehaviour {
     }
     public void Resume()
     {
-        if (m_battleUIOpen == true)
-        {
-            m_BattleUIButtons[0].interactable = true;
-            m_BattleUIButtons[1].interactable = true;
-            m_BattleUIButtons[2].interactable = true;
-            m_BattleUIButtons[3].interactable = true;
-            m_BattleUIButtons[4].interactable = true;
-            m_BattleUIButtons[5].interactable = true;
-            m_BattleUIButtons[6].interactable = true;
-            m_BattleUIButtons[7].interactable = true;
-            m_BattleUIButtons[8].interactable = true;
-        }
+        m_ActionListHolder.SetActive(true);
         m_menuPauseOpen = false;
         m_partyMenuOpen = false;
         m_eventSystem.SetSelectedGameObject(m_lastButton);
@@ -144,34 +115,16 @@ public class MenuOpen : MonoBehaviour {
     {
         PauseMenu.SetActive(true);
         m_menuPauseOpen = true;
-        m_battleUI = GameObject.Find("Battle_UI");
         m_shopUI = GameObject.Find("Shop_UI");
         if (m_shopUI.activeSelf == true)
         {
             m_shopUI.SetActive(false);
         }
-        if (m_battleUI.activeSelf == true)
-        {
-            m_battleUIOpen = true;
-            m_BattleUIButtons[0] = GameObject.Find("Action_One").GetComponent<Button>();
-            m_BattleUIButtons[1] = GameObject.Find("Action_Two").GetComponent<Button>();
-            m_BattleUIButtons[2] = GameObject.Find("Action_Three").GetComponent<Button>();
-            m_BattleUIButtons[3] = GameObject.Find("Action_Four").GetComponent<Button>();
-            m_BattleUIButtons[4] = GameObject.Find("Action_Five").GetComponent<Button>();
-            m_BattleUIButtons[5] = GameObject.Find("Action_Six").GetComponent<Button>();
-            m_BattleUIButtons[6] = GameObject.Find("Action_Seven").GetComponent<Button>();
-            m_BattleUIButtons[7] = GameObject.Find("Action_Eight").GetComponent<Button>();
-            m_BattleUIButtons[8] = GameObject.Find("Action_Nine").GetComponent<Button>();
-            m_BattleUIButtons[0].interactable = false;
-            m_BattleUIButtons[1].interactable = false;
-            m_BattleUIButtons[2].interactable = false;
-            m_BattleUIButtons[3].interactable = false;
-            m_BattleUIButtons[4].interactable = false;
-            m_BattleUIButtons[5].interactable = false;
-            m_BattleUIButtons[6].interactable = false;
-            m_BattleUIButtons[7].interactable = false;
-            m_BattleUIButtons[8].interactable = false;
-        }
+
+
+
+        m_ActionListHolder.SetActive(false);
+
     }
 
 }
