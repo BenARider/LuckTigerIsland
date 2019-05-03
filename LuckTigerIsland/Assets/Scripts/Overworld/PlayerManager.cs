@@ -26,16 +26,20 @@ public struct Interaction
 public class PlayerManager : LTI.Singleton<PlayerManager> {
     //list of all current nearby interactable scripts
     public List<Interaction> interactions;
-	public string currentSceneName;
+	public string currentSceneName = "";
+    public string previousSceneName;
     public PlayerWorldMove playerMove;
     public TextMeshProUGUI[] textArray;
+    public SpriteRenderer[] playerSprites;
     public TextMeshProUGUI m_gold;
     public GameObject[] backgroundTextArray;
 	public WarriorStats warrior;
 	public ClericStats cleric;
 	public WizardStats wizard;
 	public NinjaStats ninja;
-    bool inDialogue = false;
+    public bool inDialogue = false;
+    public GameObject inShop;
+
     Interaction lastDialogueInteract;
     NPCDialogue activeDialogue;
 
@@ -70,6 +74,7 @@ public class PlayerManager : LTI.Singleton<PlayerManager> {
     void Start () {
         //backgroundTextArray[0] = GameObject.Find("Background_Player_Text");
         //backgroundTextArray[1] = GameObject.Find("Background_NPC_Text");
+        previousSceneName = currentSceneName;
         instance = this;
         playerMove = GetComponent<PlayerWorldMove>();
         Transform overUI = backgroundTextArray[0].transform;
@@ -83,10 +88,35 @@ public class PlayerManager : LTI.Singleton<PlayerManager> {
         
     }
 
+    void CheckForSceneChange()
+    {        
+        if(currentSceneName != previousSceneName)
+        {            
+            AudioManager.Instance.ChangePlaylist(currentSceneName);
+            previousSceneName = currentSceneName;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
-        
+        CheckForSceneChange();
+
+        if (inShop)
+        {
+            if (!inShop.activeInHierarchy)
+            {
+                //inDialogue = false;
+                inShop = null;
+                playerMove.doMove = true;
+            }
+            else
+            {
+                //inDialogue = true;
+                playerMove.doMove = false;
+            }
+        }
+
         try
         {
             m_gold.text = Inventory.Instance.GetGold().ToString();
@@ -168,8 +198,10 @@ public class PlayerManager : LTI.Singleton<PlayerManager> {
             //Activate Quest if one exists on the dialogue step.
             if (activeDialogue.Dialogues[activeDialogue.currentDialogueIndex].questHandout != null)
             {
+                Debug.Log("e");
                 if (!activeDialogue.Dialogues[activeDialogue.currentDialogueIndex].questHandout.hasBeenAccepted)
                 {
+                    Debug.Log("e");
                     activeDialogue.Dialogues[activeDialogue.currentDialogueIndex].questHandout.StartQuest();
                 }
             }

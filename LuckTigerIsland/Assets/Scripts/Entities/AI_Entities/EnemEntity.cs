@@ -124,12 +124,12 @@ public class EnemEntity : Entity
                     BC.deadEnemies++;
                     countedDead = true;
                     this.transform.eulerAngles = new Vector3(this.transform.eulerAngles.x, this.transform.eulerAngles.y, 90);
-                    BC.battleGoldReward += m_goldAward; //adds the bounty of the enemy to the gold pool for the end
-                    List<EEnemies> tempList = new List<EEnemies>
-                    {
-                        thisEnemyObject.enemyType
-                    };
-                    EventManager.Instance.SetLastBattle(tempList);
+                    //BC.battleGoldReward += m_goldAward; //adds the bounty of the enemy to the gold pool for the end
+                    //List<EEnemies> tempList = new List<EEnemies>
+                    //{
+                    //    thisEnemyObject.enemyType
+                    //};
+                    //EventManager.Instance.SetLastBattle(tempList);
                 }
                 else
                 {

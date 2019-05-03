@@ -11,17 +11,17 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1513774882610904}
   m_IsPrefabParent: 1
---- !u!1 &1014131642641948
+--- !u!1 &1032867849601886
 GameObject:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4899650657254836}
-  - component: {fileID: 114118214208455438}
+  - component: {fileID: 4455983746494938}
+  - component: {fileID: 114169486020498026}
   m_Layer: 0
-  m_Name: 'Quest: Boat Time!'
+  m_Name: 'Quest: Get to the City'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -148,6 +148,22 @@ GameObject:
   - component: {fileID: 114346238983116218}
   m_Layer: 0
   m_Name: _QuestManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1287009152847332
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4094983026384228}
+  - component: {fileID: 114817158132877352}
+  m_Layer: 0
+  m_Name: 'Quest: Curiosity killed the cat!'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -335,6 +351,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1731230510222990
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4204994264730718}
+  - component: {fileID: 114304116981989380}
+  m_Layer: 0
+  m_Name: 'Quest: Go to Elftown'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1747139667120914
 GameObject:
   m_ObjectHideFlags: 1
@@ -451,6 +483,19 @@ Transform:
   m_Father: {fileID: 4591088465556848}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4094983026384228
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1287009152847332}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.3360415, y: -2.3296213, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4542617625594406}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4101232678605370
 Transform:
   m_ObjectHideFlags: 1
@@ -478,6 +523,19 @@ Transform:
   m_Father: {fileID: 4542617625594406}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4204994264730718
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1731230510222990}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.3360415, y: -2.3296213, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4542617625594406}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4261727238596378
 Transform:
   m_ObjectHideFlags: 1
@@ -490,6 +548,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4591088465556848}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4455983746494938
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1032867849601886}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.3360415, y: 21.17038, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4542617625594406}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4466907768802472
 Transform:
@@ -515,7 +586,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4160055509635126}
-  - {fileID: 4899650657254836}
+  - {fileID: 4455983746494938}
+  - {fileID: 4204994264730718}
+  - {fileID: 4094983026384228}
   m_Father: {fileID: 4591088465556848}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -564,19 +637,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4591088465556848}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4899650657254836
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1014131642641948}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.3360415, y: -2.3296213, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4542617625594406}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4921420513843430
@@ -1148,38 +1208,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_gold: 100
   inventory: []
---- !u!114 &114118214208455438
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1014131642641948}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56e13a490385e9f42943e9786a20092c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_title: Boat Time!
-  m_description: Go see the boatmaster
-  m_expReward: 240
-  m_goldReward: 7
-  m_itemReward: {fileID: 11400000, guid: ad55ad25a92593846a8dc2862c8c6dd1, type: 2}
-  m_questText: {fileID: 0}
-  isActive: 0
-  hasBeenAccepted: 0
-  m_allObjectives: []
-  m_killObjectives: []
-  m_locationObjectives:
-  - m_location: 8
-  m_inventoryObjectives: []
-  m_dialogueObjectives: []
-  o_type: 0
-  o_location: 8
-  o_enemy: 0
-  o_enemyAmount: 0
-  o_inventoryItem: {fileID: 0}
-  o_itemAmount: 0
-  o_dialogue: {fileID: 0}
 --- !u!114 &114163243979196090
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1191,6 +1219,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d629a65bad116df4a80259562bc293e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114169486020498026
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1032867849601886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56e13a490385e9f42943e9786a20092c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_title: Get to the City
+  m_description: You need to go to the city
+  m_expReward: 420
+  m_goldReward: 69
+  m_itemReward: {fileID: 0}
+  m_questText: {fileID: 0}
+  isActive: 0
+  hasBeenAccepted: 0
+  m_allObjectives: []
+  m_killObjectives: []
+  m_locationObjectives:
+  - m_location: 3
+  m_inventoryObjectives: []
+  m_dialogueObjectives: []
+  o_type: 0
+  o_location: 3
+  o_enemy: 0
+  o_enemyAmount: 0
+  o_inventoryItem: {fileID: 0}
+  o_itemAmount: 0
+  o_dialogue: {fileID: 0}
 --- !u!114 &114219723684070712
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1232,7 +1292,7 @@ MonoBehaviour:
     m_totalAmount: 5
     m_currentAmount: 5
   m_dialogueObjectives: []
-  o_type: 2
+  o_type: 3
   o_location: 0
   o_enemy: 0
   o_enemyAmount: 0
@@ -1266,6 +1326,38 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114304116981989380
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1731230510222990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56e13a490385e9f42943e9786a20092c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_title: Go to Elftown
+  m_description: You need to go to Elftown
+  m_expReward: 420
+  m_goldReward: 69
+  m_itemReward: {fileID: 0}
+  m_questText: {fileID: 0}
+  isActive: 0
+  hasBeenAccepted: 0
+  m_allObjectives: []
+  m_killObjectives: []
+  m_locationObjectives:
+  - m_location: 2
+  m_inventoryObjectives: []
+  m_dialogueObjectives: []
+  o_type: 0
+  o_location: 2
+  o_enemy: 0
+  o_enemyAmount: 0
+  o_inventoryItem: {fileID: 0}
+  o_itemAmount: 0
+  o_dialogue: {fileID: 0}
 --- !u!114 &114346238983116218
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1279,11 +1371,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_quests:
   - {fileID: 114267248592811320}
-  - {fileID: 114118214208455438}
-  m_title: Boat Time!
-  m_description: Go see the boatmaster
-  m_exp: 240
-  m_gold: 7
+  - {fileID: 114169486020498026}
+  - {fileID: 114304116981989380}
+  - {fileID: 114817158132877352}
+  m_title: Curiosity killed the cat!
+  m_description: You need to kill the Spirit Tiger
+  m_exp: 420
+  m_gold: 69
 --- !u!114 &114387150099793672
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1454,6 +1548,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactions: []
   currentSceneName: Overworld
+  previousSceneName: 
   playerMove: {fileID: 0}
   textArray:
   - {fileID: 0}
@@ -1462,6 +1557,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  playerSprites:
+  - {fileID: 212823881392461434}
+  - {fileID: 212568234159001890}
+  - {fileID: 212353873896219402}
+  - {fileID: 212491126950264230}
   m_gold: {fileID: 114017547794379160}
   backgroundTextArray:
   - {fileID: 1453249050284420}
@@ -1470,7 +1570,9 @@ MonoBehaviour:
   cleric: {fileID: 114080063606257766}
   wizard: {fileID: 114522828843662846}
   ninja: {fileID: 114639582945968924}
-  m_partyLevel: 1
+  inDialogue: 0
+  inShop: {fileID: 0}
+  m_partyLevel: 10
   m_xperience: 0
 --- !u!114 &114619009007972608
 MonoBehaviour:
@@ -1732,6 +1834,39 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114817158132877352
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1287009152847332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56e13a490385e9f42943e9786a20092c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_title: Curiosity killed the cat!
+  m_description: You need to kill the Spirit Tiger
+  m_expReward: 420
+  m_goldReward: 69
+  m_itemReward: {fileID: 0}
+  m_questText: {fileID: 0}
+  isActive: 0
+  hasBeenAccepted: 0
+  m_allObjectives: []
+  m_killObjectives:
+  - m_enemy: 15
+    m_amount: 1
+  m_locationObjectives: []
+  m_inventoryObjectives: []
+  m_dialogueObjectives: []
+  o_type: 1
+  o_location: 0
+  o_enemy: 15
+  o_enemyAmount: 1
+  o_inventoryItem: {fileID: 0}
+  o_itemAmount: 0
+  o_dialogue: {fileID: 0}
 --- !u!114 &114822966957604122
 MonoBehaviour:
   m_ObjectHideFlags: 1

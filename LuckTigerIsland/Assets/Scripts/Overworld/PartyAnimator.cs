@@ -17,19 +17,27 @@ public class PartyAnimator : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        for(int i =0; i < 3; i++)
+        ResetVars();
+
+    }
+
+    public void ResetVars()
+    {
+        for (int i = 0; i < 3; i++)
         {
-            for(int j =0; j < 10; j++)
+            for (int j = 0; j < 10; j++)
             {
                 lastPositions[i, j] = playerMain.transform.position;
             }
         }
-        
-        for(int i = 0; i < 4; i++)
+
+        for (int i = 0; i < 4; i++)
         {
             directions[i] = 0;
         }
-
+        otherPlayers[0].transform.position = playerMain.transform.position;
+        otherPlayers[1].transform.position = playerMain.transform.position;
+        otherPlayers[2].transform.position = playerMain.transform.position;
     }
 
     // Update is called once per frame

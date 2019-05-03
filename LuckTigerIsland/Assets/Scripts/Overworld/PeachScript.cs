@@ -10,6 +10,12 @@ public class PeachScript : GenericInteract {
     Quest peachQuest;
 
 
+    private void OnEnable()
+    {
+        if (QuestManager.Instance)
+            peachQuest = QuestManager.Instance.transform.GetChild(0).GetComponent<Quest>();
+    }
+
     public override void OnInteract(PlayerManager player)
     {
         if (peachQuest.isActive)

@@ -68,6 +68,7 @@ public class Shop : InteractEvent
     {
         shopUI.SetActive(true);
         m_eventSystem.SetSelectedGameObject(closeObject);
-
+        //PlayerManager.Instance.inDialogue = true;
+        PlayerManager.Instance.inShop = shopUI;
     }
 }

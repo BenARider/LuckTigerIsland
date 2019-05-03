@@ -77,7 +77,7 @@ public class BattleControl : MonoBehaviour {
         {
             battleState = performAction.eLoss;
         }
-        if(deadEnemies>=4)
+        if(deadEnemies>= EnemiesInBattle.Count)
         {
             battleState = performAction.eWin;
         }
@@ -133,7 +133,7 @@ public class BattleControl : MonoBehaviour {
                     battleGoldReward = 0;
                     int battleExpReward = 0;
                     List<EEnemies> toSet = new List<EEnemies>();
-                    for (int i=0; i< 4; ++i)
+                    for (int i=0; i< EnemiesInBattle.Count; ++i)
                     {
                 
                        toSet.Add(EnemiesInBattle[i].GetComponent<EnemEntity>().MyClass);
