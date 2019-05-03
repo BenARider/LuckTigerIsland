@@ -51,14 +51,16 @@ public class MenuOpen : MonoBehaviour {
             }
             else
             {
-                m_lastButton = EventSystem.current.currentSelectedGameObject;
-                m_eventSystem.SetSelectedGameObject(ResumeButton);
+                /*
                 m_actionListHolder = GameObject.Find("Action_List_Holder").transform;
                 for (int i = 0; i < m_actionListHolder.childCount; ++i)
                 {
                     m_actionListHolder.GetChild(i).gameObject.SetActive(false);
 
                 }
+                */
+                m_lastButton = EventSystem.current.currentSelectedGameObject;
+                m_eventSystem.SetSelectedGameObject(ResumeButton);
                 Pause();
                 
             }
@@ -71,13 +73,14 @@ public class MenuOpen : MonoBehaviour {
             }
             else
             {
-
+                /*
                 m_actionListHolder = GameObject.Find("Action_List_Holder").transform;
                 for (int i = 0; i < m_actionListHolder.childCount; ++i)
                 {
                     m_actionListHolder.GetChild(i).gameObject.SetActive(false);
 
                 }
+                */
                 m_lastButton = EventSystem.current.currentSelectedGameObject;
                 m_eventSystem.SetSelectedGameObject(PartyButton);
             OpenPartyMenu();
@@ -89,16 +92,13 @@ public class MenuOpen : MonoBehaviour {
         PartyMenu.SetActive(true);
         m_partyMenuOpen = true;
         m_shopUI = GameObject.Find("Shop_UI");
-        m_ActionListHolder = GameObject.Find("Action_List_Holder");
+       // m_ActionListHolder = GameObject.Find("Action_List_Holder");
         if (m_shopUI.activeSelf == true)
         {
             m_shopUI.SetActive(false);
         }
 
         m_ActionListHolder.SetActive(false);
-
-
-
     }
     public bool GetPartyMenuState()
     {
@@ -112,12 +112,14 @@ public class MenuOpen : MonoBehaviour {
     }
     public void Resume()
     {
+        /*
         m_actionListHolder = GameObject.Find("Action_List_Holder").transform;
         for (int i = 0; i < m_actionListHolder.childCount; ++i)
         {
             m_actionListHolder.GetChild(i).gameObject.SetActive(true);
 
         }
+        */
         m_menuPauseOpen = false;
         m_partyMenuOpen = false;
         m_eventSystem.SetSelectedGameObject(m_lastButton);
