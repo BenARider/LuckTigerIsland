@@ -12475,7 +12475,11 @@ MonoBehaviour:
   PartyMenu: {fileID: 1325251233473460}
   ResumeButton: {fileID: 1158879834243388}
   PartyButton: {fileID: 1299640542439450}
+  m_battleUIOpen: 0
   m_lastButton: {fileID: 0}
+  m_battleUI: {fileID: 0}
+  m_shopUI: {fileID: 0}
+  m_BattleUIButtons: []
   m_menuPauseOpen: 0
   m_partyMenuOpen: 0
 --- !u!114 &114783498062566406
