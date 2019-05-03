@@ -14,7 +14,7 @@ public class MenuOpen : MonoBehaviour {
     private bool m_battleUIOpen;
     [SerializeField]
     private GameObject m_lastButton;
-
+    Transform m_actionListHolder;
     [SerializeField]
     private GameObject m_shopUI;
     [SerializeField]
@@ -53,7 +53,13 @@ public class MenuOpen : MonoBehaviour {
             {
                 m_lastButton = EventSystem.current.currentSelectedGameObject;
                 m_eventSystem.SetSelectedGameObject(ResumeButton);
-            Pause();
+                m_actionListHolder = GameObject.Find("Action_List_Holder").transform;
+                for (int i = 0; i < m_actionListHolder.childCount; ++i)
+                {
+                    m_actionListHolder.GetChild(i).gameObject.SetActive(false);
+
+                }
+                Pause();
                 
             }
         }
@@ -66,7 +72,12 @@ public class MenuOpen : MonoBehaviour {
             else
             {
 
-          
+                m_actionListHolder = GameObject.Find("Action_List_Holder").transform;
+                for (int i = 0; i < m_actionListHolder.childCount; ++i)
+                {
+                    m_actionListHolder.GetChild(i).gameObject.SetActive(false);
+
+                }
                 m_lastButton = EventSystem.current.currentSelectedGameObject;
                 m_eventSystem.SetSelectedGameObject(PartyButton);
             OpenPartyMenu();
@@ -101,7 +112,12 @@ public class MenuOpen : MonoBehaviour {
     }
     public void Resume()
     {
-        m_ActionListHolder.SetActive(true);
+        m_actionListHolder = GameObject.Find("Action_List_Holder").transform;
+        for (int i = 0; i < m_actionListHolder.childCount; ++i)
+        {
+            m_actionListHolder.GetChild(i).gameObject.SetActive(true);
+
+        }
         m_menuPauseOpen = false;
         m_partyMenuOpen = false;
         m_eventSystem.SetSelectedGameObject(m_lastButton);
@@ -121,9 +137,6 @@ public class MenuOpen : MonoBehaviour {
             m_shopUI.SetActive(false);
         }
 
-
-
-        m_ActionListHolder.SetActive(false);
 
     }
 
